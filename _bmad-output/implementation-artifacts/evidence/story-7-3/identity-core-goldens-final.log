@@ -1,0 +1,9 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+
+ ✓ src/changesets/operation-resolution.test.ts (70 tests) 144ms
+
+ Test Files  1 passed (1)
+      Tests  70 passed (70)
+   Start at  01:57:18
+   Duration  631ms (transform 202ms, setup 0ms, collect 300ms, tests 144ms, environment 0ms, prepare 29ms)

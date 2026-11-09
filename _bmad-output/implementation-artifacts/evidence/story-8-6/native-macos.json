@@ -1,0 +1,294 @@
+{
+  "date": "2026-10-20T05:32:36Z",
+  "root": "/tmp/storymapper-story-8-6-_pdit2ph",
+  "platform": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64",
+    "sw_vers": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434"
+  },
+  "commands": [
+    {
+      "argv": [
+        "sw_vers"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph",
+      "log": "native-platform.log",
+      "exit_code": 0,
+      "seconds": 0.008
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "<SOURCE_CHECKOUT>",
+      "log": "native-source-revision.log",
+      "exit_code": 0,
+      "seconds": 0.009
+    },
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--no-hardlinks",
+        "--no-checkout",
+        "<SOURCE_CHECKOUT>",
+        "/tmp/storymapper-story-8-6-_pdit2ph/checkout"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph",
+      "log": "native-clone.log",
+      "exit_code": 0,
+      "seconds": 0.064
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "3e761f7deb60fc0c12639995ff801fdfcfc5a990"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph/checkout",
+      "log": "native-checkout.log",
+      "exit_code": 0,
+      "seconds": 0.281
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "remove",
+        "origin"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph/checkout",
+      "log": "native-remove-origin.log",
+      "exit_code": 0,
+      "seconds": 0.012
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph/checkout",
+      "log": "native-revision.log",
+      "exit_code": 0,
+      "seconds": 0.009
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph/checkout",
+      "log": "native-clean-status.log",
+      "exit_code": 0,
+      "seconds": 0.292
+    },
+    {
+      "argv": [
+        "node",
+        "--version"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph/checkout",
+      "log": "native-node.log",
+      "exit_code": 0,
+      "seconds": 0.015
+    },
+    {
+      "argv": [
+        "corepack",
+        "--version"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph/checkout",
+      "log": "native-corepack.log",
+      "exit_code": 0,
+      "seconds": 0.043
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/setup.mjs"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph/checkout",
+      "log": "native-setup.log",
+      "exit_code": 0,
+      "seconds": 22.463
+    },
+    {
+      "argv": [
+        "corepack",
+        "pnpm",
+        "--version"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph/checkout",
+      "log": "native-pnpm.log",
+      "exit_code": 0,
+      "seconds": 0.136
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph/checkout",
+      "log": "native-overlay-status.log",
+      "exit_code": 0,
+      "seconds": 0.295
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/start.mjs"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-_pdit2ph/checkout",
+      "pid": 16990,
+      "log": "native-start.log"
+    }
+  ],
+  "outcomes": {
+    "after_setup": {
+      "project_directory": true,
+      "database_exists": false
+    },
+    "health": {
+      "status": 200,
+      "body": {
+        "ok": true,
+        "mode": "local",
+        "databasePath": "/private/tmp/storymapper-story-8-6-_pdit2ph/checkout/local-projects/default.lsm/storymapper.sqlite",
+        "runtimeDirectory": "/private/tmp/storymapper-story-8-6-_pdit2ph/checkout/local-projects/default.lsm",
+        "outboundNetwork": "disabled-by-default"
+      }
+    },
+    "operational_health": {
+      "status": 200,
+      "body": {
+        "version": "0.1.0",
+        "schemaVersion": "release-sha256-72557065c3b5f34936e896480ddcfbbe42bec652763f5571c37067b2f1c0f456",
+        "epoch": "f9871758-e88f-44ef-86a9-ac466e9f0a34",
+        "writeGate": "available",
+        "pendingMigration": null
+      }
+    },
+    "actual_url": "http://127.0.0.1:4317",
+    "database_created_on_start": true,
+    "stop": {
+      "action": "SIGINT to owned launcher (Ctrl+C equivalent)",
+      "launcher_exit_code": 0,
+      "port_discovery_removed": true,
+      "health_unavailable": true,
+      "observed_owned_child_pid": 16993,
+      "owned_child_exited": true
+    }
+  },
+  "unverified": [
+    "Windows native quickstart: environment unavailable",
+    "Linux native quickstart: environment unavailable",
+    "No hosted CI, screen-reader, native clipboard, credential or provider certification",
+    "macOS visible/rendered native browser UI: CUA cgWindowNotFound; opener/HTTP evidence only"
+  ],
+  "revision": "3e761f7deb60fc0c12639995ff801fdfcfc5a990",
+  "clean_checkout_status": "",
+  "initial_absent": [
+    ".env and all parent .env files",
+    "node_modules",
+    "local-projects user state (tracked .gitkeep only)"
+  ],
+  "environment": {
+    "PATH": "<NODE24_BIN>:/usr/bin:/bin:/usr/sbin:/sbin",
+    "HOME": "/tmp/storymapper-story-8-6-_pdit2ph/home",
+    "XDG_CACHE_HOME": "/tmp/storymapper-story-8-6-_pdit2ph/cache",
+    "XDG_CONFIG_HOME": "/tmp/storymapper-story-8-6-_pdit2ph/config",
+    "TMPDIR": "/tmp/storymapper-story-8-6-_pdit2ph/tmp",
+    "COREPACK_HOME": "/tmp/storymapper-story-8-6-_pdit2ph/corepack",
+    "COREPACK_ENABLE_DOWNLOAD_PROMPT": "0",
+    "LANG": "en_US.UTF-8",
+    "TERM": "dumb"
+  },
+  "copied_state": "None: no .env, node_modules, package store, user Projects or credentials copied",
+  "runtime": {
+    "node": "v24.17.0",
+    "corepack": "0.35.0",
+    "pnpm": "9.15.4"
+  },
+  "documentation_overlay": {
+    "README.md": "e567b97fba8f0dd75a539a5fc45b42b0ec89b2c14b77a5dfa8dc780b0d9fde2f",
+    "docs/RUNBOOK.md": "e5ec5a2613445299c85cd76d7cf655685803c7720f2533baa123892405b4d12c"
+  },
+  "overlay_note": "Working-tree documentation only; application/setup/start source comes from exact clean committed revision",
+  "overlay_status": "M README.md",
+  "retained_disposable_state": "/tmp/storymapper-story-8-6-_pdit2ph",
+  "log_hashes": {
+    "native-attempt1-checkout.log": "0547ebf55a915f2a5b12882cb375791e62d12a745c9c2312df27d16a9f4a3c52",
+    "native-attempt1-clean-status.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-attempt1-clone.log": "e2e0cc4b343b026c5962d1a558e39148ecad65a5fd8e10830becff56dbca06e8",
+    "native-attempt1-platform.log": "4ef10a0fc370704ea84699cf3851e51488598c5f1ab35cb572eb6b96278a8e5c",
+    "native-attempt1-remove-origin.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-attempt1-revision.log": "69d2a35f9261445a03d27ae4fcf2d517a7926c325f794987df5325f4150f5c31",
+    "native-attempt1-source-revision.log": "69d2a35f9261445a03d27ae4fcf2d517a7926c325f794987df5325f4150f5c31",
+    "native-checkout.log": "0547ebf55a915f2a5b12882cb375791e62d12a745c9c2312df27d16a9f4a3c52",
+    "native-clean-status.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-clone.log": "b267b219b492ca03301f8193ee17b41ed8333a6d7e14f96edc8a68b9c60aa83c",
+    "native-corepack.log": "eb16b5510966aa3f5ea607e5f41f799667f344fd3f47bdd81913b8e9c1a33921",
+    "native-node.log": "5c9160ca0ca43d0c49f5e254d49027c297167ac86be2287128b53ca3d9cd7296",
+    "native-overlay-status.log": "c8094453047f0e5f8e3169519803050cbb5af009984b2352d836b00fd1c0cbbb",
+    "native-platform.log": "4ef10a0fc370704ea84699cf3851e51488598c5f1ab35cb572eb6b96278a8e5c",
+    "native-pnpm.log": "aa4b6073295967fb7e7e4f8b415ae112cffbd0fe5aa20c6edb02e3b6c4935684",
+    "native-remove-origin.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-revision.log": "69d2a35f9261445a03d27ae4fcf2d517a7926c325f794987df5325f4150f5c31",
+    "native-setup.log": "4d18a20859e18e94f524e2e8c4bdefad664061171fa7b5cf4fe6d82cfa910ac1",
+    "native-source-revision.log": "69d2a35f9261445a03d27ae4fcf2d517a7926c325f794987df5325f4150f5c31",
+    "native-start.log": "dc7b82af44bca8e3ab7b6914274cddf08bfc12a9e64a2fcb6679a1fbb35d123f"
+  },
+  "reproducing_statement": "Run clean native macOS clone quickstart with installed Node24/Corepack/pnpm in an allowlisted generated environment, retain failures and actual setup/start/health/stop outcomes, and record unavailable native-browser visual/Windows/Linux evidence.",
+  "replay_command": "python3 <SOURCE_CHECKOUT>/_bmad-output/implementation-artifacts/evidence/story-8-6/native-quickstart.py <SOURCE_CHECKOUT> <NODE24_BIN> <EVIDENCE_DIRECTORY>",
+  "replay_prerequisites": [
+    "macOS with installed Node24.17.0/Corepack0.35.0 on supplied NODE24_BIN path",
+    "SOURCE_CHECKOUT HEAD must be 3e761f7deb60fc0c12639995ff801fdfcfc5a990 for original revision replay; retained Git commands show exact detached checkout",
+    "Corepack/npm package-registry access and a working OS default browser; no provider login or credentials",
+    "Inspect native browser through CUA if available, then send Enter to runner to deliver owned-launcher SIGINT",
+    "Final docs overlay hashes and HTTP-only probes retained in native-browser.json; visual acceptance unavailable in original run"
+  ],
+  "browser_evidence": "native-browser.json",
+  "failed_preflight_evidence": "native-attempt1-macos.json",
+  "runner_sha256": "0afd51e600c5be3d9e993ce92cfa042eb44adc70ff7a6f012d038982c20b8714",
+  "publication_prerequisites_preserved": [
+    "Required private community details unresolved; final history disposition and exact-result rescan remain required",
+    "Prior native reader/clipboard/credential/interrupted-push and hosted CI/protection obligations remain unverified"
+  ],
+  "sanitation_provenance": {
+    "retained_hash_scope": "Existing log_hashes match the retained sanitized files, not original command streams.",
+    "original_pre_sanitation_bytes": "Not retained in publishable evidence.",
+    "original_pre_sanitation_sha256": null,
+    "exact_original_reconstruction_available": false,
+    "transformations": [
+      "Source checkout, installed Node path and host home paths are replaced by symbolic labels.",
+      "native-start.log request/response detail objects are omitted; a runtime event message is replaced by Runtime event; private details omitted."
+    ],
+    "limits": "The exact post-capture sanitizer command and before/after hashes were not retained. Do not treat retained hashes as original-byte hashes or omitted request details as independently replayable evidence."
+  },
+  "later_documentation_candidate": {
+    "date": "2026-10-20",
+    "sha256": {
+      "README.md": "e567b97fba8f0dd75a539a5fc45b42b0ec89b2c14b77a5dfa8dc780b0d9fde2f",
+      "docs/RUNBOOK.md": "b54dcfc461e6b76a7d9b2c56500175716c34d12e7cfe57e6a415b7559f2ff329",
+      "CONTRIBUTING.md": "4438c3f6afdb06675f007460891cadd2afb3e9381f7b6d0d7a755e2f06c7d1d4",
+      "docs/usability-report.md": "8d91652524086fead40529eb7a72ea13207c7e9d6800198fb06db830f7c28295"
+    },
+    "kind": "Later documentation-only review candidate; no new native setup/start/browser execution.",
+    "copied_into_native_checkout": false,
+    "copy_while_healthy_proven": false
+  },
+  "overlay_provenance": "documentation_overlay records originally captured overlay hashes. The later refresh claims are preserved in native-browser.json. Neither set identifies the later documentation-only review candidate.",
+  "runner_provenance": {
+    "original_recorded_runner_sha256": "0afd51e600c5be3d9e993ce92cfa042eb44adc70ff7a6f012d038982c20b8714",
+    "current_repaired_runner_sha256": "ca923a63272d07f4f0ab3ba25bc49f6b78524b9306447aeb3d2d7177a15e9d3e",
+    "current_runner_native_execution": false,
+    "validation": "Focused disposable helper probes only; no new native browser run."
+  }
+}

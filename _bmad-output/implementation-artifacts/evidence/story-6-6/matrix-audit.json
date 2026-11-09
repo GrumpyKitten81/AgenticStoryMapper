@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-17",
+  "surface": "actual mounted React/router and simulated HTTP/live transport; native separate",
+  "verification": "final-accessible-web.log:65files/517tests pass; complete-final-core.log:22files/388tests pass; final release gate recorded separately",
+  "matrix": [
+    {
+      "row": "Five projections",
+      "covering_tests": [
+        "core-views.test.tsx: fresh %s URL renders the canonical Card",
+        "card-detail.test.ts",
+        "card-fields.test.ts",
+        "hierarchy-collapse.test.tsx"
+      ],
+      "result": "ran and passed"
+    },
+    {
+      "row": "Discovery semantics",
+      "covering_tests": [
+        "core-views.test.tsx: projects assigned Personas",
+        "DiscoveryView.test.tsx: retains filtered lanes",
+        "discovery-navigation.test.tsx",
+        "hierarchy-collapse.test.tsx",
+        "DiscoveryView.test.tsx: indexes unequal Activity groups",
+        "core-views.test.tsx: Persona aria-description for all placements"
+      ],
+      "result": "ran and passed"
+    },
+    {
+      "row": "Planning editing",
+      "covering_tests": [
+        "core-views.test.tsx: Planning defaults to open lanes",
+        "card-fields.test.ts",
+        "PlanningNumberField.test.tsx:completed drafts/independent errors/pending retry",
+        "core-views.test.tsx:refused priority"
+      ],
+      "result": "ran and passed"
+    },
+    {
+      "row": "Tracking scope",
+      "covering_tests": [
+        "core-views.test.tsx: Tracking summary and named controls",
+        "TrackingView.test.tsx",
+        "ReleaseKanban.test.tsx: actual source and GitHub links",
+        "core-views.test.tsx:actual snapshot link-to-risk wiring"
+      ],
+      "result": "ran and passed"
+    },
+    {
+      "row": "Preview/live",
+      "covering_tests": [
+        "core-views.test.tsx: actual %s preview refuses Card writes",
+        "changesets/boards.test.tsx",
+        "TrackingView.test.tsx: holds incoming delivery changes",
+        "live-updates.test.tsx",
+        "core-views.test.tsx:fiveURLs\u00d7ready/delayed/failed preview+card",
+        "changesets/shell.test.tsx:dirty suspension/restoration, pending Save-and-close/dependency",
+        "ReleaseKanban.test.tsx:removed ghosts"
+      ],
+      "result": "ran and passed"
+    },
+    {
+      "row": "Scale/regressions",
+      "covering_tests": [
+        "core-views.test.tsx: retains every eligible Card in a legal 1000-Card %s projection",
+        "GraphView.test.tsx",
+        "SlicesView.test.tsx",
+        "core-views.test.tsx:distributed1000map across5projections/show-all"
+      ],
+      "result": "ran and passed"
+    }
+  ],
+  "limits": [
+    "DOM tests do not prove native screen-reader/visual/layout acceptance.",
+    "1000-Card render checks are functional, no timing gate."
+  ]
+}

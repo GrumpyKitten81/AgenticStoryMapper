@@ -1,0 +1,410 @@
+{
+  "captured": "2026-10-19T23:33:52.302605+00:00",
+  "packages": {
+    "vitest@4.1.12": {
+      "source": "https://registry.npmjs.org/vitest/4.1.12",
+      "version": "4.1.12",
+      "engines": {
+        "node": "^20.0.0 || ^22.0.0 || >=24.0.0"
+      },
+      "dependencies": {
+        "obug": "^2.1.1",
+        "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
+        "pathe": "^2.0.3",
+        "std-env": "^4.0.0-rc.1",
+        "tinyexec": "^1.0.2",
+        "picomatch": "^4.0.3",
+        "tinybench": "^2.9.0",
+        "tinyglobby": "^0.2.15",
+        "@vitest/spy": "4.1.12",
+        "expect-type": "^1.3.0",
+        "tinyrainbow": "^3.1.0",
+        "magic-string": "^0.30.21",
+        "@vitest/utils": "4.1.12",
+        "@vitest/expect": "4.1.12",
+        "@vitest/mocker": "4.1.12",
+        "@vitest/runner": "4.1.12",
+        "es-module-lexer": "^2.0.0",
+        "@vitest/snapshot": "4.1.12",
+        "why-is-node-running": "^2.3.0",
+        "@vitest/pretty-format": "4.1.12"
+      },
+      "peerDependencies": {
+        "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
+        "jsdom": "*",
+        "happy-dom": "*",
+        "@vitest/ui": "4.1.12",
+        "@types/node": "^20.0.0 || ^22.0.0 || >=24.0.0",
+        "@edge-runtime/vm": "*",
+        "@opentelemetry/api": "^1.9.0",
+        "@vitest/coverage-v8": "4.1.12",
+        "@vitest/browser-preview": "4.1.12",
+        "@vitest/coverage-istanbul": "4.1.12",
+        "@vitest/browser-playwright": "4.1.12",
+        "@vitest/browser-webdriverio": "^4.1.11"
+      },
+      "deprecated": null
+    },
+    "vite@8.3.4": {
+      "source": "https://registry.npmjs.org/vite/8.3.4",
+      "version": "8.3.4",
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      },
+      "dependencies": {
+        "postcss": "^8.5.29",
+        "rolldown": "~1.2.12",
+        "picomatch": "^4.0.7",
+        "tinyglobby": "^0.2.17",
+        "lightningcss": "^1.33.0"
+      },
+      "peerDependencies": {
+        "tsx": "^4.8.1",
+        "jiti": ">=1.21.0",
+        "less": "^4.0.0",
+        "sass": "^1.70.0",
+        "yaml": "^2.4.2",
+        "stylus": ">=0.54.8",
+        "terser": "^5.16.0",
+        "esbuild": "^0.27.0 || ^0.28.0",
+        "sugarss": "^5.0.0",
+        "@types/node": "^20.19.0 || >=22.12.0",
+        "sass-embedded": "^1.70.0",
+        "@vitejs/devtools": "^0.7.1"
+      },
+      "deprecated": null
+    },
+    "@vitejs/plugin-react@5.2.0": {
+      "source": "https://registry.npmjs.org/@vitejs/plugin-react/5.2.0",
+      "version": "5.2.0",
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      },
+      "dependencies": {
+        "@babel/core": "^7.29.0",
+        "react-refresh": "^0.18.0",
+        "@types/babel__core": "^7.20.5",
+        "@rolldown/pluginutils": "1.0.0-rc.3",
+        "@babel/plugin-transform-react-jsx-self": "^7.27.1",
+        "@babel/plugin-transform-react-jsx-source": "^7.27.1"
+      },
+      "peerDependencies": {
+        "vite": "^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+      },
+      "deprecated": null
+    },
+    "@tiptap/core@3.32.0": {
+      "source": "https://registry.npmjs.org/@tiptap/core/3.32.0",
+      "version": "3.32.0",
+      "engines": null,
+      "dependencies": null,
+      "peerDependencies": {
+        "@tiptap/pm": "3.32.0"
+      },
+      "deprecated": null
+    },
+    "@tiptap/react@3.32.0": {
+      "source": "https://registry.npmjs.org/@tiptap/react/3.32.0",
+      "version": "3.32.0",
+      "engines": null,
+      "dependencies": {
+        "fast-equals": "^5.3.3",
+        "use-sync-external-store": "^1.4.0",
+        "@types/use-sync-external-store": "^0.0.6"
+      },
+      "peerDependencies": {
+        "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+        "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+        "@tiptap/pm": "3.32.0",
+        "@tiptap/core": "3.32.0",
+        "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+        "@types/react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
+      },
+      "deprecated": null
+    },
+    "@tiptap/pm@3.32.0": {
+      "source": "https://registry.npmjs.org/@tiptap/pm/3.32.0",
+      "version": "3.32.0",
+      "engines": null,
+      "dependencies": {
+        "prosemirror-view": "^1.42.6",
+        "prosemirror-model": "^1.25.12",
+        "prosemirror-state": "^1.4.4",
+        "prosemirror-keymap": "^1.2.3",
+        "prosemirror-tables": "^1.8.5",
+        "prosemirror-history": "^1.5.1",
+        "prosemirror-commands": "^1.7.2",
+        "prosemirror-changeset": "^2.4.4",
+        "prosemirror-gapcursor": "^1.4.1",
+        "prosemirror-transform": "^1.12.2",
+        "prosemirror-dropcursor": "^1.8.4",
+        "prosemirror-inputrules": "^1.5.1",
+        "prosemirror-schema-list": "^1.5.1"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "@tiptap/starter-kit@3.32.0": {
+      "source": "https://registry.npmjs.org/@tiptap/starter-kit/3.32.0",
+      "version": "3.32.0",
+      "engines": null,
+      "dependencies": {
+        "@tiptap/pm": "3.32.0",
+        "@tiptap/core": "3.32.0",
+        "@tiptap/extensions": "3.32.0",
+        "@tiptap/extension-bold": "3.32.0",
+        "@tiptap/extension-code": "3.32.0",
+        "@tiptap/extension-link": "3.32.0",
+        "@tiptap/extension-list": "3.32.0",
+        "@tiptap/extension-text": "3.32.0",
+        "@tiptap/extension-italic": "3.32.0",
+        "@tiptap/extension-strike": "3.32.0",
+        "@tiptap/extension-heading": "3.32.0",
+        "@tiptap/extension-document": "3.32.0",
+        "@tiptap/extension-gapcursor": "3.32.0",
+        "@tiptap/extension-list-item": "3.32.0",
+        "@tiptap/extension-paragraph": "3.32.0",
+        "@tiptap/extension-underline": "3.32.0",
+        "@tiptap/extension-blockquote": "3.32.0",
+        "@tiptap/extension-code-block": "3.32.0",
+        "@tiptap/extension-dropcursor": "3.32.0",
+        "@tiptap/extension-hard-break": "3.32.0",
+        "@tiptap/extension-bullet-list": "3.32.0",
+        "@tiptap/extension-list-keymap": "3.32.0",
+        "@tiptap/extension-ordered-list": "3.32.0",
+        "@tiptap/extension-horizontal-rule": "3.32.0"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "tiptap-markdown@0.9.0": {
+      "source": "https://registry.npmjs.org/tiptap-markdown/0.9.0",
+      "version": "0.9.0",
+      "engines": null,
+      "dependencies": {
+        "markdown-it": "^14.1.0",
+        "@types/markdown-it": "^13.0.7",
+        "prosemirror-markdown": "^1.11.1",
+        "markdown-it-task-lists": "^2.1.1"
+      },
+      "peerDependencies": {
+        "@tiptap/core": "^3.0.1"
+      },
+      "deprecated": null
+    },
+    "fastify@5.12.7": {
+      "source": "https://registry.npmjs.org/fastify/5.12.7",
+      "version": "5.12.7",
+      "engines": null,
+      "dependencies": {
+        "pino": "^9.14.0 || ^10.1.0",
+        "rfdc": "^1.3.1",
+        "avvio": "^9.0.0",
+        "semver": "^7.6.0",
+        "toad-cache": "^3.7.0",
+        "find-my-way": "^9.6.0",
+        "@fastify/error": "^4.0.0",
+        "process-warning": "^5.1.0",
+        "abstract-logging": "^2.0.1",
+        "light-my-request": "^6.0.0",
+        "secure-json-parse": "^4.0.0",
+        "@fastify/proxy-addr": "^5.0.0",
+        "fast-json-stringify": "^7.0.0",
+        "@fastify/ajv-compiler": "^4.0.5",
+        "@fastify/fast-json-stringify-compiler": "^5.0.0"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "@fastify/static@10.1.6": {
+      "source": "https://registry.npmjs.org/@fastify/static/10.1.6",
+      "version": "10.1.6",
+      "engines": null,
+      "dependencies": {
+        "glob": "^13.0.0",
+        "fastq": "^1.17.1",
+        "@fastify/send": "^4.0.0",
+        "@fastify/error": "^4.0.0",
+        "fastify-plugin": "^6.0.0",
+        "content-disposition": "^3.0.0",
+        "@fastify/accept-negotiator": "^2.0.0"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "@fastify/multipart@9.4.0": {
+      "source": "https://registry.npmjs.org/@fastify/multipart/9.4.0",
+      "version": "9.4.0",
+      "engines": null,
+      "dependencies": {
+        "@fastify/error": "^4.0.0",
+        "fastify-plugin": "^5.0.0",
+        "@fastify/busboy": "^3.0.0",
+        "secure-json-parse": "^4.0.0",
+        "@fastify/deepmerge": "^3.0.0"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "@fastify/busboy@3.2.3": {
+      "source": "https://registry.npmjs.org/@fastify/busboy/3.2.3",
+      "version": "3.2.3",
+      "engines": null,
+      "dependencies": null,
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "fast-uri@3.1.9": {
+      "source": "https://registry.npmjs.org/fast-uri/3.1.9",
+      "version": "3.1.9",
+      "engines": null,
+      "dependencies": null,
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "find-my-way@9.10.0": {
+      "source": "https://registry.npmjs.org/find-my-way/9.10.0",
+      "version": "9.10.0",
+      "engines": {
+        "node": ">=20"
+      },
+      "dependencies": {
+        "safe-regex2": "^5.0.0",
+        "fast-deep-equal": "^3.1.3",
+        "fast-querystring": "^1.0.0"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "postcss@8.5.31": {
+      "source": "https://registry.npmjs.org/postcss/8.5.31",
+      "version": "8.5.31",
+      "engines": {
+        "node": "^10 || ^12 || >=14"
+      },
+      "dependencies": {
+        "nanoid": "^3.3.20",
+        "picocolors": "^1.1.1",
+        "source-map-js": "^1.2.2"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "browserslist@4.29.4": {
+      "source": "https://registry.npmjs.org/browserslist/4.29.4",
+      "version": "4.29.4",
+      "engines": {
+        "node": "^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7"
+      },
+      "dependencies": {
+        "caniuse-lite": "^1.0.30001816",
+        "node-releases": "^2.0.59",
+        "electron-to-chromium": "^1.5.459",
+        "update-browserslist-db": "^1.3.4",
+        "baseline-browser-mapping": "^2.11.29"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "baseline-browser-mapping@2.11.30": {
+      "source": "https://registry.npmjs.org/baseline-browser-mapping/2.11.30",
+      "version": "2.11.30",
+      "engines": {
+        "node": ">=6.0.0"
+      },
+      "dependencies": null,
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "nanoid@3.3.20": {
+      "source": "https://registry.npmjs.org/nanoid/3.3.20",
+      "version": "3.3.20",
+      "engines": {
+        "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
+      },
+      "dependencies": null,
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "seroval@1.6.11": {
+      "source": "https://registry.npmjs.org/seroval/1.6.11",
+      "version": "1.6.11",
+      "engines": {
+        "node": ">=10"
+      },
+      "dependencies": null,
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "source-map-js@1.2.2": {
+      "source": "https://registry.npmjs.org/source-map-js/1.2.2",
+      "version": "1.2.2",
+      "engines": {
+        "node": ">=0.10.0"
+      },
+      "dependencies": null,
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "prosemirror-view@1.42.6": {
+      "source": "https://registry.npmjs.org/prosemirror-view/1.42.6",
+      "version": "1.42.6",
+      "engines": null,
+      "dependencies": {
+        "prosemirror-model": "^1.25.12",
+        "prosemirror-state": "^1.0.0",
+        "prosemirror-transform": "^1.1.0"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "shell-quote@1.12.0": {
+      "source": "https://registry.npmjs.org/shell-quote/1.12.0",
+      "version": "1.12.0",
+      "engines": {
+        "node": ">= 0.4"
+      },
+      "dependencies": null,
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "dompurify@3.4.17": {
+      "source": "https://registry.npmjs.org/dompurify/3.4.17",
+      "version": "3.4.17",
+      "engines": null,
+      "dependencies": {
+        "@types/trusted-types": "^2.0.7"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "markdown-it@14.3.3": {
+      "source": "https://registry.npmjs.org/markdown-it/14.3.3",
+      "version": "14.3.3",
+      "engines": null,
+      "dependencies": {
+        "mdurl": "^2.0.0",
+        "argparse": "^2.0.1",
+        "entities": "^4.5.0",
+        "uc.micro": "^2.1.0",
+        "linkify-it": "^5.0.2",
+        "punycode.js": "^2.3.1"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    },
+    "drizzle-kit@0.31.11": {
+      "source": "https://registry.npmjs.org/drizzle-kit/0.31.11",
+      "version": "0.31.11",
+      "engines": null,
+      "dependencies": {
+        "tsx": "^4.21.0",
+        "esbuild": "^0.25.4",
+        "@drizzle-team/brocli": "^0.10.2",
+        "@esbuild-kit/esm-loader": "^2.5.5"
+      },
+      "peerDependencies": null,
+      "deprecated": null
+    }
+  }
+}

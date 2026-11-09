@@ -1,0 +1,10 @@
+
+> storymapper@0.1.0 check-hygiene [REDACTED_HOME]/Projects/StoryMapper
+> node scripts/check-hygiene.mjs
+
+
+> storymapper@0.1.0 check-capabilities [REDACTED_HOME]/Projects/StoryMapper
+> node scripts/check-capabilities.mjs
+
+Capability manifest check passed (130 capabilities).
+Verification completed.

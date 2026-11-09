@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-20",
+  "runtime": {
+    "node": "24.17.0",
+    "pnpm": "9.15.4"
+  },
+  "execution": "Reviewed local execution; test/quality checks unchanged. Command outcomes recorded separately after actual completion.",
+  "commands": [
+    {
+      "name": "validation",
+      "command": "python3 /tmp/story87-resume/validate.py",
+      "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/validation.sanitized.log.gz",
+      "originalStreamSha256": "15f4cdc230da6bce5b2ce0ce4df8d1338f7506a98a0bf6be2ac47749eab83a86",
+      "sanitizedDecodedSha256": "15f4cdc230da6bce5b2ce0ce4df8d1338f7506a98a0bf6be2ac47749eab83a86",
+      "sanitizedGzipSha256": "7aee5f2061106cb10ef91d113bb624a84a92e4dbabf2b2325b3210723178d57f",
+      "sanitization": "Only local-home prefix and private employer terms replaced before retaining; original stream hash records local unretained bytes, never a claimed raw artifact."
+    },
+    {
+      "name": "publication-tests",
+      "command": "node --test scripts/check-publication.test.mjs",
+      "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/publication-tests.sanitized.log.gz",
+      "originalStreamSha256": "4ac5f5317a44a6c6a2b3179b38159da0ea4bb29ab404c4c05eeb87cedb27159e",
+      "sanitizedDecodedSha256": "4ac5f5317a44a6c6a2b3179b38159da0ea4bb29ab404c4c05eeb87cedb27159e",
+      "sanitizedGzipSha256": "8a26345697a7eb0530035821e50e64944c551f9eafbba307afca64d1f2f34a17",
+      "sanitization": "Only local-home prefix and private employer terms replaced before retaining; original stream hash records local unretained bytes, never a claimed raw artifact."
+    },
+    {
+      "name": "tool-proposals",
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/http/routes/tool-proposals.test.ts",
+      "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/tool-proposals.sanitized.log.gz",
+      "originalStreamSha256": "f99eb851c3567f88206757d6751e65f1efd13620529016d83e1a27362fe80bfd",
+      "sanitizedDecodedSha256": "8d92848bb6b433dfc6c53abac525bc545a9afd4b690ac6d3d9822d4556241670",
+      "sanitizedGzipSha256": "645bc41ffd8daf586fd4d5bed5ce3ffba8990980f0bddfd12ca7fd3523857234",
+      "sanitization": "Only local-home prefix and private employer terms replaced before retaining; original stream hash records local unretained bytes, never a claimed raw artifact."
+    },
+    {
+      "name": "pnpm-check",
+      "command": "corepack pnpm check",
+      "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/pnpm-check.sanitized.log.gz",
+      "originalStreamSha256": "bbb469a9304587c788a060708fd720b272bd88fdd8f927b5251fbda71c82868a",
+      "sanitizedDecodedSha256": "2d2ea493cdacd96ce2a14d6da9b86c4096172a78cab3d8dd95676a266eae11ef",
+      "sanitizedGzipSha256": "cd6671c806f9c8c1b2d47a3785b1e46d592ec5cf868ebd1c31160d6879632510",
+      "sanitization": "Only local-home prefix and private employer terms replaced before retaining; original stream hash records local unretained bytes, never a claimed raw artifact."
+    },
+    {
+      "name": "verify",
+      "command": "node scripts/verify.mjs",
+      "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/verify.sanitized.log.gz",
+      "originalStreamSha256": "ad00f6f29891a3873e808c098d2926ce38408b9ef349ce01a065ff7ffdbe13c7",
+      "sanitizedDecodedSha256": "b3fe1540d0cc0bfaa6ca594b7ca8fd98ee84de0107db34bd59621a62ffee020c",
+      "sanitizedGzipSha256": "f4f5ac2fdc0a1d939e870e09467b0b20d42d7f36ba6a70ead8325c58794e0127",
+      "sanitization": "Only local-home prefix and private employer terms replaced before retaining; original stream hash records local unretained bytes, never a claimed raw artifact."
+    },
+    {
+      "name": "runtime-port-isolated",
+      "command": "node --test --test-name-pattern='occupied default port starts' scripts/runtime-port.test.mjs",
+      "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/runtime-port-isolated.sanitized.log.gz",
+      "originalStreamSha256": "d5c118c31ea6dd921dd538c61e13941e633a19d1bd0ccae2740373e00fbada73",
+      "sanitizedDecodedSha256": "d5c118c31ea6dd921dd538c61e13941e633a19d1bd0ccae2740373e00fbada73",
+      "sanitizedGzipSha256": "337c9e6fa1bf2f88465d6f01c9d968274783ab768bfcb19c8a7d0780bf25ff49",
+      "sanitization": "Only local-home prefix and private employer terms replaced before retaining; original stream hash records local unretained bytes, never a claimed raw artifact."
+    },
+    {
+      "name": "runtime-doctor-trace",
+      "command": "node --import /tmp/story87-resume/trace-http.mjs --test scripts/doctor.test.mjs scripts/runtime-port.test.mjs",
+      "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/runtime-doctor-trace.sanitized.log.gz",
+      "originalStreamSha256": "d12e870d31fbd4304dda2ff2b4ae8ee8511c5a8bbb08ade54407082f1f52e2dc",
+      "sanitizedDecodedSha256": "d12e870d31fbd4304dda2ff2b4ae8ee8511c5a8bbb08ade54407082f1f52e2dc",
+      "sanitizedGzipSha256": "7722b7bd20f0ba5134be97da3c7a04e7181df631ca79e98ebacf91aa174a73bd",
+      "sanitization": "Only local-home prefix and private employer terms replaced before retaining; original stream hash records local unretained bytes, never a claimed raw artifact."
+    },
+    {
+      "name": "pnpm-check-rerun",
+      "command": "corepack pnpm check",
+      "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/pnpm-check-rerun.sanitized.log.gz",
+      "originalStreamSha256": "f25f76dcf4a0036b9b42fac1525e939bef14e6935d5fedc70d521c377974dac4",
+      "sanitizedDecodedSha256": "f14c550f34fbf37eae1f067a19bd708ef3a56528f8eab7e54f9637b1100c4ede",
+      "sanitizedGzipSha256": "6d285d8ed9936cd99dc8248adde136a2cfe94f773ea64fa773815e642c96d14b",
+      "sanitization": "Only local-home prefix and private employer terms replaced before retaining; original stream hash records local unretained bytes, never a claimed raw artifact."
+    }
+  ]
+}

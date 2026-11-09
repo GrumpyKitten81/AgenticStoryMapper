@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/http/routes/changeset-dependency-parity.test.ts (3 tests) 355ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  11:02:38
+   Duration  1.42s (transform 496ms, setup 0ms, collect 894ms, tests 355ms, environment 0ms, prepare 32ms)
+

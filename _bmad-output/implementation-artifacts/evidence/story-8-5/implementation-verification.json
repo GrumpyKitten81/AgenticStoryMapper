@@ -1,0 +1,113 @@
+{
+  "story": "8.5",
+  "date": "2026-10-20",
+  "baseline_revision": "f404c1b62ff8f1ed558ae7be1c273a26cb28597f",
+  "scope_decision": {
+    "accepted_on": "2026-10-19",
+    "publication": "Private independent MIT / StoryMapper",
+    "waived": [
+      "Employer approval",
+      "Name searches"
+    ],
+    "permitted_private_markers": [
+      "[COPYRIGHT_HOLDER]",
+      "[PRIVATE_SECURITY_CONTACT]",
+      "[CONDUCT_CONTACT]"
+    ],
+    "publication_clearance": false
+  },
+  "environment": {
+    "node": "24.17.0",
+    "pnpm": "9.15.4",
+    "ruby": "2.6.10",
+    "yaml_parser": "Psych 3.1.0",
+    "PATH_prefix": "<home>/.nvm/versions/node/v24.17.0/bin"
+  },
+  "commands": [
+    {
+      "command": "ruby _bmad-output/implementation-artifacts/evidence/story-8-5/validate.rb",
+      "exit_code": 0,
+      "report": "static-validation.json"
+    },
+    {
+      "command": "corepack pnpm check-licenses",
+      "exit_code": 0,
+      "log": "licenses.log.gz",
+      "note": "Existing policy unchanged. Nonblocking upstream Node DEP0169 warning retained."
+    },
+    {
+      "command": "corepack pnpm check-hygiene",
+      "exit_code": 0,
+      "log": "hygiene.log.gz",
+      "note": "Owned new publication inputs staged before tracked-input scan."
+    },
+    {
+      "command": "git diff --check HEAD",
+      "exit_code": 0
+    }
+  ],
+  "manual_inspection": [
+    "All four root files, PR template, seven issue forms and config inspected in full.",
+    "MIT grant, notice and disclaimer match canonical text; only 2026 and permitted holder marker substituted.",
+    "English generic field labels/descriptions; no private routing, assignees, organization issue-type assumptions or editable default answers.",
+    "Core then criteria then behavior examples; notes before final references.",
+    "Private channels expressly inactive, no public vulnerability collection, no invented identity or response promise.",
+    "Contributor commands compared with root manifest, launcher/runtime, check aggregate and CI workflow.",
+    "Exact three OS names and informational audit distinction retained; no hosted/protection activation claimed.",
+    "Upstream notices and conditions remain required."
+  ],
+  "sources_checked": [
+    "https://choosealicense.com/licenses/mit/",
+    "https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms"
+  ],
+  "validation_attempts": [
+    {
+      "command": "python3 -c 'import yaml; print(yaml.__version__)'",
+      "exit_code": 1,
+      "result": "PyYAML unavailable; used already-installed Ruby/Psych without dependency changes."
+    },
+    {
+      "command": "ruby _bmad-output/implementation-artifacts/evidence/story-8-5/validate.rb",
+      "exit_code": 1,
+      "result": "Initial replay helper called filter_map, absent in installed Ruby 2.6.10; changed to map followed by compact. Final replay passes."
+    },
+    {
+      "command": "git diff --check HEAD",
+      "exit_code": 2,
+      "result": "Raw hygiene log ends with a blank line. Preserved exact bytes with deterministic gzip rather than trimming evidence; final whitespace check passes."
+    }
+  ],
+  "unexecuted": [
+    "setup/start (would create/use local Project)",
+    "Product tests/build/typecheck/full aggregate (static content only; existing required focused gates run)",
+    "Hosted GitHub rendering or CI runs",
+    "Branch protection/ruleset or repository security settings activation",
+    "Native Windows/Linux/browser/screen-reader acceptance",
+    "Publication audit/history disposition/exact-result rescan"
+  ],
+  "remaining": [
+    "Three permitted private-detail declarations remain unresolved and block publication.",
+    "Prior native/hosted acceptance and publication/history prerequisites remain open."
+  ],
+  "protected_sprint": {
+    "worktree": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+    "index": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5"
+  },
+  "boundaries_preserved": [
+    "No product code, dependencies, lockfile, gates or deferred ledger edits.",
+    "No sprint-status write/stage/revert.",
+    "No remote issues, messages, settings, commit, push, tag, history rewrite or publication."
+  ],
+  "log_artifacts": [
+    {
+      "file": "licenses.log.gz",
+      "original_sha256": "1fbf658b8a03a0119f842b6cab3890c542e0718a67c65c4a008e7cbe2d470b9d",
+      "compressed_sha256": "1f36b35aefdf90fdeb81684ce29b318d0a50decad35ebce96d227fb6771183ed"
+    },
+    {
+      "file": "hygiene.log.gz",
+      "original_sha256": "706b8c0b507e4c5dd23df0367e311ec297aa681762344f167cdb4e7638fa7aa2",
+      "compressed_sha256": "00828f93287bf786179489d698d7ecd7605ce715e552865f26ba07182bd6c12d"
+    }
+  ]
+}

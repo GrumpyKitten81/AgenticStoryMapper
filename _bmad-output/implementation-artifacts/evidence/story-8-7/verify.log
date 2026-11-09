@@ -1,0 +1,21 @@
+
+> storymapper@0.1.0 check-hygiene /Users/[USER]/Projects/StoryMapper
+> node scripts/check-hygiene.mjs
+
+node:internal/fs/promises:1029
+  const result = await PromisePrototypeThen(
+                 ^
+
+Error: ENOENT: no such file or directory, lstat '/Users/[USER]/Projects/StoryMapper/docs/story-mapping-playbook.pdf'
+    at async lstat (node:internal/fs/promises:1029:18)
+    at async checkHygiene (file:///Users/[USER]/Projects/StoryMapper/scripts/check-hygiene.mjs:41:11)
+    at async file:///Users/[USER]/Projects/StoryMapper/scripts/check-hygiene.mjs:59:22 {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'lstat',
+  path: '/Users/[USER]/Projects/StoryMapper/docs/story-mapping-playbook.pdf'
+}
+
+Node.js v24.17.0
+ ELIFECYCLE  Command failed with exit code 1.
+/Users/[USER]/.nvm/versions/node/v24.17.0/bin/node failed with exit code 1.

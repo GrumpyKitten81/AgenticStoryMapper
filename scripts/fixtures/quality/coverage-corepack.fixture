@@ -1,0 +1,14 @@
+import { appendFileSync, mkdirSync, writeFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+
+const args = process.argv.slice(2);
+if (args.includes('--version')) {
+  console.log('9.15.4');
+} else {
+  const name = args[args.indexOf('--filter') + 1];
+  const workspace = name.endsWith('/server') ? 'apps/server' : name.endsWith('/web') ? 'apps/web' : `packages/${name.split('/')[1]}`;
+  appendFileSync('executed-workspaces.txt', `${workspace}\n`);
+  const lines = { total: 10, covered: workspace === 'apps/server' ? 5 : 6, pct: workspace === 'apps/server' ? 50 : 60 };
+  mkdirSync(join(workspace, 'coverage'), { recursive: true });
+  writeFileSync(join(workspace, 'coverage/coverage-summary.json'), JSON.stringify({ total: { lines }, [resolve(workspace, 'src/index.ts')]: { lines } }));
+}

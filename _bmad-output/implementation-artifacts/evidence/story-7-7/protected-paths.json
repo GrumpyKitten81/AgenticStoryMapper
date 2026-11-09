@@ -1,0 +1,204 @@
+{
+  "count": 18,
+  "status": "unchanged",
+  "paths": {
+    ".agents/skills/bmad-build/sync-sprint-status.md": {
+      "original": {
+        "working": "7ff44d21f5d813f4993780271eec8df2fce1373f525ff80e595b7c10618c4c36",
+        "index": "7ff44d21f5d813f4993780271eec8df2fce1373f525ff80e595b7c10618c4c36"
+      },
+      "final": {
+        "working": "7ff44d21f5d813f4993780271eec8df2fce1373f525ff80e595b7c10618c4c36",
+        "index": "7ff44d21f5d813f4993780271eec8df2fce1373f525ff80e595b7c10618c4c36"
+      },
+      "unchanged": true
+    },
+    ".agents/skills/bmad-loop-sweep/deferred-work-format.md": {
+      "original": {
+        "working": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8",
+        "index": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8"
+      },
+      "final": {
+        "working": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8",
+        "index": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8"
+      },
+      "unchanged": true
+    },
+    ".agents/skills/bmad-retrospective/scripts/tests/fixtures/sprint-status-template.yaml": {
+      "original": {
+        "working": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a",
+        "index": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a"
+      },
+      "final": {
+        "working": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a",
+        "index": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a"
+      },
+      "unchanged": true
+    },
+    ".agents/skills/bmad-sprint-planning/references/fix-sprint-status.md": {
+      "original": {
+        "working": "0406c31b70da33e2a354d9785f43d8f9918f4b923d0aac2ebd1e3707ebad5806",
+        "index": "0406c31b70da33e2a354d9785f43d8f9918f4b923d0aac2ebd1e3707ebad5806"
+      },
+      "final": {
+        "working": "0406c31b70da33e2a354d9785f43d8f9918f4b923d0aac2ebd1e3707ebad5806",
+        "index": "0406c31b70da33e2a354d9785f43d8f9918f4b923d0aac2ebd1e3707ebad5806"
+      },
+      "unchanged": true
+    },
+    ".agents/skills/bmad-sprint-planning/sprint-status-template.yaml": {
+      "original": {
+        "working": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a",
+        "index": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a"
+      },
+      "final": {
+        "working": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a",
+        "index": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a"
+      },
+      "unchanged": true
+    },
+    ".bmad-loop/claude-unattended.settings.json": {
+      "original": {
+        "working": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767",
+        "index": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767"
+      },
+      "final": {
+        "working": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767",
+        "index": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767"
+      },
+      "unchanged": true
+    },
+    ".bmad-loop/plugins/stop-on-story-failure/plugin.toml": {
+      "original": {
+        "working": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f",
+        "index": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f"
+      },
+      "final": {
+        "working": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f",
+        "index": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f"
+      },
+      "unchanged": true
+    },
+    ".bmad-loop/plugins/stop-on-story-failure/stop_on_failure.py": {
+      "original": {
+        "working": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6",
+        "index": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6"
+      },
+      "final": {
+        "working": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6",
+        "index": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6"
+      },
+      "unchanged": true
+    },
+    ".bmad-loop/policy.codex.toml": {
+      "original": {
+        "working": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d",
+        "index": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d"
+      },
+      "final": {
+        "working": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d",
+        "index": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d"
+      },
+      "unchanged": true
+    },
+    ".bmad-loop/policy.macci.bak": {
+      "original": {
+        "working": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a",
+        "index": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a"
+      },
+      "final": {
+        "working": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a",
+        "index": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a"
+      },
+      "unchanged": true
+    },
+    ".bmad-loop/policy.opencode.toml": {
+      "original": {
+        "working": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980",
+        "index": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980"
+      },
+      "final": {
+        "working": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980",
+        "index": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980"
+      },
+      "unchanged": true
+    },
+    ".claude/skills/bmad-build/sync-sprint-status.md": {
+      "original": {
+        "working": "7ff44d21f5d813f4993780271eec8df2fce1373f525ff80e595b7c10618c4c36",
+        "index": "7ff44d21f5d813f4993780271eec8df2fce1373f525ff80e595b7c10618c4c36"
+      },
+      "final": {
+        "working": "7ff44d21f5d813f4993780271eec8df2fce1373f525ff80e595b7c10618c4c36",
+        "index": "7ff44d21f5d813f4993780271eec8df2fce1373f525ff80e595b7c10618c4c36"
+      },
+      "unchanged": true
+    },
+    ".claude/skills/bmad-loop-sweep/deferred-work-format.md": {
+      "original": {
+        "working": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8",
+        "index": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8"
+      },
+      "final": {
+        "working": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8",
+        "index": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8"
+      },
+      "unchanged": true
+    },
+    ".claude/skills/bmad-retrospective/scripts/tests/fixtures/sprint-status-template.yaml": {
+      "original": {
+        "working": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a",
+        "index": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a"
+      },
+      "final": {
+        "working": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a",
+        "index": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a"
+      },
+      "unchanged": true
+    },
+    ".claude/skills/bmad-sprint-planning/references/fix-sprint-status.md": {
+      "original": {
+        "working": "0406c31b70da33e2a354d9785f43d8f9918f4b923d0aac2ebd1e3707ebad5806",
+        "index": "0406c31b70da33e2a354d9785f43d8f9918f4b923d0aac2ebd1e3707ebad5806"
+      },
+      "final": {
+        "working": "0406c31b70da33e2a354d9785f43d8f9918f4b923d0aac2ebd1e3707ebad5806",
+        "index": "0406c31b70da33e2a354d9785f43d8f9918f4b923d0aac2ebd1e3707ebad5806"
+      },
+      "unchanged": true
+    },
+    ".claude/skills/bmad-sprint-planning/sprint-status-template.yaml": {
+      "original": {
+        "working": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a",
+        "index": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a"
+      },
+      "final": {
+        "working": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a",
+        "index": "64b1a937e1fe03b8b8d158e3b1caeb89e7d51692a56c16038e2af091decc553a"
+      },
+      "unchanged": true
+    },
+    "_bmad-output/implementation-artifacts/deferred-work.md": {
+      "original": {
+        "working": "49ee5dab611628dfed3fea3d173c5d2ce299474880d30c80d2fe0c68e101056f",
+        "index": "49ee5dab611628dfed3fea3d173c5d2ce299474880d30c80d2fe0c68e101056f"
+      },
+      "final": {
+        "working": "49ee5dab611628dfed3fea3d173c5d2ce299474880d30c80d2fe0c68e101056f",
+        "index": "49ee5dab611628dfed3fea3d173c5d2ce299474880d30c80d2fe0c68e101056f"
+      },
+      "unchanged": true
+    },
+    "_bmad-output/implementation-artifacts/sprint-status.yaml": {
+      "original": {
+        "working": "8f2e9dda300331bfab2487606bc9cabdb5ddcb2d567cc6bca10568074a837a3a",
+        "index": "8f2e9dda300331bfab2487606bc9cabdb5ddcb2d567cc6bca10568074a837a3a"
+      },
+      "final": {
+        "working": "8f2e9dda300331bfab2487606bc9cabdb5ddcb2d567cc6bca10568074a837a3a",
+        "index": "8f2e9dda300331bfab2487606bc9cabdb5ddcb2d567cc6bca10568074a837a3a"
+      },
+      "unchanged": true
+    }
+  }
+}

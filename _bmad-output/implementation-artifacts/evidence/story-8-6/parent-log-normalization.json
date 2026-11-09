@@ -1,0 +1,14 @@
+[
+  {
+    "file": "parent-hygiene.log",
+    "reason": "Remove terminal blank lines to satisfy git diff --check; command text/results unchanged.",
+    "capturedSha256": "6428c86dde7e29304c302c81811b993e415986552dc37109be0ac4eba205938a",
+    "retainedSha256": "0e1b28ac14af0a52981161a653c9283b57ad593c5aad2665656859d7a1803473"
+  },
+  {
+    "file": "parent-final-hygiene.log",
+    "reason": "Remove terminal blank lines to satisfy git diff --check; command text/results unchanged.",
+    "capturedSha256": "6428c86dde7e29304c302c81811b993e415986552dc37109be0ac4eba205938a",
+    "retainedSha256": "0e1b28ac14af0a52981161a653c9283b57ad593c5aad2665656859d7a1803473"
+  }
+]

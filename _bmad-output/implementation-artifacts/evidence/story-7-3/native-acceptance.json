@@ -1,0 +1,5 @@
+{
+  "status": "unverified",
+  "observed": "CUA inventory returned no browsers; only ActivityMonitor, Codex, Finder, LM Studio and Terminal",
+  "scope": "No native browser links, screen reader or OS matrix executed. Automated jsdom plus actual HTTP/listener/SDK evidence is separate."
+}

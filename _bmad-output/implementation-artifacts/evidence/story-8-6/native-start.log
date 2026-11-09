@@ -1,0 +1,56 @@
+{"level":30,"time":1792474381074,"pid":16993,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792474381075,"pid":16993,"msg":"StoryMapper server listening on http://127.0.0.1:4317"}
+{"level":30,"time":1792474381088,"pid":16993,"reqId":"req-1","msg":"incoming request"}
+StoryMapper is ready at http://127.0.0.1:4317
+{"level":30,"time":1792474381090,"pid":16993,"reqId":"req-1","responseTime":1.4123330000001033,"msg":"request completed"}
+{"level":30,"time":1792474381196,"pid":16993,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792474381197,"pid":16993,"reqId":"req-2","responseTime":0.4316670000000613,"msg":"request completed"}
+{"level":30,"time":1792474381197,"pid":16993,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792474381200,"pid":16993,"reqId":"req-3","responseTime":2.8857909999999265,"msg":"request completed"}
+{"level":30,"time":1792474381596,"pid":16993,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792474381606,"pid":16993,"reqId":"req-4","responseTime":8.697292000000061,"msg":"request completed"}
+{"level":30,"time":1792474381732,"pid":16993,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792474381734,"pid":16993,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792474381738,"pid":16993,"reqId":"req-6","responseTime":3.7005420000000413,"msg":"request completed"}
+{"level":30,"time":1792474381746,"pid":16993,"reqId":"req-5","responseTime":13.366541999999981,"msg":"request completed"}
+{"level":30,"time":1792474381783,"pid":16993,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792474381786,"pid":16993,"reqId":"req-7","msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792474381787,"pid":16993,"reqId":"req-7","responseTime":2.880916999999954,"msg":"request completed"}
+{"level":30,"time":1792474381836,"pid":16993,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792474381838,"pid":16993,"reqId":"req-8","responseTime":1.3224169999998594,"msg":"request completed"}
+{"level":30,"time":1792474381838,"pid":16993,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792474381839,"pid":16993,"reqId":"req-9","responseTime":0.38116599999989376,"msg":"request completed"}
+{"level":30,"time":1792474381842,"pid":16993,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792474381844,"pid":16993,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792474381846,"pid":16993,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792474381848,"pid":16993,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792474381849,"pid":16993,"reqId":"req-d","responseTime":1.2362920000000486,"msg":"request completed"}
+{"level":30,"time":1792474381850,"pid":16993,"reqId":"req-e","msg":"incoming request"}
+{"level":30,"time":1792474381854,"pid":16993,"reqId":"req-e","responseTime":3.1089580000000296,"msg":"request completed"}
+{"level":30,"time":1792474381854,"pid":16993,"reqId":"req-b","msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792474381855,"pid":16993,"reqId":"req-b","responseTime":9.926124999999956,"msg":"request completed"}
+{"level":30,"time":1792474381855,"pid":16993,"reqId":"req-c","msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792474381856,"pid":16993,"reqId":"req-c","responseTime":9.624166999999943,"msg":"request completed"}
+{"level":30,"time":1792474381856,"pid":16993,"reqId":"req-f","msg":"incoming request"}
+{"level":30,"time":1792474381857,"pid":16993,"reqId":"req-f","responseTime":1.0652500000001055,"msg":"request completed"}
+{"level":30,"time":1792474381995,"pid":16993,"reqId":"req-g","msg":"incoming request"}
+{"level":30,"time":1792474382041,"pid":16993,"reqId":"req-h","msg":"incoming request"}
+{"level":30,"time":1792474382043,"pid":16993,"reqId":"req-h","msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792474382044,"pid":16993,"reqId":"req-h","responseTime":2.1679999999998927,"msg":"request completed"}
+{"level":30,"time":1792474382102,"pid":16993,"reqId":"req-i","msg":"incoming request"}
+{"level":30,"time":1792474382104,"pid":16993,"reqId":"req-i","responseTime":0.569332999999915,"msg":"request completed"}
+{"level":30,"time":1792474382105,"pid":16993,"reqId":"req-j","msg":"incoming request"}
+{"level":30,"time":1792474382106,"pid":16993,"reqId":"req-j","responseTime":1.0304579999999532,"msg":"request completed"}
+{"level":30,"time":1792474382107,"pid":16993,"reqId":"req-k","msg":"incoming request"}
+{"level":30,"time":1792474382109,"pid":16993,"reqId":"req-k","responseTime":0.949292000000014,"msg":"request completed"}
+{"level":30,"time":1792474382109,"pid":16993,"reqId":"req-l","msg":"incoming request"}
+{"level":30,"time":1792474382110,"pid":16993,"reqId":"req-l","responseTime":0.835540999999921,"msg":"request completed"}
+{"level":30,"time":1792474382111,"pid":16993,"reqId":"req-m","msg":"incoming request"}
+{"level":30,"time":1792474382114,"pid":16993,"reqId":"req-m","responseTime":2.3459159999999883,"msg":"request completed"}
+{"level":30,"time":1792474457349,"pid":16993,"reqId":"req-n","msg":"incoming request"}
+{"level":30,"time":1792474457350,"pid":16993,"reqId":"req-n","responseTime":0.5619589999987511,"msg":"request completed"}
+{"level":30,"time":1792474457350,"pid":16993,"reqId":"req-o","msg":"incoming request"}
+{"level":30,"time":1792474457352,"pid":16993,"reqId":"req-o","responseTime":1.7406250000058208,"msg":"request completed"}
+{"level":30,"time":1792474457353,"pid":16993,"reqId":"req-p","msg":"incoming request"}
+{"level":30,"time":1792474457354,"pid":16993,"reqId":"req-p","responseTime":0.38983300000836607,"msg":"request completed"}
+{"level":30,"time":1792474462628,"pid":16993,"reqId":"req-g","responseTime":80625.760292,"msg":"request completed"}

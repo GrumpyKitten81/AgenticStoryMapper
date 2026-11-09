@@ -1,0 +1,8 @@
+{
+  "ownedPort": 44364,
+  "listenerStopped": true,
+  "databaseOutsideRepository": true,
+  "browserTabCleanup": "Final native window unavailable; no further UI input attempted",
+  "userProjectOrGitHubMutation": false,
+  "orchestratorStateMutation": false
+}

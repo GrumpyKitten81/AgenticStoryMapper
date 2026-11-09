@@ -1,0 +1,20 @@
+{
+  "changes": "Whitespace-only: remove unnecessary blank separators and extra EOF blank; all schemas/assertions preserved.",
+  "lineCounts": {
+    "apps/server/src/mcp/tools/complete-surface.test.ts": 747,
+    "packages/contracts/src/schemas/domain.ts": 748,
+    "packages/contracts/src/schemas/sync-health.ts": 14
+  },
+  "checks": {
+    "contractsTests": 22,
+    "serverCompleteSurfaceTests": 30,
+    "contractsAndServerTypecheck": "passed",
+    "gitDiffCheckHeadTargetFiles": "passed"
+  },
+  "logs": [
+    "story-7-6-hygiene-contracts.log.gz",
+    "story-7-6-hygiene-server.log.gz",
+    "story-7-6-hygiene-typecheck.log.gz"
+  ],
+  "rootGatesOrBuildsRun": false
+}

@@ -1,0 +1,1026 @@
+{
+  "baseline_revision": "d7dd71fcdd0b35b0f7178c1ad310fb7e198e20de",
+  "protected_paths_excluded": [
+    "sprint-status.yaml",
+    ".bmad-loop/",
+    "deferred-work"
+  ],
+  "files": [
+    {
+      "path": ".cursor/rules/card-authoring.mdc",
+      "description": "Require canonical adapter-owned GitHub references in card authoring."
+    },
+    {
+      "path": ".wolf/STATUS.md",
+      "description": "Record implementation outcomes, verified repairs and project handoff."
+    },
+    {
+      "path": ".wolf/buglog.json",
+      "description": "Record implementation outcomes, verified repairs and project handoff."
+    },
+    {
+      "path": ".wolf/cerebrum.md",
+      "description": "Record implementation outcomes, verified repairs and project handoff."
+    },
+    {
+      "path": ".wolf/memory.md",
+      "description": "Record implementation outcomes, verified repairs and project handoff."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/changed-files.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/complete-surface-repair.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-boardimport.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-capabilities-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-capabilities-test.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-complete-surface-repair-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-complete-surface-repair.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-contracts.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-core-goldens-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-db-typecheck.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-http-mcp.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-import-sdk.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-launchers-focus.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-packages.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-server-finalcheck2.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-server-security-typecheck.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-size-complete-surface.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-size-contracts-tests.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-size-contracts-typecheck.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-size-db-repository.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-size-db-typecheck.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-size-hygiene.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-size-server-typecheck.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-sync-tests.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-tool-proposals-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-tool-proposals-final2.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-tool-proposals-final3.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-typecheck-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/identity-workspace.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/implementation-handoff-verification.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/main-review-core-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/main-review-db-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/main-review-repairs-summary.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/main-review-sdk-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/main-review-sdk-initial-failure.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/main-review-sequential-owner-core.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/main-review-sequential-owner-db.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/main-review-sequential-owner-summary.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/main-review-server-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/native-acceptance.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-contracts-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-core-footer-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-core-typecheck-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-provider-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-review-card-detail.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-review-footer.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-review-provider.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-sdk-security-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-server-sync-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-server-typecheck-initial-failure.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-sync-initial-integration-failures.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-tree-navigation-regression-before-fix.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-verification-matrix.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-web-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/operations-web-typecheck-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/parent-archive-repair.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/parent-matrix-audit.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/parent-release-verify-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/parent-release-verify.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/parent-review-release-verify-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/parent-review-root-test-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/parent-review-root-test.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/parent-root-test-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/parent-root-test.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/review-triage.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/reviewed-source.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/source-size-repair.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/storage-archive-review-repairs-summary.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/storage-archive-review-repairs.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/storage-archive-review-repairs.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/storage-focused-initial-failures.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/storage-full-db-final.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/storage-full-db-results.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/storage-provenance-initial-failures.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/storage-run-history.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/storage-verification-matrix.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/storage-web-restore-final.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/storage-web-restore-final.log",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-3/verification-summary.json",
+      "description": "Retain Story7.3 implementation, review or verification evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/spec-7-3-github-identity-in-external-references.md",
+      "description": "Record frozen intent, implementation, complete review triage and final outcomes."
+    },
+    {
+      "path": "apps/server/src/application/activity-changes.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in activity-changes."
+    },
+    {
+      "path": "apps/server/src/application/capability-manifest.json",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/application/capability-manifest.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in capability-manifest."
+    },
+    {
+      "path": "apps/server/src/application/changeset/changeset-warning-visibility.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in changeset-warning-visibility."
+    },
+    {
+      "path": "apps/server/src/application/changeset/historical-changesets.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in historical-changesets."
+    },
+    {
+      "path": "apps/server/src/application/changeset/submit-changeset.use-cases.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/application/connector/github-connect.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in github-connect."
+    },
+    {
+      "path": "apps/server/src/application/deps.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/application/github-link/github-link.use-cases.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/application/mcp-http-parity.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in mcp-http-parity."
+    },
+    {
+      "path": "apps/server/src/application/report/plan-drift.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in plan-drift."
+    },
+    {
+      "path": "apps/server/src/application/report/plan-state.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in plan-state."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-command-regressions.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in github-command-regressions."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-command.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-conflict-command.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-import-command.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-pull-command.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/application/sync/sync-conflict.use-cases.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/application/sync/sync.use-cases.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/config/served-origin.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in served-origin."
+    },
+    {
+      "path": "apps/server/src/config/served-origin.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/fixtures/mcp-scope-evidence.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/fixtures/remote-read.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/http/live-events.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in live-events."
+    },
+    {
+      "path": "apps/server/src/http/routes/base-version-conflicts.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in base-version-conflicts."
+    },
+    {
+      "path": "apps/server/src/http/routes/board-diagnostics.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in board-diagnostics."
+    },
+    {
+      "path": "apps/server/src/http/routes/card-dependencies.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in card-dependencies."
+    },
+    {
+      "path": "apps/server/src/http/routes/card-history.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in card-history."
+    },
+    {
+      "path": "apps/server/src/http/routes/card-markdown.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in card-markdown."
+    },
+    {
+      "path": "apps/server/src/http/routes/changeset-dependency-parity.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in changeset-dependency-parity."
+    },
+    {
+      "path": "apps/server/src/http/routes/customization-management.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in customization-management."
+    },
+    {
+      "path": "apps/server/src/http/routes/delete-cards.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in delete-cards."
+    },
+    {
+      "path": "apps/server/src/http/routes/getting-started.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in getting-started."
+    },
+    {
+      "path": "apps/server/src/http/routes/index.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in index."
+    },
+    {
+      "path": "apps/server/src/http/routes/index.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/http/routes/infrastructure-routes.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/http/routes/release-summary.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in release-summary."
+    },
+    {
+      "path": "apps/server/src/http/routes/restore-points.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in restore-points."
+    },
+    {
+      "path": "apps/server/src/http/routes/route-deps.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/http/routes/tool-proposals.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in tool-proposals."
+    },
+    {
+      "path": "apps/server/src/http/routes/unit-of-work.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in unit-of-work."
+    },
+    {
+      "path": "apps/server/src/mcp/adapter.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in adapter."
+    },
+    {
+      "path": "apps/server/src/mcp/github-command-sdk.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in github-command-sdk."
+    },
+    {
+      "path": "apps/server/src/mcp/http.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/agent-approval.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in agent-approval."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/changeset-executor-performance.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in changeset-executor-performance."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/complete-surface.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in complete-surface."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/delivery-status-performance.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in delivery-status-performance."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/delivery-status.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in delivery-status."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/project-scopes.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in project-scopes."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/project-scopes.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/register-tools.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in register-tools."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/register-tools.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/submit-changeset.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in submit-changeset."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/surface.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in surface."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/tool-call-audit-paging.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in tool-call-audit-paging."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/tool-call-audit.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in tool-call-audit."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/tool-call-performance.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in tool-call-performance."
+    },
+    {
+      "path": "apps/server/src/services/credential-outputs.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in credential-outputs."
+    },
+    {
+      "path": "apps/server/src/services/project-archive.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in project-archive."
+    },
+    {
+      "path": "apps/server/src/services/sync-conflict-resolution.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/services/sync-merge.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/server/src/services/sync-review.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in sync-review."
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in work-item-sync."
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.ts",
+      "description": "Integrate canonical identity with server application, transport or sync boundaries."
+    },
+    {
+      "path": "apps/web/src/app/api.ts",
+      "description": "Display and consume a single canonical identity with joined sync state."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/github-visibility.test.tsx",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in github-visibility."
+    },
+    {
+      "path": "apps/web/src/features/restore-points/restore-points.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in restore-points."
+    },
+    {
+      "path": "apps/web/src/features/story-map/board-filter-selection.test.tsx",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in board-filter-selection."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "description": "Display and consume a single canonical identity with joined sync state."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/TreeGrid.tsx",
+      "description": "Display and consume a single canonical identity with joined sync state."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-detail-test-fixture.ts",
+      "description": "Display and consume a single canonical identity with joined sync state."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-provenance.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in card-provenance."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/lifecycle.test.tsx",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in lifecycle."
+    },
+    {
+      "path": "apps/web/src/features/story-map/useStoryMapBoardState.ts",
+      "description": "Display and consume a single canonical identity with joined sync state."
+    },
+    {
+      "path": "apps/web/src/features/story-map/views/TrackingView.tsx",
+      "description": "Display and consume a single canonical identity with joined sync state."
+    },
+    {
+      "path": "apps/web/src/features/story-map/views/core-views.test.tsx",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in core-views."
+    },
+    {
+      "path": "docs/mcp-tools.md",
+      "description": "Document canonical API and MCP tool contracts."
+    },
+    {
+      "path": "packages/contracts/src/api/http.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/contracts/src/migration.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in migration."
+    },
+    {
+      "path": "packages/contracts/src/schemas/change-operations.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in change-operations."
+    },
+    {
+      "path": "packages/contracts/src/schemas/change-operations.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/change-set-schemas.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/external-refs.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/github-identity.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/identifiers.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/operation-fields.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/operation-resolution.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/operation-schema-version.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in operation-schema-version."
+    },
+    {
+      "path": "packages/contracts/src/schemas/provenance.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in provenance."
+    },
+    {
+      "path": "packages/contracts/src/schemas/remaining-operations.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/restore-points.ts",
+      "description": "Define shared strict canonical identity, evidence or operation contracts."
+    },
+    {
+      "path": "packages/core/src/changesets/board-import-resolution.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/card-command-resolution.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/copy-resolution.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/dependency-effect-parity.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in dependency-effect-parity."
+    },
+    {
+      "path": "packages/core/src/changesets/fixtures/remaining-operation-resolution-fixture.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/github-evidence.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/github-identity.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/github-sync-resolution.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/link-resolution.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/operation-conflicts.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/operation-dependencies.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/operation-registry.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/operation-resolution.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in operation-resolution."
+    },
+    {
+      "path": "packages/core/src/changesets/operation-selection-regressions.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in operation-selection-regressions."
+    },
+    {
+      "path": "packages/core/src/changesets/remaining-context.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/remaining-operation-resolution.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in remaining-operation-resolution."
+    },
+    {
+      "path": "packages/core/src/changesets/remaining-owners.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/resolver-write-collections.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in resolver-write-collections."
+    },
+    {
+      "path": "packages/core/src/changesets/resolver-write-collections.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/selected-deletion.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/changesets/source-resolution.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/index.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/publishing/export-formatters.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/publishing/github-footer.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in github-footer."
+    },
+    {
+      "path": "packages/core/src/publishing/github-footer.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/core/src/reports/reports.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in reports."
+    },
+    {
+      "path": "packages/core/src/reports/sync-health.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in sync-health."
+    },
+    {
+      "path": "packages/core/src/reports/sync-health.ts",
+      "description": "Resolve canonical identity ownership and preserve pure domain behavior."
+    },
+    {
+      "path": "packages/db/src/archive-database.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/board-import-resolution.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in board-import-resolution."
+    },
+    {
+      "path": "packages/db/src/connection.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/fixtures/archive-demo.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/fixtures/operation-snapshot-reference.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/github-archive-redaction.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in github-archive-redaction."
+    },
+    {
+      "path": "packages/db/src/github-archive-redaction.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/live-events.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in live-events."
+    },
+    {
+      "path": "packages/db/src/map-copy-resolution.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in map-copy-resolution."
+    },
+    {
+      "path": "packages/db/src/repositories/canonical-github-identity.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in canonical-github-identity."
+    },
+    {
+      "path": "packages/db/src/repositories/card-provenance.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in card-provenance."
+    },
+    {
+      "path": "packages/db/src/repositories/card-visibility.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in card-visibility."
+    },
+    {
+      "path": "packages/db/src/repositories/cards-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/changeset-executor.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in changeset-executor."
+    },
+    {
+      "path": "packages/db/src/repositories/external-refs-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/getting-started.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in getting-started."
+    },
+    {
+      "path": "packages/db/src/repositories/github-refs-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/map-copy-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-catalog-executor.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in operation-catalog-executor."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-executor-persistence.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in operation-executor-persistence."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-persistence-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-resolution-parity.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in operation-resolution-parity."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-selector-regressions.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in operation-selector-regressions."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-snapshot-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-snapshot-scope.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in operation-snapshot-scope."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-supply-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/persistence-entity-order.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in persistence-entity-order."
+    },
+    {
+      "path": "packages/db/src/repositories/releases-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/root-versions.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in root-versions."
+    },
+    {
+      "path": "packages/db/src/repositories/row-mappers.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/source-evidence-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/sources-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/storymapper-repository.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in storymapper-repository."
+    },
+    {
+      "path": "packages/db/src/repositories/storymapper-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/repositories/work-item-repository.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/restore-history.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/restore-project.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in restore-project."
+    },
+    {
+      "path": "packages/db/src/schema/classification.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/schema/tables.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/snapshot.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in snapshot."
+    },
+    {
+      "path": "packages/db/src/snapshot.ts",
+      "description": "Persist canonical identity, provenance and auditable lifecycle through repositories."
+    },
+    {
+      "path": "packages/db/src/unit-of-work.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in unit-of-work."
+    },
+    {
+      "path": "packages/github/src/providers/github-provider.test.ts",
+      "description": "Exercise canonical identity, scope, lifecycle or consumer behavior in github-provider."
+    },
+    {
+      "path": "packages/github/src/providers/github-provider.ts",
+      "description": "Make remote read absence, errors and pagination handling explicit."
+    },
+    {
+      "path": "packages/github/src/providers/work-item-provider.ts",
+      "description": "Make remote read absence, errors and pagination handling explicit."
+    },
+    {
+      "path": "scripts/capability-operation-coverage.mjs",
+      "description": "Update canonical identity integration and regression fixtures."
+    },
+    {
+      "path": "scripts/capability-scan.test.mjs",
+      "description": "Update canonical identity integration and regression fixtures."
+    }
+  ]
+}

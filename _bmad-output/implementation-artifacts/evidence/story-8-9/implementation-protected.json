@@ -1,0 +1,24 @@
+{
+  "_bmad-output/implementation-artifacts/sprint-status.yaml": {
+    "before": {
+      "working": "3b1d55b464d8d77a091d3b230422c16ba59c7794184df7ab8fe67bc37f5c7c87",
+      "index": "3b1d55b464d8d77a091d3b230422c16ba59c7794184df7ab8fe67bc37f5c7c87"
+    },
+    "after": {
+      "working": "3b1d55b464d8d77a091d3b230422c16ba59c7794184df7ab8fe67bc37f5c7c87",
+      "index": "3b1d55b464d8d77a091d3b230422c16ba59c7794184df7ab8fe67bc37f5c7c87"
+    },
+    "unchanged": true
+  },
+  "_bmad-output/implementation-artifacts/deferred-work.md": {
+    "before": {
+      "working": "dedfb09de713b97b83c3df6aeb8f091b5d9ac028f43bbce75f9a9acf1ff9262c",
+      "index": "dedfb09de713b97b83c3df6aeb8f091b5d9ac028f43bbce75f9a9acf1ff9262c"
+    },
+    "after": {
+      "working": "dedfb09de713b97b83c3df6aeb8f091b5d9ac028f43bbce75f9a9acf1ff9262c",
+      "index": "dedfb09de713b97b83c3df6aeb8f091b5d9ac028f43bbce75f9a9acf1ff9262c"
+    },
+    "unchanged": true
+  }
+}

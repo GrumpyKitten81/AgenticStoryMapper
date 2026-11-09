@@ -1,0 +1,12 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/changesets/review-focus.test.tsx (12 tests) 360ms
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 87ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 64ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 29ms
+
+ Test Files  4 passed (4)
+      Tests  27 passed (27)
+   Start at  22:35:53
+   Duration  2.20s (transform 141ms, setup 0ms, collect 563ms, tests 540ms, environment 691ms, prepare 95ms)

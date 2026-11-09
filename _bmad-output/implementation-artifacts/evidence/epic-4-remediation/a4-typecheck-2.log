@@ -1,0 +1,11 @@
+
+> @storymapper/core@0.1.0 typecheck [REDACTED_HOME]/Projects/StoryMapper/packages/core
+> tsc -p tsconfig.json --noEmit
+
+src/changesets/resolver-write-collections.test.ts(63,26): error TS2322: Type '{ id: string; createdAt: string; syncRunId: string; connectionId: string; cardId: string; remoteId: string; field: string; localValue: string; remoteValue: string; status: "open"; }' is not assignable to type '{ id: string; syncRunId: string; connectionId: string; field: "title" | "status" | "milestone" | "description"; status: "open" | "resolved-local" | "resolved-remote"; createdAt: string; ... 4 more ...; resolvedAt?: string | undefined; }'.
+  Types of property 'field' are incompatible.
+    Type 'string' is not assignable to type '"title" | "status" | "milestone" | "description"'.
+src/changesets/resolver-write-collections.test.ts(65,166): error TS18048: 'state.syncConflicts' is possibly 'undefined'.
+[REDACTED_HOME]/Projects/StoryMapper/packages/core:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/core@0.1.0 typecheck: `tsc -p tsconfig.json --noEmit`
+Exit status 2

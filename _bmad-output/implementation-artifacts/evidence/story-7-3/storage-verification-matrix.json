@@ -1,0 +1,664 @@
+{
+  "story": "7-3-github-identity-in-external-references",
+  "report_schema": 1,
+  "full_database_run": {
+    "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/db exec vitest run --reporter=json --outputFile=/tmp/story-7-3-all-db-tests.json",
+    "start_time_ms": 1792367777569,
+    "passed": 464,
+    "failed": 0,
+    "success": true,
+    "report": "storage-full-db-final.json",
+    "raw_stdout_stderr_captured": false
+  },
+  "focused_database_matrix": [
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/github-archive-redaction.test.ts",
+      "ran": 2,
+      "passed": 2,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "removes canonical identity, sync state and evidence recursively while preserving other bindings and source plans",
+          "status": "passed",
+          "duration_ms": 1.2522909999999996
+        },
+        {
+          "name": "reconciles copied Card provenance from retained chunk/note evidence and preserves creation origins",
+          "status": "passed",
+          "duration_ms": 0.15883299999998712
+        }
+      ]
+    },
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/map-copy-resolution.test.ts",
+      "ran": 1,
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "matches the real complete SQLite copy graph and preserves prepared identity/input bytes",
+          "status": "passed",
+          "duration_ms": 106.71637500000003
+        }
+      ]
+    },
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/restore-project.test.ts",
+      "ran": 18,
+      "passed": 18,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "recoverable human project restore retains runtime tool-call evidence across repeated actual restores without fictional Projects",
+          "status": "passed",
+          "duration_ms": 543.6845420000002
+        },
+        {
+          "name": "recoverable human project restore restores committed WAL map state, preserves later same-ID ChangeSets and historical Project ownership, and accepts holder writes",
+          "status": "passed",
+          "duration_ms": 733.6987499999998
+        },
+        {
+          "name": "recoverable human project restore reports new canonical identities and identity changes at the same id and leaves attachment files intact",
+          "status": "passed",
+          "duration_ms": 663.8275839999997
+        },
+        {
+          "name": "recoverable human project restore rejects unknown, corrupt, mismatched actual schemas and agent attempts without protective snapshots or live changes",
+          "status": "passed",
+          "duration_ms": 417.14045799999985
+        },
+        {
+          "name": "recoverable human project restore initializes one shared persisted epoch and changes it for every snapshot Project on restore",
+          "status": "passed",
+          "duration_ms": 580.4979590000003
+        },
+        {
+          "name": "recoverable human project restore backfills one shared epoch and clean flags when opening a database created before them",
+          "status": "passed",
+          "duration_ms": 225.31162499999982
+        },
+        {
+          "name": "recoverable human project restore completes a fully prepared interrupted swap before normal opening, retaining epoch and audit exactly once",
+          "status": "passed",
+          "duration_ms": 256.1246250000004
+        },
+        {
+          "name": "recoverable human project restore rolls back interrupted partial candidates before opening and preserves the original WAL state",
+          "status": "passed",
+          "duration_ms": 86.19283300000006
+        },
+        {
+          "name": "recoverable human project restore rolls back interrupted hash candidates before opening and preserves the original WAL state",
+          "status": "passed",
+          "duration_ms": 110.46112499999981
+        },
+        {
+          "name": "recoverable human project restore rolls back interrupted epoch candidates before opening and preserves the original WAL state",
+          "status": "passed",
+          "duration_ms": 98.85687499999949
+        },
+        {
+          "name": "recoverable human project restore rolls back interrupted audit candidates before opening and preserves the original WAL state",
+          "status": "passed",
+          "duration_ms": 73.7690419999999
+        },
+        {
+          "name": "recoverable human project restore recognizes a completed interrupted rename and keeps the same final epoch and audit",
+          "status": "passed",
+          "duration_ms": 55.01008299999921
+        },
+        {
+          "name": "recoverable human project restore refuses an already installed restore with invalid integrity and keeps its completion marker",
+          "status": "passed",
+          "duration_ms": 47.93945900000017
+        },
+        {
+          "name": "recoverable human project restore refuses an already installed restore with invalid foreign-keys and keeps its completion marker",
+          "status": "passed",
+          "duration_ms": 53.62537499999962
+        },
+        {
+          "name": "recoverable human project restore refuses an already installed restore with invalid schema and keeps its completion marker",
+          "status": "passed",
+          "duration_ms": 39.77216699999917
+        },
+        {
+          "name": "recoverable human project restore refuses an already installed restore with invalid audit and keeps its completion marker",
+          "status": "passed",
+          "duration_ms": 38.98362499999985
+        },
+        {
+          "name": "recoverable human project restore preserves genuinely crashed uncheckpointed WAL commits when startup publication fails and can retry the prepared restore",
+          "status": "passed",
+          "duration_ms": 2369.0060839999996
+        },
+        {
+          "name": "restores complete Customization template metadata and deleted defaults from an actual restore point",
+          "status": "passed",
+          "duration_ms": 30.838458999999602
+        }
+      ]
+    },
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/snapshot.test.ts",
+      "ran": 12,
+      "passed": 12,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "reconciles provenance after excluding GitHub evidence while retaining origin notes",
+          "status": "passed",
+          "duration_ms": 326.5599579999998
+        },
+        {
+          "name": "classifies every physical and declared table and names new unclassified tables",
+          "status": "passed",
+          "duration_ms": 5.000292000000172
+        },
+        {
+          "name": "scopes to one demo Project, keeps business links and deleted Card history, and removes secret free-page bytes",
+          "status": "passed",
+          "duration_ms": 835.146792
+        },
+        {
+          "name": "redacts copied Map Activity identities without removing chunk/note evidence or business metadata",
+          "status": "passed",
+          "duration_ms": 756.2793750000001
+        },
+        {
+          "name": "refuses an archive with inconsistent provenance",
+          "status": "passed",
+          "duration_ms": 523.6169580000001
+        },
+        {
+          "name": "refuses an archive with GitHub reference row",
+          "status": "passed",
+          "duration_ms": 500.042833
+        },
+        {
+          "name": "refuses an archive with GitHub sourceLink payload",
+          "status": "passed",
+          "duration_ms": 302.3289170000003
+        },
+        {
+          "name": "refuses an archive with canonical deletion payload",
+          "status": "passed",
+          "duration_ms": 174.2842499999997
+        },
+        {
+          "name": "refuses an archive with canonical command payload",
+          "status": "passed",
+          "duration_ms": 106.55108300000029
+        },
+        {
+          "name": "refuses an archive with copied identity payload",
+          "status": "passed",
+          "duration_ms": 114.59570800000074
+        },
+        {
+          "name": "refuses an archive with copied evidence payload",
+          "status": "passed",
+          "duration_ms": 73.83508299999994
+        },
+        {
+          "name": "redacts nested canonical deletion and historical command evidence while retaining Agent bindings and business operations",
+          "status": "passed",
+          "duration_ms": 78.19549999999981
+        }
+      ]
+    },
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/repositories/canonical-github-identity.test.ts",
+      "ran": 7,
+      "passed": 7,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "keeps one canonical Issue owner and one sync association across two connections",
+          "status": "passed",
+          "duration_ms": 153.23762499999998
+        },
+        {
+          "name": "refuses generic mutation and deletion of adapter-owned canonical refs",
+          "status": "passed",
+          "duration_ms": 258.62316699999997
+        },
+        {
+          "name": "atomically records typed entity-deletion evidence and excludes undone or live-equivalent events",
+          "status": "passed",
+          "duration_ms": 425.1797919999999
+        },
+        {
+          "name": "does not record entity deletion for source detach, canonical rebind, park or archive",
+          "status": "passed",
+          "duration_ms": 373.671208
+        },
+        {
+          "name": "versions and audits removed-map citation roots on direct canonical edit and hard deletion",
+          "status": "passed",
+          "duration_ms": 392.114333
+        },
+        {
+          "name": "versions and audits removed-map citation roots on executor canonical edit and hard deletion",
+          "status": "passed",
+          "duration_ms": 431.77029100000027
+        },
+        {
+          "name": "copies Release-owned Issue evidence without sync ownership and reopens the populated current schema intact",
+          "status": "passed",
+          "duration_ms": 403.46658400000024
+        }
+      ]
+    },
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/repositories/card-provenance.test.ts",
+      "ran": 15,
+      "passed": 15,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "immutable creation origin and typed evidence classifies actual creation paths independently of the approving or latest actor",
+          "status": "passed",
+          "duration_ms": 154.0316670000002
+        },
+        {
+          "name": "immutable creation origin and typed evidence keeps manual origin through mixed evidence and final removal by another actor",
+          "status": "passed",
+          "duration_ms": 247.522833
+        },
+        {
+          "name": "immutable creation origin and typed evidence keeps inference origin through mixed evidence and final removal by another actor",
+          "status": "passed",
+          "duration_ms": 414.535208
+        },
+        {
+          "name": "immutable creation origin and typed evidence rejects missing/foreign evidence and blank notes without changing the Card or evidence",
+          "status": "passed",
+          "duration_ms": 354.3959159999997
+        },
+        {
+          "name": "immutable creation origin and typed evidence versions every canonical GitHub evidence owner on attach, edit, reassignment and deletion",
+          "status": "passed",
+          "duration_ms": 431.2623749999998
+        },
+        {
+          "name": "immutable creation origin and typed evidence rejects milestone-only identities and cross-Project reassignment, then versions evidence removal on Release deletion",
+          "status": "passed",
+          "duration_ms": 415.99545799999987
+        },
+        {
+          "name": "immutable creation origin and typed evidence retains evidence through reopen and copy and defaults historical origin to unknown",
+          "status": "passed",
+          "duration_ms": 411.6263329999997
+        },
+        {
+          "name": "immutable creation origin and typed evidence backfills linked or unknown provenance when upgrading a database without provenance columns",
+          "status": "passed",
+          "duration_ms": 369.334167
+        },
+        {
+          "name": "provenance review regressions copies Release-owned Issue identity before its evidence attachment",
+          "status": "passed",
+          "duration_ms": 271.2655420000001
+        },
+        {
+          "name": "provenance review regressions leaves Card versions/history unchanged for GitHub bookkeeping and versions displayed evidence",
+          "status": "passed",
+          "duration_ms": 251.57800000000043
+        },
+        {
+          "name": "provenance review regressions unlinks an attachment after the same-Project owning Map is logically deleted",
+          "status": "passed",
+          "duration_ms": 116.51391700000022
+        },
+        {
+          "name": "provenance review regressions refuses a stale approved copy when an attached other-map identity changes and preserves copied origin/history",
+          "status": "passed",
+          "duration_ms": 179.82787499999995
+        },
+        {
+          "name": "provenance review regressions updates and deletes canonical evidence atomically for Cards in logically deleted Maps",
+          "status": "passed",
+          "duration_ms": 78.25533300000006
+        },
+        {
+          "name": "provenance review regressions reopens consistent provenance without any domain writes",
+          "status": "passed",
+          "duration_ms": 47.206874999999854
+        },
+        {
+          "name": "provenance review regressions finalizes surviving evidence owners when the canonical identity-owning Card is deleted",
+          "status": "passed",
+          "duration_ms": 63.7988749999995
+        }
+      ]
+    },
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/repositories/operation-executor-persistence.test.ts",
+      "ran": 22,
+      "passed": 22,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "persists complete local roots, relationship arrays, Roadmap seeds and physical evidence encodings",
+          "status": "passed",
+          "duration_ms": 260.34725000000003
+        },
+        {
+          "name": "keeps Card keys monotonic after deletion and reopening",
+          "status": "passed",
+          "duration_ms": 807.4860419999998
+        },
+        {
+          "name": "preserves approved copy operations and all owned copied identities",
+          "status": "passed",
+          "duration_ms": 514.2683750000001
+        },
+        {
+          "name": "persists 200 selected operations on 1,000 Cards with snapshot, history and audit",
+          "status": "passed",
+          "duration_ms": 2633.7027910000006
+        },
+        {
+          "name": "persists updates, park/unpark, addressed upserts and deletion history without resetting other external baselines",
+          "status": "passed",
+          "duration_ms": 146.9082500000004
+        },
+        {
+          "name": "persists prepared board connector and GitHub/remote identity graphs atomically",
+          "status": "passed",
+          "duration_ms": 41.84395899999981
+        },
+        {
+          "name": "compares repeated publications to transaction-start roots and keeps one final history row",
+          "status": "passed",
+          "duration_ms": 52.744292000000314
+        },
+        {
+          "name": "clears assigned Card and Release canonical identity while retaining the Card identity on Release deletion",
+          "status": "passed",
+          "duration_ms": 54.24395800000002
+        },
+        {
+          "name": "reserves copied keys before allocating additional Cards in the copied Map",
+          "status": "passed",
+          "duration_ms": 38.444416000000274
+        },
+        {
+          "name": "canonicalizes every snapshot for create followed by update",
+          "status": "passed",
+          "duration_ms": 30.96837499999947
+        },
+        {
+          "name": "canonicalizes every snapshot for create followed by delete",
+          "status": "passed",
+          "duration_ms": 29.857208999999784
+        },
+        {
+          "name": "canonicalizes every snapshot for create followed by map-delete",
+          "status": "passed",
+          "duration_ms": 29.912457999999788
+        },
+        {
+          "name": "preserves resolver pre-delete Card metadata in operation Activity while finalizing deleted history",
+          "status": "passed",
+          "duration_ms": 51.11729199999991
+        },
+        {
+          "name": "publishes concrete Project-scoped customization identities only after commit without extra Activity",
+          "status": "passed",
+          "duration_ms": 31.110459000000446
+        },
+        {
+          "name": "rolls back direct created root mutation composed with application",
+          "status": "passed",
+          "duration_ms": 32.38354199999958
+        },
+        {
+          "name": "rolls back direct updated root mutation composed with application",
+          "status": "passed",
+          "duration_ms": 26.532500000000255
+        },
+        {
+          "name": "allows an independently mutated root alongside a fresh executor root",
+          "status": "passed",
+          "duration_ms": 27.375583000000006
+        },
+        {
+          "name": "persists status-only external delivery with same-value save semantics and isolated addressed baselines",
+          "status": "passed",
+          "duration_ms": 61.849583000000166
+        },
+        {
+          "name": "persists source-only publication baselines through per-operation changes and repeats without version bumps",
+          "status": "passed",
+          "duration_ms": 61.83774999999969
+        },
+        {
+          "name": "persists scoped external archives and stable-ID returns without advancing another system",
+          "status": "passed",
+          "duration_ms": 69.44599999999991
+        },
+        {
+          "name": "preserves mixed FK inserts, owner updates, reverse deletions and deleted Card history",
+          "status": "passed",
+          "duration_ms": 93.9803750000001
+        },
+        {
+          "name": "changes only future Card prefixes, preserving linked keys and allocation after delete/reopen",
+          "status": "passed",
+          "duration_ms": 68.66466599999967
+        }
+      ]
+    },
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/repositories/operation-snapshot-scope.test.ts",
+      "ran": 4,
+      "passed": 4,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "matches the complete reference snapshot, insertion order, scoped/project-wide rows and malformed ownership",
+          "status": "passed",
+          "duration_ms": 377.91787499999987
+        },
+        {
+          "name": "retains empty Project and unavailable Project behavior",
+          "status": "passed",
+          "duration_ms": 310.969959
+        },
+        {
+          "name": "retains hidden-map link helper exclusions after SQL scoping",
+          "status": "passed",
+          "duration_ms": 379.3124170000001
+        },
+        {
+          "name": "materializes no additional target rows after a large foreign Project is added",
+          "status": "passed",
+          "duration_ms": 1697.0269170000001
+        }
+      ]
+    },
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/repositories/persistence-entity-order.test.ts",
+      "ran": 1,
+      "passed": 1,
+      "failed": 0,
+      "tests": [
+        {
+          "name": "includes each resolver entity once while preserving the established persistence order",
+          "status": "passed",
+          "duration_ms": 0.8144999999999527
+        }
+      ]
+    }
+  ],
+  "web_restore": {
+    "command": "corepack pnpm --filter @storymapper/web exec vitest run src/features/restore-points/restore-points.test.ts --reporter=json",
+    "environment": "automated Vitest jsdom; no native browser or screen-reader acceptance",
+    "start_time_ms": 1792368159224,
+    "passed": 22,
+    "failed": 0,
+    "success": true,
+    "report": "storage-web-restore-final.json",
+    "raw_log": "storage-web-restore-final.log",
+    "suites": [
+      {
+        "file": "[REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/restore-points.test.ts",
+        "ran": 22,
+        "passed": 22,
+        "failed": 0,
+        "tests": [
+          {
+            "name": "production Activity restore points opens the linked exact Agent restore point without restoring and keeps the existing confirmation",
+            "status": "passed",
+            "duration_ms": 104.64195799999993
+          },
+          {
+            "name": "production Activity restore points reports a pruned linked restore point without selecting another point or restoring",
+            "status": "passed",
+            "duration_ms": 21.116375000000062
+          },
+          {
+            "name": "production Activity restore points does not POST when the required local attempt record cannot be saved",
+            "status": "passed",
+            "duration_ms": 31.624708000000055
+          },
+          {
+            "name": "production Activity restore points reloads after successful restore even when result storage fails, then recovers the durable Activity result",
+            "status": "passed",
+            "duration_ms": 48.31950000000006
+          },
+          {
+            "name": "production Activity restore points shows malformed saved JSON explicitly without crashing the root",
+            "status": "passed",
+            "duration_ms": 20.80300000000011
+          },
+          {
+            "name": "production Activity restore points reconciles a lost successful response (transport) after reload without announcing a confirmed failure",
+            "status": "passed",
+            "duration_ms": 37.19383299999981
+          },
+          {
+            "name": "production Activity restore points reconciles a lost successful response (502) after reload without announcing a confirmed failure",
+            "status": "passed",
+            "duration_ms": 38.50387500000011
+          },
+          {
+            "name": "production Activity restore points reconciles a lost successful response (malformed) after reload without announcing a confirmed failure",
+            "status": "passed",
+            "duration_ms": 34.71195899999998
+          },
+          {
+            "name": "production Activity restore points permits editing and an explicit retry after lost-before-publication when available APIs confirm the baseline epoch",
+            "status": "passed",
+            "duration_ms": 41.52350000000001
+          },
+          {
+            "name": "production Activity restore points permits editing and an explicit retry after rolled-back-500 when available APIs confirm the baseline epoch",
+            "status": "passed",
+            "duration_ms": 33.19724999999994
+          },
+          {
+            "name": "production Activity restore points keeps unavailable 503 outcomes blocked until a successful baseline-epoch check, without another restore POST",
+            "status": "passed",
+            "duration_ms": 27.8431250000001
+          },
+          {
+            "name": "production Activity restore points keeps unavailable transport outcomes blocked until a successful baseline-epoch check, without another restore POST",
+            "status": "passed",
+            "duration_ms": 26.05583300000012
+          },
+          {
+            "name": "production Activity restore points keeps an unconfirmed outcome blocked and permits Activity rechecking without resending restore",
+            "status": "passed",
+            "duration_ms": 28.016458000000057
+          },
+          {
+            "name": "production Activity restore points shows preserved later Activity Events as undone without changing their action",
+            "status": "passed",
+            "duration_ms": 7.70570900000007
+          },
+          {
+            "name": "production Activity restore points confirms global undo/protection, contains pending focus and persists the result for the reloaded root",
+            "status": "passed",
+            "duration_ms": 38.005959000000075
+          },
+          {
+            "name": "production Activity restore points reports a refused restore concretely, releases the progress dialog and allows retry",
+            "status": "passed",
+            "duration_ms": 14.041124999999965
+          },
+          {
+            "name": "production Activity restore points mounts production navigation and persistent live regions, creates via native button and retains metadata across reload",
+            "status": "passed",
+            "duration_ms": 20.744833999999855
+          },
+          {
+            "name": "production Activity restore points disables duplicate actions while pending and announces the retained concrete server cause without a partial row",
+            "status": "passed",
+            "duration_ms": 11.945583999999826
+          },
+          {
+            "name": "production Activity restore points refreshes the visible published point after a retention failure and preserves truthful server wording",
+            "status": "passed",
+            "duration_ms": 9.273083000000042
+          },
+          {
+            "name": "production Activity restore points keeps creation pending across Activity panel remounts, blocks another POST and permits retry after settlement",
+            "status": "passed",
+            "duration_ms": 13.446916999999985
+          },
+          {
+            "name": "production Activity restore points announces a concrete list failure through the same always-mounted root alert",
+            "status": "passed",
+            "duration_ms": 7.753875000000107
+          },
+          {
+            "name": "defines one global surface-token focus rule and input/editor boundary tokens",
+            "status": "passed",
+            "duration_ms": 0.7851250000001073
+          }
+        ]
+      }
+    ]
+  },
+  "matrix_coverage": [
+    {
+      "requirement": "duplicate canonical identity across connections and owners; rollback and reserved generic mutation/delete",
+      "file": "canonical-github-identity.test.ts"
+    },
+    {
+      "requirement": "typed deletion history; audit rollback; undone/live-equivalent/scoped filtering; nondelete lifecycle",
+      "file": "canonical-github-identity.test.ts"
+    },
+    {
+      "requirement": "direct and actual operation persistence update/deletion version, history, audit for citing roots in removed Maps",
+      "file": "canonical-github-identity.test.ts"
+    },
+    {
+      "requirement": "Release-owned source-only Issue; copied provenance without sync ownership; copied push refusal; populated current-schema reopen/FK/integrity",
+      "file": "canonical-github-identity.test.ts"
+    },
+    {
+      "requirement": "mixed external-ref row redaction; nested canonical Activity/ChangeSet/copied snapshots; Agent/source-plan retention; strict import rejection; no secret free-page bytes; redacted deletion history readable",
+      "file": "snapshot.test.ts"
+    },
+    {
+      "requirement": "operational Restore same-id canonical identity change/new identity notices; WAL recovery/history/epoch",
+      "file": "restore-project.test.ts"
+    },
+    {
+      "requirement": "scoped snapshot oracle parity and fixed materialization under large unrelated Project",
+      "file": "operation-snapshot-scope.test.ts"
+    }
+  ],
+  "limits": [
+    "The full DB report records the tested shared-tree snapshot at its start_time_ms; later parent edits require parent verification.",
+    "Raw stdout/stderr were not captured for the earlier DB runs; retained JSON reports are exact runner output and storage-run-history.json explicitly identifies observed summaries.",
+    "The web Restore run is automated jsdom coverage, not native browser/OS/screen-reader acceptance.",
+    "No real GitHub account, credentials, user Project databases, remote writes, or platform release acceptance were exercised."
+  ],
+  "earlier_failures": "storage-run-history.json"
+}

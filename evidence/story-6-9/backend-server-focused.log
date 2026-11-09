@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/http/routes/release-summary.test.ts (4 tests) 210ms
+ ✓ src/http/routes/base-version-conflicts.test.ts (16 tests) 494ms
+
+ Test Files  2 passed (2)
+      Tests  20 passed (20)
+   Start at  21:03:57
+   Duration  1.52s (transform 531ms, setup 0ms, collect 1.70s, tests 704ms, environment 0ms, prepare 72ms)

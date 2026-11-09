@@ -1,0 +1,26 @@
+✔ complete clean disposable candidate passes scan and independent check (540.882583ms)
+✔ policy is mandatory, strict and never echoed in sanitized failures (168.510166ms)
+✔ matches complete employer terms across host and repository components (2.227416ms)
+✔ scans nested gzip and UTF16 while blocking unsupported and malformed archives (2.151084ms)
+✔ classifies synthetic examples separately from private email and home paths (0.07575ms)
+✔ current findings and required private declarations remain blocking (390.620333ms)
+✔ old report refuses changed bytes, modes, paths, revision, refs and objects (1508.315875ms)
+✔ extra, missing, malformed and flipped report fields cannot authorize publication (764.050666ms)
+✔ all-ref scope includes preserved tree refs and historical commit metadata (397.336875ms)
+✔ shallow, promisor, replaced and missing objects refuse with safe diagnostics (287.22075ms)
+✔ deleted declarations and unreviewed binary/archive content block publication (213.7255ms)
+✔ grafts, unreadable Git inputs and symlink parents cannot narrow publication scope (192.972625ms)
+✔ new nonignored files invalidate prior reports and enter the next scan (906.303875ms)
+✔ ignored actual files are excluded without reading their contents or permissions (371.446292ms)
+✔ report symlinks into ignored files and nonregular reports are refused before reading (259.0055ms)
+✔ Git timeout and nonzero failures use bounded sanitized diagnostics (129.23ms)
+✔ CLI reasons distinguish policy, missing report, malformed report, stale report and scope (689.206709ms)
+✔ retired detector covers separator and identifier variants (0.124875ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6860.377583

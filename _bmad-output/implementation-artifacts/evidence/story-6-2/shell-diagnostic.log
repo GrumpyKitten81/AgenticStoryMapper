@@ -1,0 +1,13 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests "src/features/changesets/shell.test.tsx"
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/changesets/shell.test.tsx (8 tests) 798ms
+
+ Test Files  1 passed (1)
+      Tests  8 passed (8)
+   Start at  12:41:44
+   Duration  2.03s (transform 518ms, setup 0ms, collect 880ms, tests 798ms, environment 174ms, prepare 31ms)

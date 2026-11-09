@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-19",
+  "revision": "b2f2e967cc45a0c948ad3c2bb7378efb35eaf3e3",
+  "runtime": "Node24.17.0/pnpm9.15.4/macOS",
+  "commands": {
+    "workspace-tests": {
+      "exitCode": 0,
+      "credentialShapeMatches": 0,
+      "uncompressedBytes": 753551,
+      "rawLog": "workspace-tests.log.gz"
+    },
+    "release-verification": {
+      "exitCode": 0,
+      "credentialShapeMatches": 0,
+      "uncompressedBytes": 333941,
+      "rawLog": "release-verification.log.gz"
+    }
+  },
+  "testCounts": {
+    "scripts": 83,
+    "contracts": 192,
+    "importers": 7,
+    "github": 57,
+    "core": 449,
+    "web": 848,
+    "db": 489,
+    "server": 992,
+    "audit": 14
+  },
+  "total": 3131,
+  "releaseGate": {
+    "passed": true,
+    "capabilities": 138,
+    "accessibilityTests": 260,
+    "typecheck": true,
+    "build": true,
+    "nativeCertification": false
+  },
+  "storyAncestry": [
+    {
+      "story": "7.1",
+      "commit": "68dcf5017298f34db7553118bf60d6898085d430",
+      "ancestorOfHead": true
+    },
+    {
+      "story": "7.2",
+      "commit": "d7dd71fcdd0b35b0f7178c1ad310fb7e198e20de",
+      "ancestorOfHead": true
+    },
+    {
+      "story": "7.3",
+      "commit": "74c5921401223e1fbfd3ad96bcfc582208ae5565",
+      "ancestorOfHead": true
+    },
+    {
+      "story": "7.4",
+      "commit": "ecf3ef5ba72f6c99300e2c9c580f5e3c4cdd2822",
+      "ancestorOfHead": true
+    },
+    {
+      "story": "7.5",
+      "commit": "65d96699a495b8a0a440a6ff895b97918ab3dbee",
+      "ancestorOfHead": true
+    },
+    {
+      "story": "7.6",
+      "commit": "83a5277b1eb2556c5a148b59b687dc25e0246644",
+      "ancestorOfHead": true
+    },
+    {
+      "story": "7.7",
+      "commit": "aae10f89c96b4c1aa26d862b31119a636c22d486",
+      "ancestorOfHead": true
+    },
+    {
+      "story": "7.8",
+      "commit": "b2f2e967cc45a0c948ad3c2bb7378efb35eaf3e3",
+      "ancestorOfHead": true
+    }
+  ],
+  "runtimeProbes": {
+    "passed": 2,
+    "assertions": "Confirm observed defects; passing probes do not assert desired behavior."
+  },
+  "browser": {
+    "browser": "Chrome",
+    "isolatedDatabase": true,
+    "externalTransport": "blocked",
+    "credentialFileHome": "disposable via homedir seam; HOME unchanged",
+    "cli": "intercepted fake resolution",
+    "result": "Verify while off notice; explicit Connect; preserved draft/parent/position/MVP; selected new connection; lookup42; Keep draft; create linked LSM-4 in MVP",
+    "fixtureCorrection": "First lookup returned a TypeError because the temporary fake omitted status:found/item and used the wrong argument position; corrected fixture only, reused disposable DB, successful retry. Not a product finding."
+  }
+}

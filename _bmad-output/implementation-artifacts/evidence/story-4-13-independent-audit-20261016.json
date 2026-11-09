@@ -1,0 +1,4217 @@
+{
+  "boundary": "Independent offline historical capture audit; no browser run, application mutation or fresh UI acceptance",
+  "archiveSha256": "b2a2de190a1c8ab06363ff4431541cfbd8f22d44176aff3aff69f0e7de206445",
+  "auditScriptSha256": "8eea7ed66f0e4f4a9a98912f66b7814581895f6315a67910ba97994c0b704a30",
+  "archiveBytes": 2516192,
+  "extractionDirectory": "/tmp/story413-independent-c0t3_t9i",
+  "archiveMembers": 232,
+  "verifiedManifestCounts": {
+    "bundle-manifest.json": 231,
+    "observations/evidence-manifest.json": 70,
+    "observations/screenshot-manifest.json": 19
+  },
+  "initialOperationAudits": [
+    {
+      "evidenceScenarioIndex": 1,
+      "verifiedOperations": 134,
+      "checks": [
+        {
+          "operationId": "import-0",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-1",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-2",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-3",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-4",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-5",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-6",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-7",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-8",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-9",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-10",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-11",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-12",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-13",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-14",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-15",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-16",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-17",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-18",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-19",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-20",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-21",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-22",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-23",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-24",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-25",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-26",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-27",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-28",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-29",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-30",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-31",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-32",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-33",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-34",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-35",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-MVP",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-1",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-2",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-1",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-2",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-3",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "evidenceScenarioIndex": 2,
+      "verifiedOperations": 134,
+      "checks": [
+        {
+          "operationId": "import-0",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-1",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-2",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-3",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-4",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-5",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-6",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-7",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-8",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-9",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-10",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-11",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-12",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-13",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-14",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-15",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-16",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-17",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-18",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-19",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-20",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-21",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-22",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-23",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-24",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-25",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-26",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-27",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-28",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-29",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-30",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-31",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-32",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-33",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-34",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-35",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-MVP",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-1",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-2",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-1",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-2",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-3",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "evidenceScenarioIndex": 3,
+      "verifiedOperations": 115,
+      "checks": [
+        {
+          "operationId": "import-0",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-1",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-2",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-3",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-4",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-5",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-6",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-7",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-8",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-9",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-10",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-11",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-12",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-13",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-14",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-15",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-16",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-17",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-18",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-19",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-20",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-21",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-22",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-23",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-24",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-25",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-26",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-27",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-28",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-29",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-30",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-31",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-32",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-33",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-34",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-35",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-MVP",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-1",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-2",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "evidenceScenarioIndex": 4,
+      "verifiedOperations": 134,
+      "checks": [
+        {
+          "operationId": "import-0",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-1",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-2",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-3",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-4",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-5",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-6",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-7",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-8",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-9",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-10",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-11",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-12",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-13",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-14",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-15",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-16",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-17",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-18",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-19",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-20",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-21",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-22",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-23",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-24",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-25",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-26",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-27",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-28",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-29",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-30",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-31",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-32",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-33",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-34",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-35",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-MVP",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-1",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-2",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-1",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-2",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-3",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "evidenceScenarioIndex": 5,
+      "verifiedOperations": 134,
+      "checks": [
+        {
+          "operationId": "import-0",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-1",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-2",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-3",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-4",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-5",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-6",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-7",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-8",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-9",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-10",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-11",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-12",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-13",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-14",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-15",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-16",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-17",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-18",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-19",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-20",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-21",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-22",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-23",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-24",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-25",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-26",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-27",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-28",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-29",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-30",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-31",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-32",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-33",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-34",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-35",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-MVP",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-1",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-2",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-1",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-2",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-3",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        }
+      ]
+    },
+    {
+      "evidenceScenarioIndex": 6,
+      "verifiedOperations": 134,
+      "checks": [
+        {
+          "operationId": "import-0",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-1",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-2",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-3",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-4",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-5",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-6",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-7",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-8",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-9",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-10",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-11",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-12",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-13",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-14",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-15",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-16",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-17",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-18",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-19",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-20",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-21",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-22",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-23",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-24",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-25",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-26",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-27",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-28",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-29",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-30",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-31",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-32",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-33",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-34",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "import-35",
+          "classification": "sourceDocument:import",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-MVP",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-1",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-release-sprint-2",
+          "classification": "release:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-epic-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-epic-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-step-6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-step-6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-1",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-2",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.1-3",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-1.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-1.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-2.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-2.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-3.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-3.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-4.6",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-4.6-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-5.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-5.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.1",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.1-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.2",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.2-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.3",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.3-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.4",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.4-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        },
+        {
+          "operationId": "publish-story-6.5",
+          "classification": "card:upsert",
+          "passed": true
+        },
+        {
+          "operationId": "link-story-6.5-0",
+          "classification": "sourceLink:link",
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "refreshEffectAudit": [
+    {
+      "operationId": "import-1",
+      "classification": "sourceDocument:import",
+      "passed": true
+    },
+    {
+      "operationId": "import-13",
+      "classification": "sourceDocument:import",
+      "passed": true
+    },
+    {
+      "operationId": "import-34",
+      "classification": "sourceDocument:import",
+      "passed": true
+    },
+    {
+      "operationId": "import-35",
+      "classification": "sourceDocument:import",
+      "passed": true
+    },
+    {
+      "operationId": "publish-story-1.1",
+      "classification": "card:upsert",
+      "passed": true
+    },
+    {
+      "operationId": "unlink-story-1.1-4c738484-a28c-4bba-b07c-c98028557dde",
+      "classification": "sourceLink:unlink",
+      "passed": true
+    },
+    {
+      "operationId": "unlink-story-1.1-d7811548-8327-4a99-8a3e-5dd994c4b22d",
+      "classification": "sourceLink:unlink",
+      "passed": true
+    },
+    {
+      "operationId": "unlink-story-1.1-dc258760-6903-4034-8b99-887de2519025",
+      "classification": "sourceLink:unlink",
+      "passed": true
+    },
+    {
+      "operationId": "unlink-story-1.1-85cd1394-52fa-47f6-88c9-afc24a1e39d6",
+      "classification": "sourceLink:unlink",
+      "passed": true
+    },
+    {
+      "operationId": "link-story-1.1-0",
+      "classification": "sourceLink:link",
+      "passed": true
+    },
+    {
+      "operationId": "link-story-1.1-1",
+      "classification": "sourceLink:link",
+      "passed": true
+    },
+    {
+      "operationId": "link-story-1.1-2",
+      "classification": "sourceLink:link",
+      "passed": true
+    },
+    {
+      "operationId": "link-story-1.1-3",
+      "classification": "sourceLink:link",
+      "passed": true
+    },
+    {
+      "operationId": "publish-story-3.1",
+      "classification": "card:upsert",
+      "passed": true
+    },
+    {
+      "operationId": "unlink-story-3.1-8c6af315-3dd2-4567-91b6-b8ef50199012",
+      "classification": "sourceLink:unlink",
+      "passed": true
+    },
+    {
+      "operationId": "link-story-3.1-0",
+      "classification": "sourceLink:link",
+      "passed": true
+    },
+    {
+      "operationId": "publish-story-6.6",
+      "classification": "card:upsert",
+      "passed": true
+    },
+    {
+      "operationId": "link-story-6.6-0",
+      "classification": "sourceLink:link",
+      "passed": true
+    },
+    {
+      "operationId": "archive-story-6.5",
+      "classification": "card:archive",
+      "passed": true
+    }
+  ],
+  "scenario4Retention": {
+    "kept": 145,
+    "applied": 153,
+    "initialApplied": 134,
+    "initialKept": 126,
+    "refreshAppliedChanged": 19,
+    "refreshKept": 19,
+    "refreshUnchangedExcluded": 121,
+    "supersededOperationIds": [
+      "publish-story-1.1",
+      "link-story-1.1-0",
+      "link-story-1.1-1",
+      "link-story-1.1-2",
+      "link-story-1.1-3",
+      "publish-story-3.1",
+      "link-story-3.1-0",
+      "publish-story-6.5"
+    ]
+  },
+  "scenario5PrePostRestoreAudit": {
+    "status": "checked historical captured snapshots",
+    "conflict": {
+      "rawSnapshotsIdentical": false,
+      "identicalKeys": [
+        "storyMap",
+        "cards",
+        "releases",
+        "externalRefs",
+        "personas",
+        "workflowStatuses",
+        "cardPersonas",
+        "annotations",
+        "cardAnnotations",
+        "storyTemplates",
+        "roadmaps",
+        "sourceChunks",
+        "sourceLinks",
+        "cardAttachments",
+        "githubLinks",
+        "remoteWorkItemLinks"
+      ],
+      "differences": {
+        "productContext": {
+          "before": {
+            "id": "f160d605-6754-4ff1-b96d-a4a6bd23c161",
+            "projectId": "f8a9c1c8-c59e-4fa8-af20-70aa52c5111e",
+            "storyMapId": "704730c6-dacf-4247-a9f7-319da853d558",
+            "productType": "",
+            "purpose": "",
+            "keyFeatures": [],
+            "targetUsers": "",
+            "platform": "",
+            "pricing": "",
+            "notes": "",
+            "glossary": "",
+            "nonGoals": "",
+            "complianceConstraints": "",
+            "updatedAt": "2026-10-13T17:12:50.716Z"
+          },
+          "after": {
+            "id": "c115274a-ee81-4dfb-978b-41b6296c6d3c",
+            "projectId": "f8a9c1c8-c59e-4fa8-af20-70aa52c5111e",
+            "storyMapId": "704730c6-dacf-4247-a9f7-319da853d558",
+            "productType": "",
+            "purpose": "",
+            "keyFeatures": [],
+            "targetUsers": "",
+            "platform": "",
+            "pricing": "",
+            "notes": "",
+            "glossary": "",
+            "nonGoals": "",
+            "complianceConstraints": "",
+            "updatedAt": "2026-10-13T17:13:28.330Z"
+          }
+        }
+      },
+      "domainContentExcludingProductContextIdentityAndTimestampIdentical": true
+    },
+    "restore": {
+      "rawSnapshotsIdentical": false,
+      "identicalKeys": [
+        "storyMap",
+        "cards",
+        "releases",
+        "externalRefs",
+        "personas",
+        "workflowStatuses",
+        "cardPersonas",
+        "annotations",
+        "cardAnnotations",
+        "storyTemplates",
+        "roadmaps",
+        "sourceChunks",
+        "sourceLinks",
+        "cardAttachments",
+        "githubLinks",
+        "remoteWorkItemLinks"
+      ],
+      "differences": {
+        "productContext": {
+          "before": {
+            "id": "b746f70c-904e-410a-8ed7-8fb6200b4bfe",
+            "projectId": "f8a9c1c8-c59e-4fa8-af20-70aa52c5111e",
+            "storyMapId": "704730c6-dacf-4247-a9f7-319da853d558",
+            "productType": "",
+            "purpose": "",
+            "keyFeatures": [],
+            "targetUsers": "",
+            "platform": "",
+            "pricing": "",
+            "notes": "",
+            "glossary": "",
+            "nonGoals": "",
+            "complianceConstraints": "",
+            "updatedAt": "2026-10-13T17:10:46.175Z"
+          },
+          "after": {
+            "id": "0af4bb7e-cade-48f5-86ed-7d8604c14b45",
+            "projectId": "f8a9c1c8-c59e-4fa8-af20-70aa52c5111e",
+            "storyMapId": "704730c6-dacf-4247-a9f7-319da853d558",
+            "productType": "",
+            "purpose": "",
+            "keyFeatures": [],
+            "targetUsers": "",
+            "platform": "",
+            "pricing": "",
+            "notes": "",
+            "glossary": "",
+            "nonGoals": "",
+            "complianceConstraints": "",
+            "updatedAt": "2026-10-13T17:15:13.413Z"
+          }
+        }
+      },
+      "domainContentExcludingProductContextIdentityAndTimestampIdentical": true
+    },
+    "limitation": "Empty productContext IDs and updatedAt differ; full raw-snapshot identity is false. No browser run or independently observed Restore action is claimed."
+  },
+  "limitations": [
+    "Import checks verify metadata and intended inline-content SHA256 against stored fileHash; parser chunk text is not rederived. Initial snapshot-exposed chunks are compared exactly at S4 retention; unexposed chunks have identity retention only.",
+    "Screenshot timestamps and browser-action chronology are not independently instrumented.",
+    "Supplemental commit provenance is a separate git-history check, not a claim that its commit is merged."
+  ]
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "check-hygiene"
+    ],
+    "exitCode": 0,
+    "seconds": 0.879,
+    "log": "parent-hygiene.log"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/verify.mjs",
+      "--skip-typecheck",
+      "--skip-build"
+    ],
+    "exitCode": 0,
+    "seconds": 21.828,
+    "log": "parent-quick-verify.log"
+  }
+]

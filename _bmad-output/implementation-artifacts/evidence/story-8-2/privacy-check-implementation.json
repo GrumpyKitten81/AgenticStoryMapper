@@ -1,0 +1,8 @@
+{
+  "checkedAt": "2026-10-19T23:50:25.207002+00:00",
+  "filesScanned": 148,
+  "gzipIntegrityPassed": 66,
+  "credentialPatternFlaggedFiles": 0,
+  "scope": "Story8.2 evidence only; common GitHub/OpenAI token formats; no environment credential values read or printed.",
+  "limitation": "Pattern scan is not a guarantee that arbitrary private data is absent."
+}

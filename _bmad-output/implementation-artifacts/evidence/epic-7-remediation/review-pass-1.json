@@ -1,0 +1,74 @@
+{
+  "blind_hunter": {
+    "floor": "82692 / 1000 = 82.692 kB; min(floor(sqrt(82.692)+1),10)=10",
+    "findings": [
+      {
+        "id": "BH1",
+        "claim": "Handle old persisted baselines missing required goal/released; version bump stales proposals but unchanged JSON can fail strict before/after parsing."
+      },
+      {
+        "id": "BH2",
+        "claim": "Release-only remote metadata refusal lacks a standalone incoming reconciliation path because prepareIncomingItems reads cardId links only."
+      },
+      {
+        "id": "BH3",
+        "claim": "Unconditional serial REST label listings add requests and CLI launches for complete small search results."
+      },
+      {
+        "id": "BH4",
+        "claim": "Optional missing Milestone description/state are interpreted as empty goal/open state and may clear or reopen."
+      },
+      {
+        "id": "BH5",
+        "claim": "Interrupted title-only conflict adoption lacks reopened excluded Release-metadata coverage."
+      },
+      {
+        "id": "BH6",
+        "claim": "Parent-only drift after review lacks refusal/no-write regression."
+      },
+      {
+        "id": "BH7",
+        "claim": "Two-effect closed-Issue creation and recovery lack combined parent/iteration/assignee preservation coverage."
+      },
+      {
+        "id": "BH8",
+        "claim": "Bulk label transport regression does not span multiple Issues and search pages."
+      },
+      {
+        "id": "BH9",
+        "claim": "No assembled real-provider-output-to-import managed-label persistence regression."
+      },
+      {
+        "id": "BH10",
+        "claim": "No application-boundary late-ambiguity/no-local-mutation regression."
+      }
+    ]
+  },
+  "edge_case": {
+    "findings": [
+      {
+        "id": "EH1",
+        "location": "remote-push-plan.ts:104",
+        "trigger": "Card moves to already-bound unchanged Release in Sync",
+        "consequence": "Skipped Milestone effect leaves dependent Issue milestoneNumber null, clearing intended assignment."
+      }
+    ]
+  },
+  "verification_gap": {
+    "findings": [
+      {
+        "id": "VG1",
+        "location": "github-pull-command.ts:124",
+        "evidence": "First inbound create consumer test supplies no description/state and does not assert goal/released; existing new tests update already-linked Releases. Removing create fields escapes these assertions.",
+        "disposition": "patch"
+      },
+      {
+        "id": "VG2",
+        "location": "github-ticket-command.ts:81",
+        "evidence": "Stale-ticket test changes only body; removing new description/state fingerprint inputs escapes it. Need independent metadata-only drift refusal and no writes.",
+        "disposition": "patch"
+      }
+    ]
+  },
+  "parent_triage": "All13 individual verdicts and source dispositions recorded in spec-epic-7-retro-blockers.md Review Triage Log; speculative coverage claims are not reported as observed defects."
+}

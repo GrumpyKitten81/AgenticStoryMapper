@@ -1,0 +1,377 @@
+[
+  {
+    "major": "Vitest 3.2.7",
+    "testsPassedUnique": 3246,
+    "checks": [
+      {
+        "label": "vitest3-test-1",
+        "start": "2026-10-19T22:47:46.977Z",
+        "end": "2026-10-19T22:53:31.561Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "test"
+        ],
+        "status": 0,
+        "lockSha256": "8bc28ae3fdacaaa166523b819e04e36127d09fa2b043c8fec95a3c0c51710e70"
+      },
+      {
+        "label": "vitest3-typecheck",
+        "start": "2026-10-19T22:53:34.367Z",
+        "end": "2026-10-19T22:53:51.715Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "typecheck"
+        ],
+        "status": 0,
+        "lockSha256": "8bc28ae3fdacaaa166523b819e04e36127d09fa2b043c8fec95a3c0c51710e70"
+      },
+      {
+        "label": "vitest3-build",
+        "start": "2026-10-19T22:53:54.516Z",
+        "end": "2026-10-19T22:54:16.466Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "build"
+        ],
+        "status": 0,
+        "lockSha256": "8bc28ae3fdacaaa166523b819e04e36127d09fa2b043c8fec95a3c0c51710e70"
+      }
+    ],
+    "nextInstall": {
+      "label": "vitest4-install",
+      "start": "2026-10-19T22:54:23.009Z"
+    },
+    "allChecksGreenBeforeNextInstall": true
+  },
+  {
+    "major": "Vitest 4.1.12",
+    "testsPassedUnique": 3163,
+    "checks": [
+      {
+        "label": "vitest4-workspace-test-4",
+        "start": "2026-10-19T23:07:24.799Z",
+        "end": "2026-10-19T23:09:56.229Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "-r",
+          "test"
+        ],
+        "status": 0,
+        "lockSha256": "b49a44784f44dc38976029b06da952115b683d1b7ea67e0558d7a7e3bed76730"
+      },
+      {
+        "label": "vitest4-typecheck-final",
+        "start": "2026-10-19T23:07:32.665Z",
+        "end": "2026-10-19T23:07:52.471Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "typecheck"
+        ],
+        "status": 0,
+        "lockSha256": "b49a44784f44dc38976029b06da952115b683d1b7ea67e0558d7a7e3bed76730"
+      },
+      {
+        "label": "vitest4-build-final",
+        "start": "2026-10-19T23:10:01.332Z",
+        "end": "2026-10-19T23:10:23.595Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "build"
+        ],
+        "status": 0,
+        "lockSha256": "b49a44784f44dc38976029b06da952115b683d1b7ea67e0558d7a7e3bed76730"
+      }
+    ],
+    "nextInstall": {
+      "label": "vite7-install",
+      "start": "2026-10-19T23:10:28.255Z"
+    },
+    "allChecksGreenBeforeNextInstall": true,
+    "portableSupplement": {
+      "label": "vitest4-test-3",
+      "passed": 83,
+      "rootExitStatus": 1,
+      "note": "Portable83 passed in prior root invocation; later workspace3163 passed after factory-mock cleanup, then final typecheck/build. Combined coverage accepted by parent, not mislabeled as one green root invocation."
+    }
+  },
+  {
+    "major": "Vite 7.3.7",
+    "testsPassedUnique": 3246,
+    "checks": [
+      {
+        "label": "vite7-test",
+        "start": "2026-10-19T23:12:44.869Z",
+        "end": "2026-10-19T23:18:32.684Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "test"
+        ],
+        "status": 0,
+        "lockSha256": "56de3bc7b15a80ad7da7d4d78caa1d2d567d68ba5b519febe4a3264994ea212b"
+      },
+      {
+        "label": "vite7-typecheck",
+        "start": "2026-10-19T23:10:38.094Z",
+        "end": "2026-10-19T23:10:55.264Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "typecheck"
+        ],
+        "status": 0,
+        "lockSha256": "56de3bc7b15a80ad7da7d4d78caa1d2d567d68ba5b519febe4a3264994ea212b"
+      },
+      {
+        "label": "vite7-build",
+        "start": "2026-10-19T23:10:59.161Z",
+        "end": "2026-10-19T23:11:21.291Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "build"
+        ],
+        "status": 0,
+        "lockSha256": "56de3bc7b15a80ad7da7d4d78caa1d2d567d68ba5b519febe4a3264994ea212b"
+      },
+      {
+        "label": "vite7-proxy-3",
+        "start": "2026-10-19T23:12:37.521Z",
+        "end": "2026-10-19T23:12:42.785Z",
+        "command": [
+          "node",
+          "--import",
+          "./apps/server/node_modules/tsx/dist/loader.mjs",
+          "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+        ],
+        "status": 0,
+        "lockSha256": "56de3bc7b15a80ad7da7d4d78caa1d2d567d68ba5b519febe4a3264994ea212b"
+      }
+    ],
+    "nextInstall": {
+      "label": "vite8-install",
+      "start": "2026-10-19T23:18:36.030Z"
+    },
+    "allChecksGreenBeforeNextInstall": true
+  },
+  {
+    "major": "Vite 8.3.4",
+    "testsPassedUnique": 3246,
+    "checks": [
+      {
+        "label": "vite8-test",
+        "start": "2026-10-19T23:19:34.207Z",
+        "end": "2026-10-19T23:25:12.700Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "test"
+        ],
+        "status": 0,
+        "lockSha256": "c7b5902cc58663111ffd4e301e7920ea8bdf6d493aaf8f165df74f28b18eb3cd"
+      },
+      {
+        "label": "vite8-typecheck",
+        "start": "2026-10-19T23:18:43.713Z",
+        "end": "2026-10-19T23:19:01.186Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "typecheck"
+        ],
+        "status": 0,
+        "lockSha256": "c7b5902cc58663111ffd4e301e7920ea8bdf6d493aaf8f165df74f28b18eb3cd"
+      },
+      {
+        "label": "vite8-build",
+        "start": "2026-10-19T23:19:02.193Z",
+        "end": "2026-10-19T23:19:22.257Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "build"
+        ],
+        "status": 0,
+        "lockSha256": "c7b5902cc58663111ffd4e301e7920ea8bdf6d493aaf8f165df74f28b18eb3cd"
+      },
+      {
+        "label": "vite8-proxy",
+        "start": "2026-10-19T23:18:49.340Z",
+        "end": "2026-10-19T23:18:54.428Z",
+        "command": [
+          "node",
+          "--import",
+          "./apps/server/node_modules/tsx/dist/loader.mjs",
+          "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+        ],
+        "status": 0,
+        "lockSha256": "c7b5902cc58663111ffd4e301e7920ea8bdf6d493aaf8f165df74f28b18eb3cd"
+      }
+    ],
+    "nextInstall": {
+      "label": "tiptap3-install",
+      "start": "2026-10-19T23:25:52.406Z"
+    },
+    "allChecksGreenBeforeNextInstall": true
+  },
+  {
+    "major": "Tiptap 3.32.0",
+    "testsPassedUnique": 853,
+    "checks": [
+      {
+        "label": "tiptap3-focused",
+        "start": "2026-10-19T23:26:02.021Z",
+        "end": "2026-10-19T23:26:13.650Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "--filter",
+          "@storymapper/web",
+          "exec",
+          "vitest",
+          "run",
+          "src/features/story-map/components/DescriptionEditor.test.tsx",
+          "src/features/story-map/components/card-detail.test.ts",
+          "src/features/story-map/components/card-detail-navigation.test.ts",
+          "src/features/story-map/components/card-dependencies.test.tsx",
+          "src/features/changesets/shell.test.tsx",
+          "src/app/live/live-updates.test.tsx",
+          "--maxWorkers=1"
+        ],
+        "status": 0,
+        "lockSha256": "f669cd34ef0f0d81cc51e466747d5f06fec313aa284444878929f2414de5fecd"
+      },
+      {
+        "label": "tiptap3-web-test",
+        "start": "2026-10-19T23:26:32.336Z",
+        "end": "2026-10-19T23:26:43.539Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "--filter",
+          "@storymapper/web",
+          "test"
+        ],
+        "status": 0,
+        "lockSha256": "f669cd34ef0f0d81cc51e466747d5f06fec313aa284444878929f2414de5fecd"
+      },
+      {
+        "label": "tiptap3-server-markdown",
+        "start": "2026-10-19T23:26:33.499Z",
+        "end": "2026-10-19T23:26:37.881Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "--filter",
+          "@storymapper/server",
+          "exec",
+          "vitest",
+          "run",
+          "src/http/routes/card-markdown.test.ts"
+        ],
+        "status": 0,
+        "lockSha256": "f669cd34ef0f0d81cc51e466747d5f06fec313aa284444878929f2414de5fecd"
+      },
+      {
+        "label": "tiptap3-typecheck-2",
+        "start": "2026-10-19T23:27:13.426Z",
+        "end": "2026-10-19T23:27:30.412Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "typecheck"
+        ],
+        "status": 0,
+        "lockSha256": "587d31d00a39e95a9ca34788cb2a5bd9bbabd6f412c709be032e7869a10c32ab"
+      },
+      {
+        "label": "tiptap3-build",
+        "start": "2026-10-19T23:27:44.666Z",
+        "end": "2026-10-19T23:28:04.588Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "build"
+        ],
+        "status": 0,
+        "lockSha256": "587d31d00a39e95a9ca34788cb2a5bd9bbabd6f412c709be032e7869a10c32ab"
+      }
+    ],
+    "nextInstall": {
+      "label": "static9-runtime-install",
+      "start": "2026-10-19T23:28:20.330Z"
+    },
+    "allChecksGreenBeforeNextInstall": true,
+    "note": "Full relevant web852 plus actual server Markdown1; focused114 overlap. Prior Tiptap2 newly-added regressions33 also passed."
+  },
+  {
+    "major": "@fastify/static 9.3.0",
+    "testsPassedUnique": 3167,
+    "checks": [
+      {
+        "label": "static9-workspace-test",
+        "start": "2026-10-19T23:28:53.358Z",
+        "end": "2026-10-19T23:31:20.783Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "-r",
+          "test"
+        ],
+        "status": 0,
+        "lockSha256": "16cee53564d2a5455de8446bb9b26c5a95c8f9248c3cc0a6d9c67ab679f01329"
+      },
+      {
+        "label": "static9-typecheck",
+        "start": "2026-10-19T23:28:35.288Z",
+        "end": "2026-10-19T23:28:52.372Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "typecheck"
+        ],
+        "status": 0,
+        "lockSha256": "16cee53564d2a5455de8446bb9b26c5a95c8f9248c3cc0a6d9c67ab679f01329"
+      },
+      {
+        "label": "static9-build",
+        "start": "2026-10-19T23:31:22.817Z",
+        "end": "2026-10-19T23:31:42.479Z",
+        "command": [
+          "corepack",
+          "pnpm",
+          "build"
+        ],
+        "status": 0,
+        "lockSha256": "16cee53564d2a5455de8446bb9b26c5a95c8f9248c3cc0a6d9c67ab679f01329"
+      },
+      {
+        "label": "static9-launcher",
+        "start": "2026-10-19T23:31:50.567Z",
+        "end": "2026-10-19T23:32:41.675Z",
+        "command": [
+          "node",
+          "--test",
+          "--test-name-pattern",
+          "setup performs a real|start serves actual|IPv6 host overrides|launcher preflight rejects server-local|server IPC loopback guard|doctor on installed checkout",
+          "scripts/commands.test.mjs",
+          "scripts/doctor.test.mjs"
+        ],
+        "status": 0,
+        "lockSha256": "16cee53564d2a5455de8446bb9b26c5a95c8f9248c3cc0a6d9c67ab679f01329"
+      }
+    ],
+    "nextInstall": {
+      "label": "static10-install",
+      "start": "2026-10-19T23:32:44.527Z"
+    },
+    "allChecksGreenBeforeNextInstall": true,
+    "launcherSupplementPassed": 6
+  }
+]

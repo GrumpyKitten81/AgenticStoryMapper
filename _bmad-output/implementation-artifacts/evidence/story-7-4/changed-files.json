@@ -1,0 +1,371 @@
+{
+  "baseline_revision": "74c5921401223e1fbfd3ad96bcfc582208ae5565",
+  "sourceFingerprint": "5f18ccfcd326a055d8c5f90f59bb0f4f78e44c8e4a99b093958619fdba3ad17b",
+  "files": [
+    {
+      "path": "apps/server/src/application/capability-manifest.json",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "dc9d8c388f10d349636d9647b4c3f6a0d8c9074510919912dfee76fb3eca3e06"
+    },
+    {
+      "path": "apps/server/src/application/connector/connector.use-cases.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "c2a0c5124eb9d5ad2eb4358d423c4d499acf90a20992d5fdb3823739c96b2fe0"
+    },
+    {
+      "path": "apps/server/src/application/descriptors.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "1884a86ed4c2867340690e12ab7cd89f953ca698dca1c4c819c08f1f1f3b026f"
+    },
+    {
+      "path": "apps/server/src/application/sync/github-command-regressions.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "25a705b2a0ec8e612dd9af86f85a22dda6bc6abfcfb8ab07db45fbddfba78afd"
+    },
+    {
+      "path": "apps/server/src/application/sync/github-import-command.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "8b9438c78b878adcc857299beacade28e51df100ba8ff83981b8bac2a261d49c"
+    },
+    {
+      "path": "apps/server/src/application/sync/remote-push.use-cases.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "d2bbe4063c5a961581b25ec4212e95e020363de3a5b2432303fb8d4730e4e6b9"
+    },
+    {
+      "path": "apps/server/src/application/sync/sync-conflict.use-cases.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "44b622f533aad3af3443c6fc05f15b7c7bcccc807fc60f23cd264c1f4b7ae36b"
+    },
+    {
+      "path": "apps/server/src/application/sync/sync.use-cases.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "a07befa4e2fbb0b2fa73cde7513eca87a6511126b1faa677f5d027b2e766173c"
+    },
+    {
+      "path": "apps/server/src/config/served-origin.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "4865bdb7eb41be38d75aaa7fa229f1a972e5e625d2865b70238965ff9722ec84"
+    },
+    {
+      "path": "apps/server/src/fixtures/reviewed-push-provider.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "26c71b4e58b105f14e500ef6f8660ce96341f1bcd9d1d05a2581033ffd9a57ef"
+    },
+    {
+      "path": "apps/server/src/http/routes/card-markdown.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "fc12b144cf7e473a19ec8b84593f61e2bb62f621edf9522d9c6fca9036d64130"
+    },
+    {
+      "path": "apps/server/src/http/routes/index.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "ae428cae98c1b0a66d7b0f896d2c2f246680313df7497b6ded68c60cac38d60f"
+    },
+    {
+      "path": "apps/server/src/http/routes/sync-routes.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "0baa5cd14610c916ea39ca2fc637353d22f7f8fbcf63722aad6735450af77064"
+    },
+    {
+      "path": "apps/server/src/http/routes/unit-of-work.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "94d7b91c939cff13b12d720e49325f3427dd6aa9879fc9af18e3560c2ad969de"
+    },
+    {
+      "path": "apps/server/src/mcp/github-command-sdk.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "f619302e3a9779aedc338c455f55027a3654b9ca057a37e73387d999d5a3d1d7"
+    },
+    {
+      "path": "apps/server/src/mcp/github-command-transports.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "fd4b71888161b3192610e8f643ca07a8f4c2e8f4eef7a4edba16836e5560377c"
+    },
+    {
+      "path": "apps/server/src/mcp/tools/complete-surface.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "c496893efe9bf1b25e9023aa6d738d85f80331e3b73065c728b8dcf427cc171e"
+    },
+    {
+      "path": "apps/server/src/services/project-archive.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "26d011d617980147b559d2d3f060d74ff44b025a743ecf778ddd8cb0399f31a5"
+    },
+    {
+      "path": "apps/server/src/services/remote-push-context.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "96f0c0419e05cb561fb1684b5e26e08bd3333089c52e6006f4be40a2d9d3eb6f"
+    },
+    {
+      "path": "apps/server/src/services/remote-push-evidence.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "33886d86f92b4aa77e4b805a2de6f31b0421d97ca3f2c1ee7eb4f7977bfabd57"
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "9d47fefa3bd2abd49dabc3aebed84a6d7db0d03ed248289e80a9a9bdb9a28d5a"
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "6edc54c8f4192b3e3b41a686c224831a9b5ecadda64846022849cce934932b9f"
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "fe42b6584c61dc5ef12db22583aa0cee0886bd17e7feef1abadad74371f6e362"
+    },
+    {
+      "path": "apps/server/src/services/sync-review.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "7ca0bec8b7f2ba3a5a72470ec68814f59c54418b8bb4d3665f2df0a947809c35"
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.test.ts",
+      "description": "Controlled regression coverage/fixture: human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "65fb532f23ec2a82ed99fd4af06425426eedb638f033dc82c54c7a13fc2f314a"
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.ts",
+      "description": "Human-only reviewed execution, incoming-safe Sync and durable recovery orchestration",
+      "sha256": "098e40024796bacc713d2d9f3d266a3f604e0d08aaa18f991759900cdcf2f3b5"
+    },
+    {
+      "path": "apps/web/src/app/api.ts",
+      "description": "Exact review/results UI, outbound mapping, full scope guards and routed modal integration",
+      "sha256": "4e5b8ecae1181c1a9181e4eda45b13c9d01e2293a48b8b47baf3284389808a88"
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectionFields.tsx",
+      "description": "Exact review/results UI, outbound mapping, full scope guards and routed modal integration",
+      "sha256": "78f2caa84c1027bbb687dc3ad00f09caa61aa24ebf4ff7fb5cf2d4b015a3f095"
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "description": "Exact review/results UI, outbound mapping, full scope guards and routed modal integration",
+      "sha256": "169b8d4f9e2f3c636e63d92629c50cce20203507dc1baa6a10ec86debe9a6e6b"
+    },
+    {
+      "path": "apps/web/src/features/github-sync/RemotePushReview.tsx",
+      "description": "Exact review/results UI, outbound mapping, full scope guards and routed modal integration",
+      "sha256": "4cd279155e808a1febe5b3b44dcf0961685012c5ae9d8bb42757b230606ac303"
+    },
+    {
+      "path": "apps/web/src/features/github-sync/connection-draft.ts",
+      "description": "Exact review/results UI, outbound mapping, full scope guards and routed modal integration",
+      "sha256": "8df7ddf2fac3840b49d187e3f5e1676cf315503e3d1f3f30fce3b3349e2d4789"
+    },
+    {
+      "path": "apps/web/src/features/github-sync/github-selection.test.tsx",
+      "description": "Controlled regression coverage/fixture: exact review/results UI, outbound mapping, full scope guards and routed modal integration",
+      "sha256": "57db64022e767145e676df4d6d56a945583a72a5cf256f3a7caeccd9d78446a3"
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "description": "Exact review/results UI, outbound mapping, full scope guards and routed modal integration",
+      "sha256": "299bbc02f824d4617695192bbcd5bc3832da79d4d49ead5984c0ad245ec85bf8"
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-detail-github.test.ts",
+      "description": "Controlled regression coverage/fixture: exact review/results UI, outbound mapping, full scope guards and routed modal integration",
+      "sha256": "b2d3d9f9cbf970b526c1b2096fc1b41869bbd907756a37b9aaf9f327da0a63c6"
+    },
+    {
+      "path": "apps/web/src/ui-strings/github-sync-selection.ts",
+      "description": "Exact review/results UI, outbound mapping, full scope guards and routed modal integration",
+      "sha256": "7bb3a44f1ac891b39d3c40b9e9dfbd2066cf41a0789eb296616ea84c43dfb42a"
+    },
+    {
+      "path": "apps/web/src/ui-strings/remote-push.ts",
+      "description": "Exact review/results UI, outbound mapping, full scope guards and routed modal integration",
+      "sha256": "054217d361ef7676351cfb3857ab37dd412c97f4da2167db76dabf3beb3d9047"
+    },
+    {
+      "path": "docs/mcp-tools.md",
+      "description": "Generated capability and MCP surface documentation",
+      "sha256": "2b41dc85e12275815afe7f17aac0ef5608589b3ece435b34ba8db727ac1f4731"
+    },
+    {
+      "path": "packages/contracts/src/api/http.ts",
+      "description": "Shared exact remote plan, effect, intent, outcome, HTTP and mapping contracts",
+      "sha256": "ac73779df0caa9d33823a6995a7b70529ede0df232314f6f3768a4d9cd51f2d2"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "description": "Shared exact remote plan, effect, intent, outcome, HTTP and mapping contracts",
+      "sha256": "7a99a8cf1352a915a49d4e85f866655ecde30740516157e076c443cd14c24b79"
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "description": "Shared exact remote plan, effect, intent, outcome, HTTP and mapping contracts",
+      "sha256": "1bdd31cdc90b9bd0a2dc59abeab45f62eb1cffd82617a227ec1b6ccd901a59ef"
+    },
+    {
+      "path": "packages/contracts/src/schemas/remote-push.test.ts",
+      "description": "Controlled regression coverage/fixture: shared exact remote plan, effect, intent, outcome, HTTP and mapping contracts",
+      "sha256": "9d2dd0ae8108b9242ca98ced41e94dc21db7ecf8c7f7246c7f4772aad8013579"
+    },
+    {
+      "path": "packages/contracts/src/schemas/remote-push.ts",
+      "description": "Shared exact remote plan, effect, intent, outcome, HTTP and mapping contracts",
+      "sha256": "d9099fae3cfaa028efdb95b5706be3d1fd12b38379f82def0c0c571153e511f9"
+    },
+    {
+      "path": "packages/core/src/changesets/board-import-resolution.ts",
+      "description": "Pure exact payload/managed-label logic and canonical metadata projections",
+      "sha256": "f7fa2dad9d477828768a2788046d8f301c10cd9b8796fd3f6dd5f4c7c1628b6a"
+    },
+    {
+      "path": "packages/core/src/changesets/github-identity.ts",
+      "description": "Pure exact payload/managed-label logic and canonical metadata projections",
+      "sha256": "1944c3f277e16ed74d541a26bfc0317d659b57ec6094da5b7d2e60c2efbff916"
+    },
+    {
+      "path": "packages/core/src/index.ts",
+      "description": "Pure exact payload/managed-label logic and canonical metadata projections",
+      "sha256": "cc8a4399e40209b00289295d9a993abc955db603b8f0a667f45469d2a486121b"
+    },
+    {
+      "path": "packages/core/src/publishing/export-formatters.ts",
+      "description": "Pure exact payload/managed-label logic and canonical metadata projections",
+      "sha256": "71a47bc8adbd48b5a65108ac411b7893c686a0498fbd4457da2262f7a1d3a8d4"
+    },
+    {
+      "path": "packages/core/src/publishing/remote-push.test.ts",
+      "description": "Controlled regression coverage/fixture: pure exact payload/managed-label logic and canonical metadata projections",
+      "sha256": "88be83d7748e6c47e2aa2f4fe9da1c5b3fea2463c6b2441b12b1f8ceb4141e44"
+    },
+    {
+      "path": "packages/core/src/publishing/remote-push.ts",
+      "description": "Pure exact payload/managed-label logic and canonical metadata projections",
+      "sha256": "8fcd398730c2bd5f9c00b59aa7ba525c8ecde6ee8fa389aac7eee88d202960cd"
+    },
+    {
+      "path": "packages/core/src/reports/sync-health.test.ts",
+      "description": "Controlled regression coverage/fixture: pure exact payload/managed-label logic and canonical metadata projections",
+      "sha256": "ac1b344d39ecb2c728814d564c4c6f33e430b479c5b3814bac83ffa53b3e5be3"
+    },
+    {
+      "path": "packages/db/src/connection.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "21797059b608b985f6fcac719898a34138d0b108f216c2df9e6c378a048602ab"
+    },
+    {
+      "path": "packages/db/src/fixtures/archive-demo.ts",
+      "description": "Controlled regression coverage/fixture: persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "3924724ddc1859b5c7a2381278a5aa694abde32f0745dd6b9560ff42e5e17541"
+    },
+    {
+      "path": "packages/db/src/github-archive-redaction.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "5ad1c286c71fd4c7985c635b06e44dd54b2545066b432dad88bb0b853ed15c88"
+    },
+    {
+      "path": "packages/db/src/remote-push.test.ts",
+      "description": "Controlled regression coverage/fixture: persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "7cacc3b42234852eb4ccd1972a5d5296be07942858062292bc94ef6db5d451e2"
+    },
+    {
+      "path": "packages/db/src/repositories/github-refs-repository.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "5b374875d1e54c983bb69d8b63d53a1da6c4ab5b02cca4c1f41cc80a36c169dd"
+    },
+    {
+      "path": "packages/db/src/repositories/operation-persistence-repository.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "df87cb4dcb02108708ddbf004e9f652a16a84649823769b8e89e932ad983c67b"
+    },
+    {
+      "path": "packages/db/src/repositories/remote-push-repository.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "8f4b4a4909dd7cf4843a0e49af19f080174424382aaae4ed0f9025840d974d7e"
+    },
+    {
+      "path": "packages/db/src/repositories/row-mappers.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "0278aaa5a24a4740e899ae9cd58e8be246824adccfea5cbe24bdf525f68e75e1"
+    },
+    {
+      "path": "packages/db/src/repositories/storymapper-repository.test.ts",
+      "description": "Controlled regression coverage/fixture: persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "b0d8fc01b0191fec2178788fd947f1751f1117d04cc06efa7bbe34c29dc1831e"
+    },
+    {
+      "path": "packages/db/src/repositories/storymapper-repository.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "4bc178282d3b32941424b74922f44885f0549fafe12df911117368bf442dfe91"
+    },
+    {
+      "path": "packages/db/src/repositories/work-item-repository.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "1708ad5b164a0607365005b64a6f7ef2387a8d8cd99cdcf6389716737fe1b638"
+    },
+    {
+      "path": "packages/db/src/restore-history.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "30ca327ac4bbfec37a79b197cdf79ff0e8bb6f15719e546099a04d3d80c07d1c"
+    },
+    {
+      "path": "packages/db/src/restore-validation.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "c8bd0ff97dd06885ed5d42c3d6ca47781cd64b76345ed6b993e0bb8aaa58abb2"
+    },
+    {
+      "path": "packages/db/src/schema/classification.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "40d03ddb70e2579a44506779d2ccff0aa001a33f7fadfaafcca114cbe5d84880"
+    },
+    {
+      "path": "packages/db/src/schema/tables.ts",
+      "description": "Persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "8a23d98c31f50c08593d570984c665097a1fec35aaec29e9e3c068aa4f19e312"
+    },
+    {
+      "path": "packages/db/src/snapshot.test.ts",
+      "description": "Controlled regression coverage/fixture: persisted consent/evidence, guarded intents, canonical bindings and Restore/archive policy",
+      "sha256": "0c5078503ee2c31d298dce6c60c0ca83f0b3a0e10f857463d971ad51d63ac9fc"
+    },
+    {
+      "path": "packages/github/src/providers/github-provider.test.ts",
+      "description": "Controlled regression coverage/fixture: explicit Issue/Milestone writes, native types and complete reconciliation for both transports",
+      "sha256": "2605651bf3537642179ada66bcf9700e90fccf775a3712c3aff3ec36753eeb04"
+    },
+    {
+      "path": "packages/github/src/providers/github-provider.ts",
+      "description": "Explicit Issue/Milestone writes, native types and complete reconciliation for both transports",
+      "sha256": "62d0275cd800ad71b525281a989cbebbe18b300c1b46467163f2fb7d7df90d1b"
+    },
+    {
+      "path": "packages/github/src/providers/github-push-transports.test.ts",
+      "description": "Controlled regression coverage/fixture: explicit Issue/Milestone writes, native types and complete reconciliation for both transports",
+      "sha256": "3f4df59a6bf9e15cbe069112dffb817e0589c042f080327268f9e7f739b7c22e"
+    },
+    {
+      "path": "packages/github/src/providers/github-remote-push.test.ts",
+      "description": "Controlled regression coverage/fixture: explicit Issue/Milestone writes, native types and complete reconciliation for both transports",
+      "sha256": "af9538bbac2d0b6df7e5cde1830cfcb817102b2fdd7f2c4a21133c275033f9d4"
+    },
+    {
+      "path": "packages/github/src/providers/github-remote-push.ts",
+      "description": "Explicit Issue/Milestone writes, native types and complete reconciliation for both transports",
+      "sha256": "d611be61e535c366b4234dbd3c43aa53d6dbb1c90d37659aefdf5e4e89bbafe0"
+    },
+    {
+      "path": "packages/github/src/providers/work-item-provider.ts",
+      "description": "Explicit Issue/Milestone writes, native types and complete reconciliation for both transports",
+      "sha256": "cf6f4aa6b6c2e6f3eaf218cebdd17e7bfa692c0fcb8d1498d3c1b4b5632605b3"
+    },
+    {
+      "path": "scripts/capability-operation-coverage.mjs",
+      "description": "Capability/operation parity for reviewed human remote writes",
+      "sha256": "dd105659f5b5c3bc6ba63eccc7d93eafd131b378ac17f63931612283c42546e0"
+    },
+    {
+      "path": "scripts/capability-scan.test.mjs",
+      "description": "Controlled regression coverage/fixture: capability/operation parity for reviewed human remote writes",
+      "sha256": "23420073d8b94c57313d8745bc1d85fef3ba834e2721e3f8f81d29ddcda4d787"
+    }
+  ]
+}

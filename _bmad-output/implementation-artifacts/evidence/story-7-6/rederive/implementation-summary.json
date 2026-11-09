@@ -1,0 +1,72 @@
+{
+  "scope": "Story7.6 spec v2 implementation rederivation",
+  "scaffold_sha256_uncompressed": "a2c6e061747a44cd5dc5788e75e30cfb1294128f5c08cc671002c578853e141c",
+  "operations_schema_version": 8,
+  "focused_verification": [
+    {
+      "package": "contracts",
+      "tests": 169,
+      "log": "contracts-final.log.gz"
+    },
+    {
+      "package": "core",
+      "tests": 444,
+      "log": "core-final.log.gz",
+      "note": "Followed by shared-normalization extraction with9agreement and84server tests passing."
+    },
+    {
+      "package": "db",
+      "tests": 63,
+      "log": "db-focused-final.log.gz"
+    },
+    {
+      "package": "server",
+      "tests": 210,
+      "log": "server-integration-2.log.gz"
+    },
+    {
+      "package": "server-http-sdk-stdio",
+      "tests": 47,
+      "log": "transport-human-final.log.gz",
+      "note": "Includes19HTTP tests also in210server suite; do not sum as independent tests."
+    },
+    {
+      "package": "web",
+      "tests": 146,
+      "log": "ui-focused-final.log.gz"
+    },
+    {
+      "package": "server-shared-normalization",
+      "tests": 84,
+      "log": "shared-normalization-final.log.gz"
+    },
+    {
+      "package": "core-agreement-final",
+      "tests": 9,
+      "log": "agreement-final.log.gz"
+    }
+  ],
+  "typechecks": {
+    "db": "integration-db-typecheck.log.gz",
+    "server": "shared-normalization-typecheck-final.log.gz",
+    "core": "core-locks-typecheck-final.log.gz",
+    "web": "ui-typecheck-final.log.gz"
+  },
+  "human_write_diagnostic": {
+    "maps": 6,
+    "cards": 53,
+    "source_documents": 1,
+    "unrelated_http_writes": 2,
+    "unrelated_operation_snapshot_loads": 0,
+    "disputed_http_writes": 1,
+    "disputed_operation_snapshot_loads": 1,
+    "diagnostic_duration_ms_includes_fixture_conflict_setup": 13.68645800000013,
+    "threshold_added": false,
+    "log": "server-integration-2.log.gz"
+  },
+  "failures_retained": true,
+  "native_acceptance": "Unverified; existing I2/I3 deferrals preserved.",
+  "parent_pending": "Independent full workspace tests, release verification, final staging and protected-path fingerprints.",
+  "protected_paths_written": false,
+  "commit_push": false
+}

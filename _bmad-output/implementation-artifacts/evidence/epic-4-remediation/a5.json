@@ -1,0 +1,25 @@
+{
+  "action": "epic-4-retro-a5",
+  "checks": {
+    "new_core_differential": 8,
+    "full_core": 375,
+    "new_http_lifecycle": 5,
+    "http_preview_permissions_total": 30,
+    "focused_db": 63,
+    "elevated_restore": 18,
+    "typecheck": [
+      "core",
+      "db",
+      "server"
+    ],
+    "full_db": 414
+  },
+  "reproductions": [
+    "Beforefix validfixtures reproduce2missing shared-owner deletion prerequisites.",
+    "Extra partialselection reveals stale canonical-owner provenance in preview.",
+    "Owner→existing-shared-owner→away reveals hidden physical attachment must survive."
+  ],
+  "implementation": "Single identity mutation path tracks old/new/shared owners and physical evidence, removes selfdependencies. Internal OperationSnapshot now carries all physical GitHub attachments without canonical synthesized rows; public preview derives canonical+visible attachments matching unchanged public DB snapshot. No public HTTP/MCP or persisted schema changes.",
+  "review": "Independent complete source/core/HTTP review and parent diff inspection: no actionable findings. Public projection contents/provenance/versions/selection agree; HTTP tests normalize generatedIDs/times and sortrelationshiparrays (not a promise of sourceLink arrayorder). Cardordering preserved. Physical attachment survives hide/reveal; explicit canonicalunlink alone removes it.",
+  "initial_failures": "Initialregressions retained. Full DB sandbox412/414 had known childIPC/WAL restriction plus old logical-source count, now adjusted to rawphysical5 with hiddenrow+publicproof. FocusedDB63/63 and elevatedRestore18/18 pass; finalwhole-suite pending. Final elevated full DB414/414, final server30/30 passed; complete raw final logs retained."
+}

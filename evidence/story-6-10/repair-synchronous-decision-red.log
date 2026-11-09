@@ -1,0 +1,39 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ❯ src/features/changesets/review-focus.test.tsx (12 tests | 2 failed) 342ms
+   × refuses same-event refresh followed by decision admission and direct mutation execution 13ms
+     → expected false to be true // Object.is equality
+   × refuses same-event live invalidation followed by decision admission and direct mutation execution 8ms
+     → expected false to be true // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/changesets/review-focus.test.tsx > refuses same-event refresh followed by decision admission and direct mutation execution
+ FAIL  src/features/changesets/review-focus.test.tsx > refuses same-event live invalidation followed by decision admission and direct mutation execution
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/features/changesets/review-focus.test.tsx:317:76
+    315|       captured.decide.mutate("approve");
+    316|     });
+    317|     expect(fixture.pending.every(({ path }) => path.includes("/preview…
+       |                                                                            ^
+    318|     expect(fixture.fetch.mock.calls.filter(([path]) => !path.includes(…
+    319|     expect(fixture.button("Approve selection").getAttribute("aria-disa…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 10 passed (12)
+   Start at  22:35:41
+   Duration  933ms (transform 129ms, setup 0ms, collect 294ms, tests 342ms, environment 186ms, prepare 27ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/features/changesets/review-focus.test.tsx --maxWorkers=1 --minWorkers=1

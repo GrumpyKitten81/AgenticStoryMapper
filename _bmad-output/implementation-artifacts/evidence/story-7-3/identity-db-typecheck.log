@@ -1,0 +1,47 @@
+
+> @storymapper/db@0.1.0 typecheck [REDACTED_HOME]/Projects/StoryMapper/packages/db
+> tsc -p tsconfig.json --noEmit
+
+src/repositories/changeset-executor.test.ts(268,222): error TS2322: Type '"githubLink"' is not assignable to type '"externalRef" | "release" | "card" | "roadmap" | "persona" | "roadmapColumn" | "roadmapSwimlane" | "roadmapCard" | "roadmapReference" | "annotation" | "workflowStatus" | "storyTemplate" | ... 14 more ... | "githubBoardImport"'.
+src/repositories/changeset-executor.test.ts(268,294): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/changeset-executor.test.ts(268,311): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/changeset-executor.test.ts(268,334): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/changeset-executor.test.ts(268,352): error TS2322: Type 'number' is not assignable to type 'never'.
+src/repositories/changeset-executor.test.ts(268,368): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/changeset-executor.test.ts(306,36): error TS2322: Type '"githubLink"' is not assignable to type '"externalRef" | "release" | "card" | "roadmap" | "persona" | "roadmapColumn" | "roadmapSwimlane" | "roadmapCard" | "roadmapReference" | "annotation" | "workflowStatus" | "storyTemplate" | ... 14 more ... | "githubBoardImport"'.
+src/repositories/changeset-executor.test.ts(306,125): error TS2322: Type '{ cardId: string; }' is not assignable to type 'Record<string, never> | { name?: string | undefined; type?: "simple" | "release" | "epic" | undefined; } | { name?: string | undefined; position?: number | undefined; icon?: string | undefined; color?: string | undefined; } | ... 49 more ... | { ...; }'.
+  Type '{ cardId: string; }' is missing the following properties from type '{ cardId: string; kind: "github" | "chunk" | "note"; id: string; }': kind, id
+src/repositories/changeset-executor.test.ts(307,38): error TS2322: Type '"githubLink"' is not assignable to type '"externalRef" | "release" | "card" | "roadmap" | "persona" | "roadmapColumn" | "roadmapSwimlane" | "roadmapCard" | "roadmapReference" | "annotation" | "workflowStatus" | "storyTemplate" | ... 14 more ... | "githubBoardImport"'.
+src/repositories/changeset-executor.test.ts(307,136): error TS2322: Type 'string' is not assignable to type '"conflict" | "stale" | "synced" | "unsynced" | "remote_deleted" | "local_deleted"'.
+src/repositories/operation-catalog-executor.test.ts(61,37): error TS2322: Type '"githubLink"' is not assignable to type '"externalRef" | "release" | "card" | "roadmap" | "persona" | "roadmapColumn" | "roadmapSwimlane" | "roadmapCard" | "roadmapReference" | "annotation" | "workflowStatus" | "storyTemplate" | ... 14 more ... | "githubBoardImport"'.
+src/repositories/operation-catalog-executor.test.ts(61,82): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-catalog-executor.test.ts(61,98): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-catalog-executor.test.ts(61,120): error TS2322: Type 'number' is not assignable to type 'never'.
+src/repositories/operation-catalog-executor.test.ts(61,136): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-catalog-executor.test.ts(83,37): error TS2322: Type '"githubLink"' is not assignable to type '"externalRef" | "release" | "card" | "roadmap" | "persona" | "roadmapColumn" | "roadmapSwimlane" | "roadmapCard" | "roadmapReference" | "annotation" | "workflowStatus" | "storyTemplate" | ... 14 more ... | "githubBoardImport"'.
+src/repositories/operation-catalog-executor.test.ts(83,103): error TS2322: Type 'string' is not assignable to type '"conflict" | "stale" | "synced" | "unsynced" | "remote_deleted" | "local_deleted"'.
+src/repositories/operation-catalog-executor.test.ts(95,37): error TS2322: Type '"githubLink"' is not assignable to type '"externalRef" | "release" | "card" | "roadmap" | "persona" | "roadmapColumn" | "roadmapSwimlane" | "roadmapCard" | "roadmapReference" | "annotation" | "workflowStatus" | "storyTemplate" | ... 14 more ... | "githubBoardImport"'.
+src/repositories/operation-executor-persistence.test.ts(165,30): error TS2322: Type '"githubLink"' is not assignable to type '"externalRef" | "release" | "card" | "roadmap" | "persona" | "roadmapColumn" | "roadmapSwimlane" | "roadmapCard" | "roadmapReference" | "annotation" | "workflowStatus" | "storyTemplate" | ... 14 more ... | "githubBoardImport"'.
+src/repositories/operation-executor-persistence.test.ts(165,75): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(165,91): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(165,113): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(165,135): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(165,184): error TS2322: Type 'number' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(166,40): error TS2322: Type '"githubLink"' is not assignable to type '"externalRef" | "release" | "card" | "roadmap" | "persona" | "roadmapColumn" | "roadmapSwimlane" | "roadmapCard" | "roadmapReference" | "annotation" | "workflowStatus" | "storyTemplate" | ... 14 more ... | "githubBoardImport"'.
+src/repositories/operation-executor-persistence.test.ts(166,85): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(166,101): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(166,123): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(166,172): error TS2322: Type 'number' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(355,44): error TS2322: Type '"githubLink"' is not assignable to type '"externalRef" | "release" | "card" | "roadmap" | "persona" | "roadmapColumn" | "roadmapSwimlane" | "roadmapCard" | "roadmapReference" | "annotation" | "workflowStatus" | "storyTemplate" | ... 14 more ... | "githubBoardImport"'.
+src/repositories/operation-executor-persistence.test.ts(355,75): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(355,93): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(355,115): error TS2322: Type 'number' is not assignable to type 'never'.
+src/repositories/operation-executor-persistence.test.ts(355,131): error TS2322: Type 'string' is not assignable to type 'never'.
+src/repositories/work-item-repository.ts(208,40): error TS2379: Argument of type '{ externalRefId: string; milestone?: string | null | undefined; url: string; labels: string[]; provider: "github"; cardId?: string | undefined; releaseId?: string | null | undefined; connectionId: string; ... 8 more ...; parentOverrideLocal?: boolean | undefined; }' is not assignable to parameter of type 'Omit<{ id: string; connectionId: string; externalRefId: string; labels: string[]; parentOverrideLocal: boolean; syncState: "conflict" | "stale" | "synced" | "unsynced" | "remote_deleted" | "local_deleted"; ... 5 more ...; lastSyncedAt?: string | undefined; }, "id" | ... 1 more ... | "parentOverrideLocal"> & { ...; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Type '{ externalRefId: string; milestone?: string | null | undefined; url: string; labels: string[]; provider: "github"; cardId?: string | undefined; releaseId?: string | null | undefined; connectionId: string; ... 8 more ...; parentOverrideLocal?: boolean | undefined; }' is not assignable to type '{ syncState?: "conflict" | "stale" | "synced" | "unsynced" | "remote_deleted" | "local_deleted"; parentOverrideLocal?: boolean; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+    Types of property 'syncState' are incompatible.
+      Type '"conflict" | "stale" | "synced" | "unsynced" | "remote_deleted" | "local_deleted" | undefined' is not assignable to type '"conflict" | "stale" | "synced" | "unsynced" | "remote_deleted" | "local_deleted"'.
+        Type 'undefined' is not assignable to type '"conflict" | "stale" | "synced" | "unsynced" | "remote_deleted" | "local_deleted"'.
+[REDACTED_HOME]/Projects/StoryMapper/packages/db:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/db@0.1.0 typecheck: `tsc -p tsconfig.json --noEmit`
+Exit status 2

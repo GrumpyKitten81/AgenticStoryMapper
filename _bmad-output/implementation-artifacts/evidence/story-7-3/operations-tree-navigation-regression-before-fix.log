@@ -1,0 +1,47 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/github-sync/github-visibility.test.tsx (3 tests) 91ms
+ ✓ src/features/story-map/board-filter-selection.test.tsx (21 tests) 4356ms
+   ✓ records complete Discovery DOM input-to-result diagnostics on a legal 1,000-Card hierarchy 3891ms
+ ❯ src/features/story-map/views/core-views.test.tsx (42 tests | 1 failed) 7084ms
+   ✓ retains every eligible Card in a legal 1000-Card discovery projection 1718ms
+   ✓ retains every eligible Card in a legal 1000-Card tree projection 357ms
+   ✓ retains every eligible Card in a legal 1000-Card planning projection 1045ms
+   ✓ retains every eligible Card in a legal 1000-Card backlog projection 940ms
+   ✓ retains every eligible Card in a legal 1000-Card tracking projection 393ms
+   × renders one canonical Issue link in Tree when sync state joins the same reference 10ms
+     → expected  to have a length of 1 but got +0
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in discovery 693ms
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in planning 516ms
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in backlog 377ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/story-map/views/core-views.test.tsx > renders one canonical Issue link in Tree when sync state joins the same reference
+AssertionError: expected  to have a length of 1 but got +0
+
+- Expected
++ Received
+
+- 1
++ 0
+
+ ❯ src/features/story-map/views/core-views.test.tsx:240:52
+    238|   await mount(viewUrl);
+    239|   const row = primary(cardId).closest(".tree-row")!;
+    240|   expect(row.querySelectorAll(`a[href="${url}"]`)).toHaveLength(1);
+       |                                                    ^
+    241|   expect(row.querySelector(`a[href="${url}"]`)?.textContent).toContain…
+    242| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 65 passed (66)
+   Start at  01:54:16
+   Duration  8.35s (transform 719ms, setup 0ms, collect 2.26s, tests 11.53s, environment 575ms, prepare 91ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/features/github-sync/github-visibility.test.tsx src/features/story-map/board-filter-selection.test.tsx src/features/story-map/views/core-views.test.tsx

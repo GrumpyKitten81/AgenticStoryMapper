@@ -1,0 +1,55 @@
+{
+  "scope": "Implementation subagent local verification; hosted jobs and protection activation unexecuted",
+  "logs": [
+    {
+      "file": "implementation-frozen-install.log.gz",
+      "sha256": "58d7824ad135e196ac1081b4fbf0ea54e1603ca4d0bb19e9f9e0d10a2f5c91c3",
+      "decoded_bytes": 509
+    },
+    {
+      "file": "implementation-audit-tests-final.log.gz",
+      "sha256": "792af5cc4894dd911f5607ed83795ac7035e203b8342ba6b41d0c41f9debfe03",
+      "decoded_bytes": 2800
+    },
+    {
+      "file": "implementation-actionlint.log.gz",
+      "sha256": "3c86ec827980f5e39238186594d13f9fc4fc8cfdf901ea8260fe86fd1416d04c",
+      "decoded_bytes": 0
+    },
+    {
+      "file": "implementation-actionlint-version.log.gz",
+      "sha256": "9fdb348a454281a34d7ee9463a896add48eb679977e4dff1f1a3e675701a6b32",
+      "decoded_bytes": 96
+    },
+    {
+      "file": "implementation-full-check.log.gz",
+      "sha256": "273f95eb42ff1bede5a961c9f00fc161179fa933892412bb77633708408454ed",
+      "decoded_bytes": 261543
+    },
+    {
+      "file": "implementation-release-verify.log.gz",
+      "sha256": "21d39c1520e5c9417cfe395c61042a8540c36e59e87d5e2e54cc139d3cdaafa1",
+      "decoded_bytes": 5061
+    },
+    {
+      "file": "implementation-audit-live-summary.log.gz",
+      "sha256": "35ae419ed08f54090633837c9ecc2e1b211fda4d60433f29265ef608bb69d262",
+      "decoded_bytes": 170
+    },
+    {
+      "file": "implementation-native-rebuild-final.log.gz",
+      "sha256": "4a0c36ccaa38cdc0ac1ca6f948c13e0517f098422319605e2ec7b4aeb87c17a8",
+      "decoded_bytes": 3609
+    },
+    {
+      "file": "implementation-native-smoke-final.log.gz",
+      "sha256": "f735467dfa8270061543dee66913db62662720d153c2a6a8b9fd89c79d118678",
+      "decoded_bytes": 0
+    },
+    {
+      "file": "implementation-audit-initial-failure.log.gz",
+      "sha256": "dd7ffded138c185afa42add1956fc3191028b37226362e2aba6cf1594f2560ad",
+      "decoded_bytes": 3395
+    }
+  ]
+}

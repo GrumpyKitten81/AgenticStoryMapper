@@ -1,0 +1,39 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+
+ ❯ src/changesets/dependency-effect-parity.test.ts (6 tests | 1 failed) 44ms
+   × matches effects through local aliases, placement, nullable Release assignment and shared deletion 6ms
+     → expected [ 'independent' ] to deeply equal []
+ ✓ src/changesets/operation-selection-regressions.test.ts (45 tests) 83ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/changesets/dependency-effect-parity.test.ts > matches effects through local aliases, placement, nullable Release assignment and shared deletion
+AssertionError: expected [ 'independent' ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   "independent",
++ ]
+
+ ❯ src/changesets/dependency-effect-parity.test.ts:77:39
+     75|   assertDependencyParity(state, operations, allocations);
+     76|   const closed = resolveOperations(state, operations, allocations, ["r…
+     77|   expect(closed.selectedOperationIds).toEqual([]);
+       |                                       ^
+     78|   expect(closed.state).toEqual(state);
+     79|   expect(resolveOperations(state, operations, allocations).state.cards…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 50 passed (51)
+   Start at  10:59:14
+   Duration  524ms (transform 192ms, setup 0ms, collect 539ms, tests 127ms, environment 0ms, prepare 53ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/packages/core:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/changesets/dependency-effect-parity.test.ts src/changesets/operation-selection-regressions.test.ts

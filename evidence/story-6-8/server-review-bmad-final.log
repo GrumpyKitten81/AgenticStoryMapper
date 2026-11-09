@@ -1,0 +1,23 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/mcp/tools/bmad-round-trip.test.ts (14 tests) 26966ms
+   ✓ publishes 6/34 on http, previews protection and human API apply with equivalent durable hierarchy/evidence/audit 2525ms
+   ✓ publishes 6/34 on sdk, previews protection and human API apply with equivalent durable hierarchy/evidence/audit 2290ms
+   ✓ refreshes two edits/remove/add on http with reviewed archive, immutable source history and repeat no-op 3543ms
+   ✓ refreshes two edits/remove/add on sdk with reviewed archive, immutable source history and repeat no-op 3490ms
+   ✓ updates evidence-only baselines on http and preserves manual evidence and other maps/systems 2413ms
+   ✓ updates evidence-only baselines on sdk and preserves manual evidence and other maps/systems 2400ms
+   ✓ uses exact scoped identities on http for duplicate titles and same-title renumbering 1419ms
+   ✓ uses exact scoped identities on sdk for duplicate titles and same-title renumbering 1468ms
+   ✓ reports every changed/unchanged/removed human baseline on http before proposal/source/snapshot writes 1003ms
+   ✓ reports every changed/unchanged/removed human baseline on sdk before proposal/source/snapshot writes 1003ms
+   ✓ reviews explicit slicing and configured delivery on http with notes and Activity reads 1495ms
+   ✓ reviews explicit slicing and configured delivery on sdk with notes and Activity reads 1500ms
+   ✓ refuses delayed human drift after actual proposal and approval on http atomically 1203ms
+   ✓ refuses delayed human drift after actual proposal and approval on sdk atomically 1212ms
+
+ Test Files  1 passed (1)
+      Tests  14 passed (14)
+   Start at  20:09:23
+   Duration  28.07s (transform 504ms, setup 0ms, collect 909ms, tests 26.97s, environment 0ms, prepare 29ms)

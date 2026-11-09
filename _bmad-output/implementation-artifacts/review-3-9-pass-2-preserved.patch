@@ -1,0 +1,2950 @@
+diff --git a/.agents/skills/github-board-import/SKILL.md b/.agents/skills/github-board-import/SKILL.md
+index d8c9e5c..496a9d1 100644
+--- a/.agents/skills/github-board-import/SKILL.md
++++ b/.agents/skills/github-board-import/SKILL.md
+@@ -10,3 +10,3 @@ description: "Import open GitHub ProjectV2 Backlog tickets into StoryMapper via
+-- Current date: 2026-07-07
+-- Updated version: 1.1.0
+-- Reproducing statement: This skill standardizes future GitHub ProjectV2 board imports into StoryMapper by requiring the project script `tools/import_github_board_view.py` for dry-runs and execution, preserving read-only GitHub behavior, making local database cleanup opt-in, and enforcing the Parking lot and Not assigned import rules requested in the prompt.
++- Current date: 2026-10-08
++- Updated version: 2.0.0
++- Reproducing statement: This skill standardizes future GitHub ProjectV2 board imports into StoryMapper by requiring the project script `tools/import_github_board_view.py` for read-only GitHub dry-runs, HTTP-only local reads and scoped ChangeSet proposals, separately approved atomic application, optional cleanup and preserved import relationships.
+@@ -21 +21 @@ Nutze diesen Skill, wenn offene Tickets aus einem GitHub ProjectV2 Board in eine
+-- Schreibe nur lokal in die StoryMapper SQLite-Datenbank.
++- Alle StoryMapper-Lesezugriffe und Aenderungen laufen ueber HTTP am laufenden lokalen Server.
+@@ -30,2 +30,3 @@ Nutze diesen Skill, wenn offene Tickets aus einem GitHub ProjectV2 Board in eine
+-- Die lokale Datenbank liegt standardmaessig unter `local-projects/default.lsm/storymapper.sqlite`.
+-- Die StoryMapper App und der MCP HTTP-Bridge muessen nur fuer die Validierung laufen.
++- Der StoryMapper Server muss fuer Sync-Dry-Runs, Vorschlaege, Anwendung und Validierung laufen.
++- `--url` oder `STORYMAPPER_URL` waehlt den tatsaechlichen Loopback-Port (Standard `http://127.0.0.1:4317`).
++- Bei mehreren Projekten `--project-id` angeben. Ein reiner GitHub-Dry-Run benoetigt keinen StoryMapper Server.
+@@ -41,3 +42,4 @@ Tokenwerte duerfen nicht ausgegeben, geloggt oder in Dateien geschrieben werden.
+-5. Fuehre `--execute` nur nach expliziter Nutzerfreigabe aus.
+-6. Fuehre `--cleanup` nur nach expliziter Nutzerfreigabe fuer einen Reimport mit vorherigem Loeschen aus.
+-7. Validiere danach Story Map, Links, read-only Connectoren, Parking lot und Not assigned.
++5. Erzeuge mit `--execute` einen reviewbaren ChangeSet; die Story Map wird noch nicht veraendert.
++6. Pruefe die zurueckgegebenen Operationen. `--cleanup` nimmt alle bestehenden Story Maps des ausgewaehlten Projekts in den Vorschlag auf.
++7. Wende den geprueften ChangeSet mit `--apply-change-set <id>` erst nach ausdruecklicher Nutzerfreigabe an. Der Server protokolliert Genehmigung und atomare Anwendung separat.
++8. Validiere danach Story Map, Links, read-only Connectoren, Parking lot und Not assigned. Bei geaenderten Ausgangsdaten einen neuen Vorschlag erstellen.
+@@ -45 +47 @@ Tokenwerte duerfen nicht ausgegeben, geloggt oder in Dateien geschrieben werden.
+-Der Skill soll keine eigene Importlogik bauen und keine direkten SQL-Mutationskommandos verwenden. Mutationen laufen ausschliesslich ueber `tools/import_github_board_view.py`.
++Der Skill soll keine eigene Importlogik bauen und keine direkten SQL-Mutationskommandos verwenden. Das Script darf keine Datenbank oeffnen oder kopieren. Es nutzt `POST /api/tool-proposals/github-board`, dann separat `POST /api/changesets/<id>/approve` und `POST /api/changesets/<id>/apply`.
+@@ -52 +54 @@ Schneller Smoke-Dry-Run:
+-py scripts\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --max-items 10
++py tools\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --max-items 10
+@@ -58 +60 @@ Vollstaendiger Dry-Run:
+-py scripts\import_github_board_view.py --board-owner "<org>" --board-number <project-number>
++py tools\import_github_board_view.py --board-owner "<org>" --board-number <project-number>
+@@ -61 +63 @@ py scripts\import_github_board_view.py --board-owner "<org>" --board-number <pro
+-Import nach expliziter Nutzerfreigabe ausfuehren:
++Reviewbaren Importvorschlag erzeugen:
+@@ -64 +66 @@ Import nach expliziter Nutzerfreigabe ausfuehren:
+-py scripts\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --execute
++py tools\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --execute
+@@ -67 +69 @@ py scripts\import_github_board_view.py --board-owner "<org>" --board-number <pro
+-Reimport mit vorherigem Loeschen aller lokalen Story Maps im Projekt nur nach expliziter Freigabe:
++Reimport mit Cleanup als reviewbaren Vorschlag erzeugen:
+@@ -70 +72 @@ Reimport mit vorherigem Loeschen aller lokalen Story Maps im Projekt nur nach ex
+-py scripts\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --execute --cleanup
++py tools\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --execute --cleanup
+@@ -76 +78,13 @@ Optionale Parameter:
+-py scripts\import_github_board_view.py --db "local-projects/default.lsm/storymapper.sqlite" --board-owner "<org>" --board-number <project-number> --board-token-env GITHUB_TOKEN --issue-token-env GITHUB_TOKEN_Ticket --story-map-name "GitHub Board Backlog - Open Tickets"
++py tools\import_github_board_view.py --url "http://127.0.0.1:4317" --project-id "<project-id>" --board-owner "<org>" --board-number <project-number> --board-token-env GITHUB_TOKEN --issue-token-env GITHUB_TOKEN_Ticket --story-map-name "GitHub Board Backlog - Open Tickets"
++```
++
++Geprueften ChangeSet separat genehmigen und atomar anwenden (keine erneuten GitHub-Abfragen):
++
++```powershell
++py tools\import_github_board_view.py --url "http://127.0.0.1:4317" --apply-change-set "<changeset-id>"
++```
++
++Sync ueber HTTP lesen und planen; `--execute` erzeugt auch hier nur einen Vorschlag:
++
++```powershell
++py tools\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --sync --execute
+@@ -106 +120 @@ Wenn `detailErrorCount > 0`, keinen Import ausfuehren.
+-- Ein kuenftiger read-only Sync darf lokale Parent-Organisation nicht ueberschreiben; verschobene verlinkte Karten muessen `parent_override_local` behalten.
++- Der read-only Sync darf lokale Parent-Organisation nicht ueberschreiben; verschobene verlinkte Karten muessen `parent_override_local` behalten.
+@@ -113 +127 @@ Script-Syntax pruefen:
+-py -m py_compile scripts\import_github_board_view.py
++py -m py_compile tools\import_github_board_view.py
+@@ -153,2 +167,4 @@ Der Importer gibt JSON aus. Wichtige Felder nach `--execute`:
+-- `backup`: Pfade der angelegten lokalen DB-Backups.
+-- `storyMapId`: ID der neuen Story Map.
++- `mode`: `proposed`.
++- `changeSet.id`: ID fuer die separate Genehmigung und Anwendung.
++- `changeSet.status`: `proposed`; erst nach separatem Apply `applied`.
++- `changeSet.operations`: vollstaendiger Import-/Sync-Vorschlag mit Issue-Metadaten und Versionsfingerprints.
+@@ -156,6 +172 @@ Der Importer gibt JSON aus. Wichtige Felder nach `--execute`:
+-- `oldCounts`: lokaler Story-Map-Bestand vor dem Import.
+-- `newCounts`: neuer lokaler Story-Map-Bestand.
+-- `issuesImported`: Anzahl importierter offener Issues.
+-- `cardsCreated`: Anzahl erzeugter Cards inklusive technischer Container.
+-- `movedToGitHubParent`: Anzahl Karten mit GitHub-Parent-Zuordnung.
+-- `parkingLotChildren`: Anzahl Karten im Parking-lot-Kontext vor moeglicher Nachorganisation.
++- `syncPlan`: Update-/Add-/Remove-Zahlen beim HTTP-basierten Sync.
+@@ -178 +189 @@ Der Importer gibt JSON aus. Wichtige Felder nach `--execute`:
+-- Der Skill schreibt nur ueber `tools/import_github_board_view.py` in die lokale StoryMapper-Datenbank.
++- Der Skill nutzt ausschliesslich HTTP; der laufende Server bleibt der einzige Schreiber.
+@@ -181,0 +193,4 @@ Der Importer gibt JSON aus. Wichtige Felder nach `--execute`:
++### 2.0.0 - 2026-10-08
++
++- HTTP-only reads and proposals; separate auditable atomic apply, running-server requirement, actual tools/ path and scoped Project selection.
++
+diff --git a/.claude/skills/github-board-import/SKILL.md b/.claude/skills/github-board-import/SKILL.md
+index d8c9e5c..496a9d1 100644
+--- a/.claude/skills/github-board-import/SKILL.md
++++ b/.claude/skills/github-board-import/SKILL.md
+@@ -10,3 +10,3 @@ description: "Import open GitHub ProjectV2 Backlog tickets into StoryMapper via
+-- Current date: 2026-07-07
+-- Updated version: 1.1.0
+-- Reproducing statement: This skill standardizes future GitHub ProjectV2 board imports into StoryMapper by requiring the project script `tools/import_github_board_view.py` for dry-runs and execution, preserving read-only GitHub behavior, making local database cleanup opt-in, and enforcing the Parking lot and Not assigned import rules requested in the prompt.
++- Current date: 2026-10-08
++- Updated version: 2.0.0
++- Reproducing statement: This skill standardizes future GitHub ProjectV2 board imports into StoryMapper by requiring the project script `tools/import_github_board_view.py` for read-only GitHub dry-runs, HTTP-only local reads and scoped ChangeSet proposals, separately approved atomic application, optional cleanup and preserved import relationships.
+@@ -21 +21 @@ Nutze diesen Skill, wenn offene Tickets aus einem GitHub ProjectV2 Board in eine
+-- Schreibe nur lokal in die StoryMapper SQLite-Datenbank.
++- Alle StoryMapper-Lesezugriffe und Aenderungen laufen ueber HTTP am laufenden lokalen Server.
+@@ -30,2 +30,3 @@ Nutze diesen Skill, wenn offene Tickets aus einem GitHub ProjectV2 Board in eine
+-- Die lokale Datenbank liegt standardmaessig unter `local-projects/default.lsm/storymapper.sqlite`.
+-- Die StoryMapper App und der MCP HTTP-Bridge muessen nur fuer die Validierung laufen.
++- Der StoryMapper Server muss fuer Sync-Dry-Runs, Vorschlaege, Anwendung und Validierung laufen.
++- `--url` oder `STORYMAPPER_URL` waehlt den tatsaechlichen Loopback-Port (Standard `http://127.0.0.1:4317`).
++- Bei mehreren Projekten `--project-id` angeben. Ein reiner GitHub-Dry-Run benoetigt keinen StoryMapper Server.
+@@ -41,3 +42,4 @@ Tokenwerte duerfen nicht ausgegeben, geloggt oder in Dateien geschrieben werden.
+-5. Fuehre `--execute` nur nach expliziter Nutzerfreigabe aus.
+-6. Fuehre `--cleanup` nur nach expliziter Nutzerfreigabe fuer einen Reimport mit vorherigem Loeschen aus.
+-7. Validiere danach Story Map, Links, read-only Connectoren, Parking lot und Not assigned.
++5. Erzeuge mit `--execute` einen reviewbaren ChangeSet; die Story Map wird noch nicht veraendert.
++6. Pruefe die zurueckgegebenen Operationen. `--cleanup` nimmt alle bestehenden Story Maps des ausgewaehlten Projekts in den Vorschlag auf.
++7. Wende den geprueften ChangeSet mit `--apply-change-set <id>` erst nach ausdruecklicher Nutzerfreigabe an. Der Server protokolliert Genehmigung und atomare Anwendung separat.
++8. Validiere danach Story Map, Links, read-only Connectoren, Parking lot und Not assigned. Bei geaenderten Ausgangsdaten einen neuen Vorschlag erstellen.
+@@ -45 +47 @@ Tokenwerte duerfen nicht ausgegeben, geloggt oder in Dateien geschrieben werden.
+-Der Skill soll keine eigene Importlogik bauen und keine direkten SQL-Mutationskommandos verwenden. Mutationen laufen ausschliesslich ueber `tools/import_github_board_view.py`.
++Der Skill soll keine eigene Importlogik bauen und keine direkten SQL-Mutationskommandos verwenden. Das Script darf keine Datenbank oeffnen oder kopieren. Es nutzt `POST /api/tool-proposals/github-board`, dann separat `POST /api/changesets/<id>/approve` und `POST /api/changesets/<id>/apply`.
+@@ -52 +54 @@ Schneller Smoke-Dry-Run:
+-py scripts\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --max-items 10
++py tools\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --max-items 10
+@@ -58 +60 @@ Vollstaendiger Dry-Run:
+-py scripts\import_github_board_view.py --board-owner "<org>" --board-number <project-number>
++py tools\import_github_board_view.py --board-owner "<org>" --board-number <project-number>
+@@ -61 +63 @@ py scripts\import_github_board_view.py --board-owner "<org>" --board-number <pro
+-Import nach expliziter Nutzerfreigabe ausfuehren:
++Reviewbaren Importvorschlag erzeugen:
+@@ -64 +66 @@ Import nach expliziter Nutzerfreigabe ausfuehren:
+-py scripts\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --execute
++py tools\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --execute
+@@ -67 +69 @@ py scripts\import_github_board_view.py --board-owner "<org>" --board-number <pro
+-Reimport mit vorherigem Loeschen aller lokalen Story Maps im Projekt nur nach expliziter Freigabe:
++Reimport mit Cleanup als reviewbaren Vorschlag erzeugen:
+@@ -70 +72 @@ Reimport mit vorherigem Loeschen aller lokalen Story Maps im Projekt nur nach ex
+-py scripts\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --execute --cleanup
++py tools\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --execute --cleanup
+@@ -76 +78,13 @@ Optionale Parameter:
+-py scripts\import_github_board_view.py --db "local-projects/default.lsm/storymapper.sqlite" --board-owner "<org>" --board-number <project-number> --board-token-env GITHUB_TOKEN --issue-token-env GITHUB_TOKEN_Ticket --story-map-name "GitHub Board Backlog - Open Tickets"
++py tools\import_github_board_view.py --url "http://127.0.0.1:4317" --project-id "<project-id>" --board-owner "<org>" --board-number <project-number> --board-token-env GITHUB_TOKEN --issue-token-env GITHUB_TOKEN_Ticket --story-map-name "GitHub Board Backlog - Open Tickets"
++```
++
++Geprueften ChangeSet separat genehmigen und atomar anwenden (keine erneuten GitHub-Abfragen):
++
++```powershell
++py tools\import_github_board_view.py --url "http://127.0.0.1:4317" --apply-change-set "<changeset-id>"
++```
++
++Sync ueber HTTP lesen und planen; `--execute` erzeugt auch hier nur einen Vorschlag:
++
++```powershell
++py tools\import_github_board_view.py --board-owner "<org>" --board-number <project-number> --sync --execute
+@@ -106 +120 @@ Wenn `detailErrorCount > 0`, keinen Import ausfuehren.
+-- Ein kuenftiger read-only Sync darf lokale Parent-Organisation nicht ueberschreiben; verschobene verlinkte Karten muessen `parent_override_local` behalten.
++- Der read-only Sync darf lokale Parent-Organisation nicht ueberschreiben; verschobene verlinkte Karten muessen `parent_override_local` behalten.
+@@ -113 +127 @@ Script-Syntax pruefen:
+-py -m py_compile scripts\import_github_board_view.py
++py -m py_compile tools\import_github_board_view.py
+@@ -153,2 +167,4 @@ Der Importer gibt JSON aus. Wichtige Felder nach `--execute`:
+-- `backup`: Pfade der angelegten lokalen DB-Backups.
+-- `storyMapId`: ID der neuen Story Map.
++- `mode`: `proposed`.
++- `changeSet.id`: ID fuer die separate Genehmigung und Anwendung.
++- `changeSet.status`: `proposed`; erst nach separatem Apply `applied`.
++- `changeSet.operations`: vollstaendiger Import-/Sync-Vorschlag mit Issue-Metadaten und Versionsfingerprints.
+@@ -156,6 +172 @@ Der Importer gibt JSON aus. Wichtige Felder nach `--execute`:
+-- `oldCounts`: lokaler Story-Map-Bestand vor dem Import.
+-- `newCounts`: neuer lokaler Story-Map-Bestand.
+-- `issuesImported`: Anzahl importierter offener Issues.
+-- `cardsCreated`: Anzahl erzeugter Cards inklusive technischer Container.
+-- `movedToGitHubParent`: Anzahl Karten mit GitHub-Parent-Zuordnung.
+-- `parkingLotChildren`: Anzahl Karten im Parking-lot-Kontext vor moeglicher Nachorganisation.
++- `syncPlan`: Update-/Add-/Remove-Zahlen beim HTTP-basierten Sync.
+@@ -178 +189 @@ Der Importer gibt JSON aus. Wichtige Felder nach `--execute`:
+-- Der Skill schreibt nur ueber `tools/import_github_board_view.py` in die lokale StoryMapper-Datenbank.
++- Der Skill nutzt ausschliesslich HTTP; der laufende Server bleibt der einzige Schreiber.
+@@ -181,0 +193,4 @@ Der Importer gibt JSON aus. Wichtige Felder nach `--execute`:
++### 2.0.0 - 2026-10-08
++
++- HTTP-only reads and proposals; separate auditable atomic apply, running-server requirement, actual tools/ path and scoped Project selection.
++
+diff --git a/apps/server/src/application/capability-manifest.json b/apps/server/src/application/capability-manifest.json
+index eeb7826..7bdc6ec 100644
+--- a/apps/server/src/application/capability-manifest.json
++++ b/apps/server/src/application/capability-manifest.json
+@@ -625,0 +626,7 @@
++    {
++      "file": "apps/server/src/application/changeset/tool-proposals.use-cases.ts",
++      "export": "proposeGitHubBoardDescriptor",
++      "name": "proposeGitHubBoard",
++      "kind": "human-only",
++      "route": "POST /api/tool-proposals/github-board"
++    },
+@@ -639,0 +647,7 @@
++    {
++      "file": "apps/server/src/application/changeset/tool-proposals.use-cases.ts",
++      "export": "proposeStoryMapCopyDescriptor",
++      "name": "proposeStoryMapCopy",
++      "kind": "human-only",
++      "route": "POST /api/tool-proposals/copy-story-map"
++    },
+diff --git a/apps/server/src/application/capability-manifest.test.ts b/apps/server/src/application/capability-manifest.test.ts
+index 40a47b6..4902e24 100644
+--- a/apps/server/src/application/capability-manifest.test.ts
++++ b/apps/server/src/application/capability-manifest.test.ts
+@@ -52 +52 @@ describe("capability manifest", () => {
+-      const infrastructure = ["GET /health", "GET /api/credentials/status", "GET /api/mcp/tools", "GET /api/mcp/host-configs", "POST /api/mcp/call"];
++      const infrastructure = ["GET /health", "GET /api/health", "GET /api/credentials/status", "GET /api/mcp/tools", "GET /api/mcp/host-configs", "POST /api/mcp/call"];
+diff --git a/apps/server/src/application/changeset/tool-proposals.use-cases.ts b/apps/server/src/application/changeset/tool-proposals.use-cases.ts
+new file mode 100644
+index 0000000..a611851
+--- /dev/null
++++ b/apps/server/src/application/changeset/tool-proposals.use-cases.ts
+@@ -0,0 +1,24 @@
++import type { ActorContext, CapabilityDescriptor, ChangeSetResponse } from "@storymapper/contracts";
++import { copyStoryMapProposalRequestSchema, githubBoardProposalRequestSchema } from "@storymapper/contracts";
++import { requireHumanActor } from "@storymapper/server/application/actors";
++import type { ApplicationDeps } from "@storymapper/server/application/deps";
++
++export const proposeStoryMapCopyDescriptor: CapabilityDescriptor = {
++  name: "proposeStoryMapCopy", kind: "human-only", route: "POST /api/tool-proposals/copy-story-map"
++};
++
++export function proposeStoryMapCopy(deps: ApplicationDeps, actor: ActorContext, input: unknown): ChangeSetResponse {
++  requireHumanActor(actor);
++  const parsed = copyStoryMapProposalRequestSchema.parse(input);
++  return { changeSet: deps.unitOfWork.run(actor, ({ repository }) => repository.proposeStoryMapCopy(parsed)) };
++}
++
++export const proposeGitHubBoardDescriptor: CapabilityDescriptor = {
++  name: "proposeGitHubBoard", kind: "human-only", route: "POST /api/tool-proposals/github-board"
++};
++
++export function proposeGitHubBoard(deps: ApplicationDeps, actor: ActorContext, input: unknown): ChangeSetResponse {
++  requireHumanActor(actor);
++  const parsed = githubBoardProposalRequestSchema.parse(input);
++  return { changeSet: deps.unitOfWork.run(actor, ({ repository }) => repository.proposeGitHubBoard(parsed)) };
++}
+diff --git a/apps/server/src/application/descriptors.ts b/apps/server/src/application/descriptors.ts
+index d07c43e..145eeb7 100644
+--- a/apps/server/src/application/descriptors.ts
++++ b/apps/server/src/application/descriptors.ts
+@@ -1,0 +2 @@ import type { CapabilityDescriptor } from "@storymapper/contracts";
++import { proposeGitHubBoardDescriptor, proposeStoryMapCopyDescriptor } from "@storymapper/server/application/changeset/tool-proposals.use-cases";
+@@ -59,0 +61,2 @@ export const applicationCapabilityDescriptors: CapabilityDescriptor[] = [
++  proposeGitHubBoardDescriptor,
++  proposeStoryMapCopyDescriptor,
+diff --git a/apps/server/src/config/project-lock.ts b/apps/server/src/config/project-lock.ts
+new file mode 100644
+index 0000000..579dd2f
+--- /dev/null
++++ b/apps/server/src/config/project-lock.ts
+@@ -0,0 +1,129 @@
++import { randomUUID } from "node:crypto";
++import { mkdirSync, readFileSync, readdirSync, rmdirSync, unlinkSync, writeFileSync } from "node:fs";
++import { dirname, join, resolve } from "node:path";
++
++interface LockRecord { pid: number; processStartTime: string; owner: string }
++const PROCESS_START_TIME = new Date(Date.now() - process.uptime() * 1000).toISOString();
++
++function readLock(path: string): LockRecord {
++  let value: unknown;
++  try { value = JSON.parse(readFileSync(path, "utf8")); }
++  catch (error) {
++    if (error instanceof SyntaxError) throw new Error("Invalid Project ownership metadata; ownership cannot be proved.", { cause: error });
++    throw error;
++  }
++  if (!value || typeof value !== "object" || !("pid" in value) || !Number.isSafeInteger(value.pid) || Number(value.pid) <= 0 || !("processStartTime" in value) || typeof value.processStartTime !== "string" || !Number.isFinite(Date.parse(value.processStartTime)) || !("owner" in value) || typeof value.owner !== "string" || !value.owner) throw new Error("Invalid Project ownership metadata; ownership cannot be proved.");
++  return value as LockRecord;
++}
++
++function alive(pid: number): boolean {
++  try { process.kill(pid, 0); return true; }
++  catch (error) {
++    if (error instanceof Error && "code" in error && error.code === "ESRCH") return false;
++    if (error instanceof Error && "code" in error && error.code === "EPERM") return true;
++    throw error;
++  }
++}
++
++function claimOwnership(directory: string, record: LockRecord): () => void {
++  const path = join(directory, ".lock.claim");
++  for (;;) {
++    try { mkdirSync(path); }
++    catch (error) {
++      if (!(error instanceof Error) || !("code" in error) || error.code !== "EEXIST") throw error;
++      let files: string[];
++      try { files = readdirSync(path); }
++      catch (readError) {
++        if (readError instanceof Error && "code" in readError && readError.code === "ENOENT") continue;
++        throw readError;
++      }
++      if (files.length !== 1 || !/^[a-f0-9-]{36}$/.test(files[0]!)) throw new Error("Invalid Project acquisition metadata; ownership cannot be proved.");
++      const metadata = join(path, files[0]!);
++      let previous: LockRecord;
++      try { previous = readLock(metadata); }
++      catch (readError) {
++        if (readError instanceof Error && "code" in readError && readError.code === "ENOENT") continue;
++        throw readError;
++      }
++      if (previous.owner !== files[0]) throw new Error("Invalid Project acquisition owner identity.");
++      if (alive(previous.pid)) throw new Error(`Project acquisition is owned by PID ${previous.pid}, process start time ${previous.processStartTime}.`);
++      try { unlinkSync(metadata); }
++      catch (unlinkError) {
++        if (unlinkError instanceof Error && "code" in unlinkError && unlinkError.code === "ENOENT") continue;
++        throw unlinkError;
++      }
++      rmdirSync(path);
++      continue;
++    }
++    const metadata = join(path, record.owner);
++    try { writeFileSync(metadata, JSON.stringify(record), { flag: "wx" }); }
++    catch (error) { rmdirSync(path); throw error; }
++    return () => { unlinkSync(metadata); rmdirSync(path); };
++  }
++}
++
++export function acquireProjectLock(databasePath: string, logTakeover: (record: LockRecord) => void): () => void {
++  const directory = dirname(resolve(databasePath));
++  mkdirSync(directory, { recursive: true });
++  const path = join(directory, ".lock");
++  const record: LockRecord = { pid: process.pid, processStartTime: PROCESS_START_TIME, owner: randomUUID() };
++  const releaseClaim = claimOwnership(directory, record);
++  try {
++    let previous: LockRecord | undefined;
++    try { previous = readLock(path); }
++    catch (error) { if (!(error instanceof Error) || !("code" in error) || error.code !== "ENOENT") throw error; }
++    if (previous) {
++      if (alive(previous.pid)) throw new Error(`Project is owned by PID ${previous.pid}, process start time ${previous.processStartTime}.`);
++      const portPath = join(directory, ".port");
++      try {
++        const port = JSON.parse(readFileSync(portPath, "utf8")) as { owner?: unknown };
++        if (port?.owner !== previous.owner) throw new Error("Runtime discovery ownership differs from the dead Project owner; refusing takeover.");
++        unlinkSync(portPath);
++      } catch (error) { if (!(error instanceof Error) || !("code" in error) || error.code !== "ENOENT") throw error; }
++      unlinkSync(path);
++    }
++    writeFileSync(path, JSON.stringify(record), { flag: "wx" });
++    if (previous) {
++      try { logTakeover(previous); }
++      catch (error) { unlinkSync(path); throw error; }
++    }
++  } finally { releaseClaim(); }
++  return () => {
++    const releaseCleanupClaim = claimOwnership(directory, record);
++    try {
++      const current = readLock(path);
++      if (current.owner !== record.owner) throw new Error("Project ownership changed; refusing to remove another runtime's lock.");
++      unlinkSync(path);
++    } finally { releaseCleanupClaim(); }
++  };
++}
++
++export class ProjectOwnership {
++  readonly #locks = new Map<string, () => void>();
++  readonly #startup: string;
++  readonly owner: string;
++  constructor(databasePath: string, readonly logTakeover: (record: LockRecord) => void) {
++    this.#startup = dirname(resolve(databasePath));
++    this.acquire(databasePath);
++    this.owner = readLock(join(this.#startup, ".lock")).owner;
++  }
++  acquire(databasePath: string): () => void {
++    const directory = dirname(resolve(databasePath));
++    if (this.#locks.has(directory)) throw new Error("This runtime already owns the Project directory.");
++    const release = acquireProjectLock(databasePath, this.logTakeover);
++    this.#locks.set(directory, release);
++    return () => { release(); this.#locks.delete(directory); };
++  }
++  releasePrevious(databasePath: string): void {
++    const directory = dirname(resolve(databasePath));
++    if (directory === this.#startup) return;
++    this.#locks.get(directory)?.();
++    this.#locks.delete(directory);
++  }
++  close(): void {
++    const errors: unknown[] = [];
++    for (const release of this.#locks.values()) { try { release(); } catch (error) { errors.push(error); } }
++    this.#locks.clear();
++    if (errors.length) throw new AggregateError(errors, "Project ownership cleanup failed.");
++  }
++}
+diff --git a/apps/server/src/config/runtime-log.ts b/apps/server/src/config/runtime-log.ts
+new file mode 100644
+index 0000000..63341a4
+--- /dev/null
++++ b/apps/server/src/config/runtime-log.ts
+@@ -0,0 +1,39 @@
++import { appendFileSync, existsSync, mkdirSync, renameSync, statSync, unlinkSync } from "node:fs";
++import { join } from "node:path";
++import { redact } from "@storymapper/server/config/failures.mjs";
++
++const MAX_LOG_BYTES = 10 * 1024 * 1024;
++const LOG_FILES = 5;
++const SAFE_MESSAGES = new Set(["incoming request", "request completed", "request aborted", "Unhandled application error", "Source document import failed before unit of work", "Remote binding enabled by STORYMAPPER_ALLOW_REMOTE_HOST=true; only loopback Host authorities are admitted", "Interrupted project restore completed with preserved history and epoch."]);
++
++export function createRuntimeLog(directory: string): { write(line: string): void } {
++  mkdirSync(directory, { recursive: true });
++  const path = join(directory, "storymapper.log");
++  let bytes = existsSync(path) ? statSync(path).size : 0;
++  return { write(line) {
++    const record = JSON.parse(line) as Record<string, unknown>;
++    const safe: Record<string, unknown> = {};
++    for (const key of ["level", "time", "pid", "reqId", "responseTime"]) {
++      if (typeof record[key] === "number" || key === "reqId" && typeof record[key] === "string" && /^[a-z0-9-]{1,64}$/i.test(record[key])) safe[key] = record[key];
++    }
++    if (typeof record.msg === "string") {
++      const message = redact(record.msg);
++      safe.msg = SAFE_MESSAGES.has(message) || /^Reclaimed dead Project owner PID \d+, process start time \d{4}-\d{2}-\d{2}T[\d:.]+Z\.$/.test(message) || /^StoryMapper server listening on http:\/\/(?:127\.0\.0\.1|localhost|\[::1\]):\d+$/.test(message) ? message : "Runtime event; private details omitted.";
++    }
++    if (record.err) safe.error = "Runtime operation failed";
++    const output = `${JSON.stringify(safe)}\n`;
++    const length = Buffer.byteLength(output);
++    if (bytes + length > MAX_LOG_BYTES) {
++      const oldest = `${path}.${LOG_FILES - 1}`;
++      if (existsSync(oldest)) unlinkSync(oldest);
++      for (let index = LOG_FILES - 2; index >= 0; index--) {
++        const source = index ? `${path}.${index}` : path;
++        if (existsSync(source)) renameSync(source, `${path}.${index + 1}`);
++      }
++      bytes = 0;
++    }
++    appendFileSync(path, output);
++    bytes += length;
++    process.stdout.write(output);
++  } };
++}
+diff --git a/apps/server/src/config/runtime-port.ts b/apps/server/src/config/runtime-port.ts
+index 251df69..5ae722b 100644
+--- a/apps/server/src/config/runtime-port.ts
++++ b/apps/server/src/config/runtime-port.ts
+@@ -29 +29 @@ export function installRuntimePort(server: FastifyInstance, databasePath: string
+-  const owner = randomUUID();
++  const owner = server.hasDecorator("runtimeOwner") ? server.getDecorator<string>("runtimeOwner") : randomUUID();
+@@ -37 +37 @@ export function installRuntimePort(server: FastifyInstance, databasePath: string
+-  server.addHook("onClose", async () => {
++  const cleanup = () => {
+@@ -44 +44,3 @@ export function installRuntimePort(server: FastifyInstance, databasePath: string
+-  });
++  };
++  if (server.hasDecorator("registerRuntimeCleanup")) server.getDecorator<(cleanup: () => void) => void>("registerRuntimeCleanup")(cleanup);
++  else server.addHook("onClose", async () => { cleanup(); });
+diff --git a/apps/server/src/fixtures/runtime-lifecycle.ts b/apps/server/src/fixtures/runtime-lifecycle.ts
+new file mode 100644
+index 0000000..0a95736
+--- /dev/null
++++ b/apps/server/src/fixtures/runtime-lifecycle.ts
+@@ -0,0 +1,17 @@
++import { setTimeout } from "node:timers/promises";
++import { writeFileSync } from "node:fs";
++import { McpToolRegistry } from "@storymapper/mcp";
++
++const call = McpToolRegistry.prototype.call;
++McpToolRegistry.prototype.call = async function (...args: Parameters<typeof call>) {
++  if (args[0] === "ListProjects") {
++    process.send?.({ type: "call-entered" });
++    if (process.env.STORYMAPPER_TEST_CALL_ENTERED) writeFileSync(process.env.STORYMAPPER_TEST_CALL_ENTERED, "entered");
++    await setTimeout(2600);
++  }
++  return call.apply(this, args);
++};
++process.on("message", (message: unknown) => {
++  if (message && typeof message === "object" && "type" in message && message.type === "fixture-signal" && "signal" in message && (message.signal === "SIGINT" || message.signal === "SIGTERM")) process.emit(message.signal);
++});
++await import("@storymapper/server/main");
+diff --git a/apps/server/src/http/restore-request-gate.ts b/apps/server/src/http/restore-request-gate.ts
+index 489e86c..2bcab33 100644
+--- a/apps/server/src/http/restore-request-gate.ts
++++ b/apps/server/src/http/restore-request-gate.ts
+@@ -10,0 +11 @@ export function installRestoreRequestGate(server: FastifyInstance, handle: Datab
++  const lifecycle = new WeakSet<FastifyRequest>();
+@@ -13 +14 @@ export function installRestoreRequestGate(server: FastifyInstance, handle: Datab
+-    handle.leaveRequest();
++    handle.leaveRequest(lifecycle.has(request));
+@@ -15,0 +17,2 @@ export function installRestoreRequestGate(server: FastifyInstance, handle: Datab
++    if (request.routeOptions.url === "/api/health") return;
++    if (handle.stopping) return reply.code(503).send({ message: "StoryMapper is shutting down." });
+@@ -18 +21 @@ export function installRestoreRequestGate(server: FastifyInstance, handle: Datab
+-    if (request.routeOptions.url === RESTORE_PROJECT_ROUTE || request.routeOptions.url === "/api/projects/import") return;
++    const isLifecycle = request.routeOptions.url === RESTORE_PROJECT_ROUTE || request.routeOptions.url === "/api/projects/import";
+@@ -20 +23,2 @@ export function installRestoreRequestGate(server: FastifyInstance, handle: Datab
+-    if (!handle.enterRequest()) return reply.code(503).send({ message: "Project restore is in progress. Retry after the app reloads." });
++    if (!handle.enterRequest(isLifecycle)) return reply.code(503).send({ message: "Project restore is in progress. Retry after the app reloads." });
++    if (isLifecycle) lifecycle.add(request);
+@@ -32,0 +37 @@ export function installRestoreRequestGate(server: FastifyInstance, handle: Datab
++  server.addHook("preClose", async () => { await handle.drain(); });
+diff --git a/apps/server/src/http/routes/changeset-routes.ts b/apps/server/src/http/routes/changeset-routes.ts
+index 3642a46..2053e56 100644
+--- a/apps/server/src/http/routes/changeset-routes.ts
++++ b/apps/server/src/http/routes/changeset-routes.ts
+@@ -11,0 +12,2 @@ import { toApplicationDeps } from "@storymapper/server/http/routes/route-deps";
++import { proposeGitHubBoard, proposeGitHubBoardDescriptor, proposeStoryMapCopy, proposeStoryMapCopyDescriptor } from "@storymapper/server/application/changeset/tool-proposals.use-cases";
++import { registerApplicationRoute } from "@storymapper/server/http/routes/application-route";
+@@ -15,0 +18,2 @@ export const changeSetRoutes: FastifyPluginAsync<RouteDeps> = async (server, dep
++  registerApplicationRoute(server, proposeGitHubBoardDescriptor, (request) => proposeGitHubBoard(application, actor, request.body));
++  registerApplicationRoute(server, proposeStoryMapCopyDescriptor, (request) => proposeStoryMapCopy(application, actor, request.body));
+diff --git a/apps/server/src/http/routes/infrastructure-routes.ts b/apps/server/src/http/routes/infrastructure-routes.ts
+index c57ffbf..6fb5e30 100644
+--- a/apps/server/src/http/routes/infrastructure-routes.ts
++++ b/apps/server/src/http/routes/infrastructure-routes.ts
+@@ -1 +1 @@
+-import { existsSync } from "node:fs";
++import { existsSync, readFileSync } from "node:fs";
+@@ -4,2 +4,2 @@ import { fileURLToPath } from "node:url";
+-import { mcpCallRequestSchema, mcpHostConfigsResponseSchema, type McpHostConfigsResponse } from "@storymapper/contracts";
+-import type { UnitOfWork } from "@storymapper/db";
++import { mcpCallRequestSchema, mcpHostConfigsResponseSchema, operationalHealthSchema, type McpHostConfigsResponse } from "@storymapper/contracts";
++import { developmentSchemaVersion, type UnitOfWork } from "@storymapper/db";
+@@ -12,0 +13,2 @@ import { githubCredentialStatuses } from "@storymapper/server/services/credentia
++const APP_VERSION = (JSON.parse(readFileSync(fileURLToPath(new URL("../../../../../package.json", import.meta.url)), "utf8")) as { version: string }).version;
++
+@@ -30,0 +33,6 @@ export const infrastructureRoutes: FastifyPluginAsync<RouteDeps> = async (server
++  server.get("/api/health", async () => {
++    const handle = unitOfWork.handle;
++    const readable = handle.current.$client.open && !handle.unavailableReason;
++    const project = readable ? repository.listProjects()[0] : undefined;
++    return operationalHealthSchema.parse({ version: APP_VERSION, schemaVersion: readable ? developmentSchemaVersion(handle.current) : null, epoch: project ? repository.getSafetySettings(project.id).epoch : null, writeGate: handle.writeGate, pendingMigration: null });
++  });
+diff --git a/apps/server/src/http/routes/tool-proposals.test.ts b/apps/server/src/http/routes/tool-proposals.test.ts
+new file mode 100644
+index 0000000..e1a223b
+--- /dev/null
++++ b/apps/server/src/http/routes/tool-proposals.test.ts
+@@ -0,0 +1,354 @@
++import { execFile } from "node:child_process";
++import { createHash } from "node:crypto";
++import { mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
++import { tmpdir } from "node:os";
++import { join, resolve } from "node:path";
++import { promisify } from "node:util";
++import type { FastifyInstance } from "fastify";
++import { afterEach, beforeEach, expect, it } from "vitest";
++import { buildServer } from "@storymapper/server/server";
++import { openExistingStoryMapperDb } from "@storymapper/db";
++import type { ActivityResponse, ChangeSet, GitHubBoardIssue, StoryMapSnapshot, RoadmapDetails, ConnectorConnection } from "@storymapper/contracts";
++
++const run = promisify(execFile);
++const ROOT = resolve(import.meta.dirname, "../../../../..");
++const originalDatabasePath = process.env.STORYMAPPER_DB_PATH;
++let directory: string;
++let server: FastifyInstance;
++let origin: string;
++let projectId: string;
++
++beforeEach(async () => {
++  directory = mkdtempSync(join(tmpdir(), "storymapper-tools-"));
++  process.env.STORYMAPPER_DB_PATH = join(directory, "data", "storymapper.sqlite");
++  server = await buildServer({ development: true, runtimeConfig: { host: "127.0.0.1", port: 4317, allowRemoteHost: false } });
++  const projectResponse = await server.inject({ url: "/api/projects", headers: { host: "127.0.0.1:4317" } });
++  projectId = projectResponse.json().projects[0].id;
++  origin = await server.listen({ port: 0, host: "127.0.0.1" });
++});
++
++afterEach(async () => {
++  await server?.close();
++  if (originalDatabasePath === undefined) delete process.env.STORYMAPPER_DB_PATH;
++  else process.env.STORYMAPPER_DB_PATH = originalDatabasePath;
++  rmSync(directory, { recursive: true, force: true });
++});
++
++async function request<T>(path: string, payload?: unknown, method = payload === undefined ? "GET" : "POST"): Promise<T> {
++  const response = await fetch(`${origin}${path}`, { method, headers: payload === undefined ? {} : { "content-type": "application/json" }, ...(payload === undefined ? {} : { body: JSON.stringify(payload) }) });
++  const body = await response.json();
++  expect(response.status, JSON.stringify(body)).toBeLessThan(300);
++  return body as T;
++}
++
++async function apply(id: string): Promise<ChangeSet> {
++  await request(`/api/changesets/${id}/approve`, {});
++  return (await request<{ changeSet: ChangeSet }>(`/api/changesets/${id}/apply`, {})).changeSet;
++}
++
++function issue(number: number, issueType: string | null, parentNumber: number | null = null): GitHubBoardIssue {
++  return { repository: "fixture/repository", number, title: `TASK-${number}: Fixture ${number}`, body: `Body ${number}`, state: "open", url: `https://github.com/fixture/repository/issues/${number}`,
++    labels: ["status:active"], assignee: "fixture", milestone: "Release", issueType, parentRepository: parentNumber ? "fixture/repository" : null, parentNumber };
++}
++
++async function proposal(issues: GitHubBoardIssue[], extra: Record<string, unknown> = {}): Promise<ChangeSet> {
++  return (await request<{ changeSet: ChangeSet }>("/api/tool-proposals/github-board", { projectId, storyMapName: "Imported fixture", boardUrl: "https://github.com/orgs/fixture/projects/1/views/1", issues, ...extra })).changeSet;
++}
++
++async function importedSnapshot(): Promise<StoryMapSnapshot> {
++  const maps = await request<{ storyMaps: Array<{ id: string; name: string }> }>(`/api/story-maps?projectId=${projectId}`);
++  return request(`/api/story-maps/${maps.storyMaps.find((map) => map.name === "Imported fixture")!.id}`);
++}
++
++it("separates proposals from application, preserves board parents and baselines, and reconciles without moving local organization", async () => {
++  const issues = [issue(1, "Epic"), issue(2, "Feature", 1), issue(3, null, 2), issue(4, null)];
++  const changeSet = await proposal(issues);
++  expect(changeSet.source).toBe("import");
++  expect((await request<{ storyMaps: Array<{ name: string }> }>("/api/story-maps")).storyMaps.some((map) => map.name === "Imported fixture")).toBe(false);
++  const refused = await fetch(`${origin}/api/changesets/${changeSet.id}/apply`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
++  expect(refused.status).toBe(409);
++  await request(`/api/changesets/${changeSet.id}/approve`, {});
++  const agent = await fetch(`${origin}/api/mcp/call`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name: "ApplyChangeSet", input: { changeSetId: changeSet.id, approvalToken: "human-approved" } }) });
++  expect(agent.status).toBe(403);
++  expect(await agent.json()).toMatchObject({ code: "protected" });
++  await apply(changeSet.id);
++  const snapshot = await importedSnapshot();
++  const cards = new Map(snapshot.cards.map((card) => [card.title, card]));
++  expect(cards.get("Fixture 2")!.parentId).toBe(cards.get("Fixture 1")!.id);
++  expect(cards.get("Fixture 3")!.parentId).toBe(cards.get("Fixture 2")!.id);
++  expect(snapshot.remoteWorkItemLinks).toHaveLength(4);
++  expect(snapshot.githubLinks).toHaveLength(4);
++  expect(snapshot.remoteWorkItemLinks.find((link) => link.remoteNumber === 3)).toMatchObject({ titleHash: createHash("sha256").update(issues[2]!.title).digest("hex"), bodyHash: createHash("sha256").update(issues[2]!.body).digest("hex"), syncState: "synced" });
++  const moved = cards.get("Fixture 3")!;
++  await request(`/api/cards/${moved.id}/move`, { parentId: null, position: 0 });
++  const changed = { ...issues[2]!, body: "Changed body", assignee: null, milestone: null };
++  await apply((await proposal([issues[0]!, issues[1]!, changed, issue(5, null, 2)], { storyMapId: snapshot.storyMap.id, removeCardIds: [cards.get("Fixture 4")!.id] })).id);
++  const synced = await importedSnapshot();
++  expect(synced.cards.find((card) => card.id === moved.id)).toMatchObject({ parentId: null, description: "Changed body" });
++  expect(synced.cards.some((card) => card.id === cards.get("Fixture 4")!.id)).toBe(false);
++  expect(synced.remoteWorkItemLinks.find((link) => link.remoteNumber === 3)).toMatchObject({ parentOverrideLocal: true });
++  expect(synced.remoteWorkItemLinks).toHaveLength(4);
++  expect(synced.cards.find((card) => card.title === "Fixture 5")!.parentId).toBe(cards.get("Fixture 2")!.id);
++});
++
++it("rejects source drift and foreign removals before applying a scoped proposal", async () => {
++  await apply((await proposal([issue(1, null)])).id);
++  const snapshot = await importedSnapshot();
++  const pending = await proposal([issue(1, null)], { storyMapId: snapshot.storyMap.id });
++  await request(`/api/cards/${snapshot.cards[0]!.id}`, { title: "Changed after proposal" }, "PATCH");
++  const before = await importedSnapshot();
++  await request(`/api/changesets/${pending.id}/approve`, {});
++  const response = await fetch(`${origin}/api/changesets/${pending.id}/apply`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
++  expect(response.status).toBe(409);
++  expect((await importedSnapshot()).cards).toEqual(before.cards);
++  const foreignMap = await request<{ id: string }>("/api/story-maps", { projectId, name: "Foreign map" });
++  const foreign = await request<{ id: string }>("/api/cards", { storyMapId: foreignMap.id, level: "activity", title: "Foreign" });
++  const invalid = await fetch(`${origin}/api/tool-proposals/github-board`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ projectId, storyMapName: "Imported fixture", boardUrl: "https://github.com/orgs/fixture/projects/1", issues: [], storyMapId: snapshot.storyMap.id, removeCardIds: [foreign.id] }) });
++  expect(invalid.status).toBe(400);
++});
++
++it("runs the actual Python import and copy commands over HTTP with separate application", async () => {
++  const fixturePath = join(directory, "board.json");
++  writeFileSync(fixturePath, JSON.stringify({ issues: [{ repository: "fixture/repository", number: 1, title: "Fixture issue", body: "Fixture body", state: "OPEN", url: "https://github.com/fixture/repository/issues/1", labels: [], assignee: null, milestone: null, milestone_due_on: null, issue_type: null, parent_repository: null, parent_number: null }] }));
++  const command = await run("python", [join(ROOT, "tools/fixtures/board_fixture.py"), fixturePath, "--url", origin, "--board-owner", "fixture", "--board-number", "1", "--project-id", projectId, "--story-map-name", "Imported fixture", "--execute"]);
++  const pending = JSON.parse(command.stdout).changeSet as ChangeSet;
++  expect(pending.status).toBe("proposed");
++  await run("python", [join(ROOT, "tools/import_github_board_view.py"), "--url", origin, "--apply-change-set", pending.id]);
++  const source = await importedSnapshot();
++  const casingFixture = JSON.parse(readFileSync(fixturePath, "utf8"));
++  casingFixture.issues[0].repository = "Fixture/Repository";
++  writeFileSync(fixturePath, JSON.stringify(casingFixture));
++  const casingSync = JSON.parse((await run("python", [join(ROOT, "tools/fixtures/board_fixture.py"), fixturePath, "--url", origin, "--board-owner", "fixture", "--board-number", "1", "--project-id", projectId, "--story-map-name", "Imported fixture", "--sync", "--execute"])).stdout);
++  expect(casingSync.syncPlan).toMatchObject({ toUpdate: 1, toAdd: 0, toRemoveClosed: 0, removalUnresolved: 0 });
++  await run("python", [join(ROOT, "tools/import_github_board_view.py"), "--url", origin, "--apply-change-set", casingSync.changeSet.id]);
++  expect((await importedSnapshot()).githubLinks.map((link) => link.id)).toEqual(source.githubLinks.map((link) => link.id));
++  casingFixture.issues[0].repository = "fixture/repository";
++  writeFileSync(fixturePath, JSON.stringify(casingFixture));
++  const copy = await run("python", [join(ROOT, "tools/copy_story_map.py"), "Imported fixture", "Copied fixture", "--url", origin, "--project-id", projectId]);
++  const copyProposal = JSON.parse(copy.stdout).changeSet as ChangeSet;
++  await run("python", [join(ROOT, "tools/copy_story_map.py"), "--url", origin, "--apply-change-set", copyProposal.id]);
++  const copied = await request<StoryMapSnapshot>(`/api/story-maps/${copyProposal.operations[0]!.entityId}`);
++  expect(copied.cards.map((card) => [card.title, card.level, card.position, card.key]).sort()).toEqual(source.cards.map((card) => [card.title, card.level, card.position, card.key]).sort());
++  expect(copied.cards.every((card) => !source.cards.some((original) => original.id === card.id))).toBe(true);
++  expect(copied.cards.find((card) => card.level === "story")!.parentId).toBe(copied.cards.find((card) => card.level === "step")!.id);
++  const activity = await request<ActivityResponse>(`/api/activity?projectId=${projectId}&limit=100`);
++  expect(activity.activityEvents.some((entry) => entry.action === "changeSet.approved")).toBe(true);
++  expect(activity.activityEvents.some((entry) => entry.action === "changeSet.applied")).toBe(true);
++  const syncFixture = JSON.parse(readFileSync(fixturePath, "utf8"));
++  syncFixture.issues[0].number = 2;
++  syncFixture.issues[0].title = "Added fixture issue";
++  syncFixture.issues[0].url = "https://github.com/fixture/repository/issues/2";
++  syncFixture.states = { "fixture/repository#1": "CLOSED" };
++  writeFileSync(fixturePath, JSON.stringify(syncFixture));
++  const syncArgs = [join(ROOT, "tools/fixtures/board_fixture.py"), fixturePath, "--url", origin, "--board-owner", "fixture", "--board-number", "1", "--project-id", projectId, "--story-map-name", "Imported fixture", "--sync"];
++  const dryRun = JSON.parse((await run("python", syncArgs)).stdout);
++  expect(dryRun.syncPlan).toMatchObject({ toAdd: 1, toRemoveClosed: 1 });
++  expect((await importedSnapshot()).githubLinks[0]!.issueNumber).toBe(1);
++  const syncProposal = JSON.parse((await run("python", [...syncArgs, "--execute"])).stdout).changeSet as ChangeSet;
++  await run("python", [join(ROOT, "tools/import_github_board_view.py"), "--url", origin, "--apply-change-set", syncProposal.id]);
++  expect((await importedSnapshot()).githubLinks.map((link) => link.issueNumber)).toEqual([2]);
++}, 30_000);
++
++it("keeps the complete tools and skill inventory free of direct SQLite opens or database copies", () => {
++  for (const directory of ["tools", ".agents/skills", ".claude/skills"]) {
++    const root = join(ROOT, directory);
++    for (const path of readdirSync(root, { recursive: true, encoding: "utf8" })) {
++      if (!path.endsWith(".py") && !path.endsWith("SKILL.md")) continue;
++      expect(readFileSync(join(root, path), "utf8"), join(directory, path)).not.toMatch(/sqlite3|better-sqlite3|copy2|copyfile|STORYMAPPER_DB_PATH|backup_database/);
++    }
++  }
++});
++
++it("copies customization, release, source, attachment and Roadmap relationships with remapped owned references", async () => {
++  const map = await request<{ id: string }>("/api/story-maps", { projectId, name: "Complete source" });
++  const release = await request<{ id: string }>("/api/releases", { storyMapId: map.id, name: "Release", released: true });
++  const activity = await request<{ id: string }>("/api/cards", { storyMapId: map.id, level: "activity", title: "Activity" });
++  const step = await request<{ id: string }>("/api/cards", { storyMapId: map.id, level: "step", parentId: activity.id, title: "Step" });
++  const card = await request<{ id: string }>("/api/cards", { storyMapId: map.id, level: "story", parentId: step.id, releaseId: release.id, title: "Story" });
++  const persona = await request<{ id: string }>("/api/personas", { projectId, storyMapId: map.id, name: "Persona", role: "User", goals: ["Goal"] });
++  const annotation = await request<{ id: string }>("/api/annotations", { projectId, storyMapId: map.id, name: "Annotation" });
++  await request(`/api/cards/${card.id}/personas/${persona.id}`, {});
++  await request(`/api/cards/${card.id}/annotations/${annotation.id}`, {});
++  await request("/api/workflow-statuses", { projectId, storyMapId: map.id, name: "Review", group: "active" });
++  await request("/api/story-templates", { projectId, storyMapId: map.id, name: "Template", descriptionTemplate: "Template description" });
++  await request("/api/product-context", { projectId, storyMapId: map.id, purpose: "Purpose" }, "PATCH");
++  const source = await request<{ chunks: Array<{ id: string }> }>("/api/source-documents/import", { projectId, title: "Source", type: "txt", content: "Source text" });
++  await request(`/api/cards/${card.id}/source-links`, { chunkId: source.chunks[0]!.id, confidence: 0.8 });
++  await request(`/api/cards/${card.id}/attachments`, { label: "Fixture attachment", filePath: "fixture.txt", mimeType: "text/plain", size: 7 });
++  const roadmap = await request<{ id: string }>("/api/roadmaps", { projectId, storyMapId: map.id, name: "Roadmap" });
++  const column = await request<{ id: string }>("/api/roadmap-columns", { roadmapId: roadmap.id, name: "Column" });
++  const lane = await request<{ id: string }>("/api/roadmap-swimlanes", { roadmapId: roadmap.id, name: "Lane" });
++  const roadmapCard = await request<{ id: string }>("/api/roadmap-cards", { roadmapId: roadmap.id, columnId: column.id, swimlaneId: lane.id, title: "Roadmap card", labels: ["Label"] });
++  await request("/api/roadmap-references", { roadmapCardId: roadmapCard.id, targetType: "card", targetId: card.id });
++  await request("/api/roadmap-references", { roadmapCardId: roadmapCard.id, targetType: "release", targetId: release.id });
++  const pending = (await request<{ changeSet: ChangeSet }>("/api/tool-proposals/copy-story-map", { sourceStoryMapId: map.id, targetName: "Complete target" })).changeSet;
++  await apply(pending.id);
++  const copied = await request<StoryMapSnapshot>(`/api/story-maps/${pending.operations[0]!.entityId}`);
++  const copiedCard = copied.cards.find((entry) => entry.title === "Story")!;
++  expect(copiedCard.releaseId).toBe(copied.releases[0]!.id);
++  expect(copied.cardPersonas[0]).toMatchObject({ cardId: copiedCard.id, personaId: copied.personas[0]!.id });
++  expect(copied.cardAnnotations[0]).toMatchObject({ cardId: copiedCard.id, annotationId: copied.annotations[0]!.id });
++  expect(copied.workflowStatuses.some((status) => status.name === "Review")).toBe(true);
++  expect(copied.storyTemplates[0]!.name).toBe("Template");
++  expect(copied.productContext!.purpose).toBe("Purpose");
++  expect(copied.sourceLinks[0]).toMatchObject({ cardId: copiedCard.id, chunkId: source.chunks[0]!.id });
++  expect(copied.cardAttachments[0]!.cardId).toBe(copiedCard.id);
++  const details = await request<RoadmapDetails>(`/api/roadmaps/${copied.roadmaps[0]!.id}`);
++  expect(details.cards[0]).toMatchObject({ columnId: details.columns.find((entry) => entry.name === "Column")!.id, swimlaneId: details.swimlanes.find((entry) => entry.name === "Lane")!.id });
++  expect(details.references.map((reference) => reference.targetId).sort()).toEqual([copiedCard.id, copied.releases[0]!.id].sort());
++  const history = await request<{ versions: Array<{ version: number }> }>(`/api/cards/${copiedCard.id}/history`);
++  expect(history.versions[0]!.version).toBe(1);
++});
++
++it("rolls back maps, connectors, Cards, histories and audit rows after an actual mid-application database refusal", async () => {
++  await server.close();
++  const database = openExistingStoryMapperDb(process.env.STORYMAPPER_DB_PATH!);
++  database.$client.exec("CREATE TRIGGER reject_board_card BEFORE INSERT ON cards WHEN NEW.title = 'Reject fixture' BEGIN SELECT RAISE(ABORT, 'fixture write rejected'); END");
++  database.$client.close();
++  server = await buildServer({ development: true, runtimeConfig: { host: "127.0.0.1", port: 4317, allowRemoteHost: false } });
++  origin = await server.listen({ port: 0, host: "127.0.0.1" });
++  const pending = await proposal([issue(1, null), { ...issue(2, null), title: "Reject fixture" }]);
++  await request(`/api/changesets/${pending.id}/approve`, {});
++  const mapsBefore = await request("/api/story-maps");
++  const connectorsBefore = await request(`/api/connectors/connections?projectId=${projectId}`);
++  const activityBefore = await request<ActivityResponse>(`/api/activity?projectId=${projectId}&limit=100`);
++  const response = await fetch(`${origin}/api/changesets/${pending.id}/apply`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
++  expect(response.status).toBe(500);
++  expect(await request("/api/story-maps")).toEqual(mapsBefore);
++  expect(await request(`/api/connectors/connections?projectId=${projectId}`)).toEqual(connectorsBefore);
++  expect(await request<ActivityResponse>(`/api/activity?projectId=${projectId}&limit=100`)).toEqual(activityBefore);
++});
++
++it("captures cleanup scope, refuses newly added maps, then replaces only the selected Project atomically", async () => {
++  await apply((await proposal([issue(1, null)])).id);
++  const cleanup = await proposal([issue(2, null)], { cleanup: true });
++  expect(cleanup.operations[0]!.after).toMatchObject({ preview: { cleanup: expect.arrayContaining([
++    expect.objectContaining({ id: (await importedSnapshot()).storyMap.id, name: "Imported fixture", inventory: expect.objectContaining({ storyMaps: 1, cards: 3, githubLinks: 1, remoteWorkItemLinks: 1 }) })
++  ]) } });
++  const mapsToDelete = (await request<{ storyMaps: Array<{ id: string; name: string }> }>(`/api/story-maps?projectId=${projectId}`)).storyMaps;
++  const preview = (cleanup.operations[0]!.after as { preview: { cleanup: Array<{ id: string; name: string }> } }).preview;
++  expect(preview.cleanup.map(({ id, name }) => ({ id, name }))).toEqual(mapsToDelete.map(({ id, name }) => ({ id, name })));
++  await request("/api/story-maps", { projectId, name: "Added after cleanup proposal" });
++  await request(`/api/changesets/${cleanup.id}/approve`, {});
++  const before = await request("/api/story-maps");
++  const refused = await fetch(`${origin}/api/changesets/${cleanup.id}/apply`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
++  expect(refused.status).toBe(409);
++  expect(await request("/api/story-maps")).toEqual(before);
++  await apply((await proposal([issue(2, null)], { cleanup: true })).id);
++  const maps = await request<{ storyMaps: Array<{ id: string }> }>(`/api/story-maps?projectId=${projectId}`);
++  expect(maps.storyMaps).toHaveLength(1);
++  expect((await importedSnapshot()).githubLinks.map((link) => link.issueNumber)).toEqual([2]);
++});
++
++it("refuses applied proposal replay without creating another map", async () => {
++  const pending = await proposal([issue(1, null)]);
++  await run("python", [join(ROOT, "tools/import_github_board_view.py"), "--url", origin, "--apply-change-set", pending.id]);
++  const before = await request("/api/story-maps");
++  await expect(run("python", [join(ROOT, "tools/import_github_board_view.py"), "--url", origin, "--apply-change-set", pending.id])).rejects.toThrow("HTTP 409");
++  expect(await request("/api/story-maps")).toEqual(before);
++});
++
++it("unassigns surviving Stories when a board Feature is removed and preserves their history and sibling positions", async () => {
++  await apply((await proposal([issue(1, "Epic"), issue(2, "Feature", 1), issue(3, null, 2), issue(4, null, 2)])).id);
++  const before = await importedSnapshot();
++  const feature = before.cards.find((card) => card.title === "Fixture 2")!;
++  const surviving = before.cards.filter((card) => card.parentId === feature.id);
++  await apply((await proposal([issue(1, "Epic"), issue(3, null, 2), issue(4, null, 2)], { storyMapId: before.storyMap.id, removeCardIds: [feature.id] })).id);
++  const after = await importedSnapshot();
++  expect(after.cards.some((card) => card.id === feature.id)).toBe(false);
++  for (const card of surviving) {
++    expect(after.cards.find((entry) => entry.id === card.id)).toMatchObject({ parentId: null });
++    const history = await request<{ versions: Array<{ snapshot: { parentId: string | null } }> }>(`/api/cards/${card.id}/history`);
++    expect(history.versions[0]!.snapshot.parentId).toBeNull();
++    expect(history.versions.some((version) => version.snapshot.parentId === feature.id)).toBe(true);
++  }
++  const siblings = after.cards.filter((card) => card.parentId === null).sort((left, right) => left.position - right.position);
++  expect(siblings.map((card) => card.position)).toEqual(siblings.map((_, index) => index));
++  const activity = await request<ActivityResponse>(`/api/activity?projectId=${projectId}&limit=100`);
++  expect(activity.activityEvents.filter((entry) => entry.action === "card.rehomed").map((entry) => entry.affectedEntityId).sort()).toEqual(surviving.map((card) => card.id).sort());
++});
++
++it("keeps canonical connector and issue identities across casing-only sync and numeric import order", async () => {
++  await apply((await proposal([issue(10, null), issue(2, null)])).id);
++  const before = await importedSnapshot();
++  const stories = before.cards.filter((card) => card.level === "story").sort((left, right) => left.position - right.position);
++  expect(stories.map((card) => card.title)).toEqual(["Fixture 2", "Fixture 10"]);
++  const connections = await request<{ connections: ConnectorConnection[] }>(`/api/connectors/connections?projectId=${projectId}`);
++  const changed = [issue(10, null), issue(2, null)].map((entry) => ({ ...entry, repository: "Fixture/Repository" }));
++  await apply((await proposal(changed, { storyMapId: before.storyMap.id })).id);
++  const after = await importedSnapshot();
++  expect(after.cards.map((card) => card.id).sort()).toEqual(before.cards.map((card) => card.id).sort());
++  expect(after.githubLinks.map((link) => link.id).sort()).toEqual(before.githubLinks.map((link) => link.id).sort());
++  expect(after.remoteWorkItemLinks.map((link) => link.id).sort()).toEqual(before.remoteWorkItemLinks.map((link) => link.id).sort());
++  expect((await request<{ connections: ConnectorConnection[] }>(`/api/connectors/connections?projectId=${projectId}`)).connections).toEqual(connections.connections);
++});
++
++it("rejects a prefix-only title before persisting any proposal or data", async () => {
++  const maps = await request("/api/story-maps");
++  const proposals = await request(`/api/changesets?projectId=${projectId}`);
++  const connectors = await request(`/api/connectors/connections?projectId=${projectId}`);
++  const activity = await request<ActivityResponse>(`/api/activity?projectId=${projectId}&limit=100`);
++  const response = await fetch(`${origin}/api/tool-proposals/github-board`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ projectId, storyMapName: "Invalid", boardUrl: "https://github.com/orgs/fixture/projects/1", issues: [issue(2, null), { ...issue(1, null), title: "TASK-1:" }] }) });
++  expect(response.status).toBe(400);
++  expect(await request("/api/story-maps")).toEqual(maps);
++  expect(await request(`/api/changesets?projectId=${projectId}`)).toEqual(proposals);
++  expect(await request(`/api/connectors/connections?projectId=${projectId}`)).toEqual(connectors);
++  expect(await request<ActivityResponse>(`/api/activity?projectId=${projectId}&limit=100`)).toEqual(activity);
++});
++
++it("previews existing connector read-only changes and refuses initial-import connector drift atomically", async () => {
++  const { connection } = await request<{ connection: ConnectorConnection }>("/api/connectors/connections", { projectId, provider: "github", name: "Reviewed repository", authMode: "token", owner: "Fixture", repository: "Repository", readOnly: false });
++  const pending = await proposal([issue(1, null)]);
++  expect(pending.operations[0]!.after).toMatchObject({ preview: { connectors: [{ repository: "fixture/repository", existingId: connection.id,
++    before: { projectId, provider: "github", owner: "Fixture", repository: "Repository", readOnly: false }, after: { readOnly: true }
++  }] } });
++  await request(`/api/connectors/connections/${connection.id}`, { owner: "Other" }, "PATCH");
++  await request(`/api/changesets/${pending.id}/approve`, {});
++  const maps = await request("/api/story-maps");
++  const connections = await request(`/api/connectors/connections?projectId=${projectId}`);
++  const activity = await request<ActivityResponse>(`/api/activity?projectId=${projectId}&limit=100`);
++  const refused = await fetch(`${origin}/api/changesets/${pending.id}/apply`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
++  expect(refused.status).toBe(409);
++  expect(await request("/api/story-maps")).toEqual(maps);
++  expect(await request(`/api/connectors/connections?projectId=${projectId}`)).toEqual(connections);
++  expect(await request<ActivityResponse>(`/api/activity?projectId=${projectId}&limit=100`)).toEqual(activity);
++  const absent = await proposal([issue(1, null)]);
++  await request("/api/connectors/connections", { projectId, provider: "github", name: "New repository", authMode: "token", owner: "fixture", repository: "repository" });
++  await request(`/api/changesets/${absent.id}/approve`, {});
++  const newConnections = await request(`/api/connectors/connections?projectId=${projectId}`);
++  const changed = await fetch(`${origin}/api/changesets/${absent.id}/apply`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
++  expect(changed.status).toBe(409);
++  expect(await request("/api/story-maps")).toEqual(maps);
++  expect(await request(`/api/connectors/connections?projectId=${projectId}`)).toEqual(newConnections);
++});
++
++it("previews the exact copy inventory and refuses changed templates and Roadmap children", async () => {
++  const map = await request<{ id: string }>("/api/story-maps", { projectId, name: "Reviewed source" });
++  const template = await request<{ id: string }>("/api/story-templates", { projectId, storyMapId: map.id, name: "Original template" });
++  const roadmap = await request<{ id: string }>("/api/roadmaps", { projectId, storyMapId: map.id, name: "Reviewed Roadmap" });
++  const column = await request<{ id: string }>("/api/roadmap-columns", { roadmapId: roadmap.id, name: "Original column" });
++  const pending = (await request<{ changeSet: ChangeSet }>("/api/tool-proposals/copy-story-map", { sourceStoryMapId: map.id, targetName: "Reviewed target" })).changeSet;
++  expect(pending.operations[0]!.after).toMatchObject({ preview: { source: { id: map.id, name: "Reviewed source" }, target: { id: pending.operations[0]!.entityId, name: "Reviewed target" },
++    inventory: { storyMaps: 1, cards: 0, storyTemplates: 1, roadmaps: 1, roadmapColumns: 4, roadmapCards: 0, roadmapReferences: 0 }
++  } });
++  expect((pending.operations[0]!.after as { preview: { inventory: Record<string, number> } }).preview.inventory).toEqual({
++    storyMaps: 1, releases: 0, cards: 0, personas: 0, workflowStatuses: 0, annotations: 0, storyTemplates: 1, productContexts: 0,
++    roadmaps: 1, cardPersonas: 0, cardAnnotations: 0, cardSourceLinks: 0, cardAttachments: 0, roadmapColumns: 4,
++    roadmapSwimlanes: 1, roadmapCards: 0, roadmapReferences: 0
++  });
++  await request(`/api/story-templates/${template.id}`, { name: "Changed template" }, "PATCH");
++  await request(`/api/changesets/${pending.id}/approve`, {});
++  const refused = await fetch(`${origin}/api/changesets/${pending.id}/apply`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
++  expect(refused.status).toBe(409);
++  const second = (await request<{ changeSet: ChangeSet }>("/api/tool-proposals/copy-story-map", { sourceStoryMapId: map.id, targetName: "Reviewed target" })).changeSet;
++  await server.close();
++  const database = openExistingStoryMapperDb(process.env.STORYMAPPER_DB_PATH!);
++  database.$client.prepare("UPDATE roadmap_columns SET name = ? WHERE id = ?").run("Changed column", column.id);
++  database.$client.close();
++  server = await buildServer({ development: true, runtimeConfig: { host: "127.0.0.1", port: 4317, allowRemoteHost: false } });
++  origin = await server.listen({ port: 0, host: "127.0.0.1" });
++  await request(`/api/changesets/${second.id}/approve`, {});
++  const childDrift = await fetch(`${origin}/api/changesets/${second.id}/apply`, { method: "POST", headers: { "content-type": "application/json" }, body: "{}" });
++  expect(childDrift.status).toBe(409);
++  expect((await request<{ storyMaps: Array<{ name: string }> }>("/api/story-maps")).storyMaps.some((entry) => entry.name === "Reviewed target")).toBe(false);
++});
+diff --git a/apps/server/src/main.ts b/apps/server/src/main.ts
+index 69420a9..8cd0829 100644
+--- a/apps/server/src/main.ts
++++ b/apps/server/src/main.ts
+@@ -9,0 +10 @@ const debug = process.argv.includes("--debug");
++let shutdown: Promise<void> | undefined;
+@@ -11 +12,6 @@ const debug = process.argv.includes("--debug");
+-async function shutDown(): Promise<void> {
++function shutDown(): Promise<void> {
++  shutdown ??= finishShutdown();
++  return shutdown;
++}
++
++async function finishShutdown(): Promise<void> {
+@@ -69,0 +76,2 @@ try {
++  try { await server?.close(); }
++  catch (cleanupError) { error = new AggregateError([error, cleanupError], "StoryMapper startup and cleanup failed."); }
+diff --git a/apps/server/src/runtime-lifecycle.test.ts b/apps/server/src/runtime-lifecycle.test.ts
+new file mode 100644
+index 0000000..b729a94
+--- /dev/null
++++ b/apps/server/src/runtime-lifecycle.test.ts
+@@ -0,0 +1,432 @@
++import { spawn } from "node:child_process";
++import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, truncateSync, writeFileSync } from "node:fs";
++import { createRequire } from "node:module";
++import { tmpdir } from "node:os";
++import { join } from "node:path";
++import { fileURLToPath, pathToFileURL } from "node:url";
++import { performance } from "node:perf_hooks";
++import Fastify from "fastify";
++import JSZip from "jszip";
++import { afterEach, expect, it, vi } from "vitest";
++import { operationalHealthSchema, type OperationalHealth } from "@storymapper/contracts";
++import { DatabaseHandle, developmentSchemaVersion, openExistingStoryMapperDb, openStoryMapperDb, StoryMapperRepository, UnitOfWork } from "@storymapper/db";
++import { acquireProjectLock } from "@storymapper/server/config/project-lock";
++import { createRuntimeLog } from "@storymapper/server/config/runtime-log";
++import { buildServer } from "@storymapper/server/server";
++import { installRuntimePort } from "@storymapper/server/config/runtime-port";
++import { installRestoreRequestGate } from "@storymapper/server/http/restore-request-gate";
++import { infrastructureRoutes } from "@storymapper/server/http/routes/infrastructure-routes";
++
++const ROOT = fileURLToPath(new URL("../../../", import.meta.url));
++const TSX = pathToFileURL(createRequire(join(ROOT, "apps/server/package.json")).resolve("tsx")).href;
++const cleanup: Array<() => void | Promise<void>> = [];
++const ACTOR = { actorType: "human", actorId: "runtime-fixture" } as const;
++
++function pending<Result>(): { promise: Promise<Result>; resolve: (value: Result) => void } {
++  let resolve!: (value: Result) => void;
++  const promise = new Promise<Result>((finish) => { resolve = finish; });
++  return { promise, resolve };
++}
++
++function holdArchiveLoad(): { entered: Promise<void>; resume: () => void } {
++  const entered = pending<void>();
++  const resume = pending<void>();
++  const load = JSZip.loadAsync;
++  vi.spyOn(JSZip, "loadAsync").mockImplementationOnce(async (...args) => {
++    entered.resolve();
++    await resume.promise;
++    return load(...args);
++  });
++  return { entered: entered.promise, resume: () => resume.resolve() };
++}
++
++async function assertStoppingHealth(url: string, health: OperationalHealth): Promise<void> {
++  const response = await fetch(`${url}/api/health`);
++  expect(response.status).toBe(200);
++  expect(operationalHealthSchema.parse(await response.json())).toEqual({ ...health, writeGate: "stopping" });
++  const ordinary = await fetch(`${url}/api/projects`);
++  expect(ordinary.status).toBe(503);
++  expect(await ordinary.json()).toEqual({ message: "StoryMapper is shutting down." });
++}
++
++function fixture(): { directory: string; path: string } {
++  const root = mkdtempSync(join(tmpdir(), "storymapper-lifecycle-"));
++  const directory = join(root, "runtime.lsm");
++  mkdirSync(directory);
++  cleanup.push(() => rmSync(root, { recursive: true, force: true }));
++  return { directory, path: join(directory, "storymapper.sqlite") };
++}
++
++function launch(path: string, slow = false) {
++  const env: NodeJS.ProcessEnv = { ...process.env, TSX_TSCONFIG_PATH: join(ROOT, "apps/server/tsconfig.json"), STORYMAPPER_DB_PATH: path, HOST: "127.0.0.1", LOG_LEVEL: "warn" };
++  delete env.PORT;
++  const child = spawn(process.execPath, ["--import", TSX, join(ROOT, `apps/server/src/${slow ? "fixtures/runtime-lifecycle" : "main"}.ts`), "--dev"], {
++    cwd: tmpdir(), env, stdio: ["ignore", "pipe", "pipe", "ipc"]
++  });
++  let output = "";
++  child.stdout!.on("data", (data) => { output += data; });
++  child.stderr!.on("data", (data) => { output += data; });
++  const messages: Array<{ type: string; url?: string }> = [];
++  child.on("message", (message) => {
++    messages.push(message as { type: string; url?: string });
++    if (message && typeof message === "object" && "message" in message) output += String(message.message);
++  });
++  const closed = new Promise<{ code: number | null; signal: string | null }>((resolve, reject) => { child.once("error", reject); child.once("close", (code, signal) => resolve({ code, signal })); });
++  cleanup.push(async () => { if (child.exitCode === null && child.signalCode === null) child.kill("SIGKILL"); await closed; });
++  return { child, closed, messages, output: () => output };
++}
++
++async function message(runtime: ReturnType<typeof launch>, type: string): Promise<{ type: string; url?: string }> {
++  let result: { type: string; url?: string } | undefined;
++  await vi.waitFor(() => {
++    result = runtime.messages.find((value) => value.type === type);
++    if (!result && runtime.child.exitCode !== null) throw new Error(runtime.output());
++    expect(result).toBeDefined();
++  }, { timeout: 20_000 });
++  return result!;
++}
++
++afterEach(async () => {
++  for (const close of cleanup.splice(0).reverse()) await close();
++  vi.restoreAllMocks();
++  vi.unstubAllEnvs();
++});
++
++it("refuses live/malformed owners before opening and never removes a replacement lock", async () => {
++  const data = fixture();
++  vi.stubEnv("STORYMAPPER_DB_PATH", data.path);
++  const release = acquireProjectLock(data.path, () => { throw new Error("Unexpected takeover"); });
++  const record = JSON.parse(readFileSync(join(data.directory, ".lock"), "utf8"));
++  await expect(buildServer({ development: true })).rejects.toThrow(`PID ${process.pid}, process start time ${record.processStartTime}`);
++  expect(existsSync(data.path)).toBe(false);
++  writeFileSync(join(data.directory, ".lock"), JSON.stringify({ ...record, owner: "replacement" }));
++  expect(release).toThrow("another runtime's lock");
++  expect(JSON.parse(readFileSync(join(data.directory, ".lock"), "utf8")).owner).toBe("replacement");
++  writeFileSync(join(data.directory, ".lock"), "malformed");
++  await expect(buildServer({ development: true })).rejects.toThrow("ownership cannot be proved");
++  expect(readFileSync(join(data.directory, ".lock"), "utf8")).toBe("malformed");
++});
++
++it("reclaims an actual dead server and dead acquisition claim with exactly one competing writer", async () => {
++  const data = fixture();
++  const initial = launch(data.path);
++  await message(initial, "listening");
++  const record = JSON.parse(readFileSync(join(data.directory, ".lock"), "utf8"));
++  initial.child.kill("SIGKILL");
++  await initial.closed;
++  const claim = join(data.directory, ".lock.claim");
++  mkdirSync(claim);
++  writeFileSync(join(claim, record.owner), JSON.stringify(record));
++  const contenders = [launch(data.path), launch(data.path)];
++  await vi.waitFor(() => expect(contenders.flatMap((runtime) => runtime.messages).filter((value) => value.type === "listening")).toHaveLength(1), { timeout: 20_000 });
++  const winner = contenders.find((runtime) => runtime.messages.some((value) => value.type === "listening"))!;
++  const loser = contenders.find((runtime) => runtime !== winner)!;
++  expect((await loser.closed).code).toBe(1);
++  expect(loser.output()).toMatch(/owned by PID|acquisition metadata/);
++  expect(JSON.parse(readFileSync(join(data.directory, ".lock"), "utf8")).pid).toBe(winner.child.pid);
++  expect(winner.output()).toContain(`Reclaimed dead Project owner PID ${record.pid}, process start time ${record.processStartTime}`);
++  winner.child.send({ type: "shutdown" });
++  expect((await winner.closed).code).toBe(0);
++  expect(existsSync(join(data.directory, ".lock"))).toBe(false);
++  expect(existsSync(join(data.directory, ".port"))).toBe(false);
++});
++
++it.each(["SIGINT", "SIGTERM", "IPC"] as const)("%s drains an actual admitted long agent call and durable audit before checkpoint/owned cleanup", async (signal) => {
++  const data = fixture();
++  const runtime = launch(data.path, true);
++  const { url } = await message(runtime, "listening");
++  const call = fetch(`${url}/api/mcp/call`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name: "ListProjects", input: {} }) });
++  await message(runtime, "call-entered");
++  const started = performance.now();
++  if (signal === "IPC") runtime.child.send({ type: "shutdown" });
++  else if (process.platform === "win32") runtime.child.send({ type: "fixture-signal", signal });
++  else runtime.child.kill(signal);
++  await vi.waitFor(async () => expect((await fetch(`${url}/api/projects`)).status).toBe(503));
++  expect((await call).status).toBe(200);
++  expect((await runtime.closed).code).toBe(0);
++  expect(performance.now() - started).toBeGreaterThan(2000);
++  for (const path of [".lock", ".port", ".lock.claim", "storymapper.sqlite-wal"]) expect(existsSync(join(data.directory, path))).toBe(false);
++  const db = openExistingStoryMapperDb(data.path);
++  try { expect(db.$client.prepare("SELECT count(*) AS count FROM activity_events WHERE action = 'tool_call'").get()).toEqual({ count: 1 }); }
++  finally { db.$client.close(); }
++}, 30_000);
++
++it("drains a disconnected admitted agent call and shares repeated IPC shutdown completion", async () => {
++  const data = fixture();
++  const runtime = launch(data.path, true);
++  const { url } = await message(runtime, "listening");
++  const abort = new AbortController();
++  const call = fetch(`${url}/api/mcp/call`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ name: "ListProjects", input: {} }), signal: abort.signal });
++  await message(runtime, "call-entered");
++  abort.abort();
++  await expect(call).rejects.toThrow();
++  runtime.child.send({ type: "shutdown" });
++  runtime.child.send({ type: "shutdown" });
++  expect((await runtime.closed).code).toBe(0);
++  expect(existsSync(join(data.directory, ".lock"))).toBe(false);
++  const db = openExistingStoryMapperDb(data.path);
++  try { expect(db.$client.prepare("SELECT count(*) AS count FROM activity_events WHERE action = 'tool_call'").get()).toEqual({ count: 1 }); }
++  finally { db.$client.close(); }
++}, 30_000);
++
++it("opens original and replacement connections with explicit raw pragmas", () => {
++  const data = fixture();
++  for (const open of [openStoryMapperDb, openExistingStoryMapperDb]) {
++    const db = open(data.path);
++    try {
++      expect(db.$client.pragma("busy_timeout", { simple: true })).toBe(5000);
++      expect(db.$client.pragma("wal_autocheckpoint", { simple: true })).toBe(1000);
++    } finally { db.$client.close(); }
++  }
++});
++
++it("keeps operational HTTP health current while admitted work holds shutdown draining", async () => {
++  const data = fixture();
++  const handle = new DatabaseHandle(openStoryMapperDb(data.path));
++  cleanup.push(() => { if (handle.current.$client.open) handle.current.$client.close(); });
++  const repository = new StoryMapperRepository(handle);
++  const unitOfWork = new UnitOfWork(handle);
++  const project = unitOfWork.run(ACTOR, ({ repository }) => repository.createProject({ name: "Stopping health fixture" }));
++  const epoch = repository.getSafetySettings(project.id).epoch;
++  const schemaVersion = developmentSchemaVersion(handle.current);
++  const server = Fastify();
++  cleanup.push(() => server.close());
++  installRestoreRequestGate(server, handle);
++  await server.register(infrastructureRoutes, { repository, unitOfWork, databasePath: data.path });
++  const url = await server.listen({ host: "127.0.0.1", port: 0 });
++  expect(handle.enterRequest()).toBe(true);
++  let drained = false;
++  const drain = handle.drain().then(() => { drained = true; });
++  try {
++    const response = await fetch(`${url}/api/health`);
++    expect(response.status).toBe(200);
++    expect(operationalHealthSchema.parse(await response.json())).toMatchObject({ schemaVersion, epoch, writeGate: "stopping", pendingMigration: null });
++    expect((await fetch(`${url}/api/mcp/tools`)).status).toBe(503);
++    expect(drained).toBe(false);
++    expect(handle.current.$client.open).toBe(true);
++  } finally { handle.leaveRequest(); await drain; }
++});
++
++it("retains writer and discovery ownership until a disconnected real HTTP archive import completes", async () => {
++  const data = fixture();
++  vi.stubEnv("STORYMAPPER_DB_PATH", data.path);
++  vi.stubEnv("LOG_LEVEL", "error");
++  const server = await buildServer({ development: true });
++  cleanup.push(() => server.close());
++  const disconnected = pending<void>();
++  server.addHook("onRequest", async (request) => {
++    if (request.url === "/api/projects/import") request.raw.socket.once("close", () => disconnected.resolve());
++  });
++  const publish = installRuntimePort(server, data.path, "127.0.0.1");
++  const url = await server.listen({ host: "127.0.0.1", port: 0 });
++  publish();
++  const project = (await (await fetch(`${url}/api/projects`)).json()).projects[0];
++  const health = operationalHealthSchema.parse(await (await fetch(`${url}/api/health`)).json());
++  const exported = await fetch(`${url}/api/projects/export?projectId=${project.id}`);
++  const archive = new FormData();
++  archive.append("archive", new Blob([await exported.arrayBuffer()]), "fixture.zip");
++  const held = holdArchiveLoad();
++  const abort = new AbortController();
++  const call = fetch(`${url}/api/projects/import`, { method: "POST", body: archive, signal: abort.signal });
++  await held.entered;
++  abort.abort();
++  await expect(call).rejects.toThrow();
++  await disconnected.promise;
++  const stopping = pending<DatabaseHandle>();
++  const drain = DatabaseHandle.prototype.drain;
++  vi.spyOn(DatabaseHandle.prototype, "drain").mockImplementation(function (this: DatabaseHandle) {
++    stopping.resolve(this);
++    return drain.call(this);
++  });
++  let closed = false;
++  const close = server.close().then(() => { closed = true; });
++  try {
++    expect((await stopping.promise).stopping).toBe(true);
++    await new Promise<void>((resolve) => setImmediate(resolve));
++    expect(closed).toBe(false);
++    await assertStoppingHealth(url, health);
++    expect(existsSync(join(data.directory, ".lock"))).toBe(true);
++    expect(existsSync(join(data.directory, ".port"))).toBe(true);
++    expect(() => acquireProjectLock(data.path, () => { throw new Error("Unexpected takeover"); })).toThrow(`PID ${process.pid}`);
++  } finally { held.resume(); await close; }
++  expect(existsSync(join(data.directory, ".lock"))).toBe(false);
++  expect(existsSync(join(data.directory, ".port"))).toBe(false);
++  const imported = readdirSync(join(data.directory, "..")).find((name) => name.startsWith("imported-"))!;
++  const importedPath = join(data.directory, "..", imported, "storymapper.sqlite");
++  expect(existsSync(join(data.directory, "..", imported, ".lock"))).toBe(false);
++  expect(existsSync(`${importedPath}-wal`)).toBe(false);
++  const db = openExistingStoryMapperDb(importedPath);
++  try { expect(db.$client.prepare("SELECT count(*) AS count FROM activity_events WHERE action = 'project.archiveImported'").get()).toEqual({ count: 1 }); }
++  finally { db.$client.close(); }
++});
++
++it("cleans owned startup state after failed port publication while preserving the foreign port file", async () => {
++  const data = fixture();
++  const path = join(data.directory, ".port");
++  const foreign = JSON.stringify({ host: "127.0.0.1", port: 4317, owner: "foreign" });
++  writeFileSync(path, foreign);
++  const runtime = launch(data.path);
++  expect((await runtime.closed).code).toBe(1);
++  expect(runtime.output()).toContain("runtime port file already exists");
++  expect(readFileSync(path, "utf8")).toBe(foreign);
++  expect(existsSync(join(data.directory, ".lock"))).toBe(false);
++  expect(existsSync(`${data.path}-wal`)).toBe(false);
++});
++
++it("holds ownership until discovery cleanup completes so a restarting writer cannot see the old port", async () => {
++  const data = fixture();
++  vi.stubEnv("STORYMAPPER_DB_PATH", data.path);
++  vi.stubEnv("LOG_LEVEL", "error");
++  const server = await buildServer({ development: true });
++  cleanup.push(() => server.close());
++  const publish = installRuntimePort(server, data.path, "127.0.0.1");
++  await server.listen({ host: "127.0.0.1", port: 0 });
++  publish();
++  let refusal = "";
++  server.getDecorator<(finish: () => void) => void>("registerRuntimeCleanup")(() => {
++    expect(existsSync(`${data.path}-wal`)).toBe(false);
++    try { acquireProjectLock(data.path, () => { throw new Error("Unexpected takeover"); })(); }
++    catch (error) { if (!(error instanceof Error)) throw error; refusal = error.message; }
++  });
++  await server.close();
++  expect(refusal).toContain(`PID ${process.pid}`);
++  expect(existsSync(join(data.directory, ".lock"))).toBe(false);
++  expect(existsSync(join(data.directory, ".port"))).toBe(false);
++});
++
++it("reports restoring and unavailable writer state without blocking health or exposing the failure path", async () => {
++  const data = fixture();
++  const handle = new DatabaseHandle(openStoryMapperDb(data.path));
++  cleanup.push(() => { if (handle.current.$client.open) handle.current.$client.close(); });
++  const repository = new StoryMapperRepository(handle);
++  const unitOfWork = new UnitOfWork(handle);
++  unitOfWork.run(ACTOR, ({ repository }) => repository.createProject({ name: "Health fixture" }));
++  const server = Fastify();
++  cleanup.push(() => server.close());
++  installRestoreRequestGate(server, handle);
++  await server.register(infrastructureRoutes, { repository, unitOfWork, databasePath: data.path });
++  await handle.restore(async () => {
++    const response = await server.inject("/api/health");
++    expect(response.statusCode).toBe(200);
++    expect(response.json()).toMatchObject({ writeGate: "restoring", pendingMigration: null });
++  });
++  expect(handle.exclusive("test", () => handle.writeGate)).toBe("writing");
++  handle.markUnavailable("C:\\Users\\Private Name\\database unavailable");
++  const response = await server.inject("/api/health");
++  expect(response.statusCode).toBe(200);
++  expect(response.json()).toMatchObject({ schemaVersion: null, epoch: null, writeGate: "unavailable", pendingMigration: null });
++  expect(response.body).not.toContain("Private Name");
++});
++
++it("retains the startup lock through restore/repeated archive switches and releases only closed imported ownership", async () => {
++  const data = fixture();
++  vi.stubEnv("STORYMAPPER_DB_PATH", data.path);
++  vi.stubEnv("LOG_LEVEL", "error");
++  const server = await buildServer({ development: true });
++  cleanup.push(() => server.close());
++  const publish = installRuntimePort(server, data.path, "127.0.0.1");
++  const url = await server.listen({ host: "127.0.0.1", port: 0 });
++  publish();
++  const project = (await (await fetch(`${url}/api/projects`)).json()).projects[0];
++  const lock = readFileSync(join(data.directory, ".lock"), "utf8");
++  const health = await (await fetch(`${url}/api/health`)).json();
++  const point = (await (await fetch(`${url}/api/human/projects/${project.id}/restore-points`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ class: "manual" }) })).json()).restorePoint;
++  expect((await fetch(`${url}/api/human/projects/${project.id}/restore`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ fileName: point.fileName, confirm: true }) })).status).toBe(200);
++  expect(readFileSync(join(data.directory, ".lock"), "utf8")).toBe(lock);
++  expect((await (await fetch(`${url}/api/health`)).json()).epoch).not.toBe(health.epoch);
++  let previousImported: string | undefined;
++  for (let index = 0; index < 2; index++) {
++    const exported = await fetch(`${url}/api/projects/export?projectId=${project.id}`);
++    const archive = new FormData();
++    archive.append("archive", new Blob([await exported.arrayBuffer()]), "fixture.zip");
++    const response = await fetch(`${url}/api/projects/import`, { method: "POST", body: archive });
++    expect(response.status).toBe(200);
++    const imported = await response.json();
++    expect(existsSync(join(imported.localPath, ".lock"))).toBe(true);
++    expect(readFileSync(join(data.directory, ".lock"), "utf8")).toBe(lock);
++    expect(existsSync(join(data.directory, ".port"))).toBe(true);
++    if (previousImported) expect(existsSync(join(previousImported, ".lock"))).toBe(false);
++    vi.stubEnv("STORYMAPPER_DB_PATH", join(imported.localPath, "storymapper.sqlite"));
++    await expect(buildServer({ development: true })).rejects.toThrow(`PID ${process.pid}`);
++    previousImported = imported.localPath;
++  }
++  await server.close();
++  expect(existsSync(join(data.directory, ".lock"))).toBe(false);
++  expect(existsSync(join(previousImported!, ".lock"))).toBe(false);
++  expect(existsSync(join(data.directory, ".port"))).toBe(false);
++});
++
++it("bounds five real log files and omits credentials, full payloads and personal paths with spaces", () => {
++  const data = fixture();
++  vi.spyOn(process.stdout, "write").mockReturnValue(true);
++  const path = join(data.directory, "storymapper.log");
++  writeFileSync(path, "");
++  for (let index = 0; index < 7; index++) {
++    truncateSync(path, 10 * 1024 * 1024);
++    const log = createRuntimeLog(data.directory);
++    log.write(JSON.stringify({ level: 30, msg: "incoming request", req: { authorization: "private-credential", body: { content: "private-payload" }, url: "C:\\Users\\Personal Name\\Documents\\map" }, err: { stack: "/home/Personal Name/secret" } }));
++    log.write(JSON.stringify({ level: 50, msg: "C:\\Users\\Personal Name\\private-credential", payload: "private-payload" }));
++  }
++  const files = readdirSync(data.directory).filter((name) => name.startsWith("storymapper.log"));
++  expect(files).toHaveLength(5);
++  for (const file of files) {
++    expect(statSync(join(data.directory, file)).size).toBeLessThanOrEqual(10 * 1024 * 1024);
++    expect(readFileSync(join(data.directory, file), "utf8")).not.toMatch(/private-credential|private-payload|Personal Name/);
++  }
++});
++
++it("rotates when successive writes from one log writer cross the byte threshold", () => {
++  const data = fixture();
++  vi.spyOn(process.stdout, "write").mockReturnValue(true);
++  const path = join(data.directory, "storymapper.log");
++  const record = JSON.stringify({ level: 30, msg: "incoming request" });
++  const output = `${record}\n`;
++  const bytes = Buffer.byteLength(output);
++  const limit = 10 * 1024 * 1024;
++  writeFileSync(path, Buffer.alloc(limit - 2 * bytes));
++  const log = createRuntimeLog(data.directory);
++  log.write(record);
++  log.write(record);
++  expect(statSync(path).size).toBe(limit);
++  expect(existsSync(`${path}.1`)).toBe(false);
++  log.write(record);
++  expect(statSync(`${path}.1`).size).toBe(limit);
++  expect(readFileSync(path, "utf8")).toBe(output);
++  expect(readdirSync(data.directory).filter((name) => name.startsWith("storymapper.log"))).toHaveLength(2);
++});
++
++it("reports the persisted epoch/current schema and serves health within 200ms during a real 1000-Card HTTP read", async () => {
++  const data = fixture();
++  const db = openStoryMapperDb(data.path);
++  cleanup.push(() => { if (db.$client.open) db.$client.close(); });
++  const handle = new DatabaseHandle(db);
++  const uow = new UnitOfWork(handle);
++  const project = uow.run(ACTOR, ({ repository }) => repository.createProject({ name: "Runtime fixture" }));
++  const map = uow.run(ACTOR, ({ repository }) => repository.createStoryMap({ projectId: project.id, name: "1000 Card fixture" }));
++  uow.run(ACTOR, ({ repository }) => {
++    const parent = repository.createCard({ storyMapId: map.id, level: "activity", title: "Fixture activity" });
++    const step = repository.createCard({ storyMapId: map.id, parentId: parent.id, level: "step", title: "Fixture step" });
++    for (let index = 0; index < 998; index++) repository.createCard({ storyMapId: map.id, parentId: step.id, level: "story", title: `Fixture story ${index}` });
++  });
++  const epoch = new StoryMapperRepository(handle).getSafetySettings(project.id).epoch;
++  const schemaVersion = developmentSchemaVersion(db);
++  db.$client.close();
++  vi.stubEnv("STORYMAPPER_DB_PATH", data.path);
++  vi.stubEnv("LOG_LEVEL", "error");
++  const server = await buildServer({ development: true });
++  cleanup.push(() => server.close());
++  await server.listen({ host: "127.0.0.1", port: 0 });
++  const address = server.server.address();
++  if (!address || typeof address === "string") throw new Error("Missing listener");
++  const url = `http://127.0.0.1:${address.port}`;
++  const snapshot = fetch(`${url}/api/story-maps/${map.id}`);
++  const started = performance.now();
++  const response = await fetch(`${url}/api/health`);
++  const health = operationalHealthSchema.parse(await response.json());
++  const elapsed = performance.now() - started;
++  expect(response.status).toBe(200);
++  expect(health).toMatchObject({ schemaVersion, epoch, writeGate: "available", pendingMigration: null });
++  expect((await (await snapshot).json()).cards).toHaveLength(1000);
++  expect(elapsed).toBeLessThan(200);
++  process.stdout.write(`1000-Card concurrent HTTP health: ${elapsed.toFixed(2)} ms (local Node ${process.versions.node}, warm fixture)\n`);
++});
+diff --git a/apps/server/src/server.ts b/apps/server/src/server.ts
+index 573f0bd..d525ad8 100644
+--- a/apps/server/src/server.ts
++++ b/apps/server/src/server.ts
+@@ -0,0 +1 @@
++import { dirname, join } from "node:path";
+@@ -11,0 +13,2 @@ import { registerMcpHttp } from "@storymapper/server/mcp/http";
++import { ProjectOwnership } from "@storymapper/server/config/project-lock";
++import { createRuntimeLog } from "@storymapper/server/config/runtime-log";
+@@ -19,7 +22,10 @@ interface ServerOptions {
+-export async function buildServer(options: ServerOptions = {}): Promise<FastifyInstance> {
+-  const runtimeConfig = options.runtimeConfig ?? getRuntimeConfig();
+-  const server = Fastify({
+-    http: { requireHostHeader: false },
+-    bodyLimit: 26_214_400,
+-    logger: {
+-      level: process.env.LOG_LEVEL ?? "info"
++function installOwnedShutdown(server: FastifyInstance, ownership: ProjectOwnership, current: () => DatabaseHandle | undefined): void {
++  const runtimeCleanup: Array<() => void> = [];
++  server.decorate("registerRuntimeCleanup", (cleanup: () => void) => { runtimeCleanup.push(cleanup); });
++  server.decorate("runtimeOwner", ownership.owner);
++  server.addHook("onClose", async () => {
++    const handle = current();
++    if (handle?.current.$client.open) {
++      const result = handle.current.$client.pragma("wal_checkpoint(TRUNCATE)") as Array<{ busy: number }>;
++      if (result[0]?.busy) throw new Error("Shutdown checkpoint is busy; ownership is retained.");
++      handle.current.$client.close();
+@@ -26,0 +33,2 @@ export async function buildServer(options: ServerOptions = {}): Promise<FastifyI
++    for (const cleanup of runtimeCleanup) cleanup();
++    ownership.close();
+@@ -28 +36 @@ export async function buildServer(options: ServerOptions = {}): Promise<FastifyI
+-  installRequestSecurity(server, runtimeConfig.port, options.development === true);
++}
+@@ -29,0 +38,3 @@ export async function buildServer(options: ServerOptions = {}): Promise<FastifyI
++export async function buildServer(options: ServerOptions = {}): Promise<FastifyInstance> {
++  const runtimeConfig = options.runtimeConfig ?? getRuntimeConfig();
++  const databasePath = getDatabasePath();
+@@ -31,4 +42,10 @@ export async function buildServer(options: ServerOptions = {}): Promise<FastifyI
+-
+-  if (options.development) {
+-    await server.register(cors, {
+-      origin: ["http://127.0.0.1:5173", "http://localhost:5173"]
++  const takeovers: Array<{ pid: number; processStartTime: string }> = [];
++  let logTakeover = (owner: { pid: number; processStartTime: string }) => { takeovers.push(owner); };
++  const ownership = new ProjectOwnership(databasePath, (owner) => logTakeover(owner));
++  let server: FastifyInstance;
++  try {
++    server = Fastify({
++      return503OnClosing: false,
++      http: { requireHostHeader: false },
++      bodyLimit: 26_214_400,
++      logger: { level: process.env.LOG_LEVEL ?? "info", stream: createRuntimeLog(join(dirname(databasePath), "logs")) }
+@@ -36,20 +53,19 @@ export async function buildServer(options: ServerOptions = {}): Promise<FastifyI
+-  }
+-
+-  await server.register(multipart, {
+-    limits: { fileSize: 209_715_200 }
+-  });
+-
+-  const databasePath = getDatabasePath();
+-  const db = openStoryMapperDb(databasePath, (outcome) => server.log.info(outcome));
+-  const handle = new DatabaseHandle(db);
+-  installRestoreRequestGate(server, handle);
+-  server.addHook("onClose", async () => { if (handle.current.$client.open) handle.current.$client.close(); });
+-  const repository = new StoryMapperRepository(handle);
+-  const unitOfWork = new UnitOfWork(handle);
+-  unitOfWork.run({ actorType: "system", actorId: "sample-initialization" }, (tx) => tx.repository.ensureSeedData());
+-  registerMcpHttp(server, repository, unitOfWork);
+-
+-  await server.register(createRoutes, { repository, unitOfWork, databasePath });
+-  if (webBuildDirectory) await registerWebApp(server, webBuildDirectory);
+-
+-  return server;
++  } catch (error) { ownership.close(); throw error; }
++  logTakeover = (owner) => server.log.warn(`Reclaimed dead Project owner PID ${owner.pid}, process start time ${owner.processStartTime}.`);
++  let handle: DatabaseHandle | undefined;
++  installOwnedShutdown(server, ownership, () => handle);
++  try {
++    for (const owner of takeovers) logTakeover(owner);
++    installRequestSecurity(server, runtimeConfig.port, options.development === true);
++    if (options.development) await server.register(cors, { origin: ["http://127.0.0.1:5173", "http://localhost:5173"] });
++    await server.register(multipart, { limits: { fileSize: 209_715_200 } });
++    handle = new DatabaseHandle(openStoryMapperDb(databasePath, (outcome) => server.log.info(outcome)), ownership);
++    installRestoreRequestGate(server, handle);
++    const repository = new StoryMapperRepository(handle);
++    const unitOfWork = new UnitOfWork(handle);
++    unitOfWork.run({ actorType: "system", actorId: "sample-initialization" }, (tx) => tx.repository.ensureSeedData());
++    registerMcpHttp(server, repository, unitOfWork);
++    await server.register(createRoutes, { repository, unitOfWork, databasePath });
++    if (webBuildDirectory) await registerWebApp(server, webBuildDirectory);
++    return server;
++  } catch (error) { await server.close(); throw error; }
+diff --git a/apps/server/src/services/project-archive.test.ts b/apps/server/src/services/project-archive.test.ts
+index 48703bb..bb617b8 100644
+--- a/apps/server/src/services/project-archive.test.ts
++++ b/apps/server/src/services/project-archive.test.ts
+@@ -13,0 +14 @@ import { exportProjectArchive, importProjectArchive } from "@storymapper/server/
++import { ProjectOwnership } from "@storymapper/server/config/project-lock";
+@@ -34 +35 @@ afterEach(async () => { vi.mocked(randomUUID).mockReset(); vi.mocked(randomUUID)
+-function fixture(name = "Portable demo") {
++function fixture(name = "Portable demo", owned = false) {
+@@ -38 +39,2 @@ function fixture(name = "Portable demo") {
+-  const handle = new DatabaseHandle(openStoryMapperDb(path));
++  const ownership = owned ? new ProjectOwnership(path, () => { throw new Error("Unexpected dead owner"); }) : undefined;
++  const handle = new DatabaseHandle(openStoryMapperDb(path), ownership);
+@@ -43 +45 @@ function fixture(name = "Portable demo") {
+-  cleanup.push(async () => { await server?.close(); if (handle.current.$client.open) handle.current.$client.close(); rmSync(root, { recursive: true, force: true }); });
++  cleanup.push(async () => { await server?.close(); if (handle.current.$client.open) handle.current.$client.close(); ownership?.close(); rmSync(root, { recursive: true, force: true }); });
+@@ -231 +233 @@ it("removes a published candidate when reopen fails and leaves the old holder us
+-  const target = fixture("Unchanged reopen demo");
++  const target = fixture("Unchanged reopen demo", true);
+@@ -236,0 +239 @@ it("removes a published candidate when reopen fails and leaves the old holder us
++  expect(readFileSync(join(target.directory, ".lock"), "utf8")).toContain(`"pid":${process.pid}`);
+diff --git a/apps/server/src/services/project-archive.ts b/apps/server/src/services/project-archive.ts
+index d109753..1721b57 100644
+--- a/apps/server/src/services/project-archive.ts
++++ b/apps/server/src/services/project-archive.ts
+@@ -81 +81,3 @@ export async function importProjectArchive(archive: Buffer, handle: DatabaseHand
+-    prepareImportedDatabase(join(staging, DATABASE_FILE_NAME), localPath, projectId, actor);
++    const releaseStaging = handle.ownership?.acquire(join(staging, DATABASE_FILE_NAME));
++    try { prepareImportedDatabase(join(staging, DATABASE_FILE_NAME), localPath, projectId, actor); }
++    finally { releaseStaging?.(); }
+@@ -100,4 +102,11 @@ function switchDatabase(handle: DatabaseHandle, localPath: string): void {
+-  const candidate = openExistingStoryMapperDb(join(localPath, DATABASE_FILE_NAME));
+-  try { handle.current.$client.close(); }
+-  catch (error) { candidate.$client.close(); throw error; }
+-  handle.current = candidate;
++  const previousPath = handle.current.$client.name;
++  const path = join(localPath, DATABASE_FILE_NAME);
++  const release = handle.ownership?.acquire(path);
++  let candidate: ReturnType<typeof openExistingStoryMapperDb> | undefined;
++  try {
++    candidate = openExistingStoryMapperDb(path);
++    handle.current.$client.pragma("wal_checkpoint(TRUNCATE)");
++    handle.current.$client.close();
++    handle.current = candidate;
++  } catch (error) { candidate?.$client.close(); release?.(); throw error; }
++  handle.ownership?.releasePrevious(previousPath);
+diff --git a/docs/mcp-tools.md b/docs/mcp-tools.md
+index f359ddf..d740c8d 100644
+--- a/docs/mcp-tools.md
++++ b/docs/mcp-tools.md
+@@ -122,0 +123,2 @@ Agents cannot create Projects, change safety switches or connector credentials/c
++| `proposeGitHubBoard` | `POST /api/tool-proposals/github-board` |
++| `proposeStoryMapCopy` | `POST /api/tool-proposals/copy-story-map` |
+diff --git a/packages/contracts/src/api/tool-proposals.ts b/packages/contracts/src/api/tool-proposals.ts
+new file mode 100644
+index 0000000..f13f85c
+--- /dev/null
++++ b/packages/contracts/src/api/tool-proposals.ts
+@@ -0,0 +1,39 @@
++import { z } from "zod";
++
++export const copyStoryMapProposalRequestSchema = z.object({
++  sourceStoryMapId: z.guid(),
++  targetName: z.string().trim().min(1)
++}).strict();
++export type CopyStoryMapProposalRequest = z.infer<typeof copyStoryMapProposalRequestSchema>;
++
++export const githubBoardIssueSchema = z.object({
++  repository: z.string().regex(/^[^/\s]+\/[^/\s]+$/),
++  number: z.number().int().positive(),
++  title: z.string().min(1),
++  body: z.string(),
++  state: z.enum(["open", "closed"]),
++  url: z.url(),
++  labels: z.array(z.string()),
++  assignee: z.string().nullable(),
++  milestone: z.string().nullable(),
++  issueType: z.string().nullable(),
++  parentRepository: z.string().nullable(),
++  parentNumber: z.number().int().positive().nullable()
++}).strict();
++export type GitHubBoardIssue = z.infer<typeof githubBoardIssueSchema>;
++
++export const githubBoardProposalRequestSchema = z.object({
++  projectId: z.guid(),
++  storyMapName: z.string().trim().min(1),
++  boardUrl: z.url(),
++  storyMapId: z.guid().optional(),
++  cleanup: z.boolean().default(false),
++  removeCardIds: z.array(z.guid()).default([]),
++  issues: z.array(githubBoardIssueSchema)
++}).strict().superRefine((input, context) => {
++  if (input.cleanup && input.storyMapId) context.addIssue({ code: "custom", message: "Sync cannot clean up Story Maps." });
++  if (!input.storyMapId && input.removeCardIds.length) context.addIssue({ code: "custom", message: "Removal requires a sync Story Map." });
++  const keys = input.issues.map((issue) => `${issue.repository.toLowerCase()}#${issue.number}`);
++  if (new Set(keys).size !== keys.length) context.addIssue({ code: "custom", message: "Duplicate GitHub issue." });
++});
++export type GitHubBoardProposalRequest = z.infer<typeof githubBoardProposalRequestSchema>;
+diff --git a/packages/contracts/src/index.ts b/packages/contracts/src/index.ts
+index d966a32..5d72689 100644
+--- a/packages/contracts/src/index.ts
++++ b/packages/contracts/src/index.ts
+@@ -7,0 +8 @@ export * from "./schemas/sync-results";
++export * from "./schemas/health";
+@@ -12,0 +14 @@ export * from "./api/application-responses";
++export * from "./api/tool-proposals";
+diff --git a/packages/contracts/src/schemas/domain.ts b/packages/contracts/src/schemas/domain.ts
+index 462843b..caca3b7 100644
+--- a/packages/contracts/src/schemas/domain.ts
++++ b/packages/contracts/src/schemas/domain.ts
+@@ -610 +610 @@ export const changeOperationSchema = z.object({
+-  entity: z.enum(["storyMap", "card", "release", "persona", "sourceLink", "githubLink"]),
++  entity: z.enum(["storyMap", "card", "release", "persona", "sourceLink", "githubLink", "storyMapCopy", "githubBoardImport"]),
+diff --git a/packages/contracts/src/schemas/health.ts b/packages/contracts/src/schemas/health.ts
+new file mode 100644
+index 0000000..2c4c8a3
+--- /dev/null
++++ b/packages/contracts/src/schemas/health.ts
+@@ -0,0 +1,10 @@
++import { z } from "zod";
++
++export const operationalHealthSchema = z.strictObject({
++  version: z.string().min(1).max(64),
++  schemaVersion: z.string().min(1).max(128).nullable(),
++  epoch: z.string().uuid().nullable(),
++  writeGate: z.enum(["available", "writing", "restoring", "unavailable", "stopping"]),
++  pendingMigration: z.string().min(1).max(128).nullable()
++});
++export type OperationalHealth = z.infer<typeof operationalHealthSchema>;
+diff --git a/packages/db/src/connection.ts b/packages/db/src/connection.ts
+index 46f8110..ad6ca12 100644
+--- a/packages/db/src/connection.ts
++++ b/packages/db/src/connection.ts
+@@ -15,0 +16,2 @@ export function openExistingStoryMapperDb(databasePath: string): SqliteDatabase
++    sqlite.pragma("busy_timeout = 5000");
++    sqlite.pragma("wal_autocheckpoint = 1000");
+@@ -28,4 +30,8 @@ export function openStoryMapperDb(databasePath: string, logRecovery: (outcome: s
+-  sqlite.pragma("journal_mode = WAL");
+-  sqlite.pragma("foreign_keys = ON");
+-  migrate(sqlite);
+-  return drizzle(sqlite, { schema });
++  try {
++    sqlite.pragma("journal_mode = WAL");
++    sqlite.pragma("foreign_keys = ON");
++    sqlite.pragma("busy_timeout = 5000");
++    sqlite.pragma("wal_autocheckpoint = 1000");
++    migrate(sqlite);
++    return drizzle(sqlite, { schema });
++  } catch (error) { sqlite.close(); throw error; }
+diff --git a/packages/db/src/database-handle.ts b/packages/db/src/database-handle.ts
+index df3ddd1..8838346 100644
+--- a/packages/db/src/database-handle.ts
++++ b/packages/db/src/database-handle.ts
+@@ -1 +1 @@
+-import { actorContextSchema, type ActorContext } from "@storymapper/contracts";
++import { actorContextSchema, type ActorContext, type OperationalHealth } from "@storymapper/contracts";
+@@ -3,0 +4,5 @@ import type { SqliteDatabase } from "@storymapper/db/connection";
++export interface DatabaseOwnership {
++  acquire(databasePath: string): () => void;
++  releasePrevious(databasePath: string): void;
++}
++
+@@ -8 +13,3 @@ export class DatabaseHandle {
+-  #drained: (() => void) | undefined;
++  #lifecycleRequests = 0;
++  #drained = new Set<() => void>();
++  #stopping = false;
+@@ -11 +18 @@ export class DatabaseHandle {
+-  constructor(public current: SqliteDatabase) {}
++  constructor(public current: SqliteDatabase, readonly ownership?: DatabaseOwnership) {}
+@@ -14,0 +22,7 @@ export class DatabaseHandle {
++  get stopping(): boolean { return this.#stopping; }
++  get writeGate(): OperationalHealth["writeGate"] {
++    if (this.#stopping) return "stopping";
++    if (this.#unavailableReason || !this.current.$client.open) return "unavailable";
++    if (this.#restoring) return "restoring";
++    return this.#operation ? "writing" : "available";
++  }
+@@ -22,3 +36,4 @@ export class DatabaseHandle {
+-  enterRequest(): boolean {
+-    if (this.#restoring || this.#unavailableReason) return false;
+-    this.#requests += 1;
++  enterRequest(lifecycle = false): boolean {
++    if (this.#stopping || this.#restoring || this.#unavailableReason) return false;
++    if (lifecycle) this.#lifecycleRequests += 1;
++    else this.#requests += 1;
+@@ -28,3 +43,21 @@ export class DatabaseHandle {
+-  leaveRequest(): void {
+-    this.#requests -= 1;
+-    if (this.#requests === 0) this.#drained?.();
++  leaveRequest(lifecycle = false): void {
++    if (lifecycle) this.#lifecycleRequests -= 1;
++    else this.#requests -= 1;
++    for (const check of this.#drained) check();
++  }
++
++  async drain(): Promise<void> {
++    this.#stopping = true;
++    await this.#waitForDrain(true);
++  }
++
++  async #waitForDrain(lifecycle: boolean): Promise<void> {
++    if (!this.#requests && (!lifecycle || !this.#lifecycleRequests)) return;
++    await new Promise<void>((resolve) => {
++      const check = () => {
++        if (this.#requests || lifecycle && this.#lifecycleRequests) return;
++        this.#drained.delete(check);
++        resolve();
++      };
++      this.#drained.add(check);
++    });
+@@ -38 +71 @@ export class DatabaseHandle {
+-      if (this.#requests) await new Promise<void>((resolve) => { this.#drained = resolve; });
++      await this.#waitForDrain(false);
+@@ -41 +73,0 @@ export class DatabaseHandle {
+-      this.#drained = undefined;
+diff --git a/packages/db/src/fixtures/runtime-audit.mjs b/packages/db/src/fixtures/runtime-audit.mjs
+new file mode 100644
+index 0000000..13864f4
+--- /dev/null
++++ b/packages/db/src/fixtures/runtime-audit.mjs
+@@ -0,0 +1,8 @@
++import Database from 'better-sqlite3';
++import { resolveSqlitePath } from '../sqlite-path.ts';
++
++export function readToolCallCount(databasePath) {
++  const database = new Database(resolveSqlitePath(databasePath), { readonly: true });
++  try { return database.prepare("SELECT count(*) AS count FROM activity_events WHERE action = 'tool_call'").get().count; }
++  finally { database.close(); }
++}
+diff --git a/packages/db/src/repositories/changesets-repository.ts b/packages/db/src/repositories/changesets-repository.ts
+index f2a8523..1dbdb7f 100644
+--- a/packages/db/src/repositories/changesets-repository.ts
++++ b/packages/db/src/repositories/changesets-repository.ts
+@@ -9,0 +10 @@ import { changeSets } from "@storymapper/db/schema";
++import { applyToolProposal } from "@storymapper/db/repositories/tool-proposals-repository";
+@@ -45,0 +47 @@ export function updateChangeSetStatus(this: StoryMapperRepository<"transaction">
++    if (before.status === "applied") throw new DomainError("conflict", "Applied ChangeSet status cannot be changed.");
+@@ -71 +73 @@ export function applyChangeSet(this: StoryMapperRepository<"transaction">, chang
+-      if (!["create:card", "update:card", "create:release", "create:persona", "link:sourceLink"].includes(key)) {
++      if (!["create:card", "update:card", "create:release", "create:persona", "link:sourceLink", "create:storyMapCopy", "create:githubBoardImport"].includes(key)) {
+@@ -89,0 +92 @@ function applyOperation(repository: StoryMapperRepository<"transaction">, change
++  if (operation.op === "create" && (operation.entity === "storyMapCopy" || operation.entity === "githubBoardImport")) { applyToolProposal(repository, changeSet, operation); return; }
+diff --git a/packages/db/src/repositories/map-copy-repository.ts b/packages/db/src/repositories/map-copy-repository.ts
+new file mode 100644
+index 0000000..301ce2e
+--- /dev/null
++++ b/packages/db/src/repositories/map-copy-repository.ts
+@@ -0,0 +1,91 @@
++import { createHash, randomUUID } from "node:crypto";
++import { asc, eq, inArray } from "drizzle-orm";
++import type { AnySQLiteTable } from "drizzle-orm/sqlite-core";
++import { DomainError } from "@storymapper/contracts";
++import type { StoryMapperRepository } from "@storymapper/db/repositories/storymapper-repository";
++import * as tables from "@storymapper/db/schema";
++
++const MAP_TABLES = {
++  releases: tables.releases, cards: tables.cards, personas: tables.personas,
++  workflowStatuses: tables.workflowStatuses, annotations: tables.annotations,
++  storyTemplates: tables.storyTemplates, productContexts: tables.productContexts,
++  roadmaps: tables.roadmaps
++};
++const CARD_TABLES = {
++  cardPersonas: tables.cardPersonas, cardAnnotations: tables.cardAnnotations,
++  cardSourceLinks: tables.cardSourceLinks, cardAttachments: tables.cardAttachments
++};
++const ROADMAP_TABLES = {
++  roadmapColumns: tables.roadmapColumns, roadmapSwimlanes: tables.roadmapSwimlanes,
++  roadmapCards: tables.roadmapCards
++};
++const ROOT_TABLES = new Set(["storyMaps", "cards", "releases", "personas", "roadmaps"]);
++type StoredRow = Record<string, unknown> & { id: string };
++type CopyRows = Record<string, StoredRow[]>;
++
++export function storyMapCopyRows(this: StoryMapperRepository, storyMapId: string): CopyRows {
++  this.getStoryMapOrThrow(storyMapId);
++  const rows: CopyRows = { storyMaps: this.db.select().from(tables.storyMaps).where(eq(tables.storyMaps.id, storyMapId)).all() };
++  for (const [name, table] of Object.entries(MAP_TABLES)) {
++    rows[name] = this.db.select().from(table).where(eq(table.storyMapId, storyMapId)).orderBy(asc(table.id)).all();
++  }
++  const cardIds = rows.cards!.map((card) => card.id);
++  for (const [name, table] of Object.entries(CARD_TABLES)) {
++    rows[name] = cardIds.length ? this.db.select().from(table).where(inArray(table.cardId, cardIds)).orderBy(asc(table.id)).all() : [];
++  }
++  const roadmapIds = rows.roadmaps!.map((roadmap) => roadmap.id);
++  for (const [name, table] of Object.entries(ROADMAP_TABLES)) {
++    rows[name] = roadmapIds.length ? this.db.select().from(table).where(inArray(table.roadmapId, roadmapIds)).orderBy(asc(table.id)).all() : [];
++  }
++  const roadmapCardIds = rows.roadmapCards!.map((card) => card.id);
++  rows.roadmapReferences = roadmapCardIds.length ? this.db.select().from(tables.roadmapReferences).where(inArray(tables.roadmapReferences.roadmapCardId, roadmapCardIds)).orderBy(asc(tables.roadmapReferences.id)).all() : [];
++  return rows;
++}
++
++export function mapFingerprint(this: StoryMapperRepository, storyMapId: string): string {
++  return createHash("sha256").update(JSON.stringify({
++    rows: storyMapCopyRows.call(this, storyMapId),
++    githubLinks: this.listGitHubLinksForStoryMap(storyMapId),
++    remoteLinks: this.listRemoteWorkItemLinksForStoryMap(storyMapId)
++  })).digest("hex");
++}
++
++export function storyMapInventory(this: StoryMapperRepository, storyMapId: string): Record<string, number> {
++  return Object.fromEntries(Object.entries(storyMapCopyRows.call(this, storyMapId)).map(([name, rows]) => [name, rows.length]));
++}
++
++export function copyStoryMap(this: StoryMapperRepository<"transaction">, sourceStoryMapId: string, targetName: string, targetStoryMapId: string): void {
++  this.assertWritable();
++  const rows = storyMapCopyRows.call(this as unknown as StoryMapperRepository, sourceStoryMapId);
++  const ids = new Map<string, string>(Object.values(rows).flat().map((row) => [row.id, randomUUID()]));
++  ids.set(sourceStoryMapId, targetStoryMapId);
++  const now = new Date().toISOString();
++  const allTables: Record<string, AnySQLiteTable> = { storyMaps: tables.storyMaps, ...MAP_TABLES, ...CARD_TABLES, ...ROADMAP_TABLES, roadmapReferences: tables.roadmapReferences };
++  for (const [name, entries] of Object.entries(rows)) {
++    for (const source of entries) {
++      const row = cloneRow(source, ids, now);
++      if (name === "storyMaps") row.name = targetName;
++      if (name === "cards") row.creationSource = "import";
++      this.db.insert(allTables[name]!).values(row).run();
++      if (ROOT_TABLES.has(name)) this.createRootVersion(name as "storyMaps" | "cards" | "releases" | "personas" | "roadmaps", row.id);
++    }
++  }
++  for (const source of rows.cards!) {
++    const card = this.getCard(ids.get(source.id)!);
++    if (!card) throw new DomainError("internal", "Copied Card is missing.");
++    this.writeCardVersion(card);
++    this.logActivity(rows.storyMaps![0]!.projectId as string, "card.created", "card", card.id, undefined, card);
++  }
++  this.logActivity(rows.storyMaps![0]!.projectId as string, "storyMap.copied", "storyMap", targetStoryMapId, { sourceStoryMapId }, this.getStoryMapSnapshot(targetStoryMapId));
++}
++
++function cloneRow(source: StoredRow, ids: Map<string, string>, now: string): StoredRow {
++  const row: StoredRow = { ...source, id: ids.get(source.id)! };
++  for (const [key, value] of Object.entries(row)) {
++    if ((key.endsWith("Id") || key === "targetId") && typeof value === "string" && ids.has(value)) row[key] = ids.get(value)!;
++  }
++  if ("version" in row) row.version = 1;
++  if ("createdAt" in row) row.createdAt = now;
++  if ("updatedAt" in row) row.updatedAt = now;
++  return row;
++}
+diff --git a/packages/db/src/repositories/storymapper-repository.ts b/packages/db/src/repositories/storymapper-repository.ts
+index 759c657..57f8e94 100644
+--- a/packages/db/src/repositories/storymapper-repository.ts
++++ b/packages/db/src/repositories/storymapper-repository.ts
+@@ -14,0 +15 @@ import * as workItemActions from "@storymapper/db/repositories/work-item-reposit
++import * as toolProposalActions from "@storymapper/db/repositories/tool-proposals-repository";
+@@ -32,0 +34,2 @@ export class StoryMapperRepository<Mode extends "root" | "transaction" = "root">
++  proposeStoryMapCopy = toolProposalActions.proposeStoryMapCopy.bind(this as unknown as StoryMapperRepository<"transaction">) as Mode extends "transaction" ? OmitThisParameter<typeof toolProposalActions.proposeStoryMapCopy> : never;
++  proposeGitHubBoard = toolProposalActions.proposeGitHubBoard.bind(this as unknown as StoryMapperRepository<"transaction">) as Mode extends "transaction" ? OmitThisParameter<typeof toolProposalActions.proposeGitHubBoard> : never;
+diff --git a/packages/db/src/repositories/tool-proposals-repository.ts b/packages/db/src/repositories/tool-proposals-repository.ts
+new file mode 100644
+index 0000000..bdba5b6
+--- /dev/null
++++ b/packages/db/src/repositories/tool-proposals-repository.ts
+@@ -0,0 +1,190 @@
++import { createHash, randomUUID } from "node:crypto";
++import { and, eq } from "drizzle-orm";
++import { DomainError, cardSchema, githubBoardProposalRequestSchema, copyStoryMapProposalRequestSchema } from "@storymapper/contracts";
++import type { ChangeOperation, ChangeSet, CopyStoryMapProposalRequest, GitHubBoardIssue, GitHubBoardProposalRequest, Card, ConnectorConnection } from "@storymapper/contracts";
++import { createChangeSet } from "@storymapper/core";
++import { copyStoryMap, mapFingerprint, storyMapInventory } from "@storymapper/db/repositories/map-copy-repository";
++import type { StoryMapperRepository } from "@storymapper/db/repositories/storymapper-repository";
++import { cards, githubLinks, remoteWorkItemLinks } from "@storymapper/db/schema";
++
++export function proposeStoryMapCopy(this: StoryMapperRepository<"transaction">, input: CopyStoryMapProposalRequest): ChangeSet {
++  this.assertWritable();
++  const source = this.getStoryMapOrThrow(input.sourceStoryMapId);
++  const targetId = randomUUID();
++  return this.createChangeSet(createChangeSet({ id: randomUUID(), projectId: source.projectId,
++    title: `Copy ${source.name} to ${input.targetName}`, source: "import", operations: [{
++      op: "create", entity: "storyMapCopy", entityId: targetId,
++      after: { input, expected: fingerprints(this, [source.id]), preview: {
++        source: { id: source.id, name: source.name }, target: { id: targetId, name: input.targetName },
++        inventory: storyMapInventory.call(this as unknown as StoryMapperRepository, source.id)
++      } },
++      reason: "Copy the complete Story Map and its owned relationships."
++    }]
++  }));
++}
++
++export function proposeGitHubBoard(this: StoryMapperRepository<"transaction">, input: GitHubBoardProposalRequest): ChangeSet {
++  this.assertWritable();
++  for (const issue of input.issues) normalizedTitle(issue);
++  if (!this.listProjects().some((project) => project.id === input.projectId)) throw new DomainError("not_found", "Project not found.");
++  const mapIds = input.cleanup ? this.listStoryMaps(input.projectId).map((map) => map.id) : input.storyMapId ? [input.storyMapId] : [];
++  for (const mapId of mapIds) if (this.getStoryMapOrThrow(mapId).projectId !== input.projectId) throw new DomainError("validation", "Story Map belongs to another Project.");
++  for (const cardId of input.removeCardIds) if (this.getCard(cardId)?.storyMapId !== input.storyMapId) throw new DomainError("validation", "Removal Card does not belong to the sync Story Map.");
++  const existing = input.storyMapId ? existingIssueCards(this, input.storyMapId) : new Map<string, Card>();
++  if (input.issues.some((issue) => input.removeCardIds.includes(existing.get(issueKey(issue.repository, issue.number))?.id ?? ""))) throw new DomainError("validation", "An imported issue cannot also be removed.");
++  return this.createChangeSet(createChangeSet({ id: randomUUID(), projectId: input.projectId,
++    title: `${input.storyMapId ? "Sync" : "Import"} GitHub board: ${input.storyMapName}`, source: "import", operations: [{
++      op: "create", entity: "githubBoardImport", entityId: randomUUID(),
++      after: { input, expected: fingerprints(this, mapIds), preview: {
++        connectors: connectorPreviews(this, input),
++        cleanup: input.cleanup ? mapIds.map((id) => ({ id, name: this.getStoryMapOrThrow(id).name,
++          inventory: { ...storyMapInventory.call(this as unknown as StoryMapperRepository, id),
++            githubLinks: this.listGitHubLinksForStoryMap(id).length, remoteWorkItemLinks: this.listRemoteWorkItemLinksForStoryMap(id).length }
++        })) : []
++      } }, reason: `Read-only GitHub source: ${input.boardUrl}`
++    }]
++  }));
++}
++
++export function applyToolProposal(repository: StoryMapperRepository<"transaction">, changeSet: ChangeSet, operation: ChangeOperation): void {
++  if (repository.actor.actorType !== "human") throw new DomainError("protected", "Local data tool proposals require human application.");
++  const after = operation.after as { input: unknown; expected: Record<string, string>; preview?: { connectors?: ReturnType<typeof connectorPreviews> } };
++  if (!after || !after.expected) throw new DomainError("validation", "Tool proposal context is missing.");
++  for (const [id, expected] of Object.entries(after.expected)) {
++    if (repository.getStoryMapOrThrow(id).projectId !== changeSet.projectId || mapFingerprint.call(repository as unknown as StoryMapperRepository, id) !== expected) throw new DomainError("conflict", "Story Map changed after the proposal; create a new proposal.");
++  }
++  if (operation.entity === "storyMapCopy") {
++    const input = copyStoryMapProposalRequestSchema.parse(after.input);
++    if (!after.expected[input.sourceStoryMapId] || repository.getStoryMapOrThrow(input.sourceStoryMapId).projectId !== changeSet.projectId) throw new DomainError("validation", "Copy proposal source scope is missing.");
++    copyStoryMap.call(repository, input.sourceStoryMapId, input.targetName, operation.entityId);
++    return;
++  }
++  const input = githubBoardProposalRequestSchema.parse(after.input);
++  if (JSON.stringify(after.preview?.connectors) !== JSON.stringify(connectorPreviews(repository, input))) throw new DomainError("conflict", "GitHub connectors changed after the proposal; create a new proposal.");
++  if (input.projectId !== changeSet.projectId) throw new DomainError("validation", "Tool proposal Project mismatch.");
++  if (input.storyMapId && !after.expected[input.storyMapId]) throw new DomainError("validation", "Sync proposal source scope is missing.");
++  if (input.cleanup && JSON.stringify(repository.listStoryMaps(input.projectId).map((map) => map.id).sort()) !== JSON.stringify(Object.keys(after.expected).sort())) throw new DomainError("conflict", "Project Story Maps changed after the cleanup proposal.");
++  applyGitHubBoard(repository, input);
++}
++
++function fingerprints(repository: StoryMapperRepository<"transaction">, ids: string[]): Record<string, string> {
++  return Object.fromEntries(ids.map((id) => [id, mapFingerprint.call(repository as unknown as StoryMapperRepository, id)]));
++}
++
++function applyGitHubBoard(repository: StoryMapperRepository<"transaction">, input: GitHubBoardProposalRequest): void {
++  if (input.cleanup) for (const map of repository.listStoryMaps(input.projectId)) repository.deleteStoryMap(map.id);
++  const map = input.storyMapId ? repository.getStoryMapOrThrow(input.storyMapId) : repository.createStoryMap({ projectId: input.projectId, name: input.storyMapName, description: `Imported from ${input.boardUrl}` });
++  if (map.projectId !== input.projectId) throw new DomainError("validation", "Story Map Project mismatch.");
++  for (const id of input.removeCardIds) {
++    if (repository.getCard(id)?.storyMapId !== map.id) throw new DomainError("conflict", "Removal Card changed after proposal.");
++    repository.deleteCard(id, { strategy: "unassign" });
++  }
++  const existing = existingIssueCards(repository, map.id);
++  const newIssues = input.issues.filter((issue) => !existing.has(issueKey(issue.repository, issue.number)));
++  const parking = newIssues.length ? parkingCards(repository, map.id) : undefined;
++  const connections = boardConnections(repository, input);
++  const orderedIssues = [...input.issues].sort((left, right) => levelOrder(left) - levelOrder(right) || left.repository.toLowerCase().localeCompare(right.repository.toLowerCase()) || left.number - right.number);
++  for (const issue of orderedIssues) {
++    upsertIssueCard(repository, map.id, issue, existing, parking);
++  }
++  for (const issue of orderedIssues) {
++    const card = existing.get(issueKey(issue.repository, issue.number))!;
++    if (parking && newIssues.includes(issue) && card.level !== "activity") {
++      const parent = issue.parentRepository && issue.parentNumber ? existing.get(issueKey(issue.parentRepository, issue.parentNumber)) : undefined;
++      const parentId = card.level === "step" ? parent?.level === "activity" ? parent.id : parking.activity : parent?.level === "step" ? parent.id : parking.step;
++      repository.moveCard(card.id, { parentId, position: repository.nextSiblingPosition(map.id, parentId) });
++    }
++    upsertIssueLinks(repository, card.id, connections.get(issue.repository.toLowerCase())!, issue);
++  }
++}
++
++function upsertIssueCard(repository: StoryMapperRepository<"transaction">, mapId: string, issue: GitHubBoardIssue, existing: Map<string, Card>, parking: { activity: string; step: string } | undefined): void {
++  const key = issueKey(issue.repository, issue.number);
++  const status = issue.state === "closed" ? "done" : issue.labels.includes("status:active") ? "active" : "todo";
++  const title = normalizedTitle(issue);
++  const current = existing.get(key);
++  if (current) {
++    if (current.title === title && current.description === issue.body && current.status === status && (current.assignee ?? null) === issue.assignee) return;
++    repository.db.update(cards).set({ title, description: issue.body, status, assignee: issue.assignee, updatedAt: new Date().toISOString() }).where(eq(cards.id, current.id)).run();
++    const updated = repository.getCard(current.id)!;
++    repository.writeCardVersion(updated);
++    repository.logActivity(repository.getStoryMapOrThrow(mapId).projectId, "card.updated", "card", current.id, current, updated);
++    return;
++  }
++  const level = levelOrder(issue) === 0 ? "activity" : levelOrder(issue) === 1 ? "step" : "story";
++  const card = repository.createCard({ storyMapId: mapId, level, parentId: level === "activity" ? null : level === "step" ? parking!.activity : parking!.step,
++    title, description: issue.body, status, ...(issue.assignee ? { assignee: issue.assignee } : {}) }, "import");
++  existing.set(key, card);
++}
++
++function boardConnections(repository: StoryMapperRepository<"transaction">, input: GitHubBoardProposalRequest): Map<string, string> {
++  const connections = repository.listConnectorConnections(input.projectId);
++  return new Map(repositoryNames(input).map((name) => {
++    const [owner, repo] = name.split("/");
++    const existing = matchingConnection(connections, name);
++    const connection = existing ? existing.readOnly ? existing : repository.updateConnectorConnection(existing.id, { readOnly: true })! : repository.createConnectorConnection({
++      projectId: input.projectId, provider: "github", name, authMode: "token", owner: owner!, repository: repo!, readOnly: true,
++      statusMapping: [{ localStatus: "todo", remoteState: "open", labels: ["status:todo"] }, { localStatus: "active", remoteState: "open", labels: ["status:active"] }, { localStatus: "done", remoteState: "closed", labels: ["status:done"] }]
++    });
++    return [name, connection.id];
++  }));
++}
++
++function existingIssueCards(repository: StoryMapperRepository<"transaction">, mapId: string): Map<string, Card> {
++  const cards = new Map<string, Card>();
++  for (const link of repository.listGitHubLinksForStoryMap(mapId)) {
++    if (!link.cardId || !link.issueNumber) continue;
++    const key = issueKey(link.repo, link.issueNumber);
++    if (cards.has(key)) throw new DomainError("conflict", "Multiple Cards refer to the same GitHub issue.");
++    const card = repository.getCard(link.cardId);
++    if (card) cards.set(key, card);
++  }
++  return cards;
++}
++
++function parkingCards(repository: StoryMapperRepository<"transaction">, mapId: string): { activity: string; step: string } {
++  const cards = repository.listCards(mapId);
++  const activity = cards.find((card) => card.level === "activity" && !card.parentId && card.title === "Parking lot") ?? repository.createCard({ storyMapId: mapId, level: "activity", title: "Parking lot" }, "import");
++  const step = cards.find((card) => card.level === "step" && card.parentId === activity.id && card.title === "Parking lot") ?? repository.createCard({ storyMapId: mapId, parentId: activity.id, level: "step", title: "Parking lot" }, "import");
++  return { activity: activity.id, step: step.id };
++}
++
++function upsertIssueLinks(repository: StoryMapperRepository<"transaction">, cardId: string, connectionId: string, issue: GitHubBoardIssue): void {
++  const card = repository.getCard(cardId)!;
++  const link = repository.listGitHubLinksForStoryMap(card.storyMapId).find((entry) => entry.cardId === cardId && entry.repo.toLowerCase() === issue.repository.toLowerCase() && entry.issueNumber === issue.number);
++  const values = { repo: issue.repository, issueNumber: issue.number, url: issue.url, syncState: "synced" as const };
++  if (link) {
++    repository.db.update(githubLinks).set({ ...values, milestone: issue.milestone }).where(eq(githubLinks.id, link.id)).run();
++    repository.logActivity(repository.getStoryMapOrThrow(card.storyMapId).projectId, "githubLink.updated", "githubLink", link.id, link, repository.getGitHubLink(link.id));
++  } else repository.createGitHubLink({ cardId, ...values, ...(issue.milestone ? { milestone: issue.milestone } : {}) });
++  const remote = repository.db.select().from(remoteWorkItemLinks).where(and(eq(remoteWorkItemLinks.cardId, cardId), eq(remoteWorkItemLinks.connectionId, connectionId))).get();
++  const baseline = { connectionId, provider: "github", cardId, remoteId: String(issue.number), remoteNumber: issue.number,
++    url: issue.url, titleHash: hash(issue.title), bodyHash: hash(issue.body), remoteState: issue.state, labelsJson: JSON.stringify(issue.labels),
++    milestone: issue.milestone, remoteParentNumber: issue.parentNumber, syncState: "synced", lastSyncedAt: new Date().toISOString() };
++  const id = remote?.id ?? randomUUID();
++  if (remote) repository.db.update(remoteWorkItemLinks).set(baseline).where(eq(remoteWorkItemLinks.id, id)).run();
++  else repository.db.insert(remoteWorkItemLinks).values({ id, ...baseline, parentOverrideLocal: false }).run();
++  repository.logActivity(repository.getStoryMapOrThrow(card.storyMapId).projectId, `remoteWorkItemLink.${remote ? "updated" : "created"}`, "remoteWorkItemLink", id, remote, baseline);
++}
++
++function connectorPreviews(repository: StoryMapperRepository<"transaction">, input: GitHubBoardProposalRequest) {
++  const connections = repository.listConnectorConnections(input.projectId);
++  return repositoryNames(input).map((name) => {
++    const existing = matchingConnection(connections, name);
++    return { repository: name, existingId: existing?.id ?? null,
++      before: existing ? { projectId: existing.projectId, provider: existing.provider, owner: existing.owner, repository: existing.repository, readOnly: existing.readOnly } : null,
++      after: { readOnly: true }
++    };
++  });
++}
++
++function repositoryNames(input: GitHubBoardProposalRequest): string[] { return [...new Set(input.issues.map((issue) => issue.repository.toLowerCase()))].sort(); }
++function matchingConnection(connections: ConnectorConnection[], name: string): ConnectorConnection | undefined {
++  const matches = connections.filter((connection) => connection.provider === "github" && `${connection.owner}/${connection.repository}`.toLowerCase() === name);
++  if (matches.length > 1) throw new DomainError("conflict", "Multiple GitHub connectors refer to the same repository.");
++  return matches[0];
++}
++function normalizedTitle(issue: GitHubBoardIssue): string { return cardSchema.shape.title.parse(issue.title.replace(/^[A-Z][A-Z0-9]*-\d+:\s*/, "")); }
++function issueKey(repository: string, number: number): string { return `${repository.toLowerCase()}#${number}`; }
++function levelOrder(issue: GitHubBoardIssue): number { return issue.issueType?.toLowerCase() === "epic" ? 0 : issue.issueType?.toLowerCase() === "feature" ? 1 : 2; }
++function hash(value: string): string { return createHash("sha256").update(value).digest("hex"); }
+diff --git a/scripts/commands.test.mjs b/scripts/commands.test.mjs
+index 6f377c0..1a1a143 100644
+--- a/scripts/commands.test.mjs
++++ b/scripts/commands.test.mjs
+@@ -325 +325 @@ test('interrupted preflight, build and opener terminate their whole process tree
+-test('cancellation immediately enters bounded cleanup for delayed server shutdown', async () => {
++test('cancellation waits for the owned delayed shutdown beyond the former two-second cutoff', async () => {
+@@ -330,0 +331 @@ test('cancellation immediately enters bounded cleanup for delayed server shutdow
++    const started = Date.now();
+@@ -333,0 +335 @@ test('cancellation immediately enters bounded cleanup for delayed server shutdow
++    assert.ok(Date.now() - started >= 2500);
+diff --git a/scripts/doctor.mjs b/scripts/doctor.mjs
+index 162bfe7..12a7b32 100644
+--- a/scripts/doctor.mjs
++++ b/scripts/doctor.mjs
+@@ -23 +23 @@ await commandMain(async (signal) => {
+-      await check();
++      const result = await check();
+@@ -24,0 +25 @@ await commandMain(async (signal) => {
++      if (name === 'Runtime port discovery' && result) console.log(`Operational health: version=${result.version} schema=${result.schemaVersion ?? 'unavailable'} epoch=${result.epoch ?? 'unavailable'} write-gate=${result.writeGate} pending-migration=${result.pendingMigration ?? 'unknown'}`);
+diff --git a/scripts/fixtures/preload.mjs b/scripts/fixtures/preload.mjs
+index ba61819..82a2d13 100644
+--- a/scripts/fixtures/preload.mjs
++++ b/scripts/fixtures/preload.mjs
+@@ -52,0 +53,2 @@ childProcess.spawn = function (command, args, options) {
++  } else if (config.slowAgentCalls && args?.includes('src/main.ts')) {
++    args = [...args.slice(0, -1), 'src/fixtures/runtime-lifecycle.ts'];
+diff --git a/scripts/fixtures/server.mjs b/scripts/fixtures/server.mjs
+index f71716c..ce480e1 100644
+--- a/scripts/fixtures/server.mjs
++++ b/scripts/fixtures/server.mjs
+@@ -25,0 +26,3 @@ process.on('disconnect', () => server.close(() => process.exit(0)));
++process.on('message', (message) => {
++  if (message?.type === 'shutdown') setTimeout(() => server.close(() => process.exit(0)), config.mode === 'delayed' ? 2600 : 0);
++});
+diff --git a/scripts/launcher.mjs b/scripts/launcher.mjs
+index c09e54b..27939db 100644
+--- a/scripts/launcher.mjs
++++ b/scripts/launcher.mjs
+@@ -87,7 +87,6 @@ async function stopServer(owned) {
+-  if (owned.child.connected) owned.child.send({ type: 'shutdown' });
+-  let timer;
+-  try {
+-    const closed = await Promise.race([owned.closed, new Promise((resolve) => { timer = globalThis.setTimeout(() => resolve(undefined), 2000); })]);
+-    if (closed) return closed;
+-    return await stopProcess(owned);
+-  } finally { clearTimeout(timer); }
++  if (owned.child.exitCode !== null || owned.child.signalCode !== null) return owned.closed;
++  if (owned.child.connected) {
++    await new Promise((resolve, reject) => owned.child.send({ type: 'shutdown' }, (error) => error ? reject(error) : resolve()));
++    return owned.closed;
++  }
++  return stopProcess(owned);
+diff --git a/scripts/runtime-port.test.mjs b/scripts/runtime-port.test.mjs
+index 1437a8b..07412ac 100644
+--- a/scripts/runtime-port.test.mjs
++++ b/scripts/runtime-port.test.mjs
+@@ -11,0 +12 @@ import { closedWithin, interrupt, listener, port, portClosed, until, withFixture
++import { readToolCallCount } from '../packages/db/src/fixtures/runtime-audit.mjs';
+@@ -53,0 +55,21 @@ test('runtime publication refuses an existing file and shutdown preserves a repl
++test('owned launcher drains an actual agent HTTP call beyond two seconds before WAL and runtime cleanup', { timeout: 30_000 }, async () => {
++  await withFixture({}, async (f) => {
++    f.config.slowAgentCalls = true;
++    const entered = join(f.directory, 'call-entered');
++    const owned = f.launch('start.mjs', [], { env: { PORT: String(await port()), STORYMAPPER_TEST_CALL_ENTERED: entered } });
++    await until(() => existsSync(f.config.browser.urlFile));
++    const directory = dirname(f.env.STORYMAPPER_DB_PATH);
++    const url = runtimeUrl(readRuntimePort(directory));
++    const call = fetch(`${url}/api/mcp/call`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name: 'ListProjects', input: {} }) });
++    await until(() => existsSync(entered));
++    const started = Date.now();
++    interrupt(owned, 'SIGTERM');
++    assert.equal((await call).status, 200);
++    const result = await closedWithin(owned, 8000);
++    assert.equal(result.code, 0, result.output);
++    assert.ok(Date.now() - started > 2000);
++    for (const path of ['.lock', '.port', 'storymapper.sqlite-wal']) assert.equal(existsSync(join(directory, path)), false);
++    assert.equal(readToolCallCount(f.env.STORYMAPPER_DB_PATH), 1);
++  });
++});
++
+@@ -81 +103 @@ test('doctor discovery uses stable runtime identity after the active database di
+-  const service = await listener((request, response) => response.end(JSON.stringify({ ok: true, mode: 'local', databasePath: join(directory, 'imported.lsm', 'storymapper.sqlite'), runtimeDirectory: directory })));
++  const service = await listener((request, response) => response.end(JSON.stringify(request.url === '/api/health' ? { version: '0.1.0', schemaVersion: 'fixture', epoch: '5c792608-58d3-41ae-80f0-ab66fc80b609', writeGate: 'available', pendingMigration: null } : { ok: true, mode: 'local', databasePath: join(directory, 'imported.lsm', 'storymapper.sqlite'), runtimeDirectory: directory })));
+@@ -102,0 +125,2 @@ test('relative database startup and discovery resolve from the checkout when cal
++    const health = await (await fetch(`${url}/api/health`)).json();
++    assert.ok(doctor.output.includes(`version=${health.version} schema=${health.schemaVersion} epoch=${health.epoch} write-gate=${health.writeGate} pending-migration=unknown`), doctor.output);
+diff --git a/scripts/runtime.mjs b/scripts/runtime.mjs
+index 8276760..f79f80c 100644
+--- a/scripts/runtime.mjs
++++ b/scripts/runtime.mjs
+@@ -78 +78,3 @@ export async function checkRuntimeDiscovery(env, signal) {
+-  await checkRuntimeIdentity(directory, runtimeUrl(readRuntimePort(directory)), signal);
++  const url = runtimeUrl(readRuntimePort(directory));
++  await checkRuntimeIdentity(directory, url, signal);
++  return checkOperationalHealth(url, signal);
+@@ -86,2 +88,2 @@ async function checkRuntimeIdentity(directory, url, signal) {
+-export async function checkHealth(url, signal) {
+-  const response = await fetch(new URL('/health', url), { redirect: 'manual', signal: AbortSignal.any([AbortSignal.timeout(2000), ...(signal ? [signal] : [])]) });
++async function readHealth(url, pathname, signal) {
++  const response = await fetch(new URL(pathname, url), { redirect: 'manual', signal: AbortSignal.any([AbortSignal.timeout(2000), ...(signal ? [signal] : [])]) });
+@@ -105,0 +108,12 @@ export async function checkHealth(url, signal) {
++  return health;
++}
++
++export async function checkOperationalHealth(url, signal) {
++  const { operationalHealthSchema } = await import('../packages/contracts/src/schemas/health.ts');
++  const result = operationalHealthSchema.safeParse(await readHealth(url, '/api/health', signal));
++  if (!result.success) throw new Error('Healthcheck returned invalid operational health.');
++  return result.data;
++}
++
++export async function checkHealth(url, signal) {
++  const health = await readHealth(url, '/health', signal);
+diff --git a/tools/copy_story_map.py b/tools/copy_story_map.py
+index 32f4c1b..7487fcc 100644
+--- a/tools/copy_story_map.py
++++ b/tools/copy_story_map.py
+@@ -1,213 +1,26 @@
+-"""Copy a story map by name to a new story map."""
+-
+-import sqlite3
+-import uuid
+-from datetime import datetime, timezone
+-import sys
+-import os
+-
+-DB_PATH = os.environ.get(
+-    "STORYMAPPER_DB_PATH",
+-    os.path.join(os.path.dirname(__file__), "..", "local-projects", "default.lsm", "storymapper.sqlite"),
+-)
+-
+-
+-def now_iso() -> str:
+-    return datetime.now(timezone.utc).isoformat()
+-
+-
+-def copy_story_map(source_name: str, target_name: str) -> None:
+-    con = sqlite3.connect(DB_PATH)
+-    con.row_factory = sqlite3.Row
+-    cur = con.cursor()
+-
+-    # --- source story map ---
+-    cur.execute("SELECT * FROM story_maps WHERE name = ?", (source_name,))
+-    src = cur.fetchone()
+-    if not src:
+-        raise ValueError(f"Story map '{source_name}' not found")
+-
+-    src_id = src["id"]
+-    new_map_id = str(uuid.uuid4())
+-    ts = now_iso()
+-
+-    # --- story_maps ---
+-    cur.execute(
+-        "INSERT INTO story_maps (id, project_id, name, description, estimation_unit, card_key_prefix, default_connection_id, created_at, updated_at) "
+-        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+-        (new_map_id, src["project_id"], target_name, src["description"],
+-         src["estimation_unit"], src["card_key_prefix"], src["default_connection_id"], ts, ts),
+-    )
+-
+-    # --- releases ---
+-    cur.execute("SELECT * FROM releases WHERE story_map_id = ? ORDER BY position", (src_id,))
+-    src_releases = cur.fetchall()
+-    release_id_map: dict[str, str] = {}
+-    for r in src_releases:
+-        new_rid = str(uuid.uuid4())
+-        release_id_map[r["id"]] = new_rid
+-        cur.execute(
+-            "INSERT INTO releases (id, story_map_id, name, goal, position, start_date, release_date, released) "
+-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+-            (new_rid, new_map_id, r["name"], r["goal"], r["position"],
+-             r["start_date"], r["release_date"], r["released"]),
+-        )
+-
+-    # --- cards (two passes: first create, then fix parent_id) ---
+-    cur.execute("SELECT * FROM cards WHERE story_map_id = ? ORDER BY position", (src_id,))
+-    src_cards = cur.fetchall()
+-    card_id_map: dict[str, str] = {}
+-    for c in src_cards:
+-        new_cid = str(uuid.uuid4())
+-        card_id_map[c["id"]] = new_cid
+-        new_rel = release_id_map.get(c["release_id"]) if c["release_id"] else None
+-        cur.execute(
+-            "INSERT INTO cards (id, story_map_id, parent_id, release_id, key, level, title, description, "
+-            "position, status, priority, business_value, effort, estimate, color, assignee, created_at, updated_at) "
+-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+-            (new_cid, new_map_id, None, new_rel, c["key"], c["level"], c["title"],
+-             c["description"], c["position"], c["status"], c["priority"],
+-             c["business_value"], c["effort"], c["estimate"], c["color"], c["assignee"], ts, ts),
+-        )
+-    # fix parent_id
+-    for c in src_cards:
+-        if c["parent_id"] and c["parent_id"] in card_id_map:
+-            cur.execute(
+-                "UPDATE cards SET parent_id = ? WHERE id = ?",
+-                (card_id_map[c["parent_id"]], card_id_map[c["id"]]),
+-            )
+-
+-    # --- personas ---
+-    cur.execute("SELECT * FROM personas WHERE story_map_id = ?", (src_id,))
+-    src_personas = cur.fetchall()
+-    persona_id_map: dict[str, str] = {}
+-    for p in src_personas:
+-        new_pid = str(uuid.uuid4())
+-        persona_id_map[p["id"]] = new_pid
+-        cur.execute(
+-            "INSERT INTO personas (id, project_id, story_map_id, name, role, description, goals_json, pains_json) "
+-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+-            (new_pid, p["project_id"], new_map_id, p["name"], p["role"],
+-             p["description"], p["goals_json"], p["pains_json"]),
+-        )
+-
+-    # --- workflow_statuses ---
+-    cur.execute("SELECT * FROM workflow_statuses WHERE story_map_id = ? ORDER BY position", (src_id,))
+-    for ws in cur.fetchall():
+-        cur.execute(
+-            "INSERT INTO workflow_statuses (id, project_id, story_map_id, name, \"group\", position, color) "
+-            "VALUES (?, ?, ?, ?, ?, ?, ?)",
+-            (str(uuid.uuid4()), ws["project_id"], new_map_id, ws["name"],
+-             ws["group"], ws["position"], ws["color"]),
+-        )
+-
+-    # --- annotations ---
+-    cur.execute("SELECT * FROM annotations WHERE story_map_id = ? ORDER BY position", (src_id,))
+-    src_annotations = cur.fetchall()
+-    annotation_id_map: dict[str, str] = {}
+-    for a in src_annotations:
+-        new_aid = str(uuid.uuid4())
+-        annotation_id_map[a["id"]] = new_aid
+-        cur.execute(
+-            "INSERT INTO annotations (id, project_id, story_map_id, name, icon, color, position) "
+-            "VALUES (?, ?, ?, ?, ?, ?, ?)",
+-            (new_aid, a["project_id"], new_map_id, a["name"], a["icon"], a["color"], a["position"]),
+-        )
+-
+-    # --- story_templates ---
+-    cur.execute("SELECT * FROM story_templates WHERE story_map_id = ? ORDER BY position", (src_id,))
+-    for st in cur.fetchall():
+-        cur.execute(
+-            "INSERT INTO story_templates (id, project_id, story_map_id, name, description_template, "
+-            "default_status, default_estimate, position) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+-            (str(uuid.uuid4()), st["project_id"], new_map_id, st["name"],
+-             st["description_template"], st["default_status"], st["default_estimate"], st["position"]),
+-        )
+-
+-    # --- product_contexts ---
+-    cur.execute("SELECT * FROM product_contexts WHERE story_map_id = ?", (src_id,))
+-    for pc in cur.fetchall():
+-        cur.execute(
+-            "INSERT INTO product_contexts (id, project_id, story_map_id, product_type, purpose, "
+-            "key_features_json, target_users, platform, pricing, notes, glossary, non_goals, "
+-            "compliance_constraints, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+-            (str(uuid.uuid4()), pc["project_id"], new_map_id, pc["product_type"], pc["purpose"],
+-             pc["key_features_json"], pc["target_users"], pc["platform"], pc["pricing"],
+-             pc["notes"], pc["glossary"], pc["non_goals"], pc["compliance_constraints"], ts),
+-        )
+-
+-    # --- card_personas ---
+-    for old_cid, new_cid in card_id_map.items():
+-        cur.execute("SELECT * FROM card_personas WHERE card_id = ?", (old_cid,))
+-        for cp in cur.fetchall():
+-            new_pid = persona_id_map.get(cp["persona_id"])
+-            if new_pid:
+-                cur.execute(
+-                    "INSERT INTO card_personas (id, card_id, persona_id, created_at) VALUES (?, ?, ?, ?)",
+-                    (str(uuid.uuid4()), new_cid, new_pid, ts),
+-                )
+-
+-    # --- card_annotations ---
+-    for old_cid, new_cid in card_id_map.items():
+-        cur.execute("SELECT * FROM card_annotations WHERE card_id = ?", (old_cid,))
+-        for ca in cur.fetchall():
+-            new_aid = annotation_id_map.get(ca["annotation_id"])
+-            if new_aid:
+-                cur.execute(
+-                    "INSERT INTO card_annotations (id, card_id, annotation_id, created_at) VALUES (?, ?, ?, ?)",
+-                    (str(uuid.uuid4()), new_cid, new_aid, ts),
+-                )
+-
+-    # --- roadmaps ---
+-    cur.execute("SELECT * FROM roadmaps WHERE story_map_id = ?", (src_id,))
+-    for rm in cur.fetchall():
+-        new_rmid = str(uuid.uuid4())
+-        cur.execute(
+-            "INSERT INTO roadmaps (id, project_id, story_map_id, name, type, created_at, updated_at) "
+-            "VALUES (?, ?, ?, ?, ?, ?, ?)",
+-            (new_rmid, rm["project_id"], new_map_id, rm["name"], rm["type"], ts, ts),
+-        )
+-        col_id_map: dict[str, str] = {}
+-        cur.execute("SELECT * FROM roadmap_columns WHERE roadmap_id = ? ORDER BY position", (rm["id"],))
+-        for col in cur.fetchall():
+-            new_col_id = str(uuid.uuid4())
+-            col_id_map[col["id"]] = new_col_id
+-            cur.execute(
+-                "INSERT INTO roadmap_columns (id, roadmap_id, name, position) VALUES (?, ?, ?, ?)",
+-                (new_col_id, new_rmid, col["name"], col["position"]),
+-            )
+-        lane_id_map: dict[str, str] = {}
+-        cur.execute("SELECT * FROM roadmap_swimlanes WHERE roadmap_id = ? ORDER BY position", (rm["id"],))
+-        for lane in cur.fetchall():
+-            new_lane_id = str(uuid.uuid4())
+-            lane_id_map[lane["id"]] = new_lane_id
+-            cur.execute(
+-                "INSERT INTO roadmap_swimlanes (id, roadmap_id, name, position) VALUES (?, ?, ?, ?)",
+-                (new_lane_id, new_rmid, lane["name"], lane["position"]),
+-            )
+-        cur.execute("SELECT * FROM roadmap_cards WHERE roadmap_id = ? ORDER BY position", (rm["id"],))
+-        for rc in cur.fetchall():
+-            new_rc_id = str(uuid.uuid4())
+-            new_col = col_id_map.get(rc["column_id"])
+-            new_lane = lane_id_map.get(rc["swimlane_id"]) if rc["swimlane_id"] else None
+-            cur.execute(
+-                "INSERT INTO roadmap_cards (id, roadmap_id, column_id, swimlane_id, title, details, "
+-                "labels_json, reach, impact, confidence, effort, position) "
+-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+-                (new_rc_id, new_rmid, new_col, new_lane, rc["title"], rc["details"],
+-                 rc["labels_json"], rc["reach"], rc["impact"], rc["confidence"],
+-                 rc["effort"], rc["position"]),
+-            )
+-            cur.execute("SELECT * FROM roadmap_references WHERE roadmap_card_id = ?", (rc["id"],))
+-            for rr in cur.fetchall():
+-                cur.execute(
+-                    "INSERT INTO roadmap_references (id, roadmap_card_id, target_type, target_id) VALUES (?, ?, ?, ?)",
+-                    (str(uuid.uuid4()), new_rc_id, rr["target_type"], rr["target_id"]),
+-                )
+-
+-    con.commit()
+-    con.close()
+-
+-    cards_count = len(card_id_map)
+-    releases_count = len(release_id_map)
+-    print(f"Copied '{source_name}' -> '{target_name}' ({cards_count} cards, {releases_count} releases)")
++import argparse
++import json
++from storymapper_http import DEFAULT_URL, StoryMapperClient
++
++
++def main() -> None:
++    parser = argparse.ArgumentParser(description="Propose a complete Story Map copy through the running server")
++    parser.add_argument("source_name", nargs="?")
++    parser.add_argument("target_name", nargs="?")
++    parser.add_argument("--url", default=DEFAULT_URL)
++    parser.add_argument("--project-id")
++    parser.add_argument("--apply-change-set", help="Approve and atomically apply a previously reviewed ChangeSet")
++    args = parser.parse_args()
++    client = StoryMapperClient(args.url)
++    if args.apply_change_set:
++        if args.source_name or args.target_name:
++            parser.error("Application is separate from proposing a copy")
++        result = client.apply(args.apply_change_set)
++    else:
++        if not args.source_name or not args.target_name:
++            parser.error("source_name and target_name are required for a proposal")
++        snapshot = client.story_map(args.source_name, args.project_id)
++        result = client.request("POST", "/api/tool-proposals/copy-story-map", {
++            "sourceStoryMapId": snapshot["storyMap"]["id"], "targetName": args.target_name,
++        })
++    print(json.dumps(result, ensure_ascii=False, indent=2))
+@@ -217,4 +30 @@ if __name__ == "__main__":
+-    if len(sys.argv) != 3:
+-        print("Usage: copy_story_map.py <source_name> <target_name>")
+-        sys.exit(1)
+-    copy_story_map(sys.argv[1], sys.argv[2])
++    main()
+diff --git a/tools/fixtures/board_fixture.py b/tools/fixtures/board_fixture.py
+new file mode 100644
+index 0000000..c26b1f3
+--- /dev/null
++++ b/tools/fixtures/board_fixture.py
+@@ -0,0 +1,19 @@
++import json
++import sys
++from pathlib import Path
++
++sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
++import import_github_board_view as board_tool
++
++
++fixture_path = sys.argv.pop(1)
++fixture = json.loads(Path(fixture_path).read_text(encoding="utf-8"))
++details = [board_tool.IssueDetail(**issue) for issue in fixture["issues"]]
++board_tool.require_env = lambda name: ""
++board_tool.read_project_view = lambda client, board: {"name": "Fixture board"}
++board_tool.read_board_items = lambda client, board, limit: []
++board_tool.resolve_issue_refs = lambda client, items: ({}, [])
++board_tool.read_issue_details = lambda client, refs: (details, [])
++board_tool.build_report = lambda *args: {"importableIssues": len(details)}
++board_tool.read_issue_state = lambda client, repository, number: fixture.get("states", {}).get(board_tool.item_key(repository, number), "OPEN")
++sys.exit(board_tool.main())
+diff --git a/tools/import_github_board_view.py b/tools/import_github_board_view.py
+index 6c2041b..b9493b8 100644
+--- a/tools/import_github_board_view.py
++++ b/tools/import_github_board_view.py
+@@ -2 +1,0 @@ import argparse
+-import hashlib
+@@ -6,2 +4,0 @@ import re
+-import shutil
+-import sqlite3
+@@ -13 +9,0 @@ from dataclasses import dataclass
+-from datetime import datetime
+@@ -16 +12 @@ from typing import Any
+-from uuid import uuid4
++from storymapper_http import DEFAULT_URL, StoryMapperClient
+@@ -22,11 +17,0 @@ BOARD_VIEW_NAME = "Backlog"
+-PARKING_ACTIVITY_TITLE = "Parking lot"
+-PARKING_STEP_TITLE = "Parking lot"
+-DEFAULT_STATUS_MAPPING = [
+-    {"localStatus": "todo", "remoteState": "open", "labels": ["status:todo"]},
+-    {"localStatus": "active", "remoteState": "open", "labels": ["status:active"]},
+-    {"localStatus": "done", "remoteState": "closed", "labels": ["status:done"]},
+-]
+-DEFAULT_TYPE_MAPPING = [
+-    {"match": "epic", "level": "activity"},
+-    {"match": "feature", "level": "step"},
+-]
+@@ -79,8 +63,0 @@ class IssueDetail:
+-@dataclass
+-class ImportedCard:
+-    card_id: str
+-    level: str
+-    repository: str
+-    number: int
+-
+-
+@@ -125 +102 @@ class GitHubClient:
+-def main() -> int:
++def parse_arguments() -> argparse.Namespace:
+@@ -127,4 +104,6 @@ def main() -> int:
+-    parser.add_argument("--execute", action="store_true", help="Mutate the local StoryMapper SQLite database")
+-    parser.add_argument("--cleanup", action="store_true", help="Delete existing Story Maps in the local project before importing")
+-    parser.add_argument("--sync", action="store_true", help="Reconcile an existing Story Map: update open, add new, remove closed tickets")
+-    parser.add_argument("--db", default="local-projects/default.lsm/storymapper.sqlite")
++    parser.add_argument("--execute", action="store_true", help="Create a reviewable local import ChangeSet over HTTP")
++    parser.add_argument("--apply-change-set", help="Approve and atomically apply a previously reviewed ChangeSet")
++    parser.add_argument("--cleanup", action="store_true", help="Propose deletion of existing Story Maps in the selected Project")
++    parser.add_argument("--sync", action="store_true", help="Propose reconciliation of an existing Story Map")
++    parser.add_argument("--url", default=DEFAULT_URL)
++    parser.add_argument("--project-id")
+@@ -133,2 +112,2 @@ def main() -> int:
+-    parser.add_argument("--board-owner", required=True)
+-    parser.add_argument("--board-number", type=int, required=True)
++    parser.add_argument("--board-owner")
++    parser.add_argument("--board-number", type=int)
+@@ -137,0 +117,8 @@ def main() -> int:
++    if args.apply_change_set and (args.execute or args.sync or args.cleanup or args.board_owner or args.board_number):
++        parser.error("Application is separate from proposing an import")
++    if not args.apply_change_set and (not args.board_owner or not args.board_number):
++        parser.error("--board-owner and --board-number are required for board reads")
++    if args.sync and args.cleanup:
++        parser.error("--sync cannot be combined with --cleanup")
++    return args
++
+@@ -138,0 +126,5 @@ def main() -> int:
++def main() -> int:
++    args = parse_arguments()
++    if args.apply_change_set:
++        print(json.dumps(StoryMapperClient(args.url).apply(args.apply_change_set), ensure_ascii=False, indent=2))
++        return 0
+@@ -142,2 +133,0 @@ def main() -> int:
+-    db_path = Path(args.db)
+-
+@@ -148,2 +138,2 @@ def main() -> int:
+-    issue_details, detail_errors = read_issue_details(issue_client, issue_refs)
+-    report = build_report(board, project, board_items, issue_refs, unresolved, issue_details, detail_errors)
++    details, detail_errors = read_issue_details(issue_client, issue_refs)
++    report = build_report(board, project, board_items, issue_refs, unresolved, details, detail_errors)
+@@ -151,5 +141,4 @@ def main() -> int:
+-
+-    if args.sync:
+-        if args.cleanup:
+-            raise RuntimeError("--sync cannot be combined with --cleanup")
+-        plan = build_sync_plan(db_path, args.story_map_name, board_items, issue_details, issue_client)
++    client = StoryMapperClient(args.url) if args.sync or args.execute else None
++    project_id = client.project_id(args.project_id) if client else None
++    plan = build_sync_plan(client, args.story_map_name, project_id, board_items, details, issue_client) if args.sync else None
++    if plan:
+@@ -157,3 +146 @@ def main() -> int:
+-        if not args.execute:
+-            print(json.dumps(report, ensure_ascii=False, indent=2))
+-            return 0 if report["importableIssues"] > 0 else 1
++    if args.execute:
+@@ -161,11 +148,12 @@ def main() -> int:
+-            raise RuntimeError(f"Cannot execute sync with {len(detail_errors)} issue detail errors")
+-        backup_paths = backup_database(db_path)
+-        result = apply_sync_plan(db_path, args.story_map_name, issue_details, args.issue_token_env, plan)
+-        report.update(result)
+-        report["backup"] = [str(path) for path in backup_paths]
+-        print(json.dumps(report, ensure_ascii=False, indent=2))
+-        return 0
+-
+-    if not args.execute:
+-        print(json.dumps(report, ensure_ascii=False, indent=2))
+-        return 0 if report["importableIssues"] > 0 else 1
++            raise RuntimeError(f"Cannot propose import with {len(detail_errors)} issue detail errors")
++        proposal = client.request("POST", "/api/tool-proposals/github-board", {
++            "projectId": project_id, "storyMapName": args.story_map_name,
++            "boardUrl": f"https://github.com/orgs/{board.owner}/projects/{board.number}/views/{BOARD_VIEW_NUMBER}",
++            "cleanup": args.cleanup, "issues": [issue_payload(detail) for detail in details],
++            "removeCardIds": [card_id for _, card_id in plan.to_remove] if plan else [],
++            **({"storyMapId": plan.story_map_id} if plan else {}),
++        })
++        report.update(proposal)
++        report["mode"] = "proposed"
++    print(json.dumps(report, ensure_ascii=False, indent=2))
++    return 0 if args.execute or report["importableIssues"] > 0 else 1
+@@ -173,2 +160,0 @@ def main() -> int:
+-    if detail_errors:
+-        raise RuntimeError(f"Cannot execute import with {len(detail_errors)} issue detail errors")
+@@ -176,6 +162,8 @@ def main() -> int:
+-    backup_paths = backup_database(db_path)
+-    result = import_into_database(db_path, board, args.story_map_name, issue_details, args.issue_token_env, args.cleanup)
+-    report.update(result)
+-    report["backup"] = [str(path) for path in backup_paths]
+-    print(json.dumps(report, ensure_ascii=False, indent=2))
+-    return 0
++def issue_payload(detail: IssueDetail) -> dict[str, Any]:
++    return {
++        "repository": detail.repository, "number": detail.number, "title": detail.title,
++        "body": detail.body, "state": detail.state.lower(), "url": detail.url,
++        "labels": list(detail.labels), "assignee": detail.assignee, "milestone": detail.milestone,
++        "issueType": detail.issue_type, "parentRepository": detail.parent_repository,
++        "parentNumber": detail.parent_number,
++    }
+@@ -456,78 +443,0 @@ def build_report(board: Board, project: dict[str, Any], board_items: list[BoardI
+-def backup_database(db_path: Path) -> list[Path]:
+-    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+-    backup_dir = db_path.parent / "backups" / timestamp
+-    backup_dir.mkdir(parents=True, exist_ok=True)
+-    copied: list[Path] = []
+-    for path in [db_path, Path(f"{db_path}-wal"), Path(f"{db_path}-shm")]:
+-        if path.exists():
+-            target = backup_dir / path.name
+-            shutil.copy2(path, target)
+-            copied.append(target)
+-    if not copied:
+-        raise RuntimeError(f"No database files copied from {db_path}")
+-    return copied
+-
+-
+-def import_into_database(db_path: Path, board: Board, story_map_name: str, details: list[IssueDetail], token_env: str, cleanup_enabled: bool) -> dict[str, Any]:
+-    now = iso_now()
+-    con = sqlite3.connect(db_path)
+-    con.row_factory = sqlite3.Row
+-    con.execute("PRAGMA foreign_keys = ON")
+-    with con:
+-        project = con.execute("SELECT id FROM projects ORDER BY created_at LIMIT 1").fetchone()
+-        if not project:
+-            raise RuntimeError("No StoryMapper project exists")
+-        project_id = project["id"]
+-        old_counts = current_counts(con, project_id)
+-        if cleanup_enabled:
+-            con.execute("DELETE FROM story_maps WHERE project_id = ?", (project_id,))
+-        story_map_id = new_id()
+-        con.execute(
+-            "INSERT INTO story_maps (id, project_id, name, description, estimation_unit, card_key_prefix, created_at, updated_at) VALUES (?, ?, ?, ?, 'points', 'LSM', ?, ?)",
+-            (story_map_id, project_id, story_map_name, f"Imported from {board.owner}/{board.number} view {BOARD_VIEW_NUMBER} on {now}", now, now),
+-        )
+-        token = require_env(token_env)
+-        connection_by_repo = ensure_connections(con, project_id, sorted({detail.repository for detail in details}), token, now)
+-        card_counter = 0
+-        parking_activity = insert_card(con, story_map_id, card_counter + 1, None, "activity", PARKING_ACTIVITY_TITLE, "", "todo", None, now)
+-        card_counter += 1
+-        parking_step = insert_card(con, story_map_id, card_counter + 1, parking_activity, "step", PARKING_STEP_TITLE, "", "todo", None, now)
+-        card_counter += 1
+-        issue_cards: dict[str, ImportedCard] = {}
+-        for detail in sorted(details, key=issue_sort_key):
+-            card_counter += 1
+-            level = issue_level(detail)
+-            parent_id = None if level == "activity" else parking_activity if level == "step" else parking_step
+-            card_id = insert_card(con, story_map_id, card_counter, parent_id, level, strip_issue_prefix(detail.title), detail.body, local_status(detail), detail.assignee, now)
+-            issue_cards[item_key(detail.repository, detail.number)] = ImportedCard(card_id, level, detail.repository, detail.number)
+-        moved_to_parent = 0
+-        parking_count = 0
+-        for detail in details:
+-            imported = issue_cards[item_key(detail.repository, detail.number)]
+-            parent = issue_cards.get(item_key(detail.parent_repository, detail.parent_number)) if detail.parent_repository and detail.parent_number else None
+-            parent_id = resolved_parent(imported.level, parent, parking_activity, parking_step)
+-            if parent_id:
+-                con.execute("UPDATE cards SET parent_id = ?, updated_at = ? WHERE id = ?", (parent_id, now, imported.card_id))
+-                if parent and parent.card_id == parent_id:
+-                    moved_to_parent += 1
+-            if parent_id in {parking_activity, parking_step}:
+-                parking_count += 1
+-            connection_id = connection_by_repo[detail.repository]
+-            insert_links(con, connection_id, imported.card_id, detail, now)
+-        reindex_all(con, story_map_id)
+-        new_counts = current_counts(con, project_id)
+-    return {
+-        "mode": "executed",
+-        "projectId": project_id,
+-        "storyMapId": story_map_id,
+-        "storyMapName": story_map_name,
+-        "cleanupEnabled": cleanup_enabled,
+-        "oldCounts": old_counts,
+-        "newCounts": new_counts,
+-        "cardsCreated": card_counter,
+-        "issuesImported": len(details),
+-        "movedToGitHubParent": moved_to_parent,
+-        "parkingLotChildren": parking_count,
+-    }
+-
+-
+@@ -544,19 +453,0 @@ class SyncPlan:
+-def find_story_map_id(con: sqlite3.Connection, story_map_name: str) -> str:
+-    rows = con.execute("SELECT id FROM story_maps WHERE name = ? ORDER BY created_at", (story_map_name,)).fetchall()
+-    if not rows:
+-        raise RuntimeError(f"No Story Map named {story_map_name!r}; run a normal import first")
+-    if len(rows) > 1:
+-        raise RuntimeError(f"{len(rows)} Story Maps named {story_map_name!r}; sync requires a unique name")
+-    return rows[0]["id"]
+-
+-
+-def load_existing_links(con: sqlite3.Connection, story_map_id: str) -> dict[str, tuple[str, str, int]]:
+-    existing: dict[str, tuple[str, str, int]] = {}
+-    for row in con.execute(
+-        "SELECT g.card_id, g.repo, g.issue_number FROM github_links g JOIN cards c ON c.id = g.card_id WHERE c.story_map_id = ? AND g.issue_number IS NOT NULL",
+-        (story_map_id,),
+-    ):
+-        existing[item_key(row["repo"], int(row["issue_number"]))] = (row["card_id"], row["repo"], int(row["issue_number"]))
+-    return existing
+-
+-
+@@ -572,6 +463,10 @@ def read_issue_state(client: GitHubClient, repository: str, number: int) -> str
+-def build_sync_plan(db_path: Path, story_map_name: str, board_items: list[BoardItem], details: list[IssueDetail], issue_client: GitHubClient) -> SyncPlan:
+-    con = sqlite3.connect(db_path)
+-    con.row_factory = sqlite3.Row
+-    story_map_id = find_story_map_id(con, story_map_name)
+-    existing = load_existing_links(con, story_map_id)
+-    con.close()
++def build_sync_plan(client: StoryMapperClient, story_map_name: str, project_id: str, board_items: list[BoardItem], details: list[IssueDetail], issue_client: GitHubClient) -> SyncPlan:
++    snapshot = client.story_map(story_map_name, project_id)
++    story_map_id = snapshot["storyMap"]["id"]
++    existing: dict[str, tuple[str, str, int]] = {}
++    for link in snapshot["githubLinks"]:
++        if link.get("cardId") and link.get("issueNumber"):
++            key = item_key(link["repo"], link["issueNumber"])
++            if key in existing:
++                raise RuntimeError("Multiple Cards refer to the same GitHub issue")
++            existing[key] = (link["cardId"], link["repo"], link["issueNumber"])
+@@ -616,245 +510,0 @@ def summarize_sync_plan(plan: SyncPlan) -> dict[str, Any]:
+-def apply_sync_plan(db_path: Path, story_map_name: str, details: list[IssueDetail], token_env: str, plan: SyncPlan) -> dict[str, Any]:
+-    now = iso_now()
+-    desired = {item_key(detail.repository, detail.number): detail for detail in details}
+-    con = sqlite3.connect(db_path)
+-    con.row_factory = sqlite3.Row
+-    con.execute("PRAGMA foreign_keys = ON")
+-    with con:
+-        project = con.execute("SELECT id FROM projects ORDER BY created_at LIMIT 1").fetchone()
+-        if not project:
+-            raise RuntimeError("No StoryMapper project exists")
+-        project_id = project["id"]
+-        story_map_id = plan.story_map_id
+-        old_counts = current_counts(con, project_id)
+-        updated = 0
+-        for key, card_id in plan.to_update.items():
+-            update_existing_card(con, card_id, desired[key], now)
+-            updated += 1
+-        removed = 0
+-        for _, card_id in plan.to_remove:
+-            remove_card(con, card_id, now)
+-            removed += 1
+-        added = 0
+-        moved_to_parent = 0
+-        if plan.to_add:
+-            token = require_env(token_env)
+-            repositories = sorted({desired[key].repository for key in plan.to_add})
+-            connection_by_repo = ensure_connections(con, project_id, repositories, token, now)
+-            parking_activity, parking_step = ensure_parking_containers(con, story_map_id, now)
+-            key_number = next_key_number(con, story_map_id)
+-            added_index: dict[str, ImportedCard] = {}
+-            for key in sorted(plan.to_add, key=lambda value: issue_sort_key(desired[value])):
+-                detail = desired[key]
+-                level = issue_level(detail)
+-                key_number += 1
+-                baseline_parent = resolved_parent(level, None, parking_activity, parking_step)
+-                card_id = insert_card(con, story_map_id, key_number, baseline_parent, level, strip_issue_prefix(detail.title), detail.body, local_status(detail), detail.assignee, now)
+-                added_index[key] = ImportedCard(card_id, level, detail.repository, detail.number)
+-                insert_links(con, connection_by_repo[detail.repository], card_id, detail, now)
+-                added += 1
+-            combined = load_card_index(con, story_map_id)
+-            for key in plan.to_add:
+-                detail = desired[key]
+-                imported = added_index[key]
+-                parent = combined.get(item_key(detail.parent_repository, detail.parent_number)) if detail.parent_repository and detail.parent_number else None
+-                parent_id = resolved_parent(imported.level, parent, parking_activity, parking_step)
+-                if parent_id:
+-                    con.execute("UPDATE cards SET parent_id = ?, updated_at = ? WHERE id = ?", (parent_id, now, imported.card_id))
+-                    if parent and parent.card_id == parent_id:
+-                        moved_to_parent += 1
+-        reindex_all(con, story_map_id)
+-        new_counts = current_counts(con, project_id)
+-    return {
+-        "mode": "synced",
+-        "projectId": project_id,
+-        "storyMapId": story_map_id,
+-        "storyMapName": story_map_name,
+-        "oldCounts": old_counts,
+-        "newCounts": new_counts,
+-        "cardsUpdated": updated,
+-        "cardsRemoved": removed,
+-        "cardsAdded": added,
+-        "keptOpenOutOfBacklog": len(plan.kept_open),
+-        "removalUnresolved": len(plan.removal_unresolved),
+-        "movedToGitHubParent": moved_to_parent,
+-    }
+-
+-
+-def update_existing_card(con: sqlite3.Connection, card_id: str, detail: IssueDetail, now: str) -> None:
+-    row = con.execute("SELECT story_map_id, parent_id, release_id, key, level, position, created_at FROM cards WHERE id = ?", (card_id,)).fetchone()
+-    if not row:
+-        raise RuntimeError(f"Card {card_id} vanished during sync")
+-    title = strip_issue_prefix(detail.title)
+-    status = local_status(detail)
+-    con.execute("UPDATE cards SET title = ?, description = ?, status = ?, assignee = ?, updated_at = ? WHERE id = ?", (title, detail.body, status, detail.assignee, now, card_id))
+-    version = con.execute("SELECT COALESCE(MAX(version), 0) + 1 FROM card_versions WHERE card_id = ?", (card_id,)).fetchone()[0]
+-    snapshot = {
+-        "id": card_id,
+-        "storyMapId": row["story_map_id"],
+-        "parentId": row["parent_id"],
+-        "releaseId": row["release_id"],
+-        "key": row["key"],
+-        "level": row["level"],
+-        "title": title,
+-        "description": detail.body,
+-        "position": row["position"],
+-        "status": status,
+-        "assignee": detail.assignee,
+-        "createdAt": row["created_at"],
+-        "updatedAt": now,
+-    }
+-    con.execute("INSERT INTO card_versions (id, card_id, version, snapshot_json, created_at) VALUES (?, ?, ?, ?, ?)", (new_id(), card_id, version, json.dumps(snapshot, ensure_ascii=False), now))
+-    con.execute(
+-        "UPDATE remote_work_item_links SET remote_id = ?, remote_number = ?, url = ?, title_hash = ?, body_hash = ?, remote_state = ?, labels_json = ?, milestone = ?, remote_parent_number = ?, sync_state = 'synced', last_synced_at = ? WHERE card_id = ?",
+-        (str(detail.number), detail.number, detail.url, sha256(detail.title), sha256(detail.body), detail.state.lower(), json.dumps(list(detail.labels)), detail.milestone, detail.parent_number, now, card_id),
+-    )
+-    con.execute("UPDATE github_links SET repo = ?, issue_number = ?, url = ?, milestone = ?, sync_state = 'synced' WHERE card_id = ?", (detail.repository, detail.number, detail.url, detail.milestone, card_id))
+-
+-
+-def remove_card(con: sqlite3.Connection, card_id: str, now: str) -> None:
+-    row = con.execute("SELECT parent_id FROM cards WHERE id = ?", (card_id,)).fetchone()
+-    if not row:
+-        return
+-    con.execute("UPDATE cards SET parent_id = ?, updated_at = ? WHERE parent_id = ?", (row["parent_id"], now, card_id))
+-    con.execute("DELETE FROM cards WHERE id = ?", (card_id,))
+-
+-
+-def ensure_parking_containers(con: sqlite3.Connection, story_map_id: str, now: str) -> tuple[str, str]:
+-    activity = con.execute("SELECT id FROM cards WHERE story_map_id = ? AND level = 'activity' AND parent_id IS NULL AND title = ? LIMIT 1", (story_map_id, PARKING_ACTIVITY_TITLE)).fetchone()
+-    activity_id = activity["id"] if activity else insert_card(con, story_map_id, next_key_number(con, story_map_id) + 1, None, "activity", PARKING_ACTIVITY_TITLE, "", "todo", None, now)
+-    step = con.execute("SELECT id FROM cards WHERE story_map_id = ? AND level = 'step' AND parent_id = ? AND title = ? LIMIT 1", (story_map_id, activity_id, PARKING_STEP_TITLE)).fetchone()
+-    step_id = step["id"] if step else insert_card(con, story_map_id, next_key_number(con, story_map_id) + 1, activity_id, "step", PARKING_STEP_TITLE, "", "todo", None, now)
+-    return activity_id, step_id
+-
+-
+-def next_key_number(con: sqlite3.Connection, story_map_id: str) -> int:
+-    max_number = 0
+-    for row in con.execute("SELECT key FROM cards WHERE story_map_id = ?", (story_map_id,)):
+-        match = re.match(r"^LSM-(\d+)$", row["key"] or "")
+-        if match:
+-            max_number = max(max_number, int(match.group(1)))
+-    return max_number
+-
+-
+-def load_card_index(con: sqlite3.Connection, story_map_id: str) -> dict[str, ImportedCard]:
+-    index: dict[str, ImportedCard] = {}
+-    for row in con.execute(
+-        "SELECT g.card_id, g.repo, g.issue_number, c.level FROM github_links g JOIN cards c ON c.id = g.card_id WHERE c.story_map_id = ? AND g.issue_number IS NOT NULL",
+-        (story_map_id,),
+-    ):
+-        index[item_key(row["repo"], int(row["issue_number"]))] = ImportedCard(row["card_id"], row["level"], row["repo"], int(row["issue_number"]))
+-    return index
+-
+-
+-def ensure_connections(con: sqlite3.Connection, project_id: str, repositories: list[str], token: str, now: str) -> dict[str, str]:
+-    mapping: dict[str, str] = {}
+-    for repository in repositories:
+-        owner, repo = split_repo(repository)
+-        existing = con.execute("SELECT id FROM connector_connections WHERE project_id = ? AND provider = 'github' AND owner = ? AND repository = ?", (project_id, owner, repo)).fetchone()
+-        if existing:
+-            connection_id = existing["id"]
+-            con.execute("UPDATE connector_connections SET token = ?, read_only = 1, updated_at = ? WHERE id = ?", (token, now, connection_id))
+-        else:
+-            connection_id = new_id()
+-            con.execute(
+-                "INSERT INTO connector_connections (id, project_id, provider, name, auth_mode, owner, repository, default_label, token, read_only, status_mapping_json, type_mapping_json, release_source, iteration_field_name, labels_as_annotations, created_at, updated_at) VALUES (?, ?, 'github', ?, 'token', ?, ?, 'local-story-map', ?, 1, ?, ?, 'milestone', 'Iteration', 0, ?, ?)",
+-                (connection_id, project_id, repository, owner, repo, token, json.dumps(DEFAULT_STATUS_MAPPING), json.dumps(DEFAULT_TYPE_MAPPING), now, now),
+-            )
+-        mapping[repository] = connection_id
+-    return mapping
+-
+-
+-def insert_card(con: sqlite3.Connection, story_map_id: str, number: int, parent_id: str | None, level: str, title: str, description: str, status: str, assignee: str | None, now: str) -> str:
+-    card_id = new_id()
+-    position = con.execute("SELECT COUNT(*) FROM cards WHERE story_map_id = ? AND parent_id IS ?", (story_map_id, parent_id)).fetchone()[0]
+-    con.execute(
+-        "INSERT INTO cards (id, story_map_id, parent_id, release_id, key, level, title, description, position, status, assignee, created_at, updated_at) VALUES (?, ?, ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+-        (card_id, story_map_id, parent_id, f"LSM-{number}", level, title, description, position, status, assignee, now, now),
+-    )
+-    snapshot = {
+-        "id": card_id,
+-        "storyMapId": story_map_id,
+-        "parentId": parent_id,
+-        "releaseId": None,
+-        "key": f"LSM-{number}",
+-        "level": level,
+-        "title": title,
+-        "description": description,
+-        "position": position,
+-        "status": status,
+-        "assignee": assignee,
+-        "createdAt": now,
+-        "updatedAt": now,
+-    }
+-    con.execute("INSERT INTO card_versions (id, card_id, version, snapshot_json, created_at) VALUES (?, ?, 1, ?, ?)", (new_id(), card_id, json.dumps(snapshot, ensure_ascii=False), now))
+-    return card_id
+-
+-
+-def insert_links(con: sqlite3.Connection, connection_id: str, card_id: str, detail: IssueDetail, now: str) -> None:
+-    labels = list(detail.labels)
+-    con.execute(
+-        "INSERT INTO remote_work_item_links (id, connection_id, provider, card_id, release_id, remote_id, remote_number, url, title_hash, body_hash, remote_state, labels_json, milestone, remote_parent_number, parent_override_local, sync_state, last_synced_at) VALUES (?, ?, 'github', ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 'synced', ?)",
+-        (new_id(), connection_id, card_id, str(detail.number), detail.number, detail.url, sha256(detail.title), sha256(detail.body), detail.state.lower(), json.dumps(labels), detail.milestone, detail.parent_number, now),
+-    )
+-    con.execute(
+-        "INSERT INTO github_links (id, card_id, release_id, repo, issue_number, url, milestone, sync_state) VALUES (?, ?, NULL, ?, ?, ?, ?, 'synced')",
+-        (new_id(), card_id, detail.repository, detail.number, detail.url, detail.milestone),
+-    )
+-
+-
+-def reindex_all(con: sqlite3.Connection, story_map_id: str) -> None:
+-    parent_rows = con.execute("SELECT DISTINCT parent_id FROM cards WHERE story_map_id = ?", (story_map_id,)).fetchall()
+-    for row in parent_rows:
+-        parent_id = row[0]
+-        siblings = con.execute("SELECT id FROM cards WHERE story_map_id = ? AND parent_id IS ? ORDER BY position, created_at", (story_map_id, parent_id)).fetchall()
+-        for position, sibling in enumerate(siblings):
+-            con.execute("UPDATE cards SET position = ? WHERE id = ?", (position, sibling["id"]))
+-
+-
+-def current_counts(con: sqlite3.Connection, project_id: str) -> dict[str, int]:
+-    story_map_ids = [row["id"] for row in con.execute("SELECT id FROM story_maps WHERE project_id = ?", (project_id,)).fetchall()]
+-    if not story_map_ids:
+-        return {"storyMaps": 0, "cards": 0, "remoteWorkItemLinks": 0, "githubLinks": 0}
+-    placeholders = ",".join("?" for _ in story_map_ids)
+-    cards = con.execute(f"SELECT id FROM cards WHERE story_map_id IN ({placeholders})", story_map_ids).fetchall()
+-    card_ids = [row["id"] for row in cards]
+-    if not card_ids:
+-        return {"storyMaps": len(story_map_ids), "cards": 0, "remoteWorkItemLinks": 0, "githubLinks": 0}
+-    card_placeholders = ",".join("?" for _ in card_ids)
+-    remote_links = con.execute(f"SELECT COUNT(*) FROM remote_work_item_links WHERE card_id IN ({card_placeholders})", card_ids).fetchone()[0]
+-    github_links = con.execute(f"SELECT COUNT(*) FROM github_links WHERE card_id IN ({card_placeholders})", card_ids).fetchone()[0]
+-    return {"storyMaps": len(story_map_ids), "cards": len(card_ids), "remoteWorkItemLinks": remote_links, "githubLinks": github_links}
+-
+-
+-def resolved_parent(level: str, parent: ImportedCard | None, parking_activity: str, parking_step: str) -> str | None:
+-    if level == "activity":
+-        return None
+-    if level == "step":
+-        return parent.card_id if parent and parent.level == "activity" else parking_activity
+-    if level == "story":
+-        return parent.card_id if parent and parent.level == "step" else parking_step
+-    return parking_step
+-
+-
+-def issue_level(detail: IssueDetail) -> str:
+-    issue_type = (detail.issue_type or "").casefold()
+-    if issue_type == "epic":
+-        return "activity"
+-    if issue_type == "feature":
+-        return "step"
+-    return "story"
+-
+-
+-def issue_sort_key(detail: IssueDetail) -> tuple[int, str, int]:
+-    order = {"activity": 0, "step": 1, "story": 2}
+-    return (order[issue_level(detail)], detail.repository.casefold(), detail.number)
+-
+-
+-def local_status(detail: IssueDetail) -> str:
+-    if detail.state.lower() == "closed":
+-        return "done"
+-    if "status:active" in detail.labels:
+-        return "active"
+-    return "todo"
+-
+-
+@@ -869 +519 @@ def item_key(repository: str | None, number: int | None) -> str:
+-    return f"{repository or ''}#{number or ''}"
++    return f"{(repository or '').lower()}#{number or ''}"
+@@ -886,18 +535,0 @@ def as_list(value: Any) -> list[str]:
+-def strip_issue_prefix(title: str) -> str:
+-    import re
+-
+-    return re.sub(r"^[A-Z][A-Z0-9]*-\d+:\s*", "", title)
+-
+-
+-def sha256(value: str) -> str:
+-    return hashlib.sha256(value.encode("utf-8")).hexdigest()
+-
+-
+-def new_id() -> str:
+-    return str(uuid4())
+-
+-
+-def iso_now() -> str:
+-    return datetime.utcnow().isoformat(timespec="milliseconds") + "Z"
+-
+-
+@@ -905 +537 @@ if __name__ == "__main__":
+-    sys.exit(main())
+\ No newline at end of file
++    sys.exit(main())
+diff --git a/tools/storymapper_http.py b/tools/storymapper_http.py
+new file mode 100644
+index 0000000..d743bd9
+--- /dev/null
++++ b/tools/storymapper_http.py
+@@ -0,0 +1,58 @@
++import json
++import os
++import urllib.error
++import urllib.parse
++import urllib.request
++from typing import Any
++
++
++DEFAULT_URL = os.environ.get("STORYMAPPER_URL", "http://127.0.0.1:4317")
++
++
++class NoRedirect(urllib.request.HTTPRedirectHandler):
++    def redirect_request(self, req, fp, code, msg, headers, newurl):
++        raise RuntimeError("StoryMapper redirects are refused")
++
++
++class StoryMapperClient:
++    def __init__(self, url: str) -> None:
++        parsed = urllib.parse.urlsplit(url)
++        if parsed.scheme != "http" or parsed.hostname not in {"127.0.0.1", "localhost", "::1"} or parsed.username or parsed.password or parsed.path not in {"", "/"} or parsed.query or parsed.fragment:
++            raise ValueError("StoryMapper URL must be an HTTP loopback origin")
++        self.url = url.rstrip("/")
++        self.opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirect())
++
++    def request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> dict[str, Any]:
++        data = json.dumps(payload).encode("utf-8") if payload is not None else None
++        request = urllib.request.Request(f"{self.url}{path}", data=data, method=method)
++        request.add_header("Accept", "application/json")
++        if payload is not None:
++            request.add_header("Content-Type", "application/json")
++        try:
++            with self.opener.open(request, timeout=60) as response:
++                return json.load(response)
++        except urllib.error.HTTPError as error:
++            body = json.loads(error.read())
++            raise RuntimeError(f"StoryMapper HTTP {error.code}: {body.get('code', 'error')}: {body.get('message', 'Request failed')}") from error
++        except urllib.error.URLError as error:
++            raise RuntimeError("StoryMapper server is unavailable; start it before local reads or proposals") from error
++
++    def project_id(self, selected: str | None) -> str:
++        projects = self.request("GET", "/api/projects")["projects"]
++        matches = [project for project in projects if selected is None or project["id"] == selected]
++        if len(matches) != 1:
++            raise RuntimeError("Select a unique existing Project with --project-id")
++        return matches[0]["id"]
++
++    def story_map(self, name: str, project_id: str | None = None) -> dict[str, Any]:
++        query = f"?projectId={urllib.parse.quote(project_id)}" if project_id else ""
++        maps = self.request("GET", f"/api/story-maps{query}")["storyMaps"]
++        matches = [story_map for story_map in maps if story_map["name"] == name]
++        if len(matches) != 1:
++            raise RuntimeError(f"Expected one Story Map named {name!r}; found {len(matches)}")
++        return self.request("GET", f"/api/story-maps/{matches[0]['id']}")
++
++    def apply(self, change_set_id: str) -> dict[str, Any]:
++        identifier = urllib.parse.quote(change_set_id, safe="")
++        self.request("POST", f"/api/changesets/{identifier}/approve", {})
++        return self.request("POST", f"/api/changesets/{identifier}/apply", {})

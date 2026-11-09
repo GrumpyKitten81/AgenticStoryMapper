@@ -1,0 +1,55 @@
+{
+  "revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "purpose": "Read-only command/path validation; no dispatch/init/resume/reconcile/login executed",
+  "commands": [
+    {
+      "command": [
+        "bmad-loop",
+        "run",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: bmad-loop run [-h] [--project PROJECT] [--spec FOLDER] [--epic EPIC]\n                     [--story STORY] [--max-stories MAX_STORIES] [--dry-run]\n\noptions:\n  -h, --help            show this help message and exit\n  --project PROJECT     target project root (default: cwd)\n  --spec FOLDER         force stories mode: dispatch the epic spec folder's\n                        stories.yaml by folder+id (overrides [stories].source)\n  --epic EPIC           only stories from this epic (sprint mode)\n  --story STORY         story: E-S / E.S (split suffix ok, e.g. 2-6a), a slug\n                        fragment, or full key (sprint mode); a story id\n                        (stories mode)\n  --max-stories MAX_STORIES\n                        stop after N stories\n  --dry-run             print the plan, spawn nothing\n"
+    },
+    {
+      "command": [
+        "bmad-loop",
+        "resume",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: bmad-loop resume [-h] [--project PROJECT] [--accept-baseline] run_id\n\npositional arguments:\n  run_id\n\noptions:\n  -h, --help         show this help message and exit\n  --project PROJECT  target project root (default: cwd)\n  --accept-baseline  adopt the current HEAD as the new baseline of every in-\n                     place story this resume restarts, so commits above the\n                     old baseline are kept instead of being parked on attempt-\n                     preserve/* and reset over. It adopts EVERYTHING at HEAD,\n                     including any commits the interrupted attempt made, and\n                     treats every current untracked file as pre-existing\n                     (never cleaned) \u2014 check `git log <baseline>..HEAD` first.\n                     Uncommitted tracked changes still follow the normal\n                     rollback. The flag applies to this resume only, but an\n                     adopted baseline stays adopted if that resume then\n                     pauses. Not needed right after `resolve`, whose re-arm\n                     already advances the baseline; commits made after a\n                     `resolve --no-resume` re-arm still need it\n"
+    },
+    {
+      "command": [
+        "bmad-loop",
+        "validate",
+        "--help"
+      ],
+      "exit_code": 0,
+      "output": "usage: bmad-loop validate [-h] [--project PROJECT] [--spec FOLDER]\n                          [--render-probe] [--json]\n\noptions:\n  -h, --help         show this help message and exit\n  --project PROJECT  target project root (default: cwd)\n  --spec FOLDER      validate stories mode against this epic spec folder's\n                     stories.yaml (overrides [stories].source; skips the\n                     sprint-status gate)\n  --render-probe     also execute each dev skill's render command (from its\n                     SKILL.md) in a throwaway temp copy of _bmad/ + the skill\n                     (no coding CLI, project untouched; the launcher,\n                     typically `uv run --no-cache`, fetches the renderer's\n                     deps on each probe, so it needs network access)\n  --json             emit a stable machine-readable JSON document (check\n                     findings) instead of text\n"
+    }
+  ],
+  "source_inputs": {
+    "AGENTS.md": "a1a712954a1583c52e6a9d10500c73003ae97425e589576c29ef53658a1f25cb",
+    ".cursor/rules/markdown.mdc": "d0a955b37532a946772ba5b40f70d02e6857fae56f860dc6b02967facdd1546d",
+    ".wolf/OPENWOLF.md": "274732f66d9ad08ba71e4d3ce071867bb5489c2f2b3660bf71fc850667b45b94",
+    ".wolf/cerebrum.md": "0d89da4653df759b28e5cb845bea93179c37273cfc5dd481cb8eb15490ab3786",
+    ".agents/skills/bmad-build-auto/SKILL.md": "ea798a5f7df3b11eb73555a54fc0516c70d8f98739bd7857d968297b26f6ef94",
+    ".claude/skills/bmad-build-auto/SKILL.md": "ea798a5f7df3b11eb73555a54fc0516c70d8f98739bd7857d968297b26f6ef94",
+    "_bmad/scripts/render_skill.py": "8496d0d8b449d64c21b42a9aab3b13fc8a813a430c0695ffd84ad75bb1da7942",
+    "_bmad/custom/bmad-build-auto.toml": "ba490b7a18d6b9266f35b6d4a2267ab30cd0660a5de45816bbad7432b0886129",
+    "_bmad/custom/references/bmad-build-auto-epic-story-plans.md": "0cebb5108e876d6f1a492fb235a70a3d4a1f9ea68353098804434de4537b4f38",
+    "scripts/check.mjs": "490bb9764e3f677a75c941bef0456739337b6c3670415fb426bbd1401595a2dc",
+    "scripts/setup.mjs": "60f3243850b460e68966a432ec5a6b8d75e1fd4ae0135fa41dd032dc8f43141e",
+    "scripts/bmad-loop-preflight.mjs": "ab7e004e92529b57ce69a7a5f8a1f20aa5b838e79e2bf3008c43024403517817",
+    "scripts/check-publication.mjs": "1e80441ea3b90ae58d18d819e8f3cf4e8c5fed2c401254aec7177f3f9caadcb6",
+    "scripts/check-publication-audit.mjs": "9c7f70f3005570066aa4d2df8c4c3c4be32a181c13ffb2c95f72402da363bcaf",
+    ".github/workflows/release.yml": "e2d43d2bdf3c681a2cccf3aa4683e474b435ac4d333bfaca62ccff4375a3076e",
+    ".github/PULL_REQUEST_TEMPLATE.md": "7ef81f3f215fcc5decc7e4da8118a7754d63c60e4b64f8716070c53eec996f21"
+  },
+  "graph_tools": "unavailable in enabled tool catalog",
+  "skill_renderer": "existing parent invocation consumed; no duplicate build-auto rendering",
+  "checks": "actual check.mjs aggregate order and preflight/publication source inspected",
+  "provisioning_source": "setup.mjs lines11-15 use frozen install, web build and recursive local-projects/default.lsm creation"
+}

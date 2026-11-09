@@ -1,0 +1,9 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/http/routes/card-markdown.test.ts (1 test) 91ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  18:58:20
+   Duration  1.31s (transform 527ms, setup 0ms, collect 1.01s, tests 91ms, environment 0ms, prepare 29ms)

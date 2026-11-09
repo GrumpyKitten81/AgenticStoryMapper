@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-19",
+  "status": "passed",
+  "evidence": "Final parent observed root pnpm test exit0; server738+audit14,web735,provider31; no filtered/skipped covering tests",
+  "rows": [
+    {
+      "scenario": "Candidate token",
+      "coverage": [
+        "server github-connect: verifies candidate while off without mutations then atomically saves/enables once",
+        "web dialog: consented candidate Verify then separate Connect/defaults/cache adoption"
+      ],
+      "executed": true,
+      "passed": true
+    },
+    {
+      "scenario": "CLI",
+      "coverage": [
+        "server github-connect: actual HTTP CLI Verify and Connect without credential file",
+        "web dialog: guides CLI login externally; local Recheck"
+      ],
+      "executed": true,
+      "passed": true
+    },
+    {
+      "scenario": "Final Connect",
+      "coverage": [
+        "server github-connect: concurrent/replay refusal; exactly one human enable audit",
+        "web dialog: same-event double Verify and Connect"
+      ],
+      "executed": true,
+      "passed": true
+    },
+    {
+      "scenario": "Remote failures",
+      "coverage": [
+        "server github-connect: HTTP401/403/404/429 and network/consent",
+        "provider github-verification: both auth modes HTTP/rate-limited403/offline",
+        "web dialog: actionable credential/repository/rate/network failures"
+      ],
+      "executed": true,
+      "passed": true
+    },
+    {
+      "scenario": "File/DB failure",
+      "coverage": [
+        "server github-connect: failed atomic rename; post-write SQLite safety-trigger rollback; committed publication failure",
+        "web dialog: retained-file database failure; file-save failure retains drafts/caches"
+      ],
+      "executed": true,
+      "passed": true
+    },
+    {
+      "scenario": "Stale scope",
+      "coverage": [
+        "server github-connect: candidate/actor/settings/connection/database proof drift; controlled provider/file await; duplicate pending requests",
+        "web dialog: input/method/close/Restore/settings/Project late Verify/Connect; same-event settings/epoch/input changes"
+      ],
+      "executed": true,
+      "passed": true
+    },
+    {
+      "scenario": "Human boundary",
+      "coverage": [
+        "server github-connect: agent use-case refusal, missing tools, explicit consent guard",
+        "server credential-outputs: ordinary off-state refusal",
+        "capability-manifest: human-only descriptor/surface parity"
+      ],
+      "executed": true,
+      "passed": true
+    },
+    {
+      "scenario": "Secret isolation",
+      "coverage": [
+        "server github-connect: actual HTTP outputs, runtime logs, Activity,SQLite, restore snapshot,archive canary scan",
+        "web dialog: query/mutation-cache absence of canary"
+      ],
+      "executed": true,
+      "passed": true
+    }
+  ],
+  "review_additions": [
+    "Operational source/account drift after final status await",
+    "Cross-Project shared-file admission",
+    "Actual existing-ID update and header adoption",
+    "Late/uncertain recovery, failed recovery and ambiguous matches",
+    "Native Safari actual HTTP/SQLite CLI flow and keyboard focus"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "productRevision": "ec7348dc4524918c68d26b3d47e1035d012d6a46",
+  "runtime": "v24.17.0",
+  "policy": "same synthetic policy as existing publication fixtures; no real private input",
+  "observations": [
+    {
+      "probe": "committed then deleted copied skill",
+      "verdict": "blocked",
+      "categories": [
+        {
+          "category": "employer-reference",
+          "scope": "current"
+        },
+        {
+          "category": "employer-reference",
+          "scope": "history"
+        },
+        {
+          "category": "employer-reference",
+          "scope": "index"
+        }
+      ]
+    },
+    {
+      "probe": "allowed placeholder directory only",
+      "verdict": "blocked",
+      "categories": [
+        {
+          "category": "employer-reference",
+          "scope": "current"
+        },
+        {
+          "category": "employer-reference",
+          "scope": "history"
+        },
+        {
+          "category": "employer-reference",
+          "scope": "index"
+        },
+        {
+          "category": "tracked-user-data",
+          "scope": "history"
+        },
+        {
+          "category": "tracked-user-data",
+          "scope": "history"
+        }
+      ]
+    },
+    {
+      "probe": "DSA header",
+      "local": [],
+      "publication": [
+        "secret-signature"
+      ]
+    },
+    {
+      "probe": "ENCRYPTED header",
+      "local": [],
+      "publication": [
+        "secret-signature"
+      ]
+    },
+    {
+      "probe": "UTF16 header",
+      "local": [],
+      "publication": [
+        "binary-privacy-review",
+        "redistribution-review",
+        "secret-signature"
+      ]
+    },
+    {
+      "probe": "nested gzip header after one hygiene expansion",
+      "local": [],
+      "publication": [
+        "secret-signature"
+      ]
+    },
+    {
+      "probe": "JSON-escaped Windows path",
+      "rawCategories": [
+        "personal-home-path"
+      ],
+      "serializedCategories": []
+    },
+    {
+      "probe": "private IPv4 URL",
+      "categories": []
+    },
+    {
+      "probe": "import equals",
+      "classifications": [
+        "import"
+      ]
+    },
+    {
+      "probe": "all named imports type-only",
+      "classifications": [
+        "import"
+      ]
+    }
+  ]
+}

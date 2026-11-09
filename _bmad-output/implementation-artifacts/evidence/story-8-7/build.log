@@ -1,0 +1,47 @@
+
+> storymapper@0.1.0 build /Users/[USER]/Projects/StoryMapper
+> corepack pnpm generate-capabilities && corepack pnpm check-capabilities && corepack pnpm -r build
+
+
+> storymapper@0.1.0 generate-capabilities /Users/[USER]/Projects/StoryMapper
+> node scripts/generate-capability-manifest.mjs
+
+Wrote 138 capabilities.
+
+> storymapper@0.1.0 check-capabilities /Users/[USER]/Projects/StoryMapper
+> node scripts/check-capabilities.mjs
+
+Capability manifest check passed (138 capabilities).
+Scope: 8 of 9 workspace projects
+packages/importers build$ tsc -p tsconfig.json
+packages/contracts build$ tsc -p tsconfig.json
+packages/importers build: Done
+packages/contracts build: Done
+packages/core build$ tsc -p tsconfig.json
+packages/mcp build$ tsc -p tsconfig.json
+packages/github build$ tsc -p tsconfig.json
+packages/mcp build: Done
+packages/github build: Done
+packages/core build: Done
+apps/web build$ tsc -p tsconfig.json && vite build
+apps/web build: vite v8.3.4 building client environment for production...
+apps/web build: transforming...
+apps/web build: ✓ 2416 modules transformed.
+apps/web build: rendering chunks...
+apps/web build: computing gzip size...
+apps/web build: dist/index.html                        0.39 kB │ gzip:   0.26 kB
+apps/web build: dist/assets/index-s_XX6DeK.css        53.19 kB │ gzip:  10.07 kB
+apps/web build: dist/assets/purify.es-BZxk_wWO.js     29.02 kB │ gzip:  11.45 kB
+apps/web build: dist/assets/index.es-CB_U4wHm.js     151.24 kB │ gzip:  48.85 kB
+apps/web build: dist/assets/index-XxdS6kTZ.js      2,314.96 kB │ gzip: 694.17 kB
+apps/web build: [plugin builtin:vite-reporter] 
+apps/web build: (!) Some chunks are larger than 500 kB after minification. Consider:
+apps/web build: - Using dynamic import() to code-split the application
+apps/web build: - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+apps/web build: - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+apps/web build: ✓ built in 448ms
+apps/web build: Done
+apps/server build$ tsc -p tsconfig.json && node ../../scripts/copy-db-migrations.mjs server
+packages/db build$ tsc -p tsconfig.json && node ../../scripts/copy-db-migrations.mjs db
+packages/db build: Done
+apps/server build: Done

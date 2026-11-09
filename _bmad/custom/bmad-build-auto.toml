@@ -1,0 +1,12 @@
+# Agentic Story Mapper: bind bmad-build-auto planning to epic-preparation artifacts.
+# Merges over .claude/skills/bmad-build-auto/customize.toml (lists append).
+
+[workflow]
+
+activation_steps_append = [
+  "file:{project-root}/_bmad/custom/references/bmad-build-auto-epic-story-plans.md",
+]
+
+persistent_facts = [
+  "Agentic Story Mapper epic wave: per-story detail plans from `bmad-prepare-epic` live under `_bmad-output/implementation-artifacts/` as `story-plan-{epic}-{story}-<slug>.md` (numeric id-prefix match, parallel to `spec-{epic}-{story}-<slug>.md`). Epic-wide consistency: `epic-{N}-preparation.md` in the same directory. During step 02 (Plan), these files constrain design and task order; they do not replace investigation or the Code Map.",
+]

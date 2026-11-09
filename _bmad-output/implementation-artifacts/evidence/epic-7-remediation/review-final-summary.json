@@ -1,0 +1,21 @@
+{
+  "sourceDiffSha256": "4d540af98169f5be4bf2b2db8c363be235dfbccaa58083260e1532e3225af923",
+  "parentVerdict": "All13initial reports individually triaged; bounded patches applied; final blind/edge/verification checks identify no new concrete finding.",
+  "finalReports": [
+    "review-final-blind.json",
+    "review-final-edges.json",
+    "review-final-verification.json"
+  ],
+  "reviewerDiagnosticOnly": {
+    "verificationTests": 119,
+    "reportedRuntime": "Node22",
+    "requiredReleaseRuntime": "Parent Node24 gates pending"
+  },
+  "deferred": [
+    "DW-119 standalone incoming Releases without Cards; existing explicit reviewed Push remains available"
+  ],
+  "rejectedSuggestions": [
+    "Old prototype baseline migration excluded by AD9",
+    "Speculative extra combined closed-create metadata matrix; existing exact two-effect coverage retained"
+  ]
+}

@@ -1,0 +1,9 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/services/work-item-sync.test.ts (54 tests) 1777ms
+
+ Test Files  1 passed (1)
+      Tests  54 passed (54)
+   Start at  20:20:03
+   Duration  2.85s (transform 492ms, setup 0ms, collect 887ms, tests 1.78s, environment 0ms, prepare 32ms)

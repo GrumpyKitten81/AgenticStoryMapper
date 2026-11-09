@@ -1,0 +1,113 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ❯ src/http/routes/changeset-dependency-parity.test.ts (4 tests | 1 failed) 313ms
+   × retains a physical shared attachment while it is hidden by canonical ownership and reveals it after moving away 48ms
+     → expected { cards: [ { …(13) }, …(2) ], …(2) } to deeply equal { cards: [ { …(13) }, …(2) ], …(2) }
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/http/routes/changeset-dependency-parity.test.ts > retains a physical shared attachment while it is hidden by canonical ownership and reveals it after moving away
+AssertionError: expected { cards: [ { …(13) }, …(2) ], …(2) } to deeply equal { cards: [ { …(13) }, …(2) ], …(2) }
+
+- Expected
++ Received
+
+  Object {
+    "cards": Array [
+      Object {
+        "creationOrigin": "manual",
+        "description": "",
+        "identity": "71a6a807-2e0a-4cbb-a6f7-fd2a2a91c930",
+        "level": "activity",
+        "parentId": null,
+        "parked": false,
+        "position": 2,
+        "provenance": "manual",
+        "releaseId": "d6763a47-63d0-476e-84e2-c7597fb6ca3a",
+        "status": "todo",
+        "storyMapId": "fc12a1e3-7905-405e-8c99-2226510836f4",
+        "title": "Card 2",
+        "version": 1,
+      },
+      Object {
+        "creationOrigin": "manual",
+        "description": "",
+        "identity": "b1acaf0c-9336-4933-a430-c951eff965a1",
+        "level": "activity",
+        "parentId": null,
+        "parked": false,
+        "position": 0,
+        "provenance": "manual",
+        "releaseId": "d6763a47-63d0-476e-84e2-c7597fb6ca3a",
+        "status": "todo",
+        "storyMapId": "fc12a1e3-7905-405e-8c99-2226510836f4",
+        "title": "Card 0",
+        "version": 3,
+      },
+      Object {
+        "creationOrigin": "manual",
+        "description": "",
+        "identity": "c7c21c6e-4b3e-4db9-912b-8c120d4da053",
+        "level": "activity",
+        "parentId": null,
+        "parked": false,
+        "position": 1,
+        "provenance": "linked",
+        "releaseId": "d6763a47-63d0-476e-84e2-c7597fb6ca3a",
+        "status": "todo",
+        "storyMapId": "fc12a1e3-7905-405e-8c99-2226510836f4",
+        "title": "Card 1",
+        "version": 3,
+      },
+    ],
+    "githubLinks": Array [
+      Object {
+        "cardId": "c7c21c6e-4b3e-4db9-912b-8c120d4da053",
+        "id": "5f57e133-0057-4baf-a1f9-695c2294ba5f",
+        "issueNumber": 7,
+        "repo": "org/repo",
+        "syncState": "unsynced",
+        "url": "https://github.com/org/repo/issues/7",
+      },
+    ],
+    "sourceLinks": Array [
+      Object {
+        "cardId": "c7c21c6e-4b3e-4db9-912b-8c120d4da053",
+        "githubLinkId": "5f57e133-0057-4baf-a1f9-695c2294ba5f",
+-       "id": "2131c2bb-4091-4a9e-bc17-5277826c91b9",
+-       "issueNumber": 7,
+-       "kind": "github",
+-       "repoFullName": "org/repo",
+-       "url": "https://github.com/org/repo/issues/7",
+-     },
+-     Object {
+-       "cardId": "c7c21c6e-4b3e-4db9-912b-8c120d4da053",
+-       "githubLinkId": "5f57e133-0057-4baf-a1f9-695c2294ba5f",
+        "id": "5f57e133-0057-4baf-a1f9-695c2294ba5f",
+        "issueNumber": 7,
+        "kind": "github",
+        "repoFullName": "org/repo",
+        "url": "https://github.com/org/repo/issues/7",
+      },
+    ],
+  }
+
+ ❯ src/http/routes/changeset-dependency-parity.test.ts:66:30
+     64|     for (const action of ["approve", "apply"]) expect((await f.server.…
+     65|     const actual = f.repository.getStoryMapSnapshot(f.map.id)!;
+     66|     expect(semantic(actual)).toEqual(semantic(preview.boards[0]!.snaps…
+       |                              ^
+     67|     expect(f.handle.current.$client.prepare("SELECT id FROM card_githu…
+     68|     expect(actual.sourceLinks.filter((row) => row.kind === "github" &&…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  11:03:44
+   Duration  1.36s (transform 482ms, setup 0ms, collect 871ms, tests 313ms, environment 0ms, prepare 27ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/http/routes/changeset-dependency-parity.test.ts

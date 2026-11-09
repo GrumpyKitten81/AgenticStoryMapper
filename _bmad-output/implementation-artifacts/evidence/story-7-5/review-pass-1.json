@@ -1,0 +1,173 @@
+{
+  "findings": [
+    {
+      "id": "B1",
+      "verdict": "false",
+      "route": "reject",
+      "claim": "Upgrade previous prototype databases with baseline_json",
+      "evidence": "AD-9 and the frozen intent expressly exclude prototype migrations. Current-schema populated reopen/Restore are verified; opening an excluded old schema is not the supported behavior."
+    },
+    {
+      "id": "B2",
+      "verdict": "high",
+      "route": "patch",
+      "claim": "Outgoing review switches Sync to push",
+      "evidence": "Both UI callbacks send push, bypassing the sync-only incoming/open-conflict checks in remote-push-plan. Keep mode sync after incoming review; manual Push remains push."
+    },
+    {
+      "id": "B3",
+      "verdict": "high",
+      "route": "bad_spec",
+      "claim": "Moving one Issue between iterations mutates its shared Release",
+      "evidence": "incomingIterationRelease updates acknowledgedLocal.releaseId for any new tuple. The amended design must resolve each remote iteration tuple independently, preserve the old shared Release, and reuse the target."
+    },
+    {
+      "id": "B4",
+      "verdict": "medium",
+      "route": "bad_spec",
+      "claim": "Later batches duplicate an existing iteration Release",
+      "evidence": "The lookup is seeded only from GitHub Release refs, while iteration Releases have no such refs. Derive connection-scoped tuple bindings from persisted acknowledged iteration/link evidence across runs."
+    },
+    {
+      "id": "B5",
+      "verdict": "high",
+      "route": "bad_spec",
+      "claim": "Local iteration Release metadata edits can be overwritten",
+      "evidence": "Only releaseId is compared locally; incomingIterationRelease updates the shared Release name/dates. Amend acknowledged metadata comparison and preserve/conflict divergent local Release values."
+    },
+    {
+      "id": "B6",
+      "verdict": "medium",
+      "route": "bad_spec",
+      "claim": "Incoming Milestone rename/date changes never update the Release",
+      "evidence": "Milestone deltas compare only canonical locator; incomingRelease never updates an existing Release. Keep canonical assignment identity separate from synchronized name/date evidence and merge metadata safely."
+    },
+    {
+      "id": "B7",
+      "verdict": "medium",
+      "route": "bad_spec",
+      "claim": "Outgoing Sync misses local linked Release name/date edits",
+      "evidence": "Unchanged releaseId makes milestone.local false and excludes the Release from syncMilestoneCards. Persist/compare acknowledged Release metadata and route its changes through the existing confirmed 7.4 Milestone effects."
+    },
+    {
+      "id": "B8",
+      "verdict": "medium",
+      "route": "patch",
+      "claim": "Web preparation errors discard failed/not-attempted item results",
+      "evidence": "throwRequestFailure discards non-conflict JSON details and the panel renders only error.message. Preserve validated incoming item details and display those rows without inventing a successful proposal."
+    },
+    {
+      "id": "B9",
+      "verdict": "medium",
+      "route": "patch",
+      "claim": "Card outgoing preparation errors are invisible",
+      "evidence": "previewLinkedOutgoing has neither onError nor rendered error. Render its failure with the existing retry control and preserve the dirty draft."
+    },
+    {
+      "id": "B10",
+      "verdict": "medium",
+      "route": "defer",
+      "claim": "Assignee clearing and divergent edits are not synchronized",
+      "evidence": "The baseline applyRemoteFields implementation also updated only truthy remote assignees. Frozen intent preserves assignee semantics and excludes broad assignee synchronization; this is pre-existing."
+    },
+    {
+      "id": "E1",
+      "verdict": "false",
+      "route": "reject",
+      "claim": "Old prototype schema lacks baseline_json",
+      "evidence": "Same excluded prototype-migration case as B1; AD-9 explicitly makes those schemas disposable. No compatibility fallback is added."
+    },
+    {
+      "id": "E2",
+      "verdict": "medium",
+      "route": "bad_spec",
+      "claim": "Remote status compares against normalized local baseline",
+      "evidence": "status.remote reads acknowledgedLocal rather than observedRemote. An imported open Issue lacking the mapped status label is repeatedly seen as changed and later local edits falsely conflict. Compare remote values to observedRemote and retain explicit pending initial Release assignment independently."
+    },
+    {
+      "id": "E3",
+      "verdict": "high",
+      "route": "bad_spec",
+      "claim": "Iteration moves rename/reschedule a shared Release",
+      "evidence": "Same verified mutation as B3. Amend tuple-based inbound assignment and regression coverage for two cards sharing A while one moves to B."
+    },
+    {
+      "id": "V1",
+      "verdict": "medium",
+      "route": "patch",
+      "claim": "Divergent managed-label conflict regression is missing",
+      "evidence": "Pre-verified gap: tests cover remote-only label changes and title conflicts. Add local/remote label divergence, retained assignments, durable conflict evidence, truthful repeated results and resolution coverage."
+    },
+    {
+      "id": "V2",
+      "verdict": "medium",
+      "route": "patch",
+      "claim": "Outgoing iteration/none Milestone exclusion is unverified",
+      "evidence": "Pre-verified gap: incoming iteration tests do not exercise remote-push-plan. Add both release sources and assert no Milestone effects plus preservation of the existing remote Issue Milestone number through confirmation."
+    },
+    {
+      "id": "V3",
+      "verdict": "false",
+      "route": "reject",
+      "claim": "Existing prototype DB cannot read new baseline column",
+      "evidence": "The reproduced database predates the supported current schema. AD-9 and frozen intent prohibit its migration; current-schema reopen/Restore is the required verification."
+    },
+    {
+      "id": "I1",
+      "verdict": "false",
+      "route": "reject",
+      "claim": "Source diff alone cannot prove skill execution",
+      "evidence": "No implementation defect is claimed. Session tool history records the single successful render invocation, rendered workflow reads and all four review layers; the diff is not the procedural transcript."
+    },
+    {
+      "id": "I2",
+      "verdict": "false",
+      "route": "reject",
+      "claim": "Final file hash alone cannot prove no temporary orchestrator write",
+      "evidence": "No write is demonstrated or inferred from tracking state. Controlled commands exclude protected paths and session action history contains no write/stage/unstage/revert to them; baseline hashes are independently rechecked."
+    },
+    {
+      "id": "I3",
+      "verdict": "false",
+      "route": "reject",
+      "claim": "Automated evidence exercises fake-provider and React surfaces",
+      "evidence": "This is a positive descriptive observation, not a bad outcome. Parent-run full workspace, release and actual stdio fixture logs substantiate those exact surfaces without claiming live-provider acceptance."
+    },
+    {
+      "id": "I4",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "claim": "Native/live operator acceptance remains unverified",
+      "evidence": "Automated UI and actual transport fixtures pass, but no native browser surface is available and no live account/provider was used. An observed native UI/operator journey would settle the remaining acceptance question; severity medium (unverified)."
+    },
+    {
+      "id": "I5",
+      "verdict": "false",
+      "route": "reject",
+      "claim": "API optional apply may execute under existing policy",
+      "evidence": "Existing AD-0004 executor policy permits immediate human/unprotected-Agent incoming execution while protection retains proposals. All paths now use that executor; UI requests apply:false. Universal additional API approval is not the preserved policy."
+    }
+  ],
+  "preserved_patch_sha256": "7cedc5ebf4b1d24d7a928e363da580b57cfa57a84e7165be5a7beca3f2762a85",
+  "repair_result": {
+    "spec_loop_iteration": 1,
+    "server_focused_passed": 198,
+    "core_focused_passed": 8,
+    "db_focused_passed": 13,
+    "web_focused_passed": 50,
+    "implemented_groups": [
+      "iteration assignment/reuse without shared mutation",
+      "Milestone metadata/acknowledgment and shared-target preservation",
+      "observed remote status and explicit first assignment",
+      "Sync mode handoff",
+      "structured UI failure/results and Card retry",
+      "divergent managed-label verification",
+      "outbound iteration/none exclusion verification"
+    ],
+    "parent_source_traces_added": [
+      "shared target local metadata",
+      "staggered shared metadata refresh",
+      "REST write without iteration"
+    ]
+  }
+}

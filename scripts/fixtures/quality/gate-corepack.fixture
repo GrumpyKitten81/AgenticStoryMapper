@@ -1,0 +1,10 @@
+import { appendFileSync } from 'node:fs';
+
+const args = process.argv.slice(2);
+if (args[0] === '--version') console.log('1.0.0');
+else if (args.includes('--version')) console.log('9.15.4');
+else {
+  const call = `pnpm ${args.slice(1).join(' ')}`;
+  appendFileSync(process.env.GATE_LOG, `${call}\n`);
+  if (call === process.env.GATE_FAIL) process.exit(3);
+}

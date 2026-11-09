@@ -1,0 +1,180 @@
+{
+  "version": 1,
+  "date": "2026-10-21",
+  "productRevision": "ec7348dc4524918c68d26b3d47e1035d012d6a46",
+  "reviewRange": "caf2a61fc7a3447a02d29aad545f9473082ca86d..ec7348dc4524918c68d26b3d47e1035d012d6a46",
+  "recordType": "normalized independent reports and source-verified parent triage",
+  "fullDiffAvailable": true,
+  "limitations": [
+    "Bounded source traces, not every-line semantic review of all evidence bytes",
+    "Empty lens arrays apply only to recorded scopes",
+    "No remediation applied"
+  ],
+  "lenses": {
+    "adversarial": {
+      "findings": [
+        {
+          "id": "ADV-1",
+          "lens": "adversarial",
+          "title": "Historical copied-skill path omitted",
+          "location": "scripts/check-publication-git.mjs:172",
+          "trigger_condition": "A copied skill is committed, then deleted; reachable historical trees are scanned.",
+          "guard_snippet": "treeFindings applies sensitivePath to entry basenames without ancestor context.",
+          "potential_consequence": "Copied material can escape historical provenance review.",
+          "parent_triage": {
+            "disposition": "fix-now",
+            "validation": "confirmed",
+            "action_id": "epic-8-retro-a1",
+            "reason_and_prevention": "Full scan accepted with zero findings; reconstruct historical file paths and regress deletion."
+          }
+        },
+        {
+          "id": "ADV-2",
+          "lens": "adversarial",
+          "title": "Allowed placeholder rejected",
+          "location": "scripts/check-publication-git.mjs:181",
+          "trigger_condition": "The only local-projects content is the allowed .gitkeep placeholder.",
+          "guard_snippet": "Tree directory entries are classified as tracked user data before full file exemption.",
+          "potential_consequence": "A supported placeholder prevents publication clearance.",
+          "parent_triage": {
+            "disposition": "fix-now",
+            "validation": "confirmed",
+            "action_id": "epic-8-retro-a1",
+            "reason_and_prevention": "Full scan blocked with history:tracked-user-data; separate directory traversal from file classification."
+          }
+        },
+        {
+          "id": "ADV-3",
+          "lens": "adversarial",
+          "title": "No trusted per-content rights resolution input",
+          "location": "scripts/check-publication-content.mjs:80",
+          "trigger_condition": "A copied or binary item needs a supported approved disposition.",
+          "guard_snippet": "finding always sets unresolved; policy input only supplies employer terms.",
+          "potential_consequence": "A prospective approved item has no supported way to clear its finding.",
+          "parent_triage": {
+            "disposition": "defer",
+            "validation": "existing-release-prerequisite",
+            "action_id": "epic-8-retro-a5",
+            "reason_and_prevention": "Already recorded by Story 8.7; no real approved asset rejection demonstrated. Define trust/removal contract; never hand-edit clearance."
+          }
+        },
+        {
+          "id": "ADV-4",
+          "lens": "adversarial",
+          "title": "Known PEM signature coverage differs",
+          "location": "scripts/check-hygiene.mjs:11",
+          "trigger_condition": "Synthetic DSA or encrypted PEM header passes the local hygiene helper.",
+          "guard_snippet": "Local signature set omits forms recognized by publication scanning.",
+          "potential_consequence": "Local quality feedback may miss recognized credential material before publication scan.",
+          "parent_triage": {
+            "disposition": "defer",
+            "validation": "confirmed-coverage-difference",
+            "action_id": "epic-8-retro-a6",
+            "reason_and_prevention": "Synthetic helpers reproduce difference; no actual credential leak. Share complete known signature definitions."
+          }
+        },
+        {
+          "id": "ADV-5",
+          "lens": "adversarial",
+          "title": "UTF-16 payload outside local decoder",
+          "location": "scripts/check-hygiene.mjs:43",
+          "trigger_condition": "Synthetic UTF-16 signature is inspected locally.",
+          "guard_snippet": "Local decoding uses UTF-8; publication scanner handles UTF-16 and binary review.",
+          "potential_consequence": "Local hygiene alone does not establish binary content safety.",
+          "parent_triage": {
+            "disposition": "accept-as-is",
+            "validation": "intentional-bounded-scope",
+            "action_id": null,
+            "reason_and_prevention": "Story 8.7 explicitly excludes complete binary/history inspection; publication scanning detects this probe. Retain scope limits."
+          }
+        },
+        {
+          "id": "ADV-6",
+          "lens": "adversarial",
+          "title": "Nested gzip outside local expansion",
+          "location": "scripts/check-hygiene.mjs:46",
+          "trigger_condition": "A synthetic signature sits beneath two gzip layers.",
+          "guard_snippet": "Local scanner expands one gzip layer; publication scanner recurses.",
+          "potential_consequence": "Local hygiene alone does not establish nested archive safety.",
+          "parent_triage": {
+            "disposition": "accept-as-is",
+            "validation": "intentional-bounded-scope",
+            "action_id": null,
+            "reason_and_prevention": "Publication scanning detects this probe; retain explicitly bounded local hygiene rather than inventing a duplicate requirement."
+          }
+        },
+        {
+          "id": "ADV-7",
+          "lens": "adversarial",
+          "title": "JSON-escaped Windows home path missed",
+          "location": "scripts/check-publication-content.mjs:35",
+          "trigger_condition": "A tracked JSON string contains a synthetic Windows home path.",
+          "guard_snippet": "Raw backslash matching does not inspect decoded JSON strings.",
+          "potential_consequence": "Private home paths in JSON evidence can receive false publication acceptance.",
+          "parent_triage": {
+            "disposition": "fix-now",
+            "validation": "confirmed",
+            "action_id": "epic-8-retro-a2",
+            "reason_and_prevention": "Raw path detected; full scan of serialized path accepted with zero findings. Inspect decoded representations alongside raw content."
+          }
+        },
+        {
+          "id": "ADV-8",
+          "lens": "adversarial",
+          "title": "Private IPv4 URL not classified",
+          "location": "scripts/check-publication-content.mjs:42",
+          "trigger_condition": "An RFC1918 URL appears in text.",
+          "guard_snippet": "Private URL classifier uses selected suffixes, not address ranges.",
+          "potential_consequence": "An actual organizational endpoint could remain outside this automatic review category.",
+          "parent_triage": {
+            "disposition": "accept-as-is",
+            "validation": "privacy-exposure-not-established",
+            "action_id": "epic-8-retro-a5",
+            "reason_and_prevention": "Helper omission reproduced, but generic examples may be legitimate. Retain manual privacy judgment; define policy before blanket rejection."
+          }
+        },
+        {
+          "id": "ADV-9",
+          "lens": "adversarial",
+          "title": "Import-equals condition misclassified",
+          "location": "scripts/check-boundaries.mjs:16",
+          "trigger_condition": "TypeScript external import-equals syntax selects a conditional public export.",
+          "guard_snippet": "sourceImports marks require only for a require call, otherwise import.",
+          "potential_consequence": "Wrong conditional entry can be used for a boundary decision.",
+          "parent_triage": {
+            "disposition": "defer",
+            "validation": "confirmed-classification-current-impact-unproven",
+            "action_id": "epic-8-retro-a7",
+            "reason_and_prevention": "Synthetic AST result is import. Add require/import conditional-export controls; no current workspace failure proven."
+          }
+        },
+        {
+          "id": "ADV-10",
+          "lens": "adversarial",
+          "title": "All named type-only import misclassified",
+          "location": "scripts/check-boundaries.mjs:16",
+          "trigger_condition": "Every named import specifier is type-only.",
+          "guard_snippet": "Classification does not aggregate per-specifier type-only flags.",
+          "potential_consequence": "A type-only public export can be evaluated as runtime and falsely rejected.",
+          "parent_triage": {
+            "disposition": "defer",
+            "validation": "confirmed-classification-current-impact-unproven",
+            "action_id": "epic-8-retro-a7",
+            "reason_and_prevention": "Synthetic AST result is import. Regress types/runtime conditions; no current workspace failure proven."
+          }
+        }
+      ],
+      "scope": "Full epic diff available; publication/history/hygiene/boundary gates examined; primary-source parent reprobes retained."
+    },
+    "edge-case-hunter": {
+      "findings": [],
+      "scope": "Migration, Restore, archive/JSON/version, release, advisory/publication and quality paths; not full UI/native/hosted/historical evidence bytes."
+    },
+    "verification-gap": {
+      "findings": [],
+      "scope": "Substantive assertions in relevant migration/Restore/archive/version/release/publication/quality tests; not all UI/platform or retained evidence bytes."
+    }
+  },
+  "parent_reproducer": "gate-probe.mjs.txt",
+  "parent_observations": "gate-probe.json"
+}

@@ -1,0 +1,74 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/components/Dialog.test.ts (12 tests) 234ms
+ ✓ src/features/project-archive/project-archive-import.test.ts (3 tests) 42ms
+ ✓ src/features/releases/ReleasePanel.test.tsx (3 tests) 57ms
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 111ms
+ ✓ src/features/personas/PersonaDetail.test.ts (8 tests) 114ms
+ ✓ src/features/ai-mcp/context-draft.test.ts (3 tests) 23ms
+ ✓ src/features/ai-mcp/TemplateEditor.test.tsx (6 tests) 123ms
+ ✓ src/features/ai-mcp/AiMcpPanel.test.tsx (4 tests) 131ms
+ ✓ src/features/story-map/views/TrackingView.test.tsx (6 tests) 155ms
+ ✓ src/app/routes/audit.test.ts (9 tests) 461ms
+ ✓ src/features/changesets/boards.test.tsx (3 tests) 65ms
+ ✓ src/app/live/live-updates.test.tsx (23 tests) 285ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 75ms
+ ✓ src/features/releases/ReleaseDateFields.test.ts (2 tests) 30ms
+ ✓ src/features/ai-mcp/undone-changesets.test.ts (1 test) 46ms
+ ✓ src/features/github-sync/github-visibility.test.tsx (3 tests) 155ms
+ ✓ src/app/routes/workspace-navigation.test.tsx (14 tests) 659ms
+ ✓ src/features/roadmaps/RoadmapEditor.test.ts (3 tests) 77ms
+ ✓ src/features/project-archive/project-archive-runtime.test.ts (3 tests) 290ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 55ms
+ ✓ src/features/releases/ReleaseKanban.test.tsx (2 tests) 62ms
+ ✓ src/features/safety/SafetySwitchStrip.test.tsx (1 test) 101ms
+ ✓ src/features/ai-mcp/current-changeset-actions.test.ts (3 tests) 109ms
+ ✓ src/features/story-map/views/DiscoveryView.test.tsx (4 tests) 663ms
+ ✓ src/features/story-map/components/card-provenance.test.ts (10 tests) 766ms
+ ✓ src/features/ai-mcp/host-config-copy.test.tsx (1 test) 34ms
+ ✓ src/app/live/live-stream-reader.test.ts (7 tests) 84ms
+ ✓ src/features/story-map/views/SlicesView.test.tsx (11 tests) 805ms
+ ✓ src/app/live/live-origin.test.ts (1 test) 7ms
+ ✓ src/features/story-map/views/GraphView.test.tsx (17 tests) 863ms
+ ✓ src/features/what-changed/WhatChangedProvider.test.tsx (12 tests) 865ms
+ ✓ src/features/story-map/components/lifecycle.test.tsx (20 tests) 1254ms
+ ✓ src/features/personas/PersonasPanel.test.tsx (1 test) 76ms
+ ✓ src/features/project-archive/project-archive-export.test.ts (4 tests) 7ms
+ ✓ src/app/live/live-query-invalidation.test.ts (2 tests) 5ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > refetches ordinary archived-status Save and inventory Restore into the real board
+Not implemented: HTMLFormElement's requestSubmit() method
+
+ ✓ src/features/reports/PlanDriftDrawer.test.tsx (12 tests) 1018ms
+   ✓ Plan drift drawer > bounds dense DOM creation and makes all 1,000 differences reachable through keyboard-accessible pages 722ms
+ ✓ src/features/story-map/components/card-creation.test.tsx (10 tests) 836ms
+ ✓ src/app/live/live-announcements.test.ts (1 test) 6ms
+ ✓ src/features/story-map/components/card-choices.test.tsx (3 tests) 230ms
+ ✓ src/features/onboarding/getting-started.test.ts (5 tests) 13ms
+ ✓ src/features/story-map/export/story-map-view-export.test.ts (1 test) 13ms
+ ✓ src/features/what-changed/api.test.ts (3 tests) 8ms
+ ✓ src/features/story-map/components/card-dependencies.test.tsx (12 tests) 1130ms
+ ✓ src/app/conflicts.test.ts (6 tests) 7ms
+ ✓ src/features/story-map/components/PlanStateComparison.test.tsx (1 test) 83ms
+ ✓ src/features/what-changed/model.test.ts (3 tests) 3ms
+ ✓ src/features/story-map/export/export-with-progress.test.ts (2 tests) 2ms
+ ✓ src/features/story-map/components/card-fields.test.ts (9 tests) 1150ms
+   ✓ saves scalar fields, custom priority/color and zero in the map unit, then reloads supported clears 554ms
+ ✓ src/features/changesets/shell.test.tsx (8 tests) 1156ms
+   ✓ removes only applied preview search and retains selected Card, Tree navigation and Activity explanation 310ms
+ ✓ src/features/story-map/graph/graph-model.test.ts (9 tests) 9ms
+ ✓ src/features/restore-points/restore-points.test.ts (22 tests) 1336ms
+ ✓ src/app/routes/root-layout.test.ts (1 test) 21ms
+ ✓ src/ui-strings/ui-strings.test.ts (8 tests) 158ms
+ ✓ src/app/live/live-stream.test.ts (3 tests) 719ms
+   ✓ relays between independent tabs and relinquishes terminal leadership before later bootstrap and shutdown handoff 632ms
+ ✓ src/features/story-map/components/card-detail.test.ts (28 tests) 2014ms
+
+ Test Files  55 passed (55)
+      Tests  364 passed (364)
+   Start at  12:41:53
+   Duration  4.43s (transform 4.35s, setup 0ms, collect 37.75s, tests 18.81s, environment 27.11s, prepare 2.77s)

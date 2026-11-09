@@ -1,0 +1,28 @@
+name: Plan an Epic
+description: Define a broad outcome and its bounded scope, independently of map placement.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep secrets, personal information and private Project data out of public issues.
+        For security concerns, read SECURITY.md in the repository root; do not submit vulnerability details here.
+        Planning type does not assign a Story Map level or a native GitHub Issue type.
+  - id: goal
+    type: textarea
+    attributes:
+      label: Epic goal
+      description: What broad outcome should this Epic achieve, and why does it matter?
+    validations:
+      required: true
+  - id: success
+    type: textarea
+    attributes:
+      label: Success criteria
+      description: Which observable outcomes show that this Epic achieves its goal?
+    validations:
+      required: true
+  - id: scope
+    type: textarea
+    attributes:
+      label: Scope and references (optional)
+      description: Record boundaries, dependencies, related planning items and source links.

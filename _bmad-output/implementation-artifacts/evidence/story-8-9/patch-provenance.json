@@ -1,0 +1,33 @@
+{
+  "walkthrough-repair.patch": {
+    "artifact": "walkthrough-repair.patch.gz",
+    "original_sha256": "c8662b0101e91fb754295aa6c9f3da727b16e9a57fdd0868a81ab1086385071e",
+    "decoded_sha256": "c8662b0101e91fb754295aa6c9f3da727b16e9a57fdd0868a81ab1086385071e",
+    "compressed_sha256": "6e061ca22d75c6c485ceecd21c30deb93dc0a66c28b16a3391a091490e7454a8",
+    "transform": "gzip mtime0; preserves actual unified-diff context whitespace byte-for-byte"
+  },
+  "participant-readme.patch": {
+    "artifact": "participant-readme.patch.gz",
+    "original_sha256": "e6cc05bc058d6c2c86eead03a3b4e924422e5da10a07cbb9fb5a27254feb2f90",
+    "decoded_sha256": "e6cc05bc058d6c2c86eead03a3b4e924422e5da10a07cbb9fb5a27254feb2f90",
+    "compressed_sha256": "cc527def7c391a64b411122158fac084e8528bc16a6c1c0a1a486d4568f5c4be",
+    "transform": "gzip mtime0; preserves actual unified-diff context whitespace byte-for-byte"
+  },
+  "rehearsal-overlay.patch": {
+    "artifact": "rehearsal-overlay.patch.gz",
+    "date": "2026-10-21",
+    "original_sha256": null,
+    "decoded_sha256": "423f8596daa6fdfb711a5c3f4af3433227818a93940462bd8ca172b67d7f2d90",
+    "compressed_sha256": "4ab54c717373cdb09ec06dff459e20dba6c6d7c27a8f143fbddd588e21ec8557",
+    "derived_from": "historical-miscaptured-overlay-with-solution.patch.gz",
+    "transform": "Removed only README diff block; gzip mtime0; matches captured staged_diff_sha256 and all five supplied target hashes; no contemporaneous original-stream provenance claimed"
+  },
+  "historical-miscaptured-overlay-with-solution.patch": {
+    "artifact": "historical-miscaptured-overlay-with-solution.patch.gz",
+    "original_sha256": "b2579dadefe7c13cd095235a976df8663bc40b8a020dfe8857f5ab93d120570c",
+    "decoded_sha256": "b2579dadefe7c13cd095235a976df8663bc40b8a020dfe8857f5ab93d120570c",
+    "compressed_sha256": "ab2d46a3d87a3006c766a1add4a7b6b19901bb42d0449de97ef4f154cb5357a3",
+    "transform": "gzip mtime0; preserves actual unified-diff context whitespace byte-for-byte",
+    "status": "Historical miscapture includes participant README solution; not pre-participant baseline; exact original acquisition timing not retained"
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "date": "2026-10-20",
+  "reviewDiffSha256": "fb9ad6af76e9b59261432da3cd1822d868c228199e1cc5393f8725824c9b3223",
+  "findingCount": 21,
+  "verdicts": {
+    "high": 7,
+    "medium": 8,
+    "maybe-false": 3,
+    "low": 1,
+    "false": 2
+  },
+  "rows": [
+    {
+      "id": "blind-1",
+      "verdict": "high",
+      "route": "patch",
+      "group": "index",
+      "location": "scripts/check-publication-git.mjs:34",
+      "summary": "Staged content can escape inspection when working bytes are clean.",
+      "evidence": "workingEntry hashes indexObject but reads only working bytes; rev-list does not include index-only objects. Inspect indexed bytes, path rules and mode, and add regression coverage."
+    },
+    {
+      "id": "blind-2",
+      "verdict": "high",
+      "route": "patch",
+      "group": "root",
+      "location": "scripts/check-publication-git.mjs:66",
+      "summary": "A subdirectory invocation can omit sibling working content.",
+      "evidence": "ls-files is relative to cwd and no repository-root guard exists. Reject non-root invocation using canonical paths and test the nested declarations case."
+    },
+    {
+      "id": "blind-3",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "historical-symlink",
+      "location": "scripts/check-publication-git.mjs:128",
+      "summary": "Historical symlinks are not marked unsupported.",
+      "evidence": "treeFindings handles mode160000 only, while current links are blocked. Apply the existing category to mode120000 and test committed/deleted links."
+    },
+    {
+      "id": "blind-4",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "object-hash",
+      "location": "scripts/check-publication-git.mjs:104",
+      "summary": "Object contents are not authenticated against their advertised IDs.",
+      "evidence": "readBatch validates headers, sizes and framing but not the canonical object hash. Authenticate SHA1/SHA256 objects and prove corruption refusal."
+    },
+    {
+      "id": "blind-5",
+      "verdict": "high",
+      "route": "patch",
+      "group": "pem",
+      "location": "scripts/check-publication-content.mjs:5",
+      "summary": "Encrypted and DSA PEM private-key forms escape the detector.",
+      "evidence": "The PEM alternative lists RSA, EC and OPENSSH only. Extend the existing signature with the demonstrated standard header forms and test them."
+    },
+    {
+      "id": "blind-6",
+      "verdict": "high",
+      "route": "patch",
+      "group": "home-component",
+      "location": "scripts/check-publication-content.mjs:40",
+      "summary": "Synthetic-home exclusions also exempt suffixed account names.",
+      "evidence": "The negative lookahead uses word boundaries, which terminate before punctuation inside an account component. Require an exact synthetic component and test suffix cases."
+    },
+    {
+      "id": "blind-7",
+      "verdict": "high",
+      "route": "patch",
+      "group": "employer-separators",
+      "location": "scripts/check-publication-content.mjs:24",
+      "summary": "Multiword employer terms miss hyphen/underscore host and repository spellings.",
+      "evidence": "containsTerm preserves literal spaces after camel segmentation, so the demonstrated separated spelling is missed. Normalize only supported separators while preserving complete-term boundaries."
+    },
+    {
+      "id": "blind-8",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "validated-dispositions",
+      "location": "scripts/check-publication-content.mjs:84",
+      "summary": "A future validated asset may remain permanently blocked.",
+      "evidence": "Every detection is unresolved and report verification forbids manual flips. This is correct for the actual unreviewed assets; no approved asset/provenance input has been supplied to demonstrate an acceptance failure. A real fingerprint-bound validation record and the intended consuming workflow would settle the prospective medium-impact limitation."
+    },
+    {
+      "id": "blind-9",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "native-fixture-path",
+      "location": "scripts/check-publication.test.mjs:239",
+      "summary": "The timeout fixture path is not decoded as a native path.",
+      "evidence": "URL.pathname retains URL escaping and Windows drive syntax. Use fileURLToPath; no Windows execution claim follows from this source repair."
+    },
+    {
+      "id": "blind-10",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "temp-ownership",
+      "location": "scripts/check-publication-audit.mjs:75",
+      "summary": "A temporary-file collision deletes a preexisting file.",
+      "evidence": "writeFile uses wx, but finally removes the pathname even when creation failed. Track successful creation and retain collision bytes in a regression."
+    },
+    {
+      "id": "edge-1",
+      "verdict": "high",
+      "route": "patch",
+      "group": "root",
+      "location": "scripts/check-publication-git.mjs:70",
+      "summary": "A nested-root scan can accept incomplete current scope.",
+      "evidence": "Independently traced ls-files cwd behavior and absent root guard; same demonstrated defect as blind-2, with the same canonical-root repair."
+    },
+    {
+      "id": "edge-2",
+      "verdict": "high",
+      "route": "patch",
+      "group": "index",
+      "location": "scripts/check-publication-git.mjs:39",
+      "summary": "Sensitive staged content can receive an accepted verdict.",
+      "evidence": "The staged blob is absent from inspected working bytes and all-ref closure; same defect as blind-1, repaired by exact indexed-content inspection."
+    },
+    {
+      "id": "edge-3",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "historical-symlink",
+      "location": "scripts/check-publication-git.mjs:128",
+      "summary": "History-only symlinks incorrectly leave contentComplete true.",
+      "evidence": "Historical mode120000 lacks the existing unsupported-link category; same defect as blind-3, repaired without following the target."
+    },
+    {
+      "id": "verification-1",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "ref-regression",
+      "location": "scripts/check-publication-audit.mjs:19",
+      "summary": "Ref-name privacy detection lacks a regression assertion.",
+      "evidence": "Pre-verified: removing the ref textCategories call leaves all runnable tests passing. Add clean-object/sensitive-ref coverage at the outer publication verdict."
+    },
+    {
+      "id": "verification-2",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "history-gzip-regression",
+      "location": "scripts/check-publication-git.mjs:148",
+      "summary": "Historical gzip inspection lacks a scanner-level regression assertion.",
+      "evidence": "Pre-verified: bypassing historical gzip inspection leaves all runnable tests passing. Add a committed/deleted gzip fixture and exact historical blob assertion."
+    },
+    {
+      "id": "intent-1",
+      "verdict": "medium",
+      "route": "defer",
+      "group": "asset-review",
+      "location": "publication-audit.json",
+      "summary": "Scanner tests do not certify actual repository privacy or redistribution.",
+      "evidence": "Confirmed pre-existing asset/copied-material provenance and historical privacy remain unknown. The report already refuses clearance; retain maintainer-owned substantive review rather than infer it from synthetic tests."
+    },
+    {
+      "id": "intent-2",
+      "verdict": "low",
+      "route": "patch",
+      "group": "final-report",
+      "location": "publication-audit.json",
+      "summary": "The retained publication report describes the earlier candidate.",
+      "evidence": "Confirmed its revision and current findings predate the resume correction. Regenerate and independently compare after all final source/evidence/index writes; this changes no acceptance rule."
+    },
+    {
+      "id": "intent-3",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "native-tooling-use",
+      "location": "GitHub readers and hook/plugin commands",
+      "summary": "Offline validation does not prove complete live reader and lifecycle execution.",
+      "evidence": "Documented CLI parsers and executable identities pass; lifecycle relays were deliberately not invoked and no live reader failure is demonstrated. Native Windows and an authorized disposable live reader/lifecycle scenario would settle any prospective medium-impact defect."
+    },
+    {
+      "id": "intent-4",
+      "verdict": "false",
+      "route": "reject",
+      "group": "release-integration",
+      "location": "scripts/check-publication.mjs",
+      "summary": "A standalone verdict is not yet wired into release automation.",
+      "evidence": "The invoked story is 8.7: its binding cross-story contract explicitly supplies an invocable verdict for 8.8. It performs no release/publication, so absence of the next story consumer is not a missing 8.7 execution path."
+    },
+    {
+      "id": "intent-5",
+      "verdict": "false",
+      "route": "reject",
+      "group": "aggregate-completion",
+      "location": "evidence/story-8-7/resume/outcomes.json",
+      "summary": "The aggregate is still incomplete.",
+      "evidence": "The review snapshot predates completion. The same unchanged rerun has now exited0: root167pass/2skip,3159coverage,14serial audit,261a11y and all eight floors; the actual completion log and outcomes supersede the in-progress snapshot without erasing the first failure."
+    },
+    {
+      "id": "intent-6",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "validated-dispositions",
+      "location": "scripts/check-publication-content.mjs:84",
+      "summary": "Substantive approval is a limitation rather than an exercised resolution mechanism.",
+      "evidence": "Same prospective concern as blind-8. Actual assets have no supplied validated provenance, so unresolved output is required. A real approved, fingerprint-bound input and its acceptance contract are needed to demonstrate whether a future resolution consumer is missing."
+    }
+  ],
+  "patchStatus": "All11 source/test groups applied and parent full verification passed; final report group is regenerated and independently checked after metadata/index finalization.",
+  "patchedGroups": {
+    "high": 5,
+    "medium": 6,
+    "low": 1
+  },
+  "followupReviewRecommended": true
+}

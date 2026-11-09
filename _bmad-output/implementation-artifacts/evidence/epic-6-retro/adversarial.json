@@ -1,0 +1,72 @@
+[
+  {
+    "lens": "adversarial",
+    "location": "[REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/story-map/useStoryMapBoardState.ts:435",
+    "trigger_condition": "Source-verified: selecting the Standard color filter excludes newly created Cards with color undefined, although CardTile renders their category as Standard.",
+    "guard_snippet": "Normalize the filter using the same DEFAULT_CARD_COLOR as CardTile: (card.color ?? DEFAULT_CARD_COLOR) !== decodeFilterValue(filters.color). CardTile.tsx:102/181 already normalizes; board-filter-selection.test.tsx covers explicit custom colors but not missing color.",
+    "potential_consequence": "The category shown on a Card disagrees with searchable category membership, hiding ordinary default Cards."
+  },
+  {
+    "lens": "adversarial",
+    "location": "[REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/story-map/useStoryMapBoardState.ts:137",
+    "trigger_condition": "Source-verified: selecting a Story then collapsing its Step/Activity or Release leaves it counted as visible in the bulk toolbar.",
+    "guard_snippet": "Compute Discovery display visibility after both hierarchy and lane collapse and use that set for visible/hidden counts. Current selectedVisibleIds only tests filtered.visibleCardIds; DiscoveryMatrix.tsx:69 and its collapsedLaneSet apply additional hiding. hierarchy-collapse.test.tsx proves retained selection but does not check the toolbar count.",
+    "potential_consequence": "The bulk action scope reports zero hidden targets while including collapsed Cards, weakening the explicit retained-hidden-selection warning."
+  },
+  {
+    "lens": "adversarial",
+    "location": "[REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/customization/CustomizationEditor.tsx:38",
+    "trigger_condition": "Source-verified: after a concurrent status rename, re-review updates evidence but submitting a draft whose name equals the original item.name omits all rename evidence.",
+    "guard_snippet": "Compare input.name with the refreshed evidence.definitionBefore.name, rather than the opening item.name. refreshReview at lines47-55 refreshes evidence only; customizations-repository.ts:68-73 compares against the current persisted name and requires evidence. Add a re-review case that deliberately keeps the opening name.",
+    "potential_consequence": "The advertised review-and-retry flow repeatedly conflicts even after explicit re-review, forcing closure and loss/re-entry of the draft."
+  },
+  {
+    "lens": "adversarial",
+    "location": "[REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/story-map/useStoryMapBoardState.ts:152",
+    "trigger_condition": "Source-verified invariant failure: after this mounted board or Tracking has acknowledged Card version10, Restore returns the same Card at version4, and the next edit still submits10.",
+    "guard_snippet": "Clear acknowledged versions on restoreRevision/epoch changes, or scope useLatestVersions to the epoch. The hook retains useRef(Map) and resolve uses Math.max(loadedVersion,savedVersion) at features/conflicts/useLatestVersions.ts:4-7, so resolve(id,4) stays10 after record(id,10). StoryMapShell.tsx:88 keeps the board hook mounted; ReleaseKanban.tsx:62-75 likewise keeps its cache, unlike epoch-keyed ReleasePanel/ReleaseDateFields. Add an actual mounted edit\u2192Restore\u2192edit regression.",
+    "potential_consequence": "Board Move/Delete/inline edits and Tracking edits can remain stuck on stale version conflicts after a valid Restore until their owning component remounts."
+  },
+  {
+    "lens": "adversarial",
+    "location": "[REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/releases/ReleaseKanban.tsx:47",
+    "trigger_condition": "Source-inferred, not native-reproduced: changing a focused Story status moves its article between separately keyed column subtrees, or assigning it outside the active Release scope removes it, with no focus recovery.",
+    "guard_snippet": "Retain the changed Card identity and restore focus to its surviving control or the scope/board after adoption. Compare SwimlaneGrid.tsx:42-49, which explicitly repairs hidden-lane focus; ReleaseKanban has no corresponding effect/ref. Extend ReleaseKanban.test.tsx with actual focused status and scope-changing edits.",
+    "potential_consequence": "Keyboard focus falls to the document when the edited control is removed, interrupting continued Tracking work."
+  },
+  {
+    "lens": "adversarial",
+    "location": "[REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/story-map/components/MoveAreaDialog.tsx:21",
+    "trigger_condition": "Source-verified: moving an Activity/Step/Note under a parent with mixed-role siblings offers position choices counted across every role, while placeCard interprets the requested index within the moved role.",
+    "guard_snippet": "Build non-Story position choices from same-level siblings, matching packages/core/src/changesets/position-resolution.ts:55-57. For example, one Step plus several Notes currently offers Step positions beyond the one same-level insertion point, which sameLevel.splice(Math.min(requested,sameLevel.length),...) silently clamps.",
+    "potential_consequence": "The selected destination position is silently changed, breaking equivalence between the complete Move form and authoritative placement semantics."
+  },
+  {
+    "lens": "adversarial",
+    "location": "[REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/story-map/components/CardComposer.tsx:21",
+    "trigger_condition": "Source-verified: contextual Story creation uses the count in one Release as its append position even when persisted sibling positions are interleaved across Releases or include Notes.",
+    "guard_snippet": "Derive an append position from the actual ordered destination siblings, using the same position model as persistence. For a lane with existing positions0,3,6, count3 inserts the new Story at3 rather than after6. cards-repository.ts:48/60 persists the supplied position directly; card-creation.test.tsx contextual tests assert the request count through a mocked create response rather than real ordering.",
+    "potential_consequence": "The title-only contextual create action inserts a Story before existing Stories instead of appending in the chosen Release lane."
+  },
+  {
+    "lens": "adversarial",
+    "location": "[REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/personas/PersonasPanel.tsx:104",
+    "trigger_condition": "Source-verified: an unavailable map selected only in New Persona scope disables editing/deleting an otherwise available Project-wide or different-map selected Persona.",
+    "guard_snippet": "Pass only the selected Persona scope availability to PersonaDetail; keep createScope availability on the create controls. Current unavailable is derived from createScope at line23 and then ORed into the unrelated detail availability. Add a case where the removed creation map differs from the selected Persona scope.",
+    "potential_consequence": "Removing one creation scope unnecessarily blocks unrelated valid Persona maintenance and presents an inaccurate unavailable-scope error."
+  },
+  {
+    "lens": "adversarial",
+    "location": "[REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/story-map/components/PlanningNumberField.tsx:45",
+    "trigger_condition": "Source-inferred concurrency gap: a blurred invalid or failed numeric draft remains dirty without a live hold; a subsequent remote refresh can update the Card version before the user retries that retained draft.",
+    "guard_snippet": "Mark retained dirty/pending numeric drafts with the existing data-live-suspended-draft mechanism and preserve a reviewed version across retries, or surface an explicit reload/keep decision. This component retains dirty text at lines20-22 but emits only label/input/error; useStoryMapBoardState.ts:164 resolves the version from the latest snapshot at submission.",
+    "potential_consequence": "A retry can write retained old draft text against a newer remote version without the conflict/acknowledgement expected for a dirty editor."
+  },
+  {
+    "lens": "adversarial",
+    "location": "[REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/story-map/board-accessibility.test.tsx:33",
+    "trigger_condition": "Verified coverage improvement: the dedicated automated axe gate mounts seven board views and Card/Move/Delete dialogs, but never the newly introduced ReleaseEditor, CustomizationEditor or Persona unlink confirmation.",
+    "guard_snippet": "Add populated actual-consumer axe/name/focus audits for the new CRUD dialogs and their error/confirmation states, and include them in test:a11y. Existing CustomizationEditor/ReleaseEditor behavior tests are outside that dedicated suite. This is an automated coverage gap, not a claim that disclosed native/screen-reader checks passed or a demonstrated WCAG defect.",
+    "potential_consequence": "An accessibility regression in the Epic6.8/6.9 CRUD flows can pass the dedicated accessibility gate despite the integrated Epic accessibility objective."
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "context": "four fresh ephemeral read-only CLI sessions, all launched before any result collection",
+  "diff_sha256": "2f8c51c19d510483d8e600119f7a6db69a538c81a24e0bfed6d5209407488a9b",
+  "records": [
+    {
+      "layer": "blind",
+      "exit": 0,
+      "duration_seconds": 270.38125587487593,
+      "artifact": "repair-review-blind.txt",
+      "original_sha256": "e3a8ad44800a835bf814109a7db97dee6848abcab0b31ebef583988eb5d3b264",
+      "sanitized_sha256": "af0673b06de54cb1b14e091eb87ad52c9e29af1b19ad198e214cf9b3f75d6c50"
+    },
+    {
+      "layer": "edge",
+      "exit": 0,
+      "duration_seconds": 166.66444862494245,
+      "artifact": "repair-review-edge.txt",
+      "original_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "sanitized_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "layer": "gap",
+      "exit": 0,
+      "duration_seconds": 57.01697158301249,
+      "artifact": "repair-review-gap.txt",
+      "original_sha256": "cf87c32d185d257a566f972441f0b6160112e6bf4ec0bc1cd98dfbbdf87ce05b",
+      "sanitized_sha256": "cf87c32d185d257a566f972441f0b6160112e6bf4ec0bc1cd98dfbbdf87ce05b"
+    },
+    {
+      "layer": "intent",
+      "exit": 0,
+      "duration_seconds": 93.85851483303122,
+      "artifact": "repair-review-intent.txt",
+      "original_sha256": "71e4584c99e632577ded4c9767f3cc631321ed9b88f8bf061351ef0e0442fed1",
+      "sanitized_sha256": "7e8a176722c498e5acd9f6e905563a7d1a34a0a75a2f0a3f1ea3123da59fe8f5"
+    }
+  ],
+  "redaction": "Project, home and transient diff paths replaced; original final messages remain transient. Full raw CLI streams are not retained in this contribution."
+}

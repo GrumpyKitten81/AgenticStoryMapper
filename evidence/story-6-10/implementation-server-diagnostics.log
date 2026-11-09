@@ -1,0 +1,14 @@
+
+> @storymapper/server@0.1.0 test:diagnostics [REDACTED_HOME]/Projects/StoryMapper/apps/server
+> vitest run src/http/routes/board-diagnostics.test.ts --maxWorkers=1 --minWorkers=1
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/http/routes/board-diagnostics.test.ts (1 test) 993ms
+   ✓ records raw full-snapshot read and committed versioned mutation diagnostics for a legal 1,000-Card map 992ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  22:11:06
+   Duration  2.08s (transform 508ms, setup 0ms, collect 963ms, tests 993ms, environment 0ms, prepare 29ms)

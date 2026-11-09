@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-17",
+  "status": "unverified",
+  "attempts": [
+    {
+      "surface": "cua.getState",
+      "result": "No browser surfaces; Safari app listed"
+    },
+    {
+      "surface": "cua.getApp(com.apple.Safari)",
+      "result": "Computer Use server error -10005: cgWindowNotFound"
+    }
+  ],
+  "limit": "Native keyboard, browser visual and screen-reader acceptance could not be executed. DOM/router/HTTP/SQLite evidence is separate. No user Project or live GitHub mutation."
+}

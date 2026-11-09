@@ -1,0 +1,89 @@
+{
+  "candidate": "before review repairs",
+  "checks": [
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "started": "2026-10-20T04:06:01.005322+00:00",
+      "finished": "2026-10-20T04:06:01.442003+00:00",
+      "exit_code": 0,
+      "log": "parent-initial-0.log.gz",
+      "original_sha256": "5212c2a7a3eb26e756aae2744204451d0e85a070130f9cb72b5e4fdc653e3049",
+      "decoded_sanitized_sha256": "f53eedd1c1ae81746d38c9cefc1299129df216972008e198f9e09ade491255be",
+      "compressed_sha256": "905c104aed8b31e92e54a4b723a99212b6b41a05bdfe8a7e83d566cec7aed5d8"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "scripts/ci-audit.test.mjs"
+      ],
+      "started": "2026-10-20T04:06:01.442298+00:00",
+      "finished": "2026-10-20T04:06:02.705811+00:00",
+      "exit_code": 0,
+      "log": "parent-initial-1.log.gz",
+      "original_sha256": "665d18018e29e09309049f1b2f4e6b8d590b40af852726129836ce9b8f9d0403",
+      "decoded_sanitized_sha256": "665d18018e29e09309049f1b2f4e6b8d590b40af852726129836ce9b8f9d0403",
+      "compressed_sha256": "9dd7dac864eb53737591f21c02193125667c477b338f4b99ded9e6e9f3aaae1a"
+    },
+    {
+      "command": [
+        "/tmp/story-8-4-evidence/actionlint",
+        ".github/workflows/ci.yml"
+      ],
+      "started": "2026-10-20T04:06:02.706094+00:00",
+      "finished": "2026-10-20T04:06:02.711462+00:00",
+      "exit_code": 0,
+      "log": "parent-initial-2.log.gz",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decoded_sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "check"
+      ],
+      "started": "2026-10-20T04:06:02.711656+00:00",
+      "finished": "2026-10-20T04:19:17.159074+00:00",
+      "exit_code": 0,
+      "log": "parent-initial-3.log.gz",
+      "original_sha256": "ec07c823dde4feed925109b8aa190fe7f88c246c1ce40ce82120c911d41a03f3",
+      "decoded_sanitized_sha256": "5de65a1ed0987cc0a1895f75d34cdcbc8471b45bc6b4e7eb9406b12236e86b09",
+      "compressed_sha256": "2025cf0ae1469de9024d48bc9211267e97756950033d4ca2cab8531fd6beb8ff"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/verify.mjs"
+      ],
+      "started": "2026-10-20T04:19:17.159404+00:00",
+      "finished": "2026-10-20T04:20:12.505678+00:00",
+      "exit_code": 0,
+      "log": "parent-initial-4.log.gz",
+      "original_sha256": "524e1015be0c057c17866410d534b77fe7d6d5a742c04048878f2abfd76d88b8",
+      "decoded_sanitized_sha256": "ed09ff6059868160881700f082ffea1a9d265e1d2ac46c11f215ca7617588be4",
+      "compressed_sha256": "16de8fe67ab3c55c3bb9c9b2f26aab0f6240b97830597790468c012b21b055a5"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "HEAD"
+      ],
+      "started": "2026-10-20T04:20:12.505975+00:00",
+      "finished": "2026-10-20T04:20:12.529350+00:00",
+      "exit_code": 0,
+      "log": "parent-initial-5.log.gz",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decoded_sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    }
+  ]
+}

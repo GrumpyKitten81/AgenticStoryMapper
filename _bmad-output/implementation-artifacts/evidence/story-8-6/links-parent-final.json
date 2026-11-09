@@ -1,0 +1,81 @@
+{
+  "revision": "3e761f7deb60fc0c12639995ff801fdfcfc5a990",
+  "scope": "Tracked Markdown inline and reference-definition local targets and Markdown heading anchors; fenced examples excluded. External links are not fetched. This is not a full Markdown renderer.",
+  "markdownFiles": 696,
+  "counts": {
+    "resolved": 396,
+    "external": 31,
+    "intentional": 10
+  },
+  "missing_files": [],
+  "missing_anchors": [],
+  "invalid_targets": [],
+  "intentional": [
+    {
+      "file": "docs/templates/bug-ticket-template.md",
+      "line": 57,
+      "target": "URL",
+      "reason": "recognized URL authoring placeholder"
+    },
+    {
+      "file": "docs/templates/bug-ticket-template.md",
+      "line": 58,
+      "target": "URL",
+      "reason": "recognized URL authoring placeholder"
+    },
+    {
+      "file": "docs/templates/epic-template.md",
+      "line": 32,
+      "target": "URL",
+      "reason": "recognized URL authoring placeholder"
+    },
+    {
+      "file": "docs/templates/epic-template.md",
+      "line": 33,
+      "target": "URL",
+      "reason": "recognized URL authoring placeholder"
+    },
+    {
+      "file": "docs/templates/feature-template.md",
+      "line": 33,
+      "target": "URL",
+      "reason": "recognized URL authoring placeholder"
+    },
+    {
+      "file": "docs/templates/feature-template.md",
+      "line": 34,
+      "target": "URL",
+      "reason": "recognized URL authoring placeholder"
+    },
+    {
+      "file": "docs/templates/spike-template.md",
+      "line": 33,
+      "target": "URL",
+      "reason": "recognized URL authoring placeholder"
+    },
+    {
+      "file": "docs/templates/spike-template.md",
+      "line": 34,
+      "target": "URL",
+      "reason": "recognized URL authoring placeholder"
+    },
+    {
+      "file": "docs/templates/story-template.md",
+      "line": 55,
+      "target": "URL",
+      "reason": "recognized URL authoring placeholder"
+    },
+    {
+      "file": "docs/templates/story-template.md",
+      "line": 56,
+      "target": "URL",
+      "reason": "recognized URL authoring placeholder"
+    }
+  ],
+  "ownedSha256": {
+    "CONTRIBUTING.md": "4438c3f6afdb06675f007460891cadd2afb3e9381f7b6d0d7a755e2f06c7d1d4",
+    "README.md": "e567b97fba8f0dd75a539a5fc45b42b0ec89b2c14b77a5dfa8dc780b0d9fde2f",
+    "docs/RUNBOOK.md": "b54dcfc461e6b76a7d9b2c56500175716c34d12e7cfe57e6a415b7559f2ff329",
+    "docs/usability-report.md": "8d91652524086fead40529eb7a72ea13207c7e9d6800198fb06db830f7c28295"
+  }
+}

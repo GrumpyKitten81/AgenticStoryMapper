@@ -1,0 +1,511 @@
+
+> storymapper@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper
+> node --test scripts/*.test.mjs && corepack pnpm -r test
+
+✔ external completion worker verifies and adopts only isolated temporary runs (26133.87125ms)
+✔ scans TypeScript syntax without executing descriptor initializers (4.655959ms)
+✔ rejects missing and wrongly named use-case mappings in both directions (0.675083ms)
+✔ permits ordinary HTTP reads and requires effectful capabilities to have tools (1.006042ms)
+✔ manifest output is deterministic and checking never rewrites stale data (10.832417ms)
+✔ generated tool metadata and documentation are deterministic and checked without rewriting (14.97925ms)
+✔ documentation names human-only capabilities and every classified write membership (0.221291ms)
+✔ registry parity rejects omitted, duplicate and incorrectly imported descriptors (8.046417ms)
+✔ rejects duplicate capability names, route mappings and tool mappings (8.686458ms)
+✔ rejects missing registrations, orphan tool metadata, schemas and routes (10.357542ms)
+✖ operation coverage rejects new unclassified writes and preserves mixed sync effects (0.761833ms)
+✖ operation coverage includes indirect local effects of provider writes (0.273416ms)
+✔ classifies effectful reads and refuses direct MCP handler domain persistence (8.068167ms)
+✔ rejects every umlaut and sharp s with correct locations (1.897625ms)
+✔ normalizes decomposed umlauts without changing line diagnostics (0.181042ms)
+✔ matches complete case-insensitive German words without substring failures (0.08175ms)
+✔ scans every required source and reports relative paths while ignoring authoring documents (79.671625ms)
+✖ setup performs a real frozen install, build and folder creation without config, and repeats safely (16464.820125ms)
+✔ frozen install and build failures prevent later setup steps (1159.373958ms)
+✔ real setup rejects a manifest that disagrees with the frozen lockfile (668.995708ms)
+✖ start serves actual app/API on its owned URL and only opens the browser after health (20299.090792ms)
+✖ IPv6 host overrides reach the real server and exact browser URL (20272.416458ms)
+✔ invalid configuration and missing dependencies/runtime fail before database creation or browser opening (3303.744292ms)
+✔ unexpected pnpm version rejects public setup and start before later work (744.580875ms)
+✔ launcher preflight rejects server-local non-loopback configuration before spawning the server, DB or bind (450.800167ms)
+✔ server IPC loopback guard rejects non-loopback configuration before DB or bind (1260.61ms)
+✔ a healthy occupied port cannot authorize browser opening (474.467209ms)
+✔ failed missing-asset build and early server exit never open a browser (973.942209ms)
+✔ unhealthy owned server times out loudly and releases its port (30597.544292ms)
+✖ browser failure is loud and cleans up the healthy real server (2067.558292ms)
+✖ hanging opener deadline fails nonzero and cleans its descendants and server (20344.003583ms)
+✖ unexpected ready server exit fails the launcher during and after browser opening (20298.382125ms)
+✔ platform browser commands and Windows Corepack discovery preserve argument boundaries (1.839625ms)
+✖ abrupt launcher loss disconnects and stops its owned real server (20305.50225ms)
+✔ fixture cleanup after abrupt setup install loss stops descendants before fixture removal (616.501084ms)
+✔ test-only IPC interruption invokes the launcher signal handler and cancellation (5390.03075ms)
+✖ interrupted preflight, build and opener terminate their whole process trees within a bound (31281.234959ms)
+✔ cancellation waits for the owned delayed shutdown beyond the former two-second cutoff (3297.004542ms)
+✔ interruption before server readiness stops the child without a browser (504.895375ms)
+✔ public verify preserves hygiene and gate failure propagation (2365.192959ms)
+✔ public verify rejects missing env ignore, ignored env example and env history (1097.681792ms)
+✔ public verify rejects tracked input, local Project and SQLite data (1727.836542ms)
+✔ public verify rejects an unusable default Project folder and accepts a usable one (1254.375916ms)
+✔ public verify health requires exact HTTP200 and valid databasePath (3794.472417ms)
+✔ public verify loads repository-root config from an unrelated cwd and preserves explicit overrides (653.824375ms)
+✔ public verify refuses a healthy service belonging to a different runtime (458.046625ms)
+✔ doctor before setup collects independent failures without writes or Corepack downloads (492.601083ms)
+✔ doctor on installed checkout passes seven checks read-only without opening Project data (4520.237625ms)
+✔ doctor reports healthy, unhealthy, malformed, stalled, oversized and redirected occupied services within a bound (10264.946917ms)
+✔ public commands validate flags and keep default failures free of diagnostic traces (1447.068666ms)
+✔ native binding failures stop start before DB or browser and remain diagnosable in doctor (1359.907833ms)
+✔ setup child diagnostics identify phase and redact credentials in normal and debug output (1006.744125ms)
+✔ setup redacts credentials split across UTF-8 byte chunks on stdout and stderr (3043.098875ms)
+✔ doctor and start use process, root and nearest server env precedence from unrelated cwd (965.956916ms)
+✖ server database startup failure is reported at the launcher boundary without a default stack (1817.347917ms)
+✖ bind race is reported through real server IPC with actionable cause and no browser (1737.160958ms)
+✖ direct server startup catches configuration, binding and native failures in normal and debug mode (4190.55925ms)
+✖ direct server flushes a large startup diagnostic to piped stderr before exiting (1434.876083ms)
+✔ doctor rejects an empty local Corepack entry while collecting seven checks without cache writes (389.742458ms)
+✔ doctor rejects missing CommonJS entries and imported ESM subpath targets with intact CommonJS counterparts (1592.589084ms)
+✔ start and doctor report malformed installed dependency metadata with the setup action (839.330959ms)
+✔ doctor rejects a directory web entry and start attempts its missing-build repair (743.895292ms)
+✔ normal build failures include one redacted compiler cause without stack lines (719.856708ms)
+✔ doctor loads SQLite JavaScript but fails at the native constructor without Project writes (487.498417ms)
+✔ successful launch forwards redacted server stdout including an unterminated final line (779.497292ms)
+✔ doctor ignores a .env in the working directory when no checkout .env exists (433.834ms)
+✔ successful normal launch suppresses confirmed server stderr diagnostics and stack lines (607.704625ms)
+✔ successful debug launch forwards redacted stderr across chunk boundaries and omits overlong lines (704.405167ms)
+✖ owned server launched from unrelated cwd uses root PORT before conflicting server-local PORT (20320.631375ms)
+✖ server reports a concrete writable-directory repair when SQLite cannot open the database (2242.9735ms)
+✔ direct server reports unreadable optional env without a Project database directory repair (1473.22425ms)
+✔ redacts raw and serialized environment secrets with quotes and backslashes (0.767375ms)
+✔ redacts full multiline environment secrets and nonempty raw and serialized line fragments (0.178417ms)
+✔ redacts URL userinfo and Basic or Bearer authorization tokens (0.057167ms)
+✔ redacts entire escaped quoted credential values without an environment match (0.40375ms)
+✔ port closure waits for a silent TCP listener to stop accepting connections (107.808208ms)
+✔ port closure propagates invalid connection origins (0.468417ms)
+✖ occupied default port starts an owned listener, publishes its port and cleans it at shutdown (20367.139125ms)
+✔ runtime publication refuses an existing file and shutdown preserves a replacement owner (48.263792ms)
+✖ owned launcher drains an actual agent HTTP call beyond two seconds before WAL and runtime cleanup (20326.694959ms)
+✔ bridge fails explicitly for missing discovery or a foreign service without creating a database (113.024875ms)
+✔ doctor discovery uses stable runtime identity after the active database directory changes (32.970208ms)
+✖ relative database startup and discovery resolve from the checkout when called elsewhere (20355.239708ms)
+ℹ tests 83
+ℹ suites 0
+ℹ pass 64
+ℹ fail 19
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 212205.950167
+
+✖ failing tests:
+
+test at scripts/capability-scan.test.mjs:162:1
+✖ operation coverage rejects new unclassified writes and preserves mixed sync effects (0.761833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+    {
+      exceptions: [],
+      name: 'createGitHubLink',
+      operations: [
+  +     'create:githubExternalRef'
+  -     'create:githubLink'
+      ]
+    }
+
+      at TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/capability-scan.test.mjs:166:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { name: 'createGitHubLink', operations: [ 'create:githubExternalRef' ], exceptions: [] },
+    expected: { name: 'createGitHubLink', operations: [ 'create:githubLink' ], exceptions: [] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/capability-scan.test.mjs:171:1
+✖ operation coverage includes indirect local effects of provider writes (0.273416ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+
+    {
+      importWorkItems: [
+        'create:card',
+        'create:release',
+  +     'create:githubExternalRef',
+  -     'create:githubLink',
+        'set:remoteWorkItemLink',
+        'create:syncRun',
+        'create:annotation',
+        'set:cardAnnotation'
+      ],
+  ...
+        'create:release',
+  +     'create:githubExternalRef',
+  -     'create:githubLink',
+        'set:remoteWorkItemLink',
+        'create:syncRun',
+        'create:syncConflict'
+      ],
+      pushWorkItems: [
+  +     'create:githubExternalRef',
+  -     'create:githubLink',
+        'create:syncRun'
+      ],
+      resolveSyncConflict: [
+        'update:card',
+        'create:release',
+  ...
+        'create:release',
+  +     'create:githubExternalRef',
+  -     'create:githubLink',
+        'set:remoteWorkItemLink',
+        'create:syncRun',
+        'create:syncConflict'
+      ],
+      upsertProductContext: [
+
+      at TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/capability-scan.test.mjs:175:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { importWorkItems: [ 'create:card', 'create:release', 'create:githubExternalRef', 'set:remoteWorkItemLink', 'create:syncRun', 'create:annotation', 'set:cardAnnotation' ], pushWorkItems: [ 'create:githubExternalRef', 'create:syncRun' ], pullStoryMapWorkItems: [ 'update:card', 'create:release', 'create:githubExternalRef', 'set:remoteWorkItemLink', 'create:syncRun', 'create:syncConflict' ], syncWorkItems: [ 'update:card', 'create:release', 'create:githubExternalRef', 'set:remoteWorkItemLink', 'create:syncRun', 'create:syncConflict' ], resolveSyncConflict: [ 'update:card', 'create:release', 'set:remoteWorkItemLink', 'resolve:syncConflict', 'create:syncRun' ], upsertProductContext: [ 'set:productContext' ] },
+    expected: { importWorkItems: [ 'create:card', 'create:release', 'create:githubLink', 'set:remoteWorkItemLink', 'create:syncRun', 'create:annotation', 'set:cardAnnotation' ], pushWorkItems: [ 'create:githubLink', 'create:syncRun' ], pullStoryMapWorkItems: [ 'update:card', 'create:release', 'create:githubLink', 'set:remoteWorkItemLink', 'create:syncRun', 'create:syncConflict' ], syncWorkItems: [ 'update:card', 'create:release', 'create:githubLink', 'set:remoteWorkItemLink', 'create:syncRun', 'create:syncConflict' ], resolveSyncConflict: [ 'update:card', 'create:release', 'set:remoteWorkItemLink', 'resolve:syncConflict', 'create:syncRun' ], upsertProductContext: [ 'set:productContext' ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/commands.test.mjs:11:1
+✖ setup performs a real frozen install, build and folder creation without config, and repeats safely (16464.820125ms)
+  AssertionError [ERR_ASSERTION]: Web build failed with exit code 2 (ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL). Next action: Run node scripts/setup.mjs --debug and repair the reported web build error.
+
+
+  1 !== 0
+
+      at file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:16:14
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:12:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at scripts/commands.test.mjs:48:1
+✖ start serves actual app/API on its owned URL and only opens the browser after health (20299.090792ms)
+  AssertionError [ERR_ASSERTION]: Condition did not complete within 20000ms.
+  Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.
+
+      at file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:55:30
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:50:5)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at scripts/commands.test.mjs:70:1
+✖ IPv6 host overrides reach the real server and exact browser URL (20272.416458ms)
+  AssertionError [ERR_ASSERTION]: Condition did not complete within 20000ms.
+      at until (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:126:10)
+      at async file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:75:5
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:71:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at scripts/commands.test.mjs:194:1
+✖ browser failure is loud and cleans up the healthy real server (2067.558292ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /exit code 19/. Input:
+
+  'Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n'
+
+      at file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:200:12
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:195:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n',
+    expected: /exit code 19/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/commands.test.mjs:205:1
+✖ hanging opener deadline fails nonzero and cleans its descendants and server (20344.003583ms)
+  AssertionError [ERR_ASSERTION]: Condition did not complete within 20000ms.
+      at until (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:126:10)
+      at async file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:210:5
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:206:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at scripts/commands.test.mjs:221:1
+✖ unexpected ready server exit fails the launcher during and after browser opening (20298.382125ms)
+  AssertionError [ERR_ASSERTION]: Condition did not complete within 20000ms.
+      at until (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:126:10)
+      at async file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:227:7
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:223:5)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at scripts/commands.test.mjs:261:1
+✖ abrupt launcher loss disconnects and stops its owned real server (20305.50225ms)
+  AssertionError [ERR_ASSERTION]: Condition did not complete within 20000ms.
+      at until (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:126:10)
+      at async file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:265:5
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:262:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at scripts/commands.test.mjs:307:1
+✖ interrupted preflight, build and opener terminate their whole process trees within a bound (31281.234959ms)
+  AssertionError [ERR_ASSERTION]: Condition did not complete within 20000ms.
+      at until (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:126:10)
+      at async file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:316:7
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:309:5)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at scripts/doctor.test.mjs:212:1
+✖ server database startup failure is reported at the launcher boundary without a default stack (1817.347917ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Project database directory cannot be opened:.*data.*Next action:.*writable directory.*STORYMAPPER_DB_PATH/. Input:
+
+  'Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n'
+
+      at file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:218:14
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:214:5)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n',
+    expected: /Project database directory cannot be opened:.*data.*Next action:.*writable directory.*STORYMAPPER_DB_PATH/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/doctor.test.mjs:226:1
+✖ bind race is reported through real server IPC with actionable cause and no browser (1737.160958ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Port 51809 is occupied by unknown process.*Next action:.*PORT/. Input:
+
+  'Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n'
+
+      at file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:232:12
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:227:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n',
+    expected: /Port 51809 is occupied by unknown process.*Next action:.*PORT/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/doctor.test.mjs:238:1
+✖ direct server startup catches configuration, binding and native failures in normal and debug mode (4190.55925ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /occupied by unknown process/. Input:
+
+  'Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n'
+
+      at file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:250:42
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:243:9)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n',
+    expected: /occupied by unknown process/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/doctor.test.mjs:262:1
+✖ direct server flushes a large startup diagnostic to piped stderr before exiting (1434.876083ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /corepack pnpm --filter @storymapper\/db rebuild better-sqlite3/. Input:
+
+  'Error: Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n' +
+    '    at failure (file:///private/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-scripts-HDY2qz/checkout/apps/server/src/config/failures.mjs:16:10)\n' +
+    '    at startupFailure (/private/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-scripts-HDY2qz/checkout/apps/server/src/main.ts:33:78)\n' +
+    '    at <anonymous> (/private/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-scripts-HDY2qz/checkout/apps/server/src/main.ts:78:22)\n' +
+    "Caused by: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/private/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-scripts-HDY2qz/checkout/packages/contracts/dist/schemas/github-identity.js' imported from /private/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-scripts-HDY2qz/checkout/packages/contracts/src/schemas/domain.ts\n" +
+    '    at finalizeResolution (node:internal/modules/esm/resolve:271:11)\n' +
+    '    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n' +
+    '    at defaultResolve (node:internal/modules/esm/resolve:992:11)\n' +
+    '    at #cachedDefaultResolve (node:internal/modules/esm/loader:691:20)\n' +
+    '    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:708:38)\n' +
+    '    at nextStep (node:internal/modules/customization_hooks:189:26)\n' +
+    '    at resolveBaseSync (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/tsx@4.23.0/node_modules/tsx/dist/register-D5KIhaFJ.mjs:2:9115)\n' +
+    '    at resolveDirectorySync (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/tsx@4.23.0/node_modules/tsx/dist/register-D5KIhaFJ.mjs:2:10328)\n' +
+    '    at resolveTsPathsSync (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/tsx@4.23.0/node_modules/tsx/dist/register-D5KIhaFJ.mjs:2:11560)\n' +
+    '    at resolve (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/tsx@4.23.0/node_modules/tsx/dist/register-D5KIhaFJ.mjs:2:13343)\n'
+
+      at file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:267:12
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:263:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "Error: Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n    at failure (file:///private/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-scripts-HDY2qz/checkout/apps/server/src/config/failures.mjs:16:10)\n    at startupFailure (/private/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-scripts-HDY2qz/checkout/apps/server/src/main.ts:33:78)\n    at <anonymous> (/private/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-scripts-HDY2qz/checkout/apps/server/src/main.ts:78:22)\nCaused by: Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/private/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-scripts-HDY2qz/checkout/packages/contracts/dist/schemas/github-identity.js' imported from /private/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-scripts-HDY2qz/checkout/packages/contracts/src/schemas/domain.ts\n    at finalizeResolution (node:internal/modules/esm/resolve:271:11)\n    at moduleResolve (node:internal/modules/esm/resolve:865:10)\n    at defaultResolve (node:internal/modules/esm/resolve:992:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:691:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:708:38)\n    at nextStep (node:internal/modules/customization_hooks:189:26)\n    at resolveBaseSync (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/tsx@4.23.0/node_modules/tsx/dist/register-D5KIhaFJ.mjs:2:9115)\n    at resolveDirectorySync (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/tsx@4.23.0/node_modules/tsx/dist/register-D5KIhaFJ.mjs:2:10328)\n    at resolveTsPathsSync (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/tsx@4.23.0/node_modules/tsx/dist/register-D5KIhaFJ.mjs:2:11560)\n    at resolve (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/tsx@4.23.0/node_modules/tsx/dist/register-D5KIhaFJ.mjs:2:13343)\n",
+    expected: /corepack pnpm --filter @storymapper\/db rebuild better-sqlite3/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/doctor.test.mjs:444:1
+✖ owned server launched from unrelated cwd uses root PORT before conflicting server-local PORT (20320.631375ms)
+  AssertionError [ERR_ASSERTION]: Condition did not complete within 20000ms.
+      at until (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:126:10)
+      at async file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:454:5
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:445:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at scripts/doctor.test.mjs:467:1
+✖ server reports a concrete writable-directory repair when SQLite cannot open the database (2242.9735ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Project database directory cannot be opened:.*data.*Next action:.*writable directory.*STORYMAPPER_DB_PATH/. Input:
+
+  'Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n'
+
+      at file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:475:14
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/doctor.test.mjs:468:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Installed server dependencies are missing. Next action: Run node scripts/setup.mjs.\n',
+    expected: /Project database directory cannot be opened:.*data.*Next action:.*writable directory.*STORYMAPPER_DB_PATH/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at scripts/runtime-port.test.mjs:14:1
+✖ occupied default port starts an owned listener, publishes its port and cleans it at shutdown (20367.139125ms)
+  AssertionError [ERR_ASSERTION]: Condition did not complete within 20000ms.
+      at until (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:126:10)
+      at async file://[REDACTED_HOME]/Projects/StoryMapper/scripts/runtime-port.test.mjs:21:7
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/runtime-port.test.mjs:19:5)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at scripts/runtime-port.test.mjs:55:1
+✖ owned launcher drains an actual agent HTTP call beyond two seconds before WAL and runtime cleanup (20326.694959ms)
+  AssertionError [ERR_ASSERTION]: Condition did not complete within 20000ms.
+      at until (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:126:10)
+      at async file://[REDACTED_HOME]/Projects/StoryMapper/scripts/runtime-port.test.mjs:60:5
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/runtime-port.test.mjs:56:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+
+test at scripts/runtime-port.test.mjs:110:1
+✖ relative database startup and discovery resolve from the checkout when called elsewhere (20355.239708ms)
+  AssertionError [ERR_ASSERTION]: Condition did not complete within 20000ms.
+      at until (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:126:10)
+      at async file://[REDACTED_HOME]/Projects/StoryMapper/scripts/runtime-port.test.mjs:118:5
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/runtime-port.test.mjs:111:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }
+ ELIFECYCLE  Test failed. See above for more details.

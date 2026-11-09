@@ -1,0 +1,292 @@
+{
+  "start": "2026-10-19T23:27:13.426Z",
+  "end": "2026-10-19T23:27:30.412Z",
+  "command": [
+    "corepack",
+    "pnpm",
+    "typecheck"
+  ],
+  "node": "v24.17.0",
+  "status": 0,
+  "signal": null,
+  "lockSha256": "587d31d00a39e95a9ca34788cb2a5bd9bbabd6f412c709be032e7869a10c32ab",
+  "versions": {
+    "package.json": {
+      "name": "storymapper",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "packageManager": "pnpm@9.15.4",
+      "engines": {
+        "node": ">=24 <25"
+      },
+      "scripts": {
+        "dev": "corepack pnpm --parallel --filter @storymapper/server --filter @storymapper/web dev",
+        "dev:server": "corepack pnpm --filter @storymapper/server dev",
+        "dev:web": "corepack pnpm --filter @storymapper/web dev",
+        "build": "corepack pnpm generate-capabilities && corepack pnpm check-capabilities && corepack pnpm -r build",
+        "typecheck": "corepack pnpm -r typecheck",
+        "test": "node --test scripts/*.test.mjs && corepack pnpm -r test",
+        "lint": "corepack pnpm -r lint",
+        "check-hygiene": "node scripts/check-hygiene.mjs",
+        "generate-capabilities": "node scripts/generate-capability-manifest.mjs",
+        "check-capabilities": "node scripts/check-capabilities.mjs"
+      },
+      "devDependencies": {
+        "@types/node": "^24.0.0",
+        "typescript": "^5.7.2"
+      },
+      "pnpm": {
+        "patchedDependencies": {
+          "@tanstack/history@1.162.0": "patches/@tanstack__history@1.162.0.patch"
+        }
+      }
+    },
+    "apps/server/package.json": {
+      "name": "@storymapper/server",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/main.js",
+      "scripts": {
+        "dev": "tsx watch src/main.ts --dev",
+        "build": "tsc -p tsconfig.json && node ../../scripts/copy-db-migrations.mjs server",
+        "start": "tsx src/main.ts",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "corepack pnpm --filter @storymapper/web build && vitest run --exclude \"**/dist/**\" --passWithNoTests --exclude src/mcp/tools/tool-call-performance.test.ts --exclude src/mcp/tools/changeset-executor-performance.test.ts --exclude src/mcp/tools/delivery-status-performance.test.ts --exclude src/http/routes/changeset-preview-performance.test.ts --exclude src/http/routes/board-diagnostics.test.ts && corepack pnpm test:audit-performance",
+        "test:audit-performance": "vitest run --exclude \"**/dist/**\" src/mcp/tools/tool-call-performance.test.ts src/mcp/tools/changeset-executor-performance.test.ts src/http/routes/changeset-preview-performance.test.ts src/mcp/tools/delivery-status-performance.test.ts --maxWorkers=1",
+        "lint": "tsc -p tsconfig.json --noEmit",
+        "test:diagnostics": "vitest run --exclude \"**/dist/**\" src/http/routes/board-diagnostics.test.ts --maxWorkers=1"
+      },
+      "dependencies": {
+        "@fastify/cors": "^10.0.2",
+        "@fastify/multipart": "^9.0.3",
+        "@fastify/static": "^8.3.0",
+        "@modelcontextprotocol/node": "2.1.1",
+        "@modelcontextprotocol/server": "2.3.0",
+        "@storymapper/contracts": "workspace:*",
+        "@storymapper/core": "workspace:*",
+        "@storymapper/db": "workspace:*",
+        "@storymapper/github": "workspace:*",
+        "@storymapper/importers": "workspace:*",
+        "@storymapper/mcp": "workspace:*",
+        "fastify": "^5.2.1",
+        "jszip": "^3.10.1",
+        "tsx": "^4.19.2",
+        "zod": "^4.2.0"
+      },
+      "devDependencies": {
+        "@modelcontextprotocol/client": "2.3.0",
+        "@modelcontextprotocol/fastify": "^2.0.1",
+        "vitest": "^4.1.12"
+      }
+    },
+    "apps/web/package.json": {
+      "name": "@storymapper/web",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "scripts": {
+        "dev": "vite --host 127.0.0.1",
+        "build": "tsc -p tsconfig.json && vite build",
+        "preview": "vite preview --host 127.0.0.1",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests --exclude src/features/story-map/board-diagnostics.test.tsx",
+        "lint": "tsc -p tsconfig.json --noEmit",
+        "test:a11y": "vitest run --exclude \"**/dist/**\" src/features/customization/CustomizationEditor.test.tsx src/features/releases/ReleaseEditor.test.tsx src/features/personas/PersonaDetail.test.ts src/features/story-map/board-accessibility.test.tsx src/styles/contrast-tokens.test.ts src/features/story-map/components/discovery-navigation.test.tsx src/features/story-map/views/SlicesView.test.tsx src/features/story-map/components/card-detail.test.ts src/features/story-map/components/card-detail-navigation.test.ts src/app/routes/workspace-navigation.test.tsx src/components/Dialog.test.ts src/app/live/live-updates.test.tsx src/features/changesets/review-focus.test.tsx src/features/changesets/review.test.tsx src/features/changesets/selection-race.test.tsx src/features/changesets/review-outcomes.test.tsx src/features/story-map/views/GraphView.test.tsx src/features/changesets/shell.test.tsx --maxWorkers=1",
+        "test:diagnostics": "vitest run --exclude \"**/dist/**\" src/features/story-map/board-diagnostics.test.tsx --maxWorkers=1"
+      },
+      "dependencies": {
+        "@dagrejs/dagre": "3.1.1",
+        "@dnd-kit/core": "^6.2.0",
+        "@dnd-kit/sortable": "^9.0.0",
+        "@storymapper/contracts": "workspace:*",
+        "@tanstack/react-query": "^5.62.11",
+        "@tanstack/react-router": "^1.95.0",
+        "@tiptap/core": "^3.32.0",
+        "@tiptap/pm": "^3.32.0",
+        "@tiptap/react": "^3.32.0",
+        "@tiptap/starter-kit": "^3.32.0",
+        "html2canvas": "^1.4.1",
+        "jspdf": "^4.2.1",
+        "lucide-react": "^0.468.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "tiptap-markdown": "^0.9.0",
+        "zustand": "^5.0.2"
+      },
+      "devDependencies": {
+        "@testing-library/dom": "^10.4.2",
+        "@types/react": "^19.0.2",
+        "@types/react-dom": "^19.0.2",
+        "@vitejs/plugin-react": "^5.2.0",
+        "axe-core": "^4.14.0",
+        "jsdom": "27.4.0",
+        "typescript": "^5.7.2",
+        "vite": "^8.3.4",
+        "vitest": "^4.1.12"
+      }
+    },
+    "packages/contracts/package.json": {
+      "name": "@storymapper/contracts",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit"
+      },
+      "dependencies": {
+        "zod": "^4.2.0"
+      },
+      "devDependencies": {
+        "vitest": "^4.1.12"
+      },
+      "exports": {
+        ".": {
+          "types": "./dist/index.d.ts",
+          "import": "./dist/index.js"
+        },
+        "./*": {
+          "types": "./dist/*.d.ts",
+          "import": "./dist/*.js"
+        }
+      }
+    },
+    "packages/core/package.json": {
+      "name": "@storymapper/core",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit"
+      },
+      "dependencies": {
+        "@storymapper/contracts": "workspace:*",
+        "zod": "^4.2.0"
+      },
+      "devDependencies": {
+        "vitest": "^4.1.12"
+      },
+      "exports": {
+        ".": {
+          "types": "./dist/index.d.ts",
+          "import": "./dist/index.js"
+        },
+        "./*": {
+          "types": "./dist/*.d.ts",
+          "import": "./dist/*.js"
+        }
+      }
+    },
+    "packages/db/package.json": {
+      "name": "@storymapper/db",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json && node ../../scripts/copy-db-migrations.mjs db",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit",
+        "db:generate": "drizzle-kit generate"
+      },
+      "dependencies": {
+        "@storymapper/contracts": "workspace:*",
+        "@storymapper/core": "workspace:*",
+        "@storymapper/importers": "workspace:*",
+        "better-sqlite3": "^13.0.3",
+        "drizzle-orm": "^0.45.4"
+      },
+      "devDependencies": {
+        "@types/better-sqlite3": "^7.6.12",
+        "drizzle-kit": "^0.31.11",
+        "vitest": "^4.1.12"
+      }
+    },
+    "packages/github/package.json": {
+      "name": "@storymapper/github",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit"
+      },
+      "dependencies": {
+        "@octokit/rest": "^21.0.2",
+        "@storymapper/contracts": "workspace:*"
+      },
+      "devDependencies": {
+        "vitest": "^4.1.12"
+      }
+    },
+    "packages/importers/package.json": {
+      "name": "@storymapper/importers",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit"
+      },
+      "dependencies": {
+        "@storymapper/contracts": "workspace:*"
+      },
+      "devDependencies": {
+        "vitest": "^4.1.12"
+      }
+    },
+    "packages/mcp/package.json": {
+      "name": "@storymapper/mcp",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/mcp/src/index.js",
+      "types": "./dist/mcp/src/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit"
+      },
+      "dependencies": {
+        "@modelcontextprotocol/server": "^2.3.0",
+        "@storymapper/contracts": "workspace:*"
+      },
+      "devDependencies": {
+        "vitest": "^4.1.12"
+      },
+      "exports": {
+        ".": {
+          "types": "./dist/mcp/src/index.d.ts",
+          "import": "./dist/mcp/src/index.js"
+        },
+        "./*": {
+          "types": "./dist/mcp/src/*.d.ts",
+          "import": "./dist/mcp/src/*.js"
+        }
+      }
+    }
+  },
+  "testSummaries": []
+}

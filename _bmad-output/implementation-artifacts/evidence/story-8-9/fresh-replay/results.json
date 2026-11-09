@@ -1,0 +1,52 @@
+{
+  "status": "local PR-ready; delivery prepared/simulated",
+  "source_revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "original_revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "final_gate": {
+    "command": "corepack pnpm check",
+    "exit": 0,
+    "started_utc": "2026-10-20 22:23:23+00:00",
+    "finished_utc": "2026-10-20 22:34:52+00:00",
+    "elapsed_seconds": 689,
+    "root_script_pass": 223,
+    "inherited_skips": 2,
+    "coverage_tests_pass": 3159,
+    "coverage_floors_pass": 8,
+    "serial_audit_pass": 14,
+    "accessibility_pass": 261
+  },
+  "first_gate": {
+    "exit": 1,
+    "root_script_pass": 207,
+    "root_script_fail": 16,
+    "inherited_skips": 2,
+    "cause": "tsx IPC socket EINVAL under long default macOS temporary parent",
+    "evidence": "attempt-1/"
+  },
+  "review": {
+    "report": "independent-review.md",
+    "open_actionable_findings": 0,
+    "reviewed_participant_diff_git_blob": "1832855898548f49ba68a78622269073d74ee71e",
+    "context": "separate non-author session; reused for environment followup"
+  },
+  "candidate_identity": "HEAD, Git-listed working paths/objects and semantic staged entries identical before/after final aggregate and immediately before export",
+  "raw_index": {
+    "start": "58432ce8a4580468354907a4970d72c30c63169f",
+    "end": "58432ce8a4580468354907a4970d72c30c63169f",
+    "export": "0bb6e029e7be8dd63ac4ddd1ad586357ac55f2ad",
+    "observation": "raw identity changed only at export; semantic staged entries and working identities unchanged"
+  },
+  "protected_working_and_index": "matched initial snapshot; no writes/staging/restores performed",
+  "participant_paths": [
+    "README.md",
+    ".wolf/STATUS.md",
+    ".wolf/buglog.json",
+    ".wolf/cerebrum.md",
+    ".wolf/memory.md"
+  ],
+  "participant_patch": "participant.patch",
+  "fixture_overlay": "supplied-inputs.patch",
+  "fixture_inputs": "exact five current draft inputs retained separately; outer supplied spec changed concurrently between attempts, both overlays retained",
+  "delivery": "title/body prepared; no commit, push, remote PR, tag or release",
+  "limits": "No publication audit/clearance, online advisory audit, hosted acceptance, manual native/browser/screen-reader/credential/interrupted-push acceptance or external-human trial."
+}

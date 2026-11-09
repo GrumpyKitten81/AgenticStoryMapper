@@ -1,0 +1,51 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ❯ src/features/story-map/components/hierarchy-collapse.test.tsx (9 tests | 2 failed) 552ms
+   × collapses Activity and Step descendants with aligned placeholders, independent lanes and retained selection 158ms
+     → expected '1 selected: 1 visible, 0 hidden' to contain '1 selected: 0 visible, 1 hidden'
+   × counts lane-hidden selections without treating unassigned Cards as release-lane content 34ms
+     → expected '2 selected: 2 visible, 0 hidden' to contain '2 selected: 1 visible, 1 hidden'
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/story-map/components/hierarchy-collapse.test.tsx > collapses Activity and Step descendants with aligned placeholders, independent lanes and retained selection
+AssertionError: expected '1 selected: 1 visible, 0 hidden' to contain '1 selected: 0 visible, 1 hidden'
+
+Expected: "1 selected: 0 visible, 1 hidden"
+Received: "1 selected: 1 visible, 0 hidden"
+
+ ❯ src/features/story-map/components/hierarchy-collapse.test.tsx:25:81
+     23|   expect(toggle(step!.title, true).getAttribute("aria-expanded")).toBe…
+     24|   expect(hidden(cardId)).toBe(true); expect(hidden(stepNote.id)).toBe(…
+     25|   expect(document.querySelector(".bulk-action-bar [role=status]")!.tex…
+       |                                                                                 ^
+     26|   expect(hidden(activityNote.id)).toBe(false); expect(hidden(rootNote.…
+     27|   expect(primary(cardId).tabIndex).toBe(-1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/features/story-map/components/hierarchy-collapse.test.tsx > counts lane-hidden selections without treating unassigned Cards as release-lane content
+AssertionError: expected '2 selected: 2 visible, 0 hidden' to contain '2 selected: 1 visible, 1 hidden'
+
+Expected: "2 selected: 1 visible, 1 hidden"
+Received: "2 selected: 2 visible, 0 hidden"
+
+ ❯ src/features/story-map/components/hierarchy-collapse.test.tsx:218:81
+    216|   await key(cardId, " "); await key(unassigned.id, " ");
+    217|   await act(async () => useDiscoveryLaneCollapseStore.getState().setCo…
+    218|   expect(document.querySelector(".bulk-action-bar [role=status]")!.tex…
+       |                                                                                 ^
+    219|   expect(hidden(cardId)).toBe(true); expect(hidden(unassigned.id)).toB…
+    220|   await act(async () => useDiscoveryLaneCollapseStore.getState().setCo…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 7 passed (9)
+   Start at  01:08:13
+   Duration  1.95s (transform 600ms, setup 0ms, collect 1.02s, tests 552ms, environment 249ms, prepare 29ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/features/story-map/components/hierarchy-collapse.test.tsx --maxWorkers=1 --minWorkers=1

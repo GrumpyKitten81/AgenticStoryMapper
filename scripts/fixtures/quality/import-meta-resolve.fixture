@@ -1,0 +1,5 @@
+import.meta.resolve('resolved-package');
+import.meta.resolve(`template-package`);
+import.meta.resolve(packageName);
+path.resolve('not-a-dependency');
+resolver.resolve('not-a-dependency');

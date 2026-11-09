@@ -1,0 +1,68 @@
+✔ complete clean disposable candidate passes scan and independent check (551.846083ms)
+✔ policy is mandatory, strict and never echoed in sanitized failures (169.1345ms)
+✔ matches complete employer terms across host and repository components (2.213083ms)
+✔ scans nested gzip and UTF16 while blocking unsupported and malformed archives (2.145667ms)
+✔ classifies synthetic examples separately from private email and home paths (0.076ms)
+✔ current findings and required private declarations remain blocking (391.942709ms)
+✔ old report refuses changed bytes, modes, paths, revision, refs and objects (1507.908083ms)
+✔ extra, missing, malformed and flipped report fields cannot authorize publication (763.269625ms)
+✔ all-ref scope includes preserved tree refs and historical commit metadata (397.3725ms)
+✔ shallow, promisor, replaced and missing objects refuse with safe diagnostics (292.591709ms)
+✔ deleted declarations and unreviewed binary/archive content block publication (215.6095ms)
+✔ grafts, unreadable Git inputs and symlink parents cannot narrow publication scope (193.230917ms)
+✔ new nonignored files invalidate prior reports and enter the next scan (909.178375ms)
+✔ ignored actual files are excluded without reading their contents or permissions (370.488125ms)
+✔ report symlinks into ignored files and nonregular reports are refused before reading (256.994167ms)
+✔ Git timeout and nonzero failures use bounded sanitized diagnostics (127.892834ms)
+✔ CLI reasons distinguish policy, missing report, malformed report, stale report and scope (697.188667ms)
+✔ retired detector covers separator and identifier variants (0.137708ms)
+✖ invalid UTF-8 nonignored and indexed filenames refuse without treating bytes as deleted (63.974167ms)
+✖ invalid UTF-8 ref bytes refuse with a fixed scope error (68.873125ms)
+✔ invalid UTF-8 historical tree names refuse independently of native filename semantics (153.276875ms)
+✔ annotated tag metadata enters all-ref findings with its exact object location (220.298958ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 20
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7397.352
+
+✖ failing tests:
+
+test at scripts/check-publication.test.mjs:278:1
+✖ invalid UTF-8 nonignored and indexed filenames refuse without treating bytes as deleted (63.974167ms)
+  Error: EPERM: operation not permitted, open '/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-publication-JbxL9y/repository/invalid-�.txt'
+      at writeFileSync (node:fs:2422:20)
+      at nativeByteFile (file:///Users/[USER]/Projects/StoryMapper/scripts/check-publication.test.mjs:270:9)
+      at TestContext.<anonymous> (file:///Users/[USER]/Projects/StoryMapper/scripts/check-publication.test.mjs:281:8)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    errno: -1,
+    code: 'EPERM',
+    syscall: 'open',
+    path: '/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-publication-JbxL9y/repository/invalid-�.txt'
+  }
+
+test at scripts/check-publication.test.mjs:291:1
+✖ invalid UTF-8 ref bytes refuse with a fixed scope error (68.873125ms)
+  Error: EPERM: operation not permitted, open '/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-publication-aCD5RY/repository/.git/refs/heads/invalid-�'
+      at writeFileSync (node:fs:2422:20)
+      at nativeByteFile (file:///Users/[USER]/Projects/StoryMapper/scripts/check-publication.test.mjs:270:9)
+      at TestContext.<anonymous> (file:///Users/[USER]/Projects/StoryMapper/scripts/check-publication.test.mjs:294:8)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1306:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:897:18)
+      at Test.postRun (node:internal/test_runner/test:1447:19)
+      at Test.run (node:internal/test_runner/test:1372:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:897:7) {
+    errno: -1,
+    code: 'EPERM',
+    syscall: 'open',
+    path: '/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-publication-aCD5RY/repository/.git/refs/heads/invalid-�'
+  }

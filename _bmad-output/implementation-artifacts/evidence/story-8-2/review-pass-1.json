@@ -1,0 +1,174 @@
+{
+  "date": "2026-10-20",
+  "baseline": "06a38494b979120e33240059a4e2f12a0dfb09da",
+  "diff": "/tmp/story-8-2-independent-review.diff",
+  "layers": [
+    "edge-case-hunter",
+    "blind-hunter",
+    "verification-gap",
+    "intent-alignment"
+  ],
+  "execution": "Four fresh-context reviewers; platform thread capacity required two waves. Every report was collected before triage. Verification-gap reviewer returned no gaps. Blind floor calculation N=min(floor(sqrt(1620.178)+1),10)=10; the arithmetic line is not a finding.",
+  "findings": [
+    {
+      "id": "E1",
+      "layer": "edge-case-hunter",
+      "claim": "Optimizer/request-idle waits have no overall deadline, so a stalled optimizer could hang the bounded proxy smoke.",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "optimizer-deadline",
+      "evidence": "Per-request deadlines exist; waitForRequestsIdle, scanProcessing and dependency.processing have no deadline. All actual Vite7/8/final runs settled. A reachable stalled optimizer plus non-exit reproduction is needed to establish the alleged hang; retain as medium unverified."
+    },
+    {
+      "id": "B1",
+      "layer": "blind-hunter",
+      "claim": "Clearing the callback after mounting hides setEditable mount/suspension callbacks.",
+      "verdict": "low",
+      "route": "defer",
+      "group": "existing-editor-callback",
+      "evidence": "Confirmed core2.27.2 Editor.ts:192 and core3.32.0 Editor.ts:310 both default setEditable emitUpdate=true, and the application already called it before this change. Card Detail compares draft values with baseline; title-only rich-description regression passes. This callback behavior predates the upgrade."
+    },
+    {
+      "id": "B2",
+      "layer": "blind-hunter",
+      "claim": "Direct pasteHTML with a cast Event bypasses clipboard-data extraction and DOM paste dispatch.",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "native-clipboard",
+      "evidence": "The test deliberately covers real ProseMirror parser/transaction/Markdown serialization, not clipboard extraction or OS paste. No changed local clipboard handler or observed failure was found. A real browser paste carrying HTML/plain text would settle the remaining medium unverified native-path risk."
+    },
+    {
+      "id": "B3",
+      "layer": "blind-hunter",
+      "claim": "Compatibility cases omit ordered/nested lists, blockquotes, code, strike and hard breaks.",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "markdown-corpus",
+      "evidence": "The focused corpus covers specified toolbar formats, prop sync, paste and unchanged-description Save; exact existing format regressions pass. No mismatch in the other formats was demonstrated. Compare an actual supported-format corpus between v2 and v3 to settle possible medium serialization risk."
+    },
+    {
+      "id": "B4",
+      "layer": "blind-hunter",
+      "claim": "Fetching transformed entry does not establish actual browser boot/render from the built application.",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "browser-boot",
+      "evidence": "Correct limit: proxy smoke proves HTTP transformation and proxy/native lifecycle; full mounted React suites and production static/deep-route/byte checks provide separate evidence. No native compiled-bundle boot was executed. A disposable native-browser boot/render exercise would settle a possible medium boot regression."
+    },
+    {
+      "id": "B5",
+      "layer": "blind-hunter",
+      "claim": "Unbounded optimizer waits could hang the smoke despite fetch deadlines.",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "optimizer-deadline",
+      "evidence": "Same unverified root cause as E1; no stalled optimizer was reproduced in any actual run. Need a reachable stall and exit/cleanup observation before claiming the bad outcome."
+    },
+    {
+      "id": "B6",
+      "layer": "blind-hunter",
+      "claim": "Canonical proxy invocation records omit TSX_TSCONFIG_PATH required for exact replay.",
+      "verdict": "low",
+      "route": "patch",
+      "group": "proxy-replay",
+      "evidence": "Parent reproduced ERR_MODULE_NOT_FOUND with recorded argv and passed with TSX_TSCONFIG_PATH=apps/server/tsconfig.json. Implementation agent confirmed this was the original inherited setting. Added explicit verified replay prerequisites to all seven proxy records/release record, retaining historical command/status/raw output."
+    },
+    {
+      "id": "B7",
+      "layer": "blind-hunter",
+      "claim": "Intermediate lock hashes without retained lockfiles cannot recreate every intermediate resolved graph.",
+      "verdict": "low",
+      "route": "reject",
+      "group": "intermediate-snapshots",
+      "evidence": "Historical graph replay is a real limitation, but ordinary development uses the final frozen lockfile. The accepted story requires intermediate exact versions/check results, which are retained; it explicitly withdrew per-upgrade commits. Recovering/retaining whole intermediate lock snapshots is more than a direct correction and rarely needed in everyday use. Do not claim intermediate clean-checkout reproducibility."
+    },
+    {
+      "id": "B8",
+      "layer": "blind-hunter",
+      "claim": "Tiptap tests predate adding the direct core dependency, so the completed runtime graph was not tested before static upgrade.",
+      "verdict": "false",
+      "route": "reject",
+      "group": "tiptap-link",
+      "evidence": "The install log reports downloaded0/added0/Already up to date. Existing Tiptap core/pm/react/starter-kit were already3.32.0; adding the identical direct core peer link supports only the erased Storage type augmentation. Runtime modules did not change. Typecheck/build covered the declaration, and later full workspace/root checks additionally cover the final graph."
+    },
+    {
+      "id": "B9",
+      "layer": "blind-hunter",
+      "claim": "Manifest/privacy summaries omit newly added parent verification evidence.",
+      "verdict": "low",
+      "route": "patch",
+      "group": "evidence-coverage",
+      "evidence": "Confirmed original149-member manifest and privacy scope predated parent logs. Preserved original privacy summary, rescanned all current JSON/gzip/evidence and regenerated full member hashes; parent repeats integrity/privacy after final review evidence is added."
+    },
+    {
+      "id": "B10",
+      "layer": "blind-hunter",
+      "claim": "Instrumentation/index refer to a nonexistent vitest3-install-confirm.json; report alternates contradictory identical names.",
+      "verdict": "false",
+      "route": "reject",
+      "group": "artifact-reference",
+      "evidence": "Exact retainedEvidence path exists on disk and in the manifest: vitest3-install-confirm.json. It parses, hashes correctly and records successful frozen install. No vitest3-install-confirmation.json is referenced by instrumentation or command index."
+    },
+    {
+      "id": "I1",
+      "layer": "intent-alignment",
+      "claim": "Strict preservation interpretation diverges at invalid overlong path JSON404→JSON403.",
+      "verdict": "false",
+      "route": "reject",
+      "group": "static-status",
+      "evidence": "This intentional upstream security refusal is explicitly recorded and exercised, with unchanged production web-app.ts, canonical200, noncanonical/case refusal and healthy API. The dependency story does not require bypassing updated security admission to preserve the status of an invalid path."
+    },
+    {
+      "id": "I2",
+      "layer": "intent-alignment",
+      "claim": "Native clipboard interaction is not established by JSDOM pasteHTML.",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "native-clipboard",
+      "evidence": "Same verification limit as B2, explicitly admitted in acceptance-limits. No OS clipboard certification is claimed; a real browser/clipboard run is needed to settle any medium unverified incompatibility."
+    },
+    {
+      "id": "I3",
+      "layer": "intent-alignment",
+      "claim": "Mac automated checks do not establish native Windows/Linux or actual screen-reader acceptance.",
+      "verdict": "medium",
+      "route": "defer",
+      "group": "platform-acceptance",
+      "evidence": "These checks were not executed and remain named operational prerequisites from prior epics/preparation, with platform/accessibility maintainer owners. They predate this story and cannot be inferred from green automated suites."
+    },
+    {
+      "id": "I4",
+      "layer": "intent-alignment",
+      "claim": "A completely clean audit interpretation exceeds zero high/critical plus one moderate.",
+      "verdict": "false",
+      "route": "reject",
+      "group": "audit-threshold",
+      "evidence": "Story8.2 explicitly requires no critical/high and disclosure of unresolved advisories. High-threshold audit exits0, full JSON exits1, and development esbuild0.18.20 path/fix range/reason/owner are recorded without claiming a fully clean graph."
+    },
+    {
+      "id": "I5",
+      "layer": "intent-alignment",
+      "claim": "Handoff/acceptance records describe review/finalization as pending while parent verification is present.",
+      "verdict": "false",
+      "route": "reject",
+      "group": "workflow-snapshot",
+      "evidence": "Those implementation-capture records correctly described pending review at their timestamps. This pass completes review and writes final state separately. Source checks, not a pending/done row, establish verification; no speculative commit/publication is implied."
+    }
+  ],
+  "counts": {
+    "high": 0,
+    "medium": 1,
+    "low": 4,
+    "false": 5,
+    "maybe-false": 6
+  },
+  "patchGroups": {
+    "low": 2,
+    "medium": 0,
+    "high": 0
+  },
+  "rejected": 6,
+  "deferredRows": 8,
+  "deferredGroups": 6,
+  "followup_review_recommended": false
+}

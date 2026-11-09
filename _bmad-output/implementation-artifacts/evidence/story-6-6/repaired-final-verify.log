@@ -1,0 +1,34 @@
+
+> storymapper@0.1.0 check-hygiene [REDACTED_HOME]/Projects/StoryMapper
+> node scripts/check-hygiene.mjs
+
+
+> storymapper@0.1.0 check-capabilities [REDACTED_HOME]/Projects/StoryMapper
+> node scripts/check-capabilities.mjs
+
+Capability manifest check passed (130 capabilities).
+
+> storymapper@0.1.0 typecheck [REDACTED_HOME]/Projects/StoryMapper
+> corepack pnpm -r typecheck
+
+Scope: 8 of 9 workspace projects
+packages/contracts typecheck$ tsc -p tsconfig.json --noEmit
+packages/contracts typecheck: Done
+apps/web typecheck$ tsc -p tsconfig.json --noEmit
+packages/core typecheck$ tsc -p tsconfig.json --noEmit
+packages/importers typecheck$ tsc -p tsconfig.json --noEmit
+packages/github typecheck$ tsc -p tsconfig.json --noEmit
+packages/importers typecheck: Done
+packages/mcp typecheck$ tsc -p tsconfig.json --noEmit
+packages/github typecheck: Done
+packages/mcp typecheck: Done
+packages/core typecheck: Done
+apps/web typecheck: src/features/story-map/components/PlanningNumberField.tsx(18,21): error TS2554: Expected 1 arguments, but got 0.
+apps/web typecheck: src/features/story-map/components/PlanningNumberField.tsx(37,7): error TS2322: Type 'undefined' is not assignable to type 'string'.
+apps/web typecheck: src/features/story-map/components/PlanningNumberField.tsx(45,92): error TS2322: Type 'undefined' is not assignable to type 'string'.
+apps/web typecheck: Failed
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/web@0.1.0 typecheck: `tsc -p tsconfig.json --noEmit`
+Exit status 2
+ ELIFECYCLE  Command failed with exit code 2.
+[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin/node failed with exit code 2.

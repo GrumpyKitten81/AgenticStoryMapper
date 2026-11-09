@@ -1,0 +1,195 @@
+{
+  "sourceDiff": "/tmp/story7-7-review.patch",
+  "layers": {
+    "edge": 3,
+    "intent": 6,
+    "blind": 11,
+    "verificationGap": 2
+  },
+  "reviewerIsolation": "All context-free. Native collaboration thread cap required same configured gpt-6.1-sol/high read-only ephemeral Codex exec processes for intent and verification-gap; execution headers retained separately. Build narrative supplied only to edge layer.",
+  "findings": [
+    {
+      "id": "E1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Selected Release is overwritten on unchanged Pull",
+      "evidence": "pendingReleaseAssignment remains true; changedFieldsForRemote treats it as a remote change and incoming operations assign the remote Release. Clear for ticket placement; preserve bulk behavior.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "E2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Ancestor visibility drift bypasses delayed Apply",
+      "evidence": "ticketPlacementBefore compares immediate parent only; parentReference checks level/map but not visible ancestry. Reuse visibleCards and test actual refusal.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "E3",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Retained footer description is falsely locally changed",
+      "evidence": "Builder hashes raw authored body; syncPayload/health hash stripped body. Normalize hashes while retaining bytes.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "I1",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Source diff cannot prove workflow and protected-file execution",
+      "evidence": "Renderer ran exactly once; parent independently ran workspace/release gates; tool history plus 18 original working/index hashes establish protected-file preservation. No tracking row supplied evidence."
+    },
+    {
+      "id": "I2",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Separate deliberate population diverges from lookup fills fields",
+      "evidence": "Prepared7.7 explicitly requires deliberate population and confirmation before replacing authored text. Existing draft must survive lookup."
+    },
+    {
+      "id": "I3",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Separate manual and linked creation choices",
+      "evidence": "Manual creation and Notes remain required. Ticket action explicitly names linked creation; unchanged manual action is not a false creation claim."
+    },
+    {
+      "id": "I4",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Successful connection detour into assembled import is unverified",
+      "evidence": "Shared connection success and ticket import have separate executed tests; observe assembled native Connect\u2192lookup\u2192import to settle medium unverified risk."
+    },
+    {
+      "id": "I5",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Composer\u2192persist\u2192rendered Issue link assembled journey is unverified",
+      "evidence": "Actual reopened SQLite/HTTP transports and mounted UI are complementary, not one native journey. Observe created Card and activate its Issue link."
+    },
+    {
+      "id": "I6",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Native focus/keyboard/reader/live provider journey unverified",
+      "evidence": "cua inventory returned browsers:[]; native/screen-reader/platform/live account acceptance remains unexecuted, never claimed passing."
+    },
+    {
+      "id": "B1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Pending initial assignment overwrites chosen Release",
+      "evidence": "Same root as E1; clear pending flag only for ticket composer and verify unchanged Pull for chosen Release/Unscheduled.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "B2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Footer hashing differs from downstream comparison",
+      "evidence": "Same root as E3; preserve authored bytes with canonical stripped-body hashes.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "B3",
+      "verdict": "low",
+      "route": "patch",
+      "summary": "Raw retained prefixed title causes false remote delta",
+      "evidence": "normalizeRemoteWorkItemTitle preserves raw remote when equal to local; import baseline currently lacks that context. Record matching observed hash to avoid unnecessary incoming update.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "B4",
+      "verdict": "low",
+      "route": "reject",
+      "summary": "Lost import response unlocks retry",
+      "evidence": "No success/no-effect claim is made on network error. Retry is canonically deduplicated and stale concurrent proposals cannot duplicate a Card. Full uncertain-response reconciliation adds state/branches for an uncommon non-destructive case."
+    },
+    {
+      "id": "B5",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Lookup success is not announced",
+      "evidence": "Preview has no live region/focus and successful lookup does not set existing status message. Announce success/duplicate through role=status.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "B6",
+      "verdict": "low",
+      "route": "patch",
+      "summary": "Preview description collapses authored line breaks",
+      "evidence": "One paragraph collapses line breaks. Preserve whitespace with direct presentation correction.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "B7",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Imported Issue Type must be displayed",
+      "evidence": "Prepared requirement is independent retained type, which baseline persistence and reopen tests establish. No requested type selector/review display requirement or incorrect retained value was shown."
+    },
+    {
+      "id": "B8",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Bulk import repeats Annotation repository reads per Issue",
+      "evidence": "Previous builder loaded definitions once; extracted helper calls managedAnnotationMappings per item. Pass command-scoped definitions to shared builder.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "B9",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Atomic grouping adds quadratic batch scans",
+      "evidence": "Each ref scans operations for Card/baseline/assignments and helper runs during both dependency and simulation. Index once while preserving groups.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "B10",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Missing nested placement transport authorization regression",
+      "evidence": "New placement recursion lacks actual foreign parent/Release cases; direct command ownership tests would survive removing recursion. Add actual MCP HTTP/SDK denial before auth/provider.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "B11",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Missing multi-Issue group selection regression",
+      "evidence": "Global helper affects bulk imports, but new tests exercise one group. Add independent-group/generated-parent closure case.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "G1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Release metadata acknowledgement is unasserted",
+      "evidence": "Preverified gap: remove acknowledgeSelectedRelease and current reopen assertions still pass because helper sets releaseId independently. Assert metadata and initial health.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    },
+    {
+      "id": "G2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Duplicate navigation is unasserted",
+      "evidence": "Preverified gap: remove onSelectCard while retaining close and current test passes. Assert route id and visible Card Detail.",
+      "resolution": "Applied and covered by final parent workspace pass; see parent-matrix-audit.json."
+    }
+  ],
+  "originalSourceDiffBytes": 151001,
+  "sourceDiffNote": "Reviewers read the pre-repair source-only diff. The temp diff was rewritten after repairs as required by the workflow.",
+  "verdictCounts": {
+    "high": 0,
+    "medium": 12,
+    "low": 3,
+    "false": 4,
+    "maybe-false": 3
+  },
+  "patchedGroups": {
+    "medium": 10,
+    "low": 2
+  },
+  "deferredGroups": 1,
+  "allPatchRowsApplied": true
+}

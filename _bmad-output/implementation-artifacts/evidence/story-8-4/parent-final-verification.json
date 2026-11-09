@@ -1,0 +1,141 @@
+{
+  "revision": "c5b76dfecb22d62c6d0abdea39c37200df2f8d2e",
+  "recorded_at": "2026-10-20T04:38:47.073349+00:00",
+  "source_files": {
+    ".github/workflows/ci.yml": "35417aaf5b530c4f4fcf80bde72a30dfc17630422acab22524d5a5a983f490c9",
+    "scripts/ci-audit.mjs": "280109698eb55e6b06f3cf7172567bc6bffaea39f697272f9899dd74c9371540",
+    "scripts/ci-audit.test.mjs": "f071149b7f5a7ee023a3336cb1c440a618cc347e566430319592222bc475d4df",
+    "scripts/fixtures/ci-audit-scanner.mjs": "5d3115ef9f78b40c43f042337cbc0dcc4f9c049d05ecd3dd1984cc482659fbbf",
+    "docs/RUNBOOK.md": "e5ec5a2613445299c85cd76d7cf655685803c7720f2533baa123892405b4d12c"
+  },
+  "source_fingerprint": "12ee3b410e8d108d2f83b530a3f34d8c4227f55595317bb326300b860fce0ca4",
+  "checks": [
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "started": "2026-10-20T04:23:43.405368+00:00",
+      "finished": "2026-10-20T04:23:43.848893+00:00",
+      "exit_code": 0,
+      "log": "parent-final-0.log.gz",
+      "original_sha256": "5537f3419228702bea612e000cbc763631970ab28de7f9b7919d52626397ed8b",
+      "decoded_sanitized_sha256": "742d64c4d776dfccd5a6b2b493d225311431e8a4f7472c5347f9a7df617d723f",
+      "compressed_sha256": "efba13dce4504cad2e741666a703296178fb4fd624b0c6294cea6beb8dfd8ef1"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "scripts/ci-audit.test.mjs"
+      ],
+      "started": "2026-10-20T04:23:43.849174+00:00",
+      "finished": "2026-10-20T04:23:45.116049+00:00",
+      "exit_code": 0,
+      "log": "parent-final-1.log.gz",
+      "original_sha256": "1b6616186773261495ba9e05f1ec10561e60c16da590adc09de382f8427a1e30",
+      "decoded_sanitized_sha256": "1b6616186773261495ba9e05f1ec10561e60c16da590adc09de382f8427a1e30",
+      "compressed_sha256": "67d1d536c7c5ecc22927a5fa249bcc1f8eaf7540b33fb5f70e9468095945db0d"
+    },
+    {
+      "command": [
+        "/tmp/story-8-4-evidence/actionlint",
+        ".github/workflows/ci.yml"
+      ],
+      "started": "2026-10-20T04:23:45.116327+00:00",
+      "finished": "2026-10-20T04:23:45.121289+00:00",
+      "exit_code": 0,
+      "log": "parent-final-2.log.gz",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decoded_sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "check"
+      ],
+      "started": "2026-10-20T04:23:45.121478+00:00",
+      "finished": "2026-10-20T04:36:59.956453+00:00",
+      "exit_code": 0,
+      "log": "parent-final-3.log.gz",
+      "original_sha256": "49e108a7176800134d45f9609beb0c56a5ee62363e805e68d5b9e6f89baf2d5f",
+      "decoded_sanitized_sha256": "c87a451395999cf40ef12a16913a80e8c83f9c0586520115e20e5fb8d032b676",
+      "compressed_sha256": "cfdb241f89030ee86a9099f19d139ca78e57e8bdcec4badde1c89f5e757224d3"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/verify.mjs"
+      ],
+      "started": "2026-10-20T04:36:59.956790+00:00",
+      "finished": "2026-10-20T04:37:55.351372+00:00",
+      "exit_code": 0,
+      "log": "parent-final-4.log.gz",
+      "original_sha256": "892c8ff27a7670b153340d3d480429a2d9c5a59f12431171c6d95fbbffd1d881",
+      "decoded_sanitized_sha256": "8ffdb41a6d4f7ed7e84c9715e56573cf94784aa66dbe8ec480773a6ff7bfa074",
+      "compressed_sha256": "219cd0dfe337ec4b38b535123537092333803fedaa01498829b6fa9e0e37cd48"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "HEAD"
+      ],
+      "started": "2026-10-20T04:37:55.351656+00:00",
+      "finished": "2026-10-20T04:37:55.375086+00:00",
+      "exit_code": 0,
+      "log": "parent-final-5.log.gz",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decoded_sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    }
+  ],
+  "counts": {
+    "root_tests": 146,
+    "workspace_coverage_tests": 3159,
+    "audit_performance_tests": 14,
+    "accessibility_tests": 261,
+    "focused_audit_tests": 38
+  },
+  "line_coverage": {
+    "contracts": 91.34,
+    "importers": 100,
+    "github": 91.19,
+    "core": 93.14,
+    "db": 93.7,
+    "mcp": 83.33,
+    "web": 87.8,
+    "server": 94.88
+  },
+  "protected_before": {
+    "head": "c5b76dfecb22d62c6d0abdea39c37200df2f8d2e",
+    "worktree": "c94217f7e45d2ad4c8d89a97e9de0e3e2c28e2eabd98e425b4545d2ba58762d7",
+    "index": "c94217f7e45d2ad4c8d89a97e9de0e3e2c28e2eabd98e425b4545d2ba58762d7"
+  },
+  "protected_after": {
+    "worktree": "c94217f7e45d2ad4c8d89a97e9de0e3e2c28e2eabd98e425b4545d2ba58762d7",
+    "index": "c94217f7e45d2ad4c8d89a97e9de0e3e2c28e2eabd98e425b4545d2ba58762d7"
+  },
+  "operational_limits": [
+    "Hosted Windows/macOS/Linux execution unverified",
+    "Repository protection activation unverified",
+    "Native Windows/Linux quickstart and browser/reader acceptance remain separate",
+    "Safe live audit retains one moderate advisory; no high/critical at probe time"
+  ],
+  "review": {
+    "lenses": 4,
+    "findings": 13,
+    "patched_entries": {
+      "medium": 3,
+      "low": 1
+    },
+    "deferred_groups": 2,
+    "rejected_rows": 6,
+    "followup_review_recommended": true
+  }
+}

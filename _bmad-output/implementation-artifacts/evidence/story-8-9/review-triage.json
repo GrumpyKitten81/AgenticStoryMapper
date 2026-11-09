@@ -1,0 +1,156 @@
+{
+  "date": "2026-10-21",
+  "counts": {
+    "total": 19,
+    "high": 0,
+    "medium": 11,
+    "low": 1,
+    "false": 7,
+    "maybe-false": 0
+  },
+  "groups": {
+    "patch_groups": 8,
+    "patch_rows": 11,
+    "deferred": 0,
+    "rejected": 8
+  },
+  "rows": [
+    {
+      "id": "B1",
+      "verdict": "medium",
+      "route": "patch",
+      "finding": "Retained overlay includes solution",
+      "evidence": "Confirmed six-file overlay included README. Preserved historical miscapture; corrected five-file overlay hashes exactly to pre-participant423f8596\u2026 capture and reconstructs every supplied input plus original README."
+    },
+    {
+      "id": "B2",
+      "verdict": "medium",
+      "route": "patch",
+      "finding": "No executable rehearsal bootstrap",
+      "evidence": "Guide v3 provides pinned independent clone, removed remote, five explicit current inputs, branch and stale-sentence assertion; fresh participant replay is running."
+    },
+    {
+      "id": "B3",
+      "verdict": "medium",
+      "route": "patch",
+      "finding": "Successful TMPDIR prerequisite missing from guide",
+      "evidence": "Guide v3 creates task-owned TMPDIR before installation/gates with caching enabled; no private pointer or shared-cache deletion required."
+    },
+    {
+      "id": "B4",
+      "verdict": "medium",
+      "route": "patch",
+      "finding": "Fingerprints described after gate",
+      "evidence": "Guide v3 captures working object lists and staged-entry manifests before the aggregate and compares afterward and before export."
+    },
+    {
+      "id": "B5",
+      "verdict": "medium",
+      "route": "patch",
+      "finding": "Review repairs can leave exported staged patch stale",
+      "evidence": "Guide v3 explicitly restages and inspects intended paths, rejects unstaged differences and rechecks after any repair."
+    },
+    {
+      "id": "B6",
+      "verdict": "medium",
+      "route": "patch",
+      "finding": "README-only scope conflicts with OpenWolf bookkeeping",
+      "evidence": "Guide v3 separates bounded README business correction from required sanitized bookkeeping; intended paths and handoff-before-gate sequencing are explicit."
+    },
+    {
+      "id": "B7",
+      "verdict": "medium",
+      "route": "patch",
+      "finding": "Reverse/reapply does not prove initial plan-led discovery",
+      "evidence": "Original limitation remains; guide v3 requires plan before investigation/edit and a genuinely fresh participant is replaying from bootstrap."
+    },
+    {
+      "id": "B8",
+      "verdict": "false",
+      "route": "reject",
+      "finding": "Review lacks independence from proposed solution",
+      "evidence": "Original review was explicitly a separate non-author session, satisfying the stated independent-review requirement; prior context is disclosed. Four current fresh-context CLI lenses independently examined the implementation. No incorrect README outcome identified."
+    },
+    {
+      "id": "B9",
+      "verdict": "medium",
+      "route": "patch",
+      "finding": "Only staged digests retained",
+      "evidence": "Retained literal original staged-entry manifest after gate; it exactly matches original recorded gate digest and intended working/staged blobs. Guide v3 requires manifests at command start and comparison/export, with later collection timing disclosed."
+    },
+    {
+      "id": "B10",
+      "verdict": "low",
+      "route": "reject",
+      "finding": "Ad-hoc link checker invocation not retained",
+      "evidence": "Actual76 links were independently checked. Original missing command provenance remains explicit; adding a maintained checker for this rare audit convenience exceeds a direct correction. Guide v3 documents existing Git/manual target and heading checks without claiming filename checks establish anchors."
+    },
+    {
+      "id": "I1",
+      "verdict": "medium",
+      "route": "patch",
+      "finding": "Assisted environment success differs from unaided documented reproduction",
+      "evidence": "Same cause as B3: environment provisioning is now in guide; a fresh participant must use it without hidden pointers."
+    },
+    {
+      "id": "I2",
+      "verdict": "medium",
+      "route": "patch",
+      "finding": "Planning initially followed implementation",
+      "evidence": "Same cause as B7: retain original deviation and perform new plan-first fresh-context reproduction."
+    },
+    {
+      "id": "I3",
+      "verdict": "false",
+      "route": "reject",
+      "finding": "Review has prior solution context",
+      "evidence": "Same claim as B8: no promise of uninvolved solution selection; original non-author context disclosed, and four fresh current lenses supplement it."
+    },
+    {
+      "id": "I4",
+      "verdict": "false",
+      "route": "reject",
+      "finding": "Only README change reproduced, not substantial specs/loop dispatch",
+      "evidence": "Detail plan explicitly selects a small bounded real change and prohibits silently launching unattended workflow for prose verification. Manual README correction is that permitted surface; app gates are regression evidence, not comprehension claims."
+    },
+    {
+      "id": "I5",
+      "verdict": "medium",
+      "route": "patch",
+      "finding": "Standalone OpenWolf compliance omitted",
+      "evidence": "Same cause as B6: corrected recipe includes required sanitized bookkeeping and fresh replay exercises it; original omission is preserved."
+    },
+    {
+      "id": "I6",
+      "verdict": "false",
+      "route": "reject",
+      "finding": "Remote PR and delivery remain simulated",
+      "evidence": "Detail plan explicitly requires local PR-ready title/body/diff unless remote creation separately requested. No remote request exists; no hosted or commit result is claimed."
+    },
+    {
+      "id": "I7",
+      "verdict": "false",
+      "route": "reject",
+      "finding": "Final publication result absent from review diff",
+      "evidence": "Final exact-candidate scan is deliberately after all review/finalization/index writes; no completed-audit claim was made in review snapshot. Parent final scan/recomputed check remains mandatory, not waived by quality success."
+    },
+    {
+      "id": "I8",
+      "verdict": "false",
+      "route": "reject",
+      "finding": "Endpoint hashes cannot prove no transient tracking writes",
+      "evidence": "True limit of endpoint evidence, but no violating write is identified. Actual parent/subagent commands exclude protected paths; working/index endpoint hashes and diff corroborate rather than independently prove that execution history."
+    },
+    {
+      "id": "I9",
+      "verdict": "false",
+      "route": "reject",
+      "finding": "Diff does not demonstrate render-once execution",
+      "evidence": "Parent actually ran the exact renderer once, consumed printed snapshot and executed its steps. Source diff alone was never claimed as independent runtime proof; tool transcript supplies execution evidence."
+    }
+  ],
+  "post_patch_observations": [
+    "Fresh independent participant exercised plan/OpenWolf sequencing and discovered native IPC path failure without parent intervention. Guide v4 refines the existing B3 environment-provisioning repair to a literal short /tmp parent; no new reviewer finding/count invented.",
+    "Fresh v3 short-parent replay passed; final main v4 verification follows. Original failures and original reviewer outputs remain preserved."
+  ]
+}

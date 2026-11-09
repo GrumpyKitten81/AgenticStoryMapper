@@ -1,0 +1,8 @@
+{
+  "initialAuditAssertion": "Expected customization-management8 and github-selection67 based on an incorrect manual estimate.",
+  "actualExecutedCounts": {
+    "customization-management": 6,
+    "github-selection": 56
+  },
+  "correction": "Parse actual passed-file count lines from full parent log and independently verify covering source test names. No source or tests changed; full root command passed2943."
+}

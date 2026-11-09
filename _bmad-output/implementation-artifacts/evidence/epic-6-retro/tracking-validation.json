@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "onlySemanticChanges": [
+    "epic-6-retrospective optional -> done",
+    "10 appended Epic6 open actions",
+    "last_updated"
+  ],
+  "previousActionsUnchanged": true,
+  "storyRowsUnchanged": true,
+  "epicUmbrellaUnchanged": true
+}

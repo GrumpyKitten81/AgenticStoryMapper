@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/story-map/board-diagnostics.test.tsx (1 test) 11389ms
+   ✓ records raw selection/collapse/search/color input through committed complete Discovery DOM 11389ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  22:33:09
+   Duration  12.27s (transform 321ms, setup 0ms, collect 562ms, tests 11.39s, environment 176ms, prepare 27ms)

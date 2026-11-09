@@ -1,0 +1,14 @@
+---
+description: Keep useful rationale and traceability without comment churn
+globs: "**/*.ts,**/*.tsx,**/*.js,**/*.mjs,**/*.html,**/*.scss,**/*.css,**/*.py"
+alwaysApply: false
+---
+
+# Comments
+
+Follow the global AI-DO-NOT rules for new comments.
+
+- Prefer clear identifiers. Use short `REQ`, `DESIGN` or `HINT` comments only for non-obvious rationale, requirement references or necessary usage constraints; add no unrequested TODOs.
+- Preserve useful requirement references and rationale. Update an affected comment when the authorized change makes it inaccurate; do not require separate permission for routine maintenance.
+- Do not delete unrelated comments merely because they lack a prefix. Preserve license notices, tool directives and test-environment annotations.
+- Do not add generic headers, section banners or comments that repeat signatures or code.

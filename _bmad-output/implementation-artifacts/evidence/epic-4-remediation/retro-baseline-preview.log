@@ -1,0 +1,16 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+{"measuredAt":"2026-10-17T08:43:04.524Z","pipeline":"actual-http-GET-preview","sample":1,"cards":1000,"operations":200,"durationMs":263.6337090000002,"boundMs":500,"passed":true}
+{"measuredAt":"2026-10-17T08:43:07.100Z","pipeline":"actual-http-GET-preview","sample":2,"cards":1000,"operations":200,"durationMs":226.79162499999984,"boundMs":500,"passed":true}
+{"measuredAt":"2026-10-17T08:43:09.762Z","pipeline":"actual-http-GET-preview","sample":3,"cards":1000,"operations":200,"durationMs":230.3262080000004,"boundMs":500,"passed":true}
+ ✓ src/http/routes/changeset-preview-performance.test.ts (3 tests) 7891ms
+   ✓ measures serial actual GET preview sample 1 for 1,000 Cards and 200 selected operations 2688ms
+   ✓ measures serial actual GET preview sample 2 for 1,000 Cards and 200 selected operations 2561ms
+   ✓ measures serial actual GET preview sample 3 for 1,000 Cards and 200 selected operations 2641ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  10:43:01
+   Duration  8.86s (transform 467ms, setup 0ms, collect 859ms, tests 7.89s, environment 0ms, prepare 25ms)
+

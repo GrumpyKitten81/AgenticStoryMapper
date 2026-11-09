@@ -1,0 +1,9 @@
+{
+  "command": [
+    "node",
+    "scripts/check-licenses.mjs"
+  ],
+  "returncode": 0,
+  "seconds": 0.592,
+  "execution": "reviewed permissions; same Node24 command and environment prefix; no source change"
+}

@@ -1,0 +1,328 @@
+{
+  "story": "5.4",
+  "baseline_revision": "5a23ced0dcb8ddc108983324d9e22b9a0cdc33f7",
+  "date": "2026-10-15",
+  "fixture": "disposable synthetic two-Project/1000-Card map and5-Card semantic map",
+  "initial_attempt": {
+    "unseen_events": 1017,
+    "drawer_open": {
+      "trusted": true,
+      "dom_ready_ms": 195.60000002384186,
+      "elapsed_ms": 313.8000000715256,
+      "budget_ms": 100,
+      "passed": false
+    },
+    "groups": [
+      "Person acceptance-fixture1009",
+      "GitHub synthetic-github-sync2",
+      "Person fixture-reviewer3",
+      "GitHub fixture-reviewer2",
+      "System sample-initialization1"
+    ],
+    "keyboard": {
+      "initial_focus": "Close changes",
+      "inert_background_count": 0,
+      "escape_returns_to_trigger": true
+    },
+    "acknowledge_all_cleared_markers": true,
+    "other_tab_edit": {
+      "delivery_upper_bound_ms": 300,
+      "reader_count": 1,
+      "writer_count": 0
+    },
+    "agent": {
+      "transport": "POST /api/mcp/call SubmitChangeSet apply:true",
+      "changeSetId": "bbd684f9-7669-4bb6-9c86-de13e7029034",
+      "actor": "local-mcp-host",
+      "event_count": 4,
+      "genuine_pre_apply_link": true
+    },
+    "group_ack": {
+      "human_ack_left_agent_count": 4,
+      "reopening_preserved": true
+    },
+    "linked_restore": {
+      "exact_row_focused": true,
+      "no_automatic_restore": true,
+      "existing_confirmation_used": true,
+      "real_restore_completed": true,
+      "other_client_count_after_restore": 0,
+      "other_client_markers_after_restore": 0
+    },
+    "github_scope": "Synthetic GitHub-source ChangeSet with real authority/approval/application; no remote provider called. GitHub data was committed before browser launch, not a measured GitHub live-delivery sample.",
+    "source_identity": {
+      "file_count": 614,
+      "algorithm": "sha256 of sorted compact path-to-SHA256 JSON",
+      "sha256": "fd60fd8df45805b7cc47e8d439525ca9ff0a4f081835c0e7ff2d8e412cb87542"
+    }
+  },
+  "render_repair_attempt": {
+    "drawer1000_events": {
+      "trusted": true,
+      "dom_ready_ms": 23,
+      "elapsed_ms": 49.300000071525574,
+      "budget_ms": 100,
+      "passed": true,
+      "retained_groups": 1000
+    },
+    "discovery1000_marked": {
+      "cards": 1000,
+      "markers": 1000,
+      "filter_ms": 86,
+      "reset_dom_ms": 356,
+      "reset_ms": 762,
+      "reset_budget_ms": 300,
+      "passed": false,
+      "input_provenance": "tool fill produces untrusted input event"
+    },
+    "same_fixture_unmarked_comparison": {
+      "markers": 0,
+      "filter_ms": 81,
+      "reset_dom_ms": 444.7000000476837,
+      "reset_ms": 805.6000000238419,
+      "passed": false,
+      "interpretation": "Both marked and unmarked fail; this is no claim of an exact pre-story runtime baseline."
+    }
+  },
+  "discovery_repair_attempt": {
+    "cards": 1000,
+    "markers": 1000,
+    "unseen_events": 1002,
+    "filter": {
+      "dom_ms": 95.39999997615814,
+      "elapsed_ms": 209.39999997615814,
+      "budget_ms": 300,
+      "passed": true,
+      "trusted": false
+    },
+    "reset": {
+      "dom_ms": 138.39999997615814,
+      "elapsed_ms": 217.39999997615814,
+      "budget_ms": 300,
+      "passed": true,
+      "trusted": false
+    },
+    "drawer_open": {
+      "dom_ms": 27.90000009536743,
+      "elapsed_ms": 66.90000009536743,
+      "budget_ms": 100,
+      "passed": true,
+      "trusted": true
+    },
+    "mark_all": {
+      "dom_ms": 19.5,
+      "elapsed_ms": 33.89999997615814,
+      "budget_ms": 100,
+      "passed": true,
+      "trusted": true
+    },
+    "focus_after_mark_all": "Close changes",
+    "markers_after_mark_all": 0,
+    "agent_live": {
+      "started": 1792056493458,
+      "dom_at": 1792056493772,
+      "indicator_at": 1792056493777,
+      "indicator_elapsed_ms": 319
+    },
+    "github_actor_live": {
+      "started": 1792056493651,
+      "dom_at": 1792056493772,
+      "indicator_at": 1792056493777,
+      "indicator_elapsed_ms": 126,
+      "remote_provider_called": false,
+      "authority": "Real approved source:github ChangeSet executed via human Apply HTTP; execution.actorType=github."
+    },
+    "functional_failure": {
+      "observed": "Generic applied-operation events have affectedEntityType=changeSet, so Card marker/name projection is absent.",
+      "agent_operation_seq": 3030,
+      "github_operation_seq": 3033,
+      "fix_pending": true,
+      "resolved_by": "Immutable operation Card projection and final projection browser pass."
+    },
+    "source_identity": {
+      "file_count": 615,
+      "algorithm": "sha256 of sorted compact path-to-SHA256 JSON",
+      "sha256": "e0fc62ffe9553c7b5f8b4c8fc5b56e9a7a484e129991b5a0cdd2a53bdc249cba"
+    }
+  },
+  "final_projection_attempt": {
+    "cards": 1000,
+    "markers": 1000,
+    "unseen_events": 1004,
+    "filter": {
+      "dom_ms": 92.9,
+      "elapsed_ms": 203.9,
+      "budget_ms": 300,
+      "passed": true,
+      "trusted": false
+    },
+    "reset": {
+      "dom_ms": 157.7,
+      "elapsed_ms": 236.6,
+      "budget_ms": 300,
+      "passed": true,
+      "trusted": false
+    },
+    "drawer_open": {
+      "dom_ms": 6.2,
+      "elapsed_ms": 53.8,
+      "budget_ms": 100,
+      "passed": true,
+      "trusted": true
+    },
+    "mark_all": {
+      "dom_ms": 19,
+      "elapsed_ms": 34.9,
+      "budget_ms": 100,
+      "passed": true,
+      "trusted": true
+    },
+    "retained_dom_cards_while_filtered": 1000,
+    "visible_filtered_cards": 13,
+    "markers_after_mark_all": 0,
+    "agent_delivery_ms": 549,
+    "github_actor_delivery_ms": 332,
+    "github_scope": "Real approved local source:github ChangeSet; no remote provider called.",
+    "other_tab_delivery_upper_bound_ms": 298,
+    "same_writer_count_before_and_after": 6,
+    "reader_count_before_and_after": [
+      0,
+      1
+    ],
+    "group_ack": "Agent acknowledgement removed only Agent Card cue; GitHub two events and cue survived reopening.",
+    "all_seen_race": {
+      "ack_at": 1792057048214,
+      "commit_started": 1792057052046,
+      "indicator_at": 1792057052463,
+      "new_event_count": 4,
+      "survived": true
+    },
+    "dirty_editor": "Unsaved held draft and prior count retained; canonical change applied after explicit disposable draft discard and focus release.",
+    "manual_hold": "Prior title/count4 retained; release applied committed title/count8.",
+    "project_switch": "Second Project count0/markers0; original Project returned count8.",
+    "real_restore": {
+      "exact_row_focused": true,
+      "existing_confirmation_used": true,
+      "transient_card_present_before": true,
+      "transient_card_absent_after": true,
+      "other_client_count_before": 27,
+      "other_client_count_after": 0,
+      "markers_after": 0,
+      "post_restore_agent_count": 4,
+      "post_restore_agent_marker": true
+    },
+    "keyboard": {
+      "shift_tab_wraps_to_last_link": true,
+      "tab_wraps_to_close": true,
+      "escape_returns_to_trigger": true,
+      "inert_background_count": 0
+    },
+    "source_identity": {
+      "file_count": 616,
+      "algorithm": "sha256 of sorted compact path-to-SHA256 JSON",
+      "sha256": "cac7fbda9ff856c55486bcbd74e7672f78ee978d61c6056046db9e5405d06e46"
+    },
+    "source_note": "Only lifecycle test assertions changed after this browser source snapshot; product files identical."
+  },
+  "reviewed_source_attempt": {
+    "source_identity": {
+      "file_count": 616,
+      "algorithm": "sha256 of sorted compact path-to-SHA256 JSON",
+      "sha256": "f346d45f564a5a80c2043260670dc5f8031cc2050c2f0b96a3177f2f90e8f7be"
+    },
+    "cards": 1000,
+    "markers": 1000,
+    "unseen_events": 8,
+    "affected_groups": 1005,
+    "rendered_times": 1007,
+    "note": "Includes one actual generic bulk operation affecting1000 Cards; event count remains8, not1000. Earlier final-projection sample covered1004 individual eligible events.",
+    "filter_samples": [
+      {
+        "dom_ms": 109.6,
+        "elapsed_ms": 242.5,
+        "trusted": false
+      },
+      {
+        "dom_ms": 137.5,
+        "elapsed_ms": 185.6,
+        "trusted": false
+      }
+    ],
+    "reset": {
+      "dom_ms": 164.5,
+      "elapsed_ms": 240.8,
+      "trusted": false,
+      "budget_ms": 300,
+      "passed": true
+    },
+    "drawer_open": {
+      "dom_ms": 25.8,
+      "elapsed_ms": 75.9,
+      "trusted": true,
+      "budget_ms": 100,
+      "passed": true
+    },
+    "mark_all": {
+      "dom_ms": 36.1,
+      "elapsed_ms": 55,
+      "trusted": true,
+      "budget_ms": 100,
+      "passed": true,
+      "markers_after": 0,
+      "focus_after": "Close changes"
+    },
+    "agent_live": {
+      "started": 1792058199026,
+      "indicator_at": 1792058200008,
+      "card_dom_at": 1792058200008,
+      "elapsed_ms": 982,
+      "drawer_open": true,
+      "focus_after": "Close changes",
+      "marker_count": 1,
+      "rendered_times": 4
+    },
+    "restore": {
+      "exact_link_row_focused": true,
+      "automatic_restore": false,
+      "existing_confirmation_used": true,
+      "transient_card_present_before": true,
+      "transient_card_absent_after": true,
+      "reader_count_before": 13,
+      "reader_count_after": 0,
+      "reader_markers_after": 0,
+      "post_restore_agent_started": 1792058272647,
+      "post_restore_indicator_at": 1792058273046,
+      "post_restore_card_at": 1792058273050,
+      "post_restore_delivery_ms": 403,
+      "post_restore_count": 4,
+      "post_restore_markers": 1
+    },
+    "setup_diagnostics": [
+      "A still had the prior disposable Restoration complete dialog. Measurements began only after Done cleared its inert background and deferred1000-Card commit applied.",
+      "An exact-name Restore locator missed because its accessible name is Restore to <time>. Scoped row button worked and the existing confirmation was inspected."
+    ],
+    "keyboard": {
+      "width_px": 420,
+      "inert_background_count": 0,
+      "shift_tab_last_link": true,
+      "tab_first_close": true,
+      "escape_trigger_return": true
+    }
+  },
+  "final_verification": {
+    "configured_tests": 1823,
+    "script_tests": 82,
+    "contracts": 136,
+    "importers": 7,
+    "core": 276,
+    "web": 310,
+    "db": 384,
+    "server": 614,
+    "serial_performance": 14,
+    "typecheck": "passed",
+    "lint": "passed",
+    "release_verify_build": "passed",
+    "source_unchanged_since_browser_and_gates": true,
+    "independent_repair_closure": "all8groups closed; focused33web/8DBpassed"
+  }
+}

@@ -1,0 +1,20 @@
+✔ scans TypeScript syntax without executing descriptor initializers (4.992583ms)
+✔ rejects missing and wrongly named use-case mappings in both directions (0.652375ms)
+✔ permits ordinary HTTP reads and requires effectful capabilities to have tools (0.840166ms)
+✔ manifest output is deterministic and checking never rewrites stale data (8.717042ms)
+✔ generated tool metadata and documentation are deterministic and checked without rewriting (8.798292ms)
+✔ documentation names human-only capabilities and every classified write membership (0.214291ms)
+✔ registry parity rejects omitted, duplicate and incorrectly imported descriptors (6.507792ms)
+✔ rejects duplicate capability names, route mappings and tool mappings (6.027667ms)
+✔ rejects missing registrations, orphan tool metadata, schemas and routes (7.266375ms)
+✔ operation coverage rejects new unclassified writes and preserves mixed sync effects (0.223959ms)
+✔ operation coverage includes indirect local effects of provider writes (0.132416ms)
+✔ classifies effectful reads and refuses direct MCP handler domain persistence (4.673375ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 204.517792

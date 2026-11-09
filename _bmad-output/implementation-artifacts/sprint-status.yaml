@@ -1,0 +1,394 @@
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created, ready for development
+#   - in-progress: Developer actively working on implementation
+#   - review: Implementation complete, ready for review
+#   - done: Story completed
+
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+
+# Action Item Status:
+#   - open: Committed during a retrospective, not yet addressed
+#   - in-progress: Actively being worked on
+#   - done: Completed
+
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when its first story starts (via build's sprint sync)
+# - Stories can be worked in parallel if team capacity allows
+# - Developer typically creates the next story after the previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+# - Retrospective appends its action items to action_items; the status view surfaces open ones
+generated: 09-29-2026 23:28
+last_updated: 10-19-2026 20:34
+project: StoryMapper
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+development_status:
+  epic-1: backlog
+  1-1-english-ui-from-one-string-module: done
+  1-2-serve-the-app-under-one-url: done
+  1-3-one-command-to-set-up-and-start-on-any-system: done
+  1-4-understandable-failures-and-a-doctor-command: done
+  1-5-sample-map-and-getting-started-checklist: done
+  1-6-verified-baseline-for-the-board-requirements: done
+  epic-1-retrospective: optional
+
+  epic-2: backlog
+  2-1-all-or-nothing-changes-attributed-to-an-actor: done
+  2-2-create-and-list-restore-points: done
+  2-3-version-counters-on-every-editable-root: done
+  2-4-read-a-card-s-history: done
+  2-5-park-archive-and-delete-as-separate-actions: done
+  2-6-restore-the-project-to-a-restore-point: done
+  2-7-portable-project-archive: done
+  epic-2-retrospective: optional
+
+  epic-3: done
+  3-1-contracts-on-zod-4-and-the-current-mcp-sdk: done
+  3-2-only-the-own-browser-may-address-the-server: done
+  3-3-use-case-layer-for-story-map-data: done
+  3-4-use-case-layer-for-the-remaining-capabilities: done
+  3-5-safety-switches-replace-the-privacy-mode: done
+  3-6-mcp-on-the-app-port-and-a-stdio-bridge: done
+  3-7-complete-mcp-tool-surface: done
+  3-8-record-every-tool-call: done
+  3-9-one-writer-health-and-orderly-shutdown: done
+  3-10-live-board-updates: done
+  3-11-concurrent-edits-never-lose-data-silently: done
+  3-12-persisted-product-context-and-templates-as-mcp-prompts: done
+  epic-3-retrospective: done
+
+  epic-4: done
+  4-1-import-markdown-and-txt-sources-with-stable-chunks: done
+  4-2-provenance-on-every-card: done
+  4-3-external-references-on-cards-releases-and-personas: done
+  4-4-operation-registry-for-the-core-objects: done
+  4-5-operation-registry-for-the-remaining-objects: done
+  4-6-changeset-executor: done
+  4-7-writing-agent-tools-run-through-changesets: done
+  4-8-an-agent-submits-its-own-changeset: done
+  4-9-preview-a-changeset-on-the-board: done
+  4-10-slicing-proposals-and-release-notes: done
+  4-11-delivery-status-from-agents: done
+  4-12-the-bmad-round-trip: done
+  4-13-validation-gate-with-five-bmad-users: done
+  epic-4-retrospective: done
+
+  epic-5: done
+  5-1-dependencies-between-cards: done
+  5-2-slices-view: done
+  5-3-dependency-graph-view: done
+  5-4-what-changed-since-i-looked: done
+  5-5-plan-drift-report: done
+  epic-5-retrospective: done
+
+  epic-6: done
+  6-1-every-function-reachable-and-addressable: done
+  6-2-create-and-edit-cards: done
+  6-3-move-cards-by-mouse-keyboard-or-form: done
+  6-4-search-filter-and-bulk-actions: done
+  6-5-collapse-card-keys-and-notes: done
+  6-6-the-five-core-views: done
+  6-7-card-detail-as-a-deep-linkable-modal: done
+  6-8-manage-personas-annotations-statuses-and-templates: done
+  6-9-manage-releases-and-read-their-summary: done
+  6-10-performance-and-accessibility-budgets: done
+  epic-6-retrospective: done
+
+  epic-7: done
+  7-1-credentials-in-a-user-level-file: done
+  7-2-connect-github-in-the-app: done
+  7-3-github-identity-in-external-references: done
+  7-4-push-with-a-mandatory-dry-run: done
+  7-5-import-and-sync: done
+  7-6-conflicts-and-sync-health: done
+  7-7-import-a-single-ticket-while-creating-a-card: done
+  7-8-provider-extension-points: done
+  epic-7-retrospective: done
+
+  epic-8: backlog
+  8-1-baseline-migration-and-upgrade-path: done
+  8-2-dependency-upgrade-wave: done
+  8-3-quality-gate-scripts: done
+  8-4-continuous-integration-on-three-operating-systems: done
+  8-5-license-and-community-files: done
+  8-6-public-documentation-in-english: done
+  8-7-audit-of-content-and-tooling: done
+  8-8-versioned-releases: done
+  8-9-agentic-coding-reference-material: done
+  epic-8-retrospective: optional
+action_items:
+  - id: "epic-3-retro-item-1-fix-the-stdio-bridge-on-restore-exempt-h"
+    epic: 3
+    action: "Fix the stdio bridge on restore: exempt /health from the restore and
+      shutdown gate or stop calling it per message, answer failed forwards with a
+      JSON-RPC error, and add a test with a restore in flight (retro R1)."
+    owner: "dev loop"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-3-retro-2026-10-10.md"
+  - id: "epic-3-retro-item-2-add-project-ownership-checks-to-createca"
+    epic: 3
+    action: "Add Project-ownership checks to createCardSourceLink and to sourceDocumentId
+      in buildAiProposalChangeSet, with tests (retro R3)."
+    owner: "dev loop"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-3-retro-2026-10-10.md"
+  - id: "epic-3-retro-item-3-split-apps-web-src-ui-strings-index-ts-b"
+    epic: 3
+    action: "Split apps/web/src/ui-strings/index.ts below 750 lines, enforce the line
+      limit in hygiene, write real descriptions for the 63 generated MCP tool descriptions
+      and remove the pushPreviewEnabled leftover (retro findings 3 and 4)."
+    owner: "dev loop"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-3-retro-2026-10-10.md"
+  - id: "epic-3-retro-item-4-close-verification-gaps-v1-v5-originclie"
+    epic: 3
+    action: "Close verification gaps V1-V5: originClientId through buildServer, ParkCard/UnparkCard
+      stale baseVersion, DELETE header test, chained baseVersion in useLatestVersions,
+      affectedLiveQueries routing and app wiring, .port validation and foreign-owner
+      lock takeover."
+    owner: "dev loop"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-3-retro-2026-10-10.md"
+  - id: "epic-3-retro-item-5-decide-how-an-audit-failure-after-a-comm"
+    epic: 3
+    action: "Decide how an audit failure after a committed tool write is reported
+      or recorded atomically (R2) and whether prompts/get reads are audited (R8)."
+    owner: "architecture with Epic 4 planning"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-3-retro-2026-10-10.md"
+  - id: "epic-3-retro-item-6-harden-the-project-lock-compare-process"
+    epic: 3
+    action: "Harden the Project lock (compare process start time, tolerate empty claim
+      dir and ENOTEMPTY) and the SSE replay boundary loop, with regression tests (R4,
+      R5, R14)."
+    owner: "dev loop"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-3-retro-2026-10-10.md"
+  - id: "epic-3-retro-item-7-run-the-story-3-10-follow-up-review-and"
+    epic: 3
+    action: "Run the Story 3.10 follow-up review and a fresh manual smoke of the owned
+      launcher, /mcp, /api/events and the audit page on a disposable fixture (needs
+      permission to start a server)."
+    owner: "operator"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-3-retro-2026-10-10.md"
+  - id: "epic-3-retro-item-8-reconcile-agents-md-line-45-for-the-remo"
+    epic: 3
+    action: "Reconcile AGENTS.md line 45 for the removed packages/ai (DW-57) and record
+      the Story 3.8 relaxation wherever PRD or architecture still state the 20 percent
+      gate; proposal only."
+    owner: "human"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-3-retro-2026-10-10.md"
+  - id: "epic-3-retro-item-9-epic-4-must-close-dw-41-agent-destructiv"
+    epic: 3
+    action: "Epic 4 must close DW-41: agent destructive and GitHub-writing tools route
+      through the shared ChangeSet executor."
+    owner: "Epic 4 planning"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-3-retro-2026-10-10.md"
+  - id: "epic-3-retro-item-10-process-give-the-retro-skill-untruncated"
+    epic: 3
+    action: "Process: give the retro skill untruncated machine output, normalize story
+      baselines (3.3 missing, 3.5 main) and reconcile run state when an operator closes
+      a story outside the loop (3.8 left the run paused)."
+    owner: "orchestrator operator"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-3-retro-2026-10-10.md"
+  - id: "epic-4-retro-a1"
+    epic: 4
+    action: "Correct caller-controlled operation-ID dictionary allocation; cover __proto__
+      and own string identities across preview/submission/execution. R1."
+    owner: "Core/DB developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  - id: "epic-4-retro-a2"
+    epic: 4
+    action: "Return actionable source-unavailable conflicts for expected reviewed-file
+      permission failures; retain unexpected errors and atomic refusal coverage. R2."
+    owner: "Server developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  - id: "epic-4-retro-a3"
+    epic: 4
+    action: "Bound operation-snapshot reads to the owning Project in SQL; measure
+      unrelated large-Project effect and verify unchanged ownership filtering. R3."
+    owner: "DB/performance developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  - id: "epic-4-retro-a4"
+    epic: 4
+    action: "Profile and reduce remaining non-Card snapshot copying/full-collection
+      comparisons for source-heavy multi-operation proposals. Preserve exact audit/preview
+      semantics. R4."
+    owner: "Core/performance developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  - id: "epic-4-retro-a5"
+    epic: 4
+    action: "Protect dependency simulation against resolver divergence with mixed-operation
+      differential checks, including duplicate GitHub-owner/evidence reconstruction.
+      R5/R6."
+    owner: "Core developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  - id: "epic-4-retro-a6"
+    epic: 4
+    action: "Pin human/Agent imported document/chunk metadata parity before changing
+      either construction path; share deterministic construction where warranted.
+      R9."
+    owner: "Source-import developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  - id: "epic-4-retro-a7"
+    epic: 4
+    action: "Make persistence parent/child ordering explicit or mechanically enforce
+      the ENTITY_TABLES ordering contract with mixed-operation foreign-key assertions.
+      R11."
+    owner: "DB developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  - id: "epic-4-retro-p1"
+    epic: 4
+    action: "Require explicit verified delivery/commit/evidence provenance before
+      closing an externally completed run; preserve failed attempt history and evaluate
+      evidence independently of done labels."
+    owner: "Orchestrator maintainer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  - id: "epic-6-retro-a1"
+    epic: 6
+    action: "Normalize absent/default Card color filtering and regress real Standard
+      and combined filters. R1/E1."
+    owner: "Web developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-6-retro-2026-10-17.md"
+  - id: "epic-6-retro-a2"
+    epic: 6
+    action: "Use refreshed reviewed status name for rename evidence; regress concurrent
+      A-to-B rename, retained A draft, re-review and successful retry. R3/E2."
+    owner: "Web/customization developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-6-retro-2026-10-17.md"
+  - id: "epic-6-retro-a3"
+    epic: 6
+    action: "Reproduce board and Tracking edit-Restore-to-lower-version-edit; repair
+      epoch-scoped acknowledged version state if confirmed. R4; Epic5 A3."
+    owner: "Web/runtime developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-6-retro-2026-10-17.md"
+  - id: "epic-6-retro-a4"
+    epic: 6
+    action: "Align Move position choices and contextual create defaults with canonical
+      mixed-role/interleaved-Release ordering; prove persisted order. R6/R7."
+    owner: "Web/core developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-6-retro-2026-10-17.md"
+  - id: "epic-6-retro-a5"
+    epic: 6
+    action: "Separate Persona creation-scope availability from selected Persona edit/delete
+      availability. R8."
+    owner: "Web/customization developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-6-retro-2026-10-17.md"
+  - id: "epic-6-retro-a6"
+    epic: 6
+    action: "Reproduce and repair Tracking focus loss on status/Release-scope edits
+      with stable focus recovery. R5."
+    owner: "Web accessibility developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-6-retro-2026-10-17.md"
+  - id: "epic-6-retro-a7"
+    epic: 6
+    action: "Test failed Planning numeric draft after blur and remote refresh; preserve
+      reviewed-version conflict behavior if overwrite is confirmed. R9."
+    owner: "Web/live-update developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-6-retro-2026-10-17.md"
+  - id: "epic-6-retro-a8"
+    epic: 6
+    action: "Clarify and correct displayed versus filter-matching selected counts
+      for collapsed hierarchy/lanes. R2."
+    owner: "UX/web developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-6-retro-2026-10-17.md"
+  - id: "epic-6-retro-a9"
+    epic: 6
+    action: "Run final native release accessibility matrix and extend dedicated populated
+      CRUD-dialog axe/focus coverage. R10/V1; reuse DW-91/95/96."
+    owner: "Accessibility QA / operator"
+    status: in-progress
+    ref: "_bmad-output/implementation-artifacts/epic-6-retro-2026-10-17.md"
+  - id: "epic-6-retro-p1"
+    epic: 6
+    action: "Reconcile stale epic umbrella bookkeeping and add cross-story default-value/re-review/scope-removal/Restore
+      adoption acceptance checks."
+    owner: "Orchestrator/planning maintainer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-6-retro-2026-10-17.md"
+  - id: "epic-7-retro-a1"
+    epic: 7
+    action: "Obtain complete bulk Issue label evidence or visibly refuse incomplete
+      reads; regress managed labels beyond position 50 through import and baseline
+      persistence. R1."
+    owner: "GitHub adapter / import developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-7-retro-2026-10-19.md"
+  - id: "epic-7-retro-a2"
+    epic: 7
+    action: "Refuse conflicting iteration evidence across complete Project items or
+      require explicit source identity; prove item order cannot change Release selection.
+      R2."
+    owner: "GitHub adapter / sync developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-7-retro-2026-10-19.md"
+  - id: "epic-7-retro-a3"
+    epic: 7
+    action: "Preserve remote-parent evidence through ordinary Issue writes and later
+      sync; cover real REST response through execution and canonical binding. R3."
+    owner: "Remote push / DB developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-7-retro-2026-10-19.md"
+  - id: "epic-7-retro-a4"
+    epic: 7
+    action: "Include Release goal and released state in baselines, health, outgoing
+      Sync and conflict protection; verify each independent edit and post-sync health.
+      R4; Story7.6 P2B5."
+    owner: "Core / sync developer"
+    status: done
+    ref: "_bmad-output/implementation-artifacts/epic-7-retro-2026-10-19.md"
+  - id: "epic-7-retro-a5"
+    epic: 7
+    action: "Regress successful composer Connect through selected connection, lookup
+      and linked create with retained draft, parent, position and Release. V1."
+    owner: "Web test developer"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-7-retro-2026-10-19.md"
+  - id: "epic-7-retro-a6"
+    epic: 7
+    action: "Restore public feature API boundaries for new cross-feature imports and
+      assess the expanded sync runtime cycle without unrelated refactoring."
+    owner: "Web / server architecture maintainer"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-7-retro-2026-10-19.md"
+  - id: "epic-7-retro-a7"
+    epic: 7
+    action: "Execute remaining existing native credential, platform, reader, interrupted-push
+      and pending-Restore acceptance boundaries; separately authorize live-account
+      and Milestone due-date round-trip observations. Reuse Epic6 A9 and story deferred
+      entries."
+    owner: "Release QA / operator"
+    status: open
+    ref: "_bmad-output/implementation-artifacts/epic-7-retro-2026-10-19.md"

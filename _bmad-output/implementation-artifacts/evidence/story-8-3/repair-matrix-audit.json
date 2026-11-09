@@ -1,0 +1,89 @@
+{
+  "result": "all eight rows covered and passed",
+  "rows": {
+    "Actual tree": {
+      "tests": [
+        "All local quality gates completed."
+      ],
+      "log_matches": {
+        "All local quality gates completed.": true
+      }
+    },
+    "Boundaries": {
+      "tests": [
+        "rejects dependency, layer, core, DB-only, alias escape and cross-feature violations",
+        "normalizes global effects and refuses every nonliteral dependency with a source location"
+      ],
+      "log_matches": {
+        "rejects dependency, layer, core, DB-only, alias escape and cross-feature violations": true,
+        "normalizes global effects and refuses every nonliteral dependency with a source location": true
+      }
+    },
+    "Size": {
+      "tests": [
+        "checks physical line and UTF-8 byte limits at the exact boundary",
+        "parses nested arrows, methods and component functions with exact starting locations"
+      ],
+      "log_matches": {
+        "checks physical line and UTF-8 byte limits at the exact boundary": true,
+        "parses nested arrows, methods and component functions with exact starting locations": true
+      }
+    },
+    "Classification": {
+      "tests": [
+        "classifies every physical and declared table and names new unclassified tables"
+      ],
+      "log_matches": {
+        "classifies every physical and declared table and names new unclassified tables": false
+      },
+      "execution": "43/43 DB files and560/560 DB tests passed, including unfiltered snapshot.test.ts with classification/redaction assertions"
+    },
+    "Coverage": {
+      "tests": [
+        "fails missing, stale, malformed, empty, below-floor and absent JS source reports per workspace",
+        "actual coverage CLI reaches the last workspace and fails its floor after earlier passes",
+        "refuses zero-line executable source and foreign percentage inflation"
+      ],
+      "log_matches": {
+        "fails missing, stale, malformed, empty, below-floor and absent JS source reports per workspace": true,
+        "actual coverage CLI reaches the last workspace and fails its floor after earlier passes": true,
+        "refuses zero-line executable source and foreign percentage inflation": true
+      }
+    },
+    "Hygiene": {
+      "tests": [
+        "scans tracked inputs only, fails unreadable tracked paths and propagates safe CLI failure",
+        "scans tracked gzip content and rejects malformed archives with safe CLI diagnostics"
+      ],
+      "log_matches": {
+        "scans tracked inputs only, fails unreadable tracked paths and propagates safe CLI failure": true,
+        "scans tracked gzip content and rejects malformed archives with safe CLI diagnostics": true
+      }
+    },
+    "Licenses": {
+      "tests": [
+        "evaluates explicit compatible compound license options",
+        "actual license CLI rejects an incompatible local installed package with its identity"
+      ],
+      "log_matches": {
+        "evaluates explicit compatible compound license options": true,
+        "actual license CLI rejects an incompatible local installed package with its identity": true
+      }
+    },
+    "Child failure": {
+      "tests": [
+        "CLI fails on missing tools and child errors before a later success can mask them",
+        "SIGINT fails the CLI and drains owned descendants",
+        "SIGTERM fails the CLI and drains owned descendants",
+        "the actual aggregate CLI propagates a boundary failure before coverage and build"
+      ],
+      "log_matches": {
+        "CLI fails on missing tools and child errors before a later success can mask them": true,
+        "SIGINT fails the CLI and drains owned descendants": true,
+        "SIGTERM fails the CLI and drains owned descendants": true,
+        "the actual aggregate CLI propagates a boundary failure before coverage and build": true
+      }
+    }
+  },
+  "log": "repair-check.log.gz"
+}

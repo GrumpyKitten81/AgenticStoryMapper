@@ -1,0 +1,19 @@
+---
+description: TypeScript and React conventions for existing workspace packages
+globs: "**/*.ts,**/*.tsx,**/*.d.ts"
+alwaysApply: false
+---
+
+# TypeScript
+
+Apply `AGENTS.md` and `code.mdc`.
+
+- Use strict type checking and prefer inference when the type is obvious.
+- Avoid `any`; narrow `unknown` at untrusted boundaries.
+- Use discriminated unions and type guards where variants require different behavior.
+- Keep types close to their consumers; export shared types through the package's existing public entry points.
+- Make public function contracts clear; use explicit return types where inference obscures the boundary.
+- Prefer `async`/`await`; catch only errors that can be handled meaningfully at that layer.
+- Use function overloads only when they materially improve type safety.
+- Follow existing React, Vite, TanStack Router/Query, Zustand, Tiptap and dnd-kit patterns in `apps/web`; avoid adding a parallel state or data-fetching pattern.
+- Use readonly types and `const` assertions where immutability is intended.

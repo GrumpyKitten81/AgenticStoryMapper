@@ -1,0 +1,82 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ❯ src/application/sync/github-command-regressions.test.ts (12 tests | 1 failed) 570ms
+   × imports Agent stories under an Activity parent with a shared Release, assignee and General step 33ms
+     → Target entity not found.
+ ✓ src/http/routes/changeset-dependency-parity.test.ts (5 tests) 495ms
+ ✓ src/mcp/github-command-transports.test.ts (8 tests) 554ms
+ ❯ src/mcp/github-command-sdk.test.ts (9 tests | 6 failed) 617ms
+   × persists SDK GitHub import with protection=false and truthful proposal/apply identity 180ms
+     → [{"type":"text","text":"{\n  \"code\": \"not_found\",\n  \"message\": \"Target entity not found.\"\n}"}]: expected true not to be true // Object.is equality
+   × persists SDK GitHub import with protection=true and truthful proposal/apply identity 61ms
+     → [{"type":"text","text":"{\n  \"code\": \"not_found\",\n  \"message\": \"Target entity not found.\"\n}"}]: expected true not to be true // Object.is equality
+   × routes SDK SyncGitHubLinks with protection=false while retaining outgoing local fields for human confirmation 58ms
+     → [{"type":"text","text":"{\n  \"code\": \"not_found\",\n  \"message\": \"Target entity not found.\"\n}"}]: expected true not to be true // Object.is equality
+   × routes SDK SyncGitHubLinks with protection=true while retaining outgoing local fields for human confirmation 53ms
+     → [{"type":"text","text":"{\n  \"code\": \"not_found\",\n  \"message\": \"Target entity not found.\"\n}"}]: expected true not to be true // Object.is equality
+   × routes SDK PullStoryMapGitHubLinks with protection=false while retaining outgoing local fields for human confirmation 52ms
+     → [{"type":"text","text":"{\n  \"code\": \"not_found\",\n  \"message\": \"Target entity not found.\"\n}"}]: expected true not to be true // Object.is equality
+   × routes SDK PullStoryMapGitHubLinks with protection=true while retaining outgoing local fields for human confirmation 51ms
+     → [{"type":"text","text":"{\n  \"code\": \"not_found\",\n  \"message\": \"Target entity not found.\"\n}"}]: expected true not to be true // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/mcp/github-command-sdk.test.ts > persists SDK GitHub import with protection=false and truthful proposal/apply identity
+ FAIL  src/mcp/github-command-sdk.test.ts > persists SDK GitHub import with protection=true and truthful proposal/apply identity
+AssertionError: [{"type":"text","text":"{\n  \"code\": \"not_found\",\n  \"message\": \"Target entity not found.\"\n}"}]: expected true not to be true // Object.is equality
+ ❯ Object.call src/mcp/github-command-sdk.test.ts:43:64
+     41|   const call = async (name: string, input: Record<string, unknown>): P…
+     42|     const result = await client.callTool({ name, arguments: input });
+     43|     expect(result.isError, JSON.stringify(result.content)).not.toBe(tr…
+       |                                                                ^
+     44|     return JSON.parse((result.content as Array<{ text: string }>)[0]!.…
+     45|   };
+ ❯ src/mcp/github-command-sdk.test.ts:67:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ FAIL  src/mcp/github-command-sdk.test.ts > routes SDK SyncGitHubLinks with protection=false while retaining outgoing local fields for human confirmation
+ FAIL  src/mcp/github-command-sdk.test.ts > routes SDK SyncGitHubLinks with protection=true while retaining outgoing local fields for human confirmation
+ FAIL  src/mcp/github-command-sdk.test.ts > routes SDK PullStoryMapGitHubLinks with protection=false while retaining outgoing local fields for human confirmation
+ FAIL  src/mcp/github-command-sdk.test.ts > routes SDK PullStoryMapGitHubLinks with protection=true while retaining outgoing local fields for human confirmation
+AssertionError: [{"type":"text","text":"{\n  \"code\": \"not_found\",\n  \"message\": \"Target entity not found.\"\n}"}]: expected true not to be true // Object.is equality
+ ❯ Object.call src/mcp/github-command-sdk.test.ts:43:64
+     41|   const call = async (name: string, input: Record<string, unknown>): P…
+     42|     const result = await client.callTool({ name, arguments: input });
+     43|     expect(result.isError, JSON.stringify(result.content)).not.toBe(tr…
+       |                                                                ^
+     44|     return JSON.parse((result.content as Array<{ text: string }>)[0]!.…
+     45|   };
+ ❯ src/mcp/github-command-sdk.test.ts:104:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/7]⎯
+
+ FAIL  src/application/sync/github-command-regressions.test.ts > imports Agent stories under an Activity parent with a shared Release, assignee and General step
+DomainError: Target entity not found.
+ ❯ requiredScope src/mcp/tools/project-scopes.ts:42:25
+     40|
+     41| function requiredScope(projectId: string | undefined): string {
+     42|   if (!projectId) throw new DomainError("not_found", "Target entity no…
+       |                         ^
+     43|   return projectId;
+     44| }
+ ❯ collectScopes src/mcp/tools/project-scopes.ts:151:18
+ ❯ Module.resolveToolProjectIds src/mcp/tools/project-scopes.ts:281:7
+ ❯ src/application/changeset/changeset-command.ts:15:20
+ ❯ ../../packages/db/src/unit-of-work.ts:67:87
+ ❯ ../../packages/db/src/unit-of-work.ts:67:31
+ ❯ ../../packages/db/src/database-handle.ts:129:92
+ ❯ ../../packages/db/src/database-handle.ts:139:26
+ ❯ sqliteTransaction ../../node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/transaction.js:65:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/7]⎯
+
+ Test Files  2 failed | 2 passed (4)
+      Tests  7 failed | 27 passed (34)
+   Start at  01:50:50
+   Duration  1.62s (transform 656ms, setup 0ms, collect 2.99s, tests 2.24s, environment 0ms, prepare 143ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/application/sync/github-command-regressions.test.ts src/http/routes/changeset-dependency-parity.test.ts src/mcp/github-command-sdk.test.ts src/mcp/github-command-transports.test.ts

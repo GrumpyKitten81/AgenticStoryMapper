@@ -1,0 +1,8 @@
+RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/customization-impact.test.ts (17 tests) 450ms
+
+ Test Files  1 passed (1)
+      Tests  17 passed (17)
+   Start at  20:07:46
+   Duration  1.21s (transform 302ms, setup 0ms, collect 574ms, tests 450ms, environment 0ms, prepare 33ms)

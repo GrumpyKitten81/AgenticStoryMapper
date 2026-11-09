@@ -1,0 +1,167 @@
+
+> storymapper@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper
+> node --test scripts/*.test.mjs && corepack pnpm -r test
+
+✔ external completion worker verifies and adopts only isolated temporary runs (27370.441292ms)
+✔ scans TypeScript syntax without executing descriptor initializers (5.156541ms)
+✔ rejects missing and wrongly named use-case mappings in both directions (0.779583ms)
+✔ permits ordinary HTTP reads and requires effectful capabilities to have tools (0.885333ms)
+✔ manifest output is deterministic and checking never rewrites stale data (10.878708ms)
+✔ generated tool metadata and documentation are deterministic and checked without rewriting (11.693583ms)
+✔ documentation names human-only capabilities and every classified write membership (0.241209ms)
+✔ registry parity rejects omitted, duplicate and incorrectly imported descriptors (8.789333ms)
+✔ rejects duplicate capability names, route mappings and tool mappings (8.155958ms)
+✔ rejects missing registrations, orphan tool metadata, schemas and routes (9.730083ms)
+✔ operation coverage rejects new unclassified writes and preserves mixed sync effects (0.248375ms)
+✔ operation coverage includes indirect local effects of provider writes (0.136666ms)
+✔ classifies effectful reads and refuses direct MCP handler domain persistence (6.62625ms)
+✔ rejects every umlaut and sharp s with correct locations (1.846292ms)
+✔ normalizes decomposed umlauts without changing line diagnostics (0.144917ms)
+✔ matches complete case-insensitive German words without substring failures (0.076292ms)
+✔ scans every required source and reports relative paths while ignoring authoring documents (84.055ms)
+✔ setup performs a real frozen install, build and folder creation without config, and repeats safely (29081.102583ms)
+✔ frozen install and build failures prevent later setup steps (1111.802334ms)
+✔ real setup rejects a manifest that disagrees with the frozen lockfile (632.058291ms)
+✔ start serves actual app/API on its owned URL and only opens the browser after health (15287.190959ms)
+✔ IPv6 host overrides reach the real server and exact browser URL (3425.640542ms)
+✔ invalid configuration and missing dependencies/runtime fail before database creation or browser opening (2943.213458ms)
+✔ unexpected pnpm version rejects public setup and start before later work (679.8815ms)
+✔ launcher preflight rejects server-local non-loopback configuration before spawning the server, DB or bind (459.837042ms)
+✔ server IPC loopback guard rejects non-loopback configuration before DB or bind (992.978167ms)
+✔ a healthy occupied port cannot authorize browser opening (515.674833ms)
+✔ failed missing-asset build and early server exit never open a browser (1094.815167ms)
+✔ unhealthy owned server times out loudly and releases its port (30674.222208ms)
+✔ browser failure is loud and cleans up the healthy real server (3117.903791ms)
+✔ hanging opener deadline fails nonzero and cleans its descendants and server (18115.471084ms)
+✔ unexpected ready server exit fails the launcher during and after browser opening (11320.02925ms)
+✔ platform browser commands and Windows Corepack discovery preserve argument boundaries (1.629084ms)
+✔ abrupt launcher loss disconnects and stops its owned real server (3179.685792ms)
+✔ fixture cleanup after abrupt setup install loss stops descendants before fixture removal (605.675334ms)
+✔ test-only IPC interruption invokes the launcher signal handler and cancellation (5386.703334ms)
+✔ interrupted preflight, build and opener terminate their whole process trees within a bound (19133.933583ms)
+✔ cancellation waits for the owned delayed shutdown beyond the former two-second cutoff (3236.4245ms)
+✔ interruption before server readiness stops the child without a browser (545.525459ms)
+✔ public verify preserves hygiene and gate failure propagation (1813.869625ms)
+✔ public verify rejects missing env ignore, ignored env example and env history (1070.600625ms)
+✔ public verify rejects tracked input, local Project and SQLite data (1667.652917ms)
+✔ public verify rejects an unusable default Project folder and accepts a usable one (1087.057541ms)
+✔ public verify health requires exact HTTP200 and valid databasePath (3390.610709ms)
+✔ public verify loads repository-root config from an unrelated cwd and preserves explicit overrides (582.727625ms)
+✔ public verify refuses a healthy service belonging to a different runtime (418.873542ms)
+✔ doctor before setup collects independent failures without writes or Corepack downloads (481.887667ms)
+✔ doctor on installed checkout passes seven checks read-only without opening Project data (4814.798291ms)
+✔ doctor reports healthy, unhealthy, malformed, stalled, oversized and redirected occupied services within a bound (9826.321125ms)
+✔ public commands validate flags and keep default failures free of diagnostic traces (1247.5755ms)
+✔ native binding failures stop start before DB or browser and remain diagnosable in doctor (1380.259625ms)
+✔ setup child diagnostics identify phase and redact credentials in normal and debug output (978.371542ms)
+✔ setup redacts credentials split across UTF-8 byte chunks on stdout and stderr (3028.426458ms)
+✔ doctor and start use process, root and nearest server env precedence from unrelated cwd (998.755ms)
+✔ server database startup failure is reported at the launcher boundary without a default stack (6638.883583ms)
+✔ bind race is reported through real server IPC with actionable cause and no browser (3277.929542ms)
+✔ direct server startup catches configuration, binding and native failures in normal and debug mode (13881.384333ms)
+✔ direct server flushes a large startup diagnostic to piped stderr before exiting (2939.683542ms)
+✔ doctor rejects an empty local Corepack entry while collecting seven checks without cache writes (472.02325ms)
+✔ doctor rejects missing CommonJS entries and imported ESM subpath targets with intact CommonJS counterparts (1909.989084ms)
+✔ start and doctor report malformed installed dependency metadata with the setup action (809.646792ms)
+✔ doctor rejects a directory web entry and start attempts its missing-build repair (686.25ms)
+✔ normal build failures include one redacted compiler cause without stack lines (639.77775ms)
+✔ doctor loads SQLite JavaScript but fails at the native constructor without Project writes (423.491625ms)
+✔ successful launch forwards redacted server stdout including an unterminated final line (704.07975ms)
+✔ doctor ignores a .env in the working directory when no checkout .env exists (413.0505ms)
+✔ successful normal launch suppresses confirmed server stderr diagnostics and stack lines (649.208916ms)
+✔ successful debug launch forwards redacted stderr across chunk boundaries and omits overlong lines (685.808583ms)
+✔ owned server launched from unrelated cwd uses root PORT before conflicting server-local PORT (3149.333417ms)
+✔ server reports a concrete writable-directory repair when SQLite cannot open the database (2946.849625ms)
+✔ direct server reports unreadable optional env without a Project database directory repair (869.745916ms)
+✔ redacts raw and serialized environment secrets with quotes and backslashes (0.785584ms)
+✔ redacts full multiline environment secrets and nonempty raw and serialized line fragments (0.177ms)
+✔ redacts URL userinfo and Basic or Bearer authorization tokens (0.059334ms)
+✔ redacts entire escaped quoted credential values without an environment match (0.611833ms)
+✔ port closure waits for a silent TCP listener to stop accepting connections (107.649709ms)
+✔ port closure propagates invalid connection origins (0.441541ms)
+✔ occupied default port starts an owned listener, publishes its port and cleans it at shutdown (6907.502875ms)
+✔ runtime publication refuses an existing file and shutdown preserves a replacement owner (54.868917ms)
+✔ owned launcher drains an actual agent HTTP call beyond two seconds before WAL and runtime cleanup (6378.590792ms)
+✔ bridge fails explicitly for missing discovery or a foreign service without creating a database (122.003167ms)
+✔ doctor discovery uses stable runtime identity after the active database directory changes (27.630208ms)
+✔ relative database startup and discovery resolve from the checkout when called elsewhere (4239.563416ms)
+ℹ tests 83
+ℹ suites 0
+ℹ pass 83
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 161652.565333
+Scope: 8 of 9 workspace projects
+packages/contracts test$ vitest run --passWithNoTests
+packages/contracts test:  RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/contracts
+packages/contracts test:  ✓ src/schemas/changeset-preview.test.ts (2 tests) 3ms
+packages/contracts test:  ✓ src/schemas/card-timestamps.test.ts (14 tests) 3ms
+packages/contracts test:  ✓ src/events/live-events.test.ts (2 tests) 4ms
+packages/contracts test:  ✓ src/schemas/audit.test.ts (2 tests) 4ms
+packages/contracts test:  ✓ src/schemas/provenance.test.ts (3 tests) 6ms
+packages/contracts test:  ✓ src/migration.test.ts (19 tests) 22ms
+packages/contracts test:  ✓ src/api/delivery-status.test.ts (12 tests) 3ms
+packages/contracts test:  ✓ src/release-slicing.test.ts (1 test) 4ms
+packages/contracts test:  ✓ src/external-refs.test.ts (2 tests) 4ms
+packages/contracts test:  ✓ src/base-version.test.ts (24 tests) 8ms
+packages/contracts test:  ✓ src/schemas/operation-schema-version.test.ts (1 test) 13ms
+packages/contracts test:  ✓ src/card-dependencies.test.ts (1 test) 21ms
+packages/contracts test:  ✓ src/card-key-prefix.test.ts (2 tests) 23ms
+packages/contracts test:  ❯ src/mcp/tool-inputs.test.ts (6 tests | 1 failed) 45ms
+packages/contracts test:    × MCP tool input contracts > shares the complete strict submission catalog and defaults application 16ms
+packages/contracts test:      → expected { …(6) } to deeply equal { …(7) }
+packages/contracts test:  ✓ src/schemas/change-operations.test.ts (61 tests) 70ms
+packages/contracts test: ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+packages/contracts test:  FAIL  src/mcp/tool-inputs.test.ts > MCP tool input contracts > shares the complete strict submission catalog and defaults application
+packages/contracts test: AssertionError: expected { …(6) } to deeply equal { …(7) }
+packages/contracts test: - Expected
+packages/contracts test: + Received
+packages/contracts test:   Object {
+packages/contracts test: -   "apply": true,
+packages/contracts test:     "context": Object {
+packages/contracts test:       "projectId": "00000000-0000-4000-8000-000000000001",
+packages/contracts test:     },
+packages/contracts test:     "operations": Array [
+packages/contracts test:       Object {
+packages/contracts test:         "after": Object {
+packages/contracts test:           "level": "story",
+packages/contracts test:           "storyMapId": "00000000-0000-4000-8000-000000000002",
+packages/contracts test:           "title": "Story",
+packages/contracts test:         },
+packages/contracts test:         "entity": "card",
+packages/contracts test:         "entityId": "local",
+packages/contracts test:         "op": "create",
+packages/contracts test:         "operationId": "create",
+packages/contracts test:         "rationale": "Rationale",
+packages/contracts test:         "reason": "Reason",
+packages/contracts test:         "sources": Array [
+packages/contracts test:           Object {
+packages/contracts test:             "kind": "note",
+packages/contracts test:             "note": "Evidence",
+packages/contracts test:           },
+packages/contracts test:         ],
+packages/contracts test:       },
+packages/contracts test:     ],
+packages/contracts test:     "projectId": "00000000-0000-4000-8000-000000000001",
+packages/contracts test:     "rationale": "Shared rationale",
+packages/contracts test:     "sources": Array [
+packages/contracts test:       Object {
+packages/contracts test:         "kind": "note",
+packages/contracts test:         "note": "Shared",
+packages/contracts test:       },
+packages/contracts test:     ],
+packages/contracts test:     "title": "Planning cut",
+packages/contracts test:   }
+packages/contracts test:  ❯ src/mcp/tool-inputs.test.ts:44:62
+packages/contracts test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+packages/contracts test:  Test Files  1 failed | 14 passed (15)
+packages/contracts test:       Tests  1 failed | 151 passed (152)
+packages/contracts test:    Start at  20:14:43
+packages/contracts test:    Duration  443ms (transform 340ms, setup 0ms, collect 2.35s, tests 233ms, environment 1ms, prepare 634ms)
+packages/contracts test: Failed
+[REDACTED_HOME]/Projects/StoryMapper/packages/contracts:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/contracts@0.1.0 test: `vitest run --passWithNoTests`
+Exit status 1
+ ELIFECYCLE  Test failed. See above for more details.

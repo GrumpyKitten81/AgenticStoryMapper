@@ -1,0 +1,146 @@
+{
+  "status": "independently-verified-after-review-repairs",
+  "source_diff_sha256": "635f51d2f796adc9b249162d024f4bc7d9fa745dc22836ac83c3bbed58edfbf7",
+  "ordinary_workspace_tests": 3159,
+  "root_script_tests": 104,
+  "serial_audit_tests": 14,
+  "serial_a11y_tests": 261,
+  "coverage_minimum_percent": 83.33,
+  "commands": [
+    "corepack pnpm install --frozen-lockfile",
+    "corepack pnpm check",
+    "node scripts/verify.mjs"
+  ],
+  "logs": [
+    {
+      "command": "corepack pnpm install --frozen-lockfile",
+      "file": "parent-accepted-install.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 571,
+      "raw_sha256": "b01bd75ad9ca5d5dbdfe324b9535c26fc1f4c554f34c19a3657e521684354e52"
+    },
+    {
+      "command": "corepack pnpm check",
+      "file": "parent-accepted-check.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 259308,
+      "raw_sha256": "1bf17713ac19cce9437c643dbf418703b452ab7a1294c26d170f50d54defc06b"
+    },
+    {
+      "command": "node scripts/verify.mjs",
+      "file": "parent-accepted-verify.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 5239,
+      "raw_sha256": "aa7e198437221591177e03586122149cc8be8fb85057b30bb011a2030e9d9803"
+    }
+  ],
+  "matrix": "parent-matrix-audit.json",
+  "css": "parent-css-parity.json",
+  "test_inventory": "parent-test-inventory.json",
+  "pre_review_source_diff_sha256": "718b51001ede6238dc4f7afa0888edfb170c750e9f052f0641d6fb614c233d1e",
+  "final_candidate_attempts": [
+    "post-review-install-and-first-attempt.json",
+    "parent-post-review-cleanup-failure.json"
+  ],
+  "pre_review_logs": [
+    {
+      "file": "parent-install.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 571,
+      "raw_sha256": "6354838d910635fcf06e932abc68b58c386d9b3008f60da2fa46f10da28d2692"
+    },
+    {
+      "file": "parent-check-final.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 256819,
+      "raw_sha256": "603a3d689d2a9ad760dd8c081255a2ffa27261608a550ad1e004321822e94f03"
+    },
+    {
+      "file": "parent-verify.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 5239,
+      "raw_sha256": "cad2649596ea36eb0ec4ea38de021467968353075c1f62d977accd1048f9719e"
+    }
+  ],
+  "coverage": [
+    {
+      "workspace": "packages/contracts",
+      "covered": 496,
+      "lines": 543,
+      "percent": 91.34,
+      "instrumented_files": 40,
+      "summary_sha256": "5fd0bad32f934746a3aed61b2120cf6615f8145905220b7692c984c982453567"
+    },
+    {
+      "workspace": "packages/importers",
+      "covered": 39,
+      "lines": 39,
+      "percent": 100.0,
+      "instrumented_files": 3,
+      "summary_sha256": "225359c0007938b6426c7b5bf96e98563d34f06287dad2e0622d0b5394bf1d2f"
+    },
+    {
+      "workspace": "packages/github",
+      "covered": 176,
+      "lines": 193,
+      "percent": 91.19,
+      "instrumented_files": 12,
+      "summary_sha256": "677462387e947192bcc0cbaefc0c7d9eb0a52536d047c6228b385403239bf037"
+    },
+    {
+      "workspace": "packages/core",
+      "covered": 2228,
+      "lines": 2392,
+      "percent": 93.14,
+      "instrumented_files": 59,
+      "summary_sha256": "447c4c46bbd1ec8968fbdd9c2d89707a8fdb44fb57257c0ced844b0947a2f1c0"
+    },
+    {
+      "workspace": "packages/db",
+      "covered": 3199,
+      "lines": 3414,
+      "percent": 93.7,
+      "instrumented_files": 61,
+      "summary_sha256": "c17a144fb964e3fe282c8f32052f53323fc1301519bfb10fa27505e77248c70a"
+    },
+    {
+      "workspace": "packages/mcp",
+      "covered": 30,
+      "lines": 36,
+      "percent": 83.33,
+      "instrumented_files": 6,
+      "summary_sha256": "55cb88d3dc99e02ef7dcc428219cc31f7a8266cde94d63021c1c0ba8653b64c3"
+    },
+    {
+      "workspace": "apps/web",
+      "covered": 4831,
+      "lines": 5502,
+      "percent": 87.8,
+      "instrumented_files": 189,
+      "summary_sha256": "71f3bac18db5e1896d72a1ecac6bdb392888c649fa4a75dd721c63f332628e0b"
+    },
+    {
+      "workspace": "apps/server",
+      "covered": 3671,
+      "lines": 3869,
+      "percent": 94.88,
+      "instrumented_files": 110,
+      "summary_sha256": "cf3bf381d7836b8a08f492541bdcfb6a4811a199b15297951e8b8e152d829495"
+    }
+  ],
+  "review": "review-pass-1.json",
+  "protected": "protected-final.json",
+  "final_source_unchanged_after_verification": true,
+  "post_staging_checks": [
+    {
+      "command": "node scripts/check-hygiene.mjs",
+      "exit_code": 0,
+      "scope": "all final staged source/evidence/handoff inputs"
+    },
+    {
+      "command": "git diff --check HEAD",
+      "exit_code": 0
+    }
+  ],
+  "finalization": "All reviewed work staged; no commit/push; sprint worktree/index and migration bytes unchanged. Expected staged dirt is authorized orchestrator finalization."
+}

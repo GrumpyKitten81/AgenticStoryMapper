@@ -1,0 +1,14 @@
+
+> @storymapper/db@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/packages/db
+> vitest run --passWithNoTests "release-summary-persistence.test.ts" "release-report-data.test.ts"
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/release-summary-persistence.test.ts (1 test) 36ms
+ ✓ src/repositories/release-report-data.test.ts (2 tests) 53ms
+
+ Test Files  2 passed (2)
+      Tests  3 passed (3)
+   Start at  21:03:33
+   Duration  873ms (transform 335ms, setup 0ms, collect 1.26s, tests 90ms, environment 0ms, prepare 57ms)

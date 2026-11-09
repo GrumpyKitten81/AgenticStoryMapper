@@ -1,0 +1,36 @@
+The diff implements a bounded local rehearsal with iterative repairs. It provides narrower evidence for the stronger reading that a fresh Agent successfully follows the final checked-in walkthrough.
+
+**1. Defensible readings of the intent**
+
+1. **Documentation plus a bounded demonstration.** Explain the contributor workflow, repair conflicting guidance, and demonstrate one real documentation correction through independent review, meaningful checks and local PR preparation. Failures and subsequent repairs remain part of the evidence.
+2. **Reproduction of the final instructions.** “Follow the walkthrough” can mean that a fresh isolated Agent completes the final published sequence using its stated prerequisites, rather than completing an earlier version and supplying discoveries that inform later instructions.
+3. **General contributor orientation.** The walkthrough explains the broader engineering lifecycle—preparation, detail plans, runnable specs, sequential implementation and delivery—while the expressly bounded documentation exercise demonstrates only a small part of that lifecycle.
+4. **Auditable execution within constraints.** Success depends on actual execution, preserved provenance, protected bookkeeping and a fresh publication report for the final candidate. Documentation and status assertions alone do not establish those facts.
+
+An actual commit, remote PR, outside-human trial or hosted release is **not** a defensible completion requirement here: the contract explicitly limits delivery to local preparation and requires those distinctions.
+
+**2. Which reading this diff implements**
+
+It principally implements reading 1 and the explanatory portion of reading 3, with substantial records supporting reading 4:
+
+- Adds the English walkthrough and discovery links.
+- Repairs the stale release deferral, conflicting isolation guidance and treatment of `done` rows as delivery evidence.
+- Records a real README correction, independent Agent review, required OpenWolf updates, failed attempts, passing local checks and prepared PR artifacts.
+- Preserves publication blockers and distinguishes configured automation from hosted execution.
+- Adds a later runtime-test isolation repair and a root audit-performance script alias.
+
+Reading 2 remains qualified. The final walkthrough is **v5**. The fresh participant followed **v3**, encountered failures, then successfully replayed the correction with the same author and a shorter temporary parent. The evidence explicitly disclaims byte-identical v4 execution; v5 subsequently adds the dedicated-shell instruction. See the [final guide]([REVIEW_DIFF]:3962) and [rehearsal account]([REVIEW_DIFF]:3260).
+
+**3. Where expectations and exercised surfaces diverge**
+
+| Intent’s expectation surface | Diff’s changes and recorded checks |
+|---|---|
+| **Successful reproduction of the final walkthrough** | The fresh v3 attempt exposed an environment problem; successful completion came through a same-author retry. Parent aggregates validate repository checks, rather than a fresh participant’s execution of final v5 instructions. This is an explicit version boundary in the evidence. |
+| **A reproducible contributor entry path** | The executable demonstration is a POSIX recipe pinned to one historical revision, with five current draft overlays and one known stale README sentence. Recorded installation uses a populated package store on Darwin arm64. This establishes a specific fixture and environment, rather than general fresh-environment onboarding. |
+| **Preparation, detail-plan, runnable-spec and sequential-story practice** | These distinctions, including upgrade checks and the authorized story-commit rule, are explained. The participant exercises a bounded local plan and README correction. It does not execute a substantial runnable spec, dependency-upgrade sequence or loop operation. That narrower demonstration is consistent with the contract’s bounded exercise and operational prohibitions. |
+| **Independent review of delivered work** | The fresh participant obtains a separate non-author review of its README and OpenWolf changes. The environment follow-up reuses that reviewer with disclosure. Those reviews concern the participant correction; they do not establish independent review of every later walkthrough or test-infrastructure change. |
+| **Meaningful final verification** | The recorded aggregates exercise application regression suites, coverage, accessibility, build and typechecking. The later code change redirects runtime fixtures’ temporary directories; the package change exposes an existing audit command at the root. These address verification reliability and invocation, rather than contributor comprehension or walkthrough usability. See the [fixture change]([REVIEW_DIFF]:3948) and [repair verification]([REVIEW_DIFF]:4381). |
+| **Publication freshness after all final material/index writes** | The diff updates `publication-audit.json` and retains unresolved findings. Its explicit scan/check record is labelled intermediate; other text describes final rescanning or asserts it occurred. The later repair-verification record contains tests, aggregate and verifier results, without a corresponding publication recomputation result. The patch therefore shows audit content and freshness requirements, but does not independently establish their final execution order. |
+| **Historical provenance and constraint compliance** | Full revisions, transformation hashes and endpoint comparisons are recorded, and neither protected ledger appears as a changed file. These corroborate candidate identity and unchanged endpoints. They do not independently prove every historical action or absence of transient writes. Several original-stream and reconstructed-artifact limitations are expressly retained. |
+
+The supplied unified diff represents gzip artifacts as binary-file changes. Consequently, its textual records support the distinctions above, but the patch itself does not expose those payloads for independent log or hash validation.

@@ -1,0 +1,61 @@
+[
+  {
+    "command": [
+      "python3",
+      "_bmad-output/implementation-artifacts/evidence/story-8-6/helper-probes.py"
+    ],
+    "exitCode": 0,
+    "seconds": 0.27,
+    "log": "parent-final-probes.log",
+    "logSha256": "286ac8383e6946803cbe18024f7cc783ca0c6e78c40064d661053a1f0582b6d1"
+  },
+  {
+    "command": [
+      "python3",
+      "_bmad-output/implementation-artifacts/evidence/story-8-6/check_links.py",
+      "--output",
+      "_bmad-output/implementation-artifacts/evidence/story-8-6/links-parent-final.json"
+    ],
+    "exitCode": 0,
+    "seconds": 0.142,
+    "log": "parent-final-links.log",
+    "logSha256": "41ce13f0cbe4e68858c8d6b9560f2881c8d8353634f56fd01d617d93a1a4da76"
+  },
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "check-hygiene"
+    ],
+    "exitCode": 0,
+    "seconds": 0.881,
+    "log": "parent-final-hygiene.log",
+    "logSha256": "0e1b28ac14af0a52981161a653c9283b57ad593c5aad2665656859d7a1803473",
+    "capturedLogSha256": "6428c86dde7e29304c302c81811b993e415986552dc37109be0ac4eba205938a",
+    "normalization": "parent-log-normalization.json"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/verify.mjs",
+      "--skip-typecheck",
+      "--skip-build"
+    ],
+    "exitCode": 0,
+    "seconds": 21.814,
+    "log": "parent-final-quick-verify.log",
+    "logSha256": "a969f9d741c02cb292f47a1bfb8dee6845c3a1c041aaa84b20a298f17c120ca1"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "HEAD"
+    ],
+    "exitCode": 2,
+    "seconds": 0.018,
+    "log": "parent-final-whitespace.log",
+    "logSha256": "5b7cd2158134781813f4f008a6fb8eb34d5e40ac40be7163818000dd819e2217"
+  }
+]

@@ -1,0 +1,12 @@
+fetch('/resource');
+globalThis.fetch('/resource');
+window['fetch']('/resource');
+new WebSocket('ws://localhost');
+new globalThis['XMLHttpRequest']();
+Math['random']();
+globalThis.crypto.randomUUID();
+globalThis['crypto']['getRandomValues'](bytes);
+Date.parse('2026-01-01');
+new globalThis.Date(0);
+globalThis['Date']['UTC'](2026, 0);
+navigator.sendBeacon('/resource');

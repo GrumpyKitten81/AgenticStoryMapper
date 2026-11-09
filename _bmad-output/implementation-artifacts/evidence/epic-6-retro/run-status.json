@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "run_id": "20261017-113843-6eaa",
+  "run_type": "story",
+  "source": "sprint-status",
+  "started_at": "2026-10-17T11:38:43",
+  "status": "finished",
+  "finished": true,
+  "stopped": false,
+  "graceful_stop_pending": false,
+  "crashed": false,
+  "crash_error": null,
+  "paused_stage": null,
+  "paused_reason": null,
+  "paused_story_key": null,
+  "cache_read_weight": 0.1,
+  "tokens": {
+    "raw": 430362028,
+    "weighted": 49689684
+  },
+  "adapters": {
+    "dev": {
+      "name": "codex",
+      "model": "gpt-6.1-sol"
+    },
+    "review": {
+      "name": "claude",
+      "model": "claude-sonnet-5-5"
+    },
+    "triage": {
+      "name": "opencode",
+      "model": ""
+    },
+    "retro": {
+      "name": "opencode",
+      "model": ""
+    }
+  },
+  "sweeps_refused": {},
+  "tasks": [
+    {
+      "story_key": "6-1-every-function-reachable-and-addressable",
+      "epic": 6,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 324832,
+        "output_tokens": 63378,
+        "cache_read_tokens": 25005624,
+        "cache_creation_tokens": 155179,
+        "raw": 25549013,
+        "weighted": 3043951
+      },
+      "commit_sha": "8ff1a4ef433c8ba8e4bdb7062136994080d594d4",
+      "defer_reason": null,
+      "preserve_ref": "refs/attempt-preserve-dirty/20261017-113843-6eaa-18657423-0",
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "6-2-create-and-edit-cards",
+      "epic": 6,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 2,
+      "tokens": {
+        "input_tokens": 261699,
+        "output_tokens": 179877,
+        "cache_read_tokens": 37338654,
+        "cache_creation_tokens": 498521,
+        "raw": 38278751,
+        "weighted": 4673962
+      },
+      "commit_sha": "55e01be31c9eb0852ef04ac2f6313bce0650e89e",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "6-3-move-cards-by-mouse-keyboard-or-form",
+      "epic": 6,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 306075,
+        "output_tokens": 189152,
+        "cache_read_tokens": 59844489,
+        "cache_creation_tokens": 423906,
+        "raw": 60763622,
+        "weighted": 6903582
+      },
+      "commit_sha": "fc83dba806dcde4fed9b8552a7f939ba20060774",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "6-4-search-filter-and-bulk-actions",
+      "epic": 6,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 453604,
+        "output_tokens": 139516,
+        "cache_read_tokens": 36924879,
+        "cache_creation_tokens": 301898,
+        "raw": 37819897,
+        "weighted": 4587506
+      },
+      "commit_sha": "4f2988d95c6565677919bca4ad5d96690fd00c6e",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "6-5-collapse-card-keys-and-notes",
+      "epic": 6,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 257958,
+        "output_tokens": 77726,
+        "cache_read_tokens": 24837792,
+        "cache_creation_tokens": 158034,
+        "raw": 25331510,
+        "weighted": 2977497
+      },
+      "commit_sha": "e2c704cc75807a5ea414d5e5afdaf81b05506862",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "6-6-the-five-core-views",
+      "epic": 6,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 282608,
+        "output_tokens": 95726,
+        "cache_read_tokens": 34632265,
+        "cache_creation_tokens": 203524,
+        "raw": 35214123,
+        "weighted": 4045084
+      },
+      "commit_sha": "905cdd53b5e48e338b1206768ddc1d9490306225",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "6-7-card-detail-as-a-deep-linkable-modal",
+      "epic": 6,
+      "phase": "done",
+      "attempt": 2,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 515528,
+        "output_tokens": 119984,
+        "cache_read_tokens": 45733393,
+        "cache_creation_tokens": 227524,
+        "raw": 46596429,
+        "weighted": 5436375
+      },
+      "commit_sha": "aa1803874792439ba0a2cd3d9dd644c96dff174e",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "6-8-manage-personas-annotations-statuses-and-templates",
+      "epic": 6,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 314878,
+        "output_tokens": 152199,
+        "cache_read_tokens": 54800787,
+        "cache_creation_tokens": 291739,
+        "raw": 55559603,
+        "weighted": 6238895
+      },
+      "commit_sha": "a2f001ed1e1c13464b0519c0006d41cdb9e4557d",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "6-9-manage-releases-and-read-their-summary",
+      "epic": 6,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 314489,
+        "output_tokens": 105653,
+        "cache_read_tokens": 47046524,
+        "cache_creation_tokens": 209592,
+        "raw": 47676258,
+        "weighted": 5334386
+      },
+      "commit_sha": "b1ecc9d910e3cc52a5b2f8285a615bb830408d09",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "6-10-performance-and-accessibility-budgets",
+      "epic": 6,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 420765,
+        "output_tokens": 121113,
+        "cache_read_tokens": 56804862,
+        "cache_creation_tokens": 226082,
+        "raw": 57572822,
+        "weighted": 6448446
+      },
+      "commit_sha": "0ab788ae126be12acd48cbf0f546dbcca39cd692",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

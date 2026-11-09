@@ -1,0 +1,6 @@
+{
+  "surface": "actual server stop/restart, SQLite reopen, TCP HTTP create",
+  "deletedHighestKey": "NATIVE-8",
+  "newKey": "NATIVE-9",
+  "result": "passed"
+}

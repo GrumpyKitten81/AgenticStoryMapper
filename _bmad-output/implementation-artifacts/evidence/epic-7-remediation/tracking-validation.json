@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "developmentChanges": {
+    "epic-7": [
+      "backlog",
+      "done"
+    ]
+  },
+  "actionChanges": [
+    {
+      "id": "epic-7-retro-a1",
+      "before": "open",
+      "after": "done"
+    },
+    {
+      "id": "epic-7-retro-a2",
+      "before": "open",
+      "after": "done"
+    },
+    {
+      "id": "epic-7-retro-a3",
+      "before": "open",
+      "after": "done"
+    },
+    {
+      "id": "epic-7-retro-a4",
+      "before": "open",
+      "after": "done"
+    }
+  ],
+  "allOtherActionsAndStoriesUnchanged": true,
+  "retrospective": "done",
+  "verdict": "accepted-with-open-items",
+  "lastUpdated": "10-19-2026 20:34"
+}

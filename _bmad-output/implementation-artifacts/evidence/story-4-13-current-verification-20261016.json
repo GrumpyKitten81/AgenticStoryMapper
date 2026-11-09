@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-16",
+  "revision": "6171c8298ae15eb21540ddcbc508e071df9ed5f9",
+  "boundary": "Current HTTP/SDK and hygiene verification supplements historical actual-browser acceptance; no fresh browser run.",
+  "commands": [
+    {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/server exec vitest run src/mcp/tools/bmad-round-trip.test.ts",
+      "exitCode": 0,
+      "testsPassed": 14,
+      "durationSeconds": 30.93
+    },
+    {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH node scripts/verify.mjs --skip-typecheck --skip-build",
+      "exitCode": 0,
+      "capabilities": 129,
+      "scope": "Git/source hygiene and manifest; typecheck/build deliberately omitted for bookkeeping-only repair."
+    }
+  ],
+  "logs": {
+    "roundTrip": "\n RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server\n\n \u2713 src/mcp/tools/bmad-round-trip.test.ts (14 tests) 29710ms\n   \u2713 publishes 6/34 on http, previews protection and human API apply with equivalent durable hierarchy/evidence/audit 2878ms\n   \u2713 publishes 6/34 on sdk, previews protection and human API apply with equivalent durable hierarchy/evidence/audit 2692ms\n   \u2713 refreshes two edits/remove/add on http with reviewed archive, immutable source history and repeat no-op 3886ms\n   \u2713 refreshes two edits/remove/add on sdk with reviewed archive, immutable source history and repeat no-op 3821ms\n   \u2713 updates evidence-only baselines on http and preserves manual evidence and other maps/systems 2647ms\n   \u2713 updates evidence-only baselines on sdk and preserves manual evidence and other maps/systems 2620ms\n   \u2713 uses exact scoped identities on http for duplicate titles and same-title renumbering 1554ms\n   \u2713 uses exact scoped identities on sdk for duplicate titles and same-title renumbering 1567ms\n   \u2713 reports every changed/unchanged/removed human baseline on http before proposal/source/snapshot writes 1081ms\n   \u2713 reports every changed/unchanged/removed human baseline on sdk before proposal/source/snapshot writes 1083ms\n   \u2713 reviews explicit slicing and configured delivery on http with notes and Activity reads 1615ms\n   \u2713 reviews explicit slicing and configured delivery on sdk with notes and Activity reads 1624ms\n   \u2713 refuses delayed human drift after actual proposal and approval on http atomically 1317ms\n   \u2713 refuses delayed human drift after actual proposal and approval on sdk atomically 1326ms\n\n Test Files  1 passed (1)\n      Tests  14 passed (14)\n   Start at  22:36:04\n   Duration  30.93s (transform 503ms, setup 0ms, collect 1.01s, tests 29.71s, environment 0ms, prepare 52ms)\n\n",
+    "quickVerify": "\n> storymapper@0.1.0 check-hygiene [REDACTED_HOME]/Projects/StoryMapper\n> node scripts/check-hygiene.mjs\n\n\n> storymapper@0.1.0 check-capabilities [REDACTED_HOME]/Projects/StoryMapper\n> node scripts/check-capabilities.mjs\n\nCapability manifest check passed (129 capabilities).\nVerification completed.\n"
+  },
+  "historicalApplicationBaseline": "e6747d56ff1e55316c76470bdaa15ef4a33659eb",
+  "historicalBrowserCompletion": "98a92fc5d32177e370ca1503b27665386ad83cec"
+}

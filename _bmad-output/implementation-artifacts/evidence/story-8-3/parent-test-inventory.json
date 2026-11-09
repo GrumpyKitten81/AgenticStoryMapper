@@ -1,0 +1,128 @@
+{
+  "before_expect_calls": 10908,
+  "after_expect_calls": 10927,
+  "removed": [
+    {
+      "name": "it:keeps database imports inside db and extracted source modules within size limits",
+      "removed": 1
+    },
+    {
+      "name": "test:rejects every umlaut and sharp s with correct locations",
+      "removed": 1
+    },
+    {
+      "name": "test:normalizes decomposed umlauts without changing line diagnostics",
+      "removed": 1
+    },
+    {
+      "name": "test:matches complete case-insensitive German words without substring failures",
+      "removed": 1
+    },
+    {
+      "name": "test:scans every required source and reports relative paths while ignoring authoring documents",
+      "removed": 1
+    }
+  ],
+  "added": [
+    {
+      "name": "describe:MCP permission and execution boundaries",
+      "added": 1
+    },
+    {
+      "name": "it:permits read/proposal tools and refuses approval/write/provider/admin tools by default",
+      "added": 1
+    },
+    {
+      "name": "it:audits validation failures, unavailable names and forbidden restore without invoking a handler",
+      "added": 1
+    },
+    {
+      "name": "it:preserves atomic audit metadata, parsed scope recording and handler results",
+      "added": 1
+    },
+    {
+      "name": "it:serializes tool results and converts domain errors into structured MCP error content",
+      "added": 1
+    },
+    {
+      "name": "it:constructs the actual public server with all tool registrations and optional prompt handlers",
+      "added": 1
+    },
+    {
+      "name": "test:normalizes German tokens and preserves precise CRLF diagnostics",
+      "added": 1
+    },
+    {
+      "name": "test:reports secret categories and locations without returning matched content",
+      "added": 1
+    },
+    {
+      "name": "test:rejects tracked user data paths and keeps the explicit safe examples",
+      "added": 1
+    },
+    {
+      "name": "test:scans tracked inputs only, fails unreadable tracked paths and propagates safe CLI failure",
+      "added": 1
+    },
+    {
+      "name": "test:detects supported ASCII secrets in NUL-containing tracked binary bytes without echoing them",
+      "added": 1
+    },
+    {
+      "name": "test:checks physical line and UTF-8 byte limits at the exact boundary",
+      "added": 1
+    },
+    {
+      "name": "test:parses nested arrows, methods and component functions with exact starting locations",
+      "added": 1
+    },
+    {
+      "name": "test:finds static, re-export, import-equals, require, dynamic and type imports",
+      "added": 1
+    },
+    {
+      "name": "test:rejects dependency, layer, core, DB-only, alias escape and cross-feature violations",
+      "added": 1
+    },
+    {
+      "name": "test:fails missing, stale, malformed, empty, below-floor and absent JS source reports per workspace",
+      "added": 1
+    },
+    {
+      "name": "test:evaluates explicit compatible compound license options without accepting unknown standalone terms",
+      "added": 1
+    },
+    {
+      "name": "test:checks installed resolved license metadata and refuses missing or mismatched evidence",
+      "added": 1
+    },
+    {
+      "name": "test:CLI fails on missing tools and child errors before a later success can mask them",
+      "added": 1
+    },
+    {
+      "name": "test:SIGINT fails the CLI and drains owned descendants",
+      "added": 1
+    },
+    {
+      "name": "test:SIGTERM fails the CLI and drains owned descendants",
+      "added": 1
+    },
+    {
+      "name": "test:the actual aggregate CLI propagates a boundary failure before coverage and build",
+      "added": 1
+    },
+    {
+      "name": "test:validates declared exported workspace subpaths and exact pure-core operations",
+      "added": 1
+    },
+    {
+      "name": "test:enforces DB-only imports in root scripts and resolves absolute workspace source escapes",
+      "added": 1
+    },
+    {
+      "name": "test:refuses a workspace missing an explicit architecture and coverage classification",
+      "added": 1
+    }
+  ]
+}

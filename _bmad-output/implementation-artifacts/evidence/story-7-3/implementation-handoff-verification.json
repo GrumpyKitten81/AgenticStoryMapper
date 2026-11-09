@@ -1,0 +1,86 @@
+{
+  "recorded_at": "2026-10-19T00:05:23.067113+00:00",
+  "story": "7-3-github-identity-in-external-references",
+  "status": "implementation-complete-parent-independent-gates-pending",
+  "final_focused_runs": [
+    {
+      "file": "identity-core-goldens-final.log",
+      "command": "corepack pnpm --filter @storymapper/core exec vitest run src/changesets/operation-resolution.test.ts",
+      "passed": 70,
+      "failed": 0
+    },
+    {
+      "file": "identity-boardimport.log",
+      "command": "corepack pnpm --filter @storymapper/db exec vitest run src/board-import-resolution.test.ts",
+      "passed": 5,
+      "failed": 0
+    },
+    {
+      "file": "identity-import-sdk.log",
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/application/sync/github-command-regressions.test.ts src/mcp/github-command-sdk.test.ts",
+      "passed": 21,
+      "failed": 0,
+      "superseded_sdk": "operations-sdk-security-final.log adds4boundarytests"
+    },
+    {
+      "file": "identity-tool-proposals-final3.log",
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/http/routes/tool-proposals.test.ts",
+      "passed": 22,
+      "failed": 0
+    },
+    {
+      "file": "identity-launchers-focus.log",
+      "command": "node --test --test-name-pattern='setup performs a real frozen install|start serves actual app' scripts/commands.test.mjs",
+      "passed": 2,
+      "failed": 0
+    },
+    {
+      "file": "identity-capabilities-test.log",
+      "command": "node --test scripts/capability-scan.test.mjs",
+      "passed": 12,
+      "failed": 0
+    },
+    {
+      "file": "identity-capabilities-final.log",
+      "command": "node scripts/check-capabilities.mjs",
+      "status": "pass-133-capabilities"
+    },
+    {
+      "file": "identity-server-security-typecheck.log",
+      "command": "corepack pnpm --filter @storymapper/server typecheck",
+      "status": "pass"
+    }
+  ],
+  "other_exact_matrix_files": [
+    "storage-verification-matrix.json",
+    "operations-verification-matrix.json"
+  ],
+  "retained_initial_failures": [
+    {
+      "file": "identity-workspace.log",
+      "command": "corepack pnpm test",
+      "status": "failed-before-current-fixture-ports",
+      "cause": "old capability operation names; checkout fixture omitted untracked new source modules. New modules staged and actual setup/start2pass."
+    },
+    {
+      "file": "identity-packages.log",
+      "command": "corepack pnpm -r test",
+      "status": "failed-before-core-golden-port",
+      "cause": "two pure golden snapshots seeded only old derived identity, fixed and focused70goldens pass."
+    },
+    {
+      "files": [
+        "identity-tool-proposals-final.log",
+        "identity-tool-proposals-final2.log"
+      ],
+      "status": "superseded-by-final3-22pass",
+      "cause": "copy inventory identity collection renamed; old tests seeded forbidden twoIssue/Card bindings; now assert early canonical binding conflict and retain actual Python duplicate-removal atomicity."
+    }
+  ],
+  "limitations": [
+    "No complete root test or release verify has passed at final source state yet; parent owns fresh independent gates.",
+    "No live GitHub, real credentials, user database or native browser/screen-reader acceptance exercised.",
+    "Focused suite counts overlap; do not sum them as unique total."
+  ],
+  "staging": "Only11newproduct/testfiles staged to admit git-ls-files checkout fixtures. Existing modifications/spec/evidence remain for parent diff staging; sprint/deferred/orchestrator untouched."
+}

@@ -1,0 +1,35 @@
+{
+  "rows": {
+    "Actual tree": [
+      "All local quality gates completed.",
+      "3159 ordinary workspace tests;104 root scripts;14 serial audits;261 serial accessibility checks"
+    ],
+    "Boundaries": [
+      "quality-gates.test.mjs: source syntax/layer/workspace/feature/root scripts/subpaths/unknown workspace",
+      "Final actual CLI plus exact direct/computed/qualified global effects, unresolved dependency, root/test usage, node:sqlite and null/absent exports regressions passed."
+    ],
+    "Size": [
+      "quality-gates.test.mjs: exact physical byte/line spans and nested/method/component syntax"
+    ],
+    "Classification": [
+      "packages/db/src/snapshot.test.ts:49;6/6snapshot tests passed in43/43DBfiles"
+    ],
+    "Coverage": [
+      "quality-gates.test.mjs: missing/stale/malformed/empty/below-floor/absent-JS plus eight actual floor reports",
+      "Own executable-zero and foreign source inflation regressions; actual final-workspace CLI failure after all8visits; final eight full coverage reports passed."
+    ],
+    "Hygiene": [
+      "check-hygiene.test.mjs: normalization/category/path/unreadable/scanner/NUL-buffer fixtures",
+      "Expanded gzip supported-signature and malformed-archive safe CLI failures passed."
+    ],
+    "Licenses": [
+      "quality-gates.test.mjs: compound/malformed/unknown/missing/mismatch resolved metadata",
+      "Actual license CLI failed incompatible offline installed local GPL tarball with package/version diagnostic."
+    ],
+    "Child failure": [
+      "quality-gates.test.mjs: missing tool/nonzero child/SIGINT/SIGTERM descendants/actual aggregate refusal"
+    ]
+  },
+  "result": "all eight matrix rows covered by final accepted command; failures/probes retained separately",
+  "log": "parent-accepted-check.log.gz"
+}

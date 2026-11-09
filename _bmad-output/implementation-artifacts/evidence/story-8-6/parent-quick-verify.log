@@ -1,0 +1,33 @@
+
+> storymapper@0.1.0 check-hygiene <home>/Projects/StoryMapper
+> node scripts/check-hygiene.mjs
+
+
+> storymapper@0.1.0 check-size <home>/Projects/StoryMapper
+> node scripts/check-size.mjs
+
+
+> storymapper@0.1.0 check-capabilities <home>/Projects/StoryMapper
+> node scripts/check-capabilities.mjs
+
+Capability manifest check passed (138 capabilities).
+
+> @storymapper/web@0.1.0 test:a11y <home>/Projects/StoryMapper/apps/web
+> vitest run --exclude "**/dist/**" src/features/customization/CustomizationEditor.test.tsx src/features/releases/ReleaseEditor.test.tsx src/features/personas/PersonaDetail.test.ts src/features/story-map/board-accessibility.test.tsx src/styles/contrast-tokens.test.ts src/features/story-map/components/discovery-navigation.test.tsx src/features/story-map/views/SlicesView.test.tsx src/features/story-map/components/card-detail.test.ts src/features/story-map/components/card-detail-navigation.test.ts src/app/routes/workspace-navigation.test.tsx src/components/Dialog.test.ts src/app/live/live-updates.test.tsx src/features/changesets/review-focus.test.tsx src/features/changesets/review.test.tsx src/features/changesets/selection-race.test.tsx src/features/changesets/review-outcomes.test.tsx src/features/story-map/views/GraphView.test.tsx src/features/changesets/shell.test.tsx --maxWorkers=1
+
+
+ RUN  v4.1.12 <home>/Projects/StoryMapper/apps/web
+
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+ Test Files  18 passed (18)
+      Tests  261 passed (261)
+   Start at  07:35:50
+   Duration  19.38s (transform 707ms, setup 0ms, import 4.10s, tests 11.40s, environment 2.80s)
+
+Verification completed.

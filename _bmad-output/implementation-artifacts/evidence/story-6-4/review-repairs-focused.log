@@ -1,0 +1,12 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/ui-strings/ui-strings.test.ts (8 tests) 178ms
+ ✓ src/features/story-map/components/lifecycle.test.tsx (44 tests) 1579ms
+ ✓ src/features/story-map/board-filter-selection.test.tsx (18 tests) 3956ms
+   ✓ records complete Discovery DOM input-to-result diagnostics on a legal 1,000-Card hierarchy 3521ms
+
+ Test Files  3 passed (3)
+      Tests  70 passed (70)
+   Start at  16:26:51
+   Duration  4.94s (transform 680ms, setup 0ms, collect 1.87s, tests 5.71s, environment 399ms, prepare 89ms)

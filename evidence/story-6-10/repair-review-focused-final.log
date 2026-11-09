@@ -1,0 +1,14 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/changesets/shell.test.tsx (11 tests) 1106ms
+   ✓ invalidates review immediately through real transaction stream while suspending and restoring the held dirty Card editor 305ms
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 79ms
+ ✓ src/features/changesets/review-focus.test.tsx (1 test) 112ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 61ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 27ms
+
+ Test Files  5 passed (5)
+      Tests  27 passed (27)
+   Start at  22:19:44
+   Duration  3.97s (transform 563ms, setup 0ms, collect 1.28s, tests 1.38s, environment 820ms, prepare 109ms)

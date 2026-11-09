@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/application/changeset/source-permission-conflicts.test.ts (5 tests) 197ms
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  10:46:13
+   Duration  993ms (transform 329ms, setup 0ms, collect 615ms, tests 197ms, environment 0ms, prepare 33ms)
+

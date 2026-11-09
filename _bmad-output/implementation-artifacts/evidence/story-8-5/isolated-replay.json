@@ -1,0 +1,20 @@
+{
+  "command": "Isolated checkout replay of retained validate.rb with legitimate working-tree-only bookkeeping drift",
+  "exit_code": 0,
+  "result": "pass",
+  "protected_sprint": {
+    "worktree": {
+      "sha256": "6bc022934c2515eb02fdd918efc8d3c355bbb73ad8d9f4a637f831ec107dca9b",
+      "entry_sha256": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+      "matches_entry": false
+    },
+    "index": {
+      "sha256": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+      "entry_sha256": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+      "matches_entry": true
+    }
+  },
+  "no_session_tmp_input": true,
+  "actual_repository_sprint_untouched": true,
+  "method": "Copy only checked surfaces/local link targets and retained helper/baseline into a temporary Git repository; add the existing sprint bytes to its index and append one newline only to its copied working file. Replay and require success plus distinct equality results. Delete disposable checkout afterward."
+}

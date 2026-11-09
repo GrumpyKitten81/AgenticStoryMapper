@@ -1,0 +1,236 @@
+{
+  "pass": 2,
+  "date": "2026-10-19",
+  "reviewed_diff": "/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/story7-5-review-pass2-hvx4ql53.diff",
+  "source_fingerprint": "b47a04e5ac450ed32fab200f8bf7e306201d0c98a27ca0475ceea65e88462729",
+  "review_protocol": {
+    "valid_layers": [
+      "blind",
+      "edge",
+      "intent",
+      "verification-gap"
+    ],
+    "report_order": [
+      "blind",
+      "edge",
+      "intent",
+      "verification-gap"
+    ],
+    "thread_limit_adaptation": "Four layers queued in the same root turn; classification waited for every valid report.",
+    "discarded_attempt": "review2_gaps was interrupted after reading the edge-only claims file. A context-free verification-gap reviewer restarted without that narrative; its final report alone is counted."
+  },
+  "findings": [
+    {
+      "id": "B1",
+      "verdict": "false",
+      "route": "reject",
+      "group": null,
+      "summary": "Prototype database transition",
+      "evidence": "carried: pass1 B1/E1/V3; AD-9 and frozen intent exclude prototype schema migrations. The current-schema reopen/Restore behavior is verified."
+    },
+    {
+      "id": "B2",
+      "verdict": "high",
+      "route": "patch",
+      "group": "field-observation",
+      "summary": "Single-field resolution consumes unrelated remote changes",
+      "evidence": "github-conflict-command masks unrelated fields local-only, but remoteBaseline replaced all observedRemote values. Retain excluded field observations; verify a subsequent pull still proposes the unseen body.",
+      "action": "Preserved excluded field acknowledgments and observations; both local/remote choice tests subsequently propose the unseen body.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    },
+    {
+      "id": "B3",
+      "verdict": "high",
+      "route": "patch",
+      "group": "provider-completeness",
+      "summary": "Truncated projectItems can become Release clearing",
+      "evidence": "Concrete detail query reads first:5 without pageInfo; fromGraphQlIssue treats an iteration beyond that page as absent. Request completeness evidence and refuse truncation in token/CLI reads.",
+      "action": "Both provider projections request pageInfo and refuse consumed truncated iteration evidence; both transports and unaffected release sources are tested.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    },
+    {
+      "id": "B4",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "preparation-outcomes",
+      "summary": "Auth and operation-building failures omit item outcomes",
+      "evidence": "Credential/revalidation happen outside the per-item catch; incomingOperations runs before githubIncomingCommand. Decorate all preparation phases and preserve previous/current/later map rows.",
+      "action": "Covered admitted credential/revalidation/build/finalization errors with complete selected/map-wide rows; initial access refusal reveals no source identities.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    },
+    {
+      "id": "B5",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "run-status",
+      "summary": "Ineligible selected Cards produce a successful persisted run",
+      "evidence": "Requested ineligible IDs are appended as failures only in the results callback after SyncRun construction. Determine those failures before constructing the run.",
+      "action": "Calculated eligibility failures before SyncRun construction and verified mixed/all-ineligible selections.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    },
+    {
+      "id": "B6",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "live-hold",
+      "summary": "Finished incoming review indefinitely holds live updates",
+      "evidence": "IncomingGitHubReview always marks a suspended draft and the panel also holds on retained incomingReview. Release the hold after close or scope invalidation while keeping result/outgoing controls.",
+      "action": "Released current incoming live holds after closed/applied/rejected states and removed the parent retained-object hold.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    },
+    {
+      "id": "B7",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "health-refresh",
+      "summary": "Incoming Apply leaves health reports stale",
+      "evidence": "Previous panel/card success invalidators are bypassed; generic review invalidates no health keys, same-client SSE is ignored, and focus refetch is off. Refresh all three existing health query prefixes on Apply.",
+      "action": "Refreshed all three health prefixes after Apply or recovered applied readback; active consumers show updated data.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    },
+    {
+      "id": "B8",
+      "verdict": "high",
+      "route": "patch",
+      "group": "release-divergence",
+      "summary": "Different shared Release metadata writes can silently last-win",
+      "evidence": "Public CreateGitHubLink(releaseId) and copied canonical refs can have no Release remote link. Then two pulls emit differing Release updates without duplicate baseline sets; initialVersions permits both. Extend existing divergence detection using its existing owning-map conflict contract and cover the source-only-ref sequence.",
+      "action": "Extended divergence checks to Release updates using existing owning-map fingerprints; a public source-only canonical ref rejects differing metadata atomically.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    },
+    {
+      "id": "B9",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "card-write-exclusion",
+      "summary": "Sibling incoming decisions overlap Card-owned actions",
+      "evidence": "Mutation keys count writes but do not exclude them; each review checks only its own pending ref. Check shared counts synchronously, reflect busy controls, retain draft/navigation safety, and remove only Incoming review boolean aggregation.",
+      "action": "Added synchronous shared-count guards and reactive controls; sibling same-event decisions, linked pull and Save cannot overlap; dependency callback/drafts/navigation remain intact.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    },
+    {
+      "id": "B10",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "import-lookups",
+      "summary": "Import results repeatedly read and scan every canonical ref",
+      "evidence": "The item callback calls listExternalRefsForStoryMap and searches proposed refs for every source row. Build proposed/linked lookup maps once without changing outcomes or IDs.",
+      "action": "Built proposed/linked identity maps once per callback without per-row repository reads.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    },
+    {
+      "id": "E1",
+      "verdict": "false",
+      "route": "reject",
+      "group": null,
+      "summary": "Prototype baseline_json migration",
+      "evidence": "carried: pass1 B1/E1/V3; migrations for discarded prototype schemas are explicitly excluded by AD-9 and the frozen intent."
+    },
+    {
+      "id": "E2",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "shared-release-batch",
+      "summary": "Combined pull duplicates exact-before Release binding writes",
+      "evidence": "pendingReleases is batch-wide but updatedReleases is per connection. Identical metadata updates produce duplicate before snapshots and atomically refuse. Share metadata evidence across the batch, coalesce identical effects and explicitly refuse disagreement.",
+      "action": "Shared batch metadata evidence coalesces identical Release/binding operations and refuses disagreement before apply.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    },
+    {
+      "id": "E3",
+      "verdict": "high",
+      "route": "patch",
+      "group": "provider-completeness",
+      "summary": "Iteration beyond first five projectItems is treated as absent",
+      "evidence": "Same verified truncated detail projection as B3. Completeness must be explicit; refusing incomplete evidence prevents a destructive clear proposal.",
+      "action": "Same provider completeness repair as B3.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    },
+    {
+      "id": "I1",
+      "verdict": "false",
+      "route": "reject",
+      "group": null,
+      "summary": "Diff cannot establish skill execution history",
+      "evidence": "carried: pass1 I1; this is an evidence boundary, not a demonstrated violation. Session history records the single render, workflow reads, synchronous implementation and four valid review layers."
+    },
+    {
+      "id": "I2",
+      "verdict": "false",
+      "route": "reject",
+      "group": null,
+      "summary": "Diff and hashes do not expose every protected-file action",
+      "evidence": "carried: pass1 I2; no prohibited write/revert is claimed or demonstrated. Controlled action history excludes protected paths and their working/index bytes remain unchanged."
+    },
+    {
+      "id": "I3",
+      "verdict": "false",
+      "route": "reject",
+      "group": null,
+      "summary": "Product workflows are exercised through automated fixtures",
+      "evidence": "carried: pass1 I3; this describes supported evidence, not a defect. React, HTTP/SDK and spawned stdio tests exercise those exact surfaces without claiming native acceptance."
+    },
+    {
+      "id": "I4",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": null,
+      "summary": "Real account and authenticated CLI acceptance remain unverified",
+      "evidence": "carried: pass1 I4; medium (unverified). Actual provider/account/installed CLI observation would settle it. Existing deferred native/live acceptance item is preserved, not duplicated."
+    },
+    {
+      "id": "I5",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": null,
+      "summary": "Native keyboard/focus/reader/platform acceptance remains unverified",
+      "evidence": "carried: pass1 I4; medium (unverified). An observed native operator journey would settle it. Existing deferred native/live acceptance item is preserved, not duplicated."
+    },
+    {
+      "id": "V1",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "annotation-health-test",
+      "summary": "Local managed Annotation health comparison lacks regression coverage",
+      "evidence": "Pre-verified gap: all core health fixtures disable Annotation mapping and incoming merge tests never read health. Add/remove managed assignments with otherwise unchanged synced links must yield stale link state, stateCounts and staleLinks.",
+      "action": "Added enabled managed-Annotation add/remove health cases asserting stale state, counts and staleLinks.",
+      "repair_verification": "passed in focused and final full workspace gates"
+    }
+  ],
+  "counts": {
+    "false": 5,
+    "high": 4,
+    "medium": 8,
+    "maybe-false": 2
+  },
+  "patch_groups": {
+    "field-observation": "high",
+    "provider-completeness": "high",
+    "preparation-outcomes": "medium",
+    "run-status": "medium",
+    "live-hold": "medium",
+    "health-refresh": "medium",
+    "release-divergence": "high",
+    "card-write-exclusion": "medium",
+    "import-lookups": "medium",
+    "shared-release-batch": "medium",
+    "annotation-health-test": "medium"
+  },
+  "patch_group_counts": {
+    "high": 3,
+    "medium": 8
+  },
+  "repair_status": "verified",
+  "post_repair_source_fingerprint": "73b43e2f104114c0fa049bf672e664d5cd00ddf8c90a2944d3dabcfb90c95c09",
+  "followup_review": {
+    "followup_pass": false,
+    "patched_groups": {
+      "high": 3,
+      "medium": 8,
+      "low": 0
+    },
+    "recommended": true,
+    "specific_unverified_risk": "Mixed managed-label or Release metadata drift during a single-field resolution, and further interleavings of combined shared-Milestone refreshes across connections, remain beyond the focused regression cases."
+  },
+  "patched_diff_file": "/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/story7-5-review-pass2-bx00_8d_.diff"
+}

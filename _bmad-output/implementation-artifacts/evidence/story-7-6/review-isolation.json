@@ -1,0 +1,11 @@
+{
+  "discardedInitialContexts": [
+    "blind_hunter",
+    "edge_cases",
+    "verification_gap"
+  ],
+  "reason": "Initial all-file diff included spec/build narrative. No valid layer result collected or triaged.",
+  "codeReviewDiff": "/tmp/story7-6-independent-review.diff",
+  "fullDiff": "/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/story7-6-ib8bppw4.diff",
+  "artifactAudit": "Parent inspected spec, evidence JSON and OpenWolf deltas separately. Only edge-case layer receives claims_file."
+}

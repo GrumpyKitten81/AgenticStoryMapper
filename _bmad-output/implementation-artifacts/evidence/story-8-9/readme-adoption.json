@@ -1,0 +1,9 @@
+{
+  "source_revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "patch": "participant-readme.patch.gz",
+  "adopted_participant_readme_sha256": "20e8e5f520089e90c21008643f1c8db5a342f7c47338ea668d51d6a92766e38e",
+  "main_discovery_addition": "Walkthrough link plus document version0.4.2/changelog; distinct from participant correction",
+  "main_delivery_commit": "not created",
+  "decoded_patch_sha256": "e6cc05bc058d6c2c86eead03a3b4e924422e5da10a07cbb9fb5a27254feb2f90",
+  "compressed_patch_sha256": "cc527def7c391a64b411122158fac084e8528bc16a6c1c0a1a486d4568f5c4be"
+}

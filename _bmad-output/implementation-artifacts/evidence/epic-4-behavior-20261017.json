@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-17",
+  "revision": "ab50aa78263d10bdcd32c410a7aee97f106ca912",
+  "boundary": "Fresh isolated current-browser smoke; not all five Story4.13scenarios, not timing measurement. Existing web build used; no fresh build fingerprint claim.",
+  "runtime": {
+    "host": "127.0.0.1",
+    "port": 44347,
+    "database": "/tmp/storymapper-retro4-20261017/retro.lsm/storymapper.sqlite"
+  },
+  "actions": [
+    "Opened real Tree preview of existing synthetic initial recording;0persistedCards/0releases.",
+    "Observed134selected operations and read-only preview; incoming events required Review current state and that control was clicked.",
+    "Clicked Approve selection; observed Approved by human local-user and Apply became enabled.",
+    "Clicked Apply selection; observed46cards/3releases,Applied status and automatic preview exit."
+  ],
+  "observations": {
+    "cards": 46,
+    "activities": 6,
+    "steps": 6,
+    "stories": 34,
+    "releases": 3,
+    "externalRefs": 49,
+    "sourceLinks": 49,
+    "selectedOperations": 134,
+    "executedOperations": 134,
+    "proposedBy": {
+      "actorType": "agent",
+      "actorId": "local-mcp-host",
+      "mcpSessionId": "5a1273ae-b25e-45ff-bbf8-ba82d802c3f0"
+    },
+    "approvedBy": {
+      "actorType": "human",
+      "actorId": "local-user"
+    },
+    "appliedBy": {
+      "actorType": "human",
+      "actorId": "local-user"
+    },
+    "snapshotSha256": "3b8220138467e31e5e6f3b99ff5d252738fc11c234704537dd1f61c60c5ed04b"
+  },
+  "screenshot": "epic-4-retro-browser-applied-20261017.png",
+  "limitations": [
+    "No timing measurement, protection-toggle or conflict/Restore browser rerun; historical4.13evidence retained.",
+    "One CDP Runtime.evaluate timeout; native accessibility completed. Close-preview locator absent because Apply already removed preview.",
+    "Initial disposable-server and all14test attempts blocked by sandbox sockets; unchanged authorized reruns succeeded.",
+    "First persisted-proof request used nonexistent GET /api/changesets/:id and returned404; actual preview read above succeeded."
+  ],
+  "tests": {
+    "command": "corepack pnpm --filter @storymapper/server exec vitest run src/mcp/tools/bmad-round-trip.test.ts",
+    "exitCode": 0,
+    "passed": 14,
+    "durationSeconds": 30.6,
+    "log": "\n RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server\n\n \u2713 src/mcp/tools/bmad-round-trip.test.ts (14 tests) 29530ms\n   \u2713 publishes 6/34 on http, previews protection and human API apply with equivalent durable hierarchy/evidence/audit 2753ms\n   \u2713 publishes 6/34 on sdk, previews protection and human API apply with equivalent durable hierarchy/evidence/audit 2515ms\n   \u2713 refreshes two edits/remove/add on http with reviewed archive, immutable source history and repeat no-op 3825ms\n   \u2713 refreshes two edits/remove/add on sdk with reviewed archive, immutable source history and repeat no-op 3820ms\n   \u2713 updates evidence-only baselines on http and preserves manual evidence and other maps/systems 2641ms\n   \u2713 updates evidence-only baselines on sdk and preserves manual evidence and other maps/systems 2658ms\n   \u2713 uses exact scoped identities on http for duplicate titles and same-title renumbering 1592ms\n   \u2713 uses exact scoped identities on sdk for duplicate titles and same-title renumbering 1575ms\n   \u2713 reports every changed/unchanged/removed human baseline on http before proposal/source/snapshot writes 1079ms\n   \u2713 reports every changed/unchanged/removed human baseline on sdk before proposal/source/snapshot writes 1096ms\n   \u2713 reviews explicit slicing and configured delivery on http with notes and Activity reads 1684ms\n   \u2713 reviews explicit slicing and configured delivery on sdk with notes and Activity reads 1669ms\n   \u2713 refuses delayed human drift after actual proposal and approval on http atomically 1297ms\n   \u2713 refuses delayed human drift after actual proposal and approval on sdk atomically 1325ms\n\n Test Files  1 passed (1)\n      Tests  14 passed (14)\n   Start at  10:01:57\n   Duration  30.60s (transform 480ms, setup 0ms, collect 878ms, tests 29.53s, environment 0ms, prepare 32ms)\n\n"
+  },
+  "cleanup": {
+    "browserTabClosed": true,
+    "ownedServerSigterm": 55119,
+    "fixtureRetainedLocally": true
+  },
+  "quickVerification": {
+    "command": "node scripts/verify.mjs --skip-typecheck --skip-build",
+    "exitCode": 0,
+    "log": "\n> storymapper@0.1.0 check-hygiene [REDACTED_HOME]/Projects/StoryMapper\n> node scripts/check-hygiene.mjs\n\n\n> storymapper@0.1.0 check-capabilities [REDACTED_HOME]/Projects/StoryMapper\n> node scripts/check-capabilities.mjs\n\nCapability manifest check passed (129 capabilities).\nVerification completed.\n"
+  }
+}

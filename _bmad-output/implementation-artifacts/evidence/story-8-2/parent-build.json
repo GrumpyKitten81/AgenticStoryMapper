@@ -1,0 +1,11 @@
+{
+  "command": [
+    "corepack",
+    "pnpm",
+    "build"
+  ],
+  "started": "2026-10-19T23:57:15.168844+00:00",
+  "finished": "2026-10-19T23:57:34.861210+00:00",
+  "exitCode": 0,
+  "log": "parent-build.log.gz"
+}

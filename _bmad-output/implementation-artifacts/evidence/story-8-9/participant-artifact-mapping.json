@@ -1,0 +1,45 @@
+{
+  "purpose": "Original participant filenames refer to transient adjacent workspace; retained aliases and compressed fingerprints are mapped here, not claimed identical file layout",
+  "artifacts": {
+    "participant-report.json": {
+      "retained": "participant-report.json",
+      "original_sha256": "63fcd4905acf218e32bc75b3e43101d70cd944fb89708ffb5309208b26fc516a",
+      "retained_sha256": "63fcd4905acf218e32bc75b3e43101d70cd944fb89708ffb5309208b26fc516a",
+      "transform": "none; participant supplied path-sanitized text, no earlier raw draft hash captured"
+    },
+    "pr-draft.md": {
+      "retained": "participant-pr.txt",
+      "original_sha256": "5478d56d889e449dd913b5dbd0b23680af95b82e4ca249fc06d47ed1180e47dd",
+      "retained_sha256": "5478d56d889e449dd913b5dbd0b23680af95b82e4ca249fc06d47ed1180e47dd",
+      "transform": "none; participant supplied path-sanitized text, no earlier raw draft hash captured"
+    },
+    "diff-stat.txt": {
+      "retained": "participant-diff-stat.txt",
+      "original_sha256": "fb352f1ba7bd860108810fb98ae188576bc04b9fa4f1d6a7e0b4c11ba0bb8a5a",
+      "retained_sha256": "fb352f1ba7bd860108810fb98ae188576bc04b9fa4f1d6a7e0b4c11ba0bb8a5a",
+      "transform": "none; participant supplied path-sanitized text, no earlier raw draft hash captured"
+    }
+  },
+  "other_aliases": {
+    "readme.patch": "participant-readme.patch.gz",
+    "check-start.json": "initial-check-start.json.gz",
+    "final-check-start.json": "final-check-start.json.gz",
+    "final-check-end.json": "final-check-end.json.gz",
+    "install.log.gz": "initial-install.log.gz",
+    "check.log.gz": "initial-check.log.gz",
+    "log-provenance.json": [
+      "initial-log-provenance.json",
+      "final-log-provenance.json"
+    ]
+  },
+  "continuationArtifacts": {
+    "continuation-pr-draft.md": {
+      "retained": "participant-pr-continuation.txt",
+      "original_sha256": "e947ceda11e99dcf615f63be2ebe388e6487ac47d807d549425c9b75c365ef95",
+      "retained_sha256": "e947ceda11e99dcf615f63be2ebe388e6487ac47d807d549425c9b75c365ef95",
+      "transform": "none; path-sanitized participant draft, original failed PR draft remains separate"
+    },
+    "continuation-check-start.json": "continuation-check-start.json.gz",
+    "continuation-check-end.json": "continuation-check-end.json.gz"
+  }
+}

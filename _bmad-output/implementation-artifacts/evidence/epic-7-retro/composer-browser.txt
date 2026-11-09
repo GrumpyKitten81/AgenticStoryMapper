@@ -1,0 +1,220 @@
+Browser tab: 1858583546, Title: "Discovery - PRD to Delivery Map - StoryMapper", URL: "http://127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/discovery".
+0 AXWebArea Discovery - PRD to Delivery Map - StoryMapper, URL: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/discovery
+	1 container root
+		2 link Description: Skip to workspace, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/discovery#workspace
+		3 container
+			4 image
+			5 text StoryMapper
+			6 container Main
+				7 heading Work, Value: 2
+					8 text Work
+				9 link Description: Story Maps, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/discovery
+				10 link Description: Sources, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/sources
+				11 link Description: Releases, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/releases
+				12 link Description: Roadmaps Experimental, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/roadmaps
+				13 heading Setup, Value: 2
+					14 text Setup
+				15 link Description: Connections, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/github?storyMapId=681b036b-845a-4ba0-85cb-beb9d10ad89b
+				16 link Description: Personas, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/personas
+				17 link Description: Customize, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/customize
+				18 link Description: AI / MCP, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/ai-mcp
+				19 heading Trust, Value: 2
+					20 text Trust
+				21 link Description: Activity, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/audit
+				22 link Description: Onboarding, Value: 127.0.0.1:44377/onboarding
+		23 container
+			24 heading Discovery, Value: 1, ID: workspace-heading
+				25 text Discovery
+			26 link Description: ALL STORY MAPS, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps
+			27 text PRD to Delivery Map
+			28 button Description: Rename story map PRD to Delivery Map, Help: Rename story map
+				29 image
+			30 button Edit Card Key prefix
+			31 text An enabled agent may forward retrieved context to its own provider.
+			32 container Safety switches
+				33 button Agent access: On. Open switch settings
+				34 button GitHub: On. Open switch settings
+				35 button Agent approval: Off. Open switch settings
+				36 button Agent protection: Off. Open switch settings
+			37 text Live updates connected
+			38 checkbox Hold updates, Value: 0
+			39 container Discovery zoom controls
+				40 button Zoom out
+					41 image
+				42 slider (settable, integer) Description: Discovery zoom, Value: 1
+				43 button Zoom in
+					44 image
+				45 button Reset zoom
+					46 image
+				47 text 100%
+				48 checkbox Collapse lanes, Help: Collapse all lanes, Value: 0
+					49 image
+					50 text Collapse lanes
+			51 text Demo Local Project 4 cards 1 releases
+			52 container Discovery, ID: workspace
+				53 container
+					54 button What changed (6)
+						55 image
+						56 text What changed (6)
+					57 container Views
+						58 link Description: Discovery, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/discovery
+						59 link Description: Tree, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/tree
+						60 link Description: Planning, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/planning
+						61 link Description: Backlog, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/backlog
+						62 link Description: Tracking, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/tracking
+						63 link Description: Slices, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/slices
+						64 link Description: Graph, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/graph
+						65 link Description: TimelineExperimental, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/timeline
+						66 link Description: GitHub Sync, Value: 127.0.0.1:44377/projects/30dd07e2-7c10-43e0-91cf-1b4a4eb1eadb/story-maps/681b036b-845a-4ba0-85cb-beb9d10ad89b/github
+					67 text 1 linked
+					68 button Pull GitHub, Help: Fetch the current state of all 1 linked GitHub issue(s) and update the cards. Does not write to GitHub.
+						69 image
+						70 text Pull GitHub
+					71 container Story map export actions
+						72 button HTML
+							73 image
+							74 text HTML
+						75 button PNG
+							76 image
+							77 text PNG
+						78 button PDF
+							79 image
+							80 text PDF
+					81 text field (settable) Search cards
+					82 text 4 matches / 4 cards
+					83 checkbox Filters, Value: 0
+						84 image
+						85 text Filters
+					86 button Clear
+					87 button Parked
+					88 button Archived
+					89 button Create Activity
+					90 button Create Step
+					91 button Create Story
+					92 button Create Note
+					93 table Discovery story map
+						94 row Create Note New activity
+							95 cell (selectable)
+								96 container
+									97 checkbox Description: LSM-1 Activity Understand product requirements, Value: 0
+										98 text Understand product requirements
+									99 text Changed
+									100 checkbox (settable, integer) Description: Select LSM-1, Understand product requirements, Value: 0
+									101 text LSM-1
+									102 button (expanded) Description: Collapse Understand product requirements, Secondary Actions: Collapse
+										103 image
+									104 text ACTIVITY TODO
+									105 button Move LSM-1
+										106 image
+									107 button Description: Park Understand product requirements, Help: Park activity
+										108 image
+									109 button Delete Understand product requirements
+										110 image
+									111 text #
+									112 pop up button (collapsed) Description: Color: Standard. Change color, Secondary Actions: Expand
+									113 pop up button (collapsed) Description: Priority –. Change priority, Secondary Actions: Expand
+									114 draggable Drag Understand product requirements
+										115 image
+								116 button Create Note
+							117 cell
+								118 button New activity
+						119 row Create Note New step for Understand product requirements
+							120 cell (selectable)
+								121 container
+									122 checkbox Description: LSM-2 Step Import source document, Value: 0
+										123 text Import source document
+									124 text Changed
+									125 checkbox (settable, integer) Description: Select LSM-2, Import source document, Value: 0
+									126 text LSM-2
+									127 button (expanded) Description: Collapse Import source document, Secondary Actions: Collapse
+										128 image
+									129 text STEP TODO
+									130 button Move LSM-2
+										131 image
+									132 button Delete Import source document
+										133 image
+									134 text #
+									135 pop up button (collapsed) Description: Color: Standard. Change color, Secondary Actions: Expand
+									136 pop up button (collapsed) Description: Priority –. Change priority, Secondary Actions: Expand
+									137 draggable Drag Import source document
+										138 image
+								139 button Create Note
+							140 cell (selectable) New step for Understand product requirements
+						141 row Collapse lane MVP 2 stories Move release MVP up Move release MVP down Rename release MVP Delete release MVP
+							142 cell
+								143 checkbox (expanded) Description: Collapse lane, Value: 0, Secondary Actions: Collapse
+									144 image
+								145 text MVP
+								146 text 2 stories
+								147 button (disabled) Description: Move release MVP up, Help: Move release lane up
+									148 image
+								149 button (disabled) Description: Move release MVP down, Help: Move release lane down
+									150 image
+								151 button Description: Rename release MVP, Help: Rename release lane
+									152 image
+								153 button Description: Delete release MVP, Help: Delete release lane
+									154 image
+						155 row New story for Import source document in MVP
+							156 cell (selectable)
+								157 container
+									158 checkbox Description: LSM-3 Story Create traceable story cards, Value: 0
+										159 text Create traceable story cards
+										160 text MVP
+									161 text Changed
+									162 checkbox (settable, integer) Description: Select LSM-3, Create traceable story cards, Value: 0
+									163 text LSM-3 STORY TODO
+									164 button Move LSM-3
+										165 image
+									166 button Description: Move Create traceable story cards to Unscheduled or Not assigned, Help: Move to Unscheduled or Not assigned
+										167 image
+									168 button Delete Create traceable story cards
+										169 image
+									170 text #
+									171 pop up button (collapsed) Description: Color: Standard. Change color, Secondary Actions: Expand
+									172 pop up button (collapsed) Description: Priority –. Change priority, Secondary Actions: Expand
+									173 sortable Drag Create traceable story cards
+										174 image
+								175 container
+									176 checkbox Description: LSM-4 Story Retro retained draft, Value: 0
+										177 text Retro retained draft
+										178 text MVP
+										179 text 1 source
+									180 checkbox (settable, integer) Description: Select LSM-4, Retro retained draft, Value: 0
+									181 text LSM-4 STORY TODO
+									182 button Move LSM-4
+										183 image
+									184 button Description: Move Retro retained draft to Unscheduled or Not assigned, Help: Move to Unscheduled or Not assigned
+										185 image
+									186 button Delete Retro retained draft
+										187 image
+									188 text #42
+									189 pop up button (collapsed) Description: Color: Standard. Change color, Secondary Actions: Expand
+									190 pop up button (collapsed) Description: Priority –. Change priority, Secondary Actions: Expand
+									191 sortable Drag Retro retained draft
+										192 image
+								193 button New story for Import source document in MVP
+						194 row Collapse lane Pin lane Unscheduled cards 0 stories
+							195 cell
+								196 checkbox (expanded) Description: Collapse lane, Value: 0, Secondary Actions: Collapse
+									197 image
+								198 checkbox Description: Pin lane, Value: 0
+									199 image
+								200 text Unscheduled cards
+								201 text 0 stories
+						202 row New story for Import source document in Unscheduled cards
+							203 cell (selectable) New story for Import source document in Unscheduled cards
+						204 row Pin lane Not assigned 0 cards
+							205 cell
+								206 checkbox Description: Pin lane, Value: 0
+									207 image
+								208 text Not assigned
+								209 text 0 cards
+						210 row Drag activities or steps here to unassign them.
+							211 cell (selectable) Drag activities or steps here to unassign them.
+						212 row New release name
+							213 cell
+								214 button New release name
+									215 image
+									216 text New release lane
+
+The focused UI element is 24 heading Discovery, Value: 1, ID: workspace-heading

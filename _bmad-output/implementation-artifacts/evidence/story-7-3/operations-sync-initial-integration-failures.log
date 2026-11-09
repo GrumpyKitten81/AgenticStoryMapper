@@ -1,0 +1,4790 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/config/served-origin.test.ts (1 test) 30ms
+ ❯ src/application/sync/github-command-regressions.test.ts (12 tests | 8 failed) 451ms
+   × requires reviewed field effects before a stored conflict resolution can close its row 45ms
+     → [vitest] No "requireRemoteItem" export is defined on the "@storymapper/github" mock. Did you forget to return it from "vi.mock"?
+If you need to partially mock a module, you can use "importOriginal" helper inside:
+
+   × advances converged Agent fields and baselines without a remote write 58ms
+     → [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "labelsJson",
+      "provider",
+      "cardId",
+      "remoteId",
+      "remoteNumber",
+      "url"
+    ],
+    "path": [
+      "after"
+    ],
+    "message": "Unrecognized keys: \"labelsJson\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\""
+  }
+]
+   × persists local-cleared milestone conflicts as JSON null without partial rollback 35ms
+     → [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "labelsJson",
+      "provider",
+      "cardId",
+      "remoteId",
+      "remoteNumber",
+      "url"
+    ],
+    "path": [
+      "after"
+    ],
+    "message": "Unrecognized keys: \"labelsJson\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\""
+  }
+]
+   × persists remote-cleared milestone conflicts as JSON null without partial rollback 29ms
+     → [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "labelsJson",
+      "provider",
+      "cardId",
+      "remoteId",
+      "remoteNumber",
+      "url"
+    ],
+    "path": [
+      "after"
+    ],
+    "message": "Unrecognized keys: \"labelsJson\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\""
+  }
+]
+   × takes remote values on a read-only mirror instead of recording a conflict 29ms
+     → [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "labelsJson",
+      "provider",
+      "cardId",
+      "remoteId",
+      "remoteNumber",
+      "url"
+    ],
+    "path": [
+      "after"
+    ],
+    "message": "Unrecognized keys: \"labelsJson\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\""
+  }
+]
+   × retains stale identity when the Agent pull finds the Issue unavailable 37ms
+     → [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "labelsJson",
+      "provider",
+      "cardId",
+      "remoteId",
+      "remoteNumber",
+      "url"
+    ],
+    "path": [
+      "after"
+    ],
+    "message": "Unrecognized keys: \"labelsJson\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\""
+  }
+]
+   × clears the local milestone when only the remote milestone was removed 29ms
+     → [
+  {
+    "code": "unrecognized_keys",
+    "keys": [
+      "labelsJson",
+      "provider",
+      "cardId",
+      "remoteId",
+      "remoteNumber",
+      "url"
+    ],
+    "path": [
+      "after"
+    ],
+    "message": "Unrecognized keys: \"labelsJson\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\""
+  }
+]
+   × imports Agent stories under an Activity parent with a shared Release, assignee and General step 34ms
+     → [
+  {
+    "code": "invalid_union",
+    "errors": [
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmap"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmap\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmap"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmap\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "At least one field is required."
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmapColumn"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmapColumn\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "roadmapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmapSwimlane"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmapSwimlane\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "roadmapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmapCard"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmapCard\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "roadmapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "columnId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "title"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmapReference"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmapReference\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "roadmapCardId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "release",
+            "card"
+          ],
+          "path": [
+            "after",
+            "targetType"
+          ],
+          "message": "Invalid option: expected one of \"release\"|\"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "targetId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "annotation"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"annotation\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "annotation"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"annotation\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "At least one field is required."
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "annotation"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"annotation\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "workflowStatus"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"workflowStatus\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "todo",
+            "active",
+            "done"
+          ],
+          "path": [
+            "after",
+            "group"
+          ],
+          "message": "Invalid option: expected one of \"todo\"|\"active\"|\"done\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "workflowStatus"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"workflowStatus\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "At least one field is required."
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "workflowStatus"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"workflowStatus\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyTemplate"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyTemplate\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyTemplate"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyTemplate\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "At least one field is required."
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyTemplate"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyTemplate\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "productContext"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"productContext\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "attachment"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"attachment\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "label"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "filePath"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "attachment"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"attachment\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "park"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"park\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "reassign-left",
+            "reassign-right",
+            "unassign"
+          ],
+          "path": [
+            "after",
+            "childStrategy"
+          ],
+          "message": "Invalid option: expected one of \"reassign-left\"|\"reassign-right\"|\"unassign\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "unpark"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unpark\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "archive"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"archive\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "unarchive"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unarchive\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "status"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "reassign-left",
+            "reassign-right",
+            "unassign"
+          ],
+          "path": [
+            "after",
+            "strategy"
+          ],
+          "message": "Invalid option: expected one of \"reassign-left\"|\"reassign-right\"|\"unassign\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "persona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"persona\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "release"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"release\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyMap"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyMap\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardDependency"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardDependency\""
+        },
+        {
+          "code": "invalid_union",
+          "errors": [
+            [
+              {
+                "code": "invalid_type",
+                "expected": "object",
+                "path": [],
+                "message": "Invalid input: expected object, received string"
+              }
+            ],
+            [
+              {
+                "expected": "object",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected object, received string"
+              }
+            ]
+          ],
+          "path": [
+            "after",
+            "cardId"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "code": "invalid_union",
+          "errors": [
+            [
+              {
+                "code": "invalid_type",
+                "expected": "object",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ],
+            [
+              {
+                "expected": "object",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ]
+          ],
+          "path": [
+            "after",
+            "prerequisiteCardId"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "unset"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unset\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardDependency"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardDependency\""
+        },
+        {
+          "code": "invalid_union",
+          "errors": [
+            [
+              {
+                "code": "invalid_type",
+                "expected": "object",
+                "path": [],
+                "message": "Invalid input: expected object, received string"
+              }
+            ],
+            [
+              {
+                "expected": "object",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected object, received string"
+              }
+            ]
+          ],
+          "path": [
+            "after",
+            "cardId"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "code": "invalid_union",
+          "errors": [
+            [
+              {
+                "code": "invalid_type",
+                "expected": "object",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ],
+            [
+              {
+                "expected": "object",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ]
+          ],
+          "path": [
+            "after",
+            "prerequisiteCardId"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardPersona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardPersona\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "personaId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "unset"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unset\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardPersona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardPersona\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "personaId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardAnnotation"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardAnnotation\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "annotationId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "unset"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unset\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardAnnotation"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardAnnotation\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "annotationId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "githubExternalRef"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"githubExternalRef\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card",
+            "release"
+          ],
+          "path": [
+            "after",
+            "entityType"
+          ],
+          "message": "Invalid option: expected one of \"card\"|\"release\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "externalId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "scopeId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "githubExternalRef"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"githubExternalRef\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card",
+            "release"
+          ],
+          "path": [
+            "after",
+            "entityType"
+          ],
+          "message": "Invalid option: expected one of \"card\"|\"release\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "externalId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "scopeId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "githubExternalRef"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"githubExternalRef\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "externalRef"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"externalRef\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card",
+            "release",
+            "persona"
+          ],
+          "path": [
+            "after",
+            "entityType"
+          ],
+          "message": "Invalid option: expected one of \"card\"|\"release\"|\"persona\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "system"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "externalId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "scopeId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "externalRef"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"externalRef\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "bulk"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"bulk\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "array",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "cards"
+          ],
+          "message": "Invalid input: expected array, received undefined"
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "patch"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "acknowledge"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"acknowledge\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "sourcePlan"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"sourcePlan\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "system"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "baselineId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "number",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "baselineVersion"
+          ],
+          "message": "Invalid input: expected number, received undefined"
+        },
+        {
+          "expected": "array",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "entries"
+          ],
+          "message": "Invalid input: expected array, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "externalRefId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "syncRun"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"syncRun\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "push",
+            "import",
+            "sync"
+          ],
+          "path": [
+            "after",
+            "mode"
+          ],
+          "message": "Invalid option: expected one of \"push\"|\"import\"|\"sync\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "planned",
+            "applied",
+            "failed"
+          ],
+          "path": [
+            "after",
+            "status"
+          ],
+          "message": "Invalid option: expected one of \"planned\"|\"applied\"|\"failed\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before"
+          ],
+          "path": [],
+          "message": "Unrecognized key: \"before\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "syncConflict"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"syncConflict\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "syncRunId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "title",
+            "description",
+            "status",
+            "milestone"
+          ],
+          "path": [
+            "after",
+            "field"
+          ],
+          "message": "Invalid option: expected one of \"title\"|\"description\"|\"status\"|\"milestone\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "provider",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"provider\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "resolve"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"resolve\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "syncConflict"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"syncConflict\""
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "before"
+          ],
+          "message": "Invalid input: expected object, received null"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "local",
+            "remote"
+          ],
+          "path": [
+            "after",
+            "resolution"
+          ],
+          "message": "Invalid option: expected one of \"local\"|\"remote\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized key: \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "import"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"import\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "sourceDocument"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"sourceDocument\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "title"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "markdown",
+            "txt"
+          ],
+          "path": [
+            "after",
+            "type"
+          ],
+          "message": "Invalid option: expected one of \"markdown\"|\"txt\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "fileHash"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyMap"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyMap\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyMap"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyMap\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "before"
+          ],
+          "message": "Invalid input: expected object, received null"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized key: \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "title"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "activity",
+            "step",
+            "story",
+            "note"
+          ],
+          "path": [
+            "after",
+            "level"
+          ],
+          "message": "Invalid option: expected one of \"activity\"|\"step\"|\"story\"|\"note\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "before"
+          ],
+          "message": "Invalid input: expected object, received null"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized key: \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "move"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"move\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "parentId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "number",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "position"
+          ],
+          "message": "Invalid input: expected number, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "before"
+          ],
+          "message": "Invalid input: expected object, received null"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized key: \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "release"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"release\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "release"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"release\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "before"
+          ],
+          "message": "Invalid input: expected object, received null"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized key: \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "persona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"persona\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "persona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"persona\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "before"
+          ],
+          "message": "Invalid input: expected object, received null"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized key: \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "link"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"link\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "sourceLink"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"sourceLink\""
+        },
+        {
+          "code": "invalid_union",
+          "errors": [
+            [
+              {
+                "code": "invalid_value",
+                "values": [
+                  "chunk"
+                ],
+                "path": [
+                  "kind"
+                ],
+                "message": "Invalid input: expected \"chunk\""
+              },
+              {
+                "expected": "string",
+                "code": "invalid_type",
+                "path": [
+                  "chunkId"
+                ],
+                "message": "Invalid input: expected string, received undefined"
+              },
+              {
+                "code": "unrecognized_keys",
+                "keys": [
+                  "connectionId",
+                  "provider",
+                  "remoteId",
+                  "remoteNumber",
+                  "url",
+                  "titleHash",
+                  "bodyHash",
+                  "remoteState",
+                  "labels",
+                  "milestone",
+                  "remoteParentNumber",
+                  "syncState",
+                  "parentOverrideLocal"
+                ],
+                "path": [],
+                "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+              }
+            ],
+            [
+              {
+                "code": "invalid_value",
+                "values": [
+                  "chunk"
+                ],
+                "path": [
+                  "kind"
+                ],
+                "message": "Invalid input: expected \"chunk\""
+              },
+              {
+                "code": "invalid_type",
+                "expected": "object",
+                "path": [
+                  "chunk"
+                ],
+                "message": "Invalid input: expected object, received undefined"
+              },
+              {
+                "code": "unrecognized_keys",
+                "keys": [
+                  "connectionId",
+                  "provider",
+                  "remoteId",
+                  "remoteNumber",
+                  "url",
+                  "titleHash",
+                  "bodyHash",
+                  "remoteState",
+                  "labels",
+                  "milestone",
+                  "remoteParentNumber",
+                  "syncState",
+                  "parentOverrideLocal"
+                ],
+                "path": [],
+                "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+              }
+            ],
+            [
+              {
+                "code": "invalid_value",
+                "values": [
+                  "github"
+                ],
+                "path": [
+                  "kind"
+                ],
+                "message": "Invalid input: expected \"github\""
+              },
+              {
+                "expected": "string",
+                "code": "invalid_type",
+                "path": [
+                  "externalRefId"
+                ],
+                "message": "Invalid input: expected string, received undefined"
+              },
+              {
+                "code": "unrecognized_keys",
+                "keys": [
+                  "connectionId",
+                  "provider",
+                  "remoteId",
+                  "remoteNumber",
+                  "url",
+                  "titleHash",
+                  "bodyHash",
+                  "remoteState",
+                  "labels",
+                  "milestone",
+                  "remoteParentNumber",
+                  "syncState",
+                  "parentOverrideLocal"
+                ],
+                "path": [],
+                "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+              }
+            ],
+            [
+              {
+                "code": "invalid_value",
+                "values": [
+                  "note"
+                ],
+                "path": [
+                  "kind"
+                ],
+                "message": "Invalid input: expected \"note\""
+              },
+              {
+                "expected": "string",
+                "code": "invalid_type",
+                "path": [
+                  "note"
+                ],
+                "message": "Invalid input: expected string, received undefined"
+              },
+              {
+                "code": "unrecognized_keys",
+                "keys": [
+                  "connectionId",
+                  "provider",
+                  "remoteId",
+                  "remoteNumber",
+                  "url",
+                  "titleHash",
+                  "bodyHash",
+                  "remoteState",
+                  "labels",
+                  "milestone",
+                  "remoteParentNumber",
+                  "syncState",
+                  "parentOverrideLocal"
+                ],
+                "path": [],
+                "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+              }
+            ]
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "unlink"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unlink\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "sourceLink"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"sourceLink\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "chunk",
+            "note",
+            "github"
+          ],
+          "path": [
+            "after",
+            "kind"
+          ],
+          "message": "Invalid option: expected one of \"chunk\"|\"note\"|\"github\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "id"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "selector"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "upsert"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"upsert\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "title"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "activity",
+            "step",
+            "story",
+            "note"
+          ],
+          "path": [
+            "after",
+            "level"
+          ],
+          "message": "Invalid option: expected one of \"activity\"|\"step\"|\"story\"|\"note\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "selector"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "upsert"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"upsert\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "release"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"release\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "selector"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "upsert"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"upsert\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "persona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"persona\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyMapCopy"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyMapCopy\""
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "input"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "expected": "record",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "expected"
+          ],
+          "message": "Invalid input: expected record, received undefined"
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "preview"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "githubBoardImport"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"githubBoardImport\""
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "input"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "expected": "record",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "expected"
+          ],
+          "message": "Invalid input: expected record, received undefined"
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "preview"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "connectionId",
+            "provider",
+            "cardId",
+            "remoteId",
+            "remoteNumber",
+            "url",
+            "titleHash",
+            "bodyHash",
+            "remoteState",
+            "labels",
+            "milestone",
+            "remoteParentNumber",
+            "syncState",
+            "parentOverrideLocal"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"connectionId\", \"provider\", \"cardId\", \"remoteId\", \"remoteNumber\", \"url\", \"titleHash\", \"bodyHash\", \"remoteState\", \"labels\", \"milestone\", \"remoteParentNumber\", \"syncState\", \"parentOverrideLocal\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "before",
+            "connectionBefore"
+          ],
+          "path": [],
+          "message": "Unrecognized keys: \"before\", \"connectionBefore\""
+        }
+      ]
+    ],
+    "path": [],
+    "message": "Invalid input"
+  }
+]

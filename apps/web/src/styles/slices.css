@@ -1,0 +1,28 @@
+.slice-lanes { display: flex; align-items: stretch; gap: var(--space-16); overflow-x: auto; padding: var(--space-16) 0; }
+.slice-drop-target { flex: 1 0 300px; min-width: 0; }
+.slice-lane { border: 1px solid var(--color-border); border-radius: var(--radius-dialog); padding: var(--space-16); background: var(--color-surface); }
+.slice-lane h2 { margin: 0; font-size: var(--font-size-body); }
+.slice-lane header p { margin: var(--space-8) 0; }
+.slice-status-bar { display: flex; width: 100%; height: 0.6rem; overflow: hidden; margin: var(--space-8) 0; }
+.slice-status-bar span { flex-basis: 0; min-width: 0; background: var(--color-primary); box-shadow: inset -1px 0 var(--color-surface); }
+.slice-status-counts { display: flex; flex-wrap: wrap; gap: var(--space-6); margin-bottom: var(--space-12); font-size: var(--font-size-meta); overflow-wrap: anywhere; }
+.slice-status-counts span { max-width: 100%; }
+.slice-order-summary { margin-top: var(--space-12); color: var(--color-danger-text); overflow-wrap: anywhere; }
+.slice-stories { display: grid; gap: var(--space-12); min-height: 40px; }
+.slice-story, .captured-story { position: relative; border: 1px solid var(--color-border); border-radius: var(--radius-compact); background: var(--color-surface); padding: var(--space-12); overflow-wrap: anywhere; }
+.slice-story { content-visibility: auto; contain-intrinsic-block-size: auto 160px; }
+.slice-story .card-content-button { display: grid; gap: var(--space-6); text-align: left; }
+.slice-order-violation { color: var(--color-danger-text); background: var(--color-danger-bg); padding: var(--space-6); border: 1px solid var(--color-danger); }
+.slice-dependency-cues p { margin: var(--space-6) 0; font-size: var(--font-size-compact); }
+.slice-move-controls { margin-top: var(--space-6); }
+.slice-move-controls select { min-width: 0; width: 100%; }
+.plan-state-comparison { border-top: 1px solid var(--color-border); padding-top: var(--space-16); }
+.plan-state-selectors, .plan-state-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-16); margin-top: var(--space-16); }
+.plan-state-selectors label { display: grid; gap: var(--space-6); min-width: 0; }
+.plan-state-selectors select { max-width: 100%; }
+.plan-state-columns > section { min-width: 0; overflow-wrap: anywhere; }
+.plan-state-columns .slice-lane { margin: var(--space-12) 0; }
+.captured-story p { white-space: pre-wrap; }
+.plan-change-added { text-decoration: underline; }
+.plan-change-removed { text-decoration: line-through; }
+.plan-change-moved { font-weight: bold; }

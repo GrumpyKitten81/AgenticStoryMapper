@@ -1,0 +1,23 @@
+{
+  "fetch": [],
+  "computed_random": [],
+  "node_sqlite": [],
+  "root_undeclared": [],
+  "nonliteral": [],
+  "missing_root_export": [],
+  "null_export": [],
+  "test_only_runtime_dependency": [],
+  "zero_line_executable": {
+    "workspace": "packages/core",
+    "lines": 10,
+    "covered": 6,
+    "percent": "60.00"
+  },
+  "foreign_inflation": {
+    "workspace": "packages/core",
+    "lines": 30,
+    "covered": 20,
+    "percent": "66.67"
+  },
+  "compressed_secret_diagnostics": []
+}

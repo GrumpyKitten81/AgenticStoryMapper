@@ -1,0 +1,122 @@
+[
+  {
+    "verdict": "high",
+    "route": "patch",
+    "finding": "B1 duplicate reviewed Push",
+    "evidence": "pushReviewedPlan only checks render-time busy; two same-turn clicks enter the same confirmed request. Server prepares initial links before awaiting auth/provider, so duplicate remote creation is possible. Group G1: synchronous submit guard and delayed-request test requested."
+  },
+  {
+    "verdict": "medium",
+    "route": "patch",
+    "finding": "B2 Sync overlaps reviewed operations",
+    "evidence": "busy excludes syncWorkItems.isPending while the Sync button uses busy; normal pending Sync therefore leaves Sync/Plan/Push callable. G2: include that existing pending state and exercise overlap."
+  },
+  {
+    "verdict": "medium",
+    "route": "patch",
+    "finding": "B3 success clears unrelated newly selected IDs",
+    "evidence": "Bulk onSuccess unconditionally clears the Set; Card checkboxes are outside disabled bulk fieldset. G3: remove only submitted IDs and test delayed completion."
+  },
+  {
+    "verdict": "medium",
+    "route": "patch",
+    "finding": "B4 bulk success loses keyboard focus",
+    "evidence": "Clearing the last selected IDs unmounts the Apply/Archive button; no recovery exists. G4: recover only if the submitted focused control disappears; test user-moved focus preservation."
+  },
+  {
+    "verdict": "medium",
+    "route": "patch",
+    "finding": "B5 Windows timing output path",
+    "evidence": "Timing test writes directly to /tmp, which need not exist on Windows. G5: node:os tmpdir plus path join; no new configuration."
+  },
+  {
+    "verdict": "low",
+    "route": "patch",
+    "finding": "B6 selected Sync State is inert",
+    "evidence": "Explicit mode omits healthLinks output but retains the selector that only filters it. G6: omit that control in explicit mode."
+  },
+  {
+    "verdict": "medium",
+    "route": "patch",
+    "finding": "B7 stale bulk conflict display",
+    "evidence": "Mutation error survives clear-selection and appears when an unrelated selection remounts the region. G7: clear or scope errors to submitted target set with a regression."
+  },
+  {
+    "verdict": "medium",
+    "route": "patch",
+    "finding": "B8 toolbar-to-panel integration gap",
+    "evidence": "Confirmed null panel mock in board-filter-selection; standalone panel tests supply IDs directly. G8: real toolbar/panel integration over selected visible/hidden/Note and unselected Story."
+  },
+  {
+    "verdict": "false",
+    "route": "reject",
+    "finding": "B9 interim follow-up metadata",
+    "evidence": "Spec is in-review; false/empty are template defaults before Finalize, not a completed result. Finalize will record the native limit. Workflow explicitly rejects findings whose fix is to edit this spec."
+  },
+  {
+    "verdict": "medium",
+    "route": "patch",
+    "finding": "B10 selected dialog changes map defaults",
+    "evidence": "Use as default remains active in explicit mode and calls updateStoryMap, an unrelated persistent effect from selected Dry Run. G6: conditionally omit in explicit mode, retain full-panel behavior."
+  },
+  {
+    "verdict": "high",
+    "route": "patch",
+    "finding": "E1 same-turn Push dispatch",
+    "evidence": "Same demonstrated root as B1; busy is render-time only and pushReviewedPlan has no synchronous guard. G1."
+  },
+  {
+    "verdict": "medium",
+    "route": "patch",
+    "finding": "V1 actual handoff not protected",
+    "evidence": "Pre-verified gap: removing selectedCardIds from Toolbar still passes null-panel and standalone tests, widening real flow to whole-map mode. G8 integration regression requested."
+  },
+  {
+    "verdict": "medium",
+    "route": "patch",
+    "finding": "V2 unavailable captured Delete target not tested",
+    "evidence": "Pre-verified gap: no test refreshes an open same-map dialog to make captured target ineligible. G9: archive/remove snapshot target, assert alert/disabled/no request."
+  },
+  {
+    "verdict": "false",
+    "route": "reject",
+    "finding": "I1 board tests span different surfaces",
+    "evidence": "Descriptive difference, not a demonstrated defect: lifecycle tests mount actual Discovery and Delete; native observed two hidden selected Cards and full confirmation. Direct-hook tests supplement those executed surfaces."
+  },
+  {
+    "verdict": "medium",
+    "route": "patch",
+    "finding": "I2 diagnostic fixture excludes board rendering",
+    "evidence": "Existing timing capture explicitly mounts only toolbar/hook, omitting rendered Card updates in the stated 1000-Card diagnostic. G10: add actual Discovery+Toolbar DOM capture; preserve old raw samples and no native paint or timing pass claim."
+  },
+  {
+    "verdict": "maybe-false",
+    "route": "defer",
+    "finding": "I3 final native accessibility/layout limit",
+    "evidence": "Final native pressKey and getApp both returned cgWindowNotFound. DOM/string/CSS/focus tests pass; actual final-build native layout/focus, zoom/forced colors/screen reader would settle remaining presentation risk. If true medium; unverified."
+  },
+  {
+    "verdict": "maybe-false",
+    "route": "defer",
+    "finding": "I4 native planned GitHub write not exercised",
+    "evidence": "Native run used GitHubOff; mocked API tests exercise reviewed scope without live remote writes. A controlled native planned-flow check with isolated provider would settle UI/provider interaction; no live-write pass claimed. Same unavailable-native evidence group as I3, medium if true."
+  },
+  {
+    "verdict": "false",
+    "route": "reject",
+    "finding": "I5 complementary atomicity surfaces",
+    "evidence": "No incorrect atomicity claim: actual TCP all-stale/overlap/persistence and server injected-failure history/Activity/live assertions establish backend effects; DOM verifies construction/errors. No full successful browser-to-DB transaction was claimed."
+  },
+  {
+    "verdict": "false",
+    "route": "reject",
+    "finding": "I6 evidence cannot establish every workflow duty",
+    "evidence": "Descriptive epistemic limit during in-review execution, no violated concrete duty identified. Workflow invocation/render/delegation/verification are observed tool actions; status rows were neither touched nor used as proof."
+  },
+  {
+    "verdict": "low",
+    "route": "patch",
+    "finding": "P1 selected-flow hint describes absent picker",
+    "evidence": "Parent source verification: explicit mode still says tick Cards above and leave empty for all, although picker omitted and explicit-empty cannot widen. G6: accurate selected-mode copy, full-panel copy preserved."
+  }
+]

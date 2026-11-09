@@ -1,0 +1,16 @@
+function outer() {
+  const nested = () => {
+    return 1;
+  };
+  return nested();
+}
+class Fixture {
+  method() {
+    return outer();
+  }
+}
+const component = () => (
+  <div>
+    {() => 1}
+  </div>
+);

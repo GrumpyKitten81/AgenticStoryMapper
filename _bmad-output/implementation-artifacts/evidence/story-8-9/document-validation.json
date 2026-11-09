@@ -1,0 +1,255 @@
+{
+  "source_sha256_at_start": {
+    "docs/agentic-coding.md": "13d4a036df21d789c3b0eb6b7c63dc6dc22a05abea8ed329ffb776f2e9d3f1fa",
+    "CONTRIBUTING.md": "5397dcdf039e0cf7c0d2312380610aa4a8890db6402c909ff3b6ba2466aef8e8",
+    "README.md": "e41511e7b9872a8aba0f8a6733e1940fa039c14b5ea9f263ff9b30d05542732f",
+    "docs/bmad-loop.md": "33967df8122e3ee005b5acf0a9219abb0b48072575811f1ed20b7b9766bafee0",
+    "docs/bmad-epic-preparation.md": "10f6da85c42b807f0b5191ffbb9500e668996ecbd66be9bc92939af0d9e5f668"
+  },
+  "source_unchanged": true,
+  "local_links_and_anchors": [
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../CONTRIBUTING.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../AGENTS.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../.cursor/rules/",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../.wolf/OPENWOLF.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../_bmad-output/implementation-artifacts/epic-8-preparation.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../_bmad-output/implementation-artifacts/story-plan-8-9-agentic-coding-reference-material.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../_bmad-output/implementation-artifacts/spec-8-9-agentic-coding-reference-material.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "bmad-epic-preparation.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../.github/PULL_REQUEST_TEMPLATE.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../.agents/skills/bmad-build-auto/SKILL.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../.claude/skills/bmad-build-auto/SKILL.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../_bmad/custom/bmad-build-auto.toml",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "../_bmad/custom/references/bmad-build-auto-epic-story-plans.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "bmad-loop.md",
+      "valid": true
+    },
+    {
+      "file": "docs/agentic-coding.md",
+      "target": "RUNBOOK.md#verification-and-publication-prerequisites",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "AGENTS.md",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "_bmad-output/planning-artifacts/architecture/architecture-StoryMapper-2026-09-29/ARCHITECTURE-SPINE.md",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "CODE_OF_CONDUCT.md",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "SECURITY.md",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "docs/agentic-coding.md",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "docs/bmad-loop.md",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "docs/RUNBOOK.md",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "_bmad-output/implementation-artifacts/spec-8-5-license-and-community-files.md",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "docs/RUNBOOK.md#versioned-releases",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "docs/RUNBOOK.md#restore-and-upgrade-recovery",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "LICENSE",
+      "valid": true
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "scripts/license-policy.mjs",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "_bmad-output/planning-artifacts/prds/prd-StoryMapper-2026-09-29/prd.md",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/RUNBOOK.md",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/RUNBOOK.md#troubleshooting",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "_bmad-output/implementation-artifacts/evidence/story-8-6/",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/RUNBOOK.md#credentials-and-connection-consent",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "_bmad-output/planning-artifacts/architecture/architecture-StoryMapper-2026-09-29/ARCHITECTURE-SPINE.md#ad-6--agent-access-protection-and-approval",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/RUNBOOK.md#github-workflow",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/mcp-tools.md",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "CONTRIBUTING.md",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "evidence/story-6-10/",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "_bmad-output/planning-artifacts/architecture/architecture-StoryMapper-2026-09-29/ARCHITECTURE-SPINE.md",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/agentic-coding.md",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "CONTRIBUTING.md",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "SECURITY.md",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "CODE_OF_CONDUCT.md",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "LICENSE",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/RUNBOOK.md#verification-and-publication-prerequisites",
+      "valid": true
+    },
+    {
+      "file": "README.md",
+      "target": "docs/RUNBOOK.md#versioned-releases",
+      "valid": true
+    },
+    {
+      "file": "docs/bmad-loop.md",
+      "target": "agentic-coding.md",
+      "valid": true
+    },
+    {
+      "file": "docs/bmad-epic-preparation.md",
+      "target": "agentic-coding.md",
+      "valid": true
+    }
+  ],
+  "errors": [],
+  "git_diff_check_exit": 0,
+  "scope": "Five documentation files only; all named script/skill/preparation targets separately validated against tracked source and read-only CLI help",
+  "runtime_tools": {
+    "bmad-loop": "0.13.0",
+    "python": "3.14.6",
+    "git": "2.54.0 (Apple Git-157)"
+  }
+}

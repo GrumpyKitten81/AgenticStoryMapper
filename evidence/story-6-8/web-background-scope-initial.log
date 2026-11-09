@@ -1,0 +1,39 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ❯ src/app/routes/workspace-navigation.test.tsx (18 tests | 2 failed) 579ms
+   × retains the same Customize dialog and draft after a background inventory read fails 16ms
+     → expected false to be true // Object.is equality
+   × retains the same Customize dialog and draft after a background snapshot read fails 13ms
+     → expected false to be true // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/routes/workspace-navigation.test.tsx > retains the same Customize dialog and draft after a background inventory read fails
+ FAIL  src/app/routes/workspace-navigation.test.tsx > retains the same Customize dialog and draft after a background snapshot read fails
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ src/app/routes/workspace-navigation.test.tsx:339:184
+    337|   expect(dialog.querySelector("input")).toBe(input);
+    338|   expect(input.value).toBe("Draft survives background failure");
+    339|   expect([...document.querySelectorAll('[role=alert]')].some((alert) =…
+       |                                                                                                                                                                                        ^
+    340|   if (read === "inventory") {
+    341|     const save = dialog.querySelector<HTMLButtonElement>('button[type=…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 16 passed (18)
+   Start at  20:21:55
+   Duration  1.41s (transform 270ms, setup 0ms, collect 472ms, tests 579ms, environment 182ms, prepare 33ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/app/routes/workspace-navigation.test.tsx

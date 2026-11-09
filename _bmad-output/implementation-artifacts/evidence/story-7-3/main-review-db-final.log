@@ -1,0 +1,12 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/operation-resolution-parity.test.ts (8 tests) 254ms
+ ✓ src/repositories/canonical-github-identity.test.ts (13 tests) 370ms
+ ✓ src/repositories/operation-executor-persistence.test.ts (22 tests) 3225ms
+   ✓ persists 200 selected operations on 1,000 Cards with snapshot, history and audit 2208ms
+
+ Test Files  3 passed (3)
+      Tests  43 passed (43)
+   Start at  02:32:47
+   Duration  3.93s (transform 407ms, setup 0ms, collect 1.55s, tests 3.85s, environment 0ms, prepare 85ms)

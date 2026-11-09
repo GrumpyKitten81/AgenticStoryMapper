@@ -1,0 +1,56 @@
+{
+  "baseline_revision": "74c5921401223e1fbfd3ad96bcfc582208ae5565",
+  "sourceFingerprint": "5f18ccfcd326a055d8c5f90f59bb0f4f78e44c8e4a99b093958619fdba3ad17b",
+  "scripts": {
+    "passed": 83
+  },
+  "packages": {
+    "packages/contracts": [
+      169
+    ],
+    "packages/importers": [
+      7
+    ],
+    "packages/github": [
+      45
+    ],
+    "packages/core": [
+      406
+    ],
+    "apps/web": [
+      766
+    ],
+    "packages/db": [
+      488
+    ],
+    "apps/server": [
+      785,
+      14
+    ]
+  },
+  "totalPassed": 2763,
+  "failed": 0,
+  "skipped": 0,
+  "fullCommand": {
+    "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm test",
+    "exitCode": 0,
+    "source": "parent-post-review-tests.log"
+  },
+  "releaseVerify": {
+    "status": "passed",
+    "exitCode": 0,
+    "source": "parent-post-review-release-verify.log",
+    "capabilities": 136,
+    "accessibilityTestsPassed": 260,
+    "typecheck": "passed",
+    "build": "passed",
+    "hygiene": "passed",
+    "priorFailure": "parent-post-review-release-verify-attempt1.log"
+  },
+  "verificationMethod": "Parent complete workspace run passed2763 tests after all behavioral review repairs. The only subsequent source edit schema-parses a test fixture to preserve kind/payload typing; its16 focused tests and DB typecheck passed. Parent release verification reruns all required gates serially afterward. Earlier failed attempts are retained; expectations and gates preserved.",
+  "protectedPathsEvidence": "protected-paths.json",
+  "matrixEvidence": "parent-matrix-audit.json",
+  "reviewEvidence": "review-triage.json",
+  "acceptanceLimits": "native-acceptance.json",
+  "finalization": "Reviewed changes staged and intentionally uncommitted: global user policy requires an explicit commit request; no push. Orchestrator/sprint/deferred-ledger files never written, staged, unstaged or reverted."
+}

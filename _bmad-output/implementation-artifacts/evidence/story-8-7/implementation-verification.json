@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "date": "2026-10-20",
+  "status": "incomplete",
+  "runtime": {
+    "node": "24.17.0",
+    "pnpm": "9.15.4"
+  },
+  "sources": {
+    "scripts/check-publication-audit.mjs": "163c899ad24ffcb87a6aa8f0e967cdc30bdeee8bc8aeb4274437c340d3a650c2",
+    "scripts/check-publication-content.mjs": "609cad3c170372cd96969d59811d7abe1f03a7247ccd03c221f9881b4e9e3051",
+    "scripts/check-publication-errors.mjs": "7ed88de9490a830c08e7e1a7653be425db0195522866b356278c26006a02a583",
+    "scripts/check-publication-git.mjs": "5fe78eaaa69bc541d1e49c32db6acff82086e094b2a34f325ac82145339e92b4",
+    "scripts/check-publication.mjs": "1e80441ea3b90ae58d18d819e8f3cf4e8c5fed2c401254aec7177f3f9caadcb6",
+    "scripts/check-publication.test.mjs": "5c54697e94f92439171682f936bef8c0963a331c21fc357f3dd7872d680218d4",
+    "scripts/test-fixtures/publication-hanging-git.mjs": "174c3e0045409140507b191ab7bcf7b915b3f386d486a190b349c8e8d4ec53a2"
+  },
+  "commands": [
+    {
+      "commandLog": "quality.log",
+      "exitCode": 1,
+      "originalSha256": "b32df3fbd07f6c88d694e82ef88399ee664b7bdb5f7a9195c34c177d0a40bf0f",
+      "sanitizedSha256": "6bb3ee4430d700d43d8fd9449f5220aa3568574b07152f544bef50c75f2d8dba",
+      "sanitation": "Personal home prefix replaced; source stream retained only outside tracked inputs."
+    },
+    {
+      "commandLog": "verify.log",
+      "exitCode": 1,
+      "originalSha256": "3efefb123c4059732091ccd650e1326340ebd7ab5b08db2632bf1bd41f9d168d",
+      "sanitizedSha256": "aa2f0346f8403b9354d3448ff148d6ffb22d4edd20e1717808717de997eb535c",
+      "sanitation": "Personal home prefix replaced; source stream retained only outside tracked inputs."
+    },
+    {
+      "commandLog": "typecheck.log",
+      "exitCode": 0,
+      "originalSha256": "5c9a9afd4c467c8fdbbf2506c1d12184e4e5a8c745e2f7d95d61880c47173c7d",
+      "sanitizedSha256": "1d0ab94a5bb460bea4d3e3bfc3f87bcad627b83a786125c441eab6961bcf57c4",
+      "sanitation": "Personal home prefix replaced; source stream retained only outside tracked inputs."
+    },
+    {
+      "commandLog": "build.log",
+      "exitCode": 0,
+      "originalSha256": "5e7cbd4e392b1a592105a05d145d83251c41e150ed6eb73f279f7695c578bf62",
+      "sanitizedSha256": "77050eeb704a278e21f90483fe99f4838e989a01fdd8eb9c708d90ca80ec978e",
+      "sanitation": "Personal home prefix replaced; source stream retained only outside tracked inputs."
+    },
+    {
+      "commandLog": "publication-tests-final.log",
+      "exitCode": 0,
+      "originalSha256": "7debd606fba6e0889b8d7e163510089132600930e9a5d34887dbb16dd1361f11",
+      "sanitizedSha256": "7debd606fba6e0889b8d7e163510089132600930e9a5d34887dbb16dd1361f11",
+      "sanitation": "Personal home prefix replaced; source stream retained only outside tracked inputs."
+    },
+    {
+      "commandLog": "scan.log",
+      "exitCode": 1,
+      "originalSha256": "6bda0bdd12d9d95fdee17122bf47751a94d1180b17f8735f84aa3c7b6fdc513a",
+      "sanitizedSha256": "6bda0bdd12d9d95fdee17122bf47751a94d1180b17f8735f84aa3c7b6fdc513a",
+      "sanitation": "Personal home prefix replaced; source stream retained only outside tracked inputs."
+    },
+    {
+      "commandLog": "publication-repair-tests.log",
+      "exitCode": 0,
+      "originalSha256": "120d86741e9e8f65e1212a34ab96caf73f5d69af031f4382f55b2791f64cc39e",
+      "sanitizedSha256": "120d86741e9e8f65e1212a34ab96caf73f5d69af031f4382f55b2791f64cc39e",
+      "sanitation": "No personal home output observed; same explicit prefix replacement applied."
+    },
+    {
+      "commandLog": "path-tag-tests-initial-failure.log",
+      "exitCode": 1,
+      "originalSha256": "d7c7730f488b227b81364605718e54fa4b887f5708c0ecea40feb02c7c03d688",
+      "sanitizedSha256": "2b53d8162ff20b82aee9c41dac1756b95c705de9be2101a2daf03e806b0968c1",
+      "sanitation": "Personal home prefix replaced; original failure preserves observed native fixture EPERM."
+    },
+    {
+      "commandLog": "path-tag-tests-final.log",
+      "exitCode": 0,
+      "originalSha256": "e0cf215199334c1d093775ffae9cb7a68fab69f0ddbbf87518cf0d6b78d0c05a",
+      "sanitizedSha256": "e0cf215199334c1d093775ffae9cb7a68fab69f0ddbbf87518cf0d6b78d0c05a",
+      "sanitation": "Personal home prefix replaced; original failure preserves observed native fixture EPERM."
+    }
+  ],
+  "passed": [
+    "Final publication suite:21 passed,2 skipped,0 failed (23 tests); native invalid-byte creation unverified.",
+    "workspace typecheck",
+    "workspace build",
+    "size",
+    "whitespace",
+    "33 scoped links",
+    "offline reader parser checks",
+    "three existing GitHub skill pairs byte-identical"
+  ],
+  "blocked": [
+    "Quality aggregate and standalone verifier: deleted PDF remains in read-only index, hygiene ENOENT.",
+    "Focused proposal suite: sandbox ps EPERM before tests.",
+    "Protected paired skills, hooks/settings and deferred-work cleanup remain incomplete.",
+    "Unsupported archives, unreviewed assets, required declarations and unchanged private history remain publication blockers."
+  ],
+  "reportScope": "Initial3180 tracked-path scan is historical evidence. Repaired scanner includes nonignored untracked candidate files; final parent rescan after metadata writes is required. No full aggregate acceptance or publication clearance claimed.",
+  "initialTestRepair": "First 10-test run had two false-positive clean-fixture failures caused by source-code quote prefixes around classified synthetic emails. Parser normalization repaired; final12 pass.",
+  "scope": {
+    "trackedPaths": 3180,
+    "refs": 36,
+    "commits": 360,
+    "trees": 4970,
+    "blobs": 7335,
+    "objectBytes": 206941306
+  },
+  "parentReviewRepairs": [
+    "Fingerprint and scan nonignored untracked files; ignore actual excluded files without reading them.",
+    "Recognize underscore and camel/acronym employer boundaries; reject unrelated identifier substrings.",
+    "Reject report symlink/nonregular/root-parent traversal before reading; use no-follow regular-file open.",
+    "Bound every Git subprocess to30seconds; hanging-process and nonzero failure tests pass.",
+    "Expose fixed safe actionable reason codes for known policy/scope/report/Git failures.",
+    "Expand retired detector to whitespace/hyphen/underscore/camel variants."
+  ],
+  "sanitationCorrection": {
+    "pathCount": 870,
+    "provenance": "Original hashes preserved; correctionRounds retains intermediate/final digests.",
+    "agentReportedFocusedDbTests": 31,
+    "parentIndependentVerification": "pending"
+  },
+  "scopeEncodingRepair": {
+    "callSites": [
+      "tracked index entries",
+      "nonignored untracked entries",
+      "for-each-ref inventory and ref content scan",
+      "historical tree names"
+    ],
+    "reasonCode": "scope-path-encoding",
+    "finalTests": {
+      "total": 23,
+      "passed": 21,
+      "skipped": 2,
+      "failed": 0
+    },
+    "coverage": "Raw malformed UTF-8 buffer and raw historical tree rejection pass; annotated-tag metadata passes. Native invalid-byte path/ref writes both return EPERM; targeted skips preserve this unavailable integration coverage. Original22-test run with20pass/2fail retained.",
+    "nativeIntegration": "unverified; no alternate write mechanism attempted"
+  },
+  "testPortabilityCorrection": "After the retained21pass/2skip run: mode drift now uses git update-index --chmod=+x, and Windows hanging executable is named git.exe. Parent owns final run on this exact test source; no native Windows execution claimed."
+}

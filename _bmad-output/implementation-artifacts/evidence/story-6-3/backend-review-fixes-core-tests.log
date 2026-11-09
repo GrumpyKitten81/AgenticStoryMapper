@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+
+ ✓ src/changesets/dependency-effect-parity.test.ts (14 tests) 59ms
+
+ Test Files  1 passed (1)
+      Tests  14 passed (14)
+   Start at  13:48:04
+   Duration  507ms (transform 178ms, setup 0ms, collect 271ms, tests 59ms, environment 0ms, prepare 34ms)
+

@@ -1,0 +1,13 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+stdout | src/repositories/operation-snapshot-scope.test.ts > materializes no additional target rows after a large foreign Project is added
+{"action":"A3","foreignCards":2503,"foreignExtraChunks":2500,"before":{"rows":68,"elapsedMs":5.680166999999983},"referenceAfter":{"rows":5103,"elapsedMs":18.081833000000188},"scopedAfter":{"rows":68,"elapsedMs":5.716208999999935}}
+
+ ✓ src/repositories/operation-snapshot-scope.test.ts (3 tests) 362ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  10:49:32
+   Duration  1.16s (transform 320ms, setup 0ms, collect 613ms, tests 362ms, environment 0ms, prepare 29ms)
+

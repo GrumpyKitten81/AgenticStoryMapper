@@ -1,0 +1,20 @@
+{
+  "source": "/tmp/story7-6-parent-workspace.log",
+  "preservedLog": "story-7-6-parent-workspace-unsynced-failure.log.gz",
+  "rawBytes": 465368,
+  "sha256": "0ad8136b1e7814f65289deb6c4483fc3e8fe51ecb0f1f6902e4787e4238eb060",
+  "failingTest": "StoryMapperRepository > manages provider connections, remote links and imported work items",
+  "failedAssertion": "stateCounts.stale1 / staleLinks remote42 for local divergence",
+  "rootCause": "Obsolete expected state. The spec defines local divergence as unsynced; the canonical Issue42 identity remains in health.links.",
+  "repair": "Only change state/list assertions to unsynced, checking actual link id/externalRefId/Card id/remote id/URL; retain all other assertions.",
+  "verification": {
+    "tests": 18,
+    "testsPassed": true,
+    "dbTypecheck": "passed",
+    "targetedWhitespace": "passed",
+    "commands": [
+      "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/db exec vitest run src/repositories/storymapper-repository.test.ts",
+      "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/db typecheck"
+    ]
+  }
+}

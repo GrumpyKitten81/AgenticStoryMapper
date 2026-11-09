@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "node": "v24.17.0",
+    "platform": "darwin",
+    "runner": "Vitest jsdom",
+    "nativePaint": false
+  },
+  "fixture": "1000 renderable Cards:1Activity+1Step+998Stories; real DiscoveryMatrix, CardTiles, DndContext and BoardToolbar",
+  "boundary": "untrusted DOM input/change through React act to committed complete Discovery tile DOM and match status; visibleTiles excludes hidden ancestors; no native layout/paint claim",
+  "referenceMilliseconds": 300,
+  "acceptanceGate": false,
+  "samples": [
+    {
+      "action": "mount",
+      "phase": "cold",
+      "milliseconds": 1203.2497080000003,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "Search cards=Fixture 99",
+      "phase": "cold-first-input-sequence",
+      "milliseconds": 425.9968750000003,
+      "matches": 9,
+      "renderedTiles": 1000,
+      "visibleTiles": 11
+    },
+    {
+      "action": "Search cards=",
+      "phase": "cold-first-input-sequence",
+      "milliseconds": 338.0709999999999,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "Color category=value:custom",
+      "phase": "cold-first-input-sequence",
+      "milliseconds": 299.0296669999998,
+      "matches": 500,
+      "renderedTiles": 1000,
+      "visibleTiles": 501
+    },
+    {
+      "action": "Color category=all",
+      "phase": "cold-first-input-sequence",
+      "milliseconds": 347.8720409999996,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "Search cards=Fixture 99",
+      "phase": "warm",
+      "milliseconds": 288.006042,
+      "matches": 9,
+      "renderedTiles": 1000,
+      "visibleTiles": 11
+    },
+    {
+      "action": "Search cards=",
+      "phase": "warm",
+      "milliseconds": 299.8000409999995,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "Color category=value:custom",
+      "phase": "warm",
+      "milliseconds": 288.59375,
+      "matches": 500,
+      "renderedTiles": 1000,
+      "visibleTiles": 501
+    },
+    {
+      "action": "Color category=all",
+      "phase": "warm",
+      "milliseconds": 351.031833,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    }
+  ]
+}

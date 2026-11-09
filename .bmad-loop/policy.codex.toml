@@ -1,0 +1,252 @@
+# bmad-loop orchestration policy. All keys optional; defaults shown.
+#
+# Variant: Codex dev (gpt-6.1-sol). Review stays Claude Sonnet 5.5.
+# Activate:  cp .bmad-loop/policy.codex.toml .bmad-loop/policy.toml
+# OpenCode:  cp .bmad-loop/policy.opencode.toml .bmad-loop/policy.toml
+
+[gates]
+# Unattended: no human approval pauses. Agents decide within the story contract.
+mode = "none"                # none | per-epic | per-story-spec-approval
+retrospective = "never"      # never | notify | auto — never = no epic-boundary stop for a human retro
+
+[limits]
+max_review_cycles = 3
+max_dev_attempts = 2
+artifact_file_max_mb = 5    # raw-byte cap for each ignored artifact selected for publication
+artifact_payload_max_mb = 10 # raw-byte cap across all selected ignored publication artifacts
+max_followup_reviews = 1     # additional review rounds granted solely because a finalized (status: done) round still recommended a follow-up; once spent, such a round converges + refiles the recommendation instead of burning another cycle. 0 = never honor a pass's own recommendation
+session_timeout_min = 360             # was 180 (05a4); raised again after 4-2: OpenCode + local LM Studio (qwen/gemma) + parallel machine load routinely needs >3h for bmad-build-auto step 02 alone
+git_timeout_s = 120          # bound on any single git subprocess; exceeding it pauses/degrades (never crashes the run) — raise on a loaded host or a very large worktree
+teardown_grace_s = 20        # verified teardown: poll a killed session window up to this long, then force-kill its pane pids and re-kill (#157). 0 = single unverified best-effort kill
+stop_without_result_nudges = 1
+# Idle recovery for Codex dev sessions. Codex frequently stays busy across many
+# turns (planning, collapsing large diffs, writing a real implementation) and is
+# NOT done simply because it pauses briefly between turns. A 180s grace kills a
+# faithful long-running session mid-implementation (that is exactly what stalled
+# both 3-12 dev attempts after ~7-8 min of genuine work, before any code was
+# written). Give it room to finish: 15 min of silence before a stall, and keep
+# nudging within the cap so it can resume rather than being force-killed.
+dev_stall_grace_s = 900      # silence grace; 0 = no launch timer (result-less turn end still fails fast)
+dev_stall_nudges = 1         # wake nudges per silent grace before stalling
+dev_stall_nudges_cap = 3     # total nudge bound per session (never restored)
+workflow_stall_nudges_cap = 3 # stall nudges for injected plugin-workflow sessions
+dev_contract_nudge = true    # nudge once when terminal frontmatter lacks ## Auto Run Result
+max_tokens_per_story = 8000000       # raised after run 05a4 (local OpenCode spend often >2M weighted)
+cache_read_weight = 0.1      # cache reads bill at ~0.1x input on all vendors; 1.0 = count raw
+session_budget_mode = "warn"  # off | warn | enforce — weighted per-SESSION cap sampled every ~30s mid-session; warn = one ATTENTION + breadcrumb; enforce = wrap-up nudge (best-effort courtesy; the kill is the guarantee) then over_budget termination (retry→defer). Live-verified on claude; other transcript parsers sample best-effort (mid-turn flush unverified); inert where no mid-session usage signal exists (usage_parser "none", copilot's shutdown-only flush)
+max_tokens_per_session = 8000000 # weighted cap a single session may spend before the guard trips; warn-mode only — raised with story cap after 05a4
+session_budget_grace_s = 240 # enforce mode: seconds a tripped session gets to wrap up after the nudge before over_budget termination. 0 = terminate at trip, no nudge
+
+[verify]
+# Deterministic gates run by the orchestrator after a clean review, before commit.
+# Agentic Story Mapper: lint == typecheck (tsc --noEmit); keep both for explicit gates.
+# Pin Node 24 ahead of PATH: the ctl/tmux engine often inherits Node 22 from
+# ~/.local/bin, which makes portable scripts fail with "Node 24 is required"
+# and defers finished stories (seen on 1-3).
+commands = [
+    "PATH=$HOME/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm typecheck",
+    "PATH=$HOME/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm lint",
+    "PATH=$HOME/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm test",
+]
+stream_capture_kb = 256      # per-stream cap (KiB) on the verifier stdout/stderr retained under the run's verify/ directory; the TAIL is kept and the journal records the full byte count plus a truncation flag. 0 = capture nothing (records still land, with null pointers)
+
+[notify]
+desktop = true               # notify-send (Linux) / osascript (macOS) / PowerShell toast (Windows), best-effort
+file = true                  # ATTENTION file in the run dir
+
+[review]
+# enabled = true  -> run a follow-up review session (the dev primitive re-invoked
+#                    on the done spec for a fresh review pass) after a dev pass.
+# enabled = false -> skip that session; the dev pass's own inline review
+#                    is the only review and it finalizes the story straight to done.
+enabled = true
+# trigger (only consulted when enabled = true) decides WHEN that session runs:
+#   "recommended" -> only when the dev pass flags the story with
+#                    `followup_review_recommended: true` (it self-reviews inline
+#                    and flags this when its changes warrant an independent pass).
+#   "always"      -> run the second-opinion review on every story.
+# The loop is bounded by limits.max_review_cycles (hard cap) and damped by
+# limits.max_followup_reviews (a round that finalizes the story yet keeps
+# recommending a follow-up converges + refiles once the grant is spent) either way.
+trigger = "always"
+# What a timeout-like review verdict (timeout/stalled/over_budget) costs:
+#   "retry"           -> burn a review cycle per timeout until max_review_cycles (default).
+#   "salvage-if-done" -> if the dev product is already finalized and verify passes,
+#                        commit it and refile the outstanding follow-up to deferred work.
+#   "defer"           -> give up on the first timeout-like verdict.
+on_timeout = "retry"
+# What a review that writes sprint-status back off `done` (the sign-off the
+# orchestrator recorded at dev time) costs. Nothing in the review loop
+# re-advances the board, so every remaining cycle re-reads the same failure:
+#   "escalate" -> pause the run naming both sides of the disagreement (default).
+#   "retry"    -> burn review cycles to max_review_cycles, then defer (no human pause).
+on_status_contradiction = "escalate"
+
+[stories]
+# Story-queue source. "sprint-status" (default) walks sprint-status.yaml written
+# by bmad-sprint-planning. "stories" opts into folder+id dispatch: the loop reads
+# a typed stories.yaml (Story Breakdown output, sibling of SPEC.md) and dispatches
+# each entry by spec-folder + story id. `bmad-loop run --spec <folder>` forces
+# stories mode for a single run regardless of this setting.
+source = "sprint-status"     # sprint-status | stories
+# Required (and must parse) when source = "stories": the project-relative path to
+# the epic's spec folder holding stories.yaml + SPEC.md. Ignored under sprint-status.
+spec_folder = ""
+
+[adapter]
+# Default client for stages that do not override (triage/retro inherit this).
+# Dev uses [adapter.dev]; review stays Claude Code.
+name = "opencode"
+model = ""                   # → ~/.config/opencode/opencode.jsonc (+ project opencode.jsonc)
+effort = ""
+cleanup_session_on_finish = true  # kill the run's tmux session when it finishes (false keeps it for inspection)
+
+# --- Codex default (previous) ---
+# name = "codex"
+# model = "gpt-6.1-sol"
+# effort = ""
+# extra_args = ["--dangerously-bypass-approvals-and-sandbox"]
+# Codex: extra_args must be ONLY the bypass flag; reasoning high in ~/.codex/config.toml.
+
+# Dev / coding: authorized Epic 4 supervision uses Codex.
+[adapter.dev]
+name = "codex"
+model = "gpt-6.1-sol"
+effort = ""
+extra_args = ["--dangerously-bypass-approvals-and-sandbox"]
+
+# --- Codex dev (previous) ---
+# [adapter.dev]
+# name = "codex"
+# model = "gpt-6.1-sol"
+# extra_args = ["--dangerously-bypass-approvals-and-sandbox"]
+
+# Independent review: Claude Code CLI + Sonnet 5.5 + high effort.
+# Keep profile bypass_args (--permission-mode bypassPermissions) so extra_args
+# does not drop the unattended bypass. Suppress the one-time Bypass Permissions
+# dialog only for this launch via --settings (session-scoped; not ~/.claude).
+# Without that, bmad-loop parks on "WARNING: Claude Code running in Bypass…".
+#
+# HARD REQUIREMENT: `claude auth status` must report loggedIn=true before any
+# resume/resolve. If Claude is logged out, review sits on IdlePrompt
+# ("Not logged in · Run /login"), the stall nudge is withheld, and the story
+# escalates. Gate with: node scripts/bmad-loop-preflight.mjs
+# (also: scripts/bmad-loop-resume.sh wraps resolve/resume).
+[adapter.review]
+name = "claude"
+model = "claude-sonnet-5-5"
+extra_args = [
+  "--permission-mode", "bypassPermissions",
+  "--dangerously-skip-permissions",
+  "--effort", "high",
+  "--settings", ".bmad-loop/claude-unattended.settings.json",
+]
+
+[sweep]
+# Deferred-work sweep: triage + execute open deferred-work.md entries.
+auto = "never"               # never | per-epic | run-end (auto-triggered sweeps never prompt)
+max_bundles = 5              # bundles executed per sweep; triage excess is truncated
+max_triage_attempts = 2      # triage validation retries before escalating
+max_migration_attempts = 2   # legacy-ledger migration retries before escalating
+repeat = false               # after a cycle completes, re-triage and continue on newly deferred work
+max_cycles = 5               # safety cap on total cycles per sweep run when repeat = true
+
+[cleanup]
+# Disk reclamation for .bmad-loop/runs. Only terminal (finished/stopped) runs are
+# ever touched; paused/interrupted runs stay intact so they remain resumable.
+# `bmad-loop clean` applies these, and every run/sweep start reconciles worktrees
+# leaked by a mid-flight stop.
+run_retention = 10           # newest concluded runs kept whole; older ones are trimmed/archived (0 keeps none)
+retention_days = 0           # 0 = disabled; else also keep runs newer than N days regardless of count
+trim_artifacts = true        # drop the heavy worktrees/ tree from concluded runs (run stays viewable in the TUI)
+archive_old = true           # archive (.bmad-loop/archive/<id>.tar.gz) rather than hard-delete runs past the window
+auto_clean_on_finish = true  # reconcile stale worktrees + apply retention when a run finishes cleanly
+clean_tmp = true             # let engine plugins clean their /tmp scratch on finish (e.g. Unity MCP server zips)
+
+[scm]
+# In-place on the checked-out branch (usually main): no per-story worktrees.
+# Avoids Codex per-worktree hook-trust grants. Stories run sequentially in this
+# checkout; each successful story gets one commit on the branch.
+isolation = "none"           # none | worktree — none = build in-repo on current branch
+branch_per = "story"         # story | run (worktree mode only; ignored when isolation = none)
+target_branch = ""           # "" = the branch checked out at run start
+merge_strategy = "squash"    # ff | merge | squash (worktree mode only; ignored when isolation = none)
+delete_branch = true         # worktree mode only
+keep_failed = true           # keep a failed unit's artifacts for inspection
+rollback_on_failure = true   # in-place: auto-revert failed attempt so unattended retry can continue without manual hard-reset
+preserve_keep = 20           # attempt-preserve/* recovery branches, attempt-preserve-dirty/* rollback snapshots and merge-preflight-preserve/* merge pre-flight snapshots kept at run start (per family), newest by committer date; the tail is deleted (0 = never prune)
+failed_diff_max_mb = 5       # per-file size cap (MB) for untracked files in a kept-failed unit's changes.patch; oversized files are skipped with a marker
+failed_diff_unlimited = false # true = capture the failed-unit diff with no size cap (may produce very large patches; warns when active)
+# commit_message_template: when set, the commit message dev sessions use for a
+# story's commit. {story_key}, {run_id} and {story_title} (the spec's `title:`
+# frontmatter, else a first `#` heading, minus any "Story <id>:" label; falls back to the
+# key) are substituted.
+# Empty = built-in default.
+commit_message_template = ""
+max_parallel = 1             # units in flight at once (parallel fan-out unbuilt; values > 1 clamp to 1)
+# A git worktree checks out tracked files only, so gitignored MCP/CLI configs are
+# absent from every fresh worktree and isolated sessions can't reach their MCP
+# server. seed_adapter_defaults copies each loaded adapter's own config files
+# (claude -> .mcp.json/.claude/settings.json, codex -> .codex/config.toml, etc.)
+# into the worktree; worktree_seed adds extra project-specific gitignored paths.
+seed_adapter_defaults = true # seed each loaded adapter's default gitignored configs into worktrees
+worktree_seed = []           # extra gitignored files to copy into each worktree, on top of adapter defaults
+
+[plugins]
+# Plugin trust allowlist. A plugin dropped under .bmad-loop/plugins/<name>/ loads
+# its declarative manifest (settings + out-of-process shell hooks) automatically.
+# A plugin that ships an in-process [python] module is NEVER imported or run
+# unless its name is listed here. Empty = no plugins trusted (today's behavior).
+enabled = []                 # e.g. ["unity", "my-lint-plugin"]
+
+# The game-engine layer is a plugin. For a Unity project whose dev/sweep cycle
+# drives a live Editor via an Editor MCP, enable it above and configure it here:
+#   [plugins.unity]
+#   editor_mode = "shared"       # shared (live Editor; requires scm.isolation = "none")
+#                                # | per_worktree (one Editor per worktree; requires
+#                                #   scm.isolation = "worktree")
+#   mcp = "ivanmurzak"           # which Editor MCP the scripts target: ivanmurzak | coplaydev
+#   unity_path = ""              # Editor binary for a per_worktree launch ("" = auto-detect)
+#   ready_timeout_sec = 600      # how long the readiness gate waits for the Editor + MCP
+#   ready_grace_sec = -1         # delay before the first probe (-1 = auto: per_worktree waits)
+# (The legacy [engine] block still loads with a deprecation warning, folded into
+#  [plugins.unity] — migrate to [plugins] when convenient.)
+
+[tui]
+# low_frame_rate = true caps Textual to 15fps and disables animations (sets
+# TEXTUAL_FPS=15 / TEXTUAL_ANIMATIONS=none at launch). Fixes repaint tearing
+# over slow/high-latency links (SSH, Tailscale). Equivalent to launching with
+# `bmad-loop tui --low-frame-rate`. Takes effect the next time the TUI starts.
+low_frame_rate = false
+# Persisted dashboard pane sizes, in terminal cells. 0 = unset (use the built-in
+# default proportions). The TUI writes these when you resize a pane by mouse-drag
+# or the Ctrl+W resize mode; they are re-applied on the next launch. Usually you
+# won't hand-edit these — resize in the TUI instead.
+# left_width = 0        # sidebar width, columns
+# runs_height = 0       # Runs pane height, rows
+# deferred_height = 0   # Deferred pane height, rows
+# tasks_height = 0      # Tasks table height, rows
+
+[operator]
+# Off for unattended runs: agents must finish agent-doable work (or block/defer)
+# instead of parking stories for a human "confirm" step.
+enabled = false
+# What happens when a REVIEW pass concludes a `done` story still owes such
+# actions and finalizes its spec at awaiting-operator. "escalate" (default): the
+# review is not offered the park and the demotion is not accepted. "park": the
+# review prompt offers the park, and a demotion that passes the verify gate
+# moves the board done -> awaiting-operator, commits, and parks the story.
+# on_review_demotion = "escalate"
+
+[mux]
+# Terminal-multiplexer backend for this machine (the transport axis — which
+# tmux-like program hosts sessions; independent of [adapter], the coding-CLI
+# axis). Machine-specific: `bmad-loop init` gitignores policy.toml, so this
+# choice never travels to teammates on other machines or OSes.
+# Unset = auto-select: the BMAD_LOOP_MUX_BACKEND env var wins, then this key,
+# then the platform default (win32: psmux, elsewhere: tmux) when installed,
+# then the first registered backend that matches this platform and is
+# available. Naming a backend that is not registered fails loudly at launch.
+# `bmad-loop mux` lists backends and shows the selection; `bmad-loop mux set
+# <name>` writes this key. Takes effect on the next bmad-loop invocation.
+backend = "tmux"

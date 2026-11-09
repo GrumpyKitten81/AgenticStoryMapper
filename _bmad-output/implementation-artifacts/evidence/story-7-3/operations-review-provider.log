@@ -1,0 +1,9 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/github
+
+ ✓ src/providers/github-provider.test.ts (25 tests) 14ms
+
+ Test Files  1 passed (1)
+      Tests  25 passed (25)
+   Start at  02:28:15
+   Duration  398ms (transform 115ms, setup 0ms, collect 196ms, tests 14ms, environment 0ms, prepare 32ms)

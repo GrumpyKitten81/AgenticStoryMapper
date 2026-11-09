@@ -1,0 +1,58 @@
+{
+  "scope": "three-file scheduling repair in resumed iteration; previous24-row full implementation review retained in spec",
+  "layers": {
+    "blind-hunter": 2,
+    "edge-case-hunter": 0,
+    "verification-gap": 0,
+    "intent-alignment": 4
+  },
+  "launch_note": "Attempted all four together; fourth launch hit platform thread limit and was retried context-free once slots became free; all layers completed before triage.",
+  "finding_floor": "min(floor(sqrt(1.347)+1),10)=2",
+  "findings": [
+    {
+      "id": "R-B1",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Root script phase still uses Node default concurrency",
+      "evidence": "True existing scheduling, but no demonstrated defect: scripts finish before package tests via &&; all104 scripts passed in both exact root test and independent aggregate. No claim that every file globally runs serially."
+    },
+    {
+      "id": "R-B2",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Shared DB worker limit broadens serial execution without timing evidence",
+      "evidence": "Retained pre-repair DB-only run19.25s/560passes, failed overlapping root DB73.08s/2timeouts after DB1worker, and final serial ordinary DB59.12s/560passes (trial59.06s). Serialization trades wall time for predictable subprocess startup. CLI coverage already had1worker; no performance threshold changed."
+    },
+    {
+      "id": "R-I1",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Repair diff alone lacks aggregate gate implementation",
+      "evidence": "Incremental repair retains existing scripts/check.mjs. Independent full aggregate passed architecture/size/hygiene/licenses/capabilities/build/coverage/audit/a11y/typecheck, with source and matrix checks."
+    },
+    {
+      "id": "R-I2",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Workspace and DB serialization differ from named serial acceptance suites",
+      "evidence": "Independent controls address reproduced DB/server overlap. Existing server test:audit-performance and web test:a11y each still use maxWorkers1;14audit/261a11y passed. Intent does not require parallel ordinary tests."
+    },
+    {
+      "id": "R-I3",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Scheduling diff alone does not prove domain equivalence",
+      "evidence": "No production or assertion change in repair. Existing crash exit87, committed-row/prefix/WAL recovery checks unchanged;56focused and3277ordinary tests passed, plus full3159test coverage suite."
+    },
+    {
+      "id": "R-I4",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Three-file diff lacks acceptance evidence or a scheduling-specific new test",
+      "evidence": "Runtime evidence is separately retained, including failing root command and final successful exact command, all8coverage reports, serial acceptance and matrix audit. No implementation-mirroring test required for manifest/config scheduling."
+    }
+  ],
+  "patched_entries": 0,
+  "new_deferred": 0,
+  "followup_review_recommended": false
+}

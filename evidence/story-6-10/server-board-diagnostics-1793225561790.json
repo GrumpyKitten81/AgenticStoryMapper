@@ -1,0 +1,85 @@
+{
+  "measuredAt": "2026-10-28T22:12:41.790Z",
+  "environment": {
+    "node": "v24.21.0",
+    "platform": "linux",
+    "architecture": "x64",
+    "osRelease": "7.0.0-38-generic",
+    "cpu": "Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz",
+    "runner": "Vitest source transform; Fastify inject; real SQLite WAL",
+    "build": "TypeScript source, no native socket/network",
+    "nativePaint": false
+  },
+  "fixture": {
+    "cards": 1000,
+    "activities": 1,
+    "steps": 1,
+    "stories": 998,
+    "values": "fixed labels/positions; generated repository UUIDs/timestamps",
+    "storage": "fresh temporary SQLite database"
+  },
+  "coldWarm": "cold is first operation on fresh fixture, not OS cache eviction; warm is subsequent operation",
+  "timingAcceptanceGate": false,
+  "functional": {
+    "completed": true,
+    "success": true
+  },
+  "provenance": {
+    "revision": "1a4fd84d447b1c5c7f1dc5cd92b8cafb6b48c8ef",
+    "sourceSha256": "79b2b06cef8126578edaaf4bf251cf29205a497921179dbcfe08cbdac836f4a8",
+    "sourceFileCount": 1067,
+    "roots": [
+      "apps/server",
+      "apps/web",
+      "packages",
+      "scripts",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "tsconfig.base.json"
+    ],
+    "algorithm": "SHA256 of JSON sorted unique {path,sha256(file bytes)} for git ls-files --cached --others --exclude-standard -z; includes actual staged/unstaged/untracked source bytes"
+  },
+  "durability": "functional assertions verify mutation samples after database close/reopen outside timers; suite failures remain failures",
+  "samples": [
+    {
+      "boundary": "Fastify inject GET full map through serialized response",
+      "phase": "cold-first-read",
+      "milliseconds": 223.83138000000145,
+      "referenceMilliseconds": 150
+    },
+    {
+      "boundary": "Fastify inject GET full map through serialized response",
+      "phase": "warm-1",
+      "milliseconds": 211.67086999999992,
+      "referenceMilliseconds": 150
+    },
+    {
+      "boundary": "Fastify inject GET full map through serialized response",
+      "phase": "warm-2",
+      "milliseconds": 201.476815,
+      "referenceMilliseconds": 150
+    },
+    {
+      "boundary": "Fastify inject versioned PATCH through SQLite commit and serialized response",
+      "phase": "cold-first-mutation",
+      "milliseconds": 468.74171000000024,
+      "referenceMilliseconds": 30,
+      "version": 2
+    },
+    {
+      "boundary": "Fastify inject versioned PATCH through SQLite commit and serialized response",
+      "phase": "warm-1",
+      "milliseconds": 20.415625999999975,
+      "referenceMilliseconds": 30,
+      "version": 2
+    },
+    {
+      "boundary": "Fastify inject versioned PATCH through SQLite commit and serialized response",
+      "phase": "warm-2",
+      "milliseconds": 14.573465999999826,
+      "referenceMilliseconds": 30,
+      "version": 2
+    }
+  ]
+}

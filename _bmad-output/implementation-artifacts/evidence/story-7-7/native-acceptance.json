@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-19",
+  "status": "unverified",
+  "observation": "cua.getState inventory returned browsers:[]; running native apps contained no browser.",
+  "unexecuted": [
+    "Native keyboard lookup/replace/connection/proposal flow",
+    "Screen reader and native focus/contrast/zoom/platform matrix",
+    "Live GitHub account/credential/provider smoke"
+  ],
+  "availableEvidence": "Mounted DOM tests and real disposable HTTP/SDK/stdio providers establish only those tested surfaces."
+}

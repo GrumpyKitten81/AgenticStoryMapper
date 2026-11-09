@@ -1,0 +1,16 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+{"measuredAt":"2026-10-17T08:55:15.150Z","pipeline":"actual-mcp-ApplyChangeSet","sample":1,"cards":1000,"operations":200,"durationMs":569.8255829999998,"nominalMs":2000,"toleranceMs":4000,"nominalPassed":true,"passed":true}
+{"measuredAt":"2026-10-17T08:55:17.322Z","pipeline":"actual-mcp-ApplyChangeSet","sample":2,"cards":1000,"operations":200,"durationMs":527.1465829999997,"nominalMs":2000,"toleranceMs":4000,"nominalPassed":true,"passed":true}
+{"measuredAt":"2026-10-17T08:55:19.472Z","pipeline":"actual-mcp-ApplyChangeSet","sample":3,"cards":1000,"operations":200,"durationMs":524.2675410000002,"nominalMs":2000,"toleranceMs":4000,"nominalPassed":true,"passed":true}
+ ✓ src/mcp/tools/changeset-executor-performance.test.ts (3 tests) 6593ms
+   ✓ measures serial actual ApplyChangeSet pipeline sample 1 including application preparation and real audit 2282ms
+   ✓ measures serial actual ApplyChangeSet pipeline sample 2 including application preparation and real audit 2166ms
+   ✓ measures serial actual ApplyChangeSet pipeline sample 3 including application preparation and real audit 2145ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  10:55:11
+   Duration  7.61s (transform 430ms, setup 0ms, collect 796ms, tests 6.59s, environment 0ms, prepare 29ms)
+

@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "date": "2026-10-21T19:16:05.249764+00:00",
+  "productRevision": "ec7348dc4524918c68d26b3d47e1035d012d6a46",
+  "range": "caf2a61fc7a3447a02d29aad545f9473082ca86d..ec7348dc4524918c68d26b3d47e1035d012d6a46",
+  "commits": 11,
+  "merges": 0,
+  "changedPaths": 1814,
+  "binaryRevisions": 735,
+  "binaryPaths": 619,
+  "rawPrivateEvidence": ".bmad-loop/runs/20261019-231402-3e0a/retrospectives/epic-8-2026-10-21",
+  "fullDiffSha256": "a4ea55ae088c5c88cfa29a720ce02fb53d0161c29c0742ff3f958206562222f1",
+  "fullDiffBytes": 10092774,
+  "retention": [
+    {
+      "source": "git-evidence.json",
+      "retained": "git-evidence.json.gz",
+      "originalSha256": "235625cbb863a8a5a725ae2d178cad045e71a7d682703798882aaf2b960ee9c7",
+      "sanitizedSha256": "235625cbb863a8a5a725ae2d178cad045e71a7d682703798882aaf2b960ee9c7",
+      "compressedSha256": "aa6eb2582a4da96f2488d8f07398ce350d9f34a9d861dffb2043c313fcf75496"
+    },
+    {
+      "source": "git-evidence-with-story-keys.json",
+      "retained": "git-evidence-with-story-keys.json.gz",
+      "originalSha256": "8e3616fe0c3625653df35ac5c3623ae73a141d4df40c81d001e03f3bfe650a36",
+      "sanitizedSha256": "8e3616fe0c3625653df35ac5c3623ae73a141d4df40c81d001e03f3bfe650a36",
+      "compressedSha256": "952bb6382ceef27694c708467531d271fd15bc4b64f842705f7f224a2d77a0e8"
+    },
+    {
+      "source": "detect-epic.json",
+      "retained": "detect-epic.json.gz",
+      "originalSha256": "f5dd0cd2e2333cd7f53cf8dd0365c5e464691b6a2f16e0205344bf39eec17e2f",
+      "sanitizedSha256": "f5dd0cd2e2333cd7f53cf8dd0365c5e464691b6a2f16e0205344bf39eec17e2f",
+      "compressedSha256": "e804f9534ae78a1f9e28304395ee8154b99f945611f6253a7d1b6599062f9afc"
+    },
+    {
+      "source": "focused-0.log",
+      "retained": "focused-0.log.gz",
+      "originalSha256": "ce98ade54f1ad95163eac2e2b1a7ead0a6ae872a73e621cce24cc01e59cdf9c7",
+      "sanitizedSha256": "3ae9a5d211b7510a7c7e3374ef57d67effa5cc0b7bb56b0f0456901afaf18d8c",
+      "compressedSha256": "4b100ea1ce6afc5210e644a1229eb8a52644d42f1ed9dc0b9968a15d7a0a09ca"
+    },
+    {
+      "source": "focused-1.log",
+      "retained": "focused-1.log.gz",
+      "originalSha256": "5d3d84dfda214d6890c529898c424edee7c45446f4ff12fcd562b5ea4f72df94",
+      "sanitizedSha256": "a696c67f37699d91d8cbbd81f9e116ad6b7cb6c0c016e990a59d93c434b78a44",
+      "compressedSha256": "458760df547fd8b20f0c2174a39e1cd9c6be76a84b618c97c2eb753dd92f146d"
+    },
+    {
+      "source": "check-boundaries.mjs.log",
+      "retained": "check-boundaries.mjs.log.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressedSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "check-size.mjs.log",
+      "retained": "check-size.mjs.log.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressedSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "check-hygiene.mjs.log",
+      "retained": "check-hygiene.mjs.log.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressedSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "check-licenses.mjs.log",
+      "retained": "check-licenses.mjs.log.gz",
+      "originalSha256": "35f6ffc5d71f481b5e61717e1e5bf80439f0357783853796841f11dfd2876070",
+      "sanitizedSha256": "2a472a64c6097631d5b2860cd8478f14731519906faa3b97f9aa6ea0a307b39a",
+      "compressedSha256": "7576bdf42d542ce98c00c369aa4fca5431d3614266de1a341079bff43e166e11"
+    },
+    {
+      "source": "check-licenses-reviewed.log",
+      "retained": "check-licenses-reviewed.log.gz",
+      "originalSha256": "162cd85105957e68a18f165e8a5eacf34fad882de6f8e5dab8ba059ca81914b7",
+      "sanitizedSha256": "162cd85105957e68a18f165e8a5eacf34fad882de6f8e5dab8ba059ca81914b7",
+      "compressedSha256": "67199ccf71ef9cc7ff985f2712d3b34086cfb3b55ce7c245dce08ce77996188c"
+    },
+    {
+      "source": "runtime-probe.stdout.log",
+      "retained": "runtime-probe.stdout.log.gz",
+      "originalSha256": "5490e8a6a22d6499b7125990f6dafd487a5536a66d18309fe9aae9f16d1d15ad",
+      "sanitizedSha256": "5490e8a6a22d6499b7125990f6dafd487a5536a66d18309fe9aae9f16d1d15ad",
+      "compressedSha256": "7138d24e00633a8a59b8c7b5432ab4bf6d84d5039be5f54d4d2b2440609e083c"
+    },
+    {
+      "source": "runtime-probe.stderr.log",
+      "retained": "runtime-probe.stderr.log.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressedSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "runtime-attempt-1/runtime-probe.stderr.log",
+      "retained": "runtime-attempt-1-runtime-probe.stderr.log.gz",
+      "originalSha256": "a7ef3afd169240cdb443dc0b17bced55766e31b809850ea469e3c5a559c5aae0",
+      "sanitizedSha256": "a7ef3afd169240cdb443dc0b17bced55766e31b809850ea469e3c5a559c5aae0",
+      "compressedSha256": "75d10da45b15ca59e6dd9a3cb0a73ec68d0eed12584f8aaed8764e6069456e9d"
+    }
+  ],
+  "publicationObservation": {
+    "verdict": "blocked",
+    "revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+    "findings": 3766,
+    "counts": {
+      "current:binary-privacy-review": 13,
+      "history:binary-privacy-review": 43,
+      "index:binary-privacy-review": 13,
+      "current:copied-material-review": 452,
+      "index:copied-material-review": 452,
+      "current:email-review": 9,
+      "history:email-review": 373,
+      "index:email-review": 9,
+      "history:employer-reference": 171,
+      "current:personal-home-path": 7,
+      "history:personal-home-path": 1191,
+      "index:personal-home-path": 7,
+      "current:private-declaration": 3,
+      "index:private-declaration": 3,
+      "history:private-url-review": 3,
+      "current:redistribution-review": 13,
+      "history:redistribution-review": 43,
+      "index:redistribution-review": 13,
+      "history:retired-provider-reference": 579,
+      "history:tracked-user-data": 365,
+      "current:unsupported-archive": 1,
+      "history:unsupported-archive": 2,
+      "index:unsupported-archive": 1
+    },
+    "sha256": "3c30b11bd64f5e983bfc9313f3efa7ef85b6f8eaa92eb4beb6dc574e990e5ab6",
+    "freshness": "Pre-final-commit report; not exact clearance for reviewed HEAD or new retrospective material"
+  },
+  "limitations": [
+    "Full diff supplied to reviewers and retained; source traces are bounded, not every-line review of evidence bytes",
+    "Original raw machine output retained privately without RTK compression; published copies are explicitly sanitized",
+    "No new full aggregate/online advisory/hosted/native visual acceptance claimed; focused runtime and tests are fresh",
+    "No orchestrator tracking, run-state, commit, push or release mutation"
+  ],
+  "supplementalFiles": [
+    {
+      "path": "loop-verification.json",
+      "sha256": "a445eb0d2e9e2aeeeed3df640d38938b2e66c31bbebffc6bcf128d34a864d5a9"
+    },
+    {
+      "path": "gate-probe.json",
+      "sha256": "f6e46cf097fc0e2153b84ad19c02acaa9423cb97f7ff1d02b3be9867d0343efd"
+    },
+    {
+      "path": "gate-probe-initial-policy-diagnostic.json",
+      "sha256": "064a4e8cdeafd542fb719546fb020f1f4b5d3c1288988355a561e9b0292d0a02"
+    },
+    {
+      "path": "focused-results.json",
+      "sha256": "bf22aa593b6a551a3c0648b08023371e573bcb5f3213b9b25390ff23df015fee"
+    },
+    {
+      "path": "static-results.json",
+      "sha256": "a63cdc37d578e4b3c176a3794f751525007b99f99036e4eba6e03e8f84ef1c8b"
+    },
+    {
+      "path": "license-reviewed-result.json",
+      "sha256": "afe061d4033111e273503ba7b0ad42f8441e6283dadc99c4e55e432f59ae0f21"
+    },
+    {
+      "path": "runtime-probe.mjs.txt",
+      "sha256": "e74c6d23840e65c6ba9b64e6f96c9bb0339b30a3836d51aae671b6f42eb77d88"
+    },
+    {
+      "path": "gate-probe.mjs.txt",
+      "sha256": "68e939e56f35165261ec6dcbfb71d705b4d270551490e68e76f984c1b011bb3b"
+    },
+    {
+      "path": "runtime-observations.json",
+      "sha256": "30134fd72abcb5e180f055f7517f788241cdaabf3349ec99692f2bbfa5d53578"
+    },
+    {
+      "path": "review.json",
+      "sha256": "1fd5f913ed80d8234c3bd7d24f6fb0ecaaca12172315f66749e6b75a73511dfc"
+    },
+    {
+      "path": "actions.json",
+      "sha256": "753b7b73c2617a8fb3a189f7d1d38635214deaa59edbf3c29230fa0e02f4b75e"
+    }
+  ]
+}

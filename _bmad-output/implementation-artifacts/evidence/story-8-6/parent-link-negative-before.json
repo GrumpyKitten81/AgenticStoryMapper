@@ -1,0 +1,9 @@
+{
+  "fixture": "canonical root as used by checker main",
+  "outcomes": {
+    "ignored.md": "resolved",
+    "ignored.md#private": "intentional",
+    "/missing.md": "intentional",
+    "{mistyped.md": "intentional"
+  }
+}

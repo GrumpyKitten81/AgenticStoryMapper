@@ -1,0 +1,33 @@
+{
+  "command": [
+    "node",
+    "--import",
+    "./apps/server/node_modules/tsx/dist/loader.mjs",
+    "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+  ],
+  "environment": {
+    "TSX_TSCONFIG_PATH": "apps/server/tsconfig.json",
+    "PATH_prefix": "[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin"
+  },
+  "started": "2026-10-19T23:59:25.959169+00:00",
+  "finished": "2026-10-19T23:59:30.317759+00:00",
+  "exitCode": 0,
+  "replayPrerequisites": {
+    "workingDirectory": "repository root",
+    "requiredNode": "24.17.0",
+    "environment": {
+      "TSX_TSCONFIG_PATH": "apps/server/tsconfig.json",
+      "PATH_prefix": "[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin"
+    },
+    "environmentInstructions": "Prepend the installed Node24.17.0 bin directory to inherited PATH; set TSX_TSCONFIG_PATH before invoking node so tsx resolves server workspace aliases.",
+    "canonicalCommand": [
+      "node",
+      "--import",
+      "./apps/server/node_modules/tsx/dist/loader.mjs",
+      "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+    ],
+    "verifiedReplayEvidence": "parent-proxy-native-configured.json",
+    "scope": "Environment requirements verified on the final graph by the successful configured parent replay. Earlier historical attempts additionally require their recorded dependency snapshot and fixture revision."
+  },
+  "captureNotes": "Original command, timestamps, status/exitCode and any captured environment remain historical. This added replayPrerequisites field states requirements for replay; it does not claim omitted environment variables were captured originally or change a historical failure into success."
+}

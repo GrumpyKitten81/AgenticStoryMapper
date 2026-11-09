@@ -1,0 +1,386 @@
+[
+  {
+    "path": "apps/server/src/application/base-versions.ts",
+    "description": "Admit human writes through precise shared field-conflict checks after cheap relevance lookup."
+  },
+  {
+    "path": "apps/server/src/application/card/card-children.use-cases.ts",
+    "description": "Guard human managed Annotation assignments through shared conflict admission."
+  },
+  {
+    "path": "apps/server/src/application/card/card.use-cases.ts",
+    "description": "Carry actual human Card update/bulk/move effects into conflict admission."
+  },
+  {
+    "path": "apps/server/src/application/customization/customization.use-cases.ts",
+    "description": "Guard definition effects on disputed managed labels and workflow status."
+  },
+  {
+    "path": "apps/server/src/application/release/release.use-cases.ts",
+    "description": "Guard shared Release effects before human persistence."
+  },
+  {
+    "path": "apps/server/src/application/sync/github-command-regressions.test.ts",
+    "description": "Regression coverage for github command regressions."
+  },
+  {
+    "path": "apps/server/src/application/sync/github-conflict-command.ts",
+    "description": "Build explicit reviewed incoming resolution with captured current evidence."
+  },
+  {
+    "path": "apps/server/src/application/sync/github-pull-command.ts",
+    "description": "Deduplicate canonical disagreements and preserve immutable open-field evidence."
+  },
+  {
+    "path": "apps/server/src/application/sync/sync-conflict.use-cases.ts",
+    "description": "Validate explicit resolution inputs and scope across provider preparation."
+  },
+  {
+    "path": "apps/server/src/http/routes/base-version-conflicts.test.ts",
+    "description": "Regression coverage for base version conflicts."
+  },
+  {
+    "path": "apps/server/src/http/routes/customization-management.test.ts",
+    "description": "Regression coverage for customization management."
+  },
+  {
+    "path": "apps/server/src/http/routes/delete-cards.test.ts",
+    "description": "Regression coverage for delete cards."
+  },
+  {
+    "path": "apps/server/src/http/routes/unit-of-work.test.ts",
+    "description": "Regression coverage for unit of work."
+  },
+  {
+    "path": "apps/server/src/mcp/github-command-sdk.test.ts",
+    "description": "Regression coverage for github command sdk."
+  },
+  {
+    "path": "apps/server/src/mcp/github-command-transports.test.ts",
+    "description": "Regression coverage for github command transports."
+  },
+  {
+    "path": "apps/server/src/mcp/tools/complete-surface.test.ts",
+    "description": "Regression coverage for complete surface."
+  },
+  {
+    "path": "apps/server/src/services/remote-push-execution.test.ts",
+    "description": "Regression coverage for remote push execution."
+  },
+  {
+    "path": "apps/server/src/services/remote-push-merge.test.ts",
+    "description": "Regression coverage for remote push merge."
+  },
+  {
+    "path": "apps/server/src/services/remote-push-plan.ts",
+    "description": "Preserve exact one-field human-confirmed outgoing resolution."
+  },
+  {
+    "path": "apps/server/src/services/sync-conflict-resolution.ts",
+    "description": "Check canonical identity, semantic review and chosen persisted effect before closure."
+  },
+  {
+    "path": "apps/server/src/services/sync-review.test.ts",
+    "description": "Regression coverage for sync review."
+  },
+  {
+    "path": "apps/server/src/services/work-item-sync.test.ts",
+    "description": "Regression coverage for work item sync."
+  },
+  {
+    "path": "apps/server/src/services/work-item-sync.ts",
+    "description": "Reuse pure canonical remote-status mapping."
+  },
+  {
+    "path": "apps/web/src/app/api.ts",
+    "description": "Carry captured conflict review values through the existing API."
+  },
+  {
+    "path": "apps/web/src/app/conflicts.test.ts",
+    "description": "Regression coverage for conflicts."
+  },
+  {
+    "path": "apps/web/src/app/conflicts.ts",
+    "description": "Keep version and sync entries distinct in the shared error contract."
+  },
+  {
+    "path": "apps/web/src/app/routes/story-map-shell.tsx",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/app/routes/workspace-navigation.test.tsx",
+    "description": "Regression coverage for workspace navigation."
+  },
+  {
+    "path": "apps/web/src/features/conflicts/ConflictAlert.tsx",
+    "description": "Show combined errors and dependent Card sync disputes in Release consumers."
+  },
+  {
+    "path": "apps/web/src/features/conflicts/conflict-envelope.test.tsx",
+    "description": "Regression coverage for conflict envelope."
+  },
+  {
+    "path": "apps/web/src/features/conflicts/merge-saved-draft.ts",
+    "description": "Adopt untouched canonical fields while retaining dirty and in-flight edits."
+  },
+  {
+    "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+    "description": "Coordinate reviewed resolutions, scope/epoch admission and safe cancellation."
+  },
+  {
+    "path": "apps/web/src/features/github-sync/GitHubSyncStatus.tsx",
+    "description": "Render truthful scoped link/conflict/deletion inventory."
+  },
+  {
+    "path": "apps/web/src/features/github-sync/IncomingGitHubReview.tsx",
+    "description": "Preserve own-apply health refresh and pending admission."
+  },
+  {
+    "path": "apps/web/src/features/github-sync/RemotePushReview.tsx",
+    "description": "Cancel reviewed Dry Runs and restore only the connected initiating focus."
+  },
+  {
+    "path": "apps/web/src/features/github-sync/SyncConflictDiff.tsx",
+    "description": "Render accessible typed field differences and explicit drift review."
+  },
+  {
+    "path": "apps/web/src/features/github-sync/SyncConflictReview.tsx",
+    "description": "Show owning Card/Issue identity and require deliberate reviewed choice."
+  },
+  {
+    "path": "apps/web/src/features/github-sync/SyncFieldLocks.tsx",
+    "description": "Derive actual managed Card, Annotation and Release field locks."
+  },
+  {
+    "path": "apps/web/src/features/github-sync/github-selection.test.tsx",
+    "description": "Regression coverage for github selection."
+  },
+  {
+    "path": "apps/web/src/features/github-sync/sync-status.ts",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/features/releases/ReleaseDateFields.tsx",
+    "description": "Keep date edits field-specific and preserve valid pending drafts."
+  },
+  {
+    "path": "apps/web/src/features/releases/ReleaseEditor.tsx",
+    "description": "Allow unrelated Release edits and merge partial-save results safely."
+  },
+  {
+    "path": "apps/web/src/features/releases/ReleaseKanban.tsx",
+    "description": "Refuse disputed effects and expose persistent accessible lock descriptions."
+  },
+  {
+    "path": "apps/web/src/features/releases/release-utils.ts",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/BoardToolbar.tsx",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+    "description": "Save editable changed fields, retain locked drafts and reject stale result adoption."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/CardTile.tsx",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/DescriptionEditor.tsx",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/DiscoveryLanes.tsx",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/LifecycleActions.tsx",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/LifecycleDialog.tsx",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/MoveAreaDialog.tsx",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/StorySliceMove.tsx",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/card-detail-test-fixture.ts",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/card-fields.test.ts",
+    "description": "Regression coverage for card fields."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/sync-field-locks.test.tsx",
+    "description": "Regression coverage for sync field locks."
+  },
+  {
+    "path": "apps/web/src/ui-strings/remote-push.ts",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "apps/web/src/ui-strings/sync-conflicts.ts",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "packages/contracts/src/api/application-responses.ts",
+    "description": "Use shared typed health/deletion response schemas."
+  },
+  {
+    "path": "packages/contracts/src/api/http.ts",
+    "description": "Expose captured review through shared HTTP request contracts."
+  },
+  {
+    "path": "packages/contracts/src/migration.test.ts",
+    "description": "Regression coverage for migration."
+  },
+  {
+    "path": "packages/contracts/src/schemas/change-operations.ts",
+    "description": "Require explicit reviewed values on conflict resolution operations."
+  },
+  {
+    "path": "packages/contracts/src/schemas/change-set-schemas.ts",
+    "description": "Advance the existing current-operation schema version to8."
+  },
+  {
+    "path": "packages/contracts/src/schemas/domain.ts",
+    "description": "Define canonical conflict identity and captured review in shared contracts."
+  },
+  {
+    "path": "packages/contracts/src/schemas/operation-resolution.ts",
+    "description": "Carry pure resolver text-hash supply."
+  },
+  {
+    "path": "packages/contracts/src/schemas/sync-health.ts",
+    "description": "Project precise health counts and typed deleted-local identities."
+  },
+  {
+    "path": "packages/core/src/changesets/dependency-resolution.test.ts",
+    "description": "Regression coverage for dependency resolution."
+  },
+  {
+    "path": "packages/core/src/changesets/effective-sync-field-locks.test.ts",
+    "description": "Regression coverage for effective sync field locks."
+  },
+  {
+    "path": "packages/core/src/changesets/github-identity.ts",
+    "description": "Keep canonical identity consistent with durable sync conflict fields."
+  },
+  {
+    "path": "packages/core/src/changesets/github-sync-resolution.ts",
+    "description": "Maintain canonical conflict relationships and enforce semantic closure."
+  },
+  {
+    "path": "packages/core/src/changesets/json-equality.ts",
+    "description": "Compare JSON object values independently of key order while preserving arrays."
+  },
+  {
+    "path": "packages/core/src/changesets/operation-conflicts.ts",
+    "description": "Collect combined conflicts using sequential effective effects and original versions."
+  },
+  {
+    "path": "packages/core/src/changesets/remaining-operation-resolution.test.ts",
+    "description": "Regression coverage for remaining operation resolution."
+  },
+  {
+    "path": "packages/core/src/changesets/resolver-write-collections.test.ts",
+    "description": "Regression coverage for resolver write collections."
+  },
+  {
+    "path": "packages/core/src/changesets/sync-field-locks.ts",
+    "description": "Project sequential field effects and compare managed labels and dependent Releases."
+  },
+  {
+    "path": "packages/core/src/changesets/sync-resolution-agreement.test.ts",
+    "description": "Regression coverage for sync resolution agreement."
+  },
+  {
+    "path": "packages/core/src/changesets/sync-resolution-agreement.ts",
+    "description": "Require actual chosen canonical field and baseline agreement before closure."
+  },
+  {
+    "path": "packages/core/src/publishing/sync-fields.ts",
+    "description": "Share canonical normalization and pure remote-status mapping."
+  },
+  {
+    "path": "packages/core/src/reports/sync-health.test.ts",
+    "description": "Regression coverage for sync health."
+  },
+  {
+    "path": "packages/core/src/reports/sync-health.ts",
+    "description": "Project precise health counts and typed deleted-local identities."
+  },
+  {
+    "path": "packages/db/src/connection.ts",
+    "description": "Bootstrap canonical conflict ownership and one-open-field uniqueness."
+  },
+  {
+    "path": "packages/db/src/fixtures/archive-demo.ts",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "packages/db/src/live-events.test.ts",
+    "description": "Regression coverage for live events."
+  },
+  {
+    "path": "packages/db/src/repositories/canonical-github-identity.test.ts",
+    "description": "Regression coverage for canonical github identity."
+  },
+  {
+    "path": "packages/db/src/repositories/card-visibility.test.ts",
+    "description": "Regression coverage for card visibility."
+  },
+  {
+    "path": "packages/db/src/repositories/changeset-executor.test.ts",
+    "description": "Regression coverage for changeset executor."
+  },
+  {
+    "path": "packages/db/src/repositories/github-refs-repository.ts",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "packages/db/src/repositories/operation-snapshot-scope.test.ts",
+    "description": "Regression coverage for operation snapshot scope."
+  },
+  {
+    "path": "packages/db/src/repositories/operation-supply-repository.ts",
+    "description": "Supply canonical text hashes to pure resolution validation."
+  },
+  {
+    "path": "packages/db/src/repositories/root-versions.test.ts",
+    "description": "Regression coverage for root versions."
+  },
+  {
+    "path": "packages/db/src/repositories/row-mappers.ts",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  },
+  {
+    "path": "packages/db/src/repositories/storymapper-repository.test.ts",
+    "description": "Regression coverage for storymapper repository."
+  },
+  {
+    "path": "packages/db/src/repositories/storymapper-repository.ts",
+    "description": "Expose scoped conflict-admission repository behavior."
+  },
+  {
+    "path": "packages/db/src/repositories/sync-conflict-admission.ts",
+    "description": "Query relevant open conflicts without materializing entire project snapshots."
+  },
+  {
+    "path": "packages/db/src/repositories/work-item-repository.ts",
+    "description": "Persist canonical disagreements and truthful health/deletion evidence."
+  },
+  {
+    "path": "packages/db/src/schema/tables.ts",
+    "description": "Integrate precise sync locks, canonical evidence and safe existing consumer behavior."
+  }
+]

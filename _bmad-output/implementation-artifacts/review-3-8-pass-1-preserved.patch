@@ -1,0 +1,1480 @@
+diff --git a/apps/server/package.json b/apps/server/package.json
+--- a/apps/server/package.json
++++ b/apps/server/package.json
+@@ -12 +12,2 @@
+-    "test": "corepack pnpm --filter @storymapper/web build && vitest run --passWithNoTests",
++    "test": "corepack pnpm --filter @storymapper/web build && vitest run --passWithNoTests --exclude src/mcp/tools/tool-call-performance.test.ts && corepack pnpm test:audit-performance",
++    "test:audit-performance": "vitest run src/mcp/tools/tool-call-performance.test.ts",
+diff --git a/apps/server/src/application/capability-manifest.json b/apps/server/src/application/capability-manifest.json
+--- a/apps/server/src/application/capability-manifest.json
++++ b/apps/server/src/application/capability-manifest.json
+@@ -654,0 +655,7 @@
++    },
++    {
++      "file": "apps/server/src/application/restore/restore.use-cases.ts",
++      "export": "readRestoreActivityDescriptor",
++      "name": "readRestoreActivity",
++      "kind": "human-only",
++      "route": "GET /api/human/projects/:projectId/restore-activity"
+diff --git a/apps/server/src/application/customization/customization.use-cases.ts b/apps/server/src/application/customization/customization.use-cases.ts
+--- a/apps/server/src/application/customization/customization.use-cases.ts
++++ b/apps/server/src/application/customization/customization.use-cases.ts
+@@ -1,0 +2,2 @@
++  activityQuerySchema,
++  type ActivityQuery,
+@@ -88 +90 @@
+-export function listActivity(deps: ApplicationDeps, actor: ActorContext, projectId?: string): ActivityResponse {
++export function listActivity(deps: ApplicationDeps, actor: ActorContext, projectId?: string, query?: ActivityQuery): ActivityResponse {
+@@ -90 +92,3 @@
+-  return { activityEvents: deps.repository.listActivity(projectId) };
++  const filters = query ?? activityQuerySchema.parse({ projectId });
++  const projectIds = actor.actorType === "agent" ? deps.repository.listProjects().filter((project) => deps.repository.getSafetySettings(project.id).agentAccess).map((project) => project.id) : undefined;
++  return deps.repository.listActivityPage(filters, { includeRuntime: actor.actorType === "human", ...(projectIds ? { projectIds } : {}) });
+diff --git a/apps/server/src/application/descriptors.ts b/apps/server/src/application/descriptors.ts
+--- a/apps/server/src/application/descriptors.ts
++++ b/apps/server/src/application/descriptors.ts
+@@ -10 +10 @@
+-import { createRestorePointDescriptor, getRestorePointCapabilitiesDescriptor, listRestorePointsDescriptor, restoreProjectDescriptor } from "@storymapper/server/application/restore/restore.use-cases";
++import { createRestorePointDescriptor, getRestorePointCapabilitiesDescriptor, listRestorePointsDescriptor, readRestoreActivityDescriptor, restoreProjectDescriptor } from "@storymapper/server/application/restore/restore.use-cases";
+@@ -116,0 +117 @@
++  readRestoreActivityDescriptor,
+diff --git a/apps/server/src/application/export/export.use-cases.ts b/apps/server/src/application/export/export.use-cases.ts
+--- a/apps/server/src/application/export/export.use-cases.ts
++++ b/apps/server/src/application/export/export.use-cases.ts
+@@ -24,2 +24,2 @@
+-    repository.logActivity(projectId, "exports.auditCreated", "activity", projectId, undefined, { projectId, format, eventCount: repository.listActivity(projectId).length });
+-    const file = buildAuditExport(project, settings, repository.listActivity(projectId), format, new Date().toISOString());
++    repository.logActivity(projectId, "exports.auditCreated", "activity", projectId, undefined, { projectId, format, eventCount: repository.listAuditExportActivity(projectId, actor.actorType === "human").length });
++    const file = buildAuditExport(project, settings, repository.listAuditExportActivity(projectId, actor.actorType === "human"), format, new Date().toISOString());
+diff --git a/apps/server/src/application/mcp-http-parity.test.ts b/apps/server/src/application/mcp-http-parity.test.ts
+--- a/apps/server/src/application/mcp-http-parity.test.ts
++++ b/apps/server/src/application/mcp-http-parity.test.ts
+@@ -66 +66 @@
+-    const events = f.repository.listActivity(f.project.id).filter((event) => event.action === "mcp.UpdateStoryMapCard.succeeded");
++    const events = f.repository.listActivity(f.project.id).filter((event) => event.action === "tool_call" && event.affectedEntityId === "UpdateStoryMapCard");
+@@ -89 +89 @@
+-    expect(f.repository.listActivity(f.project.id).find((event) => event.action === "mcp.GetStoryMapCards.denied")).toMatchObject({
++    expect(f.repository.listActivity(f.project.id).find((event) => event.action === "tool_call" && event.affectedEntityId === "GetStoryMapCards")).toMatchObject({
+@@ -173 +173 @@
+-    const failed = f.repository.listActivity(f.project.id).find((event) => event.action === "mcp.UpdateStoryMapCard.failed");
++    const failed = f.repository.listActivity(f.project.id).find((event) => event.action === "tool_call" && event.affectedEntityId === "UpdateStoryMapCard");
+diff --git a/apps/server/src/application/restore/restore.use-cases.ts b/apps/server/src/application/restore/restore.use-cases.ts
+--- a/apps/server/src/application/restore/restore.use-cases.ts
++++ b/apps/server/src/application/restore/restore.use-cases.ts
+@@ -1 +1 @@
+-import { restorePointCapabilities, type ActorContext, type CapabilityDescriptor, type CreateRestorePointResponse, type ListRestorePointsResponse, type RestorePointCapabilitiesResponse, type RestorePointClass, type RestoreProjectResult } from "@storymapper/contracts";
++import { restoreActivityResponseSchema, restorePointCapabilities, type ActorContext, type CapabilityDescriptor, type CreateRestorePointResponse, type ListRestorePointsResponse, type RestoreActivityResponse, type RestorePointCapabilitiesResponse, type RestorePointClass, type RestoreProjectResult } from "@storymapper/contracts";
+@@ -15,0 +16,10 @@
++}
++
++export const readRestoreActivityDescriptor: CapabilityDescriptor = { name: "readRestoreActivity", kind: "human-only", route: "GET /api/human/projects/:projectId/restore-activity" };
++export function readRestoreActivity(deps: ApplicationDeps, actor: ActorContext, projectId: string): RestoreActivityResponse {
++  requireHumanActor(actor);
++  return restoreActivityResponseSchema.parse({
++    activityEvents: deps.repository.listActivity(projectId)
++      .filter((event) => event.action === "project.restored")
++      .map(({ id, action, undoneByRestore, after }) => ({ id, action, undoneByRestore, after }))
++  });
+diff --git a/apps/server/src/http/routes/customization-routes.ts b/apps/server/src/http/routes/customization-routes.ts
+--- a/apps/server/src/http/routes/customization-routes.ts
++++ b/apps/server/src/http/routes/customization-routes.ts
+@@ -2 +2 @@
+-import { createWorkflowStatusRequestSchema, updateWorkflowStatusRequestSchema, createAnnotationRequestSchema, updateAnnotationRequestSchema, createStoryTemplateRequestSchema, updateStoryTemplateRequestSchema, updateSafetySettingsRequestSchema } from "@storymapper/contracts";
++import { activityQuerySchema, createWorkflowStatusRequestSchema, updateWorkflowStatusRequestSchema, createAnnotationRequestSchema, updateAnnotationRequestSchema, createStoryTemplateRequestSchema, updateStoryTemplateRequestSchema, updateSafetySettingsRequestSchema } from "@storymapper/contracts";
+@@ -22 +22 @@
+-  registerApplicationRoute(server, useCases.listActivityDescriptor, (request) => useCases.listActivity(application, actor, optionalQuery(request, "projectId")));
++  registerApplicationRoute(server, useCases.listActivityDescriptor, (request) => useCases.listActivity(application, actor, undefined, parseInput(activityQuerySchema, request.query)));
+diff --git a/apps/server/src/http/routes/infrastructure-routes.ts b/apps/server/src/http/routes/infrastructure-routes.ts
+--- a/apps/server/src/http/routes/infrastructure-routes.ts
++++ b/apps/server/src/http/routes/infrastructure-routes.ts
+@@ -35 +34,0 @@
+-    if (typeof name === "string" && /restore/i.test(name)) return reply.code(403).send({ message: "Project restore is human-only and is not available through MCP." });
+@@ -37,2 +36,2 @@
+-      const body = parseInput(mcpCallRequestSchema, request.body);
+-      return await registry.call(body.name, body.input ?? {});
++      const input = (request.body as { input?: unknown } | null)?.input;
++      return await registry.call(name, input, () => { parseInput(mcpCallRequestSchema, request.body); });
+diff --git a/apps/server/src/http/routes/restore-points.test.ts b/apps/server/src/http/routes/restore-points.test.ts
+--- a/apps/server/src/http/routes/restore-points.test.ts
++++ b/apps/server/src/http/routes/restore-points.test.ts
+@@ -7 +7 @@
+-import { createRestorePointResponseSchema, listRestorePointsResponseSchema, restorePointCapabilitiesResponseSchema, mcpToolNameSchema, type McpToolName } from "@storymapper/contracts";
++import { createRestorePointResponseSchema, listRestorePointsResponseSchema, restoreActivityResponseSchema, restorePointCapabilitiesResponseSchema, mcpToolNameSchema, type McpToolName } from "@storymapper/contracts";
+@@ -11,0 +12 @@
++import { readRestoreActivity } from "@storymapper/server/application/restore/restore.use-cases";
+@@ -110,0 +112,18 @@
++  it("exposes only typed restore evidence for lost-response recovery and refuses agents", async () => {
++    const data = await fixture();
++    const recoveryUrl = `/api/human/projects/${data.project.id}/restore-activity`;
++    expect((await data.server.inject(recoveryUrl)).json()).toEqual({ activityEvents: [] });
++    const point = (await data.server.inject({ method: "POST", url: data.url, payload: { class: "manual" } })).json().restorePoint;
++    data.unitOfWork.run(ACTOR, ({ repository }) => repository.logActivity(data.project.id, "card.updated", "card", randomUUID(), undefined, { description: "private entity body" }));
++    const restored = await data.server.inject({ method: "POST", url: `/api/human/projects/${data.project.id}/restore`, payload: { fileName: point.fileName, confirm: true } });
++    expect(restored.statusCode).toBe(200);
++    const response = await data.server.inject(recoveryUrl);
++    expect(response.statusCode).toBe(200);
++    const recovery = restoreActivityResponseSchema.parse(response.json());
++    expect(recovery.activityEvents).toHaveLength(1);
++    expect(recovery.activityEvents[0]).toMatchObject({ action: "project.restored", after: restored.json() });
++    expect(response.body).not.toContain("private entity body");
++    expect(() => readRestoreActivity(data, { actorType: "agent", actorId: "recovery-agent" }, data.project.id)).toThrow("human");
++    expect((await data.server.inject("/api/human/projects/invalid/restore-activity")).statusCode).toBe(400);
++  });
++
+diff --git a/apps/server/src/http/routes/restore-points.ts b/apps/server/src/http/routes/restore-points.ts
+--- a/apps/server/src/http/routes/restore-points.ts
++++ b/apps/server/src/http/routes/restore-points.ts
+@@ -11,0 +12 @@
++  registerApplicationRoute(server, useCases.readRestoreActivityDescriptor, (request) => useCases.readRestoreActivity(application, actor, parseInput(restorePointProjectParamsSchema, request.params).projectId));
+diff --git a/apps/server/src/http/routes/unit-of-work.test.ts b/apps/server/src/http/routes/unit-of-work.test.ts
+--- a/apps/server/src/http/routes/unit-of-work.test.ts
++++ b/apps/server/src/http/routes/unit-of-work.test.ts
+@@ -278 +278 @@
+-    expect(repository.listActivity(project.id).find((event) => event.action === "mcp.CreateStoryMapCard.denied")).toMatchObject({ actorType: "agent", actor: "denied-host", mcpSessionId: "denied-session" });
++    expect(repository.listActivity(project.id).find((event) => event.action === "tool_call" && event.affectedEntityId === "CreateStoryMapCard")).toMatchObject({ actorType: "agent", actor: "denied-host", mcpSessionId: "denied-session", after: expect.objectContaining({ outcome: "rejected" }) });
+@@ -298 +298 @@
+-    expect(repository.listActivity(project.id).some((event) => event.action === "mcp.UpdateStoryMapCard.failed")).toBe(true);
++    expect(repository.listActivity(project.id).find((event) => event.action === "tool_call" && event.affectedEntityId === "UpdateStoryMapCard")).toMatchObject({ after: expect.objectContaining({ outcome: "error" }) });
+diff --git a/apps/server/src/mcp/adapter.test.ts b/apps/server/src/mcp/adapter.test.ts
+--- a/apps/server/src/mcp/adapter.test.ts
++++ b/apps/server/src/mcp/adapter.test.ts
+@@ -77,2 +77,4 @@
+-  expect(f.repository.listActivity(f.project.id).find((event) => event.action === "mcp.UpdateStoryMapCard.denied")).toMatchObject({ actor: "local-mcp-host", actorType: "agent" });
+-  expect(f.repository.listActivity(f.project.id).find((event) => event.action === "mcp.UpdateStoryMapCard.succeeded")).toMatchObject({ actor: "local-mcp-host", actorType: "agent" });
++  expect(f.repository.listActivity(f.project.id)).toEqual(expect.arrayContaining([
++    expect.objectContaining({ action: "tool_call", actor: "local-mcp-host", actorType: "agent", after: expect.objectContaining({ toolName: "UpdateStoryMapCard", outcome: "rejected" }) }),
++    expect.objectContaining({ action: "tool_call", actor: "local-mcp-host", actorType: "agent", after: expect.objectContaining({ toolName: "UpdateStoryMapCard", outcome: "ok" }) })
++  ]));
+diff --git a/apps/server/src/mcp/http.test.ts b/apps/server/src/mcp/http.test.ts
+--- a/apps/server/src/mcp/http.test.ts
++++ b/apps/server/src/mcp/http.test.ts
+@@ -143 +143 @@
+-        expect(repository.listActivity(project.id).find((event) => event.action === `mcp.${name}.succeeded`)).toMatchObject({ actor: "persisted-http-host", actorType: "agent", mcpSessionId: sessionId });
++        expect(repository.listActivity(project.id).find((event) => event.action === "tool_call" && event.affectedEntityId === name)).toMatchObject({ actor: "persisted-http-host", actorType: "agent", mcpSessionId: sessionId, after: expect.objectContaining({ outcome: "ok" }) });
+@@ -168 +168 @@
+-    expect(activity.activityEvents).toEqual(expect.arrayContaining([expect.objectContaining({ actor: "safety-wire-host", actorType: "agent", action: "mcp.CreateStoryMap.denied" })]));
++    expect(activity.activityEvents).toEqual(expect.arrayContaining([expect.objectContaining({ actor: "safety-wire-host", actorType: "agent", action: "tool_call", toolCall: expect.objectContaining({ toolName: "CreateStoryMap", outcome: "rejected" }) })]));
+diff --git a/apps/server/src/mcp/http.ts b/apps/server/src/mcp/http.ts
+--- a/apps/server/src/mcp/http.ts
++++ b/apps/server/src/mcp/http.ts
+@@ -6 +6,2 @@
+-import { createStoryMapperMcpServer } from "@storymapper/mcp";
++import { DomainError } from "@storymapper/contracts";
++import { createStoryMapperMcpServer, invokeMcpTool, type McpToolRegistry } from "@storymapper/mcp";
+@@ -9,0 +11,13 @@
++
++function auditInvalidCallEnvelopes(transport: NodeStreamableHTTPServerTransport, mcpServer: McpServer, registry: McpToolRegistry, server: FastifyInstance): void {
++  const handleMessage = transport.onmessage!;
++  transport.onmessage = (message, extra) => {
++    if (!("method" in message) || message.method !== "tools/call" || !("id" in message)) return handleMessage(message, extra);
++    const params = message.params as { name?: unknown; arguments?: unknown } | undefined;
++    const args = params?.arguments;
++    if (typeof params?.name === "string" && (args === undefined || args !== null && typeof args === "object" && !Array.isArray(args))) return handleMessage(message, extra);
++    void invokeMcpTool(() => registry.call(params?.name, args, () => { throw new DomainError("validation", "Request validation failed."); }))
++      .then((result) => transport.send({ jsonrpc: "2.0", id: message.id, result: mcpServer.server.projectCallToolResult(result, undefined) }, { relatedRequestId: message.id }))
++      .catch((error: unknown) => { server.log.error({ err: error }, "MCP error response failed"); });
++  };
++}
+@@ -15 +29 @@
+-async function createSession(request: FastifyRequest, repository: StoryMapperRepository, unitOfWork: UnitOfWork, sessions: Map<string, Session>): Promise<Session> {
++async function createSession(request: FastifyRequest, repository: StoryMapperRepository, unitOfWork: UnitOfWork, sessions: Map<string, Session>, server: FastifyInstance): Promise<Session> {
+@@ -28,0 +43 @@
++  auditInvalidCallEnvelopes(transport, mcpServer, registry, server);
+@@ -43 +58 @@
+-      session = await createSession(request, repository, unitOfWork, sessions);
++      session = await createSession(request, repository, unitOfWork, sessions, server);
+diff --git a/apps/server/src/mcp/stdio-main.test.ts b/apps/server/src/mcp/stdio-main.test.ts
+--- a/apps/server/src/mcp/stdio-main.test.ts
++++ b/apps/server/src/mcp/stdio-main.test.ts
+@@ -109 +109 @@
+-    const events = repository.listActivity(projectId).filter((event) => event.action.startsWith("mcp.") && event.action.endsWith(".succeeded"));
++    const events = repository.listActivity(projectId).filter((event) => event.action === "tool_call" && (event.after as { outcome: string }).outcome === "ok");
+diff --git a/apps/server/src/mcp/tools/audit-tool-call.ts b/apps/server/src/mcp/tools/audit-tool-call.ts
+new file mode 100644
+--- /dev/null
++++ b/apps/server/src/mcp/tools/audit-tool-call.ts
+@@ -0,0 +1,50 @@
++import { createHash, randomUUID } from "node:crypto";
++import { DomainError, mcpToolNameSchema, toErrorResponse, uuidSchema, type McpToolResult, type ToolCallMetadata } from "@storymapper/contracts";
++import { asDomainError } from "@storymapper/server/application/errors";
++import { resolveAuditProjectIds } from "@storymapper/server/mcp/tools/project-scopes";
++import type { RegistrationContext } from "@storymapper/server/mcp/tools/register-tools";
++
++function hashJson(value: unknown): string {
++  return createHash("sha256").update(JSON.stringify(value) ?? "undefined").digest("hex");
++}
++
++function affectedIds(value: unknown): string[] {
++  if (!value || typeof value !== "object") return [];
++  if (Array.isArray(value)) return value.flatMap(affectedIds);
++  return Object.entries(value).flatMap(([key, item]) => {
++    if (key === "before" || key === "after" || key === "toolCall" || key === "activityEvents") return [];
++    if (key === "id" || /Ids?$/.test(key)) return (Array.isArray(item) ? item : [item]).filter((id): id is string => typeof id === "string" && uuidSchema.safeParse(id).success);
++    return affectedIds(item);
++  });
++}
++
++function inputIds(value: unknown): string[] {
++  if (!value || typeof value !== "object" || Array.isArray(value)) return [];
++  return Object.entries(value).flatMap(([key, item]) => key === "patch" ? inputIds(item) : /Ids?$/.test(key) ? (Array.isArray(item) ? item : [item]).filter((id): id is string => typeof id === "string" && uuidSchema.safeParse(id).success) : []);
++}
++
++export async function auditToolCall(context: RegistrationContext, name: unknown, input: unknown, invoke: (recordProjectIds?: (projectIds: string[]) => void) => Promise<McpToolResult>): Promise<McpToolResult> {
++  const validName = mcpToolNameSchema.safeParse(name);
++  let projectIds: string[] = [];
++  const base = { toolName: typeof name === "string" && /^[A-Za-z][A-Za-z0-9_.-]{0,99}$/.test(name) ? name : "InvalidToolName", inputHash: hashJson(input), affectedEntityIds: validName.success ? [...new Set(inputIds(input))] : [] };
++  let result: McpToolResult | undefined;
++  let failure: ReturnType<typeof asDomainError> | undefined;
++  let metadata: ToolCallMetadata;
++  try {
++    projectIds = validName.success ? resolveAuditProjectIds(context.repository, input) : [];
++    result = await invoke((resolved) => {
++      const record = input && typeof input === "object" ? input as Record<string, unknown> : {};
++      const mismatchedOwner = typeof record.projectId === "string" && (record.storyMapId || record.personaId) && projectIds.length && !projectIds.includes(record.projectId);
++      if (!mismatchedOwner) projectIds = resolved;
++    });
++    metadata = { ...base, outcome: "ok", outputHash: hashJson(result), affectedEntityIds: [...new Set([...base.affectedEntityIds, ...affectedIds(result)])] };
++  } catch (error) {
++    failure = asDomainError(error);
++    if (failure.code === "internal") failure = new DomainError("internal", "An internal error occurred.", { errorId: uuidSchema.safeParse(failure.details?.errorId).data ?? randomUUID() });
++    const { statusCode: _status, ...envelope } = toErrorResponse(failure);
++    metadata = { ...base, outcome: failure.code === "internal" ? "error" : "rejected", outputHash: hashJson(envelope), ...(failure.code === "internal" ? { errorId: failure.details?.errorId as string } : { rejectionReason: failure.code }) };
++  }
++  context.unitOfWork.run(context.actor, ({ repository }) => repository.logMcpToolCall({ projectId: projectIds.length === 1 ? projectIds[0]! : null, metadata }));
++  if (failure) throw failure;
++  return result!;
++}
+diff --git a/apps/server/src/mcp/tools/complete-surface.test.ts b/apps/server/src/mcp/tools/complete-surface.test.ts
+--- a/apps/server/src/mcp/tools/complete-surface.test.ts
++++ b/apps/server/src/mcp/tools/complete-surface.test.ts
+@@ -74 +74 @@
+-  expect(f.repository.listActivity(f.project.id).filter((event) => event.action === "mcp.CreateRoadmap.succeeded")[0]).toMatchObject({ actor: "surface-host", actorType: "agent", mcpSessionId: "surface-session" });
++  expect(f.repository.listActivity(f.project.id).filter((event) => event.action === "tool_call" && event.affectedEntityId === "CreateRoadmap")[0]).toMatchObject({ actor: "surface-host", actorType: "agent", mcpSessionId: "surface-session", after: expect.objectContaining({ outcome: "ok" }) });
+@@ -488 +488 @@
+-    ["ListActivity", { projectId: f.project.id }, { activityEvents: expect.arrayContaining([expect.objectContaining({ action: "mcp.CreateCardAttachment.succeeded", actor: "surface-host" })]) }],
++    ["ListActivity", { projectId: f.project.id, toolName: "CreateCardAttachment" }, { activityEvents: expect.arrayContaining([expect.objectContaining({ action: "tool_call", actor: "surface-host", toolCall: expect.objectContaining({ outcome: "ok" }) })]) }],
+diff --git a/apps/server/src/mcp/tools/project-scopes.ts b/apps/server/src/mcp/tools/project-scopes.ts
+--- a/apps/server/src/mcp/tools/project-scopes.ts
++++ b/apps/server/src/mcp/tools/project-scopes.ts
+@@ -40,0 +41,9 @@
++export function resolveAuditProjectIds(repository: StoryMapperRepository, input: unknown): string[] {
++  const scopes = new Set<string>();
++  const resolvers = scopeResolvers(repository);
++  const { projectId: _project, ...entityResolvers } = resolvers;
++  collectScopes(input, entityResolvers, scopes, new Set(), "ListActivity", true);
++  if (!scopes.size && input && typeof input === "object" && "projectId" in input && typeof input.projectId === "string" && repository.listProjects().some((project) => project.id === input.projectId)) scopes.add(input.projectId);
++  return [...scopes];
++}
++
+@@ -127 +136 @@
+-    if (event.undoneByRestore || event.action !== action) continue;
++    if (!event.projectId || event.undoneByRestore || event.action !== action) continue;
+diff --git a/apps/server/src/mcp/tools/register-customization-tools.ts b/apps/server/src/mcp/tools/register-customization-tools.ts
+--- a/apps/server/src/mcp/tools/register-customization-tools.ts
++++ b/apps/server/src/mcp/tools/register-customization-tools.ts
+@@ -7 +7 @@
+-  const { application, actor, repository } = context;
++  const { application, actor } = context;
+@@ -12,3 +12,2 @@
+-    const { projectId } = inputs.ListActivity.parse(input);
+-    const data = customization.listActivity(application, actor, projectId);
+-    return { data: { activityEvents: data.activityEvents.filter((event) => event.projectId && repository.getSafetySettings(event.projectId).agentAccess) } };
++    const query = input as import("@storymapper/contracts").ActivityQuery;
++    return { data: customization.listActivity(application, actor, undefined, query) };
+diff --git a/apps/server/src/mcp/tools/register-tools.test.ts b/apps/server/src/mcp/tools/register-tools.test.ts
+--- a/apps/server/src/mcp/tools/register-tools.test.ts
++++ b/apps/server/src/mcp/tools/register-tools.test.ts
+@@ -101,2 +101,4 @@
+-    expect(activity.some((event) => event.action === "mcp.CreateStoryMapCard.denied")).toBe(true);
+-    expect(activity.some((event) => event.action === "mcp.CreateStoryMapCard.succeeded" && event.actor === "test-host")).toBe(true);
++    expect(activity.filter((event) => event.action === "tool_call")).toEqual(expect.arrayContaining([
++      expect.objectContaining({ actor: "test-host", after: expect.objectContaining({ toolName: "CreateStoryMapCard", outcome: "rejected", rejectionReason: "protected" }) }),
++      expect.objectContaining({ actor: "test-host", after: expect.objectContaining({ toolName: "CreateStoryMapCard", outcome: "ok" }) })
++    ]));
+diff --git a/apps/server/src/mcp/tools/register-tools.ts b/apps/server/src/mcp/tools/register-tools.ts
+--- a/apps/server/src/mcp/tools/register-tools.ts
++++ b/apps/server/src/mcp/tools/register-tools.ts
+@@ -1 +1 @@
+-import { createHash, randomUUID } from "node:crypto";
++import { randomUUID } from "node:crypto";
+@@ -62,0 +63 @@
++import { auditToolCall } from "@storymapper/server/mcp/tools/audit-tool-call";
+@@ -71 +71,0 @@
+-type AffectedResolver = (result: McpToolResult) => string[];
+@@ -83 +83 @@
+-  const context: RegistrationContext = { repository, unitOfWork, options, actor, application: { repository, unitOfWork }, registry: new McpToolRegistry() };
++  const context: RegistrationContext = { repository, unitOfWork, options, actor, application: { repository, unitOfWork }, registry: new McpToolRegistry((name, input, invoke) => auditToolCall(context, name, input, invoke)) };
+@@ -139 +139 @@
+-  }, (input) => resolveStoryMapProjectId(repository, createStoryMapCardToolInputSchema.parse(input).storyMapId), (result) => idsFromData(result, "card"));
++  }, (input) => resolveStoryMapProjectId(repository, createStoryMapCardToolInputSchema.parse(input).storyMapId));
+@@ -144 +144 @@
+-  }, (input) => resolveCardProjectId(repository, updateStoryMapCardToolInputSchema.parse(input).cardId), (result) => idsFromData(result, "card"));
++  }, (input) => resolveCardProjectId(repository, updateStoryMapCardToolInputSchema.parse(input).cardId));
+@@ -153 +153 @@
+-  }, (input) => resolveCardProjectId(repository, moveStoryMapCardToolInputSchema.parse(input).cardId), (result) => idsFromData(result, "card"));
++  }, (input) => resolveCardProjectId(repository, moveStoryMapCardToolInputSchema.parse(input).cardId));
+@@ -158 +158 @@
+-  }, (input) => resolveCardProjectId(repository, deleteOrArchiveStoryMapCardToolInputSchema.parse(input).cardId), (result) => idsFromData(result, "card"));
++  }, (input) => resolveCardProjectId(repository, deleteOrArchiveStoryMapCardToolInputSchema.parse(input).cardId));
+@@ -166 +166 @@
+-  }, (input) => resolveStoryMapProjectId(repository, createStoryMapReleaseToolInputSchema.parse(input).storyMapId), (result) => idsFromData(result, "release"));
++  }, (input) => resolveStoryMapProjectId(repository, createStoryMapReleaseToolInputSchema.parse(input).storyMapId));
+@@ -171 +171 @@
+-  }, (input) => resolveStoryMapProjectId(repository, updateStoryMapReleaseToolInputSchema.parse(input).storyMapId), (result) => idsFromData(result, "release"));
++  }, (input) => resolveStoryMapProjectId(repository, updateStoryMapReleaseToolInputSchema.parse(input).storyMapId));
+@@ -176 +176 @@
+-  }, (input) => createStoryMapPersonaToolInputSchema.parse(input).projectId, (result) => idsFromData(result, "persona"));
++  }, (input) => createStoryMapPersonaToolInputSchema.parse(input).projectId);
+@@ -181 +181 @@
+-  }, (input) => updateStoryMapPersonaToolInputSchema.parse(input).projectId, (result) => idsFromData(result, "persona"));
++  }, (input) => updateStoryMapPersonaToolInputSchema.parse(input).projectId);
+@@ -197 +197 @@
+-  }, (input) => resolveStoryMapProjectId(repository, importGitHubIssuesToolInputSchema.parse(input).storyMapId), (result) => idsFromLinks(result));
++  }, (input) => resolveStoryMapProjectId(repository, importGitHubIssuesToolInputSchema.parse(input).storyMapId));
+@@ -203 +203 @@
+-  }, (input) => resolveStoryMapProjectId(repository, pushCardsToGitHubToolInputSchema.parse(input).storyMapId), (result) => idsFromLinks(result));
++  }, (input) => resolveStoryMapProjectId(repository, pushCardsToGitHubToolInputSchema.parse(input).storyMapId));
+@@ -209 +209 @@
+-  }, (input) => resolveStoryMapProjectId(repository, syncGitHubLinksToolInputSchema.parse(input).storyMapId), (result) => idsFromLinks(result));
++  }, (input) => resolveStoryMapProjectId(repository, syncGitHubLinksToolInputSchema.parse(input).storyMapId));
+@@ -215 +215 @@
+-  }, (input) => resolveStoryMapProjectId(repository, pullStoryMapGitHubLinksToolInputSchema.parse(input).storyMapId), (result) => idsFromLinks(result));
++  }, (input) => resolveStoryMapProjectId(repository, pullStoryMapGitHubLinksToolInputSchema.parse(input).storyMapId));
+@@ -223 +223 @@
+-  }, (input) => proposeMapFromSourceDocumentInputSchema.parse(input).projectId, (result) => result.changeSet ? [result.changeSet.id] : []);
++  }, (input) => proposeMapFromSourceDocumentInputSchema.parse(input).projectId);
+@@ -228 +228 @@
+-  }, (input) => resolveStoryMapProjectId(repository, storyMapToolInputSchema.parse(input).storyMapId), (result) => result.changeSet ? [result.changeSet.id] : []);
++  }, (input) => resolveStoryMapProjectId(repository, storyMapToolInputSchema.parse(input).storyMapId));
+@@ -233 +233 @@
+-  }, (input) => resolveStoryMapProjectId(repository, storyMapToolInputSchema.parse(input).storyMapId), (result) => result.changeSet ? [result.changeSet.id] : []);
++  }, (input) => resolveStoryMapProjectId(repository, storyMapToolInputSchema.parse(input).storyMapId));
+@@ -241 +241 @@
+-  }, (result) => result.changeSet ? [result.changeSet.id] : []);
++  });
+@@ -252,2 +252,2 @@
+-export function registerTool(context: RegistrationContext, name: McpToolName, handler: (input: unknown) => Promise<McpToolResult>, resolveProjectId?: ProjectResolver, resolveAffectedEntityIds: AffectedResolver = () => []): void {
+-  context.registry.register(name, async (input) => {
++export function registerTool(context: RegistrationContext, name: McpToolName, handler: (input: unknown) => Promise<McpToolResult>, resolveProjectId?: ProjectResolver): void {
++  context.registry.register(name, async (input, recordProjectIds) => {
+@@ -255 +255 @@
+-      const parsed = mcpToolInputSchemas[name].parse(input ?? {});
++      const parsed = mcpToolInputSchemas[name].parse(input === undefined ? {} : input);
+@@ -256,0 +257 @@
++      recordProjectIds?.(projectIds);
+@@ -258 +259 @@
+-      const audit = { projectId, name, inputHash: hashJson(input ?? {}) };
++      const audit = { projectId, name };
+@@ -262 +263 @@
+-      return await invokeTool(context, audit, () => handler(parsed), resolveAffectedEntityIds);
++      return await handler(parsed);
+@@ -269,6 +270 @@
+-interface ToolAuditContext { projectId: string | undefined; name: McpToolName; inputHash: string }
+-
+-function recordToolCall(context: RegistrationContext, audit: ToolAuditContext, result: Omit<Parameters<StoryMapperRepository<"transaction">["logMcpToolCall"]>[0], "projectId" | "hostName" | "toolName" | "inputHash">): void {
+-  if (!audit.projectId) return;
+-  context.unitOfWork.run(context.actor, ({ repository }) => repository.logMcpToolCall({ ...result, projectId: audit.projectId!, hostName: context.options.hostName, toolName: audit.name, inputHash: audit.inputHash }));
+-}
++interface ToolAuditContext { projectId: string | undefined; name: McpToolName }
+@@ -282 +277,0 @@
+-      recordToolCall(context, audit, { status: "denied", errorMessage: error.message });
+@@ -287 +281,0 @@
+-      recordToolCall(context, audit, { status: "denied", errorMessage: error.message });
+@@ -292 +285,0 @@
+-      recordToolCall(context, audit, { status: "denied", errorMessage: error.message });
+@@ -299 +291,0 @@
+-  recordToolCall(context, audit, { status: "denied", errorMessage: error.message });
+@@ -301,13 +292,0 @@
+-}
+-
+-async function invokeTool(context: RegistrationContext, audit: ToolAuditContext, handler: () => Promise<McpToolResult>, resolveAffectedEntityIds: AffectedResolver): Promise<McpToolResult> {
+-  try {
+-    const result = await handler();
+-    recordToolCall(context, audit, { status: "succeeded", outputHash: hashJson(result), affectedEntityIds: resolveAffectedEntityIds(result) });
+-    return result;
+-  } catch (error) {
+-    const domainError = asDomainError(error);
+-    const errorId = domainError.details?.errorId;
+-    recordToolCall(context, audit, { status: "failed", errorMessage: domainError.message + (typeof errorId === "string" ? " Error ID: "+errorId : "") });
+-    throw domainError;
+-  }
+@@ -346,15 +324,0 @@
+-
+-function idsFromData(result: McpToolResult, key: "card" | "release" | "persona"): string[] {
+-  const data = result.data as Record<string, unknown> | undefined;
+-  const entity = data?.[key] as { id?: unknown } | undefined;
+-  return typeof entity?.id === "string" ? [entity.id] : [];
+-}
+-
+-function idsFromLinks(result: McpToolResult): string[] {
+-  const data = result.data as { links?: Array<{ cardId?: string }> } | undefined;
+-  return Array.from(new Set(data?.links?.map((link) => link.cardId).filter((id): id is string => Boolean(id)) ?? []));
+-}
+-
+-function hashJson(value: unknown): string {
+-  return createHash("sha256").update(JSON.stringify(value)).digest("hex");
+-}
+diff --git a/apps/server/src/mcp/tools/tool-call-audit.test.ts b/apps/server/src/mcp/tools/tool-call-audit.test.ts
+new file mode 100644
+--- /dev/null
++++ b/apps/server/src/mcp/tools/tool-call-audit.test.ts
+@@ -0,0 +1,214 @@
++import { createHash, randomUUID } from "node:crypto";
++import { mkdtempSync, rmSync } from "node:fs";
++import { tmpdir } from "node:os";
++import { join } from "node:path";
++import Fastify from "fastify";
++import { Client, StreamableHTTPClientTransport } from "@modelcontextprotocol/client";
++import { afterEach, expect, it, vi } from "vitest";
++import { activityQuerySchema, activityResponseSchema, toolCallMetadataSchema, type ActivityEvent, type McpToolResult } from "@storymapper/contracts";
++import { DatabaseHandle, openStoryMapperDb, StoryMapperRepository, UnitOfWork } from "@storymapper/db";
++import { createRoutes } from "@storymapper/server/http/routes";
++import { registerMcpHttp } from "@storymapper/server/mcp/http";
++import { createMcpRegistry } from "@storymapper/server/mcp/tools/register-tools";
++import { exportAudit } from "@storymapper/server/application/export/export.use-cases";
++
++const human = { actorType: "human", actorId: "audit-fixture" } as const;
++const cleanup: Array<() => void | Promise<void>> = [];
++afterEach(async () => { vi.restoreAllMocks(); for (const close of cleanup.splice(0).reverse()) await close(); });
++
++function fixture() {
++  const directory = mkdtempSync(join(tmpdir(), "storymapper-tool-audit-"));
++  const path = join(directory, "storymapper.sqlite");
++  const handle = new DatabaseHandle(openStoryMapperDb(path));
++  cleanup.push(() => { if (handle.current.$client.open) handle.current.$client.close(); rmSync(directory, { recursive: true, force: true }); });
++  const repository = new StoryMapperRepository(handle);
++  const unitOfWork = new UnitOfWork(handle);
++  const rows = unitOfWork.run(human, ({ repository }) => {
++    const project = repository.createProject({ name: "Audit Project", localPath: "C:/private/audit-fixture.lsm" });
++    const other = repository.createProject({ name: "Other Project" });
++    const map = repository.createStoryMap({ projectId: project.id, name: "Audit Map" });
++    const otherMap = repository.createStoryMap({ projectId: other.id, name: "Other Map" });
++    const card = repository.createCard({ storyMapId: map.id, level: "story", title: "Audit Story" });
++    const otherCard = repository.createCard({ storyMapId: otherMap.id, level: "story", title: "Other Story" });
++    repository.updateSafetySettings(project.id, { agentProtection: false });
++    return { project, other, map, card, otherCard };
++  });
++  const registry = createMcpRegistry(repository, unitOfWork, { hostName: "audit-host", mcpSessionId: "audit-session" });
++  return { directory, path, handle, repository, unitOfWork, registry, ...rows };
++}
++
++function hash(value: unknown): string { return createHash("sha256").update(JSON.stringify(value) ?? "undefined").digest("hex"); }
++function calls(repository: StoryMapperRepository): ActivityEvent[] { return repository.listActivity().filter((event) => event.action === "tool_call"); }
++
++it("records exactly one metadata-only event for reads, creations and every refusal before reopening SQLite", async () => {
++  const f = fixture();
++  const matrix = [
++    ["ListProjects", {}, null, undefined],
++    ["GetStoryMapCardDetails", { cardId: f.card.id }, f.project.id, undefined],
++    ["CreateStoryMapCard", { storyMapId: f.map.id, level: "story", title: "Created Story" }, f.project.id, undefined],
++    ["CreateStoryMapCard", { storyMapId: f.map.id, level: "invalid", title: "private-payload" }, f.project.id, "validation"],
++    ["GetStoryMapCardDetails", { cardId: randomUUID() }, null, "not_found"],
++    ["UnknownTool", { projectId: f.project.id, secret: "private-payload" }, null, "not_found"],
++    ["RestoreProject", { projectId: f.project.id }, null, "disabled"],
++    ["UpdateStoryMapPersona", { projectId: f.other.id, personaId: "invalid-id", patch: { name: "private-payload" } }, f.other.id, "validation"],
++    ["BulkUpdateCards", { storyMapId: f.map.id, cardIds: [f.card.id, f.otherCard.id], patch: { estimate: 2 } }, null, "validation"]
++  ] as const;
++  for (const [name, input, projectId, code] of matrix) {
++    const before = calls(f.repository).length;
++    let result: McpToolResult | undefined;
++    if (code) await expect(f.registry.call(name, input)).rejects.toMatchObject({ code });
++    else result = await f.registry.call(name, input);
++    const event = calls(f.repository).at(-1)!;
++    expect(calls(f.repository)).toHaveLength(before + 1);
++    expect(event).toMatchObject({ projectId, actor: "audit-host", actorType: "agent", mcpSessionId: "audit-session" });
++    expect(event).not.toHaveProperty("before");
++    const metadata = toolCallMetadataSchema.parse(event.after);
++    expect(metadata).toMatchObject({ toolName: name, inputHash: hash(input), outcome: code ? "rejected" : "ok", ...(code ? { rejectionReason: code } : { outputHash: hash(result) }) });
++    if (name === "CreateStoryMapCard" && !code) expect(metadata.affectedEntityIds).toContain((result!.data as { card: { id: string } }).card.id);
++    expect(JSON.stringify(event)).not.toContain("private-payload");
++  }
++  f.handle.current.$client.close();
++  const reopened = openStoryMapperDb(f.path);
++  try { expect(calls(new StoryMapperRepository(new DatabaseHandle(reopened)))).toHaveLength(matrix.length); }
++  finally { reopened.$client.close(); }
++});
++
++it("uses actual owners on scope mismatches and records disabled/protected calls without mutation", async () => {
++  const f = fixture();
++  const persona = f.unitOfWork.run(human, ({ repository }) => repository.createPersona({ projectId: f.other.id, name: "Actual owner" }));
++  await expect(f.registry.call("UpdateStoryMapPersona", { projectId: f.project.id, personaId: persona.id, patch: { name: "Denied" } })).rejects.toMatchObject({ code: "validation" });
++  expect(calls(f.repository).at(-1)).toMatchObject({ projectId: f.other.id, after: expect.objectContaining({ rejectionReason: "validation" }) });
++  f.unitOfWork.run(human, ({ repository }) => repository.updateSafetySettings(f.other.id, { agentProtection: true }));
++  await expect(f.registry.call("UpdateStoryMapCard", { cardId: f.otherCard.id, patch: { title: "Denied" } })).rejects.toMatchObject({ code: "protected" });
++  expect(calls(f.repository).at(-1)).toMatchObject({ projectId: f.other.id, after: expect.objectContaining({ rejectionReason: "protected" }) });
++  f.unitOfWork.run(human, ({ repository }) => repository.updateSafetySettings(f.other.id, { agentAccess: false }));
++  await expect(f.registry.call("GetStoryMapCardDetails", { cardId: f.otherCard.id })).rejects.toMatchObject({ code: "disabled" });
++  expect(calls(f.repository).at(-1)).toMatchObject({ projectId: f.other.id, after: expect.objectContaining({ rejectionReason: "disabled" }) });
++  expect(f.repository.getPersona(persona.id)?.name).toBe("Actual owner");
++});
++
++it("records one runtime call when actual read dependencies span multiple Projects", async () => {
++  const f = fixture();
++  const source = f.unitOfWork.run(human, ({ repository }) => {
++    const source = repository.importSourceDocument({ projectId: f.other.id, title: "Cross Project source", type: "txt", content: "Relevant source content" });
++    repository.createCardSourceLink(f.card.id, { chunkId: source.chunks[0]!.id });
++    return source;
++  });
++  const before = calls(f.repository).length;
++  await f.registry.call("GetStoryMapData", { storyMapId: f.map.id });
++  expect(calls(f.repository)).toHaveLength(before + 1);
++  expect(calls(f.repository).at(-1)).toMatchObject({ projectId: null, after: expect.objectContaining({ outcome: "ok", affectedEntityIds: expect.arrayContaining([f.card.id, source.chunks[0]!.id]) }) });
++  f.unitOfWork.run(human, ({ repository }) => repository.updateSafetySettings(f.other.id, { agentAccess: false }));
++  await expect(f.registry.call("GetStoryMapData", { storyMapId: f.map.id })).rejects.toMatchObject({ code: "disabled" });
++  expect(calls(f.repository).at(-1)).toMatchObject({ projectId: null, after: expect.objectContaining({ outcome: "rejected" }) });
++});
++
++it("hashes the shared correlated internal envelope and reports audit persistence failure explicitly", async () => {
++  const f = fixture();
++  f.registry.register("GetStoryMapCards", async () => { throw new Error("private-exception C:/private/fixture"); });
++  let envelope: unknown;
++  try { await f.registry.call("GetStoryMapCards", { storyMapId: f.map.id }); }
++  catch (error) { const failure = error as { code: string; message: string; details: unknown }; envelope = { code: failure.code, message: failure.message, details: failure.details }; }
++  const event = calls(f.repository).at(-1)!;
++  expect(toolCallMetadataSchema.parse(event.after)).toMatchObject({ outcome: "error", outputHash: hash(envelope), errorId: expect.any(String) });
++  expect(JSON.stringify(event)).not.toContain("private-exception");
++  f.handle.current.$client.exec("CREATE TRIGGER reject_tool_call BEFORE INSERT ON activity_events WHEN NEW.action = 'tool_call' BEGIN SELECT RAISE(ABORT, 'Audit persistence rejected'); END");
++  await expect(f.registry.call("ListProjects", {})).rejects.toThrow("Audit persistence rejected");
++  expect(calls(f.repository)).toHaveLength(1);
++});
++
++it("audits invalid HTTP envelopes, arguments, unknown names and human-only names before returning typed errors", async () => {
++  const f = fixture();
++  const server = Fastify();
++  cleanup.push(() => server.close());
++  await server.register(createRoutes, { repository: f.repository, unitOfWork: f.unitOfWork, databasePath: f.path });
++  const payloads = [
++    [{ name: 1, input: { secret: "private-http-payload" } }, "validation"],
++    [{ name: "ListProjects", extra: "private-http-payload" }, "validation"],
++    [{ name: "CreateStoryMapCard", input: { storyMapId: f.map.id } }, "validation"],
++    [{ name: "UnknownTool", input: {} }, "not_found"],
++    [{ name: "RestoreProject", input: {} }, "disabled"]
++  ] as const;
++  for (const [payload, code] of payloads) {
++    const response = await server.inject({ method: "POST", url: "/api/mcp/call", payload });
++    expect(response.json()).toMatchObject({ code });
++    const event = calls(f.repository).at(-1)!;
++    expect(event).toMatchObject({ actor: "local-mcp-host", actorType: "agent", mcpSessionId: expect.any(String) });
++    expect(toolCallMetadataSchema.parse(event.after)).toMatchObject({ outcome: "rejected", rejectionReason: code, outputHash: hash(response.json()) });
++  }
++  expect(calls(f.repository)).toHaveLength(payloads.length);
++  expect(JSON.stringify(calls(f.repository))).not.toContain("private-http-payload");
++});
++
++it("records real SDK raw calls and typed refusals once with actual initialization identity", async () => {
++  const f = fixture();
++  const server = Fastify();
++  cleanup.push(() => server.close());
++  registerMcpHttp(server, f.repository, f.unitOfWork);
++  const base = await server.listen({ host: "127.0.0.1", port: 0 });
++  const client = new Client({ name: "actual-sdk-audit", version: "1.0" });
++  const transport = new StreamableHTTPClientTransport(new URL(`${base}/mcp`));
++  await client.connect(transport);
++  try {
++    for (const [name, args] of [["ListProjects", { ignored: "raw-argument" }], ["GetStoryMapCardDetails", { cardId: f.card.id }], ["GetStoryMapCardDetails", { cardId: "invalid" }], ["UnknownTool", {}], ["RestoreProject", {}]] as const) {
++      const result = await client.callTool({ name, arguments: args });
++      const data = JSON.parse((result.content as Array<{ text: string }>)[0]!.text);
++      const event = calls(f.repository).at(-1)!;
++      expect(event).toMatchObject({ actor: "actual-sdk-audit", mcpSessionId: transport.sessionId });
++      expect(toolCallMetadataSchema.parse(event.after)).toMatchObject({ toolName: name, inputHash: hash(args), outputHash: hash(data), outcome: result.isError ? "rejected" : "ok" });
++    }
++    for (const [index, args] of [null, [], "private-invalid-arguments"].entries()) {
++      const response = await fetch(`${base}/mcp`, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json, text/event-stream", "Mcp-Session-Id": transport.sessionId! }, body: JSON.stringify({ jsonrpc: "2.0", id: 100 + index, method: "tools/call", params: { name: "ListProjects", arguments: args } }) });
++      const envelope = await response.json();
++      const result = JSON.parse(envelope.result.content[0].text);
++      expect(result).toMatchObject({ code: "validation" });
++      expect(calls(f.repository).at(-1)).toMatchObject({ actor: "actual-sdk-audit", mcpSessionId: transport.sessionId, after: expect.objectContaining({ inputHash: hash(args), outputHash: hash(result), outcome: "rejected" }) });
++    }
++    expect(calls(f.repository)).toHaveLength(8);
++  } finally { await client.close(); }
++});
++
++it("pages 1000 same-time matching rows after Project visibility and keeps runtime evidence human-only", async () => {
++  const f = fixture();
++  vi.spyOn(Date.prototype, "toISOString").mockReturnValue("2026-10-08T12:00:00.000Z");
++  const metadata = { toolName: "GetStoryMapCards", inputHash: hash({}), outputHash: hash({}), outcome: "ok" as const, affectedEntityIds: [f.card.id] };
++  f.unitOfWork.run({ actorType: "agent", actorId: "paged-host" }, ({ repository }) => {
++    for (let index = 0; index < 1000; index++) repository.logMcpToolCall({ projectId: f.project.id, metadata });
++    for (let index = 0; index < 40; index++) repository.logMcpToolCall({ projectId: f.other.id, metadata });
++    for (let index = 0; index < 40; index++) repository.logMcpToolCall({ projectId: f.project.id, metadata: { ...metadata, toolName: "ListProjects" } });
++    repository.logMcpToolCall({ projectId: null, metadata });
++  });
++  f.unitOfWork.run(human, ({ repository }) => repository.logActivity(f.project.id, "card.updated", "card", f.card.id, undefined, { token: "not-public" }));
++  const visibleIds: string[] = [];
++  let cursor: string | undefined;
++  do {
++    const result = await f.registry.call("ListActivity", { projectId: f.project.id, actorType: "agent", toolName: "GetStoryMapCards", limit: 37, ...(cursor ? { cursor } : {}) });
++    const page = activityResponseSchema.parse(result.data);
++    expect(page.activityEvents).toHaveLength(page.nextCursor ? 37 : 1);
++    expect(page.activityEvents.every((event) => event.projectId === f.project.id && !("before" in event) && !("after" in event))).toBe(true);
++    visibleIds.push(...page.activityEvents.map((event) => event.id));
++    cursor = page.nextCursor ? JSON.stringify(page.nextCursor) : undefined;
++  } while (cursor);
++  expect(visibleIds).toHaveLength(1000);
++  expect(new Set(visibleIds).size).toBe(1000);
++  expect(visibleIds).toEqual([...visibleIds].sort().reverse());
++  const humanPage = f.repository.listActivityPage(activityQuerySchema.parse({ projectId: f.project.id, actorType: "agent", toolName: "GetStoryMapCards", limit: 100 }), { includeRuntime: true });
++  expect(humanPage.activityEvents.some((event) => event.scope === "runtime")).toBe(calls(f.repository).find((event) => event.projectId === null)!.id >= humanPage.activityEvents.at(-1)!.id);
++  await expect(f.registry.call("ListActivity", { projectId: f.project.id, cursor: "invalid" })).rejects.toMatchObject({ code: "validation" });
++});
++
++it("exports safe shared JSON and Markdown summaries including self-audit while restricting agents to Project rows", async () => {
++  const f = fixture();
++  f.unitOfWork.run(human, ({ repository }) => repository.updateCard(f.card.id, { description: "planted-payload-secret C:/private/local-file" }));
++  f.unitOfWork.run({ actorType: "github", actorId: "github-fixture" }, ({ repository }) => repository.logActivity(f.project.id, "githubLink.created", "githubLink", randomUUID(), { token: "planted-payload-secret" }, { url: "C:/private/local-file" }));
++  await f.registry.call("GetStoryMapCardDetails", { cardId: f.card.id });
++  await f.registry.call("ListProjects", {});
++  for (const format of ["json", "markdown"] as const) {
++    const file = exportAudit({ repository: f.repository, unitOfWork: f.unitOfWork }, human, f.project.id, format);
++    for (const prohibited of ["planted-payload-secret", "C:/private", '"before"', '"after"', '"localPath"']) expect(file.content).not.toContain(prohibited);
++    for (const expected of ["exports.auditCreated", "GetStoryMapCardDetails", "ListProjects", "runtime", "github-fixture", "audit-session", f.card.id]) expect(file.content).toContain(expected);
++    const agent = await f.registry.call("ExportAudit", { projectId: f.project.id, format });
++    expect((agent.data as { content: string }).content).not.toContain("runtime");
++  }
++  expect((f.repository.listActivity(f.project.id).find((event) => event.action === "card.updated")!.after as { description: string }).description).toContain("planted-payload-secret");
++});
+diff --git a/apps/server/src/mcp/tools/tool-call-performance.test.ts b/apps/server/src/mcp/tools/tool-call-performance.test.ts
+new file mode 100644
+--- /dev/null
++++ b/apps/server/src/mcp/tools/tool-call-performance.test.ts
+@@ -0,0 +1,49 @@
++import { mkdtempSync, rmSync } from "node:fs";
++import { tmpdir } from "node:os";
++import { join } from "node:path";
++import { expect, it, vi } from "vitest";
++import { DatabaseHandle, openStoryMapperDb, StoryMapperRepository, UnitOfWork } from "@storymapper/db";
++import * as audit from "@storymapper/server/mcp/tools/audit-tool-call";
++import { createMcpRegistry } from "@storymapper/server/mcp/tools/register-tools";
++
++it("records one insert per read in a 100-call burst and measures paired audit overhead", async () => {
++  const directory = mkdtempSync(join(tmpdir(), "storymapper-tool-burst-"));
++  const handle = new DatabaseHandle(openStoryMapperDb(join(directory, "storymapper.sqlite")));
++  try {
++    const repository = new StoryMapperRepository(handle);
++    const unitOfWork = new UnitOfWork(handle);
++    unitOfWork.run({ actorType: "human", actorId: "burst-fixture" }, ({ repository }) => repository.ensureSeedData());
++    const storyMapId = repository.listStoryMaps()[0]!.id;
++    const registry = createMcpRegistry(repository, unitOfWork, { hostName: "burst-host", mcpSessionId: "burst-session" });
++    const original = audit.auditToolCall;
++    const observer = vi.spyOn(audit, "auditToolCall");
++    const burst = async (record: boolean) => {
++      observer.mockImplementation(record ? original : (_context, _name, _input, invoke) => invoke());
++      const before = handle.current.$client.prepare("SELECT total_changes() AS count").get() as { count: number };
++      const countBefore = repository.listActivity().filter((event) => event.action === "tool_call").length;
++      const start = performance.now();
++      for (let index = 0; index < 100; index++) await registry.call("GetStoryMapData", { storyMapId });
++      const elapsedMs = performance.now() - start;
++      const after = handle.current.$client.prepare("SELECT total_changes() AS count").get() as { count: number };
++      expect(after.count - before.count).toBe(record ? 100 : 0);
++      expect(repository.listActivity().filter((event) => event.action === "tool_call").length - countBefore).toBe(record ? 100 : 0);
++      if (record) expect(elapsedMs).toBeLessThan(1000);
++      return elapsedMs;
++    };
++    await burst(false);
++    await burst(true);
++    const baseline: number[] = [];
++    const recorded: number[] = [];
++    for (let pair = 0; pair < 5; pair++) {
++      if (pair % 2) { recorded.push(await burst(true)); baseline.push(await burst(false)); }
++      else { baseline.push(await burst(false)); recorded.push(await burst(true)); }
++    }
++    const median = (values: number[]) => [...values].sort((left, right) => left - right)[Math.floor(values.length / 2)]!;
++    process.stdout.write(JSON.stringify({ workload: "100 GetStoryMapData reads", baselineMs: baseline, recordedMs: recorded, medianBaselineMs: median(baseline), medianRecordedMs: median(recorded), addedPercent: (median(recorded) / median(baseline) - 1) * 100, insertsPerBurst: 100 }) + "\n");
++    expect(median(recorded)).toBeLessThan(median(baseline) * 1.2);
++  } finally {
++    vi.restoreAllMocks();
++    handle.current.$client.close();
++    rmSync(directory, { recursive: true, force: true });
++  }
++}, 20_000);
+diff --git a/apps/server/src/services/work-item-sync.test.ts b/apps/server/src/services/work-item-sync.test.ts
+--- a/apps/server/src/services/work-item-sync.test.ts
++++ b/apps/server/src/services/work-item-sync.test.ts
+@@ -197 +197 @@
+-    if (caller === "mcp") expect(data.repository.listActivity(data.project.id).at(-1)).toMatchObject({ actor: "push-host", actorType: "agent", mcpSessionId: "push-session", action: "mcp.PushCardsToGitHub.succeeded" });
++    if (caller === "mcp") expect(data.repository.listActivity(data.project.id).at(-1)).toMatchObject({ actor: "push-host", actorType: "agent", mcpSessionId: "push-session", action: "tool_call", after: expect.objectContaining({ toolName: "PushCardsToGitHub", outcome: "ok" }) });
+diff --git a/apps/web/src/app/api.ts b/apps/web/src/app/api.ts
+--- a/apps/web/src/app/api.ts
++++ b/apps/web/src/app/api.ts
+@@ -2 +2 @@
+-import { importProjectArchiveResponseSchema, cardHistoryQuerySchema, cardHistoryResponseSchema, createRestorePointResponseSchema, listRestorePointsResponseSchema, restoreProjectResultSchema, type CardHistoryResponse, type CreateRestorePointResponse, type ListRestorePointsResponse, type RestoreProjectResult } from "@storymapper/contracts";
++import { activityQuerySchema, activityResponseSchema, importProjectArchiveResponseSchema, cardHistoryQuerySchema, cardHistoryResponseSchema, createRestorePointResponseSchema, listRestorePointsResponseSchema, restoreActivityResponseSchema, restoreProjectResultSchema, type ActivityResponse, type ActorType, type CardHistoryResponse, type CreateRestorePointResponse, type ListRestorePointsResponse, type RestoreProjectResult } from "@storymapper/contracts";
+@@ -6 +5,0 @@
+-  ActivityEvent,
+@@ -211,6 +210,23 @@
+-export function useActivity(projectId?: string) {
+-  return useQuery({
+-    queryKey: ["activity", projectId],
+-    enabled: Boolean(projectId),
+-    queryFn: () => getJson<{ activityEvents: ActivityEvent[] }>(`/api/activity?projectId=${projectId}`)
+-  });
++export function useActivity(projectId?: string, filters: { actorType?: ActorType; toolName?: string } = {}) {
++  const queryClient = useQueryClient();
++  const { actorType, toolName } = filters;
++  const activity = useInfiniteQuery({
++    queryKey: ["activity", projectId, actorType, toolName],
++    enabled: Boolean(projectId),
++    initialPageParam: undefined as ActivityResponse["nextCursor"] | undefined,
++    retry: false,
++    queryFn: async ({ pageParam }) => {
++      const { limit } = activityQuerySchema.parse({});
++      const query = new URLSearchParams({ projectId: projectId!, limit: String(limit) });
++      if (actorType) query.set("actorType", actorType);
++      if (toolName) query.set("toolName", toolName);
++      if (pageParam) query.set("cursor", JSON.stringify(pageParam));
++      return activityResponseSchema.parse(await getJson<unknown>(`/api/activity?${query}`));
++    },
++    getNextPageParam: (page) => page.nextCursor ?? undefined
++  });
++  useEffect(() => () => {
++    queryClient.setQueryData<InfiniteData<ActivityResponse>>(["activity", projectId, actorType, toolName], (data) =>
++      data && data.pages.length > 1 ? { pages: data.pages.slice(0, 1), pageParams: data.pageParams.slice(0, 1) } : data);
++  }, [projectId, actorType, toolName, queryClient]);
++  return activity;
+@@ -423 +439 @@
+-  readActivity: (projectId: string) => getJson<{ activityEvents: ActivityEvent[] }>(`/api/activity?projectId=${projectId}`),
++  readRestoreActivity: async (projectId: string) => restoreActivityResponseSchema.parse(await getJson<unknown>(`/api/human/projects/${projectId}/restore-activity`)),
+diff --git a/apps/web/src/app/routes/audit.test.ts b/apps/web/src/app/routes/audit.test.ts
+new file mode 100644
+--- /dev/null
++++ b/apps/web/src/app/routes/audit.test.ts
+@@ -0,0 +1,168 @@
++// @vitest-environment jsdom // REQ paged audit interactions
++import { randomUUID } from "node:crypto";
++import { act, createElement } from "react";
++import { createRoot, type Root } from "react-dom/client";
++import { notifyManager, QueryClient, QueryClientProvider } from "@tanstack/react-query";
++import type { ActivitySummary } from "@storymapper/contracts";
++import { afterEach, beforeEach, expect, it, vi } from "vitest";
++import { auditStrings as strings } from "@storymapper/ui-strings";
++import { AuditRoute } from "@storymapper/web/app/routes/audit";
++
++const fixture = vi.hoisted(() => ({ projectId: "" }));
++vi.mock("@tanstack/react-router", () => ({ useParams: () => ({ projectId: fixture.projectId }) }));
++vi.mock("@storymapper/web/features/privacy/PrivacyExportPanel", () => ({ PrivacyExportPanel: () => null }));
++vi.mock("@storymapper/web/features/reports/ReportsPanel", () => ({ ReportsPanel: () => null }));
++vi.mock("@storymapper/web/features/restore-points/RestorePointsPanel", () => ({ RestorePointsPanel: () => null }));
++
++let host: HTMLDivElement;
++let root: Root;
++let client: QueryClient;
++let events: ActivitySummary[];
++let queries: URLSearchParams[];
++let rejectNextPage: boolean;
++let rejectFirstPage: boolean;
++let releaseResponse: (() => void) | undefined;
++
++function event(index: number): ActivitySummary {
++  const runtime = index === 0;
++  return {
++    id: randomUUID(), projectId: runtime ? null : fixture.projectId, scope: runtime ? "runtime" : "project",
++    actor: `host-${index}`, actorType: index % 2 ? "human" : "agent", mcpSessionId: "audit-session",
++    action: "tool_call", createdAt: "2026-10-08T10:00:00.000Z",
++    toolCall: { toolName: index % 3 ? "ListProjects" : "GetStoryMapCards", inputHash: "a".repeat(64), outputHash: "b".repeat(64),
++      outcome: runtime ? "rejected" : "ok", affectedEntityIds: [randomUUID()], ...(runtime ? { rejectionReason: "disabled" as const } : {}) }
++  };
++}
++
++function json(body: unknown, status = 200): Response {
++  return new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json" } });
++}
++
++function button(text: string): HTMLButtonElement {
++  const found = [...host.querySelectorAll("button")].find((item) => item.textContent === text);
++  expect(found, text).toBeDefined();
++  return found!;
++}
++
++async function settled(assertion: () => void): Promise<void> {
++  await vi.waitFor(async () => { await act(async () => {}); assertion(); });
++}
++
++async function mount(): Promise<void> {
++  await act(async () => root.render(createElement(QueryClientProvider, { client }, createElement(AuditRoute))));
++}
++
++async function filter(actor: string, tool: string): Promise<void> {
++  await act(async () => {
++    const select = host.querySelector("select")!;
++    select.value = actor;
++    select.dispatchEvent(new Event("change", { bubbles: true }));
++    const input = host.querySelector("input")!;
++    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!.set!.call(input, tool);
++    input.dispatchEvent(new Event("input", { bubbles: true }));
++  });
++  await act(async () => button(strings.applyFilters).click());
++}
++
++beforeEach(() => {
++  notifyManager.setScheduler(queueMicrotask);
++  vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
++  fixture.projectId = randomUUID();
++  host = document.createElement("div");
++  document.body.append(host);
++  root = createRoot(host);
++  client = new QueryClient({ defaultOptions: { queries: { retry: false } } });
++  events = Array.from({ length: 1000 }, (_, index) => event(index));
++  queries = [];
++  rejectNextPage = false;
++  rejectFirstPage = false;
++  releaseResponse = undefined;
++  vi.stubGlobal("fetch", vi.fn(async (path: string) => {
++    const query = new URL(path, "http://localhost").searchParams;
++    queries.push(query);
++    if (releaseResponse !== undefined) await new Promise<void>((resolve) => { releaseResponse = resolve; });
++    if ((query.has("cursor") && rejectNextPage) || (!query.has("cursor") && rejectFirstPage)) return json({ message: "Audit read refused." }, 503);
++    const matching = events.filter((item) => (!query.has("actorType") || item.actorType === query.get("actorType")) && (!query.has("toolName") || item.toolCall?.toolName === query.get("toolName")));
++    const cursor = query.get("cursor");
++    const start = cursor ? matching.findIndex((item) => item.id === (JSON.parse(cursor) as { id: string }).id) + 1 : 0;
++    const limit = Number(query.get("limit"));
++    const page = matching.slice(start, start + limit);
++    const last = page.at(-1);
++    return json({ activityEvents: page, nextCursor: start + limit < matching.length && last ? { id: last.id, createdAt: last.createdAt } : null });
++  }));
++});
++
++afterEach(async () => {
++  releaseResponse?.();
++  await act(async () => root.unmount());
++  client.clear();
++  host.remove();
++  vi.unstubAllGlobals();
++  notifyManager.setScheduler((callback) => setTimeout(callback, 0));
++});
++
++it("loads a bounded first page from 1,000 records and shows runtime identity, outcome and objects", async () => {
++  await mount();
++  await settled(() => expect(host.querySelectorAll("ol li")).toHaveLength(20));
++  expect(queries).toHaveLength(1);
++  expect(queries[0]!.get("limit")).toBe("20");
++  expect(host.textContent).toContain(strings.runtime);
++  expect(host.textContent).toContain("Agent: host-0");
++  expect(host.textContent).toContain(strings.outcomes.rejected);
++  expect(host.textContent).toContain("disabled");
++  expect(host.textContent).toContain(events[0]!.toolCall!.affectedEntityIds[0]);
++  expect(host.textContent).toContain(strings.session("audit-session"));
++  expect(host.textContent).not.toContain("host-999");
++});
++
++it("pages filtered results and resets the cursor when either filter changes", async () => {
++  await mount();
++  await settled(() => expect(host.querySelectorAll("ol li")).toHaveLength(20));
++  await filter("agent", "GetStoryMapCards");
++  await settled(() => expect(queries.at(-1)!.get("toolName")).toBe("GetStoryMapCards"));
++  await settled(() => expect(host.querySelectorAll("ol li")).toHaveLength(20));
++  expect(queries.at(-1)!.get("actorType")).toBe("agent");
++  expect(queries.at(-1)!.has("cursor")).toBe(false);
++  expect([...host.querySelectorAll("ol li")].every((item) => item.textContent!.includes("Agent:") && item.textContent!.includes("GetStoryMapCards"))).toBe(true);
++  await act(async () => button(strings.loadMore).click());
++  await settled(() => expect(host.querySelectorAll("ol li")).toHaveLength(40));
++  expect(queries.at(-1)!.has("cursor")).toBe(true);
++  expect(new Set([...host.querySelectorAll("ol li")].map((item) => item.textContent)).size).toBe(40);
++  await filter("human", "ListProjects");
++  await settled(() => expect(queries.at(-1)!.get("actorType")).toBe("human"));
++  await settled(() => expect(host.querySelectorAll("ol li")).toHaveLength(20));
++  expect(queries.at(-1)!.has("cursor")).toBe(false);
++  expect(host.textContent).not.toContain("Agent:");
++  await filter("agent", "GetStoryMapCards");
++  await settled(() => expect(host.querySelectorAll("ol li")).toHaveLength(20));
++  expect(queries.at(-1)!.has("cursor")).toBe(false);
++});
++
++it("keeps loaded evidence after page failure and retries the same cursor", async () => {
++  await mount();
++  await settled(() => expect(host.querySelectorAll("ol li")).toHaveLength(20));
++  rejectNextPage = true;
++  await act(async () => button(strings.loadMore).click());
++  await settled(() => expect(host.querySelector("[role=alert]")?.textContent).toContain("Request failed: 503"));
++  expect(host.querySelectorAll("ol li")).toHaveLength(20);
++  const cursor = queries.at(-1)!.get("cursor");
++  rejectNextPage = false;
++  await act(async () => button(strings.retry).click());
++  await settled(() => expect(host.querySelectorAll("ol li")).toHaveLength(40));
++  expect(queries.at(-1)!.get("cursor")).toBe(cursor);
++  expect(host.querySelector("[role=alert]")).toBeNull();
++});
++
++it("announces loading and first-page errors, then shows a matching empty state after retry", async () => {
++  releaseResponse = () => {};
++  rejectFirstPage = true;
++  await mount();
++  expect(host.querySelector("[role=status]")?.textContent).toBe(strings.loading);
++  await act(async () => { const release = releaseResponse; releaseResponse = undefined; release?.(); });
++  await settled(() => expect(host.querySelector("[role=alert]")).not.toBeNull());
++  rejectFirstPage = false;
++  events = [];
++  await act(async () => button(strings.retry).click());
++  await settled(() => expect(host.textContent).toContain(strings.empty));
++  expect(host.querySelector("[role=status]")?.textContent).toBe("");
++});
+diff --git a/apps/web/src/app/routes/audit.tsx b/apps/web/src/app/routes/audit.tsx
+--- a/apps/web/src/app/routes/audit.tsx
++++ b/apps/web/src/app/routes/audit.tsx
+@@ -0,0 +1 @@
++import { useState } from "react";
+@@ -2,8 +3,7 @@
+-import { useState } from "react";
+-import type { ActivityEvent } from "@storymapper/contracts";
+-import { appStrings as strings, restorePointStrings } from "@storymapper/ui-strings";
+-import { RestorePointsPanel } from "../../features/restore-points/RestorePointsPanel";
+-import { useActivity } from "../api";
+-import { PrivacyExportPanel } from "../../features/privacy/PrivacyExportPanel";
+-import { ReportsPanel } from "../../features/reports/ReportsPanel";
+-import { useActiveStoryMapStore } from "../stores/active-story-map-store";
++import type { ActivitySummary, ActorType } from "@storymapper/contracts";
++import { appStrings, auditStrings as strings, restorePointStrings } from "@storymapper/ui-strings";
++import { useActivity } from "@storymapper/web/app/api";
++import { useActiveStoryMapStore } from "@storymapper/web/app/stores/active-story-map-store";
++import { RestorePointsPanel } from "@storymapper/web/features/restore-points/RestorePointsPanel";
++import { PrivacyExportPanel } from "@storymapper/web/features/privacy/PrivacyExportPanel";
++import { ReportsPanel } from "@storymapper/web/features/reports/ReportsPanel";
+@@ -14 +13,0 @@
+-  const activity = useActivity(projectId);
+@@ -19 +18 @@
+-      <h2>{strings.activity}</h2>
++      <h2>{appStrings.activity}</h2>
+@@ -24 +23 @@
+-      {view === "restore-points" ? <RestorePointsPanel projectId={projectId} /> : <ActivityPanels projectId={projectId} storyMapId={storyMapId} activity={activity.data?.activityEvents ?? []} />}
++      {view === "restore-points" ? <RestorePointsPanel projectId={projectId} /> : <ActivityPanels projectId={projectId} storyMapId={storyMapId} />}
+@@ -29 +28,6 @@
+-function ActivityPanels({ projectId, storyMapId, activity }: { projectId: string; storyMapId: string | undefined; activity: ActivityEvent[] }) {
++function ActivityPanels({ projectId, storyMapId }: { projectId: string; storyMapId: string | undefined }) {
++  const [actorType, setActorType] = useState<ActorType | undefined>();
++  const [toolName, setToolName] = useState("");
++  const [filters, setFilters] = useState<{ actorType?: ActorType; toolName?: string }>({});
++  const activity = useActivity(projectId, filters);
++  const events = activity.data?.pages.flatMap((page) => page.activityEvents) ?? [];
+@@ -34,7 +38,15 @@
+-        {activity.slice(-20).reverse().map((event) => (
+-          <div className="metric-row" key={event.id}>
+-            <span>{event.action}</span>
+-            {event.undoneByRestore ? <span>{restorePointStrings.undone}</span> : null}
+-            <strong>{new Date(event.createdAt).toLocaleString()}</strong>
+-          </div>
+-        ))}
++        <form onSubmit={(event) => { event.preventDefault(); setFilters({ ...(actorType ? { actorType } : {}), ...(toolName.trim() ? { toolName: toolName.trim() } : {}) }); }}>
++          <label>{strings.actorType}<select value={actorType ?? ""} onChange={(event) => setActorType(event.target.value ? event.target.value as ActorType : undefined)}>
++            <option value="">{strings.allActors}</option>
++            {Object.entries(strings.actors).map(([type, label]) => <option key={type} value={type}>{label}</option>)}
++          </select></label>
++          <label>{strings.toolName}<input value={toolName} onChange={(event) => setToolName(event.target.value)} /></label>
++          <button type="submit" className="secondary">{strings.applyFilters}</button>
++        </form>
++        <p role="status">{activity.isFetching ? strings.loading : ""}</p>
++        <div aria-busy={activity.isFetching}>
++          {activity.isError ? <div role="alert"><p>{strings.error(activity.error.message)}</p><button type="button" className="secondary" disabled={activity.isFetching} onClick={() => { if (activity.isFetchNextPageError) void activity.fetchNextPage(); else void activity.refetch(); }}>{strings.retry}</button></div> : null}
++          {!activity.isPending && !activity.isError && events.length === 0 ? <p>{strings.empty}</p> : null}
++          <ol aria-label={strings.events}>{events.map((event) => <ActivityEntry key={event.id} event={event} />)}</ol>
++          {activity.hasNextPage && !activity.isFetchNextPageError ? <button type="button" className="secondary" disabled={activity.isFetching} onClick={() => void activity.fetchNextPage()}>{strings.loadMore}</button> : null}
++        </div>
+@@ -46,0 +59,18 @@
++
++function ActivityEntry({ event }: { event: ActivitySummary }) {
++  const call = event.toolCall;
++  const objects = [...new Set([...(event.affectedEntityId ? [`${event.affectedEntityType ?? ""}:${event.affectedEntityId}`] : []), ...(call?.affectedEntityIds ?? [])])];
++  return <li>
++    <strong>{call?.toolName ?? event.action}</strong>
++    <p>{strings.actor(strings.actors[event.actorType], event.actor)}</p>
++    <p>{event.scope === "runtime" ? strings.runtime : strings.project}</p>
++    <time dateTime={event.createdAt}>{new Date(event.createdAt).toLocaleString()}</time>
++    {event.mcpSessionId ? <p>{strings.session(event.mcpSessionId)}</p> : null}
++    {call ? <p>{strings.outcomes[call.outcome]}</p> : null}
++    {objects.length ? <p>{strings.affected(objects)}</p> : null}
++    {call ? <><p>{strings.inputHash(call.inputHash)}</p><p>{strings.outputHash(call.outputHash)}</p></> : null}
++    {call?.rejectionReason ? <p>{call.rejectionReason}</p> : null}
++    {call?.errorId ? <p>{strings.errorId(call.errorId)}</p> : null}
++    {event.undoneByRestore ? <p>{restorePointStrings.undone}</p> : null}
++  </li>;
++}
+diff --git a/apps/web/src/features/restore-points/restore-points.test.ts b/apps/web/src/features/restore-points/restore-points.test.ts
+--- a/apps/web/src/features/restore-points/restore-points.test.ts
++++ b/apps/web/src/features/restore-points/restore-points.test.ts
+@@ -118 +118 @@
+-    if (path === `/api/activity?projectId=${projectId}`) {
++    if (path === `/api/human/projects/${projectId}/restore-activity`) {
+@@ -120 +120 @@
+-      return outcomeUnavailable === "503" ? json({ message: "Project restore is in progress" }, 503) : json({ activityEvents });
++      return outcomeUnavailable === "503" ? json({ message: "Project restore is in progress" }, 503) : json({ activityEvents: activityEvents.filter((event) => event.action === "project.restored").map(({ id, action, undoneByRestore, after }) => ({ id, action, undoneByRestore, after })) });
+@@ -121,0 +122 @@
++    if (path.startsWith("/api/activity?")) return json({ activityEvents: activityEvents.map(({ id, action, createdAt, undoneByRestore }) => ({ id, action, createdAt, undoneByRestore, projectId, scope: "project", actor: "local-user", actorType: "human" })), nextCursor: null });
+@@ -345,2 +346,2 @@
+-      expect(host.querySelector(".metric-row")?.textContent).toContain("changeset.applied");
+-      expect(host.querySelector(".metric-row")?.textContent).toContain(strings.undone);
++      expect(host.querySelector("ol li")?.textContent).toContain("changeset.applied");
++      expect(host.querySelector("ol li")?.textContent).toContain(strings.undone);
+diff --git a/apps/web/src/features/restore-points/restore-result.ts b/apps/web/src/features/restore-points/restore-result.ts
+--- a/apps/web/src/features/restore-points/restore-result.ts
++++ b/apps/web/src/features/restore-points/restore-result.ts
+@@ -16 +16 @@
+-    const [{ activityEvents }, { settings }] = await Promise.all([api.readActivity(projectId), api.readSafetySettings(projectId)]);
++    const [{ activityEvents }, { settings }] = await Promise.all([api.readRestoreActivity(projectId), api.readSafetySettings(projectId)]);
+@@ -61 +61 @@
+-  const [{ activityEvents }, { projects }] = await Promise.all([api.readActivity(attempt.projectId), api.readProjects()]);
++  const [{ activityEvents }, { projects }] = await Promise.all([api.readRestoreActivity(attempt.projectId), api.readProjects()]);
+diff --git a/apps/web/src/ui-strings/index.ts b/apps/web/src/ui-strings/index.ts
+--- a/apps/web/src/ui-strings/index.ts
++++ b/apps/web/src/ui-strings/index.ts
+@@ -1,0 +2,23 @@
++
++export const auditStrings = {
++  actorType: "Actor type",
++  toolName: "Tool name",
++  allActors: "All actors",
++  actors: { human: "Human", agent: "Agent", github: "GitHub", system: "System" },
++  applyFilters: "Apply filters",
++  runtime: "Runtime",
++  project: "Project",
++  loading: "Loading activity...",
++  empty: "No matching activity.",
++  error: (message: string) => `Activity could not be loaded: ${message}`,
++  retry: "Retry activity",
++  loadMore: "Load older activity",
++  events: "Activity events",
++  actor: (type: string, actor: string) => `${type}: ${actor}`,
++  session: (id: string) => `MCP session: ${id}`,
++  affected: (objects: string[]) => `Affected objects: ${objects.join(", ")}`,
++  inputHash: (hash: string) => `Input hash: ${hash}`,
++  outputHash: (hash: string) => `Output hash: ${hash}`,
++  errorId: (id: string) => `Error ID: ${id}`,
++  outcomes: { ok: "Succeeded", rejected: "Rejected", error: "Error" }
++} as const;
+diff --git a/docs/adr/0001-runtime-tool-call-activity.md b/docs/adr/0001-runtime-tool-call-activity.md
+new file mode 100644
+--- /dev/null
++++ b/docs/adr/0001-runtime-tool-call-activity.md
+@@ -0,0 +1,38 @@
++# Record unscoped tool calls as runtime Activity
++
++- Status: proposed
++- Date: 2026-10-08
++- Version: 1
++- Deciders: StoryMapper maintainers
++
++Reproducing statement: Record the Story 3.8 contract decision needed to audit every completed tool call, including global reads and invalid targets, without inventing Project ownership.
++
++## Context and Problem Statement
++
++AD-6 requires every tool call to produce Activity evidence. Activity currently requires an existing Project, but global reads and early refusals have no established owner. AD-17 already treats Activity as its own aggregate.
++
++## Decision Drivers
++
++- One Activity insert per completed call.
++- Actual Project ownership and safety remain authoritative.
++- No full payloads or credentials in public audit summaries.
++
++## Considered Options
++
++1. Attribute calls to an arbitrary Project.
++2. Create a separate runtime audit store.
++3. Permit nullable Project scope in the existing Activity aggregate.
++
++## Decision Outcome
++
++Chosen option: “Permit nullable Project scope.” Unscoped and multi-Project calls are runtime events. Human Project audit includes its scoped events plus clearly labeled runtime evidence; agent audit excludes runtime evidence and filters authorized Projects before pagination. Both exports use explicit metadata summaries. Raw internal history remains available to restore and ownership checks.
++
++### Consequences
++
++- Restore preserves runtime evidence without manufacturing Projects.
++- Portable Project archives exclude runtime events.
++- The development schema fingerprint changes. AD-9 excludes migration of prototype databases and old restore points retain explicit incompatible-schema refusal.
++
++## Changelog
++
++- 2026-10-08: Initial proposed decision for Story 3.8.
+diff --git a/docs/mcp-tools.md b/docs/mcp-tools.md
+--- a/docs/mcp-tools.md
++++ b/docs/mcp-tools.md
+@@ -122,0 +123 @@
++| `readRestoreActivity` | `GET /api/human/projects/:projectId/restore-activity` |
+diff --git a/packages/contracts/src/api/application-responses.ts b/packages/contracts/src/api/application-responses.ts
+--- a/packages/contracts/src/api/application-responses.ts
++++ b/packages/contracts/src/api/application-responses.ts
+@@ -37 +37 @@
+-export type ActivityResponse = { activityEvents: ActivityEvent[] };
++export type ActivityResponse = z.infer<typeof import("@storymapper/contracts/schemas/audit").activityResponseSchema>;
+diff --git a/packages/contracts/src/api/http.ts b/packages/contracts/src/api/http.ts
+--- a/packages/contracts/src/api/http.ts
++++ b/packages/contracts/src/api/http.ts
+@@ -47,0 +48 @@
++export * from "@storymapper/contracts/schemas/audit";
+@@ -525 +526 @@
+-  name: mcpToolNameSchema,
++  name: z.string().min(1),
+@@ -527 +528 @@
+-});
++}).strict();
+diff --git a/packages/contracts/src/index.ts b/packages/contracts/src/index.ts
+--- a/packages/contracts/src/index.ts
++++ b/packages/contracts/src/index.ts
+@@ -1,0 +2 @@
++export * from "./schemas/audit";
+diff --git a/packages/contracts/src/mcp/tool-inputs.ts b/packages/contracts/src/mcp/tool-inputs.ts
+--- a/packages/contracts/src/mcp/tool-inputs.ts
++++ b/packages/contracts/src/mcp/tool-inputs.ts
+@@ -60 +60 @@
+-  ListActivity: projectListInputSchema,
++  ListActivity: request.activityQuerySchema,
+diff --git a/packages/contracts/src/schemas/audit.test.ts b/packages/contracts/src/schemas/audit.test.ts
+new file mode 100644
+--- /dev/null
++++ b/packages/contracts/src/schemas/audit.test.ts
+@@ -0,0 +1,18 @@
++import { expect, it } from "vitest";
++import { activityCursorSchema, activityQuerySchema, activityResponseSchema, toolCallMetadataSchema } from "@storymapper/contracts/schemas/audit";
++
++const id = "00000000-0000-4000-8000-000000000001";
++it("bounds shared audit queries and rejects malformed filters and cursor coordinates", () => {
++  expect(activityQuerySchema.parse({ projectId: id })).toEqual({ projectId: id, limit: 20 });
++  const cursor = JSON.stringify({ id, createdAt: "2026-10-08T12:00:00.000Z" });
++  expect(activityQuerySchema.parse({ actorType: "agent", toolName: "ListProjects", limit: "100", cursor }).cursor).toBe(cursor);
++  for (const input of [{ limit: 0 }, { limit: 101 }, { limit: 1.5 }, { actorType: "any" }, { toolName: "private/path" }, { cursor: "{" }, { cursor: JSON.stringify({ id, createdAt: "invalid" }) }, { before: {} }]) expect(activityQuerySchema.safeParse(input).success).toBe(false);
++  expect(activityCursorSchema.safeParse({ id, createdAt: "2026-10-08T12:00:00.000Z", extra: true }).success).toBe(false);
++});
++
++it("requires complete safe call metadata and rejects payload fields", () => {
++  const metadata = { toolName: "ListProjects", inputHash: "a".repeat(64), outputHash: "b".repeat(64), outcome: "rejected", rejectionReason: "validation", affectedEntityIds: [] };
++  expect(toolCallMetadataSchema.parse(metadata)).toEqual(metadata);
++  for (const input of [{ ...metadata, outputHash: undefined }, { ...metadata, outcome: "denied" }, { ...metadata, input: { token: "planted-secret" } }, { ...metadata, rejectionReason: "private error" }]) expect(toolCallMetadataSchema.safeParse(input).success).toBe(false);
++  expect(activityResponseSchema.safeParse({ activityEvents: [], nextCursor: null }).success).toBe(true);
++});
+diff --git a/packages/contracts/src/schemas/audit.ts b/packages/contracts/src/schemas/audit.ts
+new file mode 100644
+--- /dev/null
++++ b/packages/contracts/src/schemas/audit.ts
+@@ -0,0 +1,37 @@
++import { z } from "zod";
++import { activityEventSchema, actorTypeSchema, uuidSchema } from "@storymapper/contracts/schemas/domain";
++
++export const toolCallMetadataSchema = z.object({
++  toolName: z.string().min(1),
++  inputHash: z.string().regex(/^[a-f0-9]{64}$/),
++  outputHash: z.string().regex(/^[a-f0-9]{64}$/),
++  outcome: z.enum(["ok", "rejected", "error"]),
++  affectedEntityIds: z.array(uuidSchema),
++  rejectionReason: z.enum(["validation", "not_found", "conflict", "disabled", "protected", "restoring"]).optional(),
++  errorId: uuidSchema.optional()
++}).strict();
++export type ToolCallMetadata = z.infer<typeof toolCallMetadataSchema>;
++
++export const activitySummarySchema = activityEventSchema.omit({ before: true, after: true }).extend({
++  scope: z.enum(["project", "runtime"]),
++  toolCall: toolCallMetadataSchema.optional()
++});
++export type ActivitySummary = z.infer<typeof activitySummarySchema>;
++
++export const activityCursorSchema = z.object({ createdAt: activityEventSchema.shape.createdAt, id: uuidSchema }).strict();
++function validActivityCursor(value: string): boolean {
++  try { return activityCursorSchema.safeParse(JSON.parse(value)).success; }
++  catch (error) { if (error instanceof SyntaxError) return false; throw error; }
++}
++export const activityQuerySchema = z.object({
++  projectId: uuidSchema.optional(),
++  actorType: actorTypeSchema.optional(),
++  toolName: z.string().regex(/^[A-Za-z][A-Za-z0-9_.-]*$/).max(100).optional(),
++  limit: z.coerce.number().int().min(1).max(100).default(20),
++  cursor: z.string().refine(validActivityCursor, { message: "Invalid activity cursor." }).optional()
++}).strict();
++export type ActivityQuery = z.infer<typeof activityQuerySchema>;
++export const activityResponseSchema = z.object({
++  activityEvents: z.array(activitySummarySchema),
++  nextCursor: activityCursorSchema.nullable()
++}).strict();
+diff --git a/packages/contracts/src/schemas/domain.ts b/packages/contracts/src/schemas/domain.ts
+--- a/packages/contracts/src/schemas/domain.ts
++++ b/packages/contracts/src/schemas/domain.ts
+@@ -635 +635 @@
+-  projectId: uuidSchema,
++  projectId: uuidSchema.nullable(),
+diff --git a/packages/contracts/src/schemas/restore-points.ts b/packages/contracts/src/schemas/restore-points.ts
+--- a/packages/contracts/src/schemas/restore-points.ts
++++ b/packages/contracts/src/schemas/restore-points.ts
+@@ -44,0 +45,10 @@
++export const restoreActivityResponseSchema = z.object({
++  activityEvents: z.array(z.object({
++    id: uuidSchema,
++    action: z.literal("project.restored"),
++    undoneByRestore: z.boolean().optional(),
++    after: restoreProjectResultSchema
++  }).strict())
++}).strict();
++export type RestoreActivityResponse = z.infer<typeof restoreActivityResponseSchema>;
++
+diff --git a/packages/core/src/audit/events.ts b/packages/core/src/audit/events.ts
+--- a/packages/core/src/audit/events.ts
++++ b/packages/core/src/audit/events.ts
+@@ -5 +5 @@
+-  projectId: string;
++  projectId: string | null;
+diff --git a/packages/core/src/audit/summaries.test.ts b/packages/core/src/audit/summaries.test.ts
+new file mode 100644
+--- /dev/null
++++ b/packages/core/src/audit/summaries.test.ts
+@@ -0,0 +1,26 @@
++import { expect, it } from "vitest";
++import { activitySummarySchema, projectSchema, safetySettingsSchema, type ActivityEvent } from "@storymapper/contracts";
++import { buildAuditExport, summarizeActivity } from "@storymapper/core";
++
++const projectId = "00000000-0000-4000-8000-000000000001";
++const event: ActivityEvent = { id: "00000000-0000-4000-8000-000000000002", projectId, actor: "github-fixture", actorType: "github", action: "githubLink.created", affectedEntityType: "githubLink", affectedEntityId: "00000000-0000-4000-8000-000000000003", createdAt: "2026-10-08T12:00:00.000Z", before: { token: "fixture-secret" }, after: { content: "fixture-secret", filePath: "C:/private/fixture-path" } };
++
++it("retains identity, time and affected object metadata while omitting all internal snapshots", () => {
++  const summary = summarizeActivity(event);
++  expect(activitySummarySchema.parse(summary)).toEqual(summary);
++  expect(summary).toMatchObject({ scope: "project", actor: event.actor, createdAt: event.createdAt, affectedEntityId: event.affectedEntityId });
++  expect(summary).not.toHaveProperty("before");
++  expect(summary).not.toHaveProperty("after");
++  expect(summarizeActivity({ ...event, projectId: null }).scope).toBe("runtime");
++});
++
++it("exports the same safe scope and tool metadata in both formats without Project paths or entity payloads", () => {
++  const tool: ActivityEvent = { ...event, actor: "agent-fixture", actorType: "agent", mcpSessionId: "fixture-session", action: "tool_call", projectId: null, before: undefined, after: { toolName: "ListProjects", inputHash: "a".repeat(64), outputHash: "b".repeat(64), outcome: "rejected", rejectionReason: "disabled", affectedEntityIds: [projectId] } };
++  const project = projectSchema.parse({ id: projectId, name: "Project fixture", localPath: "C:/private/fixture-path", createdAt: event.createdAt });
++  const settings = safetySettingsSchema.parse({ projectId, agentAccess: true, github: true, agentProtection: false, updatedAt: event.createdAt });
++  for (const format of ["json", "markdown"] as const) {
++    const file = buildAuditExport(project, settings, [event, tool], format, event.createdAt);
++    for (const safe of ["github-fixture", "agent-fixture", "fixture-session", projectId, "runtime", "ListProjects", "rejected", "disabled", "a".repeat(64), "b".repeat(64)]) expect(file.content).toContain(safe);
++    for (const privateValue of ["fixture-secret", "C:/private/fixture-path", '"before"', '"after"', '"localPath"']) expect(file.content).not.toContain(privateValue);
++  }
++});
+diff --git a/packages/core/src/audit/summaries.ts b/packages/core/src/audit/summaries.ts
+new file mode 100644
+--- /dev/null
++++ b/packages/core/src/audit/summaries.ts
+@@ -0,0 +1,7 @@
++import { toolCallMetadataSchema, type ActivityEvent, type ActivitySummary } from "@storymapper/contracts";
++
++export function summarizeActivity(event: ActivityEvent): ActivitySummary {
++  const { before: _before, after, ...metadata } = event;
++  const toolCall = event.action === "tool_call" ? toolCallMetadataSchema.parse(after) : undefined;
++  return { ...metadata, scope: event.projectId ? "project" : "runtime", ...(toolCall ? { toolCall } : {}) };
++}
+diff --git a/packages/core/src/index.ts b/packages/core/src/index.ts
+--- a/packages/core/src/index.ts
++++ b/packages/core/src/index.ts
+@@ -7,0 +8 @@
++export * from "./audit/summaries";
+diff --git a/packages/core/src/publishing/export-files.ts b/packages/core/src/publishing/export-files.ts
+--- a/packages/core/src/publishing/export-files.ts
++++ b/packages/core/src/publishing/export-files.ts
+@@ -2 +2 @@
+-import { buildStoryMapCsv, buildStoryMapMarkdown, buildAuditMarkdown } from "@storymapper/core";
++import { buildStoryMapCsv, buildStoryMapMarkdown, buildAuditMarkdown, summarizeActivity } from "@storymapper/core";
+@@ -17 +17 @@
+-  if (format === "json") return { fileName: `${baseName}.json`, contentType: "application/json; charset=utf-8", content: JSON.stringify({ exportedAt, project, settings, events }, null, 2) };
++  if (format === "json") return { fileName: `${baseName}.json`, contentType: "application/json; charset=utf-8", content: JSON.stringify({ exportedAt, project: { id: project.id, name: project.name }, settings, events: events.map(summarizeActivity) }, null, 2) };
+diff --git a/packages/core/src/publishing/export-formatters.ts b/packages/core/src/publishing/export-formatters.ts
+--- a/packages/core/src/publishing/export-formatters.ts
++++ b/packages/core/src/publishing/export-formatters.ts
+@@ -1,0 +2 @@
++import { summarizeActivity } from "@storymapper/core";
+@@ -119,2 +120,4 @@
+-  for (const event of events) {
+-    lines.push(`- ${event.createdAt} | ${event.actorType}:${event.actor}${event.mcpSessionId ? ` | MCP session: ${event.mcpSessionId}` : ""} | ${event.action} | ${event.affectedEntityType ?? "n/a"}:${event.affectedEntityId ?? "n/a"}${event.undoneByRestore ? " | undone by restore" : ""}`);
++  for (const rawEvent of events) {
++    const event = summarizeActivity(rawEvent);
++    const tool = event.toolCall;
++    lines.push(`- ${event.createdAt} | ${event.actorType}:${event.actor}${event.mcpSessionId ? ` | MCP session: ${event.mcpSessionId}` : ""} | ${event.action} | ${event.scope} | ${event.affectedEntityType ?? "n/a"}:${event.affectedEntityId ?? "n/a"}${tool ? ` | ${tool.toolName} | ${tool.outcome} | objects: ${tool.affectedEntityIds.join(", ")} | input: ${tool.inputHash} | output: ${tool.outputHash}${tool.rejectionReason ? ` | reason: ${tool.rejectionReason}` : ""}${tool.errorId ? ` | error: ${tool.errorId}` : ""}` : ""}${event.undoneByRestore ? " | undone by restore" : ""}`);
+diff --git a/packages/db/src/connection.ts b/packages/db/src/connection.ts
+--- a/packages/db/src/connection.ts
++++ b/packages/db/src/connection.ts
+@@ -363 +363 @@
+-      project_id TEXT NOT NULL REFERENCES projects(id) ON DELETE CASCADE,
++      project_id TEXT REFERENCES projects(id) ON DELETE CASCADE,
+@@ -374,0 +375,3 @@
++    CREATE INDEX IF NOT EXISTS activity_scope_page_idx ON activity_events(project_id, created_at, id);
++    CREATE INDEX IF NOT EXISTS activity_actor_page_idx ON activity_events(project_id, actor_type, created_at, id);
++    CREATE INDEX IF NOT EXISTS activity_tool_page_idx ON activity_events(project_id, affected_entity_type, affected_entity_id, created_at, id);
+diff --git a/packages/db/src/repositories/audit-repository.ts b/packages/db/src/repositories/audit-repository.ts
+--- a/packages/db/src/repositories/audit-repository.ts
++++ b/packages/db/src/repositories/audit-repository.ts
+@@ -2,3 +2,3 @@
+-import { asc, desc, eq } from "drizzle-orm";
+-import type { ActivityEvent } from "@storymapper/contracts";
+-import { createActivityEvent } from "@storymapper/core";
++import { and, asc, desc, eq, inArray, isNotNull, isNull, lt, or } from "drizzle-orm";
++import { activityCursorSchema, type ActivityEvent, type ActivityQuery, type ActivityResponse, type ToolCallMetadata } from "@storymapper/contracts";
++import { createActivityEvent, summarizeActivity } from "@storymapper/core";
+@@ -15,0 +16,20 @@
++export function listActivityPage(this: StoryMapperRepository<"transaction">, query: ActivityQuery, visibility: { projectIds?: string[]; includeRuntime: boolean }): ActivityResponse {
++  this.context.database;
++  const scope = query.projectId ? [eq(activityEvents.projectId, query.projectId)] : visibility.projectIds ? [inArray(activityEvents.projectId, visibility.projectIds)] : [];
++  const visible = visibility.includeRuntime ? scope.length ? or(...scope, isNull(activityEvents.projectId)) : undefined : and(isNotNull(activityEvents.projectId), ...scope, ...(visibility.projectIds ? [inArray(activityEvents.projectId, visibility.projectIds)] : []));
++  const cursor = query.cursor ? activityCursorSchema.parse(JSON.parse(query.cursor)) : undefined;
++  const rows = this.db.select().from(activityEvents).where(and(
++    visible,
++    query.actorType ? eq(activityEvents.actorType, query.actorType) : undefined,
++    query.toolName ? and(eq(activityEvents.action, "tool_call"), eq(activityEvents.affectedEntityId, query.toolName)) : undefined,
++    cursor ? or(lt(activityEvents.createdAt, cursor.createdAt), and(eq(activityEvents.createdAt, cursor.createdAt), lt(activityEvents.id, cursor.id))) : undefined
++  )).orderBy(desc(activityEvents.createdAt), desc(activityEvents.id)).limit(query.limit + 1).all();
++  const last = rows[query.limit - 1];
++  return { activityEvents: rows.slice(0, query.limit).map(toActivityEvent).map(summarizeActivity), nextCursor: rows.length > query.limit && last ? { createdAt: last.createdAt, id: last.id } : null };
++}
++
++export function listAuditExportActivity(this: StoryMapperRepository<"transaction">, projectId: string, includeRuntime: boolean): ActivityEvent[] {
++  this.context.database;
++  return this.db.select().from(activityEvents).where(includeRuntime ? or(eq(activityEvents.projectId, projectId), isNull(activityEvents.projectId)) : eq(activityEvents.projectId, projectId)).orderBy(asc(activityEvents.createdAt), asc(activityEvents.id)).all().map(toActivityEvent);
++}
++
+@@ -17,8 +37,2 @@
+-    projectId: string;
+-    toolName: string;
+-    hostName: string;
+-    status: "succeeded" | "failed" | "denied";
+-    inputHash: string;
+-    outputHash?: string | undefined;
+-    affectedEntityIds?: string[] | undefined;
+-    errorMessage?: string | undefined;
++    projectId: string | null;
++    metadata: ToolCallMetadata;
+@@ -33 +47 @@
+-      action: `mcp.${input.toolName}.${input.status}`,
++      action: "tool_call",
+@@ -35,7 +49,2 @@
+-      affectedEntityId: input.toolName,
+-      before: { inputHash: input.inputHash },
+-      after: {
+-        outputHash: input.outputHash,
+-        affectedEntityIds: input.affectedEntityIds ?? [],
+-        errorMessage: input.errorMessage
+-      }
++      affectedEntityId: input.metadata.toolName,
++      after: input.metadata
+diff --git a/packages/db/src/repositories/row-mappers.ts b/packages/db/src/repositories/row-mappers.ts
+--- a/packages/db/src/repositories/row-mappers.ts
++++ b/packages/db/src/repositories/row-mappers.ts
+@@ -240,2 +240,2 @@
+-    affectedEntityType: row.affectedEntityType,
+-    affectedEntityId: row.affectedEntityId,
++    affectedEntityType: row.affectedEntityType ?? undefined,
++    affectedEntityId: row.affectedEntityId ?? undefined,
+@@ -244 +244 @@
+-    externalCallId: row.externalCallId,
++    externalCallId: row.externalCallId ?? undefined,
+diff --git a/packages/db/src/repositories/storymapper-repository.ts b/packages/db/src/repositories/storymapper-repository.ts
+--- a/packages/db/src/repositories/storymapper-repository.ts
++++ b/packages/db/src/repositories/storymapper-repository.ts
+@@ -118,0 +119,2 @@
++  listActivityPage = auditActions.listActivityPage.bind(this as unknown as StoryMapperRepository<"transaction">);
++  listAuditExportActivity = auditActions.listAuditExportActivity.bind(this as unknown as StoryMapperRepository<"transaction">);
+diff --git a/packages/db/src/restore-history.ts b/packages/db/src/restore-history.ts
+--- a/packages/db/src/restore-history.ts
++++ b/packages/db/src/restore-history.ts
+@@ -5 +5 @@
+-type HistoryRow = Record<string, string | number | null> & { id: string; project_id: string };
++type HistoryRow = Record<string, string | number | null> & { id: string; project_id: string | null };
+@@ -23 +23 @@
+-    ensureHistoricalProject(target, row.project_id);
++    if (row.project_id) ensureHistoricalProject(target, row.project_id);
+diff --git a/packages/db/src/restore-project.test.ts b/packages/db/src/restore-project.test.ts
+--- a/packages/db/src/restore-project.test.ts
++++ b/packages/db/src/restore-project.test.ts
+@@ -60,0 +61,19 @@
++  it("retains runtime tool-call evidence across repeated actual restores without fictional Projects", async () => {
++    const data = fixture();
++    const metadata = { toolName: "ListProjects", inputHash: "a".repeat(64), outputHash: "b".repeat(64), outcome: "ok" as const, affectedEntityIds: [] };
++    const runtimeActor = { actorType: "agent", actorId: "runtime-audit-host", mcpSessionId: "runtime-audit-session" } as const;
++    const before = data.uow.run(runtimeActor, ({ repository }) => repository.logMcpToolCall({ projectId: null, metadata }));
++    const point = createRestorePoint(data.handle, "manual");
++    const after = data.uow.run(runtimeActor, ({ repository }) => repository.logMcpToolCall({ projectId: null, metadata }));
++    const result = await restoreProject(data.handle, data.project.id, point.fileName, ACTOR);
++    expect(result.undoneActivityEvents).toBe(1);
++    expect(data.repository.listActivity().filter((event) => event.projectId === null)).toMatchObject([
++      { id: before.id, undoneByRestore: false, actor: runtimeActor.actorId },
++      { id: after.id, undoneByRestore: true, actor: runtimeActor.actorId }
++    ]);
++    const latest = data.uow.run(runtimeActor, ({ repository }) => repository.logMcpToolCall({ projectId: null, metadata }));
++    await restoreProject(data.handle, data.project.id, point.fileName, ACTOR);
++    expect(data.repository.listActivity().find((event) => event.id === latest.id)).toMatchObject({ projectId: null, undoneByRestore: true });
++    expect(data.handle.current.$client.prepare("SELECT id, historical_stub FROM projects").all()).toEqual([{ id: data.project.id, historical_stub: 0 }]);
++    expect(data.handle.current.$client.pragma("foreign_key_check")).toEqual([]);
++  });
+diff --git a/packages/db/src/schema/tables.ts b/packages/db/src/schema/tables.ts
+--- a/packages/db/src/schema/tables.ts
++++ b/packages/db/src/schema/tables.ts
+@@ -2 +2 @@
+-import { check, integer, real, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
++import { check, index, integer, real, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+@@ -347 +347 @@
+-  projectId: text("project_id").notNull().references(() => projects.id, { onDelete: "cascade" }),
++  projectId: text("project_id").references(() => projects.id, { onDelete: "cascade" }),
+@@ -358 +358,5 @@
+-});
++}, (table) => [
++  index("activity_scope_page_idx").on(table.projectId, table.createdAt, table.id),
++  index("activity_actor_page_idx").on(table.projectId, table.actorType, table.createdAt, table.id),
++  index("activity_tool_page_idx").on(table.projectId, table.affectedEntityType, table.affectedEntityId, table.createdAt, table.id)
++]);
+diff --git a/packages/db/src/snapshot.test.ts b/packages/db/src/snapshot.test.ts
+--- a/packages/db/src/snapshot.test.ts
++++ b/packages/db/src/snapshot.test.ts
+@@ -43,0 +44 @@
++  work.run({ actorType: "agent", actorId: "excluded-runtime-host" }, ({ repository }) => repository.logMcpToolCall({ projectId: null, metadata: { toolName: "ListProjects", inputHash: "a".repeat(64), outputHash: "b".repeat(64), outcome: "ok", affectedEntityIds: [] } }));
+@@ -55,0 +57,2 @@
++    expect(db.prepare("SELECT * FROM activity_events WHERE project_id IS NULL").all()).toEqual([]);
++    expect(readFileSync(snapshot.snapshotPath).includes(Buffer.from("excluded-runtime-host"))).toBe(false);
+diff --git a/packages/db/src/snapshot.ts b/packages/db/src/snapshot.ts
+--- a/packages/db/src/snapshot.ts
++++ b/packages/db/src/snapshot.ts
+@@ -79 +79 @@
+-      else if (columns.some(({ name }) => name === "project_id")) database.prepare(`DELETE FROM "${table}" WHERE project_id != ?`).run(projectId);
++      else if (columns.some(({ name }) => name === "project_id")) database.prepare(`DELETE FROM "${table}" WHERE project_id IS NULL OR project_id != ?`).run(projectId);
+diff --git a/packages/mcp/src/tool-handlers/registry.ts b/packages/mcp/src/tool-handlers/registry.ts
+--- a/packages/mcp/src/tool-handlers/registry.ts
++++ b/packages/mcp/src/tool-handlers/registry.ts
+@@ -1 +1 @@
+-import type { McpToolName, McpToolResult } from "@storymapper/contracts";
++import { DomainError, type McpToolName, type McpToolResult } from "@storymapper/contracts";
+@@ -3 +3 @@
+-export type McpToolHandler = (input: unknown) => Promise<McpToolResult>;
++export type McpToolHandler = (input: unknown, recordProjectIds?: (projectIds: string[]) => void) => Promise<McpToolResult>;
+@@ -6,0 +7,2 @@
++
++  constructor(private readonly audit?: (name: unknown, input: unknown, invoke: (recordProjectIds?: (projectIds: string[]) => void) => Promise<McpToolResult>) => Promise<McpToolResult>) {}
+@@ -12,7 +14,10 @@
+-  async call(name: McpToolName, input: unknown): Promise<McpToolResult> {
+-    const handler = this.handlers.get(name);
+-    if (!handler) {
+-      throw new Error(`MCP tool ${name} is not registered.`);
+-    }
+-
+-    return handler(input);
++  async call(name: unknown, input: unknown, validate?: () => void): Promise<McpToolResult> {
++    const invoke = async (recordProjectIds?: (projectIds: string[]) => void) => {
++      validate?.();
++      if (typeof name !== "string" || !name) throw new DomainError("validation", "Request validation failed.");
++      if (["RestoreProject", "restore-points.restore", "RestoreRestorePoint"].includes(name)) throw new DomainError("disabled", "Project restore is human-only and is not available through MCP.");
++      const handler = this.handlers.get(name as McpToolName);
++      if (!handler) throw new DomainError("not_found", "Tool is not available through MCP.");
++      return handler(input, recordProjectIds);
++    };
++    return this.audit ? this.audit(name, input, invoke) : invoke();
+diff --git a/packages/mcp/src/transports/server.ts b/packages/mcp/src/transports/server.ts
+--- a/packages/mcp/src/transports/server.ts
++++ b/packages/mcp/src/transports/server.ts
+@@ -1,2 +1,2 @@
+-import { McpServer, ProtocolError, ProtocolErrorCode, type CallToolResult } from "@modelcontextprotocol/server";
+-import { DomainError, mcpToolInputSchemas, mcpToolNameSchema, toErrorResponse, type McpToolName, type McpToolResult } from "@storymapper/contracts";
++import { McpServer, type CallToolResult } from "@modelcontextprotocol/server";
++import { mcpToolInputSchemas, toErrorResponse, type McpToolResult } from "@storymapper/contracts";
+@@ -8 +8 @@
+-  callTool: (name: McpToolName, args: unknown) => Promise<McpToolResult>;
++  callTool: (name: string, args: unknown) => Promise<McpToolResult>;
+@@ -20 +20 @@
+-    }, (args: unknown) => invokeTool(input.callTool, tool.name, args));
++    }, (args: unknown) => invokeMcpTool(() => input.callTool(tool.name, args)));
+@@ -23 +23 @@
+-  // SDK validation runs before registered callbacks; validate here to keep typed domain errors on the wire.
++  // DESIGN The public request handler keeps raw arguments inside the shared audited boundary.
+@@ -25,3 +25 @@
+-    const name = mcpToolNameSchema.safeParse(request.params.name);
+-    if (!name.success) throw new ProtocolError(ProtocolErrorCode.InvalidParams, `Tool ${request.params.name} not found`);
+-    const result = await invokeTool(input.callTool, name.data, request.params.arguments);
++    const result = await invokeMcpTool(() => input.callTool(request.params.name, request.params.arguments));
+@@ -34 +32 @@
+-async function invokeTool(callTool: (name: McpToolName, args: unknown) => Promise<McpToolResult>, name: McpToolName, args: unknown): Promise<CallToolResult> {
++export async function invokeMcpTool(callTool: () => Promise<McpToolResult>): Promise<CallToolResult> {
+@@ -36,3 +34 @@
+-    const parsed = mcpToolInputSchemas[name].safeParse(args ?? {});
+-    if (!parsed.success) throw new DomainError("validation", "Request validation failed.", { issues: parsed.error.issues });
+-    const result = await callTool(name, parsed.data);
++    const result = await callTool();

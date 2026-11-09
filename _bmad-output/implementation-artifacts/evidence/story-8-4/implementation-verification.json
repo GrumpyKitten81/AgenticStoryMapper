@@ -1,0 +1,122 @@
+{
+  "revision": "c5b76dfecb22d62c6d0abdea39c37200df2f8d2e",
+  "recorded_at": "2026-10-20T04:05:39.950212+00:00",
+  "cwd": "<repo>",
+  "runtime": {
+    "node": "24.17.0",
+    "pnpm": "9.15.4",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "path_prefix": "<home>/.nvm/versions/node/v24.17.0/bin"
+  },
+  "checks": [
+    {
+      "name": "frozen install",
+      "command": "corepack pnpm install --frozen-lockfile",
+      "exit_code": 0,
+      "log": "implementation-frozen-install.log.gz",
+      "original_log": "frozen-install.log",
+      "original_sha256": "297d69a02c6c13750cacb66d39cb5a1f1e0f64655c2bd9804d303ee246a6b6e5",
+      "decoded_sanitized_sha256": "c153522ae03193c57a51d7e56d85fbfd86749b2a7aaee3249496d8c1dd53cf68",
+      "compressed_sha256": "58d7824ad135e196ac1081b4fbf0ea54e1603ca4d0bb19e9f9e0d10a2f5c91c3"
+    },
+    {
+      "name": "focused audit tests",
+      "command": "node --test scripts/ci-audit.test.mjs",
+      "exit_code": 0,
+      "log": "implementation-audit-tests-final.log.gz",
+      "original_log": "audit-tests-final.log",
+      "original_sha256": "5793311d33be7a98d284485477a10d0a555adbbfd982c68e611c4da298ebb441",
+      "decoded_sanitized_sha256": "5793311d33be7a98d284485477a10d0a555adbbfd982c68e611c4da298ebb441",
+      "compressed_sha256": "792af5cc4894dd911f5607ed83795ac7035e203b8342ba6b41d0c41f9debfe03"
+    },
+    {
+      "name": "workflow syntax",
+      "command": "/tmp/story-8-4-evidence/actionlint .github/workflows/ci.yml",
+      "exit_code": 0,
+      "log": "implementation-actionlint.log.gz",
+      "original_log": "actionlint.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decoded_sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_sha256": "3c86ec827980f5e39238186594d13f9fc4fc8cfdf901ea8260fe86fd1416d04c"
+    },
+    {
+      "name": "full aggregate",
+      "command": "corepack pnpm check",
+      "exit_code": 0,
+      "log": "implementation-full-check.log.gz",
+      "original_log": "full-check.log",
+      "original_sha256": "40493754ee451720588f59d8db23a4ec96a555fb36adae4852041efd3d21a549",
+      "decoded_sanitized_sha256": "26fff36f9373eb8db987aca6710a9e14011b80dadd73e019a030d6ada43f716d",
+      "compressed_sha256": "273f95eb42ff1bede5a961c9f00fc161179fa933892412bb77633708408454ed"
+    },
+    {
+      "name": "release verifier",
+      "command": "node scripts/verify.mjs",
+      "exit_code": 0,
+      "log": "implementation-release-verify.log.gz",
+      "original_log": "release-verify.log",
+      "original_sha256": "0d70d299d311adb1826936218a6880b56bc2b5b22ab7ccf4a5642072d29e9996",
+      "decoded_sanitized_sha256": "80fac50e4d9fe038d65bfad989043d580a0248b5f78e3fc583336a80233fbeac",
+      "compressed_sha256": "21d39c1520e5c9417cfe395c61042a8540c36e59e87d5e2e54cc139d3cdaafa1"
+    },
+    {
+      "name": "safe online audit",
+      "command": "node scripts/ci-audit.mjs",
+      "exit_code": 0,
+      "log": "implementation-audit-live-summary.log.gz",
+      "original_log": "audit-live-summary.log",
+      "original_sha256": "5d2926746d8df27ac2f5e1a40c6c40b79c6664c3590046a4300b02fada1aff55",
+      "decoded_sanitized_sha256": "5d2926746d8df27ac2f5e1a40c6c40b79c6664c3590046a4300b02fada1aff55",
+      "compressed_sha256": "35ae419ed08f54090633837c9ecc2e1b211fda4d60433f29265ef608bb69d262"
+    },
+    {
+      "name": "native rebuild",
+      "command": "corepack pnpm --filter @storymapper/db rebuild better-sqlite3",
+      "exit_code": 0,
+      "log": "implementation-native-rebuild-final.log.gz",
+      "original_log": "native-rebuild-final.log",
+      "original_sha256": "706ea826fdba0eadc0dabcad5511b3bd1ffa8cf7331d15b6016f130cd37ba3aa",
+      "decoded_sanitized_sha256": "5253f34fc87d5de8cc7483ed934f52335bb017029148dfebf773499925366c1a",
+      "compressed_sha256": "4a0c36ccaa38cdc0ac1ca6f948c13e0517f098422319605e2ec7b4aeb87c17a8"
+    },
+    {
+      "name": "native construction",
+      "command": "corepack pnpm --filter @storymapper/db exec node --input-type=module -e \"import Database from 'better-sqlite3'; const db = new Database(':memory:'); db.prepare('SELECT 1').get(); db.close();\"",
+      "exit_code": 0,
+      "log": "implementation-native-smoke-final.log.gz",
+      "original_log": "native-smoke-final.log",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decoded_sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_sha256": "f735467dfa8270061543dee66913db62662720d153c2a6a8b9fd89c79d118678"
+    }
+  ],
+  "source_files": {
+    ".github/workflows/ci.yml": "13b4a1f65750049880df6375b51c2e0621b26eb2a9be4f0b5f70b0fb893f9659",
+    "scripts/ci-audit.mjs": "280109698eb55e6b06f3cf7172567bc6bffaea39f697272f9899dd74c9371540",
+    "scripts/ci-audit.test.mjs": "0c69f62240b1ea3d2e2b0e0874cb4874f6971eb1fc3848c3f2698260b4f4c191",
+    "scripts/fixtures/ci-audit-scanner.mjs": "5d3115ef9f78b40c43f042337cbc0dcc4f9c049d05ecd3dd1984cc482659fbbf",
+    "docs/RUNBOOK.md": "e5ec5a2613445299c85cd76d7cf655685803c7720f2533baa123892405b4d12c"
+  },
+  "counts": {
+    "root_tests": 146,
+    "workspace_coverage_tests": 3159,
+    "audit_performance_tests": 14,
+    "accessibility_tests": 261,
+    "focused_audit_tests": 38
+  },
+  "actionlint": {
+    "version": "1.7.12",
+    "source": "https://github.com/rhysd/actionlint/releases/tag/v1.7.12",
+    "asset_sha256": "aba9ced2dee8d27fecca3dc7feb1a7f9a52caefa1eb46f3271ea66b6e0e6953f"
+  },
+  "limits": [
+    "No remote hosted OS runs performed",
+    "No repository ruleset or branch protection activated",
+    "No native Windows/Linux quickstart, browser or reader evidence",
+    "One existing moderate advisory remains informational"
+  ],
+  "retained_failure": "implementation-audit-initial-failure.log.gz",
+  "source_files_scope": "Original implementation candidate before review fixes; these hashes do not describe the revised workflow and audit test.",
+  "log_provenance": "Original SHA-256 values were recorded before sanitization. Retained logs replace local paths and are gzip-compressed; decoded sanitized and compressed hashes identify those distinct byte sequences. Original log files are not retained in this directory."
+}

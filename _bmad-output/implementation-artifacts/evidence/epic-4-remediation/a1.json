@@ -1,0 +1,17 @@
+{
+  "action": "epic-4-retro-a1",
+  "date": "2026-10-17",
+  "checks": {
+    "focused_core": 197,
+    "focused_db": 44,
+    "reserved_core_final": 13,
+    "actual_http_sdk_final": 2,
+    "typecheck": [
+      "core",
+      "db",
+      "server"
+    ]
+  },
+  "review": "Independent supply producer/reader review; no introduced findings. Follow-up malformed prepared document/Roadmap seed guards and nested board refusal coverage added.",
+  "performance_note": "Earlier focused DB 200-operation sample 2283ms exceeded nominal 2000ms and passed existing 4000ms tolerance; retained in a1-db.log. Serial baseline samples retained separately."
+}

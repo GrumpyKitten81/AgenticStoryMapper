@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-20",
+  "scope": "Explicit invocation context correction only; no browser run, product gates or provider calls.",
+  "command": "python3 _bmad-output/implementation-artifacts/evidence/story-8-6/helper-probes.py",
+  "exit_code": 0,
+  "probes": 9,
+  "log": "helper-context-probes.log",
+  "log_sha256": "d9165423ba19b58e8a6b71c86ee510ee02fb375591fa327c9cc0cbb307b95318",
+  "current_runner_sha256": "ca923a63272d07f4f0ab3ba25bc49f6b78524b9306447aeb3d2d7177a15e9d3e",
+  "static_checks": [
+    "No global statements",
+    "No helper resolves invocation-state names from module globals"
+  ],
+  "preserved": "Original native runner hash, observed native outcomes, failed attempt, sanitation and overlay provenance remain unchanged."
+}

@@ -1,0 +1,459 @@
+[
+  {
+    "permission": "read",
+    "name": "ListProjects",
+    "description": "List local Agentic Story Mapper projects."
+  },
+  {
+    "permission": "read",
+    "name": "ListStoryMaps",
+    "description": "List story maps and counts."
+  },
+  {
+    "permission": "read",
+    "name": "GetStoryMapData",
+    "description": "Read reference data for a story map."
+  },
+  {
+    "permission": "read",
+    "name": "GetStoryMapCards",
+    "description": "Read card hierarchy and positions."
+  },
+  {
+    "permission": "read",
+    "name": "GetStoryMapCardDetails",
+    "description": "Read full card details."
+  },
+  {
+    "permission": "read",
+    "name": "GetStoryMapReleaseDetails",
+    "description": "Read releases and release reports for a story map."
+  },
+  {
+    "permission": "read",
+    "name": "GetStoryMapPersonaDetails",
+    "description": "Read personas available to a project or story map."
+  },
+  {
+    "permission": "write",
+    "name": "CreateStoryMapCard",
+    "description": "Create an activity, step, story or note card."
+  },
+  {
+    "permission": "write",
+    "name": "UpdateStoryMapCard",
+    "description": "Update story map card fields."
+  },
+  {
+    "permission": "write",
+    "name": "MoveStoryMapCard",
+    "description": "Move or reparent a story map card."
+  },
+  {
+    "permission": "write",
+    "name": "DeleteOrArchiveStoryMapCard",
+    "description": "Archive a story map card."
+  },
+  {
+    "permission": "write",
+    "name": "CreateStoryMapRelease",
+    "description": "Create a release on a story map."
+  },
+  {
+    "permission": "write",
+    "name": "UpdateStoryMapRelease",
+    "description": "Update release details."
+  },
+  {
+    "permission": "write",
+    "name": "CreateStoryMapPersona",
+    "description": "Create a project-level or story-map persona."
+  },
+  {
+    "permission": "write",
+    "name": "UpdateStoryMapPersona",
+    "description": "Update persona details."
+  },
+  {
+    "permission": "read",
+    "name": "ListGitHubLinks",
+    "description": "Read GitHub issue and milestone links for a story map."
+  },
+  {
+    "permission": "github",
+    "name": "LookupGitHubTicket",
+    "description": "Read one GitHub Issue for the reviewed Card placement without creating local domain data."
+  },
+  {
+    "permission": "github",
+    "name": "ImportGitHubTicket",
+    "description": "Create a linked Card atomically from a reviewed GitHub Issue, or retain its incoming proposal for review."
+  },
+  {
+    "permission": "github",
+    "name": "ImportGitHubIssues",
+    "description": "Prepares GitHub Issue imports and returns a proposed or applied local ChangeSet."
+  },
+  {
+    "permission": "github",
+    "name": "PushCardsToGitHub",
+    "description": "Prepares a proposed GitHub push Dry Run plan; provider mutation requires separate human HTTP confirmation."
+  },
+  {
+    "permission": "github",
+    "name": "SyncGitHubLinks",
+    "description": "Prepares GitHub sync and routes local effects through a ChangeSet; outgoing provider writes require human confirmation."
+  },
+  {
+    "permission": "github",
+    "name": "PullStoryMapGitHubLinks",
+    "description": "Pulls GitHub data into a local ChangeSet; outgoing provider writes require human confirmation."
+  },
+  {
+    "permission": "proposal",
+    "name": "ProposeMapFromSourceDocument",
+    "description": "Create a proposed ChangeSet from a source document."
+  },
+  {
+    "permission": "proposal",
+    "name": "ProposeBacklogGrooming",
+    "description": "Create a proposed backlog grooming ChangeSet."
+  },
+  {
+    "permission": "proposal",
+    "name": "ProposeReleaseSlice",
+    "description": "Store a deterministic first-12-visible-Stories happy-path proposal with an explicit existing or new Release target; never apply it."
+  },
+  {
+    "permission": "write",
+    "name": "ApplyChangeSet",
+    "description": "Apply a stored ChangeSet with recorded approval unless the Agent mode is `propose`."
+  },
+  {
+    "name": "BulkUpdateCards",
+    "description": "Apply one field patch to several Cards in a Story Map after checking every Card's baseVersion."
+  },
+  {
+    "name": "CreateAiProposal",
+    "description": "Generate a deterministic proposed ChangeSet from a template and selected Story Map context."
+  },
+  {
+    "name": "CreateAnnotation",
+    "description": "Create a Project annotation for use on linked Cards."
+  },
+  {
+    "name": "CreateCardAttachment",
+    "description": "Attach an existing local file to a Card and return its attachment metadata."
+  },
+  {
+    "name": "CreateCardSourceLink",
+    "description": "Record Card origin evidence from a same-Project chunk, existing GitHub Issue identity or nonblank text note."
+  },
+  {
+    "name": "CreateGitHubIssueDryRun",
+    "description": "Preview the GitHub Issue that would be created from a Card without writing to GitHub."
+  },
+  {
+    "name": "CreateGitHubLink",
+    "description": "Link a Card or Release to a GitHub Issue or Milestone."
+  },
+  {
+    "name": "CreateRoadmap",
+    "description": "Create a Project Roadmap with its initial columns."
+  },
+  {
+    "name": "CreateRoadmapCard",
+    "description": "Add a planning item to a Roadmap column and optional swimlane."
+  },
+  {
+    "name": "CreateRoadmapColumn",
+    "description": "Add an ordered column to a Roadmap."
+  },
+  {
+    "name": "CreateRoadmapReference",
+    "description": "Link a Roadmap card to a Card, Release, or other supported target."
+  },
+  {
+    "name": "CreateRoadmapSwimlane",
+    "description": "Add an ordered swimlane to a Roadmap."
+  },
+  {
+    "name": "CreateStoryMap",
+    "description": "Create a Story Map in the selected Project."
+  },
+  {
+    "name": "CreateStoryTemplate",
+    "description": "Create a reusable story template in a Project."
+  },
+  {
+    "name": "CreateWorkflowStatus",
+    "description": "Create a Project workflow status with its status group and ordering."
+  },
+  {
+    "name": "DeleteAnnotation",
+    "description": "Delete a Project annotation and its Card assignments."
+  },
+  {
+    "name": "DeleteCard",
+    "description": "Delete or archive a Card using the requested child-handling strategy."
+  },
+  {
+    "name": "DeleteCardAnnotation",
+    "description": "Remove an annotation assignment from a Card."
+  },
+  {
+    "name": "DeleteCardAttachment",
+    "description": "Remove an attachment record from a Card."
+  },
+  {
+    "name": "DeleteCardPersona",
+    "description": "Remove a persona assignment from a Card."
+  },
+  {
+    "name": "DeleteCardSourceLink",
+    "description": "Remove Card origin evidence by its kind and identity."
+  },
+  {
+    "name": "DeleteGitHubLink",
+    "description": "Remove a Card or Release link to a GitHub Issue or Milestone."
+  },
+  {
+    "name": "DeletePersona",
+    "description": "Delete a Project persona and its Card assignments."
+  },
+  {
+    "name": "DeleteRelease",
+    "description": "Delete a Release and apply the requested handling to assigned Cards."
+  },
+  {
+    "name": "DeleteStoryMap",
+    "description": "Delete a Story Map and its owned contents."
+  },
+  {
+    "name": "DeleteStoryTemplate",
+    "description": "Delete a reusable story template from a Project."
+  },
+  {
+    "name": "DeleteWorkflowStatus",
+    "description": "Delete a workflow status and handle Cards that use it."
+  },
+  {
+    "name": "ExportAudit",
+    "description": "Export the selected Project's Activity audit in the requested format."
+  },
+  {
+    "name": "ExportStoryMap",
+    "description": "Export a Story Map snapshot in the requested format."
+  },
+  {
+    "name": "GetBacklogHealthReport",
+    "description": "Read backlog quality counts and the Cards that need attention."
+  },
+  {
+    "name": "GetCardHistory",
+    "description": "Read version history and changes for one Card."
+  },
+  {
+    "name": "GetCustomization",
+    "description": "Read Product Context and templates for a Project or Story Map."
+  },
+  {
+    "name": "GetGitHubSyncHealth",
+    "description": "Read GitHub link, sync-run, and unresolved-conflict health for a Story Map."
+  },
+  {
+    "name": "GetProductContext",
+    "description": "Read the Project or Story Map Product Context used by proposal prompts."
+  },
+  {
+    "name": "GetReleaseSummaryReport",
+    "description": "Read completion and scope totals for a Story Map's Releases."
+  },
+  {
+    "name": "GetReleaseTimelineReport",
+    "description": "Read the scheduled Card timeline across a Story Map's Releases."
+  },
+  {
+    "name": "GetRoadmapDetails",
+    "description": "Read a Roadmap with its columns, swimlanes, cards, and references."
+  },
+  {
+    "name": "GetSafetySettings",
+    "description": "Read the Agent mode and GitHub safety settings for a Project."
+  },
+  {
+    "name": "GetSourceCoverageReport",
+    "description": "Read source-document coverage and Cards without linked evidence."
+  },
+  {
+    "name": "GetSourceDocument",
+    "description": "Read a source document, its chunks, and linked Cards."
+  },
+  {
+    "name": "GetStoryMapSnapshot",
+    "description": "Read a complete Story Map snapshot for planning or export."
+  },
+  {
+    "name": "GetWorkItemSyncHealth",
+    "description": "Read external work-item links, sync runs, and open conflicts."
+  },
+  {
+    "name": "ImportSourceDocument",
+    "description": "Import inline Markdown or text content into a Project and create source chunks."
+  },
+  {
+    "name": "ListActivity",
+    "description": "List filtered Activity events and agent tool-call audit summaries."
+  },
+  {
+    "name": "ListAiTemplates",
+    "description": "List editable prompt templates available to a Project."
+  },
+  {
+    "name": "ListCardAttachments",
+    "description": "List attachment metadata for a Card without returning file contents."
+  },
+  {
+    "name": "ListChangeSets",
+    "description": "List proposed, approved, applied, or rejected ChangeSets for accessible Projects."
+  },
+  {
+    "name": "ListConnectorConnections",
+    "description": "List Project connector names and non-secret connection settings."
+  },
+  {
+    "name": "ListRoadmaps",
+    "description": "List Roadmaps and their Project scope."
+  },
+  {
+    "name": "ListSourceDocuments",
+    "description": "List imported source documents for a Project."
+  },
+  {
+    "name": "ParkCard",
+    "description": "Remove a Card from active planning while retaining it in the Story Map."
+  },
+  {
+    "name": "PlanWorkItems",
+    "description": "Preview work-item synchronization changes without writing to the remote provider."
+  },
+  {
+    "name": "ResolveSyncConflict",
+    "description": "Resolves incoming sync fields through a local ChangeSet; outgoing resolution prepares a Dry Run for human confirmation."
+  },
+  {
+    "name": "SetCardAnnotation",
+    "description": "Assign or remove an annotation on a Card."
+  },
+  {
+    "name": "SetCardPersona",
+    "description": "Assign or remove a persona on a Card."
+  },
+  {
+    "name": "SetExternalRef",
+    "description": "Bind a Card, Release, or Persona to a scoped external identity."
+  },
+  {
+    "name": "UnparkCard",
+    "description": "Return a parked Card to active Story Map planning."
+  },
+  {
+    "name": "UpdateAnnotation",
+    "description": "Change a Project annotation's name or description."
+  },
+  {
+    "name": "UpdateGitHubLink",
+    "description": "Change fields on an existing GitHub Issue or Milestone link."
+  },
+  {
+    "name": "UpdateRoadmap",
+    "description": "Change a Roadmap's name, description, or ordering."
+  },
+  {
+    "name": "UpdateStoryMap",
+    "description": "Change a Story Map's editable fields and default connector."
+  },
+  {
+    "name": "UpdateStoryTemplate",
+    "description": "Change a reusable story template's guidance and examples."
+  },
+  {
+    "name": "UpdateWorkflowStatus",
+    "description": "Change a Project workflow status's name, group, or ordering."
+  },
+  {
+    "name": "UpsertProductContext",
+    "description": "Create or update Product Context for a Project or Story Map."
+  },
+  {
+    "permission": "approval",
+    "name": "ApproveChangeSet",
+    "description": "Approve a stored ChangeSet and its selected operations when the human-controlled Agent mode is `autonomous`."
+  },
+  {
+    "permission": "write",
+    "name": "SubmitChangeSet",
+    "description": "Submit a complete planning cut as one ChangeSet. Validates operations sequentially and applies by default; Agent mode `propose` or apply=false retains a proposal. Source imports require inline content. For BMad Persona, foundation or theme cuts, submit typed Release and Card assignment operations with rationale and explicit apply=false to store a proposal."
+  },
+  {
+    "permission": "read",
+    "name": "GetReleaseNotes",
+    "description": "Generate deterministic read-only Markdown release notes grouped by Activity for visible Stories in configured done statuses."
+  },
+  {
+    "name": "UpdateDeliveryStatus",
+    "description": "Assign configured Workflow Status names to 1\u2013100 unique Cards addressed by scoped external references in one atomic ChangeSet. Agent mode `propose` or apply=false stores a proposal."
+  },
+  {
+    "name": "SetCardDependency",
+    "description": "Set an acyclic same-map Card prerequisite using the dependent Card base version. External writes create a ChangeSet."
+  },
+  {
+    "name": "DeleteCardDependency",
+    "description": "Remove a Card prerequisite using the dependent Card base version. External writes create a ChangeSet."
+  },
+  {
+    "name": "GetSlicesReport",
+    "permission": "read",
+    "description": "Read Story-only Slice summaries and dependency ordering."
+  },
+  {
+    "name": "ListPlanStates",
+    "permission": "read",
+    "description": "List immutable recorded Plan states for one Story Map."
+  },
+  {
+    "name": "GetPlanState",
+    "permission": "read",
+    "description": "Read one immutable recorded Plan state."
+  },
+  {
+    "name": "ComparePlanStates",
+    "permission": "read",
+    "description": "Compare two recorded Plan states from the same Story Map."
+  },
+  {
+    "name": "GetPlanDriftReport",
+    "permission": "read",
+    "description": "Read durable synchronized source plan drift for a Story Map and system."
+  },
+  {
+    "name": "ListPlanDriftSystems",
+    "permission": "read",
+    "description": "List source systems referenced by a Story Map or retained synchronization evidence."
+  },
+  {
+    "name": "DeleteCards",
+    "description": "Atomically delete the explicit selected Cards, rehome surviving children using the chosen strategy, and check every captured selected and affected Card baseline."
+  },
+  {
+    "name": "GetCardReviews",
+    "description": "Read captured Card Definition of Ready requests, reports, decisions and summaries.",
+    "permission": "read"
+  },
+  {
+    "name": "CardReview",
+    "description": "Request, start or submit a structured Card review, or propose selected corrections. Human decisions and settings are rejected for agents.",
+    "permission": "proposal"
+  }
+]

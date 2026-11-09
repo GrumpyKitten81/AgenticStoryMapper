@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-17",
+  "environment": "built application; Node24.17.0; native Safari via cua; disposable Project/storage outside repository on loopback44369",
+  "passed": [
+    "default Release list open scope and canonical status/unestimated identities",
+    "native full-field create name/goal/startDate/releaseDate, save and reopen",
+    "dirty Escape opens least-destructive Cancel confirmation; Return retains exact goal draft and textarea focus",
+    "external HTTP edit produces native409; explicit Keep mine preserves draft and advances version3",
+    "released checkbox + Save persists version4; Escape closes clean editor; default list hides released item",
+    "Show all reveals released exact fields and scope option; exact released summary2Stories/0points/1unestimated LSM-4",
+    "Tracking default0 eligible Stories, Show all2Stories/0points/1unestimated LSM-4; Cards still assigned",
+    "Planning hides released lane by default and shows both Stories after Show all",
+    "Discovery retains released lane with both assigned Stories",
+    "after actual server restart and full native application reload, Show all and reopened editor retain name/goal/dates/released state"
+  ],
+  "limits": [
+    "No full screen-reader/contrast/zoom/forced-colors/WCAG audit",
+    "No native drag/bulk automation performed; public route and DOM tests cover those boundaries",
+    "Native delayed/failed Restore and inactive-map transition were not forced; DOM/live regressions and independent source recheck cover these races."
+  ],
+  "restartPersistence": "passed: actual owned server stopped/restarted; exact Cards/Releases and assignments/versions match",
+  "finalBuildPassed": [
+    "native actual MCP proposal preview shows projected Release name and5point total, editing disabled, Close preview restores canonical0point/open scope",
+    "actual manual Restore with dirty Release Dialog closes pre-epoch editor and refreshes canonical scope without manual reload",
+    "reopened restored root version4 has exact restored name/goal/dates/released; native subsequent Save succeeds to version5",
+    "proposal remains unapplied; canonical Story estimate remains0"
+  ],
+  "cleanup": "Owned44369server stopped; fresh socket refused. Safari cgWindowNotFound during clean-editor/tab closure; owned disposable tab may remain."
+}

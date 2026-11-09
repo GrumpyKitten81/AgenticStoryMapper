@@ -1,0 +1,204 @@
+{
+  "status": "verified",
+  "source_reports": [
+    "edge2",
+    "blind10",
+    "intent5 descriptive observations",
+    "verification2"
+  ],
+  "total_findings": 19,
+  "verdicts": {
+    "high": 0,
+    "medium": 12,
+    "low": 1,
+    "false": 4,
+    "maybe-false": 2
+  },
+  "patch_groups": {
+    "medium": 10,
+    "low": 1
+  },
+  "findings": [
+    {
+      "id": "E1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Valid rebind between different owner versions fails.",
+      "evidence": "Independent pure resolver reproduces the same old/new owner baseline mismatch as B2.",
+      "group": "rebind-baseline",
+      "action": "Resolver validates the previous owner baseline independently of destination scope. Executor uses the dependency simulator owner before each operation against initial root versions; distinct-version and sequential-owner tests pass."
+    },
+    {
+      "id": "E2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Incoming Note mapping aborts import.",
+      "evidence": "Note mapping is valid but all imported Cards get sync membership, which the new outbound Note guard rejects. Preserve source-only provenance.",
+      "group": "note-import",
+      "action": "Incoming human/MCP builders retain Note canonical provenance without active sync rows and report every imported item; mixed imports pass."
+    },
+    {
+      "id": "B1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Direct imports pool parent Issue numbers across repositories.",
+      "evidence": "The direct parent index includes every joined link; Agent import already filters repository.",
+      "group": "repository-parent-scope",
+      "action": "Direct parent indexing now filters canonical repository before Issue-number lookup; cross-repository regression passes."
+    },
+    {
+      "id": "B2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Rebind compares old-owner baseVersion against destination owner.",
+      "evidence": "Both previous and new referenceOwner calls assert the same operation baseline; unequal owner versions reject valid rebind.",
+      "group": "rebind-baseline",
+      "action": "Resolver validates the previous owner baseline independently of destination scope. Executor uses the dependency simulator owner before each operation against initial root versions; distinct-version and sequential-owner tests pass."
+    },
+    {
+      "id": "B3",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Unchanged canonical updates bump roots in core.",
+      "evidence": "Resolver finalizes every affected Card/Release even when owner/locator are unchanged; direct repository only finalizes actual identity change.",
+      "group": "canonical-noop",
+      "action": "Both direct and core canonical updates return unchanged when owner/scope/locator match; root/history no-op regression passes."
+    },
+    {
+      "id": "B4",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Rebind/detach leaves obsolete open conflicts.",
+      "evidence": "Sync membership is removed while conflict rows remain; prepareConflictResolution requires the removed link.",
+      "group": "conflict-retirement",
+      "action": "Identity rebind/detach atomically retires only obsolete open conflicts, records attributed before evidence, and preserves closed/unrelated conflicts; four direct/executor cases pass."
+    },
+    {
+      "id": "B5",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Human public mutation can edit a removed-map identity.",
+      "evidence": "Human application branch calls retained-owner repository directly without visible-owner check; internal maintenance must remain possible.",
+      "group": "public-owner-visibility",
+      "action": "Application update/delete validates visible owner through linkProjectId before mutation; actual HTTP refusal passes while retained citation maintenance remains available."
+    },
+    {
+      "id": "B6",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Sync does not update footer-only metadata on otherwise unchanged content.",
+      "evidence": "Current served origin is required when generating pushed content. Footer is intentionally excluded from merge hashes; no automatic metadata-only remote write requirement exists.",
+      "group": "footer-refresh"
+    },
+    {
+      "id": "B7",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Complete footer after one newline survives stripping.",
+      "evidence": "Parser only admits start-of-body or two-newline prefix; a manually edited complete block can be duplicated. Also preserve malformed earlier delimiter prose.",
+      "group": "footer-parser",
+      "action": "Parser recognizes complete non-nested blocks with short separators and preserves unmatched earlier prose;12 footer tests pass."
+    },
+    {
+      "id": "B8",
+      "verdict": "medium",
+      "route": "defer",
+      "summary": "Token Milestone lookup omits later pages.",
+      "evidence": "Token listMilestones first-page lookup is unchanged from baseline; CLI pagination was repaired here. Separate provider pagination work remains.",
+      "group": "token-milestone-pagination"
+    },
+    {
+      "id": "B9",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Non-GitHub externalRef.deleted history is erased or rejected.",
+      "evidence": "Archive predicates act on action alone although valid historical Activity permits non-GitHub refs; whole-payload handling must inspect typed GitHub evidence.",
+      "group": "mixed-deletion-history",
+      "action": "Typed GitHub-only whole-event predicates and scoped deletion reads preserve valid non-GitHub history; archive roundtrip/refusal tests pass."
+    },
+    {
+      "id": "B10",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Archive scans materialize all serialized history.",
+      "evidence": "New redaction/validation .all() loads complete Activity/ChangeSet/Card history tables before processing; iterate to bound retained payload memory.",
+      "group": "history-memory",
+      "action": "Serialized payload scanners use32-row keyset batches;3\u00d7257-row history test verifies full processing without a new timing threshold."
+    },
+    {
+      "id": "I1",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Diff alone cannot prove exact skill execution or absence of temporary sprint writes.",
+      "evidence": "Actual parent transcript records the exact renderer invocation once and only explicitly scoped writes/staging; protected file remains unchanged. No claimed code defect.",
+      "group": "process-proof"
+    },
+    {
+      "id": "I2",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Detailed scope might be self-authored expansion of story identifier.",
+      "evidence": "Binding story-plan7.3 and epic7 preparation predate this diff and were loaded before planning; the spec refines their existing requirements.",
+      "group": "intent-origin"
+    },
+    {
+      "id": "I3",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Native navigation/platform/reader acceptance is unverified.",
+      "evidence": "CUA inventory exposes no browser surface. DOM anchors and actual HTTP listener/SDK routes pass; native browser/reader observation would settle the boundary.",
+      "group": "native-acceptance"
+    },
+    {
+      "id": "I4",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Live GitHub account behavior is unverified.",
+      "evidence": "Controlled provider and CLI transports prove local behavior; a separately authorized live account smoke would establish live access. No login or real credentials used.",
+      "group": "live-acceptance"
+    },
+    {
+      "id": "I5",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Existing prototype Project conversion is not demonstrated.",
+      "evidence": "AD9 and binding detail plan explicitly exclude prototype migration/backfill; populated current-schema reopen/Restore is the required surface.",
+      "group": "prototype-data"
+    },
+    {
+      "id": "V1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Successful malformed search-page guard has no regression test.",
+      "evidence": "Pre-verified gap: existing partial-page tests reject promises and never return hasNextPage true with null cursor.",
+      "group": "pagination-test",
+      "action": "Both auth modes now exercise successful malformed continuation pages and assert rejection."
+    },
+    {
+      "id": "V2",
+      "verdict": "low",
+      "route": "patch",
+      "summary": "Card Detail paired-ref deduplication lacks consumer test.",
+      "evidence": "Pre-verified gap: Tree covers paired projections; Card Detail fixture has empty sync rows, so duplicate detail rows could regress undetected.",
+      "group": "detail-dedup-test",
+      "action": "Mounted Card Detail paired canonical/sync fixture asserts one Issue row with joined state."
+    }
+  ],
+  "patched_findings": {
+    "medium": 11,
+    "low": 1
+  },
+  "explanation": "E1 and B2 share one rebind-baseline repair group: 12 patched findings produce 11 repair groups.",
+  "verification": {
+    "root": {
+      "artifact": "parent-review-root-test-final.log",
+      "exit_code": 0,
+      "tests": 2659
+    },
+    "release": {
+      "artifact": "parent-review-release-verify-final.log",
+      "exit_code": 0
+    },
+    "source_sha256": "2670c6afe317767e5f6e2694a5093c293e7ab3ad8a87aa4da0368ba40b75fca3"
+  }
+}

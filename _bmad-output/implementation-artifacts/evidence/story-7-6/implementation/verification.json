@@ -1,0 +1,175 @@
+{
+  "date": "2026-10-19",
+  "scope": "Implementation focused evidence; parent independently reviews complete diff and runs serial root/release gates.",
+  "node": "24.17.0",
+  "cwd": "[REDACTED_HOME]/Projects/StoryMapper",
+  "suites": {
+    "contracts": {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/contracts exec vitest run src/migration.test.ts src/schemas/operation-schema-version.test.ts",
+      "testFiles": [
+        "src/migration.test.ts",
+        "src/schemas/operation-schema-version.test.ts"
+      ],
+      "tests": 22,
+      "passed": true,
+      "log": "story-7-6-contracts-final.log.gz"
+    },
+    "core": {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/core exec vitest run src/changesets/remaining-operation-resolution.test.ts src/changesets/dependency-resolution.test.ts src/changesets/resolver-write-collections.test.ts src/reports/sync-health.test.ts",
+      "testFiles": [
+        "src/changesets/remaining-operation-resolution.test.ts",
+        "src/changesets/dependency-resolution.test.ts",
+        "src/changesets/resolver-write-collections.test.ts",
+        "src/reports/sync-health.test.ts"
+      ],
+      "tests": 177,
+      "passed": true,
+      "log": "story-7-6-core-lock-final.log.gz",
+      "postfixVerification": {
+        "tests": 79,
+        "log": "story-7-6-core-omitted-before-final-2.log.gz",
+        "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/core exec vitest run src/changesets/remaining-operation-resolution.test.ts",
+        "passed": true
+      }
+    },
+    "db": {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/db exec vitest run src/repositories/canonical-github-identity.test.ts src/repositories/card-visibility.test.ts src/repositories/root-versions.test.ts src/repositories/changeset-executor.test.ts src/repositories/operation-snapshot-scope.test.ts src/live-events.test.ts",
+      "testFiles": [
+        "src/repositories/canonical-github-identity.test.ts",
+        "src/repositories/card-visibility.test.ts",
+        "src/repositories/root-versions.test.ts",
+        "src/repositories/changeset-executor.test.ts",
+        "src/repositories/operation-snapshot-scope.test.ts",
+        "src/live-events.test.ts"
+      ],
+      "tests": 126,
+      "passed": true,
+      "log": "story-7-6-db-final.log.gz",
+      "finalRetargetRegression": {
+        "tests": 14,
+        "passed": true,
+        "log": "story-7-6-db-retarget-final.log.gz",
+        "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/db exec vitest run src/repositories/canonical-github-identity.test.ts"
+      }
+    },
+    "server": {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/server exec vitest run src/services/sync-review.test.ts src/services/remote-push-merge.test.ts src/services/remote-push-execution.test.ts src/services/work-item-sync.test.ts src/application/sync/github-command-regressions.test.ts src/http/routes/unit-of-work.test.ts src/http/routes/delete-cards.test.ts src/mcp/tools/complete-surface.test.ts src/mcp/github-command-sdk.test.ts src/mcp/github-command-transports.test.ts",
+      "testFiles": [
+        "src/services/sync-review.test.ts",
+        "src/services/remote-push-merge.test.ts",
+        "src/services/remote-push-execution.test.ts",
+        "src/services/work-item-sync.test.ts",
+        "src/application/sync/github-command-regressions.test.ts",
+        "src/http/routes/unit-of-work.test.ts",
+        "src/http/routes/delete-cards.test.ts",
+        "src/mcp/tools/complete-surface.test.ts",
+        "src/mcp/github-command-sdk.test.ts",
+        "src/mcp/github-command-transports.test.ts"
+      ],
+      "tests": 293,
+      "passed": true,
+      "log": "story-7-6-server-final-2.log.gz",
+      "postfixVerification": {
+        "tests": 120,
+        "log": "story-7-6-server-lock-final.log.gz",
+        "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/server exec vitest run src/services/sync-review.test.ts src/services/work-item-sync.test.ts src/application/sync/github-command-regressions.test.ts",
+        "passed": true
+      },
+      "finalRetargetRegression": {
+        "tests": 44,
+        "passed": true,
+        "log": "story-7-6-server-retarget-final.log.gz",
+        "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/server exec vitest run src/services/sync-review.test.ts"
+      }
+    }
+  },
+  "typecheck": {
+    "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm -r typecheck",
+    "passed": true,
+    "log": "story-7-6-typecheck-handoff.log.gz"
+  },
+  "whitespace": {
+    "command": "git diff --check",
+    "passed": true
+  },
+  "matrix": [
+    {
+      "row": "Repeated disagreement",
+      "executed": [
+        "DB canonical-github-identity: preserves one canonical field disagreement across repeated creation, reopen and Restore",
+        "server sync-review: preserves original conflict evidence and health through repeated pulls and convergence"
+      ]
+    },
+    {
+      "row": "Precise locks",
+      "executed": [
+        "core remaining-operation-resolution: locks only changed disputed fields across upsert, move, bulk and unrelated child writes",
+        "core remaining-operation-resolution: locks shared Release metadata and managed Annotation assignments without blocking unrelated fields",
+        "server github-command-sdk: retains combined field/version disputes through human HTTP and actual SDK while unrelated fields remain editable",
+        "server github-command-transports: actual stdio journey now verifies combined errors and unrelated estimate write",
+        "web sync-field-locks: disputed fields, managed Annotations, shared Release, bulk, tile and retained-draft tests"
+      ]
+    },
+    {
+      "row": "Remote choice",
+      "executed": [
+        "server unit-of-work: attributes incoming remote conflict resolution to github and rolls back Card/link/conflict together",
+        "server github-command-regressions: requires reviewed field effects before a stored conflict resolution can close its row",
+        "web github-selection: shows captured values and prepares the incoming ChangeSet for Keep remote without applying it"
+      ]
+    },
+    {
+      "row": "Local choice",
+      "executed": [
+        "server remote-push-execution: updates only the chosen conflict baseline with another open conflict",
+        "server remote-push-merge: pushes a locally resolved managed-label conflict through the confirmed plan and preserves unrelated labels",
+        "server unit-of-work: confirms the exact local conflict plan outside transactions and resumes retained success after binding failure",
+        "web github-selection: exact actual Card/connection Dry Run, read-only policy and cancellation tests"
+      ]
+    },
+    {
+      "row": "Evidence drift",
+      "executed": [
+        "server sync-review: requires explicit renewed review after displayed local/remote resolution evidence drifts",
+        "server work-item-sync: refuses approved deferred resolution when the durable reviewed conflict value drifts",
+        "server remote-push-execution: refuses a changed reviewed remote target",
+        "web github-selection: requires deliberate re-review and sends newly displayed evidence only on renewed choice"
+      ]
+    },
+    {
+      "row": "Health",
+      "executed": [
+        "core sync-health: durable canonical conflict precedence, unsynced divergence, unavailable stale, canonical normalization, hidden ancestors and typed deduplicated deletion inventory",
+        "server sync-review: unavailable Issue retains last successful timestamp",
+        "server sync-review: reports deleted local identities with retained Issue links using local evidence only",
+        "server SDK: health read performs no provider call"
+      ]
+    },
+    {
+      "row": "Deleted local",
+      "executed": [
+        "DB canonical-github-identity: typed deletion excludes undone/live-equivalent events; source detach, canonical rebind, park and archive produce no deletion evidence",
+        "core sync-health: counts typed deleted owners once without inventing live binding",
+        "web github-selection: retains deleted local identities and GitHub navigation without pretending Card exists"
+      ]
+    },
+    {
+      "row": "Mounted concurrency",
+      "executed": [
+        "web github-selection: lower-version Restore, late preparation/execution/failure, same-tick scope/confirmation, away-and-back selection, pending sibling exclusion and cancel tests",
+        "web sync-field-locks: retains locked dirty draft across unrelated save and ignores late Card Save adoption after Restore",
+        "server sync-review: pending credentials/provider permission and scope revalidation",
+        "server remote-push-execution: actual Restore and database replacement recovery tests"
+      ]
+    }
+  ],
+  "webEvidence": "../web/verification.json",
+  "nativeAcceptance": "../native-acceptance.json",
+  "limits": [
+    "Native browser, screen-reader, platform and real-provider acceptance unexecuted.",
+    "No live credentials, user Projects, provider writes, login, staging, commits or pushes performed.",
+    "Root workspace tests, release verification and independent final matrix audit are parent-owned and still pending this implementation handoff."
+  ],
+  "preservedFailures": "Every /tmp/story-7-6 non-web log is retained losslessly as .log.gz here; recovered original web tool failure and all web logs are in ../web.",
+  "uniqueServerTestsAcrossFocusedRuns": 294
+}

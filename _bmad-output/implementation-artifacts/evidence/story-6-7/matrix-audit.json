@@ -1,0 +1,49 @@
+{
+  "testRun": "parent-web.log:530 tests/67 files passed; parent-markdown.log:1 passed",
+  "rows": {
+    "Deep links/history": [
+      "card-detail.test.ts direct View URL/reload/Back/Forward cases",
+      "card-detail-navigation.test.ts actual browser-history Back and Forward cancellation"
+    ],
+    "Dirty navigation": [
+      "card-detail-navigation.test.ts query/page/map Cancel, successful/failed Save, Back/Forward Cancel/Discard",
+      "card-detail.test.ts conflict Keep mine; pending save blocks competing navigation"
+    ],
+    "Preview coexistence": [
+      "card-detail-navigation.test.ts retained core views and suspended preview",
+      "changesets/shell.test.tsx exact dirty draft, pending Save-and-close, pending dependency hold/version"
+    ],
+    "Layered keyboard": [
+      "Dialog.test.ts marked editor descendant, trapping/nested layers/focus recovery",
+      "card-detail-navigation.test.ts formatted descendant first/second/confirmation Escape"
+    ],
+    "Accessible formatting": [
+      "card-detail-navigation.test.ts named multiline textbox, four named toggles, pressed states, inactive controls",
+      "native-acceptance.json final names/selection pressed state/focus frame"
+    ],
+    "Markdown": [
+      "card-detail.test.ts rich editor Save/reload heading/list",
+      "parent-markdown.log actual persisted Markdown and canonical Issue body plan"
+    ]
+  },
+  "finalTestRun": "parent-final-web.log:547 tests/67 files passed; parent-final-markdown.log:1 passed",
+  "reviewRegressions": [
+    "all Card-owned pending calls count in reverse completion order",
+    "origin create/delete refused outcomes retained",
+    "Archive/Park/Delete refused outcomes and successful completion settle pending navigation",
+    "repeat router/native traversal decisions settle without replacing first confirmation",
+    "go(-2)/go(2) Cancel/Discard restore actual cursor and router destination",
+    "clean/dirty/pending/settled/Back-Cancel unload behavior",
+    "held pending Save/dependency through preview refusal preserves exact draft/search/cache read cut",
+    "all four formatting pressed states on/off and selection transitions",
+    "immediate actual RootLayout heading focus after Save/Discard departure",
+    "repeated native Back/Forward then Discard resumes first destination in both router/window and subsequent Forward/Back entries",
+    "clean pending-write confirmation keeps Save disabled after settlement, with no Card update and usable Cancel/Discard"
+  ],
+  "repairFinalTestRun": {
+    "root": "repair-parent-final-root-test.log:2282 passed (83 scripts + 2199 workspace), exit0",
+    "web": "repair-parent-final-web.log:550 passed/67files, exit0",
+    "markdown": "repair-parent-final-markdown.log:1 persisted Markdown/Issue-plan test passed, exit0",
+    "matrixAudit": "All six existing matrix rows have active executed coverage; all changed Card-detail/navigation/preview/Dialog files ran in the 550-test suite. No skipped tests reported."
+  }
+}

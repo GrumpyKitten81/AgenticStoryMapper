@@ -1,0 +1,12 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/http/routes/delete-cards.test.ts (15 tests) 674ms
+ ✓ src/mcp/tools/complete-surface.test.ts (30 tests) 2392ms
+   ✓ executes Story Map, Roadmap children, customization, source, report and export capabilities 407ms
+
+ Test Files  2 passed (2)
+      Tests  45 passed (45)
+   Start at  13:30:35
+   Duration  3.40s (transform 534ms, setup 0ms, collect 1.65s, tests 3.07s, environment 0ms, prepare 58ms)
+

@@ -1,0 +1,52 @@
+{
+  "logs": [
+    {
+      "file": "repair-db-before-repair.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 880,
+      "raw_sha256": "6ea72bc12ca424b3c9a4de355b2443c1444474ae6339fc20b96e042b7e0fce7d"
+    },
+    {
+      "file": "repair-db-focused-repair.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 238,
+      "raw_sha256": "297dce5f9a4078df11c2ccc8aaeaf03d5729308ddae59dd82ae6bc7a81391934"
+    },
+    {
+      "file": "repair-ordinary-repair.log.gz",
+      "exit_code": 1,
+      "raw_bytes": 247986,
+      "raw_sha256": "dabdcb68e38f2b1494230ec499581fe172d627957bd86f2d95266ab116b892b0"
+    },
+    {
+      "file": "repair-workspace-serial-repair.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 204407,
+      "raw_sha256": "68412bcef12b7c61a9af616d9affb22e6b9449aa9e999e7cadd8f7ff5a026ed9"
+    },
+    {
+      "file": "repair-ordinary-final-repair.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 215114,
+      "raw_sha256": "e56d6e853f226849f61a95136a36de21499c4c578db0ef76a63b96d296055706"
+    },
+    {
+      "file": "repair-repair-install.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 571,
+      "raw_sha256": "f7f45137d63b607c0b7556c0fe0360f6b8507b45ef200feb3fc80bfb8f49b9ab"
+    },
+    {
+      "file": "repair-check.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 259311,
+      "raw_sha256": "b41ad67da8cf8dc7321fde1d19d5469fa3fed9e86052e09d97dea46cbbfe08ee"
+    },
+    {
+      "file": "repair-verify.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 5239,
+      "raw_sha256": "90351a4e1a84f56f1bc36e6769bab219068c343b50644aeed12066c5d50289f3"
+    }
+  ]
+}

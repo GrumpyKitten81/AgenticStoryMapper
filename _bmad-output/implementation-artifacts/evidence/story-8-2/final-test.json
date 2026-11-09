@@ -1,0 +1,329 @@
+{
+  "start": "2026-10-19T23:34:18.447Z",
+  "end": "2026-10-19T23:39:02.978Z",
+  "command": [
+    "corepack",
+    "pnpm",
+    "test"
+  ],
+  "node": "v24.17.0",
+  "status": 1,
+  "signal": null,
+  "lockSha256": "2b9b6c87c0fb3165f0a23cd4448ac42838a63898b8ed62bedf1fe3996d56f376",
+  "versions": {
+    "package.json": {
+      "name": "storymapper",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "packageManager": "pnpm@9.15.4",
+      "engines": {
+        "node": ">=24 <25"
+      },
+      "scripts": {
+        "dev": "corepack pnpm --parallel --filter @storymapper/server --filter @storymapper/web dev",
+        "dev:server": "corepack pnpm --filter @storymapper/server dev",
+        "dev:web": "corepack pnpm --filter @storymapper/web dev",
+        "build": "corepack pnpm generate-capabilities && corepack pnpm check-capabilities && corepack pnpm -r build",
+        "typecheck": "corepack pnpm -r typecheck",
+        "test": "node --test scripts/*.test.mjs && corepack pnpm -r test",
+        "lint": "corepack pnpm -r lint",
+        "check-hygiene": "node scripts/check-hygiene.mjs",
+        "generate-capabilities": "node scripts/generate-capability-manifest.mjs",
+        "check-capabilities": "node scripts/check-capabilities.mjs"
+      },
+      "devDependencies": {
+        "@types/node": "^24.0.0",
+        "typescript": "^5.7.2"
+      },
+      "pnpm": {
+        "patchedDependencies": {
+          "@tanstack/history@1.162.0": "patches/@tanstack__history@1.162.0.patch"
+        }
+      }
+    },
+    "apps/server/package.json": {
+      "name": "@storymapper/server",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/main.js",
+      "scripts": {
+        "dev": "tsx watch src/main.ts --dev",
+        "build": "tsc -p tsconfig.json && node ../../scripts/copy-db-migrations.mjs server",
+        "start": "tsx src/main.ts",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "corepack pnpm --filter @storymapper/web build && vitest run --exclude \"**/dist/**\" --passWithNoTests --exclude src/mcp/tools/tool-call-performance.test.ts --exclude src/mcp/tools/changeset-executor-performance.test.ts --exclude src/mcp/tools/delivery-status-performance.test.ts --exclude src/http/routes/changeset-preview-performance.test.ts --exclude src/http/routes/board-diagnostics.test.ts && corepack pnpm test:audit-performance",
+        "test:audit-performance": "vitest run --exclude \"**/dist/**\" src/mcp/tools/tool-call-performance.test.ts src/mcp/tools/changeset-executor-performance.test.ts src/http/routes/changeset-preview-performance.test.ts src/mcp/tools/delivery-status-performance.test.ts --maxWorkers=1",
+        "lint": "tsc -p tsconfig.json --noEmit",
+        "test:diagnostics": "vitest run --exclude \"**/dist/**\" src/http/routes/board-diagnostics.test.ts --maxWorkers=1"
+      },
+      "dependencies": {
+        "@fastify/cors": "^10.0.2",
+        "@fastify/multipart": "^9.4.0",
+        "@fastify/static": "^10.1.6",
+        "@modelcontextprotocol/node": "2.1.1",
+        "@modelcontextprotocol/server": "2.3.0",
+        "@storymapper/contracts": "workspace:*",
+        "@storymapper/core": "workspace:*",
+        "@storymapper/db": "workspace:*",
+        "@storymapper/github": "workspace:*",
+        "@storymapper/importers": "workspace:*",
+        "@storymapper/mcp": "workspace:*",
+        "fastify": "^5.12.7",
+        "jszip": "^3.10.1",
+        "tsx": "^4.19.2",
+        "zod": "^4.2.0"
+      },
+      "devDependencies": {
+        "@modelcontextprotocol/client": "2.3.0",
+        "@modelcontextprotocol/fastify": "^2.0.1",
+        "vitest": "^4.1.12"
+      }
+    },
+    "apps/web/package.json": {
+      "name": "@storymapper/web",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "scripts": {
+        "dev": "vite --host 127.0.0.1",
+        "build": "tsc -p tsconfig.json && vite build",
+        "preview": "vite preview --host 127.0.0.1",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests --exclude src/features/story-map/board-diagnostics.test.tsx",
+        "lint": "tsc -p tsconfig.json --noEmit",
+        "test:a11y": "vitest run --exclude \"**/dist/**\" src/features/customization/CustomizationEditor.test.tsx src/features/releases/ReleaseEditor.test.tsx src/features/personas/PersonaDetail.test.ts src/features/story-map/board-accessibility.test.tsx src/styles/contrast-tokens.test.ts src/features/story-map/components/discovery-navigation.test.tsx src/features/story-map/views/SlicesView.test.tsx src/features/story-map/components/card-detail.test.ts src/features/story-map/components/card-detail-navigation.test.ts src/app/routes/workspace-navigation.test.tsx src/components/Dialog.test.ts src/app/live/live-updates.test.tsx src/features/changesets/review-focus.test.tsx src/features/changesets/review.test.tsx src/features/changesets/selection-race.test.tsx src/features/changesets/review-outcomes.test.tsx src/features/story-map/views/GraphView.test.tsx src/features/changesets/shell.test.tsx --maxWorkers=1",
+        "test:diagnostics": "vitest run --exclude \"**/dist/**\" src/features/story-map/board-diagnostics.test.tsx --maxWorkers=1"
+      },
+      "dependencies": {
+        "@dagrejs/dagre": "3.1.1",
+        "@dnd-kit/core": "^6.2.0",
+        "@dnd-kit/sortable": "^9.0.0",
+        "@storymapper/contracts": "workspace:*",
+        "@tanstack/react-query": "^5.62.11",
+        "@tanstack/react-router": "^1.95.0",
+        "@tiptap/core": "^3.32.0",
+        "@tiptap/pm": "^3.32.0",
+        "@tiptap/react": "^3.32.0",
+        "@tiptap/starter-kit": "^3.32.0",
+        "html2canvas": "^1.4.1",
+        "jspdf": "^4.2.1",
+        "lucide-react": "^0.468.0",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "tiptap-markdown": "^0.9.0",
+        "zustand": "^5.0.2"
+      },
+      "devDependencies": {
+        "@testing-library/dom": "^10.4.2",
+        "@types/react": "^19.0.2",
+        "@types/react-dom": "^19.0.2",
+        "@vitejs/plugin-react": "^5.2.0",
+        "axe-core": "^4.14.0",
+        "jsdom": "27.4.0",
+        "typescript": "^5.7.2",
+        "vite": "^8.3.4",
+        "vitest": "^4.1.12"
+      }
+    },
+    "packages/contracts/package.json": {
+      "name": "@storymapper/contracts",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit"
+      },
+      "dependencies": {
+        "zod": "^4.2.0"
+      },
+      "devDependencies": {
+        "vitest": "^4.1.12"
+      },
+      "exports": {
+        ".": {
+          "types": "./dist/index.d.ts",
+          "import": "./dist/index.js"
+        },
+        "./*": {
+          "types": "./dist/*.d.ts",
+          "import": "./dist/*.js"
+        }
+      }
+    },
+    "packages/core/package.json": {
+      "name": "@storymapper/core",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit"
+      },
+      "dependencies": {
+        "@storymapper/contracts": "workspace:*",
+        "zod": "^4.2.0"
+      },
+      "devDependencies": {
+        "vitest": "^4.1.12"
+      },
+      "exports": {
+        ".": {
+          "types": "./dist/index.d.ts",
+          "import": "./dist/index.js"
+        },
+        "./*": {
+          "types": "./dist/*.d.ts",
+          "import": "./dist/*.js"
+        }
+      }
+    },
+    "packages/db/package.json": {
+      "name": "@storymapper/db",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json && node ../../scripts/copy-db-migrations.mjs db",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit",
+        "db:generate": "drizzle-kit generate"
+      },
+      "dependencies": {
+        "@storymapper/contracts": "workspace:*",
+        "@storymapper/core": "workspace:*",
+        "@storymapper/importers": "workspace:*",
+        "better-sqlite3": "^13.0.3",
+        "drizzle-orm": "^0.45.4"
+      },
+      "devDependencies": {
+        "@types/better-sqlite3": "^7.6.12",
+        "drizzle-kit": "^0.31.11",
+        "vitest": "^4.1.12"
+      }
+    },
+    "packages/github/package.json": {
+      "name": "@storymapper/github",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit"
+      },
+      "dependencies": {
+        "@octokit/rest": "^21.0.2",
+        "@storymapper/contracts": "workspace:*"
+      },
+      "devDependencies": {
+        "vitest": "^4.1.12"
+      }
+    },
+    "packages/importers/package.json": {
+      "name": "@storymapper/importers",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit"
+      },
+      "dependencies": {
+        "@storymapper/contracts": "workspace:*"
+      },
+      "devDependencies": {
+        "vitest": "^4.1.12"
+      }
+    },
+    "packages/mcp/package.json": {
+      "name": "@storymapper/mcp",
+      "version": "0.1.0",
+      "private": true,
+      "type": "module",
+      "main": "./dist/mcp/src/index.js",
+      "types": "./dist/mcp/src/index.d.ts",
+      "scripts": {
+        "build": "tsc -p tsconfig.json",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
+        "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+        "lint": "tsc -p tsconfig.json --noEmit"
+      },
+      "dependencies": {
+        "@modelcontextprotocol/server": "^2.3.0",
+        "@storymapper/contracts": "workspace:*"
+      },
+      "devDependencies": {
+        "vitest": "^4.1.12"
+      },
+      "exports": {
+        ".": {
+          "types": "./dist/mcp/src/index.d.ts",
+          "import": "./dist/mcp/src/index.js"
+        },
+        "./*": {
+          "types": "./dist/mcp/src/*.d.ts",
+          "import": "./dist/mcp/src/*.js"
+        }
+      }
+    }
+  },
+  "testSummaries": [
+    "✔ failed missing-asset build and early server exit never open a browser (1136.299459ms)",
+    "ℹ tests 83",
+    "ℹ pass 83",
+    "ℹ fail 0",
+    "packages/contracts test:  Test Files  20 passed (20)",
+    "packages/contracts test:       Tests  193 passed (193)",
+    "packages/contracts test:    Duration  374ms (transform 1.37s, setup 0ms, import 3.44s, tests 261ms, environment 1ms)",
+    "packages/importers test:  Test Files  2 passed (2)",
+    "packages/importers test:       Tests  7 passed (7)",
+    "packages/importers test:    Duration  254ms (transform 146ms, setup 0ms, import 201ms, tests 6ms, environment 0ms)",
+    "packages/github test:  Test Files  4 passed (4)",
+    "packages/github test:       Tests  66 passed (66)",
+    "packages/github test:    Duration  1.26s (transform 3.14s, setup 0ms, import 4.25s, tests 78ms, environment 0ms)",
+    "packages/core test:  Test Files  27 passed (27)",
+    "packages/core test:       Tests  449 passed (449)",
+    "packages/core test:    Duration  1.67s (transform 14.42s, setup 0ms, import 24.11s, tests 1.15s, environment 1ms)",
+    "apps/web test:  Test Files  86 passed (86)",
+    "apps/web test:       Tests  852 passed (852)",
+    "apps/web test:    Duration  11.04s (transform 19.70s, setup 0ms, import 57.93s, tests 75.29s, environment 38.65s)",
+    "packages/db test: (node:99488) Warning: Post-commit publication failed; database changes remain committed.",
+    "packages/db test: (node:99472) Warning: Post-commit publication failed; database changes remain committed.",
+    "packages/db test: (node:99472) Warning: Post-commit publication failed; database changes remain committed.",
+    "packages/db test: (node:99472) Warning: Post-commit publication failed; database changes remain committed.",
+    "packages/db test:  Test Files  43 passed (43)",
+    "packages/db test:       Tests  561 passed (561)",
+    "packages/db test:    Duration  19.03s (transform 12.55s, setup 0ms, import 32.77s, tests 144.51s, environment 2ms)",
+    "apps/server test: {\"level\":30,\"time\":1792453089468,\"pid\":99693,\"reqId\":\"req-1\",\"msg\":\"Runtime event; private details omitted.\",\"error\":{\"message\":\"Runtime operation failed\",\"type\":\"Error\"}}",
+    "apps/server test:  ❯ src/server.test.ts (17 tests | 1 failed) 4938ms",
+    "apps/server test: ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯",
+    "apps/server test:  FAIL  src/server.test.ts > production web app > returns JSON 404 for filesystem filenames that are too long and stays healthy",
+    "apps/server test: AssertionError: expected 403 to be 404 // Object.is equality",
+    "apps/server test:  Test Files  1 failed | 67 passed (68)",
+    "apps/server test:       Tests  1 failed | 1024 passed (1025)",
+    "apps/server test:    Duration  56.22s (transform 18.90s, setup 0ms, import 58.65s, tests 431.74s, environment 3ms)",
+    " ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/server@0.1.0 test: `corepack pnpm --filter @storymapper/web build && vitest run --exclude \"**/dist/**\" --passWithNoTests --exclude src/mcp/tools/tool-call-performance.test.ts --exclude src/mcp/tools/changeset-executor-performance.test.ts --exclude src/mcp/tools/delivery-status-performance.test.ts --exclude src/http/routes/changeset-preview-performance.test.ts --exclude src/http/routes/board-diagnostics.test.ts && corepack pnpm test:audit-performance`",
+    " ELIFECYCLE  Test failed. See above for more details."
+  ]
+}

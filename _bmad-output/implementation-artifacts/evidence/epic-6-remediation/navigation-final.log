@@ -1,0 +1,13 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+stderr | src/app/routes/workspace-navigation.test.tsx > audits the real desktop shell landmarks and navigation names
+Not implemented: HTMLCanvasElement's getContext() method: without installing the canvas npm package
+
+ ✓ src/app/routes/workspace-navigation.test.tsx (19 tests) 716ms
+
+ Test Files  1 passed (1)
+      Tests  19 passed (19)
+   Start at  01:23:57
+   Duration  1.54s (transform 275ms, setup 0ms, collect 548ms, tests 716ms, environment 167ms, prepare 25ms)
+

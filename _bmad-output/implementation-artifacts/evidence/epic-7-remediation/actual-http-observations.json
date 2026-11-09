@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "transport": "actual-loopback-TCP",
+  "externalTransport": "blocked",
+  "credentials": "intercepted-fake-only",
+  "fixtureData": "existing remote-push fixture",
+  "observations": [
+    {
+      "scenario": "partial-Issue-write-preserves-parent",
+      "parentNumber": 42,
+      "outcome": "completed"
+    },
+    {
+      "scenario": "Release-only-goal",
+      "before": "unsynced",
+      "after": "synced",
+      "remoteDescription": "Remote body\n\n<!-- storymapper:e3e51c43-c5dd-4983-be00-1e57223bbb4f:c46ff0be-3f9c-49be-a007-a29aa42296b3:release:c5c4b615-303d-43a5-904f-b8056109d426 -->",
+      "remoteState": "open"
+    },
+    {
+      "scenario": "Release-only-released",
+      "before": "unsynced",
+      "after": "synced",
+      "remoteDescription": "Remote body\n\n<!-- storymapper:e3e51c43-c5dd-4983-be00-1e57223bbb4f:c46ff0be-3f9c-49be-a007-a29aa42296b3:release:c5c4b615-303d-43a5-904f-b8056109d426 -->",
+      "remoteState": "closed"
+    }
+  ],
+  "unchangedEffects": 0
+}

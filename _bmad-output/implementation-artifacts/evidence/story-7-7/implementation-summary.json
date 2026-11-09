@@ -1,0 +1,49 @@
+{
+  "story": "7.7",
+  "operationSchemaVersion": 9,
+  "workspace": {
+    "exitCode": 0,
+    "log": "implementation-workspace.log.gz",
+    "tests": {
+      "scripts": 83,
+      "contracts": 190,
+      "importers": 7,
+      "github": 57,
+      "core": 448,
+      "web": 847,
+      "db": 489,
+      "server": 920,
+      "auditPerformance": 14
+    },
+    "total": 3055,
+    "scope": "Full gate passed before final incoming-command classification repair. Subsequent affected command routing/protected transport/capability suites and final serial release gate passed."
+  },
+  "postRepair": {
+    "commandRoutingAndManifest": 34,
+    "ticketTransports": 19,
+    "capabilityScanner": 12,
+    "capabilities": 138
+  },
+  "release": {
+    "exitCode": 0,
+    "log": "implementation-release-verify-final.log.gz",
+    "typecheck": true,
+    "build": true,
+    "hygiene": true,
+    "accessibilityTests": 260
+  },
+  "limitations": [
+    "Native keyboard/browser/screen-reader/platform acceptance unexecuted.",
+    "No live GitHub account/credential/provider acceptance performed.",
+    "Initial focused fixture failure outputs were not all file-retained; passing final logs and release/routing failure logs are retained."
+  ],
+  "changes": [
+    "Strict Issue selector and shared lookup/import contracts.",
+    "Read-only explicit lookup and epoch/map/connection/placement/remote evidence.",
+    "Shared exact-placement atomic imported Card/ref/baseline/Annotation construction.",
+    "Indivisible imported Card dependency group and durable proposal placement guards.",
+    "Protected human/Agent incoming proposals and HTTP/MCP parity.",
+    "Retained-draft composer with cancellation, deliberate replacement, duplicates, stale/same-event admission and actual-creation completion."
+  ],
+  "handoff": "Source staged without commit. Parent owns final independent verification/review and OpenWolf STATUS/cerebrum/memory handoff."
+}

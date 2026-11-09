@@ -1,0 +1,20 @@
+{
+  "change": "Removed initial-snapshot canonical owner override. Existing dependency trace supplies the owner immediately before each operation, while conflict version lookup remains against initial roots.",
+  "tests": [
+    {
+      "command": "corepack pnpm --filter @storymapper/db exec vitest run src/repositories/changeset-executor.test.ts src/repositories/canonical-github-identity.test.ts",
+      "passed": 35,
+      "log": "main-review-sequential-owner-db.log",
+      "preserved_oracles": [
+        "Two distinct owner conflicts across sequential rebind/edit operations.",
+        "Distinct-version rebind uses previous owner baseline; no-op roots/history unchanged."
+      ]
+    },
+    {
+      "command": "corepack pnpm --filter @storymapper/core exec vitest run src/changesets/dependency-resolution.test.ts src/changesets/dependency-effect-parity.test.ts src/changesets/operation-resolution.test.ts src/changesets/remaining-operation-resolution.test.ts",
+      "log": "main-review-sequential-owner-core.log",
+      "passed": 177
+    }
+  ],
+  "scope": "Only requested focused covering suites; no broad verification."
+}

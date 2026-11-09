@@ -1,0 +1,117 @@
+{
+  "participant": "Separate Agent participant; isolated disposable checkout, not outside-human trial",
+  "baselineRevision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "originalSourceRevision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "baselineType": "No draft-baseline commit; five staged draft overlays supplied and preserved. Walkthrough v2 later synced/staged by parent.",
+  "boundedChange": "README stale Story8.8 release/tag-automation deferral corrected to configured maintainer release procedure, linked quality/advisory/content gates and unverified hosted execution; README metadata/changelog updated; publication caveats preserved.",
+  "runtime": {
+    "initialNode": "22.23.1 (detected, not used for install/check)",
+    "usedNode": "24.17.0",
+    "corepack": "0.35.0",
+    "pnpm": "9.15.4",
+    "prefix": "PATH=[HOME]/.nvm/versions/node/v24.17.0/bin:$PATH"
+  },
+  "provisioning": [
+    {
+      "command": "corepack pnpm install --frozen-lockfile",
+      "exit": 0,
+      "reportedDurationSeconds": 5.9,
+      "limitation": "--offline was absent; cache-only/network-free provisioning is not established."
+    },
+    {
+      "command": "corepack pnpm install --offline --frozen-lockfile",
+      "exit": 0,
+      "purpose": "Explicit offline reprovisioning after initial attempt; original installation limitation retained."
+    }
+  ],
+  "checks": [
+    {
+      "command": "git diff --check; git diff --cached --check",
+      "exit": 0
+    },
+    {
+      "command": "Local README Markdown target/heading assertion script",
+      "exit": 0,
+      "links": 17
+    },
+    {
+      "command": "corepack pnpm check (first attempt)",
+      "exit": 1,
+      "failure": "DB coverage restore-project.test.ts:112 test timed out in5000ms;5298ms observed",
+      "dbTests": {
+        "pass": 559,
+        "fail": 1
+      },
+      "dbDurationSeconds": 82.01,
+      "limitation": "Overall first command duration not independently captured. Later workspace/audit/release suites did not execute."
+    },
+    {
+      "command": "README reverse/apply under now-recorded plan, then git add -- README.md",
+      "exit": 0,
+      "result": "Exact corrected README SHA256 equality with original corrected candidate."
+    },
+    {
+      "command": "corepack pnpm check (final candidate)",
+      "exit": 1,
+      "durationSeconds": 339.06125516607426,
+      "failure": "Same DB coverage test timed out in5000ms;5233ms observed",
+      "dbTests": {
+        "pass": 559,
+        "fail": 1
+      },
+      "dbDurationSeconds": 81.84,
+      "limitation": "Cause unresolved; later workspace/audit/release suites did not execute."
+    }
+  ],
+  "review": {
+    "type": "Separate non-author Agent session",
+    "context": "Reviewer had prior read-only investigation and suggested the same correction; reused session, not fresh.",
+    "findings": "Correction accurate; links, metadata and publication blockers preserved. Raw-index stat-cache drift observed before final gate.",
+    "disposition": "Walkthrough v2 clarified reviewer context disclosure and semantic-index fingerprints; no README defect found."
+  },
+  "finalCandidate": {
+    "sourceUnchangedDuringFinalGate": true,
+    "changedPaths": [],
+    "semanticIndexUnchanged": true,
+    "rawIndexUnchangedDuringFinalGate": true,
+    "revisionUnchanged": true,
+    "protected": {
+      "_bmad-output/implementation-artifacts/sprint-status.yaml": {
+        "initialSha256": "3b1d55b464d8d77a091d3b230422c16ba59c7794184df7ab8fe67bc37f5c7c87",
+        "finalSha256": "3b1d55b464d8d77a091d3b230422c16ba59c7794184df7ab8fe67bc37f5c7c87",
+        "unchanged": true
+      },
+      "_bmad-output/implementation-artifacts/deferred-work.md": {
+        "initialSha256": "dedfb09de713b97b83c3df6aeb8f091b5d9ac028f43bbce75f9a9acf1ff9262c",
+        "finalSha256": "dedfb09de713b97b83c3df6aeb8f091b5d9ac028f43bbce75f9a9acf1ff9262c",
+        "unchanged": true
+      }
+    }
+  },
+  "gaps": [
+    "First plan draft was written after patch; preserved original gap and replayed under recorded plan.",
+    "Initial non-offline install cannot establish cache-only provisioning; later explicit offline reprovision passed.",
+    "Graph tools unavailable.",
+    "First raw index stat-cache drift observed; no first raw-index-stability claim.",
+    "OpenWolf failure/handoff observations retained outside patch to keep README-only change; no .wolf updates, so complete protocol compliance is not claimed.",
+    "Repeated aggregate timeout leaves validation blocked; no successful full rehearsal acceptance.",
+    "No external human trial, hosted execution/PR rendering, native acceptance or publication clearance."
+  ],
+  "preparedArtifacts": [
+    "pr-draft.md",
+    "readme.patch",
+    "diff-stat.txt",
+    "replay.json",
+    "check-start.json",
+    "final-check-start.json",
+    "final-check-end.json",
+    "final-candidate-comparison.json",
+    "final-check-result.json",
+    "log-provenance.json",
+    "install.log.gz",
+    "offline-install.log.gz",
+    "check.log.gz",
+    "final-check.log.gz"
+  ],
+  "delivery": "Local PR title/body and Conventional Commit title prepared; no commit, push, remote PR, tag, release, login, account setup, app launch or user-data mutation. Validation-blocked PR draft is not merge-ready."
+}

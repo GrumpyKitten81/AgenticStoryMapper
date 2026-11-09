@@ -1,0 +1,283 @@
+Browser tab: 3, Title: "StoryMapper", URL: "http://127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/audit".
+0 AXWebArea StoryMapper, URL: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/audit
+	1 container
+		2 image
+		3 text StoryMapper
+		4 container
+			5 link Description: Story Maps, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/story-maps
+			6 link Description: Connections, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/github
+			7 link Description: Customize, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/customize
+			8 link Description: Personas, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/personas
+			9 link Description: Onboarding, Value: 127.0.0.1:44357/onboarding
+			10 link Description: Activity, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/audit
+		11 container
+			12 heading Story Map, Value: 1
+				13 text Story Map
+			14 text An enabled agent may forward retrieved context to its own provider.
+			15 container Safety switches
+				16 button Agent access: On. Open switch settings
+				17 button GitHub: Off. Open switch settings
+				18 button Agent approval: Off. Open switch settings
+				19 button Agent protection: Off. Open switch settings
+			20 text Live updates connected
+			21 checkbox Hold updates, Value: 0
+			22 text Synthetic remediation acceptance 0 cards 0 releases
+		23 container
+			24 heading Activity, Value: 2
+				25 text Activity
+			26 container Activity views
+				27 checkbox Activity log and exports, Value: 1
+				28 checkbox Restore points, Value: 0
+			29 container
+				30 heading Activity log and exports, Value: 2
+					31 text Activity log and exports
+				32 container
+					33 text Actor type
+					34 pop up button (collapsed, settable) Actor type, Value: All actors, Secondary Actions: Expand
+						35 menu
+							36 (selected) All actors
+							37 Human
+							38 Agent
+							39 GitHub
+							40 System
+				41 container
+					42 text Tool name
+					43 text field (settable) Tool name
+				44 button Apply filters
+				45 content list Activity events
+					325 container
+						326 AXListMarker 1.
+						327 text changeSet.applied Human: local-user Project 17.10.2026, 11:29:54 Affected objects: changeSet:037c9971-3064-4e6f-84d2-f02b8d66ee3f
+					328 container
+						329 AXListMarker 2.
+						330 text changeSet.operation.applied Human: local-user Project 17.10.2026, 11:29:54 Affected objects: changeSet:keep
+					331 container
+						332 AXListMarker 3.
+						333 text changeSet.operation.applied Human: local-user Project 17.10.2026, 11:29:54 Affected objects: changeSet:__proto__
+					320 container
+						321 AXListMarker 4.
+						322 text changeSet.approved Human: local-user Project 17.10.2026, 11:29:37 Affected objects: changeSet:037c9971-3064-4e6f-84d2-f02b8d66ee3f
+					46 container
+						47 AXListMarker 5.
+						48 text SubmitChangeSet Agent: local-mcp-host Project 17.10.2026, 11:28:38 MCP session: 512542bd-a4e5-436f-a9cd-6a39ce01515e Succeeded Affected objects: mcpTool:SubmitChangeSet, 84ff5e48-7302-45f2-8994-f83ddebbc260, 512542bd-a4e5-436f-a9cd-6a39ce01515e, 037c9971-3064-4e6f-84d2-f02b8d66ee3f Input hash: 79f7766334178aeb3ada6c7f14f9a1bf8f2859204104478639901d949214eb48 Output hash: 4e74a53c4888565fbb7cd6843d333da4c4fd3818cdd076871e06774952997852
+					49 container
+						50 AXListMarker 6.
+						51 text changeSet.proposed Agent: local-mcp-host Project 17.10.2026, 11:28:38 MCP session: 512542bd-a4e5-436f-a9cd-6a39ce01515e Affected objects: changeSet:037c9971-3064-4e6f-84d2-f02b8d66ee3f
+					52 container
+						53 AXListMarker 7.
+						54 text storyMap.created Human: local-user Project 17.10.2026, 11:28:38 Affected objects: storyMap:74810cba-fa66-467d-8fc4-576775cba671
+					55 container
+						56 AXListMarker 8.
+						57 text card.created Human: local-user Project 17.10.2026, 11:28:38 Affected objects: card:2770c0fa-a1c6-459e-b347-729fd7d13cfd
+					58 container
+						59 AXListMarker 9.
+						60 text card.created Human: local-user Project 17.10.2026, 11:28:38 Affected objects: card:42406fd3-fde0-4b4f-bd5d-cb7ab1986da9
+					61 container
+						62 AXListMarker 10.
+						63 text card.created Human: local-user Project 17.10.2026, 11:28:38 Affected objects: card:6a571940-495c-4bb3-ae2b-00636b4d2349
+					64 container
+						65 AXListMarker 11.
+						66 text release.created Human: local-user Project 17.10.2026, 11:28:38 Affected objects: release:b2fa20d2-54db-4b73-9dbc-cb3111c5a018
+					67 container
+						68 AXListMarker 12.
+						69 text storyMap.created Human: local-user Project 17.10.2026, 11:28:38 Affected objects: storyMap:14ef2686-c356-4adc-b186-8f547ec3c882
+					70 container
+						71 AXListMarker 13.
+						72 text project.created Human: local-user Project 17.10.2026, 11:28:38 Affected objects: project:84ff5e48-7302-45f2-8994-f83ddebbc260
+			98 container
+				99 button (expanded) Epic4 remediation acceptance, Secondary Actions: Collapse
+				100 container ChangeSet review
+					217 heading Epic4 remediation acceptance, Value: 3
+						218 text Epic4 remediation acceptance
+					219 text Applied
+					220 container
+						221 text Proposed by :  agent local-mcp-host
+					323 container
+						324 text Approved by :  human local-user
+					222 text Human approval is allowed. Agent approval follows the Project policy; protection blocks Agent apply.
+					334 text Applied: this ChangeSet remains available in Activity.
+					223 button Review current state
+					224 container
+						225 checkbox (disabled, settable, integer) Description: Select operation 1: import, Value: 0
+						226 text 1. import import:sourceDocument :  changed
+						227 button (collapsed) Submitted operation, Secondary Actions: Expand
+							228 text Submitted operation
+						229 text sourceDocument 9823d703-c385-404c-861f-6354d71c8875
+						230 heading Before, Value: 4
+							231 text Before
+						232 text null
+						233 heading After, Value: 4
+							234 text After
+						235 text {
+  "id": "9823d703-c385-404c-861f-6354d71c8875",
+  "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+  "title": "epics.md",
+  "type": "markdown",
+  "filePath": "inline://reviewed-source",
+  "fileHash": "6cc5bfcbba8006d3265ac01ba4c51552c8cc533f11aa3cbc31d324adafa749de",
+  "importedAt": "2026-10-17T09:29:54.171Z"
+} sourceChunk ba0c73e4855783feb32cf579858d60065c45d0c61543ef0bd9a68c0f82bb8c23
+						236 heading Before, Value: 4
+							237 text Before
+						238 text null
+						239 heading After, Value: 4
+							240 text After
+						241 text {
+  "id": "ba0c73e4855783feb32cf579858d60065c45d0c61543ef0bd9a68c0f82bb8c23",
+  "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+  "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under organize research.",
+  "locator": "Epic 1: Organize research#1",
+  "heading": "Epic 1: Organize research"
+} sourceChunk 3f913c0e1b6676e65a659cde8163591c04551ad2bb91788e1314d758065afa0b
+						242 heading Before, Value: 4
+							243 text Before
+						244 text null
+						245 heading After, Value: 4
+							246 text After
+						247 text {
+  "id": "3f913c0e1b6676e65a659cde8163591c04551ad2bb91788e1314d758065afa0b",
+  "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+  "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under shape the map.",
+  "locator": "Epic 2: Shape the map#2",
+  "heading": "Epic 2: Shape the map"
+} sourceChunk 21474d6a8e6a033d56d2777ed64ce34700450ada19763b4f9b586e664e2370f2
+						248 heading Before, Value: 4
+							249 text Before
+						250 text null
+						251 heading After, Value: 4
+							252 text After
+						253 text {
+  "id": "21474d6a8e6a033d56d2777ed64ce34700450ada19763b4f9b586e664e2370f2",
+  "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+  "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under plan delivery.",
+  "locator": "Epic 3: Plan delivery#3",
+  "heading": "Epic 3: Plan delivery"
+} sourceChunk e7433088d0f4ca21cadb3f549dd5bc17686e3b89f66c8119ff70732882e1fd5d
+						254 heading Before, Value: 4
+							255 text Before
+						256 text null
+						257 heading After, Value: 4
+							258 text After
+						259 text {
+  "id": "e7433088d0f4ca21cadb3f549dd5bc17686e3b89f66c8119ff70732882e1fd5d",
+  "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+  "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under collaborate safely.",
+  "locator": "Epic 4: Collaborate safely#4",
+  "heading": "Epic 4: Collaborate safely"
+} sourceChunk 840a2ebb8ae27bfa747291c9b450e5cb24503843161f9e67722ee291f341e4f9
+						260 heading Before, Value: 4
+							261 text Before
+						262 text null
+						263 heading After, Value: 4
+							264 text After
+						265 text {
+  "id": "840a2ebb8ae27bfa747291c9b450e5cb24503843161f9e67722ee291f341e4f9",
+  "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+  "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under trace decisions.",
+  "locator": "Epic 5: Trace decisions#5",
+  "heading": "Epic 5: Trace decisions"
+} sourceChunk 505721b19bd6460e71fb5d38873c94155a68d3182f8105e241859ce928664c54
+						266 heading Before, Value: 4
+							267 text Before
+						268 text null
+						269 heading After, Value: 4
+							270 text After
+						271 text {
+  "id": "505721b19bd6460e71fb5d38873c94155a68d3182f8105e241859ce928664c54",
+  "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+  "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under publish outcomes.",
+  "locator": "Epic 6: Publish outcomes#6",
+  "heading": "Epic 6: Publish outcomes"
+}
+					272 container
+						273 checkbox (disabled, settable, integer) Description: Select operation 2: create, Value: 0
+						274 text 2. create create:card :  excluded
+						275 button (collapsed) Submitted operation, Secondary Actions: Expand
+							276 text Submitted operation
+						277 heading Before, Value: 4
+							278 text Before
+						279 text Excluded from this projection.
+						280 heading After, Value: 4
+							281 text After
+						282 text Excluded from this projection.
+					283 container
+						284 checkbox (disabled, settable, integer) Description: Select operation 3: update, Value: 0
+						285 text 3. update update:card :  excluded
+						286 button (collapsed) Submitted operation, Secondary Actions: Expand
+							287 text Submitted operation
+						288 heading Before, Value: 4
+							289 text Before
+						290 text Excluded from this projection.
+						291 heading After, Value: 4
+							292 text After
+						293 text Excluded from this projection.
+					294 container
+						295 checkbox (disabled, settable, integer) Description: Select operation 4: link, Value: 0
+						296 text 4. link link:sourceLink :  excluded
+						297 button (collapsed) Submitted operation, Secondary Actions: Expand
+							298 text Submitted operation
+						299 heading Before, Value: 4
+							300 text Before
+						301 text Excluded from this projection.
+						302 heading After, Value: 4
+							303 text After
+						304 text Excluded from this projection.
+					305 container
+						306 checkbox (disabled, settable, integer) Description: Select operation 5: create, Value: 0
+						307 text 5. create create:card :  changed
+						308 button (collapsed) Submitted operation, Secondary Actions: Expand
+							309 text Submitted operation
+						310 text card 7611ab53-77e1-4ad1-adc9-731af751c3db
+						311 heading Before, Value: 4
+							312 text Before
+						313 text null
+						314 heading After, Value: 4
+							315 text After
+						316 text {
+  "title": "Accepted activity",
+  "storyMapId": "74810cba-fa66-467d-8fc4-576775cba671",
+  "level": "activity",
+  "id": "7611ab53-77e1-4ad1-adc9-731af751c3db",
+  "parentId": null,
+  "releaseId": null,
+  "version": 1,
+  "key": "LSM-1",
+  "description": "",
+  "status": "todo",
+  "parked": false,
+  "position": 0,
+  "creationOrigin": "inference",
+  "provenance": "inference",
+  "createdAt": "2026-10-17T09:29:54.171Z",
+  "updatedAt": "2026-10-17T09:29:54.171Z"
+}
+			74 container
+				75 heading Export & audit, Value: 2
+					76 text Export & audit
+				77 image
+				213 text github env Set GITHUB_TOKEN in the local .env file.
+				214 image
+				215 text github github-cli GitHub CLI is authenticated.
+				216 image
+				78 button (disabled) Map JSON
+					79 image
+					80 text Map JSON
+				81 button (disabled) Map MD
+					82 image
+					83 text Map MD
+				84 button (disabled) Map CSV
+					85 image
+					86 text Map CSV
+				87 button Audit MD
+					88 image
+					89 text Audit MD
+				90 button Audit JSON
+					91 image
+					92 text Audit JSON
+			93 container
+				94 heading Reports, Value: 2
+					95 text Reports
+				96 image
+				97 text Source Coverage 0 % Backlog Health 0 %
+
+The focused UI element is 0 AXWebArea StoryMapper, URL: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/audit

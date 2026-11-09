@@ -1,0 +1,13 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/operation-catalog-executor.test.ts (2 tests) 246ms
+ ✓ src/repositories/changeset-executor.test.ts (22 tests) 803ms
+ ✓ src/repositories/operation-executor-persistence.test.ts (20 tests) 3109ms
+   ✓ persists 200 selected operations on 1,000 Cards with snapshot, history and audit 2239ms
+
+ Test Files  3 passed (3)
+      Tests  44 passed (44)
+   Start at  11:01:10
+   Duration  3.78s (transform 416ms, setup 0ms, collect 1.50s, tests 4.16s, environment 0ms, prepare 94ms)
+

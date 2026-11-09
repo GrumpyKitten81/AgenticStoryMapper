@@ -1,0 +1,43 @@
+{
+  "Hierarchy collapse": [
+    "hierarchy-collapse.test.tsx: collapse Activity/Step; rehydrate serialized preference; Tree controls",
+    "parent-web.log:461 passed"
+  ],
+  "Filtering/selection": [
+    "hierarchy-collapse.test.tsx: retained selection; unassigned Step exact matches; external focused child",
+    "parent-web.log:461 passed"
+  ],
+  "Preview": [
+    "hierarchy-collapse.test.tsx: UI-only preview zero writes",
+    "CardKeyPrefixEditor.test.tsx: readOnly disables mutation",
+    "parent-web.log:461 passed"
+  ],
+  "Prefix update": [
+    "CardKeyPrefixEditor.test.tsx: captured baseline/map/draft, explicit conflict Keep mine/Reload, blank refusal",
+    "mcp-http-parity.test.ts: HTTP409/MCP proposal+human Apply",
+    "parent-web.log:461 passed",
+    "parent-server.log:668+14 passed"
+  ],
+  "Prefix lifecycle": [
+    "card-key-prefix-persistence.test.ts and operation-executor-persistence.test.ts: linked keys; delete-highest/prefix/reopen monotonic",
+    "parent-db.log:420 passed"
+  ],
+  "Delivery": [
+    "reports.test.ts: mixed scopes/ancestors/zero/input immutability",
+    "ReleasePanel.test.tsx: canonical local scopes",
+    "parent-core.log:388 passed",
+    "parent-web.log:461 passed"
+  ],
+  "Push plans": [
+    "card-visibility.test.ts: root/Activity/Step Notes; both public planners; snapshot retained",
+    "parent-db.log:420 passed",
+    "actual TCP acceptance"
+  ],
+  "Review repairs": [
+    "RootLayout preview mounted6tests with editor",
+    "ordered create\u2192prefix\u2192create executor test",
+    "pinned ResizeObserver replacement + neighbor keyboard + combined collapse",
+    "delayed save busy/duplicate/dismiss/failure/retry",
+    "final-web466 + core388 + contracts152 + db420 + server668 + audit14 passed; release verify passed"
+  ]
+}

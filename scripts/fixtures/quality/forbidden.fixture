@@ -1,0 +1,6 @@
+import { readFileSync } from 'node:fs';
+import Database from 'better-sqlite3';
+import value from '@storymapper/db/private';
+import escaped from '@escape/index';
+export const now = Date.now();
+export const random = Math.random();

@@ -1,0 +1,15 @@
+
+> @storymapper/server@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/server
+> corepack pnpm --filter @storymapper/web build && vitest run --passWithNoTests --exclude src/mcp/tools/tool-call-performance.test.ts --exclude src/mcp/tools/changeset-executor-performance.test.ts --exclude src/mcp/tools/delivery-status-performance.test.ts --exclude src/http/routes/changeset-preview-performance.test.ts && corepack pnpm test:audit-performance
+
+
+> @storymapper/web@0.1.0 build [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> tsc -p tsconfig.json && vite build
+
+src/features/story-map/components/discovery-navigation.test.tsx(110,271): error TS2353: Object literal may only specify known properties, and 'createdAt' does not exist in type '{ version: number; id: string; storyMapId: string; name: string; goal: string; position: number; startDate: string | null; releaseDate: string | null; released: boolean; }'.
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/web@0.1.0 build: `tsc -p tsconfig.json && vite build`
+Exit status 2
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/server@0.1.0 test: `corepack pnpm --filter @storymapper/web build && vitest run --passWithNoTests --exclude src/mcp/tools/tool-call-performance.test.ts --exclude src/mcp/tools/changeset-executor-performance.test.ts --exclude src/mcp/tools/delivery-status-performance.test.ts --exclude src/http/routes/changeset-preview-performance.test.ts && corepack pnpm test:audit-performance`
+Exit status 2

@@ -1,0 +1,10 @@
+.plan-drift-control { margin-block: var(--space-16); }
+.plan-drift-drawer { position: fixed; inset: 0 0 0 auto; width: min(600px, 100vw); z-index: 1200; background: var(--color-surface); color: var(--color-text); border-left: 2px solid currentColor; box-shadow: var(--shadow-dialog); padding: var(--space-20); overflow-y: auto; }
+.plan-drift-drawer header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); }
+.plan-drift-drawer label { display: grid; gap: var(--space-6); margin-block: var(--space-12); }
+.plan-drift-change { content-visibility: auto; contain-intrinsic-block-size: auto 280px; border-top: 1px solid currentColor; padding-block: var(--space-12); overflow-wrap: anywhere; }
+.plan-drift-kind { display: inline-block; border: 1px solid currentColor; border-radius: var(--radius-sm); padding: 1px var(--space-4); margin-right: var(--space-6); }
+.plan-drift-drawer table { width: 100%; table-layout: fixed; border-collapse: collapse; }
+.plan-drift-drawer th, .plan-drift-drawer td { border: 1px solid currentColor; padding: var(--space-6); vertical-align: top; overflow-wrap: anywhere; white-space: pre-wrap; }
+
+.plan-drift-pages { display: flex; align-items: center; justify-content: space-between; gap: var(--space-8); margin-block: var(--space-12); }

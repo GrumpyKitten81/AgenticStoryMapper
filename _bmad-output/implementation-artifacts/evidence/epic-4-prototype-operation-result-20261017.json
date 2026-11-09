@@ -1,0 +1,9 @@
+{
+  "kind": "source-execution-no-server-mutation",
+  "schemaAccepted": true,
+  "operationId": "__proto__",
+  "ownAllocatedProperty": false,
+  "allocatedType": "object",
+  "allocatedTruthy": true,
+  "allocatedIsObjectPrototype": true
+}

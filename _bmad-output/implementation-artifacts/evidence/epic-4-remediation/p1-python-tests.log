@@ -1,0 +1,30 @@
+test_artifact_tampering_and_missing_proof_refuse (__main__.CompletionTests.test_artifact_tampering_and_missing_proof_refuse) ... ok
+test_complete_uncapped_scope_requires_all_proofs (__main__.CompletionTests.test_complete_uncapped_scope_requires_all_proofs) ... ok
+test_done_commit_mismatch_does_not_get_overwritten (__main__.CompletionTests.test_done_commit_mismatch_does_not_get_overwritten) ... ok
+test_dry_run_executes_gates_without_run_mutations (__main__.CompletionTests.test_dry_run_executes_gates_without_run_mutations) ... ok
+test_duplicate_evidence_and_invalid_manifest_refused (__main__.CompletionTests.test_duplicate_evidence_and_invalid_manifest_refused) ... ok
+test_empty_commands_and_outside_tasks_refused (__main__.CompletionTests.test_empty_commands_and_outside_tasks_refused) ... ok
+test_exact_ancestry_and_verification_revision (__main__.CompletionTests.test_exact_ancestry_and_verification_revision) ... ok
+test_exceeded_cap_still_requires_every_recorded_task (__main__.CompletionTests.test_exceeded_cap_still_requires_every_recorded_task) ... ok
+test_finished_label_does_not_prove_completion (__main__.CompletionTests.test_finished_label_does_not_prove_completion) ... ok
+test_incomplete_receipt_and_changed_adopted_state_refuse (__main__.CompletionTests.test_incomplete_receipt_and_changed_adopted_state_refuse) ... ok
+test_incomplete_scope_and_cap_handling (__main__.CompletionTests.test_incomplete_scope_and_cap_handling) ... ok
+test_interrupted_backup_and_task_fail_closed (__main__.CompletionTests.test_interrupted_backup_and_task_fail_closed) ... ok
+test_live_and_unverifiable_engines_refused (__main__.CompletionTests.test_live_and_unverifiable_engines_refused) ... ok
+test_lock_contention_refused (__main__.CompletionTests.test_lock_contention_refused) ... ok
+test_node_cli_requires_explicit_run_and_manifest (__main__.CompletionTests.test_node_cli_requires_explicit_run_and_manifest) ... ok
+test_nonancestor_delivery_refused (__main__.CompletionTests.test_nonancestor_delivery_refused) ... ok
+test_pinned_commands_and_failures_refused (__main__.CompletionTests.test_pinned_commands_and_failures_refused) ... ok
+test_separate_exact_acceptance_commit_is_supported (__main__.CompletionTests.test_separate_exact_acceptance_commit_is_supported) ... ok
+test_source_manifest_policy_and_ref_changes_refused (__main__.CompletionTests.test_source_manifest_policy_and_ref_changes_refused) ... ok
+test_specs_require_done_identity_and_delivery_commit (__main__.CompletionTests.test_specs_require_done_identity_and_delivery_commit) ... ok
+test_success_preserves_history_metadata_refs_and_board (__main__.CompletionTests.test_success_preserves_history_metadata_refs_and_board) ... ok
+test_torn_or_invalid_journal_refused (__main__.CompletionTests.test_torn_or_invalid_journal_refused) ... ok
+test_uncommitted_proof_is_not_accepted_with_its_new_hash (__main__.CompletionTests.test_uncommitted_proof_is_not_accepted_with_its_new_hash) ... ok
+test_undispatched_backlog_is_not_silently_finished (__main__.CompletionTests.test_undispatched_backlog_is_not_silently_finished) ... ok
+test_unsafe_paths_and_ambiguous_selectors_refused (__main__.CompletionTests.test_unsafe_paths_and_ambiguous_selectors_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 18.009s
+
+OK

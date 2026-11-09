@@ -1,0 +1,21 @@
+{
+  "reviewer": "Agent; prior read-only investigator, not implementation author; had suggested correction during investigation; not a fresh-context review",
+  "fresh_spawn": "Rejected by platform agent thread limit at implementation agent and parent; no fabricated reviewer",
+  "baseline": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "scope": "README correction only; five staged draft fixture inputs excluded from participant scope",
+  "findings": [],
+  "verified": [
+    "Staged README diff byte-matches readme.patch",
+    "README v0.4.1 metadata/changelog and Runbook versioned-releases anchor valid",
+    "Workflow configured quality matrix, blocking advisory check and publish dependency",
+    "scripts/release.mjs requireChecks and publication scan/recompute precede gh release",
+    "Existing private/history/native caveats retained",
+    "Whitespace checks pass"
+  ],
+  "limits": [
+    "No hosted behavior, app, authentication, gate execution or delivery action by reviewer",
+    "Review occurred before aggregate completion; actual final aggregate must be recorded separately",
+    "Original plan written after patch; participant must replay under recorded plan",
+    "Raw index bytes differed after read-only optional cache refresh; relevant source hashes match; semantic identity comparison required separately"
+  ]
+}

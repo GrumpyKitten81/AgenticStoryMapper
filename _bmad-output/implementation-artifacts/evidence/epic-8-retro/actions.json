@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "date": "2026-10-21",
+  "verdict": "rejected",
+  "count": 8,
+  "trackingWritten": false,
+  "implementationApplied": false,
+  "items": [
+    {
+      "id": "epic-8-retro-a1",
+      "epic": 8,
+      "status": "proposed",
+      "owner": "Publication-tool maintainer",
+      "routing": "fix-now",
+      "gate": "epic-blocker",
+      "action": "Repair R1/R2 historical full-path and directory-aware classification.",
+      "closureEvidence": "Full scans flag deleted copied skill and nested user data, clear allowed .gitkeep, and cover reachable historical trees.",
+      "findingIds": [
+        "ADV-1",
+        "ADV-2"
+      ],
+      "ref": "_bmad-output/implementation-artifacts/epic-8-retro-2026-10-21.md"
+    },
+    {
+      "id": "epic-8-retro-a2",
+      "epic": 8,
+      "status": "proposed",
+      "owner": "Publication-tool maintainer",
+      "routing": "fix-now",
+      "gate": "epic-blocker",
+      "action": "Repair R3 serialized JSON string privacy inspection alongside raw-byte checks.",
+      "closureEvidence": "Current/index/history regressions cover escaped Windows homes, encodings, malformed input and synthetic allowed/forbidden controls.",
+      "findingIds": [
+        "ADV-7"
+      ],
+      "ref": "_bmad-output/implementation-artifacts/epic-8-retro-2026-10-21.md"
+    },
+    {
+      "id": "epic-8-retro-a3",
+      "epic": 8,
+      "status": "proposed",
+      "owner": "CI and repository maintainer",
+      "routing": "acceptance-evidence",
+      "gate": "declared-acceptance-blocker",
+      "action": "Retain actual three-OS hosted CI and required-check enforcement evidence.",
+      "closureEvidence": "Candidate job URLs/logs cover provisioning/Corepack/native SQLite and gates; authorized missing/failing required-check case refuses merge.",
+      "findingIds": [],
+      "ref": "_bmad-output/implementation-artifacts/epic-8-retro-2026-10-21.md"
+    },
+    {
+      "id": "epic-8-retro-a4",
+      "epic": 8,
+      "status": "proposed",
+      "owner": "Release QA / operator",
+      "routing": "acceptance-evidence",
+      "gate": "declared-acceptance-blocker",
+      "action": "Run clean-clone pinned-toolchain quickstart on all three supported OSes.",
+      "closureEvidence": "Retain revision, setup/start/health/visible browser/stop commands and observed results per OS.",
+      "findingIds": [],
+      "ref": "_bmad-output/implementation-artifacts/epic-8-retro-2026-10-21.md"
+    },
+    {
+      "id": "epic-8-retro-a5",
+      "epic": 8,
+      "status": "proposed",
+      "owner": "Maintainer, rights reviewer and release QA",
+      "routing": "release-prerequisite",
+      "gate": "release-gate",
+      "action": "Complete retrospective release matrix, reusing existing native acceptance actions.",
+      "closureEvidence": "Actual private declarations, exact-content provenance/privacy, history disposition, final exact audit, native/hosted and current advisory proof; separately authorize external actions.",
+      "findingIds": [
+        "ADV-3",
+        "ADV-8"
+      ],
+      "ref": "_bmad-output/implementation-artifacts/epic-8-retro-2026-10-21.md"
+    },
+    {
+      "id": "epic-8-retro-a6",
+      "epic": 8,
+      "status": "proposed",
+      "owner": "Quality-gate maintainer",
+      "routing": "defer",
+      "gate": "follow-up",
+      "action": "Reconcile local/publication known PEM signature coverage.",
+      "closureEvidence": "DSA/encrypted header regressions pass; binary/nested bounds remain explicit unless separately changed.",
+      "findingIds": [
+        "ADV-4"
+      ],
+      "ref": "_bmad-output/implementation-artifacts/epic-8-retro-2026-10-21.md"
+    },
+    {
+      "id": "epic-8-retro-a7",
+      "epic": 8,
+      "status": "proposed",
+      "owner": "Quality-gate maintainer",
+      "routing": "defer",
+      "gate": "follow-up",
+      "action": "Correct sourceImports require and type-only conditional-export classification.",
+      "closureEvidence": "Positive/negative require/import/types fixtures prove conditions; no current workspace regression is assumed.",
+      "findingIds": [
+        "ADV-9",
+        "ADV-10"
+      ],
+      "ref": "_bmad-output/implementation-artifacts/epic-8-retro-2026-10-21.md"
+    },
+    {
+      "id": "epic-8-retro-a8",
+      "epic": 8,
+      "status": "proposed",
+      "owner": "BMAD Loop maintainer",
+      "routing": "defer",
+      "gate": "process-prevention",
+      "action": "Regress owned-spec parking, rollback and escalation phase consistency.",
+      "closureEvidence": "Preserve working state before recovery; use real review/verification continuation; no fabricated receipt, checkout reset or sprint mutation.",
+      "findingIds": [],
+      "ref": "_bmad-output/implementation-artifacts/epic-8-retro-2026-10-21.md"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "failureSource": "/tmp/story7-6-parent-workspace-final.log",
+  "preservedFailure": "story-7-6-parent-workspace-health-guard-failure.log.gz",
+  "failureRawBytes": 463953,
+  "failureSha256": "02a307bd282d63df1e98d7a42a64bcfb017a4bd75d1fdc02e7e792faaebef54b",
+  "rootCause": "The previous guard broadened preservation of existing unacknowledged unsynced links into reclassification of explicitly synced baseline-less current-schema Release bindings.",
+  "fix": "Only preserve baseline-less links already marked unsynced; preserve existing synced-state handling when no actual local divergence/open conflict/stale/deletion evidence applies. No fixture count/identity/content assertions changed.",
+  "verification": [
+    {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/db test",
+      "files": 41,
+      "tests": 489,
+      "passed": true,
+      "log": "story-7-6-db-health-guard-refinement.log.gz"
+    },
+    {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/core exec vitest run src/reports/sync-health.test.ts",
+      "tests": 14,
+      "passed": true,
+      "log": "story-7-6-core-health-guard-refinement-final.log.gz"
+    },
+    {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/db --filter @storymapper/core typecheck",
+      "passed": true,
+      "log": "story-7-6-health-guard-refinement-typecheck.log.gz"
+    },
+    {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/core typecheck",
+      "passed": true,
+      "log": "story-7-6-core-health-guard-refinement-typecheck-final.log.gz"
+    }
+  ],
+  "additionalRegression": "Explicitly synced current-schema Release binding without a comparison baseline remains synced."
+}

@@ -1,0 +1,13 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests "src/features/customization/CustomizationEditor.test.tsx"
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/customization/CustomizationEditor.test.tsx (11 tests) 98ms
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  19:50:07
+   Duration  732ms (transform 138ms, setup 0ms, collect 244ms, tests 98ms, environment 191ms, prepare 31ms)

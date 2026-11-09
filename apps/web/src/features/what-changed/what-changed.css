@@ -1,0 +1,17 @@
+.what-changed-drawer { position: fixed; inset: 0 0 0 auto; width: min(480px, 100vw); z-index: 1200; background: var(--color-surface); color: var(--color-text); border-left: 1px solid var(--color-border-strong); box-shadow: var(--shadow-dialog); padding: var(--space-20); overflow-y: auto; align-content: start; }
+.what-changed-drawer[hidden] { display: none; }
+.what-changed-drawer header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-8); }
+.what-changed-drawer section { border-top: 1px solid var(--color-divider); padding-block: var(--space-12); }
+.what-changed-drawer li { overflow-wrap: anywhere; margin-block: var(--space-12); }
+.actor-badge, .changed-marker { display: inline-flex; align-items: center; gap: var(--space-4); }
+.changed-marker { font-size: var(--font-size-badge); border: 1px solid currentColor; border-radius: var(--radius-sm); padding: 1px var(--space-4); animation: changed-outline 1s ease-out; }
+@keyframes changed-outline { from { outline: 2px solid currentColor; } to { outline: 2px solid transparent; } }
+@media (prefers-reduced-motion: reduce) { .changed-marker { animation: none; } }
+
+.what-changed-affected-group { content-visibility: auto; contain-intrinsic-size: auto 112px; }
+
+.what-changed-drawer time { display: block; font-size: var(--font-size-badge); }
+.what-changed-groups { list-style: none; margin: 0; padding: 0; }
+.what-changed-affected-group { padding-block: var(--space-12); border-top: 1px solid var(--color-divider); }
+.what-changed-card-link { text-align: start; justify-content: flex-start; white-space: normal; max-width: 100%; overflow-wrap: anywhere; }
+.what-changed-summary { overflow-wrap: anywhere; }

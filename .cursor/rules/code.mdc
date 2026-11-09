@@ -1,0 +1,21 @@
+---
+description: Source structure and imports for the Agentic Story Mapper monorepo
+globs: "**/*.ts,**/*.tsx,**/*.js,**/*.mjs,**/*.html,**/*.scss,**/*.css,**/*.py"
+alwaysApply: false
+---
+
+# Code rules
+
+Follow the instruction hierarchy in `AGENTS.md`; do not duplicate its architecture and safety policies here.
+
+- Use English for source comments and identifiers; preserve names required by public contracts.
+- Validate untrusted input at public boundaries. Do not repeat boundary validation in every private helper.
+- Use absolute module imports in TypeScript through the existing package exports and aliases, such as `@storymapper/contracts`. Keep script imports consistent with their existing Node module layout.
+- No `eval()` or similar execution vectors.
+- Keep related code together and reuse shared modules when the same logic serves multiple consumers.
+- Preserve unrelated behavior and requirement traceability when making a focused change.
+- Keep functions within 50 physical lines, files within 750 lines and 100000 UTF-8 bytes; `scripts/check-size.mjs` is the executable check.
+- Do not add dependencies merely to restate existing workspace functionality. Use Corepack and the pinned pnpm version for dependency changes.
+- Optimize measured hot paths or explicit performance requirements; retain the existing absolute performance bounds.
+
+Use `typescript.mdc`, `comments.mdc`, `logging.mdc` and `testing.mdc` for their respective concerns.

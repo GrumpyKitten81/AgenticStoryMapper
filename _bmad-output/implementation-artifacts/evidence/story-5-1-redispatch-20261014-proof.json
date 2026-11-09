@@ -1,0 +1,126 @@
+{
+  "attempt": "story-5-1-redispatch-20261014",
+  "recordedAt": "2026-10-14T19:23:38.767000+00:00",
+  "baseline": "994710f3a6254485e9c0bba5424c05933ed67c0d",
+  "status": "blocked",
+  "blockingCondition": "fresh Card-open measurement 306.7 ms fails nominal 100 ms; recorded acceptance is specific to prior 214 ms observation",
+  "sourceFileCount": 725,
+  "sourceManifestSha256": "04d8ac6e5c89ec3b47ce1c2ccf794daa95c1f2593ede2fa6c155532a602b3677",
+  "builtHtmlSha256": "6b44d314902b07f0c57892702645bb26ed85a5267f88a89bb25c90a73f4e4a73",
+  "observerSha256": "7dac6685cb65761670410810b6ecfd8fc58888984bf7188801c9620f1fb0c42a",
+  "syntheticOnly": true,
+  "fixture": "fresh SQLite backup of previously authorized synthetic 3-Card and 1000-Card/999-edge fixtures",
+  "configuredTestsPassed": 1732,
+  "gates": {
+    "release": "passed",
+    "typecheck": "passed",
+    "lint": "passed",
+    "functionalBrowser": "passed",
+    "freshCardOpenBudget": "failed"
+  },
+  "observations": [
+    "mouse add/remove",
+    "keyboard Enter-add/Space-remove and selector focus",
+    "dirty title/Tiptap retention and current-baseline Save",
+    "named cycle refusal with LSM-1 version1",
+    "immutable proposal/preview and canonical modal separation",
+    "selection closure",
+    "human approval and Apply"
+  ],
+  "finalSyntheticCards": [
+    {
+      "key": "LSM-1",
+      "version": 1,
+      "title": "Understand product requirements",
+      "description": "Collect PRD/SRD input and preserve provenance."
+    },
+    {
+      "key": "LSM-2",
+      "version": 2,
+      "title": "Import source document",
+      "description": "Chunk Markdown or TXT into stable source chunks."
+    },
+    {
+      "key": "LSM-3",
+      "version": 28,
+      "title": "Fresh acceptance draft",
+      "description": "Fresh retained Tiptap draft"
+    }
+  ],
+  "finalSyntheticEdges": [
+    {
+      "dependent": "LSM-2",
+      "prerequisite": "LSM-1"
+    },
+    {
+      "dependent": "LSM-3",
+      "prerequisite": "LSM-1"
+    }
+  ],
+  "timings": [
+    {
+      "event": "open-card",
+      "isTrusted": true,
+      "elapsedMs": 50.800000071525574
+    },
+    {
+      "event": "open-card",
+      "isTrusted": true,
+      "elapsedMs": 30.799999952316284
+    },
+    {
+      "event": "filter",
+      "isTrusted": false,
+      "value": "Performance Story 997",
+      "elapsedMs": 103.60000002384186,
+      "cards": 3
+    },
+    {
+      "event": "filter",
+      "isTrusted": false,
+      "value": "",
+      "elapsedMs": 922.5,
+      "cards": 1000
+    },
+    {
+      "event": "open-card",
+      "isTrusted": true,
+      "elapsedMs": 306.6999999284744
+    },
+    {
+      "event": "filter",
+      "isTrusted": false,
+      "value": "Performance Story 997",
+      "elapsedMs": 152.70000004768372,
+      "cards": 3
+    },
+    {
+      "event": "filter",
+      "isTrusted": true,
+      "value": "",
+      "elapsedMs": 892.8999999761581,
+      "cards": 1000
+    },
+    {
+      "event": "filter",
+      "isTrusted": true,
+      "value": "P",
+      "elapsedMs": 878.6000000238419,
+      "cards": 1000
+    },
+    {
+      "event": "filter",
+      "isTrusted": true,
+      "value": "Performance Story 997",
+      "elapsedMs": 15.600000023841858,
+      "cards": 3
+    }
+  ],
+  "notes": [
+    "isTrusted=false fill/paste samples are diagnostics",
+    "trusted full reset892.9ms fits scoped1000ms exception; nominal300ms fails",
+    "306.7ms opened Performance step; no newly accepted upper bound",
+    "extension-origin warnings observed; no application-console clean claim",
+    "owned tab and 44323/44324 listeners closed"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "fixture": "C:\\Users\\Dalex\\AppData\\Local\\Temp\\storymapper-live-browser-be8DC2",
+  "checks": [
+    {
+      "name": "six-tab stream",
+      "activeStreams": 1,
+      "tabs": 6
+    },
+    {
+      "name": "API responsiveness",
+      "requests": 12,
+      "milliseconds": 12.878699999999753
+    },
+    {
+      "name": "agent visible in six tabs",
+      "milliseconds": 221.38810000000012
+    },
+    {
+      "name": "leader handoff",
+      "activeStreams": 1,
+      "remainingTabs": 5
+    },
+    {
+      "name": "manual interaction hold",
+      "heldAndApplied": true
+    },
+    {
+      "name": "focused tile deletion",
+      "retainedUntilBlur": true,
+      "focusPreserved": true
+    },
+    {
+      "name": "dirty incoming event",
+      "draftRetained": true
+    },
+    {
+      "name": "actual browser Save and own echo",
+      "originPresent": true,
+      "otherTabs": 4,
+      "ownAnnouncements": 0
+    },
+    {
+      "name": "30-operation coalescing",
+      "refetches": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "statuses": [
+        {
+          "time": 8258.899999976158,
+          "text": "30 cards changed by local-mcp-host."
+        }
+      ]
+    },
+    {
+      "name": "actual restore reset",
+      "refetches": [
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "tabs": 5
+    },
+    {
+      "name": "browser exceptions",
+      "count": 0
+    }
+  ],
+  "errors": []
+}

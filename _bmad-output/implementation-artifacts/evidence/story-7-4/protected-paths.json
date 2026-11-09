@@ -1,0 +1,75 @@
+{
+  "policy": "Never written, staged, unstaged or reverted by this work; rows never used as verification evidence.",
+  "checks": [
+    {
+      "path": ".agents/skills/bmad-loop-sweep/deferred-work-format.md",
+      "baselineSha256": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8",
+      "indexSha256": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8",
+      "workingSha256": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/claude-unattended.settings.json",
+      "baselineSha256": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767",
+      "indexSha256": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767",
+      "workingSha256": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/plugins/stop-on-story-failure/plugin.toml",
+      "baselineSha256": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f",
+      "indexSha256": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f",
+      "workingSha256": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/plugins/stop-on-story-failure/stop_on_failure.py",
+      "baselineSha256": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6",
+      "indexSha256": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6",
+      "workingSha256": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/policy.codex.toml",
+      "baselineSha256": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d",
+      "indexSha256": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d",
+      "workingSha256": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/policy.macci.bak",
+      "baselineSha256": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a",
+      "indexSha256": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a",
+      "workingSha256": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/policy.opencode.toml",
+      "baselineSha256": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980",
+      "indexSha256": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980",
+      "workingSha256": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980",
+      "unchanged": true
+    },
+    {
+      "path": ".claude/skills/bmad-loop-sweep/deferred-work-format.md",
+      "baselineSha256": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8",
+      "indexSha256": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8",
+      "workingSha256": "fece3b2bed202ba25ad57a6f33c9e379e5d84571d7b017783d482af402cadba8",
+      "unchanged": true
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/deferred-work.md",
+      "baselineSha256": "a3c39a2bebc2b02565c7396dfc01077dac9a130004617d8aa9d59ddc2dfd1d99",
+      "indexSha256": "a3c39a2bebc2b02565c7396dfc01077dac9a130004617d8aa9d59ddc2dfd1d99",
+      "workingSha256": "a3c39a2bebc2b02565c7396dfc01077dac9a130004617d8aa9d59ddc2dfd1d99",
+      "unchanged": true
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/sprint-status.yaml",
+      "baselineSha256": "5bd3e133cbdf4651bdadb63d981cc10c870020cdd65e3235d192189a67837d3b",
+      "indexSha256": "5bd3e133cbdf4651bdadb63d981cc10c870020cdd65e3235d192189a67837d3b",
+      "workingSha256": "5bd3e133cbdf4651bdadb63d981cc10c870020cdd65e3235d192189a67837d3b",
+      "unchanged": true
+    }
+  ]
+}

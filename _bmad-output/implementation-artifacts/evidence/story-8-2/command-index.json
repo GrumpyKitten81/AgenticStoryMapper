@@ -1,0 +1,916 @@
+[
+  {
+    "metadata": "audit-static9.json",
+    "raw": "audit-static9.log.gz",
+    "start": "2026-10-19T23:28:34.469Z",
+    "end": "2026-10-19T23:28:35.246Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "audit",
+      "--json"
+    ],
+    "node": "v24.17.0",
+    "status": 1
+  },
+  {
+    "metadata": "audit-vite8.json",
+    "raw": "audit-vite8.log.gz",
+    "start": "2026-10-19T23:19:42.799Z",
+    "end": "2026-10-19T23:19:44.500Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "audit",
+      "--json"
+    ],
+    "node": "v24.17.0",
+    "status": 1
+  },
+  {
+    "metadata": "audit-vitest4.json",
+    "raw": "audit-vitest4.log.gz",
+    "start": "2026-10-19T22:57:39.383Z",
+    "end": "2026-10-19T22:57:41.330Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "audit",
+      "--json"
+    ],
+    "node": "v24.17.0",
+    "status": 1
+  },
+  {
+    "metadata": "final-audit-high.json",
+    "raw": "final-audit-high.log.gz",
+    "start": "2026-10-19T23:32:56.544Z",
+    "end": "2026-10-19T23:32:57.693Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "audit",
+      "--audit-level",
+      "high"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "final-audit-json.json",
+    "raw": "final-audit-json.log.gz",
+    "start": "2026-10-19T23:32:56.546Z",
+    "end": "2026-10-19T23:32:57.242Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "audit",
+      "--json"
+    ],
+    "node": "v24.17.0",
+    "status": 1
+  },
+  {
+    "metadata": "final-build.json",
+    "raw": "final-build.log.gz",
+    "start": "2026-10-19T23:33:39.952Z",
+    "end": "2026-10-19T23:33:59.830Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "build"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "final-frozen-install.json",
+    "raw": "final-frozen-install.log.gz",
+    "start": "2026-10-19T23:32:51.807Z",
+    "end": "2026-10-19T23:32:52.243Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "install",
+      "--frozen-lockfile"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "final-proxy-native.json",
+    "raw": "final-proxy-native.log.gz",
+    "start": "2026-10-19T23:33:07.217Z",
+    "end": "2026-10-19T23:33:12.122Z",
+    "command": [
+      "node",
+      "--import",
+      "./apps/server/node_modules/tsx/dist/loader.mjs",
+      "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "final-resolved.json",
+    "raw": "final-resolved.log.gz",
+    "start": "2026-10-19T23:32:56.545Z",
+    "end": "2026-10-19T23:32:56.835Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "-r",
+      "list",
+      "--depth",
+      "Infinity",
+      "--json"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "final-test-2.json",
+    "raw": "final-test-2.log.gz",
+    "start": "2026-10-19T23:43:05.750Z",
+    "end": "2026-10-19T23:48:43.048Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "test"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "final-test.json",
+    "raw": "final-test.log.gz",
+    "start": "2026-10-19T23:34:18.447Z",
+    "end": "2026-10-19T23:39:02.978Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "test"
+    ],
+    "node": "v24.17.0",
+    "status": 1
+  },
+  {
+    "metadata": "final-typecheck.json",
+    "raw": "final-typecheck.log.gz",
+    "start": "2026-10-19T23:32:56.544Z",
+    "end": "2026-10-19T23:33:13.943Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "final-verify.json",
+    "raw": "final-verify.log.gz",
+    "start": "2026-10-19T23:48:49.181Z",
+    "end": "2026-10-19T23:49:46.364Z",
+    "command": [
+      "node",
+      "scripts/verify.mjs"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "runtime-transitive-update.json",
+    "raw": "runtime-transitive-update.log.gz",
+    "start": "2026-10-19T23:28:28.797Z",
+    "end": "2026-10-19T23:28:30.279Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "-r",
+      "update",
+      "--depth",
+      "Infinity",
+      "fast-uri",
+      "find-my-way",
+      "@fastify/busboy",
+      "browserslist",
+      "baseline-browser-mapping",
+      "seroval",
+      "shell-quote",
+      "source-map-js",
+      "prosemirror-view",
+      "markdown-it",
+      "dompurify"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "static10-install.json",
+    "raw": "static10-install.log.gz",
+    "start": "2026-10-19T23:32:44.527Z",
+    "end": "2026-10-19T23:32:46.484Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "install"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "static10-security-focused.json",
+    "raw": "static10-security-focused.log.gz",
+    "start": "2026-10-19T23:42:56.777Z",
+    "end": "2026-10-19T23:42:58.791Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "--filter",
+      "@storymapper/server",
+      "exec",
+      "vitest",
+      "run",
+      "src/server.test.ts",
+      "--exclude",
+      "**/dist/**",
+      "--passWithNoTests"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "static9-build.json",
+    "raw": "static9-build.log.gz",
+    "start": "2026-10-19T23:31:22.817Z",
+    "end": "2026-10-19T23:31:42.479Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "build"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "static9-launcher.json",
+    "raw": "static9-launcher.log.gz",
+    "start": "2026-10-19T23:31:50.567Z",
+    "end": "2026-10-19T23:32:41.675Z",
+    "command": [
+      "node",
+      "--test",
+      "--test-name-pattern",
+      "setup performs a real|start serves actual|IPv6 host overrides|launcher preflight rejects server-local|server IPC loopback guard|doctor on installed checkout",
+      "scripts/commands.test.mjs",
+      "scripts/doctor.test.mjs"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "static9-resolved.json",
+    "raw": "static9-resolved.log.gz",
+    "start": "2026-10-19T23:31:27.048Z",
+    "end": "2026-10-19T23:31:27.267Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "-r",
+      "list",
+      "--depth",
+      "1",
+      "--json"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "static9-runtime-install.json",
+    "raw": "static9-runtime-install.log.gz",
+    "start": "2026-10-19T23:28:20.330Z",
+    "end": "2026-10-19T23:28:23.093Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "install"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "static9-typecheck.json",
+    "raw": "static9-typecheck.log.gz",
+    "start": "2026-10-19T23:28:35.288Z",
+    "end": "2026-10-19T23:28:52.372Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "static9-workspace-test.json",
+    "raw": "static9-workspace-test.log.gz",
+    "start": "2026-10-19T23:28:53.358Z",
+    "end": "2026-10-19T23:31:20.783Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "-r",
+      "test"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "tiptap2-added-regressions-2.json",
+    "raw": "tiptap2-added-regressions-2.log.gz",
+    "start": "2026-10-19T23:25:44.899Z",
+    "end": "2026-10-19T23:25:47.781Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "--filter",
+      "@storymapper/web",
+      "exec",
+      "vitest",
+      "run",
+      "src/features/story-map/components/DescriptionEditor.test.tsx",
+      "src/features/story-map/components/card-detail.test.ts"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "tiptap2-added-regressions.json",
+    "raw": "tiptap2-added-regressions.log.gz",
+    "start": "2026-10-19T23:25:20.324Z",
+    "end": "2026-10-19T23:25:23.228Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "--filter",
+      "@storymapper/web",
+      "exec",
+      "vitest",
+      "run",
+      "src/features/story-map/components/DescriptionEditor.test.tsx",
+      "src/features/story-map/components/card-detail.test.ts"
+    ],
+    "node": "v24.17.0",
+    "status": 1
+  },
+  {
+    "metadata": "tiptap3-build.json",
+    "raw": "tiptap3-build.log.gz",
+    "start": "2026-10-19T23:27:44.666Z",
+    "end": "2026-10-19T23:28:04.588Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "build"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "tiptap3-focused.json",
+    "raw": "tiptap3-focused.log.gz",
+    "start": "2026-10-19T23:26:02.021Z",
+    "end": "2026-10-19T23:26:13.650Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "--filter",
+      "@storymapper/web",
+      "exec",
+      "vitest",
+      "run",
+      "src/features/story-map/components/DescriptionEditor.test.tsx",
+      "src/features/story-map/components/card-detail.test.ts",
+      "src/features/story-map/components/card-detail-navigation.test.ts",
+      "src/features/story-map/components/card-dependencies.test.tsx",
+      "src/features/changesets/shell.test.tsx",
+      "src/app/live/live-updates.test.tsx",
+      "--maxWorkers=1"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "tiptap3-install.json",
+    "raw": "tiptap3-install.log.gz",
+    "start": "2026-10-19T23:25:52.406Z",
+    "end": "2026-10-19T23:25:54.756Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "install"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "tiptap3-resolved.json",
+    "raw": "tiptap3-resolved.log.gz",
+    "start": "2026-10-19T23:27:58.950Z",
+    "end": "2026-10-19T23:27:59.151Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "-r",
+      "list",
+      "--depth",
+      "1",
+      "--json"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "tiptap3-server-markdown.json",
+    "raw": "tiptap3-server-markdown.log.gz",
+    "start": "2026-10-19T23:26:33.499Z",
+    "end": "2026-10-19T23:26:37.881Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "--filter",
+      "@storymapper/server",
+      "exec",
+      "vitest",
+      "run",
+      "src/http/routes/card-markdown.test.ts"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "tiptap3-storage-types-install.json",
+    "raw": "tiptap3-storage-types-install.log.gz",
+    "start": "2026-10-19T23:27:01.730Z",
+    "end": "2026-10-19T23:27:02.960Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "install"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "tiptap3-typecheck-2.json",
+    "raw": "tiptap3-typecheck-2.log.gz",
+    "start": "2026-10-19T23:27:13.426Z",
+    "end": "2026-10-19T23:27:30.412Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "tiptap3-typecheck.json",
+    "raw": "tiptap3-typecheck.log.gz",
+    "start": "2026-10-19T23:26:07.258Z",
+    "end": "2026-10-19T23:26:14.748Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "node": "v24.17.0",
+    "status": 2
+  },
+  {
+    "metadata": "tiptap3-web-test.json",
+    "raw": "tiptap3-web-test.log.gz",
+    "start": "2026-10-19T23:26:32.336Z",
+    "end": "2026-10-19T23:26:43.539Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "--filter",
+      "@storymapper/web",
+      "test"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vite7-build.json",
+    "raw": "vite7-build.log.gz",
+    "start": "2026-10-19T23:10:59.161Z",
+    "end": "2026-10-19T23:11:21.291Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "build"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vite7-install.json",
+    "raw": "vite7-install.log.gz",
+    "start": "2026-10-19T23:10:28.255Z",
+    "end": "2026-10-19T23:10:29.917Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "install"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vite7-proxy-2.json",
+    "raw": "vite7-proxy-2.log.gz",
+    "start": "2026-10-19T23:11:55.278Z",
+    "end": "2026-10-19T23:12:00.258Z",
+    "command": [
+      "node",
+      "--import",
+      "./apps/server/node_modules/tsx/dist/loader.mjs",
+      "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vite7-proxy-3.json",
+    "raw": "vite7-proxy-3.log.gz",
+    "start": "2026-10-19T23:12:37.521Z",
+    "end": "2026-10-19T23:12:42.785Z",
+    "command": [
+      "node",
+      "--import",
+      "./apps/server/node_modules/tsx/dist/loader.mjs",
+      "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vite7-proxy.json",
+    "raw": "vite7-proxy.log.gz",
+    "start": "2026-10-19T23:11:32.952Z",
+    "end": "2026-10-19T23:11:37.207Z",
+    "command": [
+      "node",
+      "--import",
+      "./apps/server/node_modules/tsx/dist/loader.mjs",
+      "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+    ],
+    "node": "v24.17.0",
+    "status": 1
+  },
+  {
+    "metadata": "vite7-test.json",
+    "raw": "vite7-test.log.gz",
+    "start": "2026-10-19T23:12:44.869Z",
+    "end": "2026-10-19T23:18:32.684Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "test"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vite7-typecheck.json",
+    "raw": "vite7-typecheck.log.gz",
+    "start": "2026-10-19T23:10:38.094Z",
+    "end": "2026-10-19T23:10:55.264Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vite8-build.json",
+    "raw": "vite8-build.log.gz",
+    "start": "2026-10-19T23:19:02.193Z",
+    "end": "2026-10-19T23:19:22.257Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "build"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vite8-install.json",
+    "raw": "vite8-install.log.gz",
+    "start": "2026-10-19T23:18:36.030Z",
+    "end": "2026-10-19T23:18:37.876Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "install"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vite8-proxy.json",
+    "raw": "vite8-proxy.log.gz",
+    "start": "2026-10-19T23:18:49.340Z",
+    "end": "2026-10-19T23:18:54.428Z",
+    "command": [
+      "node",
+      "--import",
+      "./apps/server/node_modules/tsx/dist/loader.mjs",
+      "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vite8-test.json",
+    "raw": "vite8-test.log.gz",
+    "start": "2026-10-19T23:19:34.207Z",
+    "end": "2026-10-19T23:25:12.700Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "test"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vite8-typecheck.json",
+    "raw": "vite8-typecheck.log.gz",
+    "start": "2026-10-19T23:18:43.713Z",
+    "end": "2026-10-19T23:19:01.186Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest3-build.json",
+    "raw": "vitest3-build.log.gz",
+    "start": "2026-10-19T22:53:54.516Z",
+    "end": "2026-10-19T22:54:16.466Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "build"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest3-install-confirm.json",
+    "raw": "vitest3-install-confirm.log.gz",
+    "start": "2026-10-19T22:47:39.388Z",
+    "end": "2026-10-19T22:47:39.823Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "install",
+      "--frozen-lockfile"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest3-test-1.json",
+    "raw": "vitest3-test-1.log.gz",
+    "start": "2026-10-19T22:47:46.977Z",
+    "end": "2026-10-19T22:53:31.561Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "test"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest3-typecheck.json",
+    "raw": "vitest3-typecheck.log.gz",
+    "start": "2026-10-19T22:53:34.367Z",
+    "end": "2026-10-19T22:53:51.715Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest4-build-final.json",
+    "raw": "vitest4-build-final.log.gz",
+    "start": "2026-10-19T23:10:01.332Z",
+    "end": "2026-10-19T23:10:23.595Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "build"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest4-build.json",
+    "raw": "vitest4-build.log.gz",
+    "start": "2026-10-19T22:57:35.284Z",
+    "end": "2026-10-19T22:57:57.422Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "build"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest4-cli.json",
+    "raw": "vitest4-cli.log.gz",
+    "start": "2026-10-19T23:01:48.509Z",
+    "end": "2026-10-19T23:01:48.854Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "--filter",
+      "@storymapper/web",
+      "exec",
+      "vitest",
+      "--help"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest4-credential-regressions.json",
+    "raw": "vitest4-credential-regressions.log.gz",
+    "start": "2026-10-19T23:06:54.860Z",
+    "end": "2026-10-19T23:06:57.434Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "--filter",
+      "@storymapper/server",
+      "exec",
+      "vitest",
+      "run",
+      "src/services/credentials.test.ts",
+      "src/application/connector/github-connect.test.ts"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest4-install.json",
+    "raw": "vitest4-install.log.gz",
+    "start": "2026-10-19T22:54:23.009Z",
+    "end": "2026-10-19T22:54:23.905Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "install"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest4-resolved.json",
+    "raw": "vitest4-resolved.log.gz",
+    "start": "2026-10-19T23:05:47.688Z",
+    "end": "2026-10-19T23:05:47.994Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "-r",
+      "list",
+      "--depth",
+      "1",
+      "--json"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest4-test-1.json",
+    "raw": "vitest4-test-1.log.gz",
+    "start": "2026-10-19T22:54:26.186Z",
+    "end": "2026-10-19T22:57:33.032Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "test"
+    ],
+    "node": "v24.17.0",
+    "status": 1
+  },
+  {
+    "metadata": "vitest4-test-2.json",
+    "raw": "vitest4-test-2.log.gz",
+    "start": "2026-10-19T22:58:04.825Z",
+    "end": "2026-10-19T23:01:20.621Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "test"
+    ],
+    "node": "v24.17.0",
+    "status": 1
+  },
+  {
+    "metadata": "vitest4-test-3.json",
+    "raw": "vitest4-test-3.log.gz",
+    "start": "2026-10-19T23:01:42.585Z",
+    "end": "2026-10-19T23:06:33.377Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "test"
+    ],
+    "node": "v24.17.0",
+    "status": 1
+  },
+  {
+    "metadata": "vitest4-typecheck-1.json",
+    "raw": "vitest4-typecheck-1.log.gz",
+    "start": "2026-10-19T22:54:34.858Z",
+    "end": "2026-10-19T22:54:42.936Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "node": "v24.17.0",
+    "status": 2
+  },
+  {
+    "metadata": "vitest4-typecheck-2.json",
+    "raw": "vitest4-typecheck-2.log.gz",
+    "start": "2026-10-19T22:55:09.553Z",
+    "end": "2026-10-19T22:55:28.038Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "node": "v24.17.0",
+    "status": 2
+  },
+  {
+    "metadata": "vitest4-typecheck-3.json",
+    "raw": "vitest4-typecheck-3.log.gz",
+    "start": "2026-10-19T22:55:37.497Z",
+    "end": "2026-10-19T22:55:55.263Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest4-typecheck-final.json",
+    "raw": "vitest4-typecheck-final.log.gz",
+    "start": "2026-10-19T23:07:32.665Z",
+    "end": "2026-10-19T23:07:52.471Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  },
+  {
+    "metadata": "vitest4-workspace-test-4.json",
+    "raw": "vitest4-workspace-test-4.log.gz",
+    "start": "2026-10-19T23:07:24.799Z",
+    "end": "2026-10-19T23:09:56.229Z",
+    "command": [
+      "corepack",
+      "pnpm",
+      "-r",
+      "test"
+    ],
+    "node": "v24.17.0",
+    "status": 0
+  }
+]

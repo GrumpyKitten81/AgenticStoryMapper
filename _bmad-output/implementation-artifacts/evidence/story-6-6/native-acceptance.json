@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-17",
+  "surface": "native Safari AX + screenshot",
+  "fixture": "isolated seeded sample at TCP44366, disposable DB outside repository",
+  "observed": [
+    "Discovery title/real route",
+    "Personas: Reader visibly on Activity/Step; assigned canonical sample Stories",
+    "AX table rows/cells, complete key/role/title buttons, spanning lane headers",
+    "Discovery retains both open MVP and Shipped delivery lanes",
+    "Screenshot revealed pre-existing horizontal workspace with tall global creation controls"
+  ],
+  "incomplete": [
+    "Tracking/Planning open/show-all native interaction",
+    "keyboard/selection/collapse native sequence",
+    "screen reader, WCAG, zoom/pinning combined layout"
+  ],
+  "failure": "cgWindowNotFound during first follow-up interaction; no Tracking navigation completion claimed",
+  "setupLimit": "Shipped delivery was only named shipped during native observation; CreateRelease did not set released. Versioned PATCH applied later and verified via HTTP, no native released filtering claim."
+}

@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-17",
+  "surface": "native Safari AX and screenshot through CUA",
+  "fixture": "isolated sample on loopback TCP44367; disposable database outside repository",
+  "observed": [
+    "direct Tree Card URL opens shared modal with initial heading focus",
+    "real Description edit; first Escape focuses modal heading, second opens dirty confirmation initially focused Cancel",
+    "Cancel preserves exact Markdown draft",
+    "primary modal reverse Tab from first to last control; confirmation Tab from Cancel wraps to Save and reverse wraps back",
+    "dirty modal GitHub-tab link prompts; Save persists Markdown then continues intended Connections route without remote write",
+    "final rebuilt toolbar AX names Bold, Italic, Bullet list, Heading 2 and named multiline Description; pressed Bold updates at current selection",
+    "screenshot visibly shows editor focus frame",
+    "Back after Connections reload opens correct Card and saved Markdown",
+    "patched final same-document Forward with dirty Card opens confirmation; Cancel restores Card URL and text; repeated Forward then Discard reaches base Tree URL",
+    "final same-document Back reopens the modal with heading focus",
+    "post inverse-delta build: Card\u2192Connections, full reload Connections, Back\u2192Card, dirty edit\u2192Forward opens confirmation, Cancel restores Card URL and exact Markdown"
+  ],
+  "initialDefects": [
+    "enclosing Description label interfered with toolbar AX names; fixed non-label wrapper and explicit names, native verified",
+    "Forward with dirty draft changed URL but retained modal without confirmation after cross-document Back; dependency Forward cancellation also reproduced by agent browser-history test; repair pending; repaired dependency algorithm and final native same-document repeat Forward/Cancel/Discard passed"
+  ],
+  "notProven": [
+    "full screen-reader/WCAG conformance",
+    "all View native URLs and preview lifecycle"
+  ],
+  "userDataTouched": false,
+  "remoteWrites": false,
+  "buildBoundary": "Prior native inverse-delta build passed recorded keyboard/history/reload sequence. Final repeated-gesture/unload/write-count/lifecycle repairs verified by automated tests and source recheck; final native attempt unavailable.",
+  "finalAttempt": {
+    "result": "unavailable",
+    "failure": "cgWindowNotFound on Escape and reacquiring com.apple.Safari",
+    "boundary": "after final547web tests and final release build; no final native review-repair pass claimed",
+    "ownedListener": "TCP44367 confirmed stopped; native tab may remain inaccessible"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "note": "Configured smoke subprocess exited0 and its result/log were saved. A later wrapper variable reuse raised AttributeError while returning the exit status; this does not change the captured subprocess result.",
+  "scope": "parent evidence harness only"
+}

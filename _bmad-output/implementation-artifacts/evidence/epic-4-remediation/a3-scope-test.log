@@ -1,0 +1,36 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ❯ src/repositories/operation-snapshot-scope.test.ts (3 tests | 1 failed) 366ms
+   × materializes no additional target rows after a large foreign Project is added 303ms
+     → expected 82 to be 78 // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/repositories/operation-snapshot-scope.test.ts > materializes no additional target rows after a large foreign Project is added
+AssertionError: expected 82 to be 78 // Object.is equality
+
+- Expected
++ Received
+
+- 78
++ 82
+
+ ❯ src/repositories/operation-snapshot-scope.test.ts:153:34
+    151|   expect(after.snapshot).toEqual(before.snapshot);
+    152|   expect(legacy.snapshot).toEqual(before.snapshot);
+    153|   expect(after.materializedRows).toBe(before.materializedRows);
+       |                                  ^
+    154|   expect(legacy.materializedRows - after.materializedRows).toBeGreater…
+    155|   console.log(JSON.stringify({ action: "A3", foreignCards: 2503, forei…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 2 passed (3)
+   Start at  10:49:00
+   Duration  1.14s (transform 311ms, setup 0ms, collect 600ms, tests 366ms, environment 0ms, prepare 30ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/packages/db:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/repositories/operation-snapshot-scope.test.ts

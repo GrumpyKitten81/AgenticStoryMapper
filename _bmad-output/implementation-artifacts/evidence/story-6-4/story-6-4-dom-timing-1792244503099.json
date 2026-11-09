@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "node": "v24.17.0",
+    "platform": "darwin",
+    "runner": "Vitest jsdom",
+    "nativePaint": false
+  },
+  "fixture": "1000 cached Cards: 1 Activity, 999 child Stories; BoardToolbar and real hook mounted",
+  "boundary": "untrusted DOM input/change dispatch through React act to committed match status; board tiles not mounted",
+  "referenceMilliseconds": 300,
+  "acceptanceGate": false,
+  "samples": [
+    {
+      "action": "Search cards=Fixture 99",
+      "phase": "cold-first-sequence",
+      "milliseconds": 3.0774169999999685,
+      "matches": 10
+    },
+    {
+      "action": "Search cards=",
+      "phase": "cold-first-sequence",
+      "milliseconds": 3.644208999999819,
+      "matches": 1000
+    },
+    {
+      "action": "Color category=value:custom",
+      "phase": "cold-first-sequence",
+      "milliseconds": 3.7929169999999885,
+      "matches": 499
+    },
+    {
+      "action": "Color category=all",
+      "phase": "cold-first-sequence",
+      "milliseconds": 5.767624999999953,
+      "matches": 1000
+    },
+    {
+      "action": "Search cards=Fixture 99",
+      "phase": "warm-1",
+      "milliseconds": 2.896624999999858,
+      "matches": 10
+    },
+    {
+      "action": "Search cards=",
+      "phase": "warm-1",
+      "milliseconds": 2.6979169999999613,
+      "matches": 1000
+    },
+    {
+      "action": "Color category=value:custom",
+      "phase": "warm-1",
+      "milliseconds": 2.8924160000001393,
+      "matches": 499
+    },
+    {
+      "action": "Color category=all",
+      "phase": "warm-1",
+      "milliseconds": 3.2589159999999993,
+      "matches": 1000
+    },
+    {
+      "action": "Search cards=Fixture 99",
+      "phase": "warm-2",
+      "milliseconds": 3.7828749999998763,
+      "matches": 10
+    },
+    {
+      "action": "Search cards=",
+      "phase": "warm-2",
+      "milliseconds": 2.820417000000134,
+      "matches": 1000
+    },
+    {
+      "action": "Color category=value:custom",
+      "phase": "warm-2",
+      "milliseconds": 2.933332999999948,
+      "matches": 499
+    },
+    {
+      "action": "Color category=all",
+      "phase": "warm-2",
+      "milliseconds": 3.332832999999937,
+      "matches": 1000
+    }
+  ]
+}

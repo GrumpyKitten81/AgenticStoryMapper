@@ -1,0 +1,29 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+
+ ❯ src/changesets/dependency-effect-parity.test.ts (10 tests | 1 failed | 8 skipped) 31ms
+   × retains the canonical owner after a hidden physical unlink followed by reassign 5ms
+     → expected [ 'unlink-hidden' ] to include 'mutate'
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/changesets/dependency-effect-parity.test.ts > retains the canonical owner after a hidden physical unlink followed by reassign
+AssertionError: expected [ 'unlink-hidden' ] to include 'mutate'
+ ❯ src/changesets/dependency-effect-parity.test.ts:126:46
+    124|   expect(graph.get("mutate")).toContain("unlink-hidden");
+    125|   expect(resolved.operations[2]!.dependencies).toContain("mutate");
+    126|   expect(prerequisites(graph, "owner-edit")).toContain("mutate");
+       |                                              ^
+    127|   expect(resolveOperations(state, operations, supply, ["unlink-hidden"…
+    128|   expect(resolveOperations(state, operations, supply, ["mutate", "owne…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed | 8 skipped (10)
+   Start at  11:26:33
+   Duration  568ms (transform 214ms, setup 0ms, collect 339ms, tests 31ms, environment 0ms, prepare 30ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/packages/core:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/changesets/dependency-effect-parity.test.ts -t hidden physical unlink

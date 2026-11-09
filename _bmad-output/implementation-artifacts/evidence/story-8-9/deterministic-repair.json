@@ -1,0 +1,62 @@
+{
+  "baselineRevision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "runtime": {
+    "node": "24.17.0",
+    "pnpm": "9.15.4"
+  },
+  "provenance": "Observed command outputs in implementing Agent tool transcript; this summary does not claim retained complete raw streams. Original orchestrator failure feedback remains unchanged.",
+  "diagnosis": {
+    "preRepairFocusedCommand": "corepack pnpm --filter @storymapper/server exec vitest run src/runtime-lifecycle.test.ts -t 'cleans owned startup state'",
+    "preRepairExit": 1,
+    "preRepairTestMs": 5020,
+    "preRepairDurationSeconds": 5.96,
+    "sharedTsxCacheEntries": 929409,
+    "sharedCacheListingMs": 1080.555542,
+    "contentionConclusion": "The selected test failed when run alone; ordinary suite worker contention is not required to reproduce the failure.",
+    "mechanism": "Installed tsx FileCache synchronously enumerates and maps the shared temporary cache before importing application modules. The retained previous cache diagnosis and this isolated reproduction identify polluted shared cache as the startup fixture isolation defect.",
+    "repair": "Give launched runtime fixtures their existing owned fixture root through TMPDIR, TMP and TEMP. Normal tsx caching remains enabled; root and cache are removed by existing fixture cleanup. No shared cache is deleted.",
+    "scriptRepair": "Root test:audit-performance forwards to the existing server audit script required by the deterministic command."
+  },
+  "verification": [
+    {
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/runtime-lifecycle.test.ts",
+      "exit": 0,
+      "testsPassed": 20,
+      "durationSeconds": 26.11
+    },
+    {
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/runtime-lifecycle.test.ts -t 'cleans owned startup state'",
+      "exit": 0,
+      "testsPassed": 1,
+      "testsSkipped": 19,
+      "testMs": 899,
+      "durationSeconds": 1.9
+    },
+    {
+      "command": "corepack pnpm --filter @storymapper/server typecheck",
+      "exit": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0
+    },
+    {
+      "command": "corepack pnpm test:audit-performance",
+      "exit": 0,
+      "testFilesPassed": 4,
+      "testsPassed": 14,
+      "durationSeconds": 52.72,
+      "maxWorkers": 1,
+      "note": "Focused lifecycle/typecheck validation overlapped briefly; parent final gates provide independent serialized confirmation."
+    }
+  ],
+  "limits": [
+    "No timeout, assertion or performance bound was changed.",
+    "Parent final aggregate, exact deterministic command and publication rescan are separate checks.",
+    "Native Windows/Linux behavior is not established by this macOS execution."
+  ],
+  "sourceSha256": {
+    "apps/server/src/runtime-lifecycle.test.ts": "c5f1c142fd830017cc99a8d3a62b1b653e94be5a70ed72a1e5ff0842253aafdf",
+    "package.json": "f8495a8931ae4ad2062e6b694342045d715ae5a5bdd7235793085d4ca06950d5"
+  }
+}

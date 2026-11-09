@@ -1,0 +1,669 @@
+
+> @storymapper/db@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/packages/db
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/external-refs-repository.test.ts (5 tests) 96ms
+ ❯ src/board-import-resolution.test.ts (5 tests | 3 failed) 223ms
+   × matches actual board import hierarchy, evidence, connector and remote-baseline effects without mutating reviewed input 106ms
+     → expected [ { …(12) }, { …(12) }, { …(12) } ] to deeply equal [ { …(14) }, { …(14) }, { …(14) } ]
+   × matches scoped sync updates, clearing assignees and milestones while retaining hierarchy and origin 41ms
+     → NOT NULL constraint failed: remote_work_item_links.managed_labels_json
+   × matches Card removal and cleanup effects and refuses removing an imported issue 39ms
+     → NOT NULL constraint failed: remote_work_item_links.managed_labels_json
+ ✓ src/repositories/operation-selector-regressions.test.ts (6 tests) 261ms
+ ✓ src/map-copy-resolution.test.ts (1 test) 103ms
+ ✓ src/repositories/card-visibility.test.ts (3 tests) 1215ms
+   ✓ visible Card report boundaries > excludes hidden trees from every report while retaining complete snapshots and owned links 301ms
+   ✓ visible Card report boundaries > retains visible Notes but excludes them from both public push planning methods and delivery 476ms
+   ✓ visible Card report boundaries > keeps zero-visible reports valid and reveals a restored subtree only after an explicit status choice 437ms
+ ✓ src/repositories/release-report-data.test.ts (2 tests) 773ms
+   ✓ Repository data for release and roadmap reports > calculates release summaries for release and unscheduled scopes 390ms
+   ✓ Repository data for release and roadmap reports > builds release timeline and roadmap progress from release references 383ms
+ ✓ src/ai-templates.test.ts (4 tests) 1123ms
+   ✓ seeds Project-owned defaults once and preserves edits, arguments and deletions after reopen 414ms
+   ✓ isolates identical IDs by Project and atomically rolls back seeds when Project creation fails 336ms
+   ✓ attributes instruction, argument, example and guidance-only updates without private Activity payloads 371ms
+ ✓ src/remote-push.test.ts (5 tests) 1812ms
+   ✓ redacts plans, execution evidence and Activity payloads from portable snapshots 584ms
+   ✓ retains operational plan and intent through actual Restore while refusing its old epoch consent 654ms
+   ✓ keeps empty and Unscheduled selections exact and refuses foreign Card or Release identities 366ms
+ ✓ src/repositories/operation-catalog-executor.test.ts (2 tests) 1841ms
+   ✓ executes previously uncovered update, unset and delete catalog pairs with physical-state and immutable-input parity 1054ms
+   ✓ persists create-then-bulk relationship aliases and Release upsert families with exact resolution parity 787ms
+ ✓ src/github-archive-redaction.test.ts (3 tests) 58ms
+ ✓ src/operation-schema-transition.test.ts (7 tests) 2235ms
+   ✓ transitions old operations when publishing a restored current-DDL snapshot 599ms
+   ✓ validates old operations in current-DDL archives and transitions them at import publication 385ms
+   ✓ refuses incompatible executable payloads before writes and requires approval of a fresh current proposal 400ms
+   ✓ rejects invalid stored operation data and exact DDL mismatches before import publication 307ms
+stdout | src/repositories/operation-snapshot-scope.test.ts > materializes no additional target rows after a large foreign Project is added
+{"action":"A3","foreignCards":2503,"foreignExtraChunks":2500,"before":{"rows":72,"elapsedMs":8.121041999999761},"referenceAfter":{"rows":5135,"elapsedMs":26.563333000000057},"scopedAfter":{"rows":72,"elapsedMs":5.951958000000104}}
+
+ ✓ src/repositories/operation-snapshot-scope.test.ts (4 tests) 2718ms
+   ✓ matches the complete reference snapshot, insertion order, scoped/project-wide rows and malformed ownership 349ms
+   ✓ retains empty Project and unavailable Project behavior 309ms
+   ✓ retains hidden-map link helper exclusions after SQL scoping 411ms
+   ✓ materializes no additional target rows after a large foreign Project is added 1648ms
+ ✓ src/source-document-migration.test.ts (2 tests) 956ms
+   ✓ source document migration > keeps the oldest duplicate and cascades its duplicate chunks and links before indexing 341ms
+   ✓ exports an upgraded database with the exact supported schema and retained chunk/note evidence 614ms
+ ✓ src/repositories/operation-resolution-parity.test.ts (8 tests) 2720ms
+   ✓ matches real SQLite Release reorder and repeated lane writes in one UnitOfWork 363ms
+   ✓ matches real SQLite shared GitHub evidence removal and every affected Card root 392ms
+   ✓ matches real SQLite multiple Card writes, create then edit, and deduplicated source evidence in one UnitOfWork 395ms
+   ✓ refuses stale persisted local selectors using the actual target before any ChangeSet writes 362ms
+   ✓ matches real SQLite last chunk and note unlink with one root bump and immutable creation origin 337ms
+   ✓ matches real SQLite Annotation relationships and deletion with coalesced Card versions 307ms
+   ✓ matches real SQLite park/unpark and archive/unarchive in one UnitOfWork 353ms
+ ✓ src/repositories/plan-states.test.ts (8 tests) 2868ms
+   ✓ refuses to persist an unusable state when canonical data has a foreign-map Release assignment 335ms
+   ✓ rejects foreign-map reads, unsupported payload versions and inconsistent captured membership in reads and Restore validation 360ms
+   ✓ rejects corrupt captured dependencies, duplicate Cards and foreign workflow statuses in reads and Restore validation 377ms
+   ✓ lists capture metadata without hydrating payload JSON while enforcing stored Project ownership 362ms
+   ✓ retains only the selected Project's captured states in portable archive snapshots 572ms
+   ✓ Restore returns the recorded point-in-time state set while retaining later capture audit as undone 606ms
+ ✓ src/repositories/release-summary-persistence.test.ts (1 test) 400ms
+   ✓ reopens complete Releases and canonical Story summaries without changing assignments 399ms
+ ✓ src/card-dependencies.test.ts (8 tests) 2975ms
+   ✓ removes prerequisite incidents with one surviving owner history and rolls back all failures 412ms
+   ✓ copies internal endpoints, retains archived edges and validates coherent portable rows 404ms
+   ✓ refuses cross-map dependencies with valid foreign keys during Restore validation 363ms
+   ✓ refuses malformed dependency identity during Restore validation 322ms
+   ✓ refuses malformed dependency timestamp during Restore validation 301ms
+   ✓ restores exact owned edge rows and preserves only the scoped Project in portable snapshots 935ms
+(node:28709) Warning: Post-commit publication failed; database changes remain committed.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ src/live-events.test.ts (8 tests) 2982ms
+   ✓ durable committed live metadata > emits bumped versions for coalesced saves, owned children, shifted release siblings and terminal deleted-root versions 387ms
+   ✓ durable committed live metadata > retains normalized sibling changes without fabricating version bumps and emits unversioned settings-only transactions 382ms
+   ✓ durable committed live metadata > rolls back grouped metadata and sequence allocation when a later history write fails 359ms
+   ✓ durable committed live metadata > publishes already committed metadata even when the existing after-commit hook rejects 344ms
+   ✓ durable committed live metadata > assigns durable Activity sequences to isolated remote-link and conflict writes without duplicating caller audit 390ms
+   ✓ durable committed live metadata > resets only after successful actual restore, retains UUID history and allows durable replay/new writes in the new epoch 666ms
+ ✓ src/repositories/source-document-import.test.ts (1 test) 290ms
+ ✓ src/repositories/persistence-entity-order.test.ts (1 test) 2ms
+ ✓ src/repositories/source-plan-audit.test.ts (4 tests) 3263ms
+   ✓ retains complete canonical baselines while audit evidence contains exactly the addressed entry delta 405ms
+   ✓ keeps initial publication audit entries and serialized bytes linear as the canonical baseline grows 1899ms
+   ✓ records exact changed Release evidence without rewriting excluded Cards' captured Slice names 622ms
+   ✓ allocates canonical keys in both audit cuts for multiple new upserts without inflating unchanged entry deltas 336ms
+ ✓ src/card-indexes.test.ts (3 tests) 1149ms
+   ✓ matches nonunique Drizzle indexes to populated bootstrap, reopened and restored databases without losing roots or history 690ms
+ ✓ src/repositories/card-key-prefix-persistence.test.ts (1 test) 280ms
+ ✓ src/card-placement-readback.test.ts (5 tests) 1257ms
+   ✓ persists same-role Move indexes among mixed activity siblings 392ms
+ ✓ src/repositories/changeset-warnings.test.ts (2 tests) 414ms
+ ✓ src/activity-changes.test.ts (10 tests) 3695ms
+   ✓ uses the actual global Restore boundary for every Project, fresh browsers and stale paged reads 537ms
+   ✓ links only a genuine applied Agent snapshot (Agent proposal) and reports retention loss 543ms
+   ✓ links only a genuine applied Agent snapshot (Agent execution) and reports retention loss 494ms
+   ✓ links only a genuine applied Agent snapshot (Agent none) and reports retention loss 456ms
+   ✓ rejects impossible same-epoch snapshots and floors a persisted cursor from a previous epoch 574ms
+   ✓ projects generic applied bulk, Card-owned child and delete changes from immutable operation evidence 313ms
+ ✓ src/repositories/card-history.test.ts (13 tests) 2464ms
+   ✓ bounded Card history > compares saved predecessors across pages, preserves attribution and keeps ascending internal reads 354ms
+   ✓ bounded Card history > returns bounded pages through 200 real saved versions without omissions 1742ms
+ ✓ src/repositories/canonical-github-identity.test.ts (13 tests) 3831ms
+   ✓ refuses generic mutation and deletion of adapter-owned canonical refs 310ms
+   ✓ atomically records typed entity-deletion evidence and excludes undone or live-equivalent events 420ms
+   ✓ does not record entity deletion for source detach, canonical rebind, park or archive 392ms
+   ✓ versions and audits removed-map citation roots on direct canonical edit and hard deletion 422ms
+   ✓ versions and audits removed-map citation roots on executor canonical edit and hard deletion 379ms
+   ✓ copies Release-owned Issue evidence without sync ownership and reopens the populated current schema intact 388ms
+   ✓ keeps direct import parent Issue numbers scoped to the selected repository 384ms
+   ✓ uses the old owner's baseline for a different-version rebind and keeps identical updates free of root/history writes 326ms
+ ✓ src/restore-failures.test.ts (5 tests) 1940ms
+   ✓ restore publication failure boundaries > rolls back swap failure to the protected database and reopens a usable holder 696ms
+   ✓ restore publication failure boundaries > rolls back reopen failure to the protected database and reopens a usable holder 453ms
+   ✓ restore publication failure boundaries > rolls back marker failure to the protected database and reopens a usable holder 386ms
+ ❯ src/repositories/storymapper-repository.test.ts (18 tests | 1 failed) 3960ms
+   ✓ StoryMapperRepository > reorders release lanes without changing story assignments 358ms
+   ✓ StoryMapperRepository > imports source documents, links chunks to cards and updates coverage 332ms
+   ✓ StoryMapperRepository > calculates backlog health from card quality and source links 355ms
+   ✓ StoryMapperRepository > bulk updates cards within one story map and writes activity 313ms
+   ✓ StoryMapperRepository > keeps default safety switches, updates GitHub and exports map and audit data 359ms
+   × StoryMapperRepository > manages provider connections, remote links and imported work items 233ms
+     → expected { …(10) } to match object { …(6) }
+(4 matching properties omitted from actual)
+ ✓ src/repositories/card-provenance.test.ts (15 tests) 4105ms
+   ✓ immutable creation origin and typed evidence > keeps inference origin through mixed evidence and final removal by another actor 455ms
+   ✓ immutable creation origin and typed evidence > rejects missing/foreign evidence and blank notes without changing the Card or evidence 378ms
+   ✓ immutable creation origin and typed evidence > versions every canonical GitHub evidence owner on attach, edit, reassignment and deletion 444ms
+   ✓ immutable creation origin and typed evidence > rejects milestone-only identities and cross-Project reassignment, then versions evidence removal on Release deletion 391ms
+   ✓ immutable creation origin and typed evidence > retains evidence through reopen and copy and defaults historical origin to unknown 375ms
+   ✓ immutable creation origin and typed evidence > backfills linked or unknown provenance when upgrading a database without provenance columns 426ms
+ ✓ src/snapshot.test.ts (13 tests) 4185ms
+   ✓ scopes to one demo Project, keeps business links and deleted Card history, and removes secret free-page bytes 869ms
+   ✓ redacts copied Map Activity identities without removing chunk/note evidence or business metadata 793ms
+   ✓ refuses an archive with inconsistent provenance 495ms
+   ✓ refuses an archive with GitHub reference row 587ms
+   ✓ refuses an archive with GitHub sourceLink payload 313ms
+   ✓ refuses an archive with canonical deletion payload 307ms
+ ✓ src/repositories/customization-impact.test.ts (22 tests) 4272ms
+   ✓ renames a Project status across parked Cards and maps with exact persisted ChangeSet parity 321ms
+   ✓ refuses new usage before a status rename and preserves all rows 367ms
+   ✓ refuses removed usage before a status rename and preserves all rows 363ms
+   ✓ refuses stale Card before a status rename and preserves all rows 369ms
+   ✓ refuses definition drift before a status rename and preserves all rows 353ms
+   ✓ replaces a used status atomically and refuses replacement drift or a narrower scope 416ms
+ ✓ src/repositories/source-plan-baselines.test.ts (20 tests) 4288ms
+   ✓ keeps systems and copies independent, repeat binding unchanged, and failed transactions atomic 385ms
+   ✓ retains selected Project evidence in archive snapshots and restores the exact point-in-time baseline 1018ms
+   ✓ rejects unsupported or corrupt baseline evidence during reads and Restore validation 314ms
+   ✓ rejects contradictory captured identity-id evidence in reads and Restore 324ms
+   ✓ rejects contradictory captured identity-key evidence in reads and Restore 331ms
+ ❯ src/repositories/changeset-executor.test.ts (22 tests | 1 failed) 4437ms
+   ✓ binds actual approval and keeps reviewed operations immutable across resolved application 465ms
+   ✓ takes no snapshot for empty reviewed selection and refuses later selection changes 362ms
+   ✓ rolls domain effects back when the applied Activity fails and retains the preapply snapshot 467ms
+   ✓ only the new command creation flow can autoapply and caller receipt objects cannot bypass stored approval 431ms
+   ✓ collects all repeated-root and bulk conflicts with stable original operation indexes before snapshot 339ms
+   ✓ warns about the named earlier pending proposal sharing an external identity without modifying either input 318ms
+   ✓ reports an open sync conflict with its stable operation and target while preserving domain state without a snapshot 422ms
+   ✓ prepares reviewed source bytes before SQLite and rolls imported evidence back with a failed applied audit 359ms
+   × persists parentOverrideLocal when an approved resolved Card move changes its remote parent 68ms
+     → An internal error occurred.
+ ✓ src/repositories/getting-started.test.ts (31 tests) 4517ms
+   ✓ persisted getting-started checklist > reuses the template as an explicitly human map creation 402ms
+   ✓ persisted getting-started checklist > does not add a sample to an existing map or a dismissed empty Project 379ms
+   ✓ persisted getting-started checklist > tracks controlled human provenance and sticky completion independently for each Project 579ms
+   ✓ persisted getting-started checklist > recognizes legacy evidence during initialization and retains it when deleted before the first checklist read 314ms
+   ✓ persisted getting-started checklist > does not count legacy Cards, another provider or pre-generation export labels 358ms
+   ✓ persisted getting-started checklist > keeps imported and applied proposal Cards pending even with a human proposal label 578ms
+(node:28696) Warning: Post-commit publication failed; database changes remain committed.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ src/repositories/root-versions.test.ts (75 tests) 5329ms
+   ✓ editable root version ownership > increments only the owner once for 'map-scoped Product Context alone' 339ms
+   ✓ editable root version ownership > increments only the owner once for 'Card fields and owned links' 368ms
+   ✓ editable root version ownership > increments only the owner once for 'Card explicit save twice' 367ms
+   ✓ editable root version ownership > increments only the owner once for 'Card archive' 372ms
+   ✓ editable root version ownership > increments only the owner once for 'Card park and unpark' 350ms
+   ✓ editable root version ownership > increments only the owner once for 'Release fields twice' 301ms
+   ✓ editable root version ownership > increments only the owner once for 'Persona fields twice' 340ms
+   ✓ editable root version ownership > increments only the owner once for 'Roadmap fields and every owned child' 349ms
+(node:28696) Warning: Post-commit publication failed; database changes remain committed.
+(node:28696) Warning: Post-commit publication failed; database changes remain committed.
+ ✓ src/unit-of-work.test.ts (60 tests) 5253ms
+   ✓ actor-aware atomic Card mutations > retains separate archive and explicit Restore history within the same actor's rapid-save window 335ms
+   ✓ actor-aware atomic Card mutations > appends an unparked Activity after sparse visible Activities, ignoring hidden and mixed roots 408ms
+   ✓ actor-aware atomic Card mutations > skips archived and parked neighbors during park, retaining nested descendants 391ms
+   ✓ actor-aware atomic Card mutations > skips archived and parked neighbors during delete, retaining nested descendants 392ms
+   ✓ actor-aware atomic Card mutations > rejects unavailable active-neighbor child handling without silently unassigning 336ms
+   ✓ actor-aware atomic Card mutations > retains the exact edited Card snapshot immediately preceding deletion 316ms
+   ✓ actor-aware atomic Card mutations > exports distinct agent identities and an optional MCP session in Markdown audit output 373ms
+   ✓ actor-aware atomic Card mutations > preserves the current hierarchy override when omitted while allowing an explicit reset 321ms
+ ❯ src/repositories/operation-executor-persistence.test.ts (22 tests | 1 failed) 5422ms
+   ✓ persists complete local roots, relationship arrays, Roadmap seeds and physical evidence encodings 320ms
+   ✓ keeps Card keys monotonic after deletion and reopening 832ms
+   ✓ preserves approved copy operations and all owned copied identities 527ms
+   ✓ persists 200 selected operations on 1,000 Cards with snapshot, history and audit 2745ms
+   × persists prepared board connector and GitHub/remote identity graphs atomically 51ms
+     → expected { …(30) } to deeply equal { …(30) }
+ ✓ src/restore-points.test.ts (21 tests) 6433ms
+   ✓ complete persisted restore points > uniquely orders all four classes with the same clock and preserves metadata after reopen 585ms
+   ✓ complete persisted restore points > does not list finalized-looking files whose embedded size or timestamp contradicts the file 526ms
+   ✓ complete persisted restore points > retains the latest manual publication with pre-change contents after clock rollback and reopen 1246ms
+   ✓ complete persisted restore points > retains the latest pre-migration publication with pre-change contents after clock rollback and reopen 928ms
+   ✓ complete persisted restore points > isolates inventories and per-class retention for colocated databases 833ms
+   ✓ complete persisted restore points > finishes snapshot creation alone with 1,000 actual Cards within the 2-second tolerance 1750ms
+ ✓ src/restore-project.test.ts (18 tests) 6482ms
+   ✓ recoverable human project restore > retains runtime tool-call evidence across repeated actual restores without fictional Projects 663ms
+   ✓ recoverable human project restore > restores committed WAL map state, preserves later same-ID ChangeSets and historical Project ownership, and accepts holder writes 784ms
+   ✓ recoverable human project restore > reports new canonical identities and identity changes at the same id and leaves attachment files intact 638ms
+   ✓ recoverable human project restore > rejects unknown, corrupt, mismatched actual schemas and agent attempts without protective snapshots or live changes 434ms
+   ✓ recoverable human project restore > initializes one shared persisted epoch and changes it for every snapshot Project on restore 532ms
+   ✓ recoverable human project restore > completes a fully prepared interrupted swap before normal opening, retaining epoch and audit exactly once 338ms
+   ✓ recoverable human project restore > preserves genuinely crashed uncheckpointed WAL commits when startup publication fails and can retry the prepared restore 2108ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 6 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/board-import-resolution.test.ts > matches actual board import hierarchy, evidence, connector and remote-baseline effects without mutating reviewed input
+AssertionError: expected [ { …(12) }, { …(12) }, { …(12) } ] to deeply equal [ { …(14) }, { …(14) }, { …(14) } ]
+
+- Expected
++ Received
+
+  Array [
+    Object {
+      "bodyHash": "328fbea37f14471e38bf20e53f428cfe368fdcf7ab0d3e00e7e64d2f1272c0da",
+-     "issueType": undefined,
+      "labels": Array [],
+-     "managedLabels": Array [],
+      "milestone": null,
+      "parentOverrideLocal": false,
+      "provider": "github",
+      "remoteId": "1",
+      "remoteNumber": 1,
+      "remoteParentNumber": null,
+      "remoteState": "open",
+      "syncState": "synced",
+      "titleHash": "62e279aa67d57b83a667013a3ac44e568818fea05ceecad2a07a5687b6728d79",
+      "url": "https://github.com/example/repo/issues/1",
+    },
+    Object {
+      "bodyHash": "65164409d1f3a9ecd01c9126f179256c4d064aa0f05e798410e772609d1d0949",
+-     "issueType": undefined,
+      "labels": Array [
+        "status:active",
+      ],
+-     "managedLabels": Array [],
+      "milestone": null,
+      "parentOverrideLocal": false,
+      "provider": "github",
+      "remoteId": "2",
+      "remoteNumber": 2,
+      "remoteParentNumber": 1,
+      "remoteState": "open",
+      "syncState": "synced",
+      "titleHash": "2b6ae8915d474df2057a60bdcce95a40d5be429a5beadee7d4f4aea6b49dbf0a",
+      "url": "https://github.com/example/repo/issues/2",
+    },
+    Object {
+      "bodyHash": "91a9fc467b7fd523668a20e57fc680130caee9a838d331d80570d379f6038238",
+-     "issueType": undefined,
+      "labels": Array [],
+-     "managedLabels": Array [],
+      "milestone": "MVP",
+      "parentOverrideLocal": false,
+      "provider": "github",
+      "remoteId": "3",
+      "remoteNumber": 3,
+      "remoteParentNumber": 2,
+      "remoteState": "closed",
+      "syncState": "synced",
+      "titleHash": "797c4492725a5aeb59d8ea7246e03e3137f5aaf8ead08b1e19526e62ba6f0977",
+      "url": "https://github.com/example/repo/issues/3",
+    },
+  ]
+
+ ❯ src/board-import-resolution.test.ts:53:60
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/board-import-resolution.test.ts > matches scoped sync updates, clearing assignees and milestones while retaining hierarchy and origin
+SqliteError: NOT NULL constraint failed: remote_work_item_links.managed_labels_json
+ ❯ PreparedQuery.run ../../node_modules/.pnpm/drizzle-orm@0.38.4_@opentelemetry+api@1.9.0_@types+better-sqlite3@7.6.13_@types+react@19.2.17_tr2pmoylwbt4enpuldo3tsogem/node_modules/src/better-sqlite3/session.ts:113:20
+ ❯ QueryPromise.run ../../node_modules/.pnpm/drizzle-orm@0.38.4_@opentelemetry+api@1.9.0_@types+better-sqlite3@7.6.13_@types+react@19.2.17_tr2pmoylwbt4enpuldo3tsogem/node_modules/src/sqlite-core/query-builders/update.ts:437:26
+ ❯ persistEntity src/repositories/operation-persistence-repository.ts:153:101
+    151|   }
+    152|   const value = encodeRow(change);
+    153|   if (change.before) repository.db.update(table).set(value).where(eq(c…
+       |                                                                                                     ^
+    154|   else repository.db.insert(table).values(value).run();
+    155|   if (change.entity in OPERATION_ROOTS) {
+ ❯ persistChanges src/repositories/operation-persistence-repository.ts:120:145
+ ❯ StoryMapperRepository.persistOperationResolution src/repositories/operation-persistence-repository.ts:60:5
+ ❯ StoryMapperRepository.applyChangeSet src/repositories/changesets-repository.ts:130:8
+ ❯ src/board-import-resolution.test.ts:88:117
+ ❯ src/unit-of-work.ts:67:87
+ ❯ src/unit-of-work.ts:67:31
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ FAIL  src/board-import-resolution.test.ts > matches Card removal and cleanup effects and refuses removing an imported issue
+SqliteError: NOT NULL constraint failed: remote_work_item_links.managed_labels_json
+ ❯ PreparedQuery.run ../../node_modules/.pnpm/drizzle-orm@0.38.4_@opentelemetry+api@1.9.0_@types+better-sqlite3@7.6.13_@types+react@19.2.17_tr2pmoylwbt4enpuldo3tsogem/node_modules/src/better-sqlite3/session.ts:113:20
+ ❯ QueryPromise.run ../../node_modules/.pnpm/drizzle-orm@0.38.4_@opentelemetry+api@1.9.0_@types+better-sqlite3@7.6.13_@types+react@19.2.17_tr2pmoylwbt4enpuldo3tsogem/node_modules/src/sqlite-core/query-builders/update.ts:437:26
+ ❯ persistEntity src/repositories/operation-persistence-repository.ts:153:101
+    151|   }
+    152|   const value = encodeRow(change);
+    153|   if (change.before) repository.db.update(table).set(value).where(eq(c…
+       |                                                                                                     ^
+    154|   else repository.db.insert(table).values(value).run();
+    155|   if (change.entity in OPERATION_ROOTS) {
+ ❯ persistChanges src/repositories/operation-persistence-repository.ts:120:145
+ ❯ StoryMapperRepository.persistOperationResolution src/repositories/operation-persistence-repository.ts:60:5
+ ❯ StoryMapperRepository.applyChangeSet src/repositories/changesets-repository.ts:130:8
+ ❯ src/board-import-resolution.test.ts:119:125
+ ❯ src/unit-of-work.ts:67:87
+ ❯ src/unit-of-work.ts:67:31
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/6]⎯
+
+ FAIL  src/repositories/changeset-executor.test.ts > persists parentOverrideLocal when an approved resolved Card move changes its remote parent
+DomainError: An internal error occurred.
+ ❯ Module.executeStoredOrNewChangeSet ../../apps/server/src/application/changeset/changeset-executor.ts:65:13
+     63|     if (retainedRestorePoint) {
+     64|       const failure = asDomainError(error);
+     65|       throw new DomainError(failure.code, failure.message, { ...failur…
+       |             ^
+     66|     }
+     67|     throw error;
+ ❯ Module.applyChangeSet ../../apps/server/src/application/changeset/changeset.use-cases.ts:83:10
+ ❯ src/repositories/changeset-executor.test.ts:292:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/6]⎯
+
+ FAIL  src/repositories/operation-executor-persistence.test.ts > persists prepared board connector and GitHub/remote identity graphs atomically
+AssertionError: expected { …(30) } to deeply equal { …(30) }
+
+- Expected
++ Received
+
+  Object {
+    "annotations": Array [],
+    "attachments": Array [],
+    "cardAnnotations": Array [],
+    "cardDependencies": Array [],
+    "cardPersonas": Array [],
+    "cards": Array [
+      Object {
+        "assignee": null,
+        "businessValue": null,
+        "color": null,
+        "createdAt": "2026-10-19T01:36:56.771Z",
+        "creationOrigin": "inference",
+        "description": "Reviewed issue body",
+        "effort": null,
+        "estimate": null,
+        "id": "27e7c1d5-4f15-4ac6-a2e5-eddd7f6deecf",
+        "key": "LSM-3",
+        "level": "story",
+        "parentId": "9f2fc0e6-cc52-4c37-9f10-84f71b518023",
+        "parked": false,
+        "position": 0,
+        "priority": null,
+        "provenance": "linked",
+        "releaseId": null,
+        "status": "todo",
+        "storyMapId": "4c2352e2-3b92-4ccd-8c8e-72f023982d02",
+        "title": "Issue",
+        "updatedAt": "2026-10-19T01:36:56.771Z",
+        "version": 1,
+      },
+      Object {
+        "assignee": null,
+        "businessValue": null,
+        "color": null,
+        "createdAt": "2026-10-19T01:36:56.771Z",
+        "creationOrigin": "inference",
+        "description": "",
+        "effort": null,
+        "estimate": null,
+        "id": "8cd00e5f-4e80-40e1-8dce-2884f23245ad",
+        "key": "LSM-1",
+        "level": "activity",
+        "parentId": null,
+        "parked": false,
+        "position": 0,
+        "priority": null,
+        "provenance": "inference",
+        "releaseId": null,
+        "status": "todo",
+        "storyMapId": "4c2352e2-3b92-4ccd-8c8e-72f023982d02",
+        "title": "Parking lot",
+        "updatedAt": "2026-10-19T01:36:56.771Z",
+        "version": 1,
+      },
+      Object {
+        "assignee": null,
+        "businessValue": null,
+        "color": null,
+        "createdAt": "2026-10-19T01:36:56.771Z",
+        "creationOrigin": "inference",
+        "description": "",
+        "effort": null,
+        "estimate": null,
+        "id": "9f2fc0e6-cc52-4c37-9f10-84f71b518023",
+        "key": "LSM-2",
+        "level": "step",
+        "parentId": "8cd00e5f-4e80-40e1-8dce-2884f23245ad",
+        "parked": false,
+        "position": 0,
+        "priority": null,
+        "provenance": "inference",
+        "releaseId": null,
+        "status": "todo",
+        "storyMapId": "4c2352e2-3b92-4ccd-8c8e-72f023982d02",
+        "title": "Parking lot",
+        "updatedAt": "2026-10-19T01:36:56.771Z",
+        "version": 1,
+      },
+    ],
+    "connections": Array [
+      Object {
+        "authMode": "token",
+        "createdAt": "2026-10-19T01:36:56.771Z",
+        "defaultLabel": "local-story-map",
+        "id": "eef6ad1e-2e37-4a19-bf17-1d8709430325",
+        "issueTypeMapping": Array [],
+        "iterationFieldName": "Iteration",
+        "labelsAsAnnotations": false,
+        "name": "example/repo",
+        "owner": "example",
+        "projectId": "6cdec86e-ede4-4657-851c-4b45bc480dbb",
+        "provider": "github",
+        "readOnly": true,
+        "releaseSource": "milestone",
+        "repository": "repo",
+        "statusMapping": Array [
+          Object {
+            "labels": Array [
+              "status:todo",
+            ],
+            "localStatus": "todo",
+            "remoteState": "open",
+          },
+          Object {
+            "labels": Array [
+              "status:active",
+            ],
+            "localStatus": "active",
+            "remoteState": "open",
+          },
+          Object {
+            "labels": Array [
+              "status:done",
+            ],
+            "localStatus": "done",
+            "remoteState": "closed",
+          },
+        ],
+        "typeMapping": Array [
+          Object {
+            "level": "activity",
+            "match": "epic",
+          },
+          Object {
+            "level": "step",
+            "match": "feature",
+          },
+        ],
+        "updatedAt": "2026-10-19T01:36:56.771Z",
+      },
+    ],
+    "externalRefs": Array [
+      Object {
+        "createdAt": "2026-10-19T01:36:56.771Z",
+        "entityId": "27e7c1d5-4f15-4ac6-a2e5-eddd7f6deecf",
+        "entityType": "card",
+        "externalId": "https://github.com/example/repo/issues/1",
+        "id": "05b3d4b5-384c-4693-bcf3-598fefabecb8",
+        "scopeId": "4c2352e2-3b92-4ccd-8c8e-72f023982d02",
+        "syncedVersion": 1,
+        "system": "github",
+      },
+    ],
+    "githubLinks": Array [
+      Object {
+        "cardId": "27e7c1d5-4f15-4ac6-a2e5-eddd7f6deecf",
+        "id": "05b3d4b5-384c-4693-bcf3-598fefabecb8",
+        "issueNumber": 1,
+        "repo": "example/repo",
+        "syncState": "synced",
+        "url": "https://github.com/example/repo/issues/1",
+      },
+    ],
+    "personas": Array [],
+    "productContexts": Array [],
+    "projectId": "6cdec86e-ede4-4657-851c-4b45bc480dbb",
+    "projects": Array [
+      Object {
+        "createdAt": "2026-10-19T01:36:56.763Z",
+        "defaultEstimationUnit": "points",
+        "defaultLanguage": "en",
+        "historicalStub": false,
+        "id": "6cdec86e-ede4-4657-851c-4b45bc480dbb",
+        "localPath": "local-projects/executor-persistence.lsm",
+        "name": "Executor persistence",
+      },
+    ],
+    "releases": Array [],
+    "remoteWorkItemLinks": Array [
+      Object {
+        "bodyHash": "9d9bee51050345c0c89b1f1249a731a772081d58342f1cd0c5ead462a043bba8",
+        "cardId": "27e7c1d5-4f15-4ac6-a2e5-eddd7f6deecf",
+        "connectionId": "eef6ad1e-2e37-4a19-bf17-1d8709430325",
+        "externalRefId": "05b3d4b5-384c-4693-bcf3-598fefabecb8",
+        "id": "c30ec1ca-78aa-4ffb-b565-a1f814456bc0",
+        "labels": Array [],
+        "lastSyncedAt": "2026-10-19T01:36:56.771Z",
++       "managedLabels": Array [],
+        "milestone": null,
+        "parentOverrideLocal": false,
+        "provider": "github",
+        "remoteId": "1",
+        "remoteNumber": 1,
+        "remoteParentNumber": null,
+        "remoteState": "open",
+        "syncState": "synced",
+        "titleHash": "48dc76dfa23ae03fea1372c5ed6c0e1bd62eaeca7bba6d804eb0afa87972f031",
+        "url": "https://github.com/example/repo/issues/1",
+      },
+    ],
+    "retainedGithubRefProjects": Object {},
+    "roadmapCards": Array [],
+    "roadmapColumns": Array [],
+    "roadmapReferences": Array [],
+    "roadmapSwimlanes": Array [],
+    "roadmaps": Array [],
+    "sourceChunks": Array [],
+    "sourceDocuments": Array [],
+    "sourceLinks": Array [
+      Object {
+        "cardId": "27e7c1d5-4f15-4ac6-a2e5-eddd7f6deecf",
+        "externalRefId": "05b3d4b5-384c-4693-bcf3-598fefabecb8",
+        "id": "05b3d4b5-384c-4693-bcf3-598fefabecb8",
+        "issueNumber": 1,
+        "kind": "github",
+        "repoFullName": "example/repo",
+        "url": "https://github.com/example/repo/issues/1",
+      },
+    ],
+    "sourcePlanBaselines": Array [],
+    "storyMaps": Array [
+      Object {
+        "cardKeyPrefix": "LSM",
+        "createdAt": "2026-10-19T01:36:56.771Z",
+        "description": "Imported from https://github.com/orgs/example/projects/1",
+        "estimationUnit": "points",
+        "id": "4c2352e2-3b92-4ccd-8c8e-72f023982d02",
+        "name": "Imported",
+        "projectId": "6cdec86e-ede4-4657-851c-4b45bc480dbb",
+        "updatedAt": "2026-10-19T01:36:56.771Z",
+        "version": 1,
+      },
+      Object {
+        "cardKeyPrefix": "LSM",
+        "createdAt": "2026-10-19T01:36:56.764Z",
+        "estimationUnit": "points",
+        "id": "70a0e87b-a227-40a3-8a91-953c57a1e32d",
+        "name": "Map",
+        "projectId": "6cdec86e-ede4-4657-851c-4b45bc480dbb",
+        "updatedAt": "2026-10-19T01:36:56.764Z",
+        "version": 1,
+      },
+    ],
+    "storyTemplates": Array [],
+    "syncConflicts": Array [],
+    "syncRuns": Array [],
+    "workflowStatuses": Array [
+      Object {
+        "color": "#ecfdf5",
+        "group": "done",
+        "id": "42d39d46-13f8-400b-a701-96d3db4db28c",
+        "name": "done",
+        "position": 2,
+        "projectId": "6cdec86e-ede4-4657-851c-4b45bc480dbb",
+        "storyMapId": null,
+      },
+      Object {
+        "color": "#f8fafc",
+        "group": "done",
+        "id": "66c618fd-bd4f-4711-b054-520fef6ae13e",
+        "name": "archived",
+        "position": 3,
+        "projectId": "6cdec86e-ede4-4657-851c-4b45bc480dbb",
+        "storyMapId": null,
+      },
+      Object {
+        "color": "#eef2ff",
+        "group": "todo",
+        "id": "7ae91857-879a-4372-9501-7260f4a11e4d",
+        "name": "todo",
+        "position": 0,
+        "projectId": "6cdec86e-ede4-4657-851c-4b45bc480dbb",
+        "storyMapId": null,
+      },
+      Object {
+        "color": "#fff7ed",
+        "group": "active",
+        "id": "e33d7866-0809-4570-b0e1-82b9709d0fdb",
+        "name": "active",
+        "position": 1,
+        "projectId": "6cdec86e-ede4-4657-851c-4b45bc480dbb",
+        "storyMapId": null,
+      },
+    ],
+  }
+
+ ❯ execute src/repositories/operation-executor-persistence.test.ts:54:71
+     52|     entry.identity.key = entry.card.key;
+     53|   }
+     54|   expect(comparable(f.repository.getOperationSnapshot(f.project.id))).…
+       |                                                                       ^
+     55|   return resolution;
+     56| }
+ ❯ src/repositories/operation-executor-persistence.test.ts:140:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/6]⎯
+
+ FAIL  src/repositories/storymapper-repository.test.ts > StoryMapperRepository > manages provider connections, remote links and imported work items
+AssertionError: expected { …(10) } to match object { …(6) }
+(4 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+    "action": "create",
+    "cardId": "5de1e37e-391a-40c5-92cf-74aaef4e63b6",
+-   "githubIssueType": "Product Backlog Item",
++   "githubIssueType": undefined,
+    "labels": Array [
+      "local-story-map",
+      "status:todo",
+      "story-map:LSM",
+      "level:story",
+    ],
+    "parentIssueNumber": 8,
+    "remoteState": "open",
+  }
+
+ ❯ src/repositories/storymapper-repository.test.ts:521:65
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/6]⎯
+
+ Test Files  4 failed | 37 passed (41)
+      Tests  6 failed | 471 passed (477)
+   Start at  03:36:51
+   Duration  7.70s (transform 2.69s, setup 0ms, collect 30.06s, tests 102.63s, environment 4ms, prepare 2.25s)
+
+[REDACTED_HOME]/Projects/StoryMapper/packages/db:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/db@0.1.0 test: `vitest run --passWithNoTests`
+Exit status 1

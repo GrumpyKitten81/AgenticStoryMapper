@@ -1,0 +1,60 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ❯ src/mcp/tools/bmad-round-trip.test.ts (14 tests | 14 failed) 230ms
+   × publishes 6/34 on http, previews protection and human API apply with equivalent durable hierarchy/evidence/audit 51ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × publishes 6/34 on sdk, previews protection and human API apply with equivalent durable hierarchy/evidence/audit 18ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × refreshes two edits/remove/add on http with reviewed archive, immutable source history and repeat no-op 20ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × refreshes two edits/remove/add on sdk with reviewed archive, immutable source history and repeat no-op 14ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × updates evidence-only baselines on http and preserves manual evidence and other maps/systems 14ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × updates evidence-only baselines on sdk and preserves manual evidence and other maps/systems 13ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × uses exact scoped identities on http for duplicate titles and same-title renumbering 13ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × uses exact scoped identities on sdk for duplicate titles and same-title renumbering 12ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × reports every changed/unchanged/removed human baseline on http before proposal/source/snapshot writes 16ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × reports every changed/unchanged/removed human baseline on sdk before proposal/source/snapshot writes 12ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × reviews explicit slicing and configured delivery on http with notes and Activity reads 12ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × reviews explicit slicing and configured delivery on sdk with notes and Activity reads 12ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × refuses delayed human drift after actual proposal and approval on http atomically 12ms
+     → listen EPERM: operation not permitted 127.0.0.1
+   × refuses delayed human drift after actual proposal and approval on sdk atomically 11ms
+     → listen EPERM: operation not permitted 127.0.0.1
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 14 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > publishes 6/34 on http, previews protection and human API apply with equivalent durable hierarchy/evidence/audit
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > publishes 6/34 on sdk, previews protection and human API apply with equivalent durable hierarchy/evidence/audit
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > refreshes two edits/remove/add on http with reviewed archive, immutable source history and repeat no-op
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > refreshes two edits/remove/add on sdk with reviewed archive, immutable source history and repeat no-op
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > updates evidence-only baselines on http and preserves manual evidence and other maps/systems
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > updates evidence-only baselines on sdk and preserves manual evidence and other maps/systems
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > uses exact scoped identities on http for duplicate titles and same-title renumbering
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > uses exact scoped identities on sdk for duplicate titles and same-title renumbering
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > reports every changed/unchanged/removed human baseline on http before proposal/source/snapshot writes
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > reports every changed/unchanged/removed human baseline on sdk before proposal/source/snapshot writes
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > reviews explicit slicing and configured delivery on http with notes and Activity reads
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > reviews explicit slicing and configured delivery on sdk with notes and Activity reads
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > refuses delayed human drift after actual proposal and approval on http atomically
+ FAIL  src/mcp/tools/bmad-round-trip.test.ts > refuses delayed human drift after actual proposal and approval on sdk atomically
+Error: listen EPERM: operation not permitted 127.0.0.1
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/14]⎯
+
+ Test Files  1 failed (1)
+      Tests  14 failed (14)
+   Start at  10:55:30
+   Duration  1.31s (transform 493ms, setup 0ms, collect 896ms, tests 230ms, environment 0ms, prepare 29ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/mcp/tools/bmad-round-trip.test.ts

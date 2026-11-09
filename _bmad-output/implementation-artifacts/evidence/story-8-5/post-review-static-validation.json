@@ -1,0 +1,252 @@
+{
+  "result": "pass",
+  "parser": "Ruby 2.6.10 / Psych 3.1.0",
+  "forms": [
+    {
+      "file": ".github/ISSUE_TEMPLATE/01-feature.yml",
+      "name": "Feature",
+      "fields": [
+        "capability",
+        "success-criteria",
+        "scope",
+        "references"
+      ],
+      "required": [
+        "capability",
+        "success-criteria"
+      ]
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/02-bug.yml",
+      "name": "Bug",
+      "fields": [
+        "problem",
+        "reproduction",
+        "acceptance-criteria",
+        "bdd",
+        "environment",
+        "scope",
+        "references"
+      ],
+      "required": [
+        "problem",
+        "reproduction",
+        "environment"
+      ]
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/03-epic.yml",
+      "name": "Epic",
+      "fields": [
+        "goal-value",
+        "success-criteria",
+        "scope",
+        "references"
+      ],
+      "required": [
+        "goal-value",
+        "success-criteria"
+      ]
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/04-story.yml",
+      "name": "Story",
+      "fields": [
+        "user-story",
+        "acceptance-criteria",
+        "bdd",
+        "notes",
+        "references"
+      ],
+      "required": [
+        "user-story",
+        "acceptance-criteria"
+      ]
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/05-task.yml",
+      "name": "Task",
+      "fields": [
+        "task",
+        "acceptance-criteria",
+        "notes",
+        "references"
+      ],
+      "required": [
+        "task",
+        "acceptance-criteria"
+      ]
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/06-spike.yml",
+      "name": "Spike",
+      "fields": [
+        "question",
+        "expected-result",
+        "timebox",
+        "notes",
+        "references"
+      ],
+      "required": [
+        "question",
+        "expected-result",
+        "timebox"
+      ]
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/07-theme.yml",
+      "name": "Theme",
+      "fields": [
+        "theme-focus",
+        "success-criteria",
+        "scope",
+        "references"
+      ],
+      "required": [
+        "theme-focus",
+        "success-criteria"
+      ]
+    }
+  ],
+  "config": "pass",
+  "local_links": [
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "_bmad-output/planning-artifacts/architecture/architecture-StoryMapper-2026-09-29/ARCHITECTURE-SPINE.md"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "CODE_OF_CONDUCT.md"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "SECURITY.md"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "docs/bmad-loop.md"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "docs/RUNBOOK.md"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "_bmad-output/implementation-artifacts/spec-8-5-license-and-community-files.md"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "LICENSE"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "target": "scripts/license-policy.mjs"
+    },
+    {
+      "file": "CODE_OF_CONDUCT.md",
+      "target": "SECURITY.md"
+    }
+  ],
+  "markers": [
+    {
+      "file": "LICENSE",
+      "marker": "COPYRIGHT_HOLDER"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "marker": "COPYRIGHT_HOLDER"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "marker": "PRIVATE_SECURITY_CONTACT"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "marker": "CONDUCT_CONTACT"
+    },
+    {
+      "file": "SECURITY.md",
+      "marker": "PRIVATE_SECURITY_CONTACT"
+    },
+    {
+      "file": "CODE_OF_CONDUCT.md",
+      "marker": "CONDUCT_CONTACT"
+    }
+  ],
+  "protected_sprint": {
+    "worktree": {
+      "sha256": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+      "entry_sha256": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+      "matches_entry": true
+    },
+    "index": {
+      "sha256": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+      "entry_sha256": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+      "matches_entry": true
+    }
+  },
+  "surfaces": [
+    {
+      "file": "LICENSE",
+      "sha256": "b54850fdc003784ce0d7be4539392ee5fe24d097644617c2f53947b6693a75a8"
+    },
+    {
+      "file": "CONTRIBUTING.md",
+      "sha256": "7213ee1973aeece30be11a8eaa0fceeebab2647d47a9bdf91db488827751a9ac"
+    },
+    {
+      "file": "SECURITY.md",
+      "sha256": "f2e3ffa3b0241d3e659fbb786d48a272e59d35fa898a759cdf76a72d5a7cf75a"
+    },
+    {
+      "file": "CODE_OF_CONDUCT.md",
+      "sha256": "2d581f09d69385861995f0598c4fe7f507cd2b4729b1e3a079dfe75df759b30d"
+    },
+    {
+      "file": ".github/PULL_REQUEST_TEMPLATE.md",
+      "sha256": "7ef81f3f215fcc5decc7e4da8118a7754d63c60e4b64f8716070c53eec996f21"
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/01-feature.yml",
+      "sha256": "2ab5f0047c3d4fe58a4416f4a5ed425fdc3c2b54d36183ee2380cdb86448f104"
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/02-bug.yml",
+      "sha256": "f20d633e9d7492ea3506868acbec374f3676e18c878b26706e2d2b8378d3706c"
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/03-epic.yml",
+      "sha256": "cabd8b24b6b88e5d68bd97f97698cea5c7b955739d49e17b81d174e9763abebb"
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/04-story.yml",
+      "sha256": "a732f4be5998366693fb1b9e15ccf94919dc76c267abba25bfe44810728ce035"
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/05-task.yml",
+      "sha256": "8e67fadf5965c27c1ae98eedf39bb57ba8de4785f9f237dcd4c8f43d1369a50c"
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/06-spike.yml",
+      "sha256": "532e7913dfd9d39a0743c712b07df909450da2546b4b725944f0d6fa40e942d7"
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/07-theme.yml",
+      "sha256": "2655c8297df48269a5a37b7b5192e22f8e42fe377405fb0d267910cb88fbc661"
+    },
+    {
+      "file": ".github/ISSUE_TEMPLATE/config.yml",
+      "sha256": "1f103c6a9dd07cd13a9a6f17ace6b813f47747eb9cb7e00488cb2073caaf91bb"
+    }
+  ],
+  "limits": [
+    "Local link and schema inspection do not certify hosted GitHub rendering.",
+    "English and reporting semantics are also manually inspected.",
+    "Canonical MIT text compared manually with choosealicense.com/licenses/mit/ on 2026-10-20.",
+    "Missing private details and prior publication/native/hosted prerequisites remain open."
+  ]
+}

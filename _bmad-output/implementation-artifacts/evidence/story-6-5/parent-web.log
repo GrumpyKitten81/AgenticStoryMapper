@@ -1,0 +1,138 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/components/Dialog.test.ts (12 tests) 229ms
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 108ms
+ ✓ src/features/personas/PersonaDetail.test.ts (8 tests) 113ms
+ ✓ src/features/releases/ReleasePanel.test.tsx (5 tests) 73ms
+ ✓ src/features/ai-mcp/TemplateEditor.test.tsx (6 tests) 107ms
+ ✓ src/features/story-map/views/TrackingView.test.tsx (6 tests) 146ms
+ ✓ src/features/ai-mcp/AiMcpPanel.test.tsx (4 tests) 134ms
+ ✓ src/app/routes/audit.test.ts (9 tests) 450ms
+ ✓ src/features/changesets/boards.test.tsx (3 tests) 88ms
+ ✓ src/app/live/live-updates.test.tsx (23 tests) 302ms
+ ✓ src/features/github-sync/github-selection.test.tsx (13 tests) 441ms
+ ✓ src/features/github-sync/github-visibility.test.tsx (3 tests) 118ms
+ ✓ src/app/routes/CardKeyPrefixEditor.test.tsx (4 tests) 153ms
+ ✓ src/app/routes/workspace-navigation.test.tsx (14 tests) 653ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 99ms
+ ✓ src/features/project-archive/project-archive-import.test.ts (3 tests) 73ms
+ ✓ src/features/ai-mcp/context-draft.test.ts (3 tests) 23ms
+ ✓ src/features/releases/ReleaseDateFields.test.ts (2 tests) 37ms
+ ✓ src/features/project-archive/project-archive-runtime.test.ts (3 tests) 289ms
+ ✓ src/features/story-map/components/hierarchy-collapse.test.tsx (5 tests) 619ms
+ ✓ src/features/ai-mcp/undone-changesets.test.ts (1 test) 55ms
+ ✓ src/features/story-map/components/card-provenance.test.ts (10 tests) 804ms
+ ✓ src/features/roadmaps/RoadmapEditor.test.ts (3 tests) 87ms
+ ✓ src/features/what-changed/WhatChangedProvider.test.tsx (12 tests) 904ms
+   ✓ retains every affected row while closed without dialog/focus/hold semantics and reuses rows through opening and closing 342ms
+ ✓ src/features/story-map/views/SlicesView.test.tsx (12 tests) 906ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 99ms
+ ✓ src/features/story-map/views/GraphView.test.tsx (17 tests) 1054ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > refetches ordinary archived-status Save and inventory Restore into the real board
+Not implemented: HTMLFormElement's requestSubmit() method
+
+ ✓ src/features/releases/ReleaseKanban.test.tsx (2 tests) 78ms
+ ✓ src/features/changesets/shell.test.tsx (8 tests) 1144ms
+ ✓ src/features/ai-mcp/current-changeset-actions.test.ts (3 tests) 90ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > archives from a Discovery tile through routed Card confirmation and GET refetch
+An update to DiscoveryMatrix inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/features/reports/PlanDriftDrawer.test.tsx (12 tests) 1254ms
+   ✓ Plan drift drawer > bounds dense DOM creation and makes all 1,000 differences reachable through keyboard-accessible pages 865ms
+ ✓ src/features/story-map/views/DiscoveryView.test.tsx (4 tests) 784ms
+ ✓ src/features/story-map/components/discovery-navigation.test.tsx (12 tests) 1368ms
+ ✓ src/app/live/live-origin.test.ts (1 test) 6ms
+ ✓ src/features/story-map/components/card-dependencies.test.tsx (12 tests) 1382ms
+ ✓ src/features/safety/SafetySwitchStrip.test.tsx (1 test) 163ms
+ ✓ src/app/card-creation-api.test.ts (7 tests) 4ms
+ ✓ src/features/ai-mcp/host-config-copy.test.tsx (1 test) 38ms
+stderr | src/features/roadmaps/RoadmapPanel.test.tsx > labels roadmap card estimate totals with the map estimation unit
+An update to RoadmapPanel inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to RoadmapPanel inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | src/features/roadmaps/RoadmapPanel.test.tsx > labels roadmap card estimate totals with the map estimation unit
+An update to RoadmapPanel inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to RoadmapEditor inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/features/story-map/components/card-choices.test.tsx (5 tests) 357ms
+ ✓ src/features/story-map/components/card-creation.test.tsx (15 tests) 1478ms
+ ✓ src/features/roadmaps/RoadmapPanel.test.tsx (1 test) 72ms
+ ✓ src/features/personas/PersonasPanel.test.tsx (1 test) 75ms
+ ✓ src/features/restore-points/restore-points.test.ts (22 tests) 1539ms
+ ✓ src/app/live/live-stream-reader.test.ts (7 tests) 65ms
+ ✓ src/app/live/live-query-invalidation.test.ts (2 tests) 9ms
+ ✓ src/features/what-changed/api.test.ts (3 tests) 9ms
+ ✓ src/app/live/live-announcements.test.ts (1 test) 5ms
+ ✓ src/features/story-map/export/story-map-view-export.test.ts (1 test) 14ms
+ ✓ src/features/project-archive/project-archive-export.test.ts (4 tests) 8ms
+ ✓ src/features/onboarding/getting-started.test.ts (5 tests) 14ms
+ ✓ src/app/conflicts.test.ts (6 tests) 6ms
+ ✓ src/features/what-changed/model.test.ts (3 tests) 3ms
+ ✓ src/features/story-map/export/export-with-progress.test.ts (2 tests) 2ms
+ ✓ src/features/story-map/components/PlanStateComparison.test.tsx (1 test) 82ms
+ ✓ src/features/story-map/graph/graph-model.test.ts (9 tests) 9ms
+ ✓ src/features/story-map/components/card-fields.test.ts (10 tests) 925ms
+   ✓ saves scalar fields, custom priority/color and zero in the map unit, then reloads supported clears 483ms
+ ✓ src/app/routes/root-layout.test.ts (1 test) 21ms
+ ✓ src/ui-strings/ui-strings.test.ts (8 tests) 184ms
+ ✓ src/app/live/live-stream.test.ts (3 tests) 599ms
+   ✓ relays between independent tabs and relinquishes terminal leadership before later bootstrap and shutdown handoff 533ms
+ ✓ src/features/story-map/components/lifecycle.test.tsx (45 tests) 2687ms
+ ✓ src/features/story-map/components/card-detail.test.ts (28 tests) 2407ms
+ ✓ src/features/story-map/board-filter-selection.test.tsx (19 tests) 4888ms
+   ✓ records complete Discovery DOM input-to-result diagnostics on a legal 1,000-Card hierarchy 4126ms
+
+ Test Files  62 passed (62)
+      Tests  461 passed (461)
+   Start at  17:15:35
+   Duration  6.83s (transform 4.26s, setup 0ms, collect 40.73s, tests 29.93s, environment 28.35s, prepare 3.11s)

@@ -1,0 +1,314 @@
+{
+  "story": "5.4",
+  "date": "2026-10-15",
+  "outcome": "accepted",
+  "testedHead": "004aee3a59d856596d81692534e9f4c57233da30",
+  "implementationCommit": "582f671",
+  "precedingStory53AcceptanceCommit": "004aee3",
+  "browser": "Actual Codex In-app Browser on macOS, two independent document clients",
+  "fixture": {
+    "storage": "/tmp/story-5-4-operator-acceptance.lsm",
+    "source": "SQLite backup of existing synthetic /tmp/story-5-4-acceptance.lsm only; no user storage opened",
+    "semanticCardsInitially": 5,
+    "performanceCards": 1000,
+    "markedPerformanceCards": 1000,
+    "eligibleEventsBeforePaging": 8,
+    "additionalRegularEvents": 110,
+    "eligibleEventsAfterPaging": 118
+  },
+  "method": "Fresh production build copied to temporary web root; existing passive change-acceptance-probe.js appended only there. Event to DOM mutation, forced geometry read and two animation frames. Live timestamps from DOM observer Date.now relative to actual UI Save/request initiation on same host. HTTP/repository setup exclusively replays synthetic acceptance actions through existing ChangeSet approval/application and normal human endpoints. Browser behavior observed through cua_repl; no browser state modified with evaluate.",
+  "checks": [
+    {
+      "id": "drawer-keyboard",
+      "status": "pass",
+      "observation": "420px drawer; native Shift+Tab wraps to last action, Tab wraps to Close changes; no inert background; Escape returns to the actual trigger."
+    },
+    {
+      "id": "other-tab-origin",
+      "status": "pass",
+      "observation": "Actual browser B modal Save changes LSM-3; reader A0->1, writer B stays4. Read/write browser origins remain distinct."
+    },
+    {
+      "id": "agent-and-github",
+      "status": "pass",
+      "observation": "Real local Agent SubmitChangeSet apply:true and approved local source:github ChangeSet applied through normal human HTTP. Actor groups, Card titles and committed times visible. No remote GitHub provider called."
+    },
+    {
+      "id": "sparse-ack",
+      "status": "pass",
+      "observation": "Acknowledging only Agent group reduces9->5 and removes only its Card marker; Person/GitHub groups and2 markers survive drawer reopening."
+    },
+    {
+      "id": "project-persistence",
+      "status": "pass",
+      "observation": "Second Project0, original Project5 on direct return; browser-persisted sparse acknowledgements retained."
+    },
+    {
+      "id": "dirty-hold",
+      "status": "pass",
+      "observation": "Active Title draft Operator unsaved held draft stays unchanged and focused, count5/canonical Agent title unchanged until explicit Discard and focus release; then count9/new title."
+    },
+    {
+      "id": "manual-hold",
+      "status": "pass",
+      "observation": "Manual Hold retains count9 and old title during next real Agent update; release produces13 and committed title."
+    },
+    {
+      "id": "observed-ack-cut",
+      "status": "pass",
+      "observation": "Mark all13->0; subsequent Agent commit remains4 unseen. This fresh check proves later arrival, not exact overlap inside the acknowledgement handler."
+    },
+    {
+      "id": "paging",
+      "status": "pass",
+      "observation": "110 regular status PATCHes of existing synthetic Cards add110 events:8->118. Drawer renders full Agent8/Person110 groups, not a100-event prefix. Mark all118->0 clears1000 markers."
+    },
+    {
+      "id": "performance",
+      "status": "pass",
+      "observation": "1000 real changed Cards, all final performance gate samples pass original100ms interaction/300ms filter budgets. Filter retains1000 canonical tiles with3 visible; no5.2 waiver."
+    },
+    {
+      "id": "exact-restore-navigation",
+      "status": "pass",
+      "observation": "Drawer link opens actual recorded pre-apply snapshot, exact audit restorePoint query and matching focused LI. No automatic restore; existing human confirmation then actual Restore all Projects succeeds and initiator automatically reaches Restoration complete."
+    },
+    {
+      "id": "epoch-reset",
+      "status": "pass",
+      "observation": "Reader remains open across real Restore: transient Card removed, count1->0, markers0. Historical118 events/2 ChangeSets retained as undone. Later Agent update produces4/new Card cue in245ms."
+    },
+    {
+      "id": "view-cues",
+      "status": "pass",
+      "observation": "Changed cue retained across Discovery, Tree, Slices, Graph and Tracking. Actual dependency setup plus selective Human ack leaves Agent-marked prerequisite; Graph table Depends on column includes Changed while Card endpoint unmarked."
+    },
+    {
+      "id": "ack-focus-refetch",
+      "status": "pass",
+      "observation": "With actual native Tab focus on Mark all seen, new Agent live commit updates4->8 while same button stays focused, enabled/tabIndex0. Escape returns to What changed8."
+    },
+    {
+      "id": "console",
+      "status": "pass",
+      "observation": "No browser warning/error logs observed before final focus check."
+    }
+  ],
+  "performanceSamples": [
+    {
+      "event": "click",
+      "label": "What changed (8)",
+      "trusted": true,
+      "domReadyMs": 8,
+      "elapsedMs": 28,
+      "cardCount": 1000,
+      "markerCount": 1000,
+      "drawerOpen": true,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "click",
+      "label": "Close changes",
+      "trusted": true,
+      "domReadyMs": 0.3999999761581421,
+      "elapsedMs": 27.200000047683716,
+      "cardCount": 1000,
+      "markerCount": 1000,
+      "drawerOpen": false,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "input",
+      "label": "Search cards",
+      "trusted": false,
+      "domReadyMs": 92.5,
+      "elapsedMs": 204.60000002384186,
+      "cardCount": 1000,
+      "markerCount": 1000,
+      "drawerOpen": false,
+      "budgetMs": 300,
+      "passed": true
+    },
+    {
+      "event": "input",
+      "label": "Search cards",
+      "trusted": true,
+      "domReadyMs": 144.90000009536743,
+      "elapsedMs": 224.70000004768372,
+      "cardCount": 1000,
+      "markerCount": 1000,
+      "drawerOpen": false,
+      "budgetMs": 300,
+      "passed": true
+    },
+    {
+      "event": "click",
+      "label": "What changed (118)",
+      "trusted": true,
+      "domReadyMs": 5.700000047683716,
+      "elapsedMs": 27.200000047683716,
+      "cardCount": 1000,
+      "markerCount": 1000,
+      "drawerOpen": true,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "click",
+      "label": "Mark all seen",
+      "trusted": true,
+      "domReadyMs": 25.899999976158142,
+      "elapsedMs": 44,
+      "cardCount": 1000,
+      "markerCount": 0,
+      "drawerOpen": true,
+      "budgetMs": 100,
+      "passed": true
+    }
+  ],
+  "inputProvenance": "Paste filter emits untrusted input; measured204.6ms is actual browser render cost, not native-user input evidence. Native select-all/Backspace reset is trusted224.7ms. All click gates trusted.",
+  "liveDelivery": {
+    "budgetMs": 2000,
+    "otherTabHuman": {
+      "started": 1792085851263,
+      "indicatorAt": 1792085851437,
+      "elapsedMs": 174,
+      "readerBefore": 0,
+      "readerAfter": 1,
+      "writerBefore": 4,
+      "writerAfter": 4
+    },
+    "agent": {
+      "started": 1792085867617,
+      "indicatorAt": 1792085867876,
+      "elapsedMs": 259,
+      "changeSetId": "45509a12-fbd0-46e3-ab63-ccbae65ab5b6"
+    },
+    "githubActor": {
+      "started": 1792085892970,
+      "indicatorAt": 1792085893191,
+      "elapsedMs": 221,
+      "changeSetId": "16907028-af80-4548-a7f9-bf21dcedea40",
+      "remoteProviderCalled": false,
+      "authority": "Actual locally approved source:github ChangeSet, human HTTP Apply"
+    },
+    "postRestoreAgent": {
+      "started": 1792086242778,
+      "indicatorAt": 1792086243023,
+      "elapsedMs": 245
+    }
+  },
+  "liveDomObservations": [
+    {
+      "id": "indicator",
+      "text": "What changed (4)",
+      "at": 1792085824738
+    },
+    {
+      "id": "indicator",
+      "text": "What changed (0)",
+      "at": 1792085842690
+    },
+    {
+      "id": "a43eadaa-b9dd-4bf7-a413-aa295bfe6225",
+      "text": "Operator other-tab write",
+      "at": 1792085851435
+    },
+    {
+      "id": "indicator",
+      "text": "What changed (1)",
+      "at": 1792085851437
+    },
+    {
+      "id": "a462ee44-b486-46db-8705-c560e1f0745e",
+      "text": "Operator Agent changed story",
+      "at": 1792085867874
+    },
+    {
+      "id": "indicator",
+      "text": "What changed (5)",
+      "at": 1792085867876
+    },
+    {
+      "id": "e359692e-9602-4452-bc64-b88affa38ce8",
+      "text": "Operator GitHub actor changed story",
+      "at": 1792085893189
+    },
+    {
+      "id": "indicator",
+      "text": "What changed (9)",
+      "at": 1792085893191
+    }
+  ],
+  "postRestoreLiveDomObservations": [
+    {
+      "id": "indicator",
+      "text": "What changed (1)",
+      "at": 1792086188651
+    },
+    {
+      "id": "a462ee44-b486-46db-8705-c560e1f0745e",
+      "text": "Operator Agent during manual hold",
+      "at": 1792086227608
+    },
+    {
+      "id": "indicator",
+      "text": "What changed (0)",
+      "at": 1792086227610
+    },
+    {
+      "id": "a462ee44-b486-46db-8705-c560e1f0745e",
+      "text": "Operator verified after Restore",
+      "at": 1792086243021
+    },
+    {
+      "id": "indicator",
+      "text": "What changed (4)",
+      "at": 1792086243023
+    }
+  ],
+  "restore": {
+    "exactRecordedSnapshot": "3d980d115e32918b265f2d232583b64a20ed3c1f4bcaf6a60f3226ffd7a02885__pre-apply__2026-10-15T17_40_24_479Z__00000005__455fc407e32c410aa16415d28c3bd90f__13127680__dev-sha256-d68169e1a3f61dd22047377ba24cef228f5e17bdf2b616df35a30ec25af212ff.sqlite",
+    "changeSetId": "5f268982-ce14-49a7-b735-f452fda3cba7",
+    "targetRowFocused": true,
+    "usedExistingConfirmation": true,
+    "initiatorAutomaticallyReachedComplete": true,
+    "readerReload": false,
+    "beforeReaderCount": 1,
+    "afterReaderCount": 0,
+    "transientRemoved": true,
+    "afterMarkerCount": 0,
+    "historicalUndoneEvents": 118,
+    "historicalUndoneChangeSets": 2
+  },
+  "finalFocusCheck": {
+    "disabled": false,
+    "drawerWidth": 420,
+    "focusText": "Mark all seen",
+    "inert": 0,
+    "tabIndex": 0
+  },
+  "freshVerification": {
+    "webBuild": "pass",
+    "webTypecheck": "pass",
+    "whitespace": "pass",
+    "fullSuite": "not rerun; no application source edits"
+  },
+  "limitations": [
+    "No native screen-reader, standalone Safari or cross-platform claim.",
+    "Exact arrival overlapping the acknowledgement handler, failed/unavailable storage, pointer-drag hold and concurrent append during paging retain existing mounted/historical coverage; no fresh browser claim for these paths.",
+    "Known simultaneous stale second-tab acknowledgement last-writer-wins limitation remains unchanged; both clients did not acknowledge simultaneously in this run.",
+    "Historical failure samples and original evidence/story-5-4-browser.json preserved unchanged; no performance constraint relaxed."
+  ],
+  "screenshot": "story-5-4-operator-final.png",
+  "probeSha256": "3b5811445aea08e3385507f5c96ee0f2553c746133d4a7f2888bbc533318a219",
+  "cleanup": {
+    "ownedTabs": "both closed",
+    "ownedPort44331": "server stopped",
+    "appSource": "unchanged",
+    "orchestratorFiles": "unchanged SHA256",
+    "temporaryProbe": "only in copied /tmp web root"
+  }
+}

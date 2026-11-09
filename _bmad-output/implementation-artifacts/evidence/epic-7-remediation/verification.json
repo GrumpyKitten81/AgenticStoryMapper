@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-19",
+  "baseline": "b2f2e967cc45a0c948ad3c2bb7378efb35eaf3e3",
+  "sourceState": {
+    "baseline": "b2f2e967cc45a0c948ad3c2bb7378efb35eaf3e3",
+    "sourceDiffSha256": "4d540af98169f5be4bf2b2db8c363be235dfbccaa58083260e1532e3225af923",
+    "sourceDiffBytes": 141611,
+    "scope": [
+      "apps",
+      "packages",
+      "scripts",
+      "tools"
+    ],
+    "includesUntrackedTests": true
+  },
+  "runtime": "Node24.17.0/pnpm9.15.4/macOS",
+  "workspaceTests": {
+    "exitCode": 0,
+    "counts": {
+      "scripts": 83,
+      "contracts": 193,
+      "importers": 7,
+      "github": 66,
+      "core": 449,
+      "web": 848,
+      "db": 490,
+      "server": 1015,
+      "audit": 14
+    },
+    "total": 3165,
+    "failures": 0,
+    "rawLog": "workspace-tests-final.log.gz"
+  },
+  "releaseVerification": {
+    "exitCode": 0,
+    "capabilities": 138,
+    "accessibilityTests": 260,
+    "typechecks": "all workspace packages passed",
+    "build": "passed",
+    "hygiene": "passed",
+    "rawLog": "release-verification-final.log.gz"
+  },
+  "runtimeBehavior": {
+    "passed": true,
+    "artifact": "actual-http-observations-final.json",
+    "transport": "actual-loopback-TCP with disposable DB/fake CLI+provider; external transport blocked"
+  },
+  "independentReview": {
+    "findings": [],
+    "artifact": "review-final-summary.json"
+  },
+  "previousPass": {
+    "total": 3151,
+    "purpose": "before review patches; not final acceptance evidence",
+    "rawLog": "workspace-tests-before-review-patches.log.gz"
+  },
+  "limits": [
+    "Uncommitted working-tree acceptance; reviewed HEAD alone does not contain fixes.",
+    "No user Project/credential/live GitHub operation.",
+    "Reviewer119-test Node22 run is diagnostic, not required gate.",
+    "A5-A7 and DW119 remain deferred; no full native/live release certification."
+  ],
+  "sourceCoherentAfterAllGates": true
+}

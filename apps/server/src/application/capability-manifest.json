@@ -1,0 +1,1851 @@
+{
+  "capabilities": [
+    {
+      "file": "apps/server/src/application/changeset/changeset.use-cases.ts",
+      "export": "applyChangeSetDescriptor",
+      "name": "applyChangeSet",
+      "kind": "write",
+      "tool": "ApplyChangeSet",
+      "route": "POST /api/changesets/:changeSetId/apply"
+    },
+    {
+      "file": "apps/server/src/application/changeset/changeset.use-cases.ts",
+      "export": "approveChangeSetDescriptor",
+      "name": "approveChangeSet",
+      "kind": "write",
+      "tool": "ApproveChangeSet",
+      "route": "POST /api/changesets/:changeSetId/approve"
+    },
+    {
+      "file": "apps/server/src/application/card/card.use-cases.ts",
+      "export": "archiveCardDescriptor",
+      "name": "archiveCard",
+      "kind": "write",
+      "tool": "DeleteOrArchiveStoryMapCard",
+      "route": "POST /api/cards/:cardId/archive"
+    },
+    {
+      "file": "apps/server/src/application/card/card.use-cases.ts",
+      "export": "bulkUpdateCardsDescriptor",
+      "name": "bulkUpdateCards",
+      "kind": "write",
+      "route": "PATCH /api/cards/bulk",
+      "tool": "BulkUpdateCards"
+    },
+    {
+      "file": "apps/server/src/application/report/plan-state.use-cases.ts",
+      "export": "capturePlanStateDescriptor",
+      "name": "capturePlanState",
+      "kind": "human-only",
+      "route": "POST /api/story-maps/:storyMapId/plan-states"
+    },
+    {
+      "file": "apps/server/src/application/card/card-review.use-cases.ts",
+      "export": "commandCardReviewDescriptor",
+      "name": "commandCardReview",
+      "kind": "write",
+      "tool": "CardReview",
+      "route": "POST /api/projects/:projectId/card-reviews"
+    },
+    {
+      "file": "apps/server/src/application/report/plan-state.use-cases.ts",
+      "export": "comparePlanStatesDescriptor",
+      "name": "comparePlanStates",
+      "kind": "read",
+      "route": "GET /api/story-maps/:storyMapId/plan-states/compare",
+      "tool": "ComparePlanStates"
+    },
+    {
+      "file": "apps/server/src/application/sync/remote-push.use-cases.ts",
+      "export": "confirmRemotePushPlanDescriptor",
+      "name": "confirmRemotePushPlan",
+      "kind": "human-only",
+      "route": "POST /api/sync/work-items/confirm"
+    },
+    {
+      "file": "apps/server/src/application/connector/github-connect.use-cases.ts",
+      "export": "connectGitHubConnectionDescriptor",
+      "name": "connectGitHubConnection",
+      "kind": "human-only",
+      "route": "POST /api/connectors/github/connect"
+    },
+    {
+      "file": "apps/server/src/application/ai/ai.use-cases.ts",
+      "export": "createAiProposalDescriptor",
+      "name": "createAiProposal",
+      "kind": "write",
+      "route": "POST /api/ai/proposals",
+      "tool": "CreateAiProposal"
+    },
+    {
+      "file": "apps/server/src/application/ai/ai.use-cases.ts",
+      "export": "createAiTemplateDescriptor",
+      "name": "createAiTemplate",
+      "kind": "human-only",
+      "route": "POST /api/ai/templates"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "createAnnotationDescriptor",
+      "name": "createAnnotation",
+      "kind": "write",
+      "route": "POST /api/annotations",
+      "tool": "CreateAnnotation"
+    },
+    {
+      "file": "apps/server/src/application/card/card.use-cases.ts",
+      "export": "createCardDescriptor",
+      "name": "createCard",
+      "kind": "write",
+      "tool": "CreateStoryMapCard",
+      "route": "POST /api/cards"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "createCardAttachmentDescriptor",
+      "name": "createCardAttachment",
+      "kind": "write",
+      "route": "POST /api/cards/:cardId/attachments",
+      "tool": "CreateCardAttachment"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "createCardSourceLinkDescriptor",
+      "name": "createCardSourceLink",
+      "kind": "write",
+      "route": "POST /api/cards/:cardId/source-links",
+      "tool": "CreateCardSourceLink"
+    },
+    {
+      "file": "apps/server/src/application/connector/connector.use-cases.ts",
+      "export": "createConnectorConnectionDescriptor",
+      "name": "createConnectorConnection",
+      "kind": "human-only",
+      "route": "POST /api/connectors/connections"
+    },
+    {
+      "file": "apps/server/src/application/github-link/github-link.use-cases.ts",
+      "export": "createGitHubIssueDryRunDescriptor",
+      "name": "createGitHubIssueDryRun",
+      "kind": "write",
+      "route": "POST /api/github/issue-dry-run",
+      "tool": "CreateGitHubIssueDryRun"
+    },
+    {
+      "file": "apps/server/src/application/github-link/github-link.use-cases.ts",
+      "export": "createGitHubLinkDescriptor",
+      "name": "createGitHubLink",
+      "kind": "write",
+      "route": "POST /api/github/links",
+      "tool": "CreateGitHubLink"
+    },
+    {
+      "file": "apps/server/src/application/persona/persona.use-cases.ts",
+      "export": "createPersonaDescriptor",
+      "name": "createPersona",
+      "kind": "write",
+      "tool": "CreateStoryMapPersona",
+      "route": "POST /api/personas"
+    },
+    {
+      "file": "apps/server/src/application/project/project.use-cases.ts",
+      "export": "createProjectDescriptor",
+      "name": "createProject",
+      "kind": "human-only",
+      "route": "POST /api/projects"
+    },
+    {
+      "file": "apps/server/src/application/release/release.use-cases.ts",
+      "export": "createReleaseDescriptor",
+      "name": "createRelease",
+      "kind": "write",
+      "tool": "CreateStoryMapRelease",
+      "route": "POST /api/releases"
+    },
+    {
+      "file": "apps/server/src/application/restore/restore.use-cases.ts",
+      "export": "createRestorePointDescriptor",
+      "name": "createRestorePoint",
+      "kind": "human-only",
+      "route": "POST /api/human/projects/:projectId/restore-points"
+    },
+    {
+      "file": "apps/server/src/application/roadmap/roadmap.use-cases.ts",
+      "export": "createRoadmapDescriptor",
+      "name": "createRoadmap",
+      "kind": "write",
+      "route": "POST /api/roadmaps",
+      "tool": "CreateRoadmap"
+    },
+    {
+      "file": "apps/server/src/application/roadmap/roadmap.use-cases.ts",
+      "export": "createRoadmapCardDescriptor",
+      "name": "createRoadmapCard",
+      "kind": "write",
+      "route": "POST /api/roadmap-cards",
+      "tool": "CreateRoadmapCard"
+    },
+    {
+      "file": "apps/server/src/application/roadmap/roadmap.use-cases.ts",
+      "export": "createRoadmapColumnDescriptor",
+      "name": "createRoadmapColumn",
+      "kind": "write",
+      "route": "POST /api/roadmap-columns",
+      "tool": "CreateRoadmapColumn"
+    },
+    {
+      "file": "apps/server/src/application/roadmap/roadmap.use-cases.ts",
+      "export": "createRoadmapReferenceDescriptor",
+      "name": "createRoadmapReference",
+      "kind": "write",
+      "route": "POST /api/roadmap-references",
+      "tool": "CreateRoadmapReference"
+    },
+    {
+      "file": "apps/server/src/application/roadmap/roadmap.use-cases.ts",
+      "export": "createRoadmapSwimlaneDescriptor",
+      "name": "createRoadmapSwimlane",
+      "kind": "write",
+      "route": "POST /api/roadmap-swimlanes",
+      "tool": "CreateRoadmapSwimlane"
+    },
+    {
+      "file": "apps/server/src/application/story-map/story-map.use-cases.ts",
+      "export": "createStoryMapDescriptor",
+      "name": "createStoryMap",
+      "kind": "write",
+      "route": "POST /api/story-maps",
+      "tool": "CreateStoryMap"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "createStoryTemplateDescriptor",
+      "name": "createStoryTemplate",
+      "kind": "write",
+      "route": "POST /api/story-templates",
+      "tool": "CreateStoryTemplate"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "createWorkflowStatusDescriptor",
+      "name": "createWorkflowStatus",
+      "kind": "write",
+      "route": "POST /api/workflow-statuses",
+      "tool": "CreateWorkflowStatus"
+    },
+    {
+      "file": "apps/server/src/application/ai/ai.use-cases.ts",
+      "export": "deleteAiTemplateDescriptor",
+      "name": "deleteAiTemplate",
+      "kind": "human-only",
+      "route": "DELETE /api/projects/:projectId/ai/templates/:templateId"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "deleteAnnotationDescriptor",
+      "name": "deleteAnnotation",
+      "kind": "write",
+      "route": "DELETE /api/annotations/:annotationId",
+      "tool": "DeleteAnnotation"
+    },
+    {
+      "file": "apps/server/src/application/card/card.use-cases.ts",
+      "export": "deleteCardDescriptor",
+      "name": "deleteCard",
+      "kind": "write",
+      "route": "POST /api/cards/:cardId/delete",
+      "tool": "DeleteCard"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "deleteCardAnnotationDescriptor",
+      "name": "deleteCardAnnotation",
+      "kind": "write",
+      "route": "DELETE /api/cards/:cardId/annotations/:annotationId",
+      "tool": "DeleteCardAnnotation"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "deleteCardAttachmentDescriptor",
+      "name": "deleteCardAttachment",
+      "kind": "write",
+      "route": "DELETE /api/cards/:cardId/attachments/:attachmentId",
+      "tool": "DeleteCardAttachment"
+    },
+    {
+      "file": "apps/server/src/application/card/card-dependencies.use-cases.ts",
+      "export": "deleteCardDependencyDescriptor",
+      "name": "deleteCardDependency",
+      "kind": "write",
+      "route": "DELETE /api/cards/:cardId/dependencies/:prerequisiteCardId",
+      "tool": "DeleteCardDependency"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "deleteCardPersonaDescriptor",
+      "name": "deleteCardPersona",
+      "kind": "write",
+      "route": "DELETE /api/cards/:cardId/personas/:personaId",
+      "tool": "DeleteCardPersona"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "deleteCardSourceLinkDescriptor",
+      "name": "deleteCardSourceLink",
+      "kind": "write",
+      "route": "DELETE /api/cards/:cardId/source-links",
+      "tool": "DeleteCardSourceLink"
+    },
+    {
+      "file": "apps/server/src/application/card/card.use-cases.ts",
+      "export": "deleteCardsDescriptor",
+      "name": "deleteCards",
+      "kind": "write",
+      "route": "POST /api/cards/delete-set",
+      "tool": "DeleteCards"
+    },
+    {
+      "file": "apps/server/src/application/connector/connector.use-cases.ts",
+      "export": "deleteConnectorConnectionDescriptor",
+      "name": "deleteConnectorConnection",
+      "kind": "human-only",
+      "route": "DELETE /api/connectors/connections/:connectionId"
+    },
+    {
+      "file": "apps/server/src/application/github-link/github-link.use-cases.ts",
+      "export": "deleteGitHubLinkDescriptor",
+      "name": "deleteGitHubLink",
+      "kind": "write",
+      "route": "DELETE /api/github/links/:linkId",
+      "tool": "DeleteGitHubLink"
+    },
+    {
+      "file": "apps/server/src/application/persona/persona.use-cases.ts",
+      "export": "deletePersonaDescriptor",
+      "name": "deletePersona",
+      "kind": "write",
+      "route": "DELETE /api/personas/:personaId",
+      "tool": "DeletePersona"
+    },
+    {
+      "file": "apps/server/src/application/release/release.use-cases.ts",
+      "export": "deleteReleaseDescriptor",
+      "name": "deleteRelease",
+      "kind": "write",
+      "route": "POST /api/releases/:releaseId/delete",
+      "tool": "DeleteRelease"
+    },
+    {
+      "file": "apps/server/src/application/story-map/story-map.use-cases.ts",
+      "export": "deleteStoryMapDescriptor",
+      "name": "deleteStoryMap",
+      "kind": "write",
+      "route": "DELETE /api/story-maps/:storyMapId",
+      "tool": "DeleteStoryMap"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "deleteStoryTemplateDescriptor",
+      "name": "deleteStoryTemplate",
+      "kind": "write",
+      "route": "DELETE /api/story-templates/:templateId",
+      "tool": "DeleteStoryTemplate"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "deleteWorkflowStatusDescriptor",
+      "name": "deleteWorkflowStatus",
+      "kind": "write",
+      "route": "DELETE /api/workflow-statuses/:statusId",
+      "tool": "DeleteWorkflowStatus"
+    },
+    {
+      "file": "apps/server/src/application/project/project.use-cases.ts",
+      "export": "dismissGettingStartedDescriptor",
+      "name": "dismissGettingStarted",
+      "kind": "human-only",
+      "route": "POST /api/projects/:projectId/getting-started/dismiss"
+    },
+    {
+      "file": "apps/server/src/application/export/export.use-cases.ts",
+      "export": "exportAuditDescriptor",
+      "name": "exportAudit",
+      "kind": "write",
+      "route": "GET /api/exports/audit",
+      "tool": "ExportAudit"
+    },
+    {
+      "file": "apps/server/src/application/export/export.use-cases.ts",
+      "export": "exportProjectArchiveDescriptor",
+      "name": "exportProjectArchive",
+      "kind": "human-only",
+      "route": "GET /api/projects/export"
+    },
+    {
+      "file": "apps/server/src/application/export/export.use-cases.ts",
+      "export": "exportStoryMapDescriptor",
+      "name": "exportStoryMap",
+      "kind": "write",
+      "route": "GET /api/exports/story-map",
+      "tool": "ExportStoryMap"
+    },
+    {
+      "file": "apps/server/src/application/report/report.use-cases.ts",
+      "export": "getBacklogHealthReportDescriptor",
+      "name": "getBacklogHealthReport",
+      "kind": "read",
+      "route": "GET /api/reports/backlog-health",
+      "tool": "GetBacklogHealthReport"
+    },
+    {
+      "file": "apps/server/src/application/card/card.use-cases.ts",
+      "export": "getCardDetailsDescriptor",
+      "name": "getCardDetails",
+      "kind": "read",
+      "tool": "GetStoryMapCardDetails"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "getCardHistoryDescriptor",
+      "name": "getCardHistory",
+      "kind": "read",
+      "route": "GET /api/cards/:cardId/history",
+      "tool": "GetCardHistory"
+    },
+    {
+      "file": "apps/server/src/application/card/card-review.use-cases.ts",
+      "export": "getCardReviewsDescriptor",
+      "name": "getCardReviews",
+      "kind": "read",
+      "tool": "GetCardReviews",
+      "route": "GET /api/projects/:projectId/card-reviews"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "getCustomizationDescriptor",
+      "name": "getCustomization",
+      "kind": "read",
+      "route": "GET /api/customization",
+      "tool": "GetCustomization"
+    },
+    {
+      "file": "apps/server/src/application/project/project.use-cases.ts",
+      "export": "getGettingStartedDescriptor",
+      "name": "getGettingStarted",
+      "kind": "human-only",
+      "route": "GET /api/projects/:projectId/getting-started"
+    },
+    {
+      "file": "apps/server/src/application/github-link/github-link.use-cases.ts",
+      "export": "getGitHubSyncHealthDescriptor",
+      "name": "getGitHubSyncHealth",
+      "kind": "read",
+      "route": "GET /api/github/sync-health",
+      "tool": "GetGitHubSyncHealth"
+    },
+    {
+      "file": "apps/server/src/application/report/plan-drift.use-cases.ts",
+      "export": "getPlanDriftReportDescriptor",
+      "name": "getPlanDriftReport",
+      "kind": "read",
+      "route": "GET /api/story-maps/:storyMapId/plan-drift",
+      "tool": "GetPlanDriftReport"
+    },
+    {
+      "file": "apps/server/src/application/report/plan-state.use-cases.ts",
+      "export": "getPlanStateDescriptor",
+      "name": "getPlanState",
+      "kind": "read",
+      "route": "GET /api/story-maps/:storyMapId/plan-states/:stateId",
+      "tool": "GetPlanState"
+    },
+    {
+      "file": "apps/server/src/application/project/project.use-cases.ts",
+      "export": "getProductContextDescriptor",
+      "name": "getProductContext",
+      "kind": "read",
+      "route": "GET /api/product-context",
+      "tool": "GetProductContext"
+    },
+    {
+      "file": "apps/server/src/application/export/export.use-cases.ts",
+      "export": "getProjectArchiveCapabilitiesDescriptor",
+      "name": "getProjectArchiveCapabilities",
+      "kind": "human-only",
+      "route": "GET /api/human/project-archive-capabilities"
+    },
+    {
+      "file": "apps/server/src/application/release/release.use-cases.ts",
+      "export": "getReleaseDetailsDescriptor",
+      "name": "getReleaseDetails",
+      "kind": "read",
+      "tool": "GetStoryMapReleaseDetails"
+    },
+    {
+      "file": "apps/server/src/application/release/release.use-cases.ts",
+      "export": "getReleaseNotesDescriptor",
+      "name": "getReleaseNotes",
+      "kind": "read",
+      "tool": "GetReleaseNotes",
+      "route": "GET /api/story-maps/:storyMapId/releases/:releaseId/notes"
+    },
+    {
+      "file": "apps/server/src/application/report/report.use-cases.ts",
+      "export": "getReleaseSummaryReportDescriptor",
+      "name": "getReleaseSummaryReport",
+      "kind": "read",
+      "route": "GET /api/reports/release-summary",
+      "tool": "GetReleaseSummaryReport"
+    },
+    {
+      "file": "apps/server/src/application/report/report.use-cases.ts",
+      "export": "getReleaseTimelineReportDescriptor",
+      "name": "getReleaseTimelineReport",
+      "kind": "read",
+      "route": "GET /api/reports/release-timeline",
+      "tool": "GetReleaseTimelineReport"
+    },
+    {
+      "file": "apps/server/src/application/sync/remote-push.use-cases.ts",
+      "export": "getRemotePushPlanDescriptor",
+      "name": "getRemotePushPlan",
+      "kind": "read",
+      "route": "GET /api/sync/work-items/plans/:planId"
+    },
+    {
+      "file": "apps/server/src/application/restore/restore.use-cases.ts",
+      "export": "getRestorePointCapabilitiesDescriptor",
+      "name": "getRestorePointCapabilities",
+      "kind": "human-only",
+      "route": "GET /api/human/restore-point-capabilities"
+    },
+    {
+      "file": "apps/server/src/application/roadmap/roadmap.use-cases.ts",
+      "export": "getRoadmapDetailsDescriptor",
+      "name": "getRoadmapDetails",
+      "kind": "read",
+      "route": "GET /api/roadmaps/:roadmapId",
+      "tool": "GetRoadmapDetails"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "getSafetySettingsDescriptor",
+      "name": "getSafetySettings",
+      "kind": "read",
+      "route": "GET /api/settings/safety",
+      "tool": "GetSafetySettings"
+    },
+    {
+      "file": "apps/server/src/application/report/plan-state.use-cases.ts",
+      "export": "getSlicesReportDescriptor",
+      "name": "getSlicesReport",
+      "kind": "read",
+      "route": "GET /api/story-maps/:storyMapId/slices",
+      "tool": "GetSlicesReport"
+    },
+    {
+      "file": "apps/server/src/application/report/report.use-cases.ts",
+      "export": "getSourceCoverageReportDescriptor",
+      "name": "getSourceCoverageReport",
+      "kind": "read",
+      "route": "GET /api/reports/source-coverage",
+      "tool": "GetSourceCoverageReport"
+    },
+    {
+      "file": "apps/server/src/application/source-document/source-document.use-cases.ts",
+      "export": "getSourceDocumentDescriptor",
+      "name": "getSourceDocument",
+      "kind": "read",
+      "route": "GET /api/source-documents/:documentId",
+      "tool": "GetSourceDocument"
+    },
+    {
+      "file": "apps/server/src/application/story-map/story-map.use-cases.ts",
+      "export": "getStoryMapDataDescriptor",
+      "name": "getStoryMapData",
+      "kind": "read",
+      "tool": "GetStoryMapData"
+    },
+    {
+      "file": "apps/server/src/application/story-map/story-map.use-cases.ts",
+      "export": "getStoryMapSnapshotDescriptor",
+      "name": "getStoryMapSnapshot",
+      "kind": "read",
+      "route": "GET /api/story-maps/:storyMapId",
+      "tool": "GetStoryMapSnapshot"
+    },
+    {
+      "file": "apps/server/src/application/sync/sync.use-cases.ts",
+      "export": "getWorkItemSyncHealthDescriptor",
+      "name": "getWorkItemSyncHealth",
+      "kind": "read",
+      "route": "GET /api/sync/work-items/health",
+      "tool": "GetWorkItemSyncHealth"
+    },
+    {
+      "file": "apps/server/src/application/sync/sync.use-cases.ts",
+      "export": "importGitHubTicketDescriptor",
+      "name": "importGitHubTicket",
+      "kind": "write",
+      "route": "POST /api/sync/work-items/import-ticket",
+      "tool": "ImportGitHubTicket"
+    },
+    {
+      "file": "apps/server/src/application/export/export.use-cases.ts",
+      "export": "importProjectArchiveDescriptor",
+      "name": "importProjectArchive",
+      "kind": "human-only",
+      "route": "POST /api/projects/import"
+    },
+    {
+      "file": "apps/server/src/application/source-document/source-document.use-cases.ts",
+      "export": "importSourceDocumentDescriptor",
+      "name": "importSourceDocument",
+      "kind": "write",
+      "route": "POST /api/source-documents/import",
+      "tool": "ImportSourceDocument"
+    },
+    {
+      "file": "apps/server/src/application/sync/sync.use-cases.ts",
+      "export": "importWorkItemsDescriptor",
+      "name": "importWorkItems",
+      "kind": "write",
+      "tool": "ImportGitHubIssues",
+      "route": "POST /api/sync/work-items/import"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "listActivityDescriptor",
+      "name": "listActivity",
+      "kind": "read",
+      "route": "GET /api/activity",
+      "tool": "ListActivity"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "listActivityChangesDescriptor",
+      "name": "listActivityChanges",
+      "kind": "read",
+      "route": "GET /api/activity/changes"
+    },
+    {
+      "file": "apps/server/src/application/ai/ai.use-cases.ts",
+      "export": "listAiTemplatesDescriptor",
+      "name": "listAiTemplates",
+      "kind": "read",
+      "route": "GET /api/ai/templates",
+      "tool": "ListAiTemplates"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "listCardAttachmentsDescriptor",
+      "name": "listCardAttachments",
+      "kind": "read",
+      "route": "GET /api/cards/:cardId/attachments",
+      "tool": "ListCardAttachments"
+    },
+    {
+      "file": "apps/server/src/application/card/card.use-cases.ts",
+      "export": "listCardsDescriptor",
+      "name": "listCards",
+      "kind": "read",
+      "tool": "GetStoryMapCards"
+    },
+    {
+      "file": "apps/server/src/application/changeset/changeset.use-cases.ts",
+      "export": "listChangeSetsDescriptor",
+      "name": "listChangeSets",
+      "kind": "read",
+      "route": "GET /api/changesets",
+      "tool": "ListChangeSets"
+    },
+    {
+      "file": "apps/server/src/application/connector/connector.use-cases.ts",
+      "export": "listConnectorConnectionsDescriptor",
+      "name": "listConnectorConnections",
+      "kind": "read",
+      "route": "GET /api/connectors/connections",
+      "tool": "ListConnectorConnections"
+    },
+    {
+      "file": "apps/server/src/application/github-link/github-link.use-cases.ts",
+      "export": "listGitHubLinksDescriptor",
+      "name": "listGitHubLinks",
+      "kind": "read",
+      "tool": "ListGitHubLinks",
+      "route": "GET /api/github/links"
+    },
+    {
+      "file": "apps/server/src/application/connector/connector.use-cases.ts",
+      "export": "listGitHubStatusProjectsDescriptor",
+      "name": "listGitHubStatusProjects",
+      "kind": "human-only",
+      "route": "POST /api/connectors/status-projects"
+    },
+    {
+      "file": "apps/server/src/application/persona/persona.use-cases.ts",
+      "export": "listPersonasDescriptor",
+      "name": "listPersonas",
+      "kind": "read",
+      "tool": "GetStoryMapPersonaDetails",
+      "route": "GET /api/personas"
+    },
+    {
+      "file": "apps/server/src/application/report/plan-drift.use-cases.ts",
+      "export": "listPlanDriftSystemsDescriptor",
+      "name": "listPlanDriftSystems",
+      "kind": "read",
+      "route": "GET /api/story-maps/:storyMapId/plan-drift/systems",
+      "tool": "ListPlanDriftSystems"
+    },
+    {
+      "file": "apps/server/src/application/report/plan-state.use-cases.ts",
+      "export": "listPlanStatesDescriptor",
+      "name": "listPlanStates",
+      "kind": "read",
+      "route": "GET /api/story-maps/:storyMapId/plan-states",
+      "tool": "ListPlanStates"
+    },
+    {
+      "file": "apps/server/src/application/project/project.use-cases.ts",
+      "export": "listProjectsDescriptor",
+      "name": "listProjects",
+      "kind": "read",
+      "tool": "ListProjects",
+      "route": "GET /api/projects"
+    },
+    {
+      "file": "apps/server/src/application/restore/restore.use-cases.ts",
+      "export": "listRestorePointsDescriptor",
+      "name": "listRestorePoints",
+      "kind": "human-only",
+      "route": "GET /api/human/projects/:projectId/restore-points"
+    },
+    {
+      "file": "apps/server/src/application/roadmap/roadmap.use-cases.ts",
+      "export": "listRoadmapsDescriptor",
+      "name": "listRoadmaps",
+      "kind": "read",
+      "route": "GET /api/roadmaps",
+      "tool": "ListRoadmaps"
+    },
+    {
+      "file": "apps/server/src/application/source-document/source-document.use-cases.ts",
+      "export": "listSourceDocumentsDescriptor",
+      "name": "listSourceDocuments",
+      "kind": "read",
+      "route": "GET /api/source-documents",
+      "tool": "ListSourceDocuments"
+    },
+    {
+      "file": "apps/server/src/application/story-map/story-map.use-cases.ts",
+      "export": "listStoryMapsDescriptor",
+      "name": "listStoryMaps",
+      "kind": "read",
+      "tool": "ListStoryMaps",
+      "route": "GET /api/story-maps"
+    },
+    {
+      "file": "apps/server/src/application/sync/sync.use-cases.ts",
+      "export": "lookupGitHubTicketDescriptor",
+      "name": "lookupGitHubTicket",
+      "kind": "read",
+      "route": "POST /api/sync/work-items/lookup-ticket",
+      "tool": "LookupGitHubTicket"
+    },
+    {
+      "file": "apps/server/src/application/card/card.use-cases.ts",
+      "export": "moveCardDescriptor",
+      "name": "moveCard",
+      "kind": "write",
+      "tool": "MoveStoryMapCard",
+      "route": "POST /api/cards/:cardId/move"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "parkCardDescriptor",
+      "name": "parkCard",
+      "kind": "write",
+      "route": "POST /api/cards/:cardId/park",
+      "tool": "ParkCard"
+    },
+    {
+      "file": "apps/server/src/application/sync/sync.use-cases.ts",
+      "export": "planWorkItemsDescriptor",
+      "name": "planWorkItems",
+      "kind": "write",
+      "route": "POST /api/sync/work-items/plan",
+      "tool": "PlanWorkItems"
+    },
+    {
+      "file": "apps/server/src/application/changeset/preview-changeset.use-cases.ts",
+      "export": "previewChangeSetDescriptor",
+      "name": "previewChangeSet",
+      "kind": "read",
+      "route": "GET /api/changesets/:changeSetId/preview"
+    },
+    {
+      "file": "apps/server/src/application/changeset/changeset.use-cases.ts",
+      "export": "proposeBacklogGroomingDescriptor",
+      "name": "proposeBacklogGrooming",
+      "kind": "write",
+      "tool": "ProposeBacklogGrooming"
+    },
+    {
+      "file": "apps/server/src/application/changeset/tool-proposals.use-cases.ts",
+      "export": "proposeGitHubBoardDescriptor",
+      "name": "proposeGitHubBoard",
+      "kind": "human-only",
+      "route": "POST /api/tool-proposals/github-board"
+    },
+    {
+      "file": "apps/server/src/application/changeset/changeset.use-cases.ts",
+      "export": "proposeMapFromSourceDocumentDescriptor",
+      "name": "proposeMapFromSourceDocument",
+      "kind": "write",
+      "tool": "ProposeMapFromSourceDocument"
+    },
+    {
+      "file": "apps/server/src/application/changeset/changeset.use-cases.ts",
+      "export": "proposeReleaseSliceDescriptor",
+      "name": "proposeReleaseSlice",
+      "kind": "write",
+      "tool": "ProposeReleaseSlice"
+    },
+    {
+      "file": "apps/server/src/application/changeset/tool-proposals.use-cases.ts",
+      "export": "proposeStoryMapCopyDescriptor",
+      "name": "proposeStoryMapCopy",
+      "kind": "human-only",
+      "route": "POST /api/tool-proposals/copy-story-map"
+    },
+    {
+      "file": "apps/server/src/application/sync/sync.use-cases.ts",
+      "export": "pullStoryMapWorkItemsDescriptor",
+      "name": "pullStoryMapWorkItems",
+      "kind": "write",
+      "tool": "PullStoryMapGitHubLinks",
+      "route": "POST /api/sync/work-items/pull-story-map"
+    },
+    {
+      "file": "apps/server/src/application/sync/sync.use-cases.ts",
+      "export": "pushWorkItemsDescriptor",
+      "name": "pushWorkItems",
+      "kind": "write",
+      "tool": "PushCardsToGitHub",
+      "route": "POST /api/sync/work-items/push"
+    },
+    {
+      "file": "apps/server/src/application/restore/restore.use-cases.ts",
+      "export": "readRestoreActivityDescriptor",
+      "name": "readRestoreActivity",
+      "kind": "human-only",
+      "route": "GET /api/human/projects/:projectId/restore-activity"
+    },
+    {
+      "file": "apps/server/src/application/project/project.use-cases.ts",
+      "export": "recordVisualExportDescriptor",
+      "name": "recordVisualExport",
+      "kind": "human-only",
+      "route": "POST /api/projects/:projectId/getting-started/export-success"
+    },
+    {
+      "file": "apps/server/src/application/changeset/changeset.use-cases.ts",
+      "export": "rejectChangeSetDescriptor",
+      "name": "rejectChangeSet",
+      "kind": "human-only",
+      "route": "POST /api/changesets/:changeSetId/reject"
+    },
+    {
+      "file": "apps/server/src/application/sync/sync-conflict.use-cases.ts",
+      "export": "resolveSyncConflictDescriptor",
+      "name": "resolveSyncConflict",
+      "tool": "ResolveSyncConflict",
+      "kind": "write",
+      "route": "POST /api/sync/conflicts/:conflictId/resolve"
+    },
+    {
+      "file": "apps/server/src/application/restore/restore.use-cases.ts",
+      "export": "restoreProjectDescriptor",
+      "name": "restoreProject",
+      "kind": "human-only",
+      "route": "POST /api/human/projects/:projectId/restore"
+    },
+    {
+      "file": "apps/server/src/application/sync/remote-push.use-cases.ts",
+      "export": "resumeRemotePushPlanDescriptor",
+      "name": "resumeRemotePushPlan",
+      "kind": "human-only",
+      "route": "POST /api/sync/work-items/resume"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "setCardAnnotationDescriptor",
+      "name": "setCardAnnotation",
+      "kind": "write",
+      "route": "POST /api/cards/:cardId/annotations/:annotationId",
+      "tool": "SetCardAnnotation"
+    },
+    {
+      "file": "apps/server/src/application/card/card-dependencies.use-cases.ts",
+      "export": "setCardDependencyDescriptor",
+      "name": "setCardDependency",
+      "kind": "write",
+      "route": "POST /api/cards/:cardId/dependencies",
+      "tool": "SetCardDependency"
+    },
+    {
+      "file": "apps/server/src/application/external-ref/external-ref.use-cases.ts",
+      "export": "setCardExternalRefDescriptor",
+      "name": "setCardExternalRef",
+      "kind": "human-only",
+      "route": "POST /api/cards/:cardId/external-refs"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "setCardPersonaDescriptor",
+      "name": "setCardPersona",
+      "kind": "write",
+      "route": "POST /api/cards/:cardId/personas/:personaId",
+      "tool": "SetCardPersona"
+    },
+    {
+      "file": "apps/server/src/application/external-ref/external-ref.use-cases.ts",
+      "export": "setExternalRefDescriptor",
+      "name": "setExternalRef",
+      "kind": "write",
+      "tool": "SetExternalRef"
+    },
+    {
+      "file": "apps/server/src/application/external-ref/external-ref.use-cases.ts",
+      "export": "setPersonaExternalRefDescriptor",
+      "name": "setPersonaExternalRef",
+      "kind": "human-only",
+      "route": "POST /api/personas/:personaId/external-refs"
+    },
+    {
+      "file": "apps/server/src/application/external-ref/external-ref.use-cases.ts",
+      "export": "setReleaseExternalRefDescriptor",
+      "name": "setReleaseExternalRef",
+      "kind": "human-only",
+      "route": "POST /api/releases/:releaseId/external-refs"
+    },
+    {
+      "file": "apps/server/src/application/connector/credential.use-cases.ts",
+      "export": "storeGitHubCredentialDescriptor",
+      "name": "storeGitHubCredential",
+      "kind": "human-only"
+    },
+    {
+      "file": "apps/server/src/application/changeset/submit-changeset.use-cases.ts",
+      "export": "submitChangeSetDescriptor",
+      "name": "submitChangeSet",
+      "kind": "write",
+      "tool": "SubmitChangeSet"
+    },
+    {
+      "file": "apps/server/src/application/sync/sync.use-cases.ts",
+      "export": "syncWorkItemsDescriptor",
+      "name": "syncWorkItems",
+      "kind": "write",
+      "tool": "SyncGitHubLinks",
+      "route": "POST /api/sync/work-items/sync"
+    },
+    {
+      "file": "apps/server/src/application/card/card-children.use-cases.ts",
+      "export": "unparkCardDescriptor",
+      "name": "unparkCard",
+      "kind": "write",
+      "route": "POST /api/cards/:cardId/unpark",
+      "tool": "UnparkCard"
+    },
+    {
+      "file": "apps/server/src/application/ai/ai.use-cases.ts",
+      "export": "updateAiTemplateDescriptor",
+      "name": "updateAiTemplate",
+      "kind": "human-only",
+      "route": "PATCH /api/projects/:projectId/ai/templates/:templateId"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "updateAnnotationDescriptor",
+      "name": "updateAnnotation",
+      "kind": "write",
+      "route": "PATCH /api/annotations/:annotationId",
+      "tool": "UpdateAnnotation"
+    },
+    {
+      "file": "apps/server/src/application/card/card.use-cases.ts",
+      "export": "updateCardDescriptor",
+      "name": "updateCard",
+      "kind": "write",
+      "tool": "UpdateStoryMapCard",
+      "route": "PATCH /api/cards/:cardId"
+    },
+    {
+      "file": "apps/server/src/application/connector/connector.use-cases.ts",
+      "export": "updateConnectorConnectionDescriptor",
+      "name": "updateConnectorConnection",
+      "kind": "human-only",
+      "route": "PATCH /api/connectors/connections/:connectionId"
+    },
+    {
+      "file": "apps/server/src/application/card/delivery-status.use-cases.ts",
+      "export": "updateDeliveryStatusDescriptor",
+      "name": "updateDeliveryStatus",
+      "kind": "write",
+      "tool": "UpdateDeliveryStatus"
+    },
+    {
+      "file": "apps/server/src/application/github-link/github-link.use-cases.ts",
+      "export": "updateGitHubLinkDescriptor",
+      "name": "updateGitHubLink",
+      "kind": "write",
+      "route": "PATCH /api/github/links/:linkId",
+      "tool": "UpdateGitHubLink"
+    },
+    {
+      "file": "apps/server/src/application/persona/persona.use-cases.ts",
+      "export": "updatePersonaDescriptor",
+      "name": "updatePersona",
+      "kind": "write",
+      "tool": "UpdateStoryMapPersona",
+      "route": "PATCH /api/personas/:personaId"
+    },
+    {
+      "file": "apps/server/src/application/release/release.use-cases.ts",
+      "export": "updateReleaseDescriptor",
+      "name": "updateRelease",
+      "kind": "write",
+      "tool": "UpdateStoryMapRelease",
+      "route": "PATCH /api/releases/:releaseId"
+    },
+    {
+      "file": "apps/server/src/application/roadmap/roadmap.use-cases.ts",
+      "export": "updateRoadmapDescriptor",
+      "name": "updateRoadmap",
+      "kind": "write",
+      "route": "PATCH /api/roadmaps/:roadmapId",
+      "tool": "UpdateRoadmap"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "updateSafetySettingsDescriptor",
+      "name": "updateSafetySettings",
+      "kind": "human-only",
+      "route": "PATCH /api/settings/safety"
+    },
+    {
+      "file": "apps/server/src/application/story-map/story-map.use-cases.ts",
+      "export": "updateStoryMapDescriptor",
+      "name": "updateStoryMap",
+      "kind": "write",
+      "route": "PATCH /api/story-maps/:storyMapId",
+      "tool": "UpdateStoryMap"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "updateStoryTemplateDescriptor",
+      "name": "updateStoryTemplate",
+      "kind": "write",
+      "route": "PATCH /api/story-templates/:templateId",
+      "tool": "UpdateStoryTemplate"
+    },
+    {
+      "file": "apps/server/src/application/customization/customization.use-cases.ts",
+      "export": "updateWorkflowStatusDescriptor",
+      "name": "updateWorkflowStatus",
+      "kind": "write",
+      "route": "PATCH /api/workflow-statuses/:statusId",
+      "tool": "UpdateWorkflowStatus"
+    },
+    {
+      "file": "apps/server/src/application/project/project.use-cases.ts",
+      "export": "upsertProductContextDescriptor",
+      "name": "upsertProductContext",
+      "kind": "write",
+      "route": "PATCH /api/product-context",
+      "tool": "UpsertProductContext"
+    },
+    {
+      "file": "apps/server/src/application/connector/connector.use-cases.ts",
+      "export": "validateConnectorConnectionDescriptor",
+      "name": "validateConnectorConnection",
+      "kind": "human-only",
+      "route": "POST /api/connectors/connections/validate"
+    },
+    {
+      "file": "apps/server/src/application/connector/github-connect.use-cases.ts",
+      "export": "verifyGitHubConnectionDescriptor",
+      "name": "verifyGitHubConnection",
+      "kind": "human-only",
+      "route": "POST /api/connectors/github/verify"
+    }
+  ],
+  "operationCoverage": [
+    {
+      "name": "applyChangeSet",
+      "operations": [],
+      "exceptions": [
+        "changeset-lifecycle"
+      ]
+    },
+    {
+      "name": "approveChangeSet",
+      "operations": [],
+      "exceptions": [
+        "changeset-lifecycle"
+      ]
+    },
+    {
+      "name": "archiveCard",
+      "operations": [
+        "archive:card"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "bulkUpdateCards",
+      "operations": [
+        "bulk:card"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "capturePlanState",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "commandCardReview",
+      "operations": [],
+      "exceptions": [
+        "immutable-card-review-metadata"
+      ]
+    },
+    {
+      "name": "confirmRemotePushPlan",
+      "operations": [
+        "create:githubExternalRef",
+        "set:remoteWorkItemLink",
+        "resolve:syncConflict",
+        "create:syncRun"
+      ],
+      "exceptions": [
+        "confirmed-remote-write",
+        "sync-baseline-run-conflict-bookkeeping"
+      ]
+    },
+    {
+      "name": "connectGitHubConnection",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "createAiProposal",
+      "operations": [],
+      "exceptions": [
+        "changeset-lifecycle"
+      ]
+    },
+    {
+      "name": "createAiTemplate",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "createAnnotation",
+      "operations": [
+        "create:annotation"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createCard",
+      "operations": [
+        "create:card"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createCardAttachment",
+      "operations": [
+        "create:attachment"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createCardSourceLink",
+      "operations": [
+        "link:sourceLink"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createConnectorConnection",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "createGitHubIssueDryRun",
+      "operations": [],
+      "exceptions": [
+        "audit-checklist-bookkeeping"
+      ]
+    },
+    {
+      "name": "createGitHubLink",
+      "operations": [
+        "create:githubExternalRef"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createPersona",
+      "operations": [
+        "create:persona"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createProject",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "createRelease",
+      "operations": [
+        "create:release"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createRestorePoint",
+      "operations": [],
+      "exceptions": [
+        "restore-archive-lifecycle"
+      ]
+    },
+    {
+      "name": "createRoadmap",
+      "operations": [
+        "create:roadmap"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createRoadmapCard",
+      "operations": [
+        "create:roadmapCard"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createRoadmapColumn",
+      "operations": [
+        "create:roadmapColumn"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createRoadmapReference",
+      "operations": [
+        "create:roadmapReference"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createRoadmapSwimlane",
+      "operations": [
+        "create:roadmapSwimlane"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createStoryMap",
+      "operations": [
+        "create:storyMap"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createStoryTemplate",
+      "operations": [
+        "create:storyTemplate"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "createWorkflowStatus",
+      "operations": [
+        "create:workflowStatus"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteAiTemplate",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "deleteAnnotation",
+      "operations": [
+        "delete:annotation"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteCard",
+      "operations": [
+        "delete:card"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteCardAnnotation",
+      "operations": [
+        "unset:cardAnnotation"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteCardAttachment",
+      "operations": [
+        "delete:attachment"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteCardDependency",
+      "operations": [
+        "unset:cardDependency"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteCardPersona",
+      "operations": [
+        "unset:cardPersona"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteCardSourceLink",
+      "operations": [
+        "unlink:sourceLink"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteCards",
+      "operations": [
+        "delete:card"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteConnectorConnection",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "deleteGitHubLink",
+      "operations": [
+        "delete:githubExternalRef"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deletePersona",
+      "operations": [
+        "delete:persona"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteRelease",
+      "operations": [
+        "delete:release"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteStoryMap",
+      "operations": [
+        "delete:storyMap"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteStoryTemplate",
+      "operations": [
+        "delete:storyTemplate"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "deleteWorkflowStatus",
+      "operations": [
+        "delete:workflowStatus"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "dismissGettingStarted",
+      "operations": [],
+      "exceptions": [
+        "audit-checklist-bookkeeping"
+      ]
+    },
+    {
+      "name": "exportAudit",
+      "operations": [],
+      "exceptions": [
+        "audit-checklist-bookkeeping"
+      ]
+    },
+    {
+      "name": "exportProjectArchive",
+      "operations": [],
+      "exceptions": [
+        "restore-archive-lifecycle"
+      ]
+    },
+    {
+      "name": "exportStoryMap",
+      "operations": [],
+      "exceptions": [
+        "audit-checklist-bookkeeping"
+      ]
+    },
+    {
+      "name": "getGettingStarted",
+      "operations": [],
+      "exceptions": [
+        "audit-checklist-bookkeeping"
+      ]
+    },
+    {
+      "name": "getProjectArchiveCapabilities",
+      "operations": [],
+      "exceptions": [
+        "restore-archive-lifecycle"
+      ]
+    },
+    {
+      "name": "getRestorePointCapabilities",
+      "operations": [],
+      "exceptions": [
+        "restore-archive-lifecycle"
+      ]
+    },
+    {
+      "name": "importGitHubTicket",
+      "operations": [
+        "create:card",
+        "create:githubExternalRef",
+        "set:remoteWorkItemLink",
+        "create:syncRun",
+        "create:annotation",
+        "set:cardAnnotation"
+      ],
+      "exceptions": [
+        "sync-baseline-run-conflict-bookkeeping"
+      ]
+    },
+    {
+      "name": "importProjectArchive",
+      "operations": [],
+      "exceptions": [
+        "restore-archive-lifecycle"
+      ]
+    },
+    {
+      "name": "importSourceDocument",
+      "operations": [
+        "import:sourceDocument"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "importWorkItems",
+      "operations": [
+        "create:card",
+        "create:release",
+        "create:githubExternalRef",
+        "set:remoteWorkItemLink",
+        "create:syncRun",
+        "create:annotation",
+        "set:cardAnnotation"
+      ],
+      "exceptions": [
+        "sync-baseline-run-conflict-bookkeeping"
+      ]
+    },
+    {
+      "name": "listGitHubStatusProjects",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "listRestorePoints",
+      "operations": [],
+      "exceptions": [
+        "restore-archive-lifecycle"
+      ]
+    },
+    {
+      "name": "moveCard",
+      "operations": [
+        "move:card"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "parkCard",
+      "operations": [
+        "park:card"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "planWorkItems",
+      "operations": [],
+      "exceptions": [
+        "sync-baseline-run-conflict-bookkeeping"
+      ]
+    },
+    {
+      "name": "proposeBacklogGrooming",
+      "operations": [],
+      "exceptions": [
+        "changeset-lifecycle"
+      ]
+    },
+    {
+      "name": "proposeGitHubBoard",
+      "operations": [
+        "create:githubBoardImport"
+      ],
+      "exceptions": [
+        "changeset-lifecycle"
+      ]
+    },
+    {
+      "name": "proposeMapFromSourceDocument",
+      "operations": [],
+      "exceptions": [
+        "changeset-lifecycle"
+      ]
+    },
+    {
+      "name": "proposeReleaseSlice",
+      "operations": [],
+      "exceptions": [
+        "changeset-lifecycle"
+      ]
+    },
+    {
+      "name": "proposeStoryMapCopy",
+      "operations": [
+        "create:storyMapCopy"
+      ],
+      "exceptions": [
+        "changeset-lifecycle"
+      ]
+    },
+    {
+      "name": "pullStoryMapWorkItems",
+      "operations": [
+        "update:card",
+        "create:release",
+        "create:githubExternalRef",
+        "set:remoteWorkItemLink",
+        "create:syncRun",
+        "create:syncConflict"
+      ],
+      "exceptions": [
+        "sync-baseline-run-conflict-bookkeeping"
+      ]
+    },
+    {
+      "name": "pushWorkItems",
+      "operations": [
+        "create:syncRun"
+      ],
+      "exceptions": [
+        "sync-baseline-run-conflict-bookkeeping"
+      ]
+    },
+    {
+      "name": "readRestoreActivity",
+      "operations": [],
+      "exceptions": [
+        "restore-archive-lifecycle"
+      ]
+    },
+    {
+      "name": "recordVisualExport",
+      "operations": [],
+      "exceptions": [
+        "audit-checklist-bookkeeping"
+      ]
+    },
+    {
+      "name": "rejectChangeSet",
+      "operations": [],
+      "exceptions": [
+        "changeset-lifecycle"
+      ]
+    },
+    {
+      "name": "resolveSyncConflict",
+      "operations": [
+        "update:card",
+        "create:release",
+        "set:remoteWorkItemLink",
+        "resolve:syncConflict",
+        "create:syncRun"
+      ],
+      "exceptions": [
+        "sync-baseline-run-conflict-bookkeeping"
+      ]
+    },
+    {
+      "name": "restoreProject",
+      "operations": [],
+      "exceptions": [
+        "restore-archive-lifecycle"
+      ]
+    },
+    {
+      "name": "resumeRemotePushPlan",
+      "operations": [
+        "create:githubExternalRef",
+        "set:remoteWorkItemLink",
+        "resolve:syncConflict",
+        "create:syncRun"
+      ],
+      "exceptions": [
+        "confirmed-remote-write",
+        "sync-baseline-run-conflict-bookkeeping"
+      ]
+    },
+    {
+      "name": "setCardAnnotation",
+      "operations": [
+        "set:cardAnnotation"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "setCardDependency",
+      "operations": [
+        "set:cardDependency"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "setCardExternalRef",
+      "operations": [
+        "set:externalRef"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "setCardPersona",
+      "operations": [
+        "set:cardPersona"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "setExternalRef",
+      "operations": [
+        "set:externalRef"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "setPersonaExternalRef",
+      "operations": [
+        "set:externalRef"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "setReleaseExternalRef",
+      "operations": [
+        "set:externalRef"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "storeGitHubCredential",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "submitChangeSet",
+      "operations": [],
+      "exceptions": [
+        "changeset-lifecycle"
+      ]
+    },
+    {
+      "name": "syncWorkItems",
+      "operations": [
+        "update:card",
+        "create:release",
+        "create:githubExternalRef",
+        "set:remoteWorkItemLink",
+        "create:syncRun",
+        "create:syncConflict"
+      ],
+      "exceptions": [
+        "sync-baseline-run-conflict-bookkeeping"
+      ]
+    },
+    {
+      "name": "unparkCard",
+      "operations": [
+        "unpark:card"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "updateAiTemplate",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "updateAnnotation",
+      "operations": [
+        "update:annotation"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "updateCard",
+      "operations": [
+        "update:card"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "updateConnectorConnection",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "updateDeliveryStatus",
+      "operations": [
+        "update:card"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "updateGitHubLink",
+      "operations": [
+        "update:githubExternalRef"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "updatePersona",
+      "operations": [
+        "update:persona"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "updateRelease",
+      "operations": [
+        "update:release"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "updateRoadmap",
+      "operations": [
+        "update:roadmap"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "updateSafetySettings",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "updateStoryMap",
+      "operations": [
+        "update:storyMap"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "updateStoryTemplate",
+      "operations": [
+        "update:storyTemplate"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "updateWorkflowStatus",
+      "operations": [
+        "update:workflowStatus"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "upsertProductContext",
+      "operations": [
+        "set:productContext"
+      ],
+      "exceptions": []
+    },
+    {
+      "name": "validateConnectorConnection",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    },
+    {
+      "name": "verifyGitHubConnection",
+      "operations": [],
+      "exceptions": [
+        "human-only-administration"
+      ]
+    }
+  ],
+  "excludedOperationFamilies": {
+    "view_settings": "planned-only-outside-exposed-write-catalog",
+    "ai_function_templates": "human-only-administration"
+  }
+}

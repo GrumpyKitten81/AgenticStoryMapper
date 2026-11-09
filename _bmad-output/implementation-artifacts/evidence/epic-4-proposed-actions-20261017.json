@@ -1,0 +1,50 @@
+[
+  {
+    "id": "epic-4-retro-a1",
+    "action": "Correct caller-controlled operation-ID dictionary allocation; cover __proto__ and own string identities across preview/submission/execution. R1.",
+    "owner": "Core/DB developer",
+    "ref": "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  },
+  {
+    "id": "epic-4-retro-a2",
+    "action": "Return actionable source-unavailable conflicts for expected reviewed-file permission failures; retain unexpected errors and atomic refusal coverage. R2.",
+    "owner": "Server developer",
+    "ref": "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  },
+  {
+    "id": "epic-4-retro-a3",
+    "action": "Bound operation-snapshot reads to the owning Project in SQL; measure unrelated large-Project effect and verify unchanged ownership filtering. R3.",
+    "owner": "DB/performance developer",
+    "ref": "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  },
+  {
+    "id": "epic-4-retro-a4",
+    "action": "Profile and reduce remaining non-Card snapshot copying/full-collection comparisons for source-heavy multi-operation proposals. Preserve exact audit/preview semantics. R4.",
+    "owner": "Core/performance developer",
+    "ref": "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  },
+  {
+    "id": "epic-4-retro-a5",
+    "action": "Protect dependency simulation against resolver divergence with mixed-operation differential checks, including duplicate GitHub-owner/evidence reconstruction. R5/R6.",
+    "owner": "Core developer",
+    "ref": "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  },
+  {
+    "id": "epic-4-retro-a6",
+    "action": "Pin human/Agent imported document/chunk metadata parity before changing either construction path; share deterministic construction where warranted. R9.",
+    "owner": "Source-import developer",
+    "ref": "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  },
+  {
+    "id": "epic-4-retro-a7",
+    "action": "Make persistence parent/child ordering explicit or mechanically enforce the ENTITY_TABLES ordering contract with mixed-operation foreign-key assertions. R11.",
+    "owner": "DB developer",
+    "ref": "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  },
+  {
+    "id": "epic-4-retro-p1",
+    "action": "Require explicit verified delivery/commit/evidence provenance before closing an externally completed run; preserve failed attempt history and evaluate evidence independently of done labels.",
+    "owner": "Orchestrator maintainer",
+    "ref": "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+  }
+]

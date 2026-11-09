@@ -1,0 +1,48 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+stdout | src/repositories/operation-snapshot-scope.test.ts > materializes no additional target rows after a large foreign Project is added
+{"action":"A3","foreignCards":2503,"foreignExtraChunks":2500,"before":{"rows":68,"elapsedMs":5.67612500000007},"referenceAfter":{"rows":5113,"elapsedMs":20.604417000000012},"scopedAfter":{"rows":68,"elapsedMs":4.495208999999932}}
+
+ ❯ src/repositories/operation-snapshot-scope.test.ts (4 tests | 1 failed) 379ms
+   × retains hidden-map link helper exclusions after SQL scoping 18ms
+     → expected [ { …(6) } ] to deeply equal []
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/repositories/operation-snapshot-scope.test.ts > retains hidden-map link helper exclusions after SQL scoping
+AssertionError: expected [ { …(6) } ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   Object {
++     "cardId": "757fa85b-08df-4b13-b13c-8f1e6c8d4055",
++     "id": "5bdcdcb9-2768-4df0-a25d-cc05c5b08778",
++     "issueNumber": 1,
++     "repo": "scope/recorded",
++     "syncState": "unsynced",
++     "url": "https://github.com/scope/recorded/issues/1",
++   },
++ ]
+
+ ❯ src/repositories/operation-snapshot-scope.test.ts:146:67
+    144|   data.database.update(tables.storyMaps).set({ deleted: false }).where…
+    145|   data.database.update(tables.projects).set({ historicalStub: true }).…
+    146|   expect(data.repository.listGitHubLinksForStoryMap(root.map.id)).toEq…
+       |                                                                   ^
+    147|   expect(data.repository.listRemoteWorkItemLinksForStoryMap(root.map.i…
+    148| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  10:50:17
+   Duration  1.15s (transform 310ms, setup 0ms, collect 593ms, tests 379ms, environment 0ms, prepare 31ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/packages/db:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/repositories/operation-snapshot-scope.test.ts

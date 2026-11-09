@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-20",
+  "scope": "Focused disposable evidence-helper probes; no product gates, provider calls, package installs or browser launch.",
+  "command": "python3 _bmad-output/implementation-artifacts/evidence/story-8-6/helper-probes.py",
+  "exit_code": 0,
+  "probes": 9,
+  "log": "helper-repair-probes.log",
+  "log_sha256": "286ac8383e6946803cbe18024f7cc783ca0c6e78c40064d661053a1f0582b6d1",
+  "covered": [
+    "untracked file/fragment/directory refused without content read",
+    "absolute/root-relative/malformed template refused; only exact URL placeholder accepted",
+    "tracked files/directories/anchors",
+    "command timeout retains failure/log and cleans owned process",
+    "thread-start failure cleans launcher and retains report/log",
+    "report-write failure cleans launcher and retains original error",
+    "shutdown timeout retains report/log, forces cleanup and fails",
+    "failed stop health postcondition returns main exit1",
+    "occupied evidence destination unchanged before subprocess activity"
+  ],
+  "earlier_probe_source": "parent-link-negative-before.json",
+  "strict_tracked_link_report": "links-repair.json",
+  "new_native_run": false,
+  "documentation_fixes": [
+    "Imported localPath must be selected via STORYMAPPER_DB_PATH for restart",
+    "Restore replaces every Project in active database",
+    "Snapshots prune up to10/class then1GiB target preserving protected points"
+  ],
+  "historical_link_repair": {
+    "file": "_bmad-output/implementation-artifacts/spec-8-3-quality-gate-scripts.md",
+    "version": 4,
+    "change": "Convert only ignored local feedback hyperlink to explicitly local-only/non-distributed inline path; preserve filename and finding. No ignored content read."
+  }
+}

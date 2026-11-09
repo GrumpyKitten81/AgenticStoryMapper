@@ -1,0 +1,7 @@
+{
+  "baseline_revision": "d7dd71fcdd0b35b0f7178c1ad310fb7e198e20de",
+  "source_sha256": "2670c6afe317767e5f6e2694a5093c293e7ab3ad8a87aa4da0368ba40b75fca3",
+  "scope": "tracked apps/packages/scripts/.cursor/rules actual worktree bytes plus canonical HEAD",
+  "intent_sha256": "905d28b2eb16492a7dde270271aa285f39ee113bbc756a95c67904c81a44e2b0",
+  "hash_method": "SHA256: stripped git rev-parse HEAD bytes, then sorted git ls-files paths each followed by NUL, actual file bytes and NUL"
+}

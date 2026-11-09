@@ -1,0 +1,20 @@
+{
+  "surface": "actual TCP HTTP",
+  "base": "http://127.0.0.1:44365",
+  "fixture": "/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-6-5-j8ipxuwt",
+  "records": [
+    {
+      "case": "blank rejected; versioned trimmed prefix; unchanged keys/bindings; stale refusal",
+      "conflictStatus": 409
+    },
+    {
+      "case": "actual HTTP all/release/unscheduled Story-only count/estimate/status/unestimated with estimated Notes and zero Story"
+    },
+    {
+      "case": "both actual HTTP local push planners exclude root/Activity/Step Notes; no remote request or push"
+    }
+  ],
+  "mapId": "be27e82f-567e-4bb8-a082-9ae362baf6bc",
+  "projectId": "fcfbed0f-3b84-4bb9-aafd-61c1c984d6bb",
+  "url": "http://127.0.0.1:44365/projects/fcfbed0f-3b84-4bb9-aafd-61c1c984d6bb/story-maps/be27e82f-567e-4bb8-a082-9ae362baf6bc/discovery"
+}

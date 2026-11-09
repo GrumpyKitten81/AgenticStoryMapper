@@ -1,0 +1,14 @@
+
+> @storymapper/web@0.1.0 test:diagnostics [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run src/features/story-map/board-diagnostics.test.tsx --maxWorkers=1 --minWorkers=1
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/story-map/board-diagnostics.test.tsx (1 test) 11167ms
+   ✓ records raw selection/collapse/search/color input through committed complete Discovery DOM 11167ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  22:11:59
+   Duration  11.99s (transform 299ms, setup 0ms, collect 522ms, tests 11.17s, environment 168ms, prepare 26ms)

@@ -1,0 +1,18 @@
+{
+  "packages/db/migrations/0000_release_baseline.sql": {
+    "working": "1fbdd6914aa12897550440399300c2579a480b8999237e01cfde04b64064b365",
+    "index": "1fbdd6914aa12897550440399300c2579a480b8999237e01cfde04b64064b365"
+  },
+  "packages/db/migrations/meta/0000_snapshot.json": {
+    "working": "9d0e13e6ff61a14c5edf08ca3152948141578fc06d3b8fcc841441f68af6e695",
+    "index": "9d0e13e6ff61a14c5edf08ca3152948141578fc06d3b8fcc841441f68af6e695"
+  },
+  "packages/db/migrations/meta/_journal.json": {
+    "working": "58a5035ca2508a2f811be0541aa384ce0b9bf49125f09c1746e22e940a3451d3",
+    "index": "58a5035ca2508a2f811be0541aa384ce0b9bf49125f09c1746e22e940a3451d3"
+  },
+  "_bmad-output/implementation-artifacts/sprint-status.yaml": {
+    "working": "7a47d43afb8f4ba1ce069a28b7d4da66e6f7ab08ef374fa52b9a2bd0b6fa418c",
+    "index": "7a47d43afb8f4ba1ce069a28b7d4da66e6f7ab08ef374fa52b9a2bd0b6fa418c"
+  }
+}

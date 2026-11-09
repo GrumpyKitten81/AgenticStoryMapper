@@ -1,0 +1,77 @@
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { join } from 'node:path';
+import { buildServer } from '@storymapper/server/server';
+
+const root = process.env.RETRO_ROOT;
+const version = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')).version;
+const require = createRequire(join(root, 'apps/server/package.json'));
+const JSZip = require('jszip');
+const rows = [];
+const server = await buildServer();
+const base = await server.listen({ host: '127.0.0.1', port: 0 });
+async function request(path, body, method = 'GET') {
+  const response = await fetch(base + path, { method, headers: { Origin: base, ...(body ? { 'Content-Type': 'application/json' } : {}) }, ...(body ? { body: JSON.stringify(body) } : {}) });
+  const result = await response.json();
+  assert.equal(response.status, method === 'POST' && path.endsWith('/restore-points') ? 201 : 200, JSON.stringify(result));
+  return result;
+}
+try {
+  const page = await fetch(base + '/');
+  assert.equal(page.status, 200);
+  const html = await page.text();
+  const asset = html.match(/src="([^"]+\.js)"/)[1];
+  const script = await fetch(base + asset);
+  assert.equal(script.status, 200);
+  await script.arrayBuffer();
+  rows.push({ flow: 'real production Fastify serves built HTML and JavaScript on loopback', passed: true });
+  const initial = await request('/api/health');
+  const initialLive = await request('/health');
+  assert.equal(initial.version, version);
+  const project = (await request('/api/projects')).projects[0];
+  const map = (await request('/api/story-maps?projectId=' + project.id)).storyMaps[0];
+  const snapshot = await request('/api/story-maps/' + map.id);
+  const card = snapshot.cards[0];
+  const point = (await request('/api/human/projects/' + project.id + '/restore-points', { class: 'manual' }, 'POST')).restorePoint;
+  const edited = await request('/api/cards/' + card.id, { title: card.title + ' (Epic 8 retrospective)', baseVersion: card.version }, 'PATCH');
+  assert.ok(edited.version > card.version);
+  await request('/api/human/projects/' + project.id + '/restore', { fileName: point.fileName, confirm: true }, 'POST');
+  const restored = (await request('/api/story-maps/' + map.id)).cards.find(item => item.id === card.id);
+  assert.equal(restored.title, card.title);
+  const stale = await fetch(base + '/api/cards/' + card.id, { method: 'PATCH', headers: { Origin: base, 'Content-Type': 'application/json' }, body: JSON.stringify({ title: edited.title, baseVersion: edited.version }) });
+  await stale.arrayBuffer();
+  assert.equal(stale.status, 409);
+  const second = await request('/api/cards/' + card.id, { title: edited.title, baseVersion: restored.version }, 'PATCH');
+  rows.push({ flow: 'manual snapshot → edit → Restore → stale-version refusal → edit with restored version', passed: true, staleStatus: stale.status, originalVersion: card.version, editedVersion: edited.version, restoredVersion: restored.version, secondVersion: second.version });
+  const response = await fetch(base + '/api/projects/export?projectId=' + project.id);
+  assert.equal(response.status, 200);
+  const archive = Buffer.from(await response.arrayBuffer());
+  const archiveHash = createHash('sha256').update(archive).digest('hex');
+  const zip = await JSZip.loadAsync(archive);
+  const manifest = JSON.parse(await zip.file('manifest.json').async('string'));
+  assert.equal(manifest.appVersion, version);
+  assert.match(manifest.schemaVersion, /^release-sha256-[a-f0-9]{64}$/);
+  const form = new FormData();
+  form.append('archive', new Blob([archive], { type: 'application/zip' }), 'retrospective.lsm.zip');
+  const importedResponse = await fetch(base + '/api/projects/import', { method: 'POST', headers: { Origin: base }, body: form });
+  const imported = await importedResponse.json();
+  assert.equal(importedResponse.status, 200, JSON.stringify(imported));
+  const after = await request('/api/health');
+  const afterLive = await request('/health');
+  assert.notEqual(afterLive.databasePath, initialLive.databasePath);
+  assert.ok(afterLive.databasePath.startsWith(process.env.RETRO_TEMP));
+  assert.equal(after.version, version);
+  assert.equal((await request('/api/story-maps/' + map.id)).cards.find(item => item.id === card.id).title, edited.title);
+  assert.equal(createHash('sha256').update(archive).digest('hex'), archiveHash);
+  rows.push({ flow: 'export root app version/release schema → import validated archive → active runtime switches → Card readback', passed: true, archiveVersion: manifest.appVersion, releaseSchema: manifest.schemaVersion, archiveBytes: archive.length, inputUnchanged: true });
+  const init = await fetch(base + '/mcp', { method: 'POST', headers: { Origin: base, 'Content-Type': 'application/json', Accept: 'application/json, text/event-stream' }, body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-03-26', capabilities: {}, clientInfo: { name: 'epic8-retrospective', version: '1.0.0' } } }) });
+  assert.equal(init.status, 200);
+  const initialized = await init.json();
+  assert.equal(initialized.result.serverInfo.version, version);
+  rows.push({ flow: 'HTTP MCP initialize uses same root version after archive runtime switch', passed: true, version });
+  process.stdout.write(JSON.stringify({ productRevision: process.env.RETRO_REVISION, runtime: process.version, version, observations: rows, scope: 'Fresh real loopback HTTP runtime using only repository seed data in a disposable database; no visual/browser/reader/platform/hosted/old-schema/power-loss claim.' }, null, 2) + '\n');
+} finally {
+  await server.close();
+}

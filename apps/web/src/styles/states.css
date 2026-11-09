@@ -1,0 +1,6 @@
+[role="alert"],
+[role="alert"] p,
+.dialog-layer [role="alert"],
+.dialog-layer [role="alert"] p {
+  color: var(--color-danger-text);
+}

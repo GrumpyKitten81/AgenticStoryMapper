@@ -1,0 +1,252 @@
+{
+  "recorded_at": "2026-10-19T00:03:53.521220+00:00",
+  "story": "7-3-github-identity-in-external-references",
+  "scope": "operations/provider/footer/origin/server-boundary/web subagent evidence; counts overlap other agent suites and are not a global unique total",
+  "final_runs": [
+    {
+      "artifact": "operations-provider-final.log",
+      "command": "corepack pnpm --filter @storymapper/github test",
+      "passed": 34,
+      "failed": 0,
+      "files": 2
+    },
+    {
+      "artifact": "operations-core-footer-final.log",
+      "command": "corepack pnpm --filter @storymapper/core exec vitest run src/publishing/github-footer.test.ts src/reports/reports.test.ts src/reports/sync-health.test.ts src/changesets/dependency-effect-parity.test.ts src/changesets/operation-selection-regressions.test.ts src/changesets/remaining-operation-resolution.test.ts src/changesets/resolver-write-collections.test.ts",
+      "passed": 225,
+      "failed": 0,
+      "files": 7
+    },
+    {
+      "artifact": "operations-server-sync-final.log",
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/services/work-item-sync.test.ts src/services/sync-review.test.ts src/application/sync/github-command-regressions.test.ts src/config/served-origin.test.ts",
+      "passed": 116,
+      "failed": 0,
+      "files": 4
+    },
+    {
+      "artifact": "operations-sdk-security-final.log",
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/mcp/github-command-sdk.test.ts",
+      "passed": 13,
+      "failed": 0,
+      "files": 1,
+      "new_boundary_tests": 4
+    },
+    {
+      "artifact": "operations-contracts-final.log",
+      "command": "corepack pnpm --filter @storymapper/contracts test",
+      "passed": 155,
+      "failed": 0,
+      "files": 15
+    },
+    {
+      "artifact": "operations-web-final.log",
+      "command": "corepack pnpm --filter @storymapper/web test",
+      "passed": 739,
+      "failed": 0,
+      "files": 78,
+      "script_exclusion": "src/features/story-map/board-diagnostics.test.tsx is excluded by existing package script; no new exclusion introduced"
+    },
+    {
+      "artifact": "operations-core-typecheck-final.log",
+      "command": "corepack pnpm --filter @storymapper/core typecheck",
+      "exit_code": 0
+    },
+    {
+      "artifact": "operations-web-typecheck-final.log",
+      "command": "corepack pnpm --filter @storymapper/web typecheck",
+      "exit_code": 0
+    }
+  ],
+  "matrix": [
+    {
+      "scenario": "Same Issue across two configured connections; different Card duplicate ownership",
+      "test_file": "apps/server/src/mcp/github-command-sdk.test.ts",
+      "test_names": [
+        "deduplicates one Issue across two connections and refuses another Card owner through HTTP and SDK"
+      ],
+      "proof": "Actual HTTP import then SDK import through another configured connection retains one canonical ref and sync row. HTTP and SDK duplicate owner mutations refuse; joined identity remains unchanged.",
+      "artifact": "operations-sdk-security-final.log",
+      "status": "passed"
+    },
+    {
+      "scenario": "Adapter-only authority; forged source attribution; generic delete and synthesized unlink",
+      "test_file": "apps/server/src/mcp/github-command-sdk.test.ts",
+      "test_names": [
+        "refuses forged adapter authority, reserved ref deletion and canonical source unlink through http submission",
+        "refuses forged adapter authority, reserved ref deletion and canonical source unlink through sdk submission"
+      ],
+      "proof": "Actual HTTP MCP call and SDK reject source:github, adapter operation with claimed source evidence, generic reserved reference deletion and canonical synthesized-source unlink. Domain/ref/source state unchanged; no credentials/provider traffic.",
+      "artifact": "operations-sdk-security-final.log",
+      "status": "passed"
+    },
+    {
+      "scenario": "Source-only canonical ref cannot push",
+      "test_file": "apps/server/src/mcp/github-command-sdk.test.ts",
+      "test_names": [
+        "refuses source-only outbound ownership through HTTP and SDK before credentials or provider calls"
+      ],
+      "proof": "Both push surfaces refuse with conflict; source ref stays navigable, zero sync rows, zero credential-resolution/provider factory/provider-write calls.",
+      "artifact": "operations-sdk-security-final.log",
+      "status": "passed"
+    },
+    {
+      "scenario": "Physical evidence, shared owners, scoped aliases, selective operation closure and copy graph",
+      "test_files": [
+        "packages/core/src/changesets/dependency-effect-parity.test.ts",
+        "packages/core/src/changesets/operation-selection-regressions.test.ts",
+        "packages/core/src/changesets/remaining-operation-resolution.test.ts",
+        "packages/core/src/changesets/resolver-write-collections.test.ts"
+      ],
+      "passed_tests": 203,
+      "proof": "Ported authoritative externalRefs and full canonical adapter operation payloads. Existing deterministic state/effect/owner and full-copy-reference oracles retained. Added reserved generic delete refusal and rebind-dropping-sync regressions.",
+      "artifact": "operations-core-footer-final.log",
+      "status": "passed"
+    },
+    {
+      "scenario": "Footer, immutable marker, prose preservation and hashes",
+      "test_files": [
+        "packages/core/src/publishing/github-footer.test.ts",
+        "packages/core/src/reports/reports.test.ts",
+        "packages/core/src/reports/sync-health.test.ts"
+      ],
+      "passed_tests": 22,
+      "proof": "One machine section, stable marker across name/key changes, safe loopback deep route, incomplete/unmarked text retained, authored CRLF and leading/trailing whitespace preserved byte-for-byte. Hash/health comparisons exclude complete machine section.",
+      "artifact": "operations-core-footer-final.log",
+      "status": "passed"
+    },
+    {
+      "scenario": "Actual served origin through HTTP planning",
+      "test_file": "apps/server/src/config/served-origin.test.ts",
+      "test_names": [
+        "uses the actual ephemeral listener port for generated Card deep links",
+        "threads the served origin through actual HTTP planning without mutating local prose"
+      ],
+      "proof": "Actual ephemeral Fastify listener and POST /api/sync/work-items/plan produce current listener URL; stored description remains authored prose.",
+      "artifact": "operations-server-sync-final.log",
+      "status": "passed"
+    },
+    {
+      "scenario": "Unavailable resource versus provider/auth/rate/partial failure",
+      "test_files": [
+        "packages/github/src/providers/github-provider.test.ts",
+        "apps/server/src/application/sync/github-command-regressions.test.ts"
+      ],
+      "test_names": [
+        "returns explicit unavailable for a missing issue and still sanitizes other read failures in both modes",
+        "retains masked404 as unavailable and never treats mixed provider failures as absence",
+        "rejects partial Issue searches rather than accepting incomplete identity evidence",
+        "refuses HTTP422 milestone failures before creating the Issue",
+        "retains stale identity when the Agent pull finds the Issue unavailable"
+      ],
+      "proof": "Explicit found/unavailable union; unavailable preserves Card/ref with stale state, transport/auth/rate/mixed/partial failures remain errors, Milestone422 stops before Issue mutation.",
+      "artifacts": [
+        "operations-provider-final.log",
+        "operations-server-sync-final.log"
+      ],
+      "status": "passed"
+    },
+    {
+      "scenario": "Joined visible navigation/filter/Tracking without duplicate badges",
+      "test_files": [
+        "apps/web/src/features/story-map/views/core-views.test.tsx",
+        "apps/web/src/features/story-map/board-filter-selection.test.tsx",
+        "apps/web/src/features/github-sync/github-visibility.test.tsx"
+      ],
+      "test_names": [
+        "renders one canonical Issue link in Tree when sync state joins the same reference",
+        "uses canonical source-only and synced GitHub refs once in Tracking risks while excluding other providers",
+        "combines literal status, custom color, zero estimate and remote identity while retaining only context ancestors"
+      ],
+      "proof": "Tree has one canonical HTTPS anchor for shared ref+sync projection; canonical URL drives search and counts; Release-owned visible links retained, hidden ancestry excluded.",
+      "artifact": "operations-web-final.log",
+      "status": "passed"
+    },
+    {
+      "scenario": "Breaking operation schema and strict canonical identity contracts",
+      "test_files": [
+        "packages/contracts/src/schemas/change-operations.test.ts",
+        "packages/contracts/src/schemas/operation-schema-version.test.ts",
+        "packages/contracts/src/schemas/provenance.test.ts"
+      ],
+      "test_names": [
+        "accepts adapter refs and sync-state references while refusing removed or duplicate identity fields",
+        "retains prior GitHub operations only as versioned history"
+      ],
+      "proof": "Adapter operation accepts normalized locator, state operation refuses repeated identity fields; generic github setter refused; old githubLink commands remain readable only as history, never executable.",
+      "artifact": "operations-contracts-final.log",
+      "status": "passed"
+    }
+  ],
+  "initial_failures": [
+    {
+      "artifact": "operations-server-typecheck-initial-failure.log",
+      "classification": "in-progress canonical contract/repository/fixture integration; superseded by parent final server typecheck evidence"
+    },
+    {
+      "artifact": "operations-sync-initial-integration-failures.log",
+      "classification": "cancelled in-progress integration run after strict canonical state operation payload errors; superseded by final116 passing focused sync tests"
+    },
+    {
+      "artifact": "operations-tree-navigation-regression-before-fix.log",
+      "classification": "focused66 tests,65 passed1 failed because canonical Tree ticket did not render an anchor; repaired with canonical href; superseded by final739 passing web suite"
+    }
+  ],
+  "bounded_source_audit": {
+    "paths": [
+      "packages/github/src/providers/github-provider.ts",
+      "packages/core/src/publishing/github-footer.ts",
+      "apps/server/src/services/sync-merge.ts",
+      "apps/server/src/services/sync-conflict-resolution.ts",
+      "apps/server/src/services/work-item-sync.ts",
+      "apps/server/src/application/sync/github-import-command.ts",
+      "apps/server/src/application/sync/github-pull-command.ts",
+      "apps/server/src/application/sync/github-conflict-command.ts",
+      "packages/db/src/repositories/work-item-repository.ts",
+      "packages/db/src/repositories/operation-supply-repository.ts",
+      "packages/db/src/repositories/operation-persistence-repository.ts",
+      "apps/server/src/http/routes/index.ts",
+      "apps/server/src/mcp/http.ts"
+    ],
+    "finding": "Inspected generated Issue body, import description, merge/baseline/hash and actual origin injection call sites; no additional material gap found in bounded slice. This does not certify all repository lifecycle paths."
+  },
+  "limitations": [
+    "Controlled providers and disposable SQLite only; no live GitHub/account or user database/credentials accessed.",
+    "No native browser/screen-reader/platform acceptance is inferred from DOM or listener tests.",
+    "Archive/Restore evidence is owned by storage-verification-matrix.json, not re-proved by this subagent matrix.",
+    "These focused runs do not replace the parent final workspace/release gates."
+  ],
+  "review_repairs": {
+    "scope": "Only focused tests for edited files; no broad gates run by this agent in the repair turn.",
+    "repairs": [
+      {
+        "files": [
+          "packages/core/src/publishing/github-footer.ts",
+          "packages/core/src/publishing/github-footer.test.ts"
+        ],
+        "change": "Match complete non-nested machine footer sections after zero/one/two newline separators. A later valid footer cannot close an earlier unmatched start and consume authored text; CRLF/prose roundtrip remains exact.",
+        "artifact": "operations-review-footer.log",
+        "tests_passed": 12,
+        "tests_failed": 0
+      },
+      {
+        "files": [
+          "packages/github/src/providers/github-provider.test.ts"
+        ],
+        "change": "Exercise successful CLI and token search responses whose page says hasNextPage:true with endCursor:null; each rejects before another read or Issue mutation. Existing production guard retained.",
+        "artifact": "operations-review-provider.log",
+        "tests_passed": 25,
+        "tests_failed": 0
+      },
+      {
+        "files": [
+          "apps/web/src/features/story-map/components/card-provenance.test.ts"
+        ],
+        "change": "Actual mounted Card Detail receives paired canonical and sync projections and renders exactly one Issue row and one canonical URL in its GitHub section, with joined conflict state and resolution hint.",
+        "artifact": "operations-review-card-detail.log",
+        "tests_passed": 11,
+        "tests_failed": 0
+      }
+    ]
+  }
+}

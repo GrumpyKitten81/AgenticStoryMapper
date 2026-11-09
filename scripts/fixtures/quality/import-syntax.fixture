@@ -1,0 +1,7 @@
+import value from 'first';
+export { other } from 'second';
+export * from 'third';
+import fourth = require('fourth');
+const fifth = require('fifth');
+const sixth = import('sixth');
+type Seventh = import('seventh').Value;

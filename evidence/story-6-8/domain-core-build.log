@@ -1,0 +1,2 @@
+> @storymapper/core@0.1.0 build [REDACTED_HOME]/Projects/StoryMapper/packages/core
+> tsc -p tsconfig.json

@@ -1,0 +1,65 @@
+{
+  "measuredAt": "2026-10-17T20:11:09.050Z",
+  "environment": {
+    "node": "v24.17.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "27.0.0",
+    "cpu": "Apple M3 Ultra",
+    "runner": "Vitest source transform; Fastify inject; real SQLite WAL",
+    "build": "TypeScript source, no native socket/network",
+    "nativePaint": false
+  },
+  "fixture": {
+    "cards": 1000,
+    "activities": 1,
+    "steps": 1,
+    "stories": 998,
+    "values": "fixed labels/positions; generated repository UUIDs/timestamps",
+    "storage": "fresh temporary SQLite database"
+  },
+  "coldWarm": "cold is first operation on fresh fixture, not OS cache eviction; warm is subsequent operation",
+  "timingAcceptanceGate": false,
+  "durability": "all mutation samples verified after database close/reopen outside timers",
+  "samples": [
+    {
+      "boundary": "Fastify inject GET full map through serialized response",
+      "phase": "cold-first-read",
+      "milliseconds": 43.98620899999992,
+      "referenceMilliseconds": 150
+    },
+    {
+      "boundary": "Fastify inject GET full map through serialized response",
+      "phase": "warm-1",
+      "milliseconds": 36.44904200000019,
+      "referenceMilliseconds": 150
+    },
+    {
+      "boundary": "Fastify inject GET full map through serialized response",
+      "phase": "warm-2",
+      "milliseconds": 35.138958,
+      "referenceMilliseconds": 150
+    },
+    {
+      "boundary": "Fastify inject versioned PATCH through SQLite commit and serialized response",
+      "phase": "cold-first-mutation",
+      "milliseconds": 52.958834000000024,
+      "referenceMilliseconds": 30,
+      "version": 2
+    },
+    {
+      "boundary": "Fastify inject versioned PATCH through SQLite commit and serialized response",
+      "phase": "warm-1",
+      "milliseconds": 3.1956250000000637,
+      "referenceMilliseconds": 30,
+      "version": 2
+    },
+    {
+      "boundary": "Fastify inject versioned PATCH through SQLite commit and serialized response",
+      "phase": "warm-2",
+      "milliseconds": 1.8883330000001024,
+      "referenceMilliseconds": 30,
+      "version": 2
+    }
+  ]
+}

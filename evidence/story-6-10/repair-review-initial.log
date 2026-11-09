@@ -1,0 +1,215 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+stderr | src/features/changesets/shell.test.tsx > removes only missing preview search and retains selected Card, Tree navigation and Activity explanation
+TypeError: Cannot read properties of undefined (reading 'queryKey')
+    at Object.placeholderData ([REDACTED_HOME]/Projects/StoryMapper/apps/web/src/app/api.ts:426:78)
+    at QueryObserver.createResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:508:25)
+    at QueryObserver.getOptimisticResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:233:25)
+    at useBaseQuery (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+react-query@5.101.2_react@19.2.7/node_modules/@tanstack/react-query/src/useBaseQuery.ts:104:27)
+    at Module.useQuery (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+react-query@5.101.2_react@19.2.7/node_modules/@tanstack/react-query/src/useQuery.ts:46:10)
+    at Module.useChangeSetPreview ([REDACTED_HOME]/Projects/StoryMapper/apps/web/src/app/api.ts:424:10)
+    at Module.useChangeSetReview ([REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/changesets/useChangeSetReview.ts:19:19)
+    at StoryMapShellContent ([REDACTED_HOME]/Projects/StoryMapper/apps/web/src/app/routes/story-map-shell.tsx:68:18)
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25904:20)
+    at renderWithHooks ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:7662:22) {
+  [stack]: [Getter/Setter],
+  [message]: "Cannot read properties of undefined (reading 'queryKey')"
+}
+
+The above error occurred in the <StoryMapShellContent> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: Cannot read properties of undefined (reading 'queryKey')
+
+stderr | src/features/changesets/shell.test.tsx > invalidates review immediately through real transaction stream while suspending and restoring the held dirty Card editor
+TypeError: Cannot read properties of undefined (reading 'queryKey')
+    at Object.placeholderData ([REDACTED_HOME]/Projects/StoryMapper/apps/web/src/app/api.ts:426:78)
+    at QueryObserver.createResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:508:25)
+    at QueryObserver.updateResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:650:29)
+    at QueryObserver.setOptions (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:194:10)
+    at new QueryObserver (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:88:10)
+    at file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+react-query@5.101.2_react@19.2.7/node_modules/@tanstack/react-query/src/useBaseQuery.ts:97:7
+    at mountStateImpl ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8268:24)
+    at mountState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8289:22)
+    at Object.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:26243:18)
+    at Module.process.env.NODE_ENV.exports.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react@19.2.7/node_modules/react/cjs/react.development.js:1263:34) {
+  [stack]: [Getter/Setter],
+  [message]: "Cannot read properties of undefined (reading 'queryKey')"
+}
+
+The above error occurred in the <StoryMapShellContent> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: Cannot read properties of undefined (reading 'queryKey')
+
+stderr | src/features/changesets/shell.test.tsx > invalidates review immediately through real reset stream while suspending and restoring the held dirty Card editor
+TypeError: Cannot read properties of undefined (reading 'queryKey')
+    at Object.placeholderData ([REDACTED_HOME]/Projects/StoryMapper/apps/web/src/app/api.ts:426:78)
+    at QueryObserver.createResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:508:25)
+    at QueryObserver.updateResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:650:29)
+    at QueryObserver.setOptions (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:194:10)
+    at new QueryObserver (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:88:10)
+    at file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+react-query@5.101.2_react@19.2.7/node_modules/@tanstack/react-query/src/useBaseQuery.ts:97:7
+    at mountStateImpl ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8268:24)
+    at mountState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8289:22)
+    at Object.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:26243:18)
+    at Module.process.env.NODE_ENV.exports.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react@19.2.7/node_modules/react/cjs/react.development.js:1263:34) {
+  [stack]: [Getter/Setter],
+  [message]: "Cannot read properties of undefined (reading 'queryKey')"
+}
+
+The above error occurred in the <StoryMapShellContent> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: Cannot read properties of undefined (reading 'queryKey')
+
+stderr | src/features/changesets/shell.test.tsx > preserves the existing Planning Card search when a closed preview removes its own search parameter
+TypeError: Cannot read properties of undefined (reading 'queryKey')
+    at Object.placeholderData ([REDACTED_HOME]/Projects/StoryMapper/apps/web/src/app/api.ts:426:78)
+    at QueryObserver.createResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:508:25)
+    at QueryObserver.updateResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:650:29)
+    at QueryObserver.setOptions (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:194:10)
+    at new QueryObserver (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:88:10)
+    at file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+react-query@5.101.2_react@19.2.7/node_modules/@tanstack/react-query/src/useBaseQuery.ts:97:7
+    at mountStateImpl ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8268:24)
+    at mountState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8289:22)
+    at Object.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:26243:18)
+    at Module.process.env.NODE_ENV.exports.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react@19.2.7/node_modules/react/cjs/react.development.js:1263:34) {
+  [stack]: [Getter/Setter],
+  [message]: "Cannot read properties of undefined (reading 'queryKey')"
+}
+
+The above error occurred in the <StoryMapShellContent> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: Cannot read properties of undefined (reading 'queryKey')
+
+stderr | src/features/changesets/shell.test.tsx > retains the preview query when an already admitted Save-and-close finishes during suspension
+TypeError: Cannot read properties of undefined (reading 'queryKey')
+    at Object.placeholderData ([REDACTED_HOME]/Projects/StoryMapper/apps/web/src/app/api.ts:426:78)
+    at QueryObserver.createResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:508:25)
+    at QueryObserver.updateResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:650:29)
+    at QueryObserver.setOptions (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:194:10)
+    at new QueryObserver (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:88:10)
+    at file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+react-query@5.101.2_react@19.2.7/node_modules/@tanstack/react-query/src/useBaseQuery.ts:97:7
+    at mountStateImpl ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8268:24)
+    at mountState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8289:22)
+    at Object.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:26243:18)
+    at Module.process.env.NODE_ENV.exports.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react@19.2.7/node_modules/react/cjs/react.development.js:1263:34) {
+  [stack]: [Getter/Setter],
+  [message]: "Cannot read properties of undefined (reading 'queryKey')"
+}
+
+The above error occurred in the <StoryMapShellContent> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: Cannot read properties of undefined (reading 'queryKey')
+
+stderr | src/features/changesets/shell.test.tsx > holds a clean Card dependency request through preview suspension and disables remounted edits until its saved version arrives
+TypeError: Cannot read properties of undefined (reading 'queryKey')
+    at Object.placeholderData ([REDACTED_HOME]/Projects/StoryMapper/apps/web/src/app/api.ts:426:78)
+    at QueryObserver.createResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:508:25)
+    at QueryObserver.updateResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:650:29)
+    at QueryObserver.setOptions (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:194:10)
+    at new QueryObserver (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:88:10)
+    at file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+react-query@5.101.2_react@19.2.7/node_modules/@tanstack/react-query/src/useBaseQuery.ts:97:7
+    at mountStateImpl ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8268:24)
+    at mountState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8289:22)
+    at Object.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:26243:18)
+    at Module.process.env.NODE_ENV.exports.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react@19.2.7/node_modules/react/cjs/react.development.js:1263:34) {
+  [stack]: [Getter/Setter],
+  [message]: "Cannot read properties of undefined (reading 'queryKey')"
+}
+
+The above error occurred in the <StoryMapShellContent> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: Cannot read properties of undefined (reading 'queryKey')
+
+stderr | src/features/changesets/shell.test.tsx > keeps dirty dependency ownership while preview navigation is blocked and the request is refused
+TypeError: Cannot read properties of undefined (reading 'queryKey')
+    at Object.placeholderData ([REDACTED_HOME]/Projects/StoryMapper/apps/web/src/app/api.ts:426:78)
+    at QueryObserver.createResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:508:25)
+    at QueryObserver.updateResult (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:650:29)
+    at QueryObserver.setOptions (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:194:10)
+    at new QueryObserver (file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+query-core@5.101.2/node_modules/@tanstack/query-core/src/queryObserver.ts:88:10)
+    at file://[REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/@tanstack+react-query@5.101.2_react@19.2.7/node_modules/@tanstack/react-query/src/useBaseQuery.ts:97:7
+    at mountStateImpl ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8268:24)
+    at mountState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:8289:22)
+    at Object.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:26243:18)
+    at Module.process.env.NODE_ENV.exports.useState ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react@19.2.7/node_modules/react/cjs/react.development.js:1263:34) {
+  [stack]: [Getter/Setter],
+  [message]: "Cannot read properties of undefined (reading 'queryKey')"
+}
+
+The above error occurred in the <StoryMapShellContent> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: Cannot read properties of undefined (reading 'queryKey')
+
+ ❯ src/features/changesets/shell.test.tsx (11 tests | 7 failed) 7652ms
+   × removes only missing preview search and retains selected Card, Tree navigation and Activity explanation 1066ms
+     → expected 'Something went wrong!Hide ErrorCannot…' to contain 'Create traceable story cards'
+   × invalidates review immediately through real transaction stream while suspending and restoring the held dirty Card editor 1048ms
+     → expected 'Something went wrong!Hide ErrorCannot…' to contain 'Create traceable story cards'
+   × invalidates review immediately through real reset stream while suspending and restoring the held dirty Card editor 1053ms
+     → expected 'Something went wrong!Hide ErrorCannot…' to contain 'Create traceable story cards'
+   × preserves the existing Planning Card search when a closed preview removes its own search parameter 1047ms
+     → expected 'Something went wrong!Hide ErrorCannot…' to contain 'Create traceable story cards'
+   × retains the preview query when an already admitted Save-and-close finishes during suspension 1021ms
+     → expected 'Something went wrong!Hide ErrorCannot…' to contain 'Create traceable story cards'
+   × holds a clean Card dependency request through preview suspension and disables remounted edits until its saved version arrives 1045ms
+     → expected 'Something went wrong!Hide ErrorCannot…' to contain 'Create traceable story cards'
+   × keeps dirty dependency ownership while preview navigation is blocked and the request is refused 1050ms
+     → expected 'Something went wrong!Hide ErrorCannot…' to contain 'Create traceable story cards'
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 83ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 66ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 32ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 7 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/changesets/shell.test.tsx > removes only missing preview search and retains selected Card, Tree navigation and Activity explanation
+ FAIL  src/features/changesets/shell.test.tsx > invalidates review immediately through real transaction stream while suspending and restoring the held dirty Card editor
+ FAIL  src/features/changesets/shell.test.tsx > invalidates review immediately through real reset stream while suspending and restoring the held dirty Card editor
+ FAIL  src/features/changesets/shell.test.tsx > preserves the existing Planning Card search when a closed preview removes its own search parameter
+ FAIL  src/features/changesets/shell.test.tsx > retains the preview query when an already admitted Save-and-close finishes during suspension
+ FAIL  src/features/changesets/shell.test.tsx > holds a clean Card dependency request through preview suspension and disables remounted edits until its saved version arrives
+ FAIL  src/features/changesets/shell.test.tsx > keeps dirty dependency ownership while preview navigation is blocked and the request is refused
+AssertionError: expected 'Something went wrong!Hide ErrorCannot…' to contain 'Create traceable story cards'
+
+Expected: "Create traceable story cards"
+Received: "Something went wrong!Hide ErrorCannot read properties of undefined (reading 'queryKey')"
+
+ ❯ src/features/story-map/components/card-detail-test-fixture.ts:66:36
+     64|   await vi.waitFor(async () => {
+     65|     await act(async () => {});
+     66|     expect(state.host.textContent).toContain(ready);
+       |                                    ^
+     67|   });
+     68| }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/7]⎯
+
+ Test Files  1 failed | 3 passed (4)
+      Tests  7 failed | 19 passed (26)
+   Start at  22:18:08
+   Duration  10.40s (transform 592ms, setup 0ms, collect 1.28s, tests 7.83s, environment 836ms, prepare 94ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/features/changesets/selection-race.test.tsx src/features/changesets/review.test.tsx src/features/changesets/review-outcomes.test.tsx src/features/changesets/shell.test.tsx --maxWorkers=1 --minWorkers=1

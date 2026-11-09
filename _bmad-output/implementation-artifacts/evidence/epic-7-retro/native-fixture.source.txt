@@ -1,0 +1,49 @@
+import { randomUUID } from "node:crypto";
+import { mkdtemp, mkdir, writeFile } from "node:fs/promises";
+import os, { tmpdir, homedir } from "node:os";
+import { join } from "node:path";
+import childProcess from "node:child_process";
+import { syncBuiltinESMExports } from "node:module";
+import { promisify } from "node:util";
+
+const root = "/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/epic-7-retro-native-mu58RS";
+const home = join(root, "home");
+await mkdir(home, { mode: 0o700, recursive: true });
+Object.assign(process.env, { APPDATA: join(root, "appdata"), GH_CONFIG_DIR: join(root, "gh"), GH_TOKEN: "", GITHUB_TOKEN: "", GH_ENTERPRISE_TOKEN: "", GITHUB_ENTERPRISE_TOKEN: "", STORYMAPPER_DB_PATH: join(root, "fixture.lsm", "storymapper.sqlite"), LOG_LEVEL: "error" });
+os.homedir = () => home;
+syncBuiltinESMExports();
+if (homedir() !== home) throw new Error("Disposable credential home was not selected.");
+const canary = randomUUID().replaceAll("-", "");
+let localProbes = 0;
+let providerReads = 0;
+childProcess.execFile = Object.assign(() => { throw new Error("Unexpected native fixture subprocess."); }, { [promisify.custom]: async (command: string, args: string[]) => {
+  if (command !== "gh" || JSON.stringify(args) !== JSON.stringify(["auth", "token", "--hostname", "github.com"])) throw new Error("Unexpected native fixture command.");
+  localProbes++;
+  return { stdout: canary, stderr: "" };
+} }) as typeof childProcess.execFile;
+syncBuiltinESMExports();
+globalThis.fetch = async () => { throw new Error("Native fixture forbids external transport."); };
+const { GitHubProvider } = await import("[REDACTED_HOME]/Projects/StoryMapper/packages/github/src/index.ts");
+GitHubProvider.prototype.validateConnection = async (_connection, auth) => {
+  if (auth.cliToken !== canary) throw new Error("Native fixture selected an unexpected identity.");
+  providerReads++;
+  return { ok: true, message: "Disposable repository read verified.", capabilities: { read: true, write: "unavailable", limitation: "Disposable read-only fixture; no Issue, Milestone or type writes are verified." } };
+};
+GitHubProvider.prototype.getRemoteItem = async (_connection, _auth, id) => ({ status: "found", item: { remoteId: String(id), remoteNumber: Number(id), url: `https://github.com/fixture/repo/issues/${id}`, title: "Retro remote ticket", body: "Disposable lookup body", labels: [], state: "open", parentNumber: null } });
+const { buildServer } = await import("[REDACTED_HOME]/Projects/StoryMapper/apps/server/src/server.ts");
+const server = await buildServer({ webBuildDirectory: "[REDACTED_HOME]/Projects/StoryMapper/apps/web/dist", runtimeConfig: { host: "127.0.0.1", port: 44377, allowRemoteHost: false } });
+await server.listen({ host: "127.0.0.1", port: 44377 });
+const projects = (await server.inject({ method: "GET", url: "/api/projects", headers: { host: "127.0.0.1:44377" } })).json().projects;
+const projectId = projects[0]?.id;
+if (!projectId) throw new Error("Native fixture has no seeded Project.");
+const metadata = { url: "http://127.0.0.1:44377", projectId, root, pid: process.pid };
+await writeFile("/tmp/epic-7-retro-native-state.json", JSON.stringify(metadata));
+process.stdout.write(JSON.stringify(metadata) + "\n");
+const stop = async () => {
+  const connections = (await server.inject({ method: "GET", url: `/api/connectors/connections?projectId=${projectId}`, headers: { host: "127.0.0.1:44377" } })).json();
+  const settings = (await server.inject({ method: "GET", url: `/api/settings/safety?projectId=${projectId}`, headers: { host: "127.0.0.1:44377" } })).json();
+  await writeFile("/tmp/epic-7-retro-native-result.json", JSON.stringify({ ...metadata, localProbes, providerReads, connections, settings }));
+  await server.close();
+};
+process.once("SIGTERM", () => void stop());
+process.once("SIGINT", () => void stop());

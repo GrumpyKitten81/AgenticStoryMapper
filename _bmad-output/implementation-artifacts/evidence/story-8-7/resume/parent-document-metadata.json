@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-20",
+  "reason": "Required Markdown maintenance metadata; no workflow/JSON schema semantics changed.",
+  "changes": [
+    {
+      "path": ".agents/skills/bmad-deep-recon/references/finalize.md",
+      "beforeSha256": "8d6ed3a532e8d98b2a7f0089818dfb483fcfd83b15307af84aa5a9f9fe256695",
+      "afterSha256": "8ea4d78bdeb3e8f7f705247011076f2da92e878d45b316dd5c89589ac2a65734"
+    },
+    {
+      "path": ".agents/skills/bmad-prd/assets/headless-schemas.md",
+      "beforeSha256": "1d62e0748fae69b1119b1b83caa1722ba271fe597608015cde917ec658c5bfeb",
+      "afterSha256": "0870deb3533cb27ed697c1f68e2cc760cfc7acfa44aa03ef7728f46524911837"
+    },
+    {
+      "path": ".agents/skills/bmad-product-brief/SKILL.md",
+      "beforeSha256": "e71bf0f9376157217b8f4a82853352d758a06291383977c1fde804fd1412f43f",
+      "afterSha256": "97a0722405c9d70fff364095205879853c324b76f97164a4bed96a52b79471cb"
+    },
+    {
+      "path": ".agents/skills/bmad-ux/assets/headless-schemas.md",
+      "beforeSha256": "fe4871e689dc4ba770b1746c006c29152e23f2ed2063e0887a45eff4accccf88",
+      "afterSha256": "25da6735e5d6f7a6ed3db7f578560bfa2dbfae6a61729d143b0801a49719949e"
+    },
+    {
+      "path": ".claude/skills/bmad-deep-recon/references/finalize.md",
+      "beforeSha256": "8d6ed3a532e8d98b2a7f0089818dfb483fcfd83b15307af84aa5a9f9fe256695",
+      "afterSha256": "8ea4d78bdeb3e8f7f705247011076f2da92e878d45b316dd5c89589ac2a65734"
+    },
+    {
+      "path": ".claude/skills/bmad-prd/assets/headless-schemas.md",
+      "beforeSha256": "1d62e0748fae69b1119b1b83caa1722ba271fe597608015cde917ec658c5bfeb",
+      "afterSha256": "0870deb3533cb27ed697c1f68e2cc760cfc7acfa44aa03ef7728f46524911837"
+    },
+    {
+      "path": ".claude/skills/bmad-product-brief/SKILL.md",
+      "beforeSha256": "e71bf0f9376157217b8f4a82853352d758a06291383977c1fde804fd1412f43f",
+      "afterSha256": "97a0722405c9d70fff364095205879853c324b76f97164a4bed96a52b79471cb"
+    },
+    {
+      "path": ".claude/skills/bmad-ux/assets/headless-schemas.md",
+      "beforeSha256": "fe4871e689dc4ba770b1746c006c29152e23f2ed2063e0887a45eff4accccf88",
+      "afterSha256": "25da6735e5d6f7a6ed3db7f578560bfa2dbfae6a61729d143b0801a49719949e"
+    }
+  ]
+}

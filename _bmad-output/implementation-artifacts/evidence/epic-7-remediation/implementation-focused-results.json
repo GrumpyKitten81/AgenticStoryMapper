@@ -1,0 +1,40 @@
+{
+  "focused_tests": {
+    "server": 303,
+    "github": 50,
+    "core": 27,
+    "contracts": 3,
+    "db_canonical_identity": 14,
+    "db_operation_transition": 8
+  },
+  "focused_unique_total": 405,
+  "typechecks": [
+    "contracts",
+    "core",
+    "db",
+    "github",
+    "server"
+  ],
+  "notes": [
+    "Node24.17.0 and pnpm9.15.4; no real credentials, live provider or user Projects accessed.",
+    "Initial two server assertion corrections and initial server unknown-record typecheck failure are retained in raw logs.",
+    "Parent owns independent review, full workspace tests, serial release gate and acceptance/tracking."
+  ],
+  "raw_logs": [
+    "implementation-server-types-final.log.gz",
+    "implementation-db-types.log.gz",
+    "implementation-core-types-final.log.gz",
+    "implementation-github-final.log.gz",
+    "implementation-server-types.log.gz",
+    "implementation-server-first.log.gz",
+    "implementation-contracts-final.log.gz",
+    "implementation-github-types.log.gz",
+    "implementation-core-first.log.gz",
+    "implementation-regressions-third.log.gz",
+    "implementation-server-final.log.gz",
+    "implementation-transition-final.log.gz",
+    "implementation-contracts-types.log.gz",
+    "implementation-server-second.log.gz",
+    "implementation-db-final.log.gz"
+  ]
+}

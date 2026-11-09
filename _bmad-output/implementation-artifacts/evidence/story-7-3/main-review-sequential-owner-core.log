@@ -1,0 +1,12 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+
+ ✓ src/changesets/dependency-resolution.test.ts (18 tests) 44ms
+ ✓ src/changesets/dependency-effect-parity.test.ts (14 tests) 68ms
+ ✓ src/changesets/remaining-operation-resolution.test.ts (75 tests) 131ms
+ ✓ src/changesets/operation-resolution.test.ts (70 tests) 163ms
+
+ Test Files  4 passed (4)
+      Tests  177 passed (177)
+   Start at  02:38:21
+   Duration  668ms (transform 303ms, setup 0ms, collect 1.33s, tests 406ms, environment 0ms, prepare 133ms)

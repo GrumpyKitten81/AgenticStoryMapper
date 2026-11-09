@@ -1,0 +1,149 @@
+
+> @storymapper/db@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/packages/db
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/external-refs-repository.test.ts (5 tests) 68ms
+ ✓ src/map-copy-resolution.test.ts (1 test) 104ms
+ ✓ src/board-import-resolution.test.ts (5 tests) 226ms
+ ✓ src/repositories/release-report-data.test.ts (2 tests) 246ms
+ ✓ src/repositories/operation-selector-regressions.test.ts (6 tests) 316ms
+ ✓ src/repositories/card-visibility.test.ts (2 tests) 377ms
+ ✓ src/ai-templates.test.ts (4 tests) 482ms
+ ✓ src/repositories/source-document-import.test.ts (1 test) 317ms
+   ✓ source document import > deduplicates by Project, type and byte-exact hash while retaining stable identities 316ms
+ ✓ src/repositories/operation-catalog-executor.test.ts (2 tests) 1453ms
+   ✓ executes previously uncovered update, unset and delete catalog pairs with physical-state and immutable-input parity 776ms
+   ✓ persists create-then-bulk relationship aliases and Release upsert families with exact resolution parity 676ms
+ ✓ src/repositories/changeset-warnings.test.ts (2 tests) 620ms
+   ✓ warns when the true earlier pending operation deletes an existing external binding 345ms
+ ✓ src/operation-schema-transition.test.ts (7 tests) 1578ms
+   ✓ transitions old operations when publishing a restored current-DDL snapshot 364ms
+   ✓ refuses incompatible executable payloads before writes and requires approval of a fresh current proposal 312ms
+ ✓ src/source-document-migration.test.ts (2 tests) 858ms
+   ✓ source document migration > keeps the oldest duplicate and cascades its duplicate chunks and links before indexing 384ms
+   ✓ exports an upgraded database with the exact supported schema and retained chunk/note evidence 472ms
+ ✓ src/repositories/plan-states.test.ts (8 tests) 1859ms
+   ✓ retains only the selected Project's captured states in portable archive snapshots 579ms
+   ✓ Restore returns the recorded point-in-time state set while retaining later capture audit as undone 439ms
+ ✓ src/repositories/operation-resolution-parity.test.ts (8 tests) 1903ms
+   ✓ refuses stale persisted local selectors using the actual target before any ChangeSet writes 311ms
+   ✓ matches real SQLite last chunk and note unlink with one root bump and immutable creation origin 339ms
+ ✓ src/card-dependencies.test.ts (8 tests) 1964ms
+   ✓ restores exact owned edge rows and preserves only the scoped Project in portable snapshots 665ms
+(node:83094) Warning: Post-commit publication failed; database changes remain committed.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ src/live-events.test.ts (8 tests) 1967ms
+   ✓ durable committed live metadata > assigns durable Activity sequences to isolated remote-link and conflict writes without duplicating caller audit 342ms
+   ✓ durable committed live metadata > resets only after successful actual restore, retains UUID history and allows durable replay/new writes in the new epoch 408ms
+stdout | src/repositories/operation-snapshot-scope.test.ts > materializes no additional target rows after a large foreign Project is added
+{"action":"A3","foreignCards":2503,"foreignExtraChunks":2500,"before":{"rows":67,"elapsedMs":6.715290999999979},"referenceAfter":{"rows":5112,"elapsedMs":26.318249999999807},"scopedAfter":{"rows":67,"elapsedMs":5.324667000000318}}
+
+ ❯ src/repositories/operation-snapshot-scope.test.ts (4 tests | 1 failed) 1970ms
+   × matches the complete reference snapshot, insertion order, scoped/project-wide rows and malformed ownership 98ms
+     → expected [ { kind: 'github', …(6) }, …(3) ] to have a length of 8 but got 4
+   ✓ retains hidden-map link helper exclusions after SQL scoping 306ms
+   ✓ materializes no additional target rows after a large foreign Project is added 1506ms
+ ✓ src/snapshot.test.ts (8 tests) 2183ms
+   ✓ scopes to one demo Project, keeps business links and deleted Card history, and removes secret free-page bytes 464ms
+   ✓ redacts copied Map Activity identities without removing chunk/note evidence or business metadata 542ms
+   ✓ refuses an archive with inconsistent provenance 480ms
+   ✓ refuses an archive with GitHub sourceLink payload 353ms
+ ✓ src/repositories/source-plan-audit.test.ts (4 tests) 2265ms
+   ✓ retains complete canonical baselines while audit evidence contains exactly the addressed entry delta 315ms
+   ✓ keeps initial publication audit entries and serialized bytes linear as the canonical baseline grows 1627ms
+ ✓ src/activity-changes.test.ts (10 tests) 2302ms
+   ✓ links only a genuine applied Agent snapshot (Agent proposal) and reports retention loss 370ms
+   ✓ links only a genuine applied Agent snapshot (Agent execution) and reports retention loss 388ms
+   ✓ links only a genuine applied Agent snapshot (Agent none) and reports retention loss 435ms
+   ✓ rejects impossible same-epoch snapshots and floors a persisted cursor from a previous epoch 417ms
+ ✓ src/restore-failures.test.ts (5 tests) 1643ms
+   ✓ restore publication failure boundaries > rolls back swap failure to the protected database and reopens a usable holder 656ms
+   ✓ restore publication failure boundaries > rolls back reopen failure to the protected database and reopens a usable holder 481ms
+ ✓ src/repositories/card-history.test.ts (13 tests) 1723ms
+   ✓ bounded Card history > returns bounded pages through 200 real saved versions without omissions 1247ms
+ ✓ src/repositories/card-provenance.test.ts (15 tests) 2550ms
+   ✓ immutable creation origin and typed evidence > versions every canonical GitHub evidence owner on attach, edit, reassignment and deletion 352ms
+   ✓ immutable creation origin and typed evidence > rejects milestone-only identities and cross-Project reassignment, then versions evidence removal on Release deletion 357ms
+ ✓ src/repositories/storymapper-repository.test.ts (18 tests) 2460ms
+   ✓ StoryMapperRepository > calculates backlog health from card quality and source links 319ms
+ ✓ src/repositories/source-plan-baselines.test.ts (20 tests) 2720ms
+   ✓ retains selected Project evidence in archive snapshots and restores the exact point-in-time baseline 682ms
+   ✓ rejects unsupported or corrupt baseline evidence during reads and Restore validation 304ms
+ ❯ src/restore-project.test.ts (18 tests | 1 failed) 2815ms
+   ✓ recoverable human project restore > retains runtime tool-call evidence across repeated actual restores without fictional Projects 529ms
+   ✓ recoverable human project restore > restores committed WAL map state, preserves later same-ID ChangeSets and historical Project ownership, and accepts holder writes 614ms
+   ✓ recoverable human project restore > reports only newly created legacy and connector GitHub links and leaves attachment files intact 472ms
+   × recoverable human project restore > preserves genuinely crashed uncheckpointed WAL commits when startup publication fails and can retry the prepared restore 47ms
+     → ENOENT: no such file or directory, stat '/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-crashed-wal-Ie4iLJ/storymapper.sqlite-wal'
+ ✓ src/repositories/getting-started.test.ts (31 tests) 2901ms
+   ✓ persisted getting-started checklist > tracks controlled human provenance and sticky completion independently for each Project 501ms
+ ✓ src/repositories/changeset-executor.test.ts (22 tests) 2886ms
+   ✓ binds actual approval and keeps reviewed operations immutable across resolved application 324ms
+   ✓ rolls domain effects back when the applied Activity fails and retains the preapply snapshot 356ms
+   ✓ only the new command creation flow can autoapply and caller receipt objects cannot bypass stored approval 412ms
+(node:83083) Warning: Post-commit publication failed; database changes remain committed.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ src/repositories/root-versions.test.ts (74 tests) 3647ms
+   ✓ editable root version ownership > increments only the owner once for 'Card park and unpark' 309ms
+   ✓ editable root version ownership > increments only the owner once for 'Release fields twice' 333ms
+(node:83083) Warning: Post-commit publication failed; database changes remain committed.
+(node:83083) Warning: Post-commit publication failed; database changes remain committed.
+ ✓ src/unit-of-work.test.ts (60 tests) 3522ms
+   ✓ actor-aware atomic Card mutations > retains separate archive and explicit Restore history within the same actor's rapid-save window 318ms
+   ✓ actor-aware atomic Card mutations > skips archived and parked neighbors during park, retaining nested descendants 303ms
+   ✓ actor-aware atomic Card mutations > skips archived and parked neighbors during delete, retaining nested descendants 352ms
+ ✓ src/repositories/operation-executor-persistence.test.ts (20 tests) 4248ms
+   ✓ keeps Card keys monotonic after deletion and reopening 523ms
+   ✓ preserves approved copy operations and all owned copied identities 372ms
+   ✓ persists 200 selected operations on 1,000 Cards with snapshot, history and audit 2495ms
+ ✓ src/restore-points.test.ts (21 tests) 4834ms
+   ✓ complete persisted restore points > does not list finalized-looking files whose embedded size or timestamp contradicts the file 342ms
+   ✓ complete persisted restore points > retains the latest manual publication with pre-change contents after clock rollback and reopen 1019ms
+   ✓ complete persisted restore points > retains the latest pre-migration publication with pre-change contents after clock rollback and reopen 569ms
+   ✓ complete persisted restore points > isolates inventories and per-class retention for colocated databases 532ms
+   ✓ complete persisted restore points > finishes snapshot creation alone with 1,000 actual Cards within the 2-second tolerance 1754ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/restore-project.test.ts > recoverable human project restore > preserves genuinely crashed uncheckpointed WAL commits when startup publication fails and can retry the prepared restore
+Error: ENOENT: no such file or directory, stat '/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-crashed-wal-Ie4iLJ/storymapper.sqlite-wal'
+ ❯ src/restore-project.test.ts:299:12
+    297|     expect(child.error).toBeUndefined();
+    298|     expect(child.status).not.toBe(0);
+    299|     expect(statSync(`${path}-wal`).size).toBeGreaterThan(0);
+       |            ^
+    300|     const saved = JSON.parse(readFileSync(`${path}.fixture.json`, "utf…
+    301|     const mainCopy = join(directory, "main-only.sqlite");
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/repositories/operation-snapshot-scope.test.ts > matches the complete reference snapshot, insertion order, scoped/project-wide rows and malformed ownership
+AssertionError: expected [ { kind: 'github', …(6) }, …(3) ] to have a length of 8 but got 4
+
+- Expected
++ Received
+
+- 8
++ 4
+
+ ❯ src/repositories/operation-snapshot-scope.test.ts:120:72
+    118|   expect(snapshot).toEqual(referenceOperationSnapshot.call(data.reposi…
+    119|   expect(snapshot.cards.map(({ id }) => id)).toEqual([target.card.id, …
+    120|   expect(snapshot.sourceLinks.filter(({ kind }) => kind === "github"))…
+       |                                                                        ^
+    121|   expect(snapshot.cardDependencies).toHaveLength(1);
+    122|   expect(snapshot.syncConflicts).toHaveLength(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+ Test Files  2 failed | 30 passed (32)
+      Tests  2 failed | 412 passed (414)
+   Start at  11:04:39
+   Duration  5.92s (transform 2.94s, setup 0ms, collect 26.32s, tests 59.01s, environment 3ms, prepare 2.23s)
+
+[REDACTED_HOME]/Projects/StoryMapper/packages/db:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/db@0.1.0 test: `vitest run --passWithNoTests`
+Exit status 1

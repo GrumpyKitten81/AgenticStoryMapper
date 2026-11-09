@@ -1,0 +1,62 @@
+{
+  "status": "done",
+  "baseline_revision": "d7dd71fcdd0b35b0f7178c1ad310fb7e198e20de",
+  "source_sha256": "2670c6afe317767e5f6e2694a5093c293e7ab3ad8a87aa4da0368ba40b75fca3",
+  "intent_sha256": "905d28b2eb16492a7dde270271aa285f39ee113bbc756a95c67904c81a44e2b0",
+  "verified_at": "2026-10-19T00:46:21.107205+00:00",
+  "runtime": "Node 24.17.0; Corepack pnpm 9.15.4",
+  "root": {
+    "command": "corepack pnpm test",
+    "exit_code": 0,
+    "artifact": "parent-review-root-test-final.log",
+    "tests": 2659,
+    "by_suite": {
+      "scripts": 83,
+      "contracts": 155,
+      "importers": 7,
+      "github": 36,
+      "core": 404,
+      "web": 740,
+      "db": 472,
+      "server": 748,
+      "audit_performance": 14
+    }
+  },
+  "release": {
+    "command": "node scripts/verify.mjs",
+    "exit_code": 0,
+    "artifact": "parent-review-release-verify-final.log",
+    "capabilities": 133,
+    "accessibility_tests": 260,
+    "typecheck": "passed",
+    "build": "passed",
+    "hygiene": "passed"
+  },
+  "review": {
+    "findings": 19,
+    "patched_findings": {
+      "medium": 11,
+      "low": 1
+    },
+    "patch_groups": {
+      "medium": 10,
+      "low": 1
+    },
+    "deferred": 3,
+    "rejected": 4,
+    "followup_review_recommended": true
+  },
+  "boundaries": {
+    "native": "unverified; native-acceptance.json",
+    "live_github": "unverified; no real credentials or user data accessed",
+    "token_milestone_pagination": "pre-existing behavior deferred as B8"
+  },
+  "protected": {
+    "path": "_bmad-output/implementation-artifacts/sprint-status.yaml",
+    "sha256": "9408b71eacdb98e8c1dae1924f354d68a6d63b1d8e1c1ab9dba6b2a0605ce8f4",
+    "unchanged": true,
+    "orchestrator_ledgers_written": false
+  },
+  "finalization": "Reviewed work staged; no commit or push under higher-priority global explicit-commit policy. HEAD remains baseline.",
+  "logs": "Original failed and passing logs retained; text-log trailing whitespace normalized without changing recorded results."
+}

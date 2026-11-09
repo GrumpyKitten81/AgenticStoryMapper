@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-17",
+  "baseline": "b1ecc9d910e3cc52a5b2f8285a615bb830408d09",
+  "root": {
+    "command": "corepack pnpm test",
+    "exitCode": 0,
+    "tests": 2427,
+    "skipped": 0,
+    "counts": {
+      "scripts": 83,
+      "contracts": 153,
+      "importers": 7,
+      "core": 390,
+      "web": 648,
+      "db": 446,
+      "server": 686,
+      "serverExistingTimingGates": 14
+    },
+    "log": "parent-final-root-test.log"
+  },
+  "release": {
+    "command": "node scripts/verify.mjs",
+    "exitCode": 0,
+    "capabilities": 130,
+    "a11yTests": 229,
+    "typecheck": "passed",
+    "build": "passed",
+    "log": "parent-final-release-verify.log"
+  },
+  "zeroTests": {
+    "command": "corepack pnpm --filter @storymapper/web test:a11y --exclude '**/*'",
+    "exitCode": 1,
+    "expected": "No test files found",
+    "log": "parent-a11y-zero-tests.log"
+  },
+  "diagnostics": {
+    "sourceSha256": "e5c6d5453a97b40f0daa101143da246fd3df5934a3e44983302fb60269b26f9c",
+    "files": 856,
+    "samples": {
+      "server": 6,
+      "web": 21
+    },
+    "functional": "completed and successful for both final captures",
+    "timingAcceptanceGate": false,
+    "captures": [
+      "server-board-diagnostics-1792269468339.json",
+      "web-board-diagnostics-1792269443807.json"
+    ]
+  },
+  "native": "Earlier bounded Safari evidence; final review patch retest unavailable; see native-acceptance.json",
+  "history": "Earlier captures/logs and deliberate failing red reproductions retained; they are historical, not final acceptance evidence."
+}

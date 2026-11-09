@@ -1,0 +1,80 @@
+
+> storymapper@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper
+> node --test scripts/*.test.mjs && corepack pnpm -r test
+
+✔ external completion worker verifies and adopts only isolated temporary runs (28561.1605ms)
+✔ scans TypeScript syntax without executing descriptor initializers (4.584958ms)
+✔ rejects missing and wrongly named use-case mappings in both directions (0.670459ms)
+✔ permits ordinary HTTP reads and requires effectful capabilities to have tools (0.80675ms)
+✔ manifest output is deterministic and checking never rewrites stale data (11.154584ms)
+✔ generated tool metadata and documentation are deterministic and checked without rewriting (11.034125ms)
+✔ documentation names human-only capabilities and every classified write membership (0.211667ms)
+✔ registry parity rejects omitted, duplicate and incorrectly imported descriptors (8.25225ms)
+✔ rejects duplicate capability names, route mappings and tool mappings (8.396917ms)
+✔ rejects missing registrations, orphan tool metadata, schemas and routes (9.995375ms)
+✔ operation coverage rejects new unclassified writes and preserves mixed sync effects (0.284833ms)
+✔ operation coverage includes indirect local effects of provider writes (0.16375ms)
+✔ classifies effectful reads and refuses direct MCP handler domain persistence (7.803375ms)
+✔ rejects every umlaut and sharp s with correct locations (1.888375ms)
+✔ normalizes decomposed umlauts without changing line diagnostics (0.197834ms)
+✔ matches complete case-insensitive German words without substring failures (0.083125ms)
+✔ scans every required source and reports relative paths while ignoring authoring documents (80.616791ms)
+✔ setup performs a real frozen install, build and folder creation without config, and repeats safely (30939.413042ms)
+✔ frozen install and build failures prevent later setup steps (1196.032292ms)
+✔ real setup rejects a manifest that disagrees with the frozen lockfile (750.761208ms)
+✔ start serves actual app/API on its owned URL and only opens the browser after health (18683.56525ms)
+✔ IPv6 host overrides reach the real server and exact browser URL (4705.35525ms)
+libc++abi: terminating due to uncaught exception of type std::__1::__fs::filesystem::filesystem_error: filesystem error: in directory_iterator::directory_iterator(...): No such file or directory ["[REDACTED_HOME]/Projects/StoryMapper/apps/web/dist/assets"]
+✖ scripts/commands.test.mjs (59001.027541ms)
+✔ doctor before setup collects independent failures without writes or Corepack downloads (496.2485ms)
+✔ doctor on installed checkout passes seven checks read-only without opening Project data (5377.408917ms)
+✔ doctor reports healthy, unhealthy, malformed, stalled, oversized and redirected occupied services within a bound (10139.987708ms)
+✔ public commands validate flags and keep default failures free of diagnostic traces (1390.681791ms)
+✔ native binding failures stop start before DB or browser and remain diagnosable in doctor (1425.279666ms)
+✔ setup child diagnostics identify phase and redact credentials in normal and debug output (1105.002417ms)
+✔ setup redacts credentials split across UTF-8 byte chunks on stdout and stderr (3172.882166ms)
+✔ doctor and start use process, root and nearest server env precedence from unrelated cwd (1044.269458ms)
+✔ server database startup failure is reported at the launcher boundary without a default stack (8637.095417ms)
+✔ bind race is reported through real server IPC with actionable cause and no browser (4726.0585ms)
+✔ direct server startup catches configuration, binding and native failures in normal and debug mode (18572.201792ms)
+✔ direct server flushes a large startup diagnostic to piped stderr before exiting (4070.124959ms)
+✔ doctor rejects an empty local Corepack entry while collecting seven checks without cache writes (456.939542ms)
+✔ doctor rejects missing CommonJS entries and imported ESM subpath targets with intact CommonJS counterparts (1705.313667ms)
+✔ start and doctor report malformed installed dependency metadata with the setup action (760.527833ms)
+✔ doctor rejects a directory web entry and start attempts its missing-build repair (689.028958ms)
+✔ normal build failures include one redacted compiler cause without stack lines (672.357708ms)
+✔ doctor loads SQLite JavaScript but fails at the native constructor without Project writes (452.954041ms)
+✔ successful launch forwards redacted server stdout including an unterminated final line (678.760875ms)
+✔ doctor ignores a .env in the working directory when no checkout .env exists (403.968292ms)
+✔ successful normal launch suppresses confirmed server stderr diagnostics and stack lines (621.209125ms)
+✔ successful debug launch forwards redacted stderr across chunk boundaries and omits overlong lines (671.191584ms)
+✔ owned server launched from unrelated cwd uses root PORT before conflicting server-local PORT (4053.859209ms)
+✔ server reports a concrete writable-directory repair when SQLite cannot open the database (3660.184125ms)
+✔ direct server reports unreadable optional env without a Project database directory repair (1089.789709ms)
+✔ redacts raw and serialized environment secrets with quotes and backslashes (0.761125ms)
+✔ redacts full multiline environment secrets and nonempty raw and serialized line fragments (0.2835ms)
+✔ redacts URL userinfo and Basic or Bearer authorization tokens (0.081334ms)
+✔ redacts entire escaped quoted credential values without an environment match (0.447125ms)
+✔ port closure waits for a silent TCP listener to stop accepting connections (107.67925ms)
+✔ port closure propagates invalid connection origins (0.433542ms)
+✔ occupied default port starts an owned listener, publishes its port and cleans it at shutdown (8059.478042ms)
+✔ runtime publication refuses an existing file and shutdown preserves a replacement owner (49.836ms)
+✔ owned launcher drains an actual agent HTTP call beyond two seconds before WAL and runtime cleanup (7262.748625ms)
+✔ bridge fails explicitly for missing discovery or a foreign service without creating a database (123.866625ms)
+✔ doctor discovery uses stable runtime identity after the active database directory changes (29.706375ms)
+✔ relative database startup and discovery resolve from the checkout when called elsewhere (5085.878375ms)
+ℹ tests 60
+ℹ suites 0
+ℹ pass 59
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 76154.217125
+
+✖ failing tests:
+
+test at scripts/commands.test.mjs:1:1
+✖ scripts/commands.test.mjs (59001.027541ms)
+  'test failed'
+ ELIFECYCLE  Test failed. See above for more details.

@@ -1,0 +1,12 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/application/changeset/source-permission-conflicts.test.ts (5 tests) 227ms
+ ✓ src/http/routes/changeset-dependency-parity.test.ts (5 tests) 449ms
+ ✓ src/http/routes/changeset-preview.test.ts (20 tests) 652ms
+
+ Test Files  3 passed (3)
+      Tests  30 passed (30)
+   Start at  11:06:40
+   Duration  1.56s (transform 581ms, setup 0ms, collect 1.99s, tests 1.33s, environment 0ms, prepare 90ms)
+

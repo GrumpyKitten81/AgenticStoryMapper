@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "run_id": "20261018-231618-7d90",
+  "run_type": "story",
+  "source": "sprint-status",
+  "started_at": "2026-10-18T23:16:18",
+  "status": "finished",
+  "finished": true,
+  "stopped": false,
+  "graceful_stop_pending": false,
+  "crashed": false,
+  "crash_error": null,
+  "paused_stage": null,
+  "paused_reason": null,
+  "paused_story_key": null,
+  "cache_read_weight": 0.1,
+  "tokens": {
+    "raw": 409938127,
+    "weighted": 48009895
+  },
+  "adapters": {
+    "dev": {
+      "name": "codex",
+      "model": "gpt-6.1-sol"
+    },
+    "review": {
+      "name": "claude",
+      "model": "claude-sonnet-5-5"
+    },
+    "triage": {
+      "name": "opencode",
+      "model": ""
+    },
+    "retro": {
+      "name": "opencode",
+      "model": ""
+    }
+  },
+  "sweeps_refused": {},
+  "tasks": [
+    {
+      "story_key": "7-1-credentials-in-a-user-level-file",
+      "epic": 7,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 252326,
+        "output_tokens": 108295,
+        "cache_read_tokens": 28679666,
+        "cache_creation_tokens": 208897,
+        "raw": 29249184,
+        "weighted": 3437485
+      },
+      "commit_sha": "68dcf5017298f34db7553118bf60d6898085d430",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "7-2-connect-github-in-the-app",
+      "epic": 7,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 232089,
+        "output_tokens": 151071,
+        "cache_read_tokens": 34457962,
+        "cache_creation_tokens": 328837,
+        "raw": 35169959,
+        "weighted": 4157793
+      },
+      "commit_sha": "d7dd71fcdd0b35b0f7178c1ad310fb7e198e20de",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "7-3-github-identity-in-external-references",
+      "epic": 7,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 742819,
+        "output_tokens": 162333,
+        "cache_read_tokens": 60855753,
+        "cache_creation_tokens": 329899,
+        "raw": 62090804,
+        "weighted": 7320626
+      },
+      "commit_sha": "74c5921401223e1fbfd3ad96bcfc582208ae5565",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "7-4-push-with-a-mandatory-dry-run",
+      "epic": 7,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 436042,
+        "output_tokens": 188073,
+        "cache_read_tokens": 59923324,
+        "cache_creation_tokens": 441199,
+        "raw": 60988638,
+        "weighted": 7057646
+      },
+      "commit_sha": "ecf3ef5ba72f6c99300e2c9c580f5e3c4cdd2822",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "7-5-import-and-sync",
+      "epic": 7,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 1142112,
+        "output_tokens": 328420,
+        "cache_read_tokens": 90438235,
+        "cache_creation_tokens": 429092,
+        "raw": 92337859,
+        "weighted": 10943448
+      },
+      "commit_sha": "65d96699a495b8a0a440a6ff895b97918ab3dbee",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "7-6-conflicts-and-sync-health",
+      "epic": 7,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 606297,
+        "output_tokens": 166972,
+        "cache_read_tokens": 69712706,
+        "cache_creation_tokens": 292890,
+        "raw": 70778865,
+        "weighted": 8037430
+      },
+      "commit_sha": "83a5277b1eb2556c5a148b59b687dc25e0246644",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "7-7-import-a-single-ticket-while-creating-a-card",
+      "epic": 7,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 264367,
+        "output_tokens": 114713,
+        "cache_read_tokens": 31090774,
+        "cache_creation_tokens": 235504,
+        "raw": 31705358,
+        "weighted": 3723661
+      },
+      "commit_sha": "aae10f89c96b4c1aa26d862b31119a636c22d486",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    },
+    {
+      "story_key": "7-8-provider-extension-points",
+      "epic": 7,
+      "phase": "done",
+      "attempt": 1,
+      "review_cycle": 1,
+      "tokens": {
+        "input_tokens": 281636,
+        "output_tokens": 110680,
+        "cache_read_tokens": 26984060,
+        "cache_creation_tokens": 241084,
+        "raw": 27617460,
+        "weighted": 3331806
+      },
+      "commit_sha": "b2f2e967cc45a0c948ad3c2bb7378efb35eaf3e3",
+      "defer_reason": null,
+      "preserve_ref": null,
+      "adapters_used": {
+        "dev": {
+          "name": "codex",
+          "model": "gpt-6.1-sol"
+        },
+        "review": {
+          "name": "claude",
+          "model": "claude-sonnet-5-5"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "offline-install.log": {
+    "originalSha256": "8f5db6adeeab4fee280a312298c813fd9a98a5867f1afbd40c1fc6ad718bcde9",
+    "sanitizedDecodedSha256": "dc55454b439676fcd711679b6d12da3cfda46d4ee586da9c96c589e0c738996c",
+    "compressedSha256": "a24102de23bde389b66d384e96ac3838b114320cc937736e27503d0a48351424",
+    "redaction": "Disposable checkout and home paths replaced; raw originals remain transient only. Hashes do not reconstruct originals.",
+    "artifact": "offline-install.log.gz",
+    "hashes_independently_verified": true
+  },
+  "final-check.log": {
+    "originalSha256": "2a0866aa62ec2caaa58dfeb6a518ecc05c675a3e471f1b69679aea49862db7ea",
+    "sanitizedDecodedSha256": "40a203038e972af5037998bfebd661b222c4ac1ae01291259d1ca945b6f7781b",
+    "compressedSha256": "9bf0ffd4e711149b2926abf5c045a1ede20ae310cac8d662e898e736071c17f4",
+    "redaction": "Disposable checkout and home paths replaced; raw originals remain transient only. Hashes do not reconstruct originals.",
+    "artifact": "final-check.log.gz",
+    "hashes_independently_verified": true
+  },
+  "final-check-start.json": {
+    "artifact": "final-check-start.json.gz",
+    "originalSha256": "df84c3e82eeab8b0a1f1aa8eb1de65d589cc0b6106034f40ca7025935faf39ee",
+    "sanitizedDecodedSha256": "df84c3e82eeab8b0a1f1aa8eb1de65d589cc0b6106034f40ca7025935faf39ee",
+    "compressedSha256": "c7debcbaf1a780dc60df9da4dc4104d23d86a96069b1a733f783ae2cd3999aff",
+    "redaction": "none; repository-relative hashes/metadata only; gzip mtime0"
+  },
+  "final-check-end.json": {
+    "artifact": "final-check-end.json.gz",
+    "originalSha256": "df84c3e82eeab8b0a1f1aa8eb1de65d589cc0b6106034f40ca7025935faf39ee",
+    "sanitizedDecodedSha256": "df84c3e82eeab8b0a1f1aa8eb1de65d589cc0b6106034f40ca7025935faf39ee",
+    "compressedSha256": "c7debcbaf1a780dc60df9da4dc4104d23d86a96069b1a733f783ae2cd3999aff",
+    "redaction": "none; repository-relative hashes/metadata only; gzip mtime0"
+  },
+  "independent_comparison": {
+    "source_maps": 3286,
+    "start_end_records_equal": true,
+    "semanticIndexSha256": "1bde369197d460b6f01d81e69dc168f57f4f898d878439102e3e849466586a7f",
+    "rawIndexSha256": "81f13c7a38f8b71ab7cf7db78a7c93973da56dbc2eaa8cbfddbfeb09aca71822"
+  }
+}

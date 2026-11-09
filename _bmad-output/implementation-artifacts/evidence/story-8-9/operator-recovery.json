@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "date": "2026-10-21T18:37:41.401971+00:00",
+  "baseline": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "backup": ".bmad-loop/runs/20261019-231402-3e0a/operator-recovery/storymapper-8-9-rescue-20261021-201337",
+  "specRecoveredFrom": ".bmad-loop/runs/20261019-231402-3e0a/deferred/8-9-agentic-coding-reference-material",
+  "timing": {
+    "elapsedBeforeMs": 10000,
+    "elapsedAfterMs": 20000,
+    "unchangedChildTimeoutMs": 30000
+  },
+  "focused": {
+    "returncode": 0,
+    "testsPassed": 16,
+    "seconds": 79.512,
+    "initialSandboxFailure": "tsx IPC listen EPERM; retained separately; identical reviewed command passed"
+  },
+  "commands": [
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "typecheck"
+      ],
+      "returncode": 0,
+      "seconds": 15.999,
+      "log": "0.log",
+      "sha256": "5c9a9afd4c467c8fdbbf2506c1d12184e4e5a8c745e2f7d95d61880c47173c7d"
+    },
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "lint"
+      ],
+      "returncode": 0,
+      "seconds": 15.568,
+      "log": "1.log",
+      "sha256": "d7fd65bbbf8cc111c0d58af27540498967cfc875fa1b1e07b24db003eaf26efc"
+    },
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "test"
+      ],
+      "returncode": 0,
+      "seconds": 376.28,
+      "log": "2.log",
+      "sha256": "090f54cc97304c966ae91877c1422b3ae38525e05be1aed05cad4a6c95525192"
+    },
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "check"
+      ],
+      "returncode": 0,
+      "seconds": 783.122,
+      "log": "3.log",
+      "sha256": "790c4e3290ecc049936837a9c91fae613464d053403ce6dc2d0b8feb878fd558"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/verify.mjs"
+      ],
+      "returncode": 0,
+      "seconds": 55.839,
+      "log": "4.log",
+      "sha256": "6977294f7eab3ce8cf64e44c39a370d79fbc47b6747d20357829990be882443c"
+    }
+  ],
+  "stableTrackedInputCount": 3456,
+  "workingIndexAndHeadStableDuringGates": true,
+  "postGateChanges": "This report, sanitized retention, recovery review/spec and OpenWolf bookkeeping are finalized after the captured gates; application/test sources remain identical. Publication scan/check follows final intended staging.",
+  "protectedWorkingAndIndexUnchanged": true,
+  "reviewScope": "Recovery code delta only: scripts/app-version.test.mjs elapsed assertion 10000ms to 20000ms. Prior full-story reviews remain historical; orchestrator review follows recovery.",
+  "retention": [
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-9/operator-recovery-0.log.gz",
+      "originalSha256": "5c9a9afd4c467c8fdbbf2506c1d12184e4e5a8c745e2f7d95d61880c47173c7d",
+      "sanitizedSha256": "725057bf426575598b8782ba15bd31bd780a9089d94b5c2abb90c095bb8ee979",
+      "compressedSha256": "0029c3b75e5dc38c66b52ac740cfbaadcfd59b6c3ae18c8b8bbb0c40a1e9f803"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-9/operator-recovery-1.log.gz",
+      "originalSha256": "d7fd65bbbf8cc111c0d58af27540498967cfc875fa1b1e07b24db003eaf26efc",
+      "sanitizedSha256": "2fd81a81e697a2ae08fa0c88909d36677e1317f22a9813477701bd92062607a8",
+      "compressedSha256": "51f8f78d2e3a2f79977596bba2ee6a37454a092d38f43ad774ec43540233681c"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-9/operator-recovery-2.log.gz",
+      "originalSha256": "090f54cc97304c966ae91877c1422b3ae38525e05be1aed05cad4a6c95525192",
+      "sanitizedSha256": "a7cc9b5133a9ba89889c81227f2f696016dfce9e1d08b970abd4740ccaa1d5e8",
+      "compressedSha256": "56c2f34eb206da0bc3f3c99f750f8f3fc547b6d7d56dbc53d6b77672873bef4c"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-9/operator-recovery-3.log.gz",
+      "originalSha256": "790c4e3290ecc049936837a9c91fae613464d053403ce6dc2d0b8feb878fd558",
+      "sanitizedSha256": "8d8313c122ee00936d52d5a35b3a8422b3ee5d8eb343083e3da67f23caa1cc1a",
+      "compressedSha256": "058ed64a8d45de2524b9116e5fb1949c5bbfd10301800eb215bc9c3dc0cde6c3"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-9/operator-recovery-4.log.gz",
+      "originalSha256": "6977294f7eab3ce8cf64e44c39a370d79fbc47b6747d20357829990be882443c",
+      "sanitizedSha256": "3fe053d5783f337c3655a80a53f872184d48e8cb7bc21c1daf1084d566ee2a64",
+      "compressedSha256": "12d6d981518130a3fe8397990e26aa05c827cacd675445c5ea6149aa7274aa49"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-9/operator-recovery-before.json.gz",
+      "originalSha256": "1b00c85071205f2cfd06d99b25deb375b5d20f1a9d25eae51ce31e93b99004b6",
+      "sanitizedSha256": "1b00c85071205f2cfd06d99b25deb375b5d20f1a9d25eae51ce31e93b99004b6",
+      "compressedSha256": "3e2234638d01e3aec92c331843548201aa8ae9a1338c3353db36a9370d7f197e"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-9/operator-recovery-after.json.gz",
+      "originalSha256": "1b00c85071205f2cfd06d99b25deb375b5d20f1a9d25eae51ce31e93b99004b6",
+      "sanitizedSha256": "1b00c85071205f2cfd06d99b25deb375b5d20f1a9d25eae51ce31e93b99004b6",
+      "compressedSha256": "3e2234638d01e3aec92c331843548201aa8ae9a1338c3353db36a9370d7f197e"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-9/operator-recovery-focused.log.gz",
+      "originalSha256": "19a3d72523de1e359d4f0a8fafa0a9a4eeb5c0c5d7805ae1629f4ca26f7a89a5",
+      "sanitizedSha256": "3de579592f3bf1614ac733d820602d6509bc11492309c2108cc0007783e40c08",
+      "compressedSha256": "cb72597740f9f5fff98f42e7fbc4d884350c3b9ade67ee59c92ef6df549476aa"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-9/operator-recovery-focused-reviewed.log.gz",
+      "originalSha256": "99023f8ff803fbe96993c1959a8a608224bb4f0dcf77355a573d97248512a7e0",
+      "sanitizedSha256": "99023f8ff803fbe96993c1959a8a608224bb4f0dcf77355a573d97248512a7e0",
+      "compressedSha256": "12cc7e0000f2fdf35f4d610d43450cd05968dd48281f5c695d4d733f4c6a9dd9"
+    }
+  ],
+  "resumePlan": "After preflight, guard dead engine and exact paused state under state_lock; change only8.9 phase deferred to dev-verify and clear defer_reason; retain all history/receipts/baseline. Public resume reaches fresh Claude review2, normal configured verification and orchestrator commit with no reset. Sprint remains orchestrator-owned.",
+  "publication": "Existing private-declaration/history/privacy/rights/native/hosted blockers remain; local quality success is not publication clearance."
+}

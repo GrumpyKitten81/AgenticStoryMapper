@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/story-map/components/lifecycle.test.tsx (30 tests) 897ms
+
+ Test Files  1 passed (1)
+      Tests  30 passed (30)
+   Start at  13:32:40
+   Duration  1.76s (transform 298ms, setup 0ms, collect 505ms, tests 897ms, environment 174ms, prepare 31ms)
+

@@ -1,0 +1,2353 @@
+{
+  "method": "Tracked production code suffixes ts/tsx/js/mjs/cjs/py; excludes tests/specs/fixture paths and Vite/Vitest/Drizzle config; static import/export/require TypeScript AST incl type-only; runtime SCC excludes explicit type-only imports; resolves relative and StoryMapper aliases; line counts include blanks/comments. Not dynamic execution analysis.",
+  "before": {
+    "files": 437,
+    "lines": 38428,
+    "bytes": 2249550
+  },
+  "after": {
+    "files": 493,
+    "lines": 41466,
+    "bytes": 2565150
+  },
+  "changed_production_files": 173,
+  "added_files": 57,
+  "deleted_files": 1,
+  "units": {
+    "apps/server": {
+      "before": {
+        "files": 98,
+        "lines": 6473,
+        "bytes": 456074
+      },
+      "after": {
+        "files": 108,
+        "lines": 7448,
+        "bytes": 555239
+      }
+    },
+    "apps/web": {
+      "before": {
+        "files": 156,
+        "lines": 12271,
+        "bytes": 713046
+      },
+      "after": {
+        "files": 177,
+        "lines": 13325,
+        "bytes": 813840
+      }
+    },
+    "packages/contracts": {
+      "before": {
+        "files": 30,
+        "lines": 3121,
+        "bytes": 158368
+      },
+      "after": {
+        "files": 40,
+        "lines": 3426,
+        "bytes": 184535
+      }
+    },
+    "packages/core": {
+      "before": {
+        "files": 52,
+        "lines": 3952,
+        "bytes": 273038
+      },
+      "after": {
+        "files": 59,
+        "lines": 4336,
+        "bytes": 310270
+      }
+    },
+    "packages/db": {
+      "before": {
+        "files": 53,
+        "lines": 7283,
+        "bytes": 418017
+      },
+      "after": {
+        "files": 57,
+        "lines": 7495,
+        "bytes": 454583
+      }
+    },
+    "packages/github": {
+      "before": {
+        "files": 8,
+        "lines": 478,
+        "bytes": 18434
+      },
+      "after": {
+        "files": 12,
+        "lines": 574,
+        "bytes": 33196
+      }
+    },
+    "packages/importers": {
+      "before": {
+        "files": 3,
+        "lines": 64,
+        "bytes": 2124
+      },
+      "after": {
+        "files": 3,
+        "lines": 64,
+        "bytes": 2124
+      }
+    },
+    "packages/mcp": {
+      "before": {
+        "files": 6,
+        "lines": 629,
+        "bytes": 21449
+      },
+      "after": {
+        "files": 6,
+        "lines": 639,
+        "bytes": 21829
+      }
+    },
+    "scripts": {
+      "before": {
+        "files": 20,
+        "lines": 1969,
+        "bytes": 107360
+      },
+      "after": {
+        "files": 20,
+        "lines": 1971,
+        "bytes": 107894
+      }
+    },
+    "tools": {
+      "before": {
+        "files": 11,
+        "lines": 2188,
+        "bytes": 81640
+      },
+      "after": {
+        "files": 11,
+        "lines": 2188,
+        "bytes": 81640
+      }
+    }
+  },
+  "largest_changed_after": [
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "before_lines": 748,
+      "after_lines": 749,
+      "net": 1
+    },
+    {
+      "path": "apps/web/src/app/api.ts",
+      "before_lines": 719,
+      "after_lines": 737,
+      "net": 18
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "before_lines": 571,
+      "after_lines": 671,
+      "net": 100
+    },
+    {
+      "path": "packages/contracts/src/api/http.ts",
+      "before_lines": 630,
+      "after_lines": 654,
+      "net": 24
+    },
+    {
+      "path": "packages/db/src/connection.ts",
+      "before_lines": 580,
+      "after_lines": 589,
+      "net": 9
+    },
+    {
+      "path": "packages/core/src/changesets/operation-dependencies.ts",
+      "before_lines": 537,
+      "after_lines": 546,
+      "net": 9
+    },
+    {
+      "path": "packages/mcp/src/tool-definitions/capabilities.ts",
+      "before_lines": 507,
+      "after_lines": 517,
+      "net": 10
+    },
+    {
+      "path": "apps/web/src/features/story-map/useStoryMapBoardState.ts",
+      "before_lines": 515,
+      "after_lines": 512,
+      "net": -3
+    },
+    {
+      "path": "apps/web/src/ui-strings/index.ts",
+      "before_lines": 500,
+      "after_lines": 490,
+      "net": -10
+    },
+    {
+      "path": "packages/db/src/repositories/cards-repository.ts",
+      "before_lines": 477,
+      "after_lines": 478,
+      "net": 1
+    },
+    {
+      "path": "packages/db/src/schema/tables.ts",
+      "before_lines": 463,
+      "after_lines": 470,
+      "net": 7
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/DiscoveryMatrix.tsx",
+      "before_lines": 466,
+      "after_lines": 466,
+      "net": 0
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/DiscoveryLanes.tsx",
+      "before_lines": 447,
+      "after_lines": 454,
+      "net": 7
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "before_lines": 363,
+      "after_lines": 422,
+      "net": 59
+    },
+    {
+      "path": "packages/db/src/repositories/row-mappers.ts",
+      "before_lines": 414,
+      "after_lines": 389,
+      "net": -25
+    },
+    {
+      "path": "apps/server/src/mcp/tools/register-tools.ts",
+      "before_lines": 360,
+      "after_lines": 366,
+      "net": 6
+    },
+    {
+      "path": "apps/server/src/mcp/tools/project-scopes.ts",
+      "before_lines": 356,
+      "after_lines": 356,
+      "net": 0
+    },
+    {
+      "path": "packages/db/src/repositories/work-item-repository.ts",
+      "before_lines": 508,
+      "after_lines": 344,
+      "net": -164
+    },
+    {
+      "path": "packages/github/src/providers/github-provider.ts",
+      "before_lines": 366,
+      "after_lines": 324,
+      "net": -42
+    },
+    {
+      "path": "packages/core/src/changesets/operation-registry.ts",
+      "before_lines": 292,
+      "after_lines": 298,
+      "net": 6
+    }
+  ],
+  "largest_growth": [
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "net": 253
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "net": 149
+    },
+    {
+      "path": "packages/db/src/repositories/remote-push-repository.ts",
+      "net": 146
+    },
+    {
+      "path": "packages/core/src/changesets/sync-field-locks.ts",
+      "net": 128
+    },
+    {
+      "path": "packages/db/src/repositories/github-refs-repository.ts",
+      "net": 127
+    },
+    {
+      "path": "apps/server/src/application/sync/github-pull-command.ts",
+      "net": 123
+    },
+    {
+      "path": "apps/server/src/application/connector/github-connect.use-cases.ts",
+      "net": 113
+    },
+    {
+      "path": "apps/server/src/services/credential-file.ts",
+      "net": 109
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connect.ts",
+      "net": 100
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "net": 100
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/useTicketCardComposer.ts",
+      "net": 99
+    },
+    {
+      "path": "apps/server/src/services/sync-merge.ts",
+      "net": 99
+    },
+    {
+      "path": "apps/web/src/features/github-sync/connection-draft.ts",
+      "net": 97
+    },
+    {
+      "path": "apps/server/src/services/remote-push-context.ts",
+      "net": 95
+    },
+    {
+      "path": "apps/server/src/application/sync/github-ticket-command.ts",
+      "net": 93
+    },
+    {
+      "path": "packages/db/src/github-archive-redaction.ts",
+      "net": 86
+    },
+    {
+      "path": "apps/server/src/application/connector/connection-proof.ts",
+      "net": 84
+    },
+    {
+      "path": "packages/github/src/providers/github-remote-push.ts",
+      "net": 73
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectionFields.tsx",
+      "net": 69
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/TicketCardComposer.tsx",
+      "net": 62
+    }
+  ],
+  "file_edges": {
+    "before": 1653,
+    "after": 1925,
+    "added": 284,
+    "removed": 12
+  },
+  "workspace_pair_delta": [
+    {
+      "from": "apps/server",
+      "to": "packages/contracts",
+      "before": 85,
+      "after": 95
+    },
+    {
+      "from": "apps/server",
+      "to": "packages/core",
+      "before": 24,
+      "after": 30
+    },
+    {
+      "from": "apps/server",
+      "to": "packages/db",
+      "before": 28,
+      "after": 33
+    },
+    {
+      "from": "apps/server",
+      "to": "packages/github",
+      "before": 10,
+      "after": 14
+    },
+    {
+      "from": "apps/web",
+      "to": "packages/contracts",
+      "before": 77,
+      "after": 94
+    },
+    {
+      "from": "apps/web",
+      "to": "packages/core",
+      "before": 21,
+      "after": 22
+    },
+    {
+      "from": "packages/core",
+      "to": "packages/contracts",
+      "before": 47,
+      "after": 53
+    },
+    {
+      "from": "packages/db",
+      "to": "packages/contracts",
+      "before": 45,
+      "after": 51
+    },
+    {
+      "from": "packages/db",
+      "to": "packages/core",
+      "before": 21,
+      "after": 25
+    },
+    {
+      "from": "packages/github",
+      "to": "packages/contracts",
+      "before": 5,
+      "after": 8
+    }
+  ],
+  "scc_before": [
+    [
+      "packages/db/src/repositories/ai-templates-repository.ts",
+      "packages/db/src/repositories/audit-repository.ts",
+      "packages/db/src/repositories/card-dependencies-repository.ts",
+      "packages/db/src/repositories/card-history-repository.ts",
+      "packages/db/src/repositories/cards-repository.ts",
+      "packages/db/src/repositories/changesets-repository.ts",
+      "packages/db/src/repositories/customizations-repository.ts",
+      "packages/db/src/repositories/external-refs-repository.ts",
+      "packages/db/src/repositories/map-copy-repository.ts",
+      "packages/db/src/repositories/operation-persistence-repository.ts",
+      "packages/db/src/repositories/operation-snapshot-repository.ts",
+      "packages/db/src/repositories/operation-supply-repository.ts",
+      "packages/db/src/repositories/plan-states-repository.ts",
+      "packages/db/src/repositories/projects-repository.ts",
+      "packages/db/src/repositories/releases-repository.ts",
+      "packages/db/src/repositories/roadmaps-repository.ts",
+      "packages/db/src/repositories/root-versions.ts",
+      "packages/db/src/repositories/source-evidence-repository.ts",
+      "packages/db/src/repositories/source-plan-baselines-repository.ts",
+      "packages/db/src/repositories/sources-repository.ts",
+      "packages/db/src/repositories/storymapper-repository.ts",
+      "packages/db/src/repositories/tool-proposals-repository.ts",
+      "packages/db/src/repositories/work-item-repository.ts"
+    ],
+    [
+      "packages/core/src/index.ts",
+      "packages/core/src/proposals/ai-proposals.ts",
+      "packages/core/src/proposals/proposal-builders.ts",
+      "packages/core/src/proposals/release-slice.ts",
+      "packages/core/src/publishing/export-files.ts",
+      "packages/core/src/publishing/export-formatters.ts",
+      "packages/core/src/release-slicing/slice.ts",
+      "packages/core/src/reports/release-notes.ts",
+      "packages/core/src/reports/reports.ts",
+      "packages/core/src/reports/roadmap.ts",
+      "packages/core/src/reports/sync-health.ts"
+    ],
+    [
+      "apps/server/src/mcp/tools/audit-tool-call.ts",
+      "apps/server/src/mcp/tools/register-card-tools.ts",
+      "apps/server/src/mcp/tools/register-content-tools.ts",
+      "apps/server/src/mcp/tools/register-customization-tools.ts",
+      "apps/server/src/mcp/tools/register-structure-tools.ts",
+      "apps/server/src/mcp/tools/register-tools.ts"
+    ],
+    [
+      "packages/contracts/src/schemas/change-operations.ts",
+      "packages/contracts/src/schemas/customization-evidence.ts",
+      "packages/contracts/src/schemas/domain.ts",
+      "packages/contracts/src/schemas/operation-fields.ts",
+      "packages/contracts/src/schemas/plan-drift.ts",
+      "packages/contracts/src/schemas/remaining-operations.ts"
+    ],
+    [
+      "apps/server/src/application/sync/github-import-command.ts",
+      "apps/server/src/application/sync/github-pull-command.ts",
+      "apps/server/src/services/sync-merge.ts",
+      "apps/server/src/services/work-item-sync.ts"
+    ],
+    [
+      "packages/db/src/database-handle.ts",
+      "packages/db/src/live-change-tracking.ts",
+      "packages/db/src/live-events.ts"
+    ],
+    [
+      "apps/web/src/features/what-changed/WhatChangedDrawer.tsx",
+      "apps/web/src/features/what-changed/WhatChangedProvider.tsx"
+    ],
+    [
+      "packages/core/src/changesets/operation-registry.ts",
+      "packages/core/src/changesets/resolver-write-collections.ts"
+    ]
+  ],
+  "scc_after": [
+    [
+      "packages/db/src/repositories/ai-templates-repository.ts",
+      "packages/db/src/repositories/audit-repository.ts",
+      "packages/db/src/repositories/card-dependencies-repository.ts",
+      "packages/db/src/repositories/card-history-repository.ts",
+      "packages/db/src/repositories/cards-repository.ts",
+      "packages/db/src/repositories/changesets-repository.ts",
+      "packages/db/src/repositories/customizations-repository.ts",
+      "packages/db/src/repositories/external-refs-repository.ts",
+      "packages/db/src/repositories/github-refs-repository.ts",
+      "packages/db/src/repositories/map-copy-repository.ts",
+      "packages/db/src/repositories/operation-persistence-repository.ts",
+      "packages/db/src/repositories/operation-snapshot-repository.ts",
+      "packages/db/src/repositories/operation-supply-repository.ts",
+      "packages/db/src/repositories/plan-states-repository.ts",
+      "packages/db/src/repositories/projects-repository.ts",
+      "packages/db/src/repositories/releases-repository.ts",
+      "packages/db/src/repositories/remote-push-repository.ts",
+      "packages/db/src/repositories/roadmaps-repository.ts",
+      "packages/db/src/repositories/root-versions.ts",
+      "packages/db/src/repositories/source-evidence-repository.ts",
+      "packages/db/src/repositories/source-plan-baselines-repository.ts",
+      "packages/db/src/repositories/sources-repository.ts",
+      "packages/db/src/repositories/storymapper-repository.ts",
+      "packages/db/src/repositories/sync-conflict-admission.ts",
+      "packages/db/src/repositories/tool-proposals-repository.ts",
+      "packages/db/src/repositories/work-item-repository.ts"
+    ],
+    [
+      "packages/contracts/src/schemas/change-operations.ts",
+      "packages/contracts/src/schemas/conflicts.ts",
+      "packages/contracts/src/schemas/customization-evidence.ts",
+      "packages/contracts/src/schemas/domain.ts",
+      "packages/contracts/src/schemas/errors.ts",
+      "packages/contracts/src/schemas/external-refs.ts",
+      "packages/contracts/src/schemas/operation-fields.ts",
+      "packages/contracts/src/schemas/plan-drift.ts",
+      "packages/contracts/src/schemas/remaining-operations.ts",
+      "packages/contracts/src/schemas/sync-health.ts",
+      "packages/contracts/src/schemas/work-item-identity.ts",
+      "packages/contracts/src/schemas/work-item-provider.ts",
+      "packages/contracts/src/schemas/work-item-sync-baseline.ts"
+    ],
+    [
+      "packages/core/src/index.ts",
+      "packages/core/src/proposals/ai-proposals.ts",
+      "packages/core/src/proposals/proposal-builders.ts",
+      "packages/core/src/proposals/release-slice.ts",
+      "packages/core/src/publishing/export-files.ts",
+      "packages/core/src/publishing/export-formatters.ts",
+      "packages/core/src/release-slicing/slice.ts",
+      "packages/core/src/reports/release-notes.ts",
+      "packages/core/src/reports/reports.ts",
+      "packages/core/src/reports/roadmap.ts",
+      "packages/core/src/reports/sync-health.ts"
+    ],
+    [
+      "apps/server/src/application/sync/github-import-command.ts",
+      "apps/server/src/application/sync/github-pull-command.ts",
+      "apps/server/src/services/remote-push-plan.ts",
+      "apps/server/src/services/sync-conflict-resolution.ts",
+      "apps/server/src/services/sync-merge.ts",
+      "apps/server/src/services/work-item-sync.ts"
+    ],
+    [
+      "apps/server/src/mcp/tools/audit-tool-call.ts",
+      "apps/server/src/mcp/tools/register-card-tools.ts",
+      "apps/server/src/mcp/tools/register-content-tools.ts",
+      "apps/server/src/mcp/tools/register-customization-tools.ts",
+      "apps/server/src/mcp/tools/register-structure-tools.ts",
+      "apps/server/src/mcp/tools/register-tools.ts"
+    ],
+    [
+      "packages/github/src/index.ts",
+      "packages/github/src/providers/github-provider.ts",
+      "packages/github/src/providers/github-remote-push.ts",
+      "packages/github/src/providers/index.ts"
+    ],
+    [
+      "packages/db/src/database-handle.ts",
+      "packages/db/src/live-change-tracking.ts",
+      "packages/db/src/live-events.ts"
+    ],
+    [
+      "apps/web/src/features/github-sync/GitHubConnectDialog.tsx",
+      "apps/web/src/features/github-sync/use-github-connect.ts"
+    ],
+    [
+      "apps/web/src/features/what-changed/WhatChangedDrawer.tsx",
+      "apps/web/src/features/what-changed/WhatChangedProvider.tsx"
+    ],
+    [
+      "packages/core/src/changesets/operation-registry.ts",
+      "packages/core/src/changesets/resolver-write-collections.ts"
+    ]
+  ],
+  "new_workspace_imports": [
+    {
+      "path": "apps/server/src/application/base-versions.ts",
+      "import": "@storymapper/core",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/connector/connection-proof.ts",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/connector/connection-proof.ts",
+      "import": "@storymapper/db",
+      "line": 3,
+      "type_only": true
+    },
+    {
+      "path": "apps/server/src/application/connector/connection-proof.ts",
+      "import": "@storymapper/server/application/deps",
+      "line": 4,
+      "type_only": true
+    },
+    {
+      "path": "apps/server/src/application/connector/credential.use-cases.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/connector/credential.use-cases.ts",
+      "import": "@storymapper/server/application/actors",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/connector/credential.use-cases.ts",
+      "import": "@storymapper/server/services/credential-file",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/connector/github-connect.use-cases.ts",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/connector/github-connect.use-cases.ts",
+      "import": "@storymapper/db",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/connector/github-connect.use-cases.ts",
+      "import": "@storymapper/github",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/connector/github-connect.use-cases.ts",
+      "import": "@storymapper/server/application/actors",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/connector/github-connect.use-cases.ts",
+      "import": "@storymapper/server/application/connector/connection-proof",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/connector/github-connect.use-cases.ts",
+      "import": "@storymapper/server/application/connector/credential.use-cases",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/connector/github-connect.use-cases.ts",
+      "import": "@storymapper/server/application/deps",
+      "line": 8,
+      "type_only": true
+    },
+    {
+      "path": "apps/server/src/application/connector/github-connect.use-cases.ts",
+      "import": "@storymapper/server/services/credentials",
+      "line": 9,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/customization/customization.use-cases.ts",
+      "import": "@storymapper/server/application/base-versions",
+      "line": 29,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/descriptors.ts",
+      "import": "@storymapper/server/application/sync/remote-push.use-cases",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/descriptors.ts",
+      "import": "@storymapper/server/application/connector/credential.use-cases",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/descriptors.ts",
+      "import": "@storymapper/server/application/connector/github-connect.use-cases",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-command.ts",
+      "import": "@storymapper/server/application/errors",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-import-command.ts",
+      "import": "@storymapper/server/application/errors",
+      "line": 9,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-import-command.ts",
+      "import": "@storymapper/server/services/sync-merge",
+      "line": 11,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-pull-command.ts",
+      "import": "@storymapper/core",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-pull-command.ts",
+      "import": "@storymapper/db",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-pull-command.ts",
+      "import": "@storymapper/server/application/errors",
+      "line": 8,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-ticket-command.ts",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-ticket-command.ts",
+      "import": "@storymapper/core",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-ticket-command.ts",
+      "import": "@storymapper/github",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-ticket-command.ts",
+      "import": "@storymapper/server/application/deps",
+      "line": 5,
+      "type_only": true
+    },
+    {
+      "path": "apps/server/src/application/sync/github-ticket-command.ts",
+      "import": "@storymapper/server/application/sync/github-command",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-ticket-command.ts",
+      "import": "@storymapper/server/application/sync/github-import-command",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-ticket-command.ts",
+      "import": "@storymapper/server/services/credentials",
+      "line": 8,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-ticket-command.ts",
+      "import": "@storymapper/server/services/work-item-sync",
+      "line": 9,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/github-ticket-command.ts",
+      "import": "@storymapper/server/services/sync-merge",
+      "line": 10,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/remote-push.use-cases.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": true
+    },
+    {
+      "path": "apps/server/src/application/sync/remote-push.use-cases.ts",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/remote-push.use-cases.ts",
+      "import": "@storymapper/server/application/deps",
+      "line": 3,
+      "type_only": true
+    },
+    {
+      "path": "apps/server/src/application/sync/remote-push.use-cases.ts",
+      "import": "@storymapper/server/application/actors",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/remote-push.use-cases.ts",
+      "import": "@storymapper/server/services/remote-push-execution",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/sync-conflict.use-cases.ts",
+      "import": "@storymapper/server/services/remote-push-plan",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/application/sync/sync.use-cases.ts",
+      "import": "@storymapper/server/application/sync/github-ticket-command",
+      "line": 8,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/config/served-origin.ts",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/http/routes/connector-routes.ts",
+      "import": "@storymapper/server/application/connector/github-connect.use-cases",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/http/routes/index.ts",
+      "import": "@storymapper/server/config/served-origin",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/http/routes/sync-routes.ts",
+      "import": "@storymapper/server/application/sync/remote-push.use-cases",
+      "line": 14,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/mcp/http.ts",
+      "import": "@storymapper/server/config/served-origin",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/credential-file.ts",
+      "import": "@storymapper/contracts",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/credentials.ts",
+      "import": "@storymapper/server/services/credential-file",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-context.ts",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-context.ts",
+      "import": "@storymapper/db",
+      "line": 3,
+      "type_only": true
+    },
+    {
+      "path": "apps/server/src/services/remote-push-context.ts",
+      "import": "@storymapper/contracts",
+      "line": 4,
+      "type_only": true
+    },
+    {
+      "path": "apps/server/src/services/remote-push-context.ts",
+      "import": "@storymapper/github",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-context.ts",
+      "import": "@storymapper/db",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-evidence.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-evidence.ts",
+      "import": "@storymapper/github",
+      "line": 2,
+      "type_only": true
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "import": "@storymapper/core",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "import": "@storymapper/db",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "import": "@storymapper/github",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "import": "@storymapper/server/services/sync-conflict-resolution",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "import": "@storymapper/server/services/remote-push-evidence",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "import": "@storymapper/server/services/sync-merge",
+      "line": 8,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "import": "@storymapper/server/services/credentials",
+      "line": 9,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "import": "@storymapper/server/services/remote-push-context",
+      "line": 10,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "import": "@storymapper/core",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "import": "@storymapper/db",
+      "line": 4,
+      "type_only": true
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "import": "@storymapper/github",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "import": "@storymapper/server/services/credentials",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "import": "@storymapper/server/services/remote-push-context",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "import": "@storymapper/server/services/sync-merge",
+      "line": 8,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "import": "@storymapper/server/services/sync-conflict-resolution",
+      "line": 9,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/sync-conflict-resolution.ts",
+      "import": "@storymapper/core/changesets/json-equality",
+      "line": 8,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.ts",
+      "import": "@storymapper/server/application/errors",
+      "line": 24,
+      "type_only": false
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.ts",
+      "import": "@storymapper/server/services/remote-push-plan",
+      "line": 27,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/app/api.ts",
+      "import": "@storymapper/web/app/incoming-github-error",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/app/incoming-github-error.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/app/incoming-github-error.ts",
+      "import": "@storymapper/ui-strings",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/app/incoming-github-error.ts",
+      "import": "@storymapper/web/app/conflicts",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/app/routes/story-map-shell.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/conflicts/ConflictAlert.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncConflictDiff",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectDialog.tsx",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectDialog.tsx",
+      "import": "@storymapper/ui-strings",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectDialog.tsx",
+      "import": "@storymapper/web/components/Dialog",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectDialog.tsx",
+      "import": "@storymapper/web/features/github-sync/GitHubConnectionFields",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectDialog.tsx",
+      "import": "@storymapper/web/features/github-sync/connection-draft",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectDialog.tsx",
+      "import": "@storymapper/web/features/github-sync/use-github-connect",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectionFields.tsx",
+      "import": "@storymapper/web/ui-strings/remote-push",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectionFields.tsx",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectionFields.tsx",
+      "import": "@storymapper/ui-strings",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectionFields.tsx",
+      "import": "@storymapper/web/features/github-sync/connection-draft",
+      "line": 5,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectionsPanel.tsx",
+      "import": "@storymapper/web/app/api",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectionsPanel.tsx",
+      "import": "@storymapper/web/features/github-sync/connection-draft",
+      "line": 8,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectionsPanel.tsx",
+      "import": "@storymapper/web/features/github-sync/GitHubConnectionFields",
+      "line": 9,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectionsPanel.tsx",
+      "import": "@storymapper/web/features/github-sync/GitHubConnectDialog",
+      "line": 10,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "import": "@storymapper/web/features/github-sync/GitHubSyncStatus",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncConflictDiff",
+      "line": 2,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "import": "@storymapper/web/app/incoming-github-error",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "import": "@storymapper/web/features/github-sync/IncomingGitHubResults",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "import": "@storymapper/web/features/github-sync/IncomingGitHubReview",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "import": "@storymapper/web/ui-strings/incoming-github",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "import": "@storymapper/web/features/github-sync/RemotePushReview",
+      "line": 16,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "import": "@storymapper/web/ui-strings/remote-push",
+      "line": 17,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "import": "@storymapper/web/app/live/live-interaction-store",
+      "line": 18,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncStatus.tsx",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncStatus.tsx",
+      "import": "@storymapper/ui-strings",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncStatus.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncStatus.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncConflictReview",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncStatus.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncConflictDiff",
+      "line": 6,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncStatus.tsx",
+      "import": "@storymapper/web/features/github-sync/sync-status",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/IncomingGitHubResults.tsx",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/IncomingGitHubResults.tsx",
+      "import": "@storymapper/web/ui-strings/incoming-github",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/IncomingGitHubReview.tsx",
+      "import": "@storymapper/web/features/github-sync/IncomingGitHubResults",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/IncomingGitHubReview.tsx",
+      "import": "@storymapper/contracts",
+      "line": 3,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/IncomingGitHubReview.tsx",
+      "import": "@storymapper/web/features/changesets/ChangeSetReview",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/IncomingGitHubReview.tsx",
+      "import": "@storymapper/web/features/changesets/useChangeSetReview",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/IncomingGitHubReview.tsx",
+      "import": "@storymapper/web/ui-strings/incoming-github",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/RemotePushReview.tsx",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/RemotePushReview.tsx",
+      "import": "@storymapper/web/ui-strings/remote-push",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/SyncConflictDiff.tsx",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/SyncConflictDiff.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/SyncConflictReview.tsx",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/SyncConflictReview.tsx",
+      "import": "@storymapper/web/app/conflicts",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/SyncConflictReview.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncConflictDiff",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/SyncConflictReview.tsx",
+      "import": "@storymapper/ui-strings",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/SyncConflictReview.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/SyncFieldLocks.tsx",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/SyncFieldLocks.tsx",
+      "import": "@storymapper/core/publishing/sync-fields",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/SyncFieldLocks.tsx",
+      "import": "@storymapper/web/app/api",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/connection-draft.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/connection-draft.ts",
+      "import": "@storymapper/ui-strings",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/sync-status.ts",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connect.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connect.ts",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connect.ts",
+      "import": "@storymapper/ui-strings",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connect.ts",
+      "import": "@storymapper/web/app/api",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connect.ts",
+      "import": "@storymapper/web/app/live/live-interaction-store",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connect.ts",
+      "import": "@storymapper/web/features/github-sync/connection-draft",
+      "line": 8,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connect.ts",
+      "import": "@storymapper/web/features/github-sync/use-github-connection-recovery",
+      "line": 9,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connect.ts",
+      "import": "@storymapper/web/features/github-sync/GitHubConnectDialog",
+      "line": 10,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connection-recovery.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connection-recovery.ts",
+      "import": "@storymapper/ui-strings",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connection-recovery.ts",
+      "import": "@storymapper/web/app/api",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connection-recovery.ts",
+      "import": "@storymapper/web/app/live/live-interaction-store",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseDateFields.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseDateFields.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseDateFields.tsx",
+      "import": "@storymapper/web/features/conflicts/merge-saved-draft",
+      "line": 11,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseEditor.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseEditor.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseEditor.tsx",
+      "import": "@storymapper/web/features/conflicts/merge-saved-draft",
+      "line": 12,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseKanban.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseKanban.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseKanban.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncConflictDiff",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseKanban.tsx",
+      "import": "@storymapper/web/app/conflicts",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/BoardToolbar.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncConflictDiff",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/BoardToolbar.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/BoardToolbar.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardComposer.tsx",
+      "import": "@storymapper/web/features/story-map/components/TicketCardComposer",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "import": "@storymapper/web/app/incoming-github-error",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "import": "@storymapper/web/features/github-sync/IncomingGitHubResults",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "import": "@storymapper/web/features/github-sync/IncomingGitHubReview",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "import": "@storymapper/web/features/github-sync/RemotePushReview",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "import": "@storymapper/web/ui-strings/remote-push",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "import": "@storymapper/web/features/conflicts/merge-saved-draft",
+      "line": 21,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardTile.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardTile.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/DiscoveryLanes.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/DiscoveryLanes.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/LifecycleActions.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/LifecycleActions.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/LifecycleDialog.tsx",
+      "import": "@storymapper/web/app/conflicts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/LifecycleDialog.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncConflictDiff",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/LifecycleDialog.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/LifecycleDialog.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/MoveAreaDialog.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/MoveAreaDialog.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/StorySliceMove.tsx",
+      "import": "@storymapper/web/features/github-sync/SyncFieldLocks",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/StorySliceMove.tsx",
+      "import": "@storymapper/web/ui-strings/sync-conflicts",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/TicketCardComposer.tsx",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/TicketCardComposer.tsx",
+      "import": "@storymapper/web/components/Dialog",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/TicketCardComposer.tsx",
+      "import": "@storymapper/web/features/github-sync/GitHubConnectDialog",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/TicketCardComposer.tsx",
+      "import": "@storymapper/web/features/github-sync/IncomingGitHubReview",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/TicketCardComposer.tsx",
+      "import": "@storymapper/web/features/story-map/components/useTicketCardComposer",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/TicketCardComposer.tsx",
+      "import": "@storymapper/web/ui-strings/ticket-composer",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/useTicketCardComposer.ts",
+      "import": "@storymapper/contracts",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/useTicketCardComposer.ts",
+      "import": "@storymapper/web/app/api",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/useTicketCardComposer.ts",
+      "import": "@storymapper/web/app/live/live-interaction-store",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/useTicketCardComposer.ts",
+      "import": "@storymapper/web/features/story-map/card-query-invalidation",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/useTicketCardComposer.ts",
+      "import": "@storymapper/web/ui-strings/ticket-composer",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/ui-strings/incoming-github.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": true
+    },
+    {
+      "path": "apps/web/src/ui-strings/index.ts",
+      "import": "@storymapper/web/ui-strings/github-connect",
+      "line": 490,
+      "type_only": false
+    },
+    {
+      "path": "apps/web/src/ui-strings/remote-push.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": true
+    },
+    {
+      "path": "packages/contracts/src/api/github-ticket.ts",
+      "import": "@storymapper/contracts/schemas/domain",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/api/github-ticket.ts",
+      "import": "@storymapper/contracts/mcp/tools",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/api/http.ts",
+      "import": "@storymapper/contracts/schemas/github-connection",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/mcp/tool-inputs.ts",
+      "import": "@storymapper/contracts/api/github-ticket",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/mcp/tools.ts",
+      "import": "@storymapper/contracts/schemas/sync-results",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/work-item-identity",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/work-item-provider",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/sync-health",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/sync-health",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/work-item-sync-baseline",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/work-item-sync-baseline",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/identifiers",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/external-refs",
+      "line": 8,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/github-identity",
+      "line": 9,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/identifiers",
+      "line": 14,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/external-refs",
+      "line": 15,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "import": "@storymapper/contracts/schemas/work-item-provider",
+      "line": 516,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/external-refs.ts",
+      "import": "@storymapper/contracts/schemas/identifiers",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/external-refs.ts",
+      "import": "@storymapper/contracts/schemas/work-item-identity",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/operation-fields.ts",
+      "import": "@storymapper/contracts/schemas/work-item-identity",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/remaining-operations.ts",
+      "import": "@storymapper/contracts/schemas/work-item-identity",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/remaining-operations.ts",
+      "import": "@storymapper/contracts/schemas/work-item-provider",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/remote-push.ts",
+      "import": "@storymapper/contracts/schemas/work-item-identity",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/remote-push.ts",
+      "import": "@storymapper/contracts/schemas/domain",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/restore-points.ts",
+      "import": "@storymapper/contracts/schemas/work-item-provider",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/sync-health.ts",
+      "import": "@storymapper/contracts/schemas/identifiers",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/sync-health.ts",
+      "import": "@storymapper/contracts/schemas/work-item-identity",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/work-item-identity.ts",
+      "import": "@storymapper/contracts/schemas/errors",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/work-item-identity.ts",
+      "import": "@storymapper/contracts/schemas/github-identity",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/work-item-identity.ts",
+      "import": "@storymapper/contracts/schemas/work-item-provider",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/work-item-provider.ts",
+      "import": "@storymapper/contracts/schemas/errors",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/contracts/src/schemas/work-item-sync-baseline.ts",
+      "import": "@storymapper/contracts/schemas/work-item-identity",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/board-import-resolution.ts",
+      "import": "@storymapper/core/publishing/github-footer",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/github-identity.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/github-import-dependencies.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": true
+    },
+    {
+      "path": "packages/core/src/changesets/github-sync-resolution.ts",
+      "import": "@storymapper/core/changesets/github-identity",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/github-sync-resolution.ts",
+      "import": "@storymapper/core/changesets/sync-resolution-agreement",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/github-sync-resolution.ts",
+      "import": "@storymapper/core/story-map/visibility",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/link-resolution.ts",
+      "import": "@storymapper/core/changesets/github-identity",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/operation-conflicts.ts",
+      "import": "@storymapper/core/changesets/sync-field-locks",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/operation-dependencies.ts",
+      "import": "@storymapper/core/changesets/github-import-dependencies",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/operation-registry.ts",
+      "import": "@storymapper/core/changesets/github-identity",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/operation-registry.ts",
+      "import": "@storymapper/core/changesets/github-import-dependencies",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/source-resolution.ts",
+      "import": "@storymapper/core/changesets/github-identity",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/sync-field-locks.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/sync-field-locks.ts",
+      "import": "@storymapper/core/changesets/github-identity",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/sync-field-locks.ts",
+      "import": "@storymapper/core/publishing/sync-fields",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/sync-resolution-agreement.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/sync-resolution-agreement.ts",
+      "import": "@storymapper/core/publishing/sync-fields",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/sync-resolution-agreement.ts",
+      "import": "@storymapper/core/publishing/github-footer",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/sync-resolution-agreement.ts",
+      "import": "@storymapper/core/changesets/supply-values",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/changesets/sync-resolution-agreement.ts",
+      "import": "@storymapper/core/changesets/json-equality",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/publishing/export-formatters.ts",
+      "import": "@storymapper/core/publishing/github-footer",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/publishing/export-formatters.ts",
+      "import": "@storymapper/core/publishing/github-footer",
+      "line": 5,
+      "type_only": true
+    },
+    {
+      "path": "packages/core/src/publishing/github-footer.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/core/src/publishing/remote-push.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": true
+    },
+    {
+      "path": "packages/db/src/archive-database.ts",
+      "import": "@storymapper/db/github-archive-redaction",
+      "line": 16,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/connection.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/github-archive-redaction.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/github-refs-repository.ts",
+      "import": "@storymapper/db/repositories/row-mappers",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/github-refs-repository.ts",
+      "import": "@storymapper/contracts",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/github-refs-repository.ts",
+      "import": "@storymapper/core",
+      "line": 5,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/github-refs-repository.ts",
+      "import": "@storymapper/db/schema",
+      "line": 6,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/github-refs-repository.ts",
+      "import": "@storymapper/db/repositories/source-evidence-repository",
+      "line": 7,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/github-refs-repository.ts",
+      "import": "@storymapper/db/repositories/storymapper-repository",
+      "line": 8,
+      "type_only": true
+    },
+    {
+      "path": "packages/db/src/repositories/operation-persistence-repository.ts",
+      "import": "@storymapper/db/repositories/source-evidence-repository",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/operation-persistence-repository.ts",
+      "import": "@storymapper/db/repositories/row-mappers",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/operation-snapshot-repository.ts",
+      "import": "@storymapper/core",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/operation-supply-repository.ts",
+      "import": "@storymapper/core",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/remote-push-repository.ts",
+      "import": "@storymapper/contracts",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/remote-push-repository.ts",
+      "import": "@storymapper/db/schema",
+      "line": 4,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/remote-push-repository.ts",
+      "import": "@storymapper/db/repositories/storymapper-repository",
+      "line": 5,
+      "type_only": true
+    },
+    {
+      "path": "packages/db/src/repositories/row-mappers.ts",
+      "import": "@storymapper/core",
+      "line": 2,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/sources-repository.ts",
+      "import": "@storymapper/db/repositories/github-refs-repository",
+      "line": 157,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/storymapper-repository.ts",
+      "import": "@storymapper/db/repositories/remote-push-repository",
+      "line": 22,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/storymapper-repository.ts",
+      "import": "@storymapper/db/repositories/sync-conflict-admission",
+      "line": 24,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/sync-conflict-admission.ts",
+      "import": "@storymapper/contracts",
+      "line": 2,
+      "type_only": true
+    },
+    {
+      "path": "packages/db/src/repositories/sync-conflict-admission.ts",
+      "import": "@storymapper/db/schema",
+      "line": 3,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/repositories/sync-conflict-admission.ts",
+      "import": "@storymapper/db/repositories/storymapper-repository",
+      "line": 4,
+      "type_only": true
+    },
+    {
+      "path": "packages/db/src/repositories/work-item-repository.ts",
+      "import": "@storymapper/db/repositories/github-refs-repository",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/schema/tables.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/db/src/snapshot.ts",
+      "import": "@storymapper/db/github-archive-redaction",
+      "line": 8,
+      "type_only": false
+    },
+    {
+      "path": "packages/github/src/providers/github-remote-push.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    },
+    {
+      "path": "packages/github/src/providers/github-remote-push.ts",
+      "import": "@storymapper/github",
+      "line": 2,
+      "type_only": true
+    },
+    {
+      "path": "packages/github/src/providers/github-verification.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": true
+    },
+    {
+      "path": "packages/github/src/providers/normalized-identity.ts",
+      "import": "@storymapper/contracts",
+      "line": 1,
+      "type_only": false
+    }
+  ],
+  "new_forbidden_candidates": [],
+  "runtime_scc_before": [
+    [
+      "packages/core/src/index.ts",
+      "packages/core/src/proposals/ai-proposals.ts",
+      "packages/core/src/proposals/proposal-builders.ts",
+      "packages/core/src/proposals/release-slice.ts",
+      "packages/core/src/publishing/export-files.ts",
+      "packages/core/src/publishing/export-formatters.ts",
+      "packages/core/src/release-slicing/slice.ts",
+      "packages/core/src/reports/release-notes.ts",
+      "packages/core/src/reports/reports.ts",
+      "packages/core/src/reports/roadmap.ts",
+      "packages/core/src/reports/sync-health.ts"
+    ],
+    [
+      "apps/server/src/mcp/tools/register-card-tools.ts",
+      "apps/server/src/mcp/tools/register-content-tools.ts",
+      "apps/server/src/mcp/tools/register-customization-tools.ts",
+      "apps/server/src/mcp/tools/register-structure-tools.ts",
+      "apps/server/src/mcp/tools/register-tools.ts"
+    ],
+    [
+      "apps/server/src/application/sync/github-import-command.ts",
+      "apps/server/src/application/sync/github-pull-command.ts",
+      "apps/server/src/services/sync-merge.ts",
+      "apps/server/src/services/work-item-sync.ts"
+    ],
+    [
+      "packages/contracts/src/schemas/change-operations.ts",
+      "packages/contracts/src/schemas/domain.ts",
+      "packages/contracts/src/schemas/plan-drift.ts"
+    ],
+    [
+      "apps/web/src/features/what-changed/WhatChangedDrawer.tsx",
+      "apps/web/src/features/what-changed/WhatChangedProvider.tsx"
+    ]
+  ],
+  "runtime_scc_after": [
+    [
+      "packages/core/src/index.ts",
+      "packages/core/src/proposals/ai-proposals.ts",
+      "packages/core/src/proposals/proposal-builders.ts",
+      "packages/core/src/proposals/release-slice.ts",
+      "packages/core/src/publishing/export-files.ts",
+      "packages/core/src/publishing/export-formatters.ts",
+      "packages/core/src/release-slicing/slice.ts",
+      "packages/core/src/reports/release-notes.ts",
+      "packages/core/src/reports/reports.ts",
+      "packages/core/src/reports/roadmap.ts",
+      "packages/core/src/reports/sync-health.ts"
+    ],
+    [
+      "apps/server/src/application/sync/github-import-command.ts",
+      "apps/server/src/application/sync/github-pull-command.ts",
+      "apps/server/src/services/remote-push-plan.ts",
+      "apps/server/src/services/sync-conflict-resolution.ts",
+      "apps/server/src/services/sync-merge.ts",
+      "apps/server/src/services/work-item-sync.ts"
+    ],
+    [
+      "apps/server/src/mcp/tools/register-card-tools.ts",
+      "apps/server/src/mcp/tools/register-content-tools.ts",
+      "apps/server/src/mcp/tools/register-customization-tools.ts",
+      "apps/server/src/mcp/tools/register-structure-tools.ts",
+      "apps/server/src/mcp/tools/register-tools.ts"
+    ],
+    [
+      "packages/contracts/src/schemas/change-operations.ts",
+      "packages/contracts/src/schemas/domain.ts",
+      "packages/contracts/src/schemas/plan-drift.ts"
+    ],
+    [
+      "apps/web/src/features/what-changed/WhatChangedDrawer.tsx",
+      "apps/web/src/features/what-changed/WhatChangedProvider.tsx"
+    ]
+  ],
+  "runtime_file_edges": {
+    "before": 1405,
+    "after": 1660,
+    "added": 267,
+    "removed": 12
+  }
+}

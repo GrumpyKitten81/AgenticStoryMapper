@@ -1,0 +1,19 @@
+{
+  "name": "@storymapper/importers",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test:coverage": "vitest run --exclude \"**/dist/**\" --coverage --maxWorkers=1"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vitest": "^4.1.12"
+  }
+}

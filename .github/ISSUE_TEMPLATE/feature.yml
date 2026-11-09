@@ -1,0 +1,28 @@
+name: Plan a Feature
+description: Define a capability independently of its structural level on a map.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep secrets, personal information and private Project data out of public issues.
+        For security concerns, read SECURITY.md in the repository root; do not submit vulnerability details here.
+        Planning type does not assign a Story Map level or a native GitHub Issue type.
+  - id: capability
+    type: textarea
+    attributes:
+      label: Capability and outcome
+      description: What capability should this Feature provide, and what outcome does it enable?
+    validations:
+      required: true
+  - id: success
+    type: textarea
+    attributes:
+      label: Success criteria
+      description: Which observable conditions show that the capability is complete?
+    validations:
+      required: true
+  - id: context
+    type: textarea
+    attributes:
+      label: Context and references (optional)
+      description: Link related planning items, dependencies and source evidence. Map placement is a separate decision.

@@ -1,0 +1,97 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/components/Dialog.test.ts (12 tests) 413ms
+ ✓ src/features/project-archive/project-archive-import.test.ts (3 tests) 50ms
+ ✓ src/features/releases/ReleasePanel.test.tsx (3 tests) 78ms
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 172ms
+ ✓ src/features/personas/PersonaDetail.test.ts (8 tests) 220ms
+ ✓ src/features/ai-mcp/context-draft.test.ts (3 tests) 27ms
+ ✓ src/app/routes/audit.test.ts (9 tests) 656ms
+ ✓ src/features/ai-mcp/TemplateEditor.test.tsx (6 tests) 152ms
+ ✓ src/features/ai-mcp/AiMcpPanel.test.tsx (4 tests) 150ms
+ ✓ src/features/story-map/views/TrackingView.test.tsx (6 tests) 179ms
+ ✓ src/features/changesets/boards.test.tsx (3 tests) 75ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 119ms
+ ✓ src/app/live/live-updates.test.tsx (23 tests) 466ms
+ ✓ src/features/releases/ReleaseDateFields.test.ts (2 tests) 45ms
+ ✓ src/features/ai-mcp/undone-changesets.test.ts (1 test) 49ms
+ ✓ src/app/routes/workspace-navigation.test.tsx (14 tests) 764ms
+ ✓ src/features/roadmaps/RoadmapEditor.test.ts (3 tests) 46ms
+ ✓ src/features/github-sync/github-visibility.test.tsx (3 tests) 228ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 175ms
+ ✓ src/features/project-archive/project-archive-runtime.test.ts (3 tests) 568ms
+ ✓ src/features/releases/ReleaseKanban.test.tsx (2 tests) 381ms
+ ✓ src/features/story-map/components/card-choices.test.tsx (4 tests) 959ms
+   ✓ names current category and priority, offers selected listbox options, saves keyboard selection and returns focus on Escape 546ms
+ ✓ src/features/safety/SafetySwitchStrip.test.tsx (1 test) 190ms
+ ✓ src/features/ai-mcp/current-changeset-actions.test.ts (3 tests) 465ms
+ ✓ src/app/live/live-stream-reader.test.ts (7 tests) 101ms
+ ✓ src/app/card-creation-api.test.ts (7 tests) 5ms
+ ✓ src/features/ai-mcp/host-config-copy.test.tsx (1 test) 67ms
+ ✓ src/app/live/live-origin.test.ts (1 test) 6ms
+ ✓ src/features/personas/PersonasPanel.test.tsx (1 test) 84ms
+ ✓ src/features/story-map/views/SlicesView.test.tsx (11 tests) 1550ms
+   ✓ moves with real DndContext pointer events and recomputes membership and order cues 405ms
+ ✓ src/features/story-map/views/DiscoveryView.test.tsx (4 tests) 1585ms
+   ✓ retains filtered lanes and Stories, excludes their controls/drag sources and restores the same nodes and accurate counts 466ms
+   ✓ updates retained filtered cards from canonical refetch and removes newly archived/deleted cards instead of reviving them on reset 340ms
+   ✓ keeps filtered Cards display:none from the real stylesheet, including in a standalone export clone outside the workspace 596ms
+ ✓ src/features/what-changed/WhatChangedProvider.test.tsx (12 tests) 1690ms
+   ✓ retains every affected row while closed without dialog/focus/hold semantics and reuses rows through opening and closing 621ms
+ ✓ src/features/story-map/components/card-provenance.test.ts (10 tests) 1755ms
+   ✓ FR-20 Card origin evidence > renders readable inference origin without evidence 303ms
+   ✓ FR-20 Card origin evidence > links path-like notes as text and unlinks by typed identity, restoring recorded inference 368ms
+ ✓ src/features/project-archive/project-archive-export.test.ts (4 tests) 7ms
+ ✓ src/features/story-map/export/story-map-view-export.test.ts (1 test) 17ms
+ ✓ src/features/story-map/views/GraphView.test.tsx (17 tests) 1786ms
+   ✓ uses the explicit Open Card action and retains shared dirty-editor guards 420ms
+ ✓ src/app/live/live-announcements.test.ts (1 test) 8ms
+ ✓ src/features/story-map/components/lifecycle.test.tsx (20 tests) 2584ms
+   ✓ exposes permanent deletion from parked inventory while keeping its other action separate 308ms
+   ✓ opens the matching confirmation from every tile control and writes nothing until confirmed 440ms
+ ✓ src/features/what-changed/api.test.ts (3 tests) 9ms
+ ✓ src/app/live/live-query-invalidation.test.ts (2 tests) 5ms
+ ✓ src/features/story-map/components/PlanStateComparison.test.tsx (1 test) 108ms
+ ✓ src/features/what-changed/model.test.ts (3 tests) 3ms
+ ✓ src/features/onboarding/getting-started.test.ts (5 tests) 14ms
+ ✓ src/features/story-map/export/export-with-progress.test.ts (2 tests) 5ms
+ ✓ src/app/conflicts.test.ts (6 tests) 7ms
+ ✓ src/features/changesets/shell.test.tsx (8 tests) 2087ms
+   ✓ removes only applied preview search and retains selected Card, Tree navigation and Activity explanation 541ms
+   ✓ removes only missing preview search and retains selected Card, Tree navigation and Activity explanation 373ms
+   ✓ invalidates review immediately through real transaction stream while preserving held dirty CardDetailModal and focus 393ms
+   ✓ invalidates review immediately through real reset stream while preserving held dirty CardDetailModal and focus 384ms
+ ✓ src/app/live/live-stream.test.ts (3 tests) 1055ms
+   ✓ relays between independent tabs and relinquishes terminal leadership before later bootstrap and shutdown handoff 975ms
+ ✓ src/features/story-map/graph/graph-model.test.ts (9 tests) 10ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > refetches ordinary archived-status Save and inventory Restore into the real board
+Not implemented: HTMLFormElement's requestSubmit() method
+
+ ✓ src/features/reports/PlanDriftDrawer.test.tsx (12 tests) 2269ms
+   ✓ Plan drift drawer > bounds dense DOM creation and makes all 1,000 differences reachable through keyboard-accessible pages 1779ms
+ ✓ src/features/story-map/components/card-creation.test.tsx (14 tests) 2301ms
+   ✓ creates activity under root atomically with actual title, placement and Release and retains it after refetch 529ms
+ ✓ src/features/story-map/components/card-dependencies.test.tsx (12 tests) 2311ms
+   ✓ Card dependencies > clears the failed dependency when selecting a different prerequisite 423ms
+   ✓ Card dependencies > keeps a pending dependency refusal observable with dirty editor false 502ms
+ ✓ src/features/story-map/components/card-fields.test.ts (9 tests) 2354ms
+   ✓ saves scalar fields, custom priority/color and zero in the map unit, then reloads supported clears 1262ms
+ ✓ src/ui-strings/ui-strings.test.ts (8 tests) 190ms
+ ✓ src/app/routes/root-layout.test.ts (1 test) 26ms
+ ✓ src/features/restore-points/restore-points.test.ts (22 tests) 2492ms
+   ✓ production Activity restore points > opens the linked exact Agent restore point without restoring and keeps the existing confirmation 358ms
+   ✓ production Activity restore points > reloads after successful restore even when result storage fails, then recovers the durable Activity result 335ms
+ ✓ src/features/story-map/components/card-detail.test.ts (28 tests) 3399ms
+   ✓ FR-15 Card detail > retains mounted dirty Card content after a background inventory error 513ms
+   ✓ FR-15 Card detail > retains mounted dirty Card content after a background snapshot error 410ms
+   ✓ FR-15 Card detail > retains the selected editor and unsaved text when a same-origin snapshot removes its Card, preserving errors and explicit close 435ms
+
+ Test Files  56 passed (56)
+      Tests  376 passed (376)
+   Start at  12:49:18
+   Duration  6.69s (transform 6.42s, setup 0ms, collect 63.87s, tests 36.51s, environment 30.16s, prepare 3.41s)

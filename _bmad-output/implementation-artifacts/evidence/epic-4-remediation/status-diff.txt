@@ -1,0 +1,80 @@
+--- sprint-status.before
++++ sprint-status.after
+@@ -29,7 +29,7 @@
+ # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+ # - Retrospective appends its action items to action_items; the status view surfaces open ones
+ generated: 09-29-2026 23:28
+-last_updated: 10-17-2026 10:12
++last_updated: 10-17-2026 11:33
+ project: StoryMapper
+ project_key: NOKEY
+ tracking_system: file-system
+@@ -212,21 +212,21 @@
+     action: "Correct caller-controlled operation-ID dictionary allocation; cover __proto__
+       and own string identities across preview/submission/execution. R1."
+     owner: "Core/DB developer"
+-    status: open
++    status: done
+     ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+   - id: "epic-4-retro-a2"
+     epic: 4
+     action: "Return actionable source-unavailable conflicts for expected reviewed-file
+       permission failures; retain unexpected errors and atomic refusal coverage. R2."
+     owner: "Server developer"
+-    status: open
++    status: done
+     ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+   - id: "epic-4-retro-a3"
+     epic: 4
+     action: "Bound operation-snapshot reads to the owning Project in SQL; measure
+       unrelated large-Project effect and verify unchanged ownership filtering. R3."
+     owner: "DB/performance developer"
+-    status: open
++    status: done
+     ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+   - id: "epic-4-retro-a4"
+     epic: 4
+@@ -234,7 +234,7 @@
+       comparisons for source-heavy multi-operation proposals. Preserve exact audit/preview
+       semantics. R4."
+     owner: "Core/performance developer"
+-    status: open
++    status: done
+     ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+   - id: "epic-4-retro-a5"
+     epic: 4
+@@ -242,7 +242,7 @@
+       differential checks, including duplicate GitHub-owner/evidence reconstruction.
+       R5/R6."
+     owner: "Core developer"
+-    status: open
++    status: done
+     ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+   - id: "epic-4-retro-a6"
+     epic: 4
+@@ -250,7 +250,7 @@
+       either construction path; share deterministic construction where warranted.
+       R9."
+     owner: "Source-import developer"
+-    status: open
++    status: done
+     ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+   - id: "epic-4-retro-a7"
+     epic: 4
+@@ -258,7 +258,7 @@
+       the ENTITY_TABLES ordering contract with mixed-operation foreign-key assertions.
+       R11."
+     owner: "DB developer"
+-    status: open
++    status: done
+     ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
+   - id: "epic-4-retro-p1"
+     epic: 4
+@@ -266,5 +266,5 @@
+       closing an externally completed run; preserve failed attempt history and evaluate
+       evidence independently of done labels."
+     owner: "Orchestrator maintainer"
+-    status: open
+-    ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"
++    status: done
++    ref: "_bmad-output/implementation-artifacts/epic-4-retro-2026-10-17.md"

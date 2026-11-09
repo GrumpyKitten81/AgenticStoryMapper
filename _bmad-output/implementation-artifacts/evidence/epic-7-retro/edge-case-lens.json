@@ -1,0 +1,12 @@
+{
+  "lens": "edge-case-hunter",
+  "range": "e8bd5873acb2be7ecb138667f7165fe36659f46d..b2f2e967cc45a0c948ad3c2bb7378efb35eaf3e3",
+  "checked_scope": "Remote-push execution/reconciliation, referenced context/evidence/plan builders, DB intent ownership/transitions, conflict-choice preparation and relevant recovery/concurrency tests.",
+  "method": "Path tracing and completeness validation, followed by deletion analysis, then first reading of claims and claims checking. Source and relevant tests were inspected.",
+  "limitations": [
+    "The aggregate 26,474-line diff was not exhaustively covered.",
+    "Code-review graph tools were unavailable in the exposed tool inventory.",
+    "No live provider/account actions or credential inspection were performed."
+  ],
+  "findings": []
+}

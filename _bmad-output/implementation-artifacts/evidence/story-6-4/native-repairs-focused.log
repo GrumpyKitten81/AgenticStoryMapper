@@ -1,0 +1,12 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/ui-strings/ui-strings.test.ts (8 tests) 176ms
+ ✓ src/features/github-sync/github-selection.test.tsx (9 tests) 280ms
+ ✓ src/features/story-map/board-filter-selection.test.tsx (13 tests) 368ms
+ ✓ src/features/github-sync/github-visibility.test.tsx (3 tests) 81ms
+
+ Test Files  4 passed (4)
+      Tests  33 passed (33)
+   Start at  15:48:08
+   Duration  1.47s (transform 1.02s, setup 0ms, collect 2.89s, tests 905ms, environment 676ms, prepare 124ms)

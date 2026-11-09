@@ -1,0 +1,9 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/app/routes/workspace-navigation.test.tsx (18 tests) 586ms
+
+ Test Files  1 passed (1)
+      Tests  18 passed (18)
+   Start at  20:22:13
+   Duration  1.46s (transform 291ms, setup 0ms, collect 513ms, tests 586ms, environment 178ms, prepare 38ms)

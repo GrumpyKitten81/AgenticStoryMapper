@@ -1,0 +1,96 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ❯ src/mcp/tools/submit-changeset.test.ts (43 tests | 10 failed) 3974ms
+   × submits one 200-Card cut with real http actor and retained metadata 684ms
+     → [
+  {
+    "expected": "object",
+    "code": "invalid_type",
+    "path": [
+      "changeSet"
+    ],
+    "message": "Invalid input: expected object, received undefined"
+  }
+]
+   × submits one 200-Card cut with real sdk actor and retained metadata 510ms
+     → [
+  {
+    "expected": "object",
+    "code": "invalid_type",
+    "path": [
+      "changeSet"
+    ],
+    "message": "Invalid input: expected object, received undefined"
+  }
+]
+   ✓ defers protected and explicit proposal cuts on http with no domain writes or snapshots 513ms
+   ✓ defers protected and explicit proposal cuts on sdk with no domain writes or snapshots 533ms
+   × requires separate review for mixed 'persona' submissions on 'http' with protection disabled 47ms
+     → Cannot read properties of undefined (reading 'status')
+   × requires separate review for mixed 'annotation' submissions on 'http' with protection disabled 44ms
+     → Cannot read properties of undefined (reading 'status')
+   × requires separate review for mixed 'workflowStatus' submissions on 'http' with protection disabled 43ms
+     → Cannot read properties of undefined (reading 'status')
+   × requires separate review for mixed 'storyTemplate' submissions on 'http' with protection disabled 45ms
+     → Cannot read properties of undefined (reading 'status')
+   × requires separate review for mixed 'persona' submissions on 'sdk' with protection disabled 50ms
+     → Cannot read properties of undefined (reading 'status')
+   × requires separate review for mixed 'annotation' submissions on 'sdk' with protection disabled 48ms
+     → Cannot read properties of undefined (reading 'status')
+   × requires separate review for mixed 'workflowStatus' submissions on 'sdk' with protection disabled 47ms
+     → Cannot read properties of undefined (reading 'status')
+   × requires separate review for mixed 'storyTemplate' submissions on 'sdk' with protection disabled 48ms
+     → Cannot read properties of undefined (reading 'status')
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 10 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/mcp/tools/submit-changeset.test.ts > submits one 200-Card cut with real http actor and retained metadata
+ FAIL  src/mcp/tools/submit-changeset.test.ts > submits one 200-Card cut with real sdk actor and retained metadata
+ZodError: [
+  {
+    "expected": "object",
+    "code": "invalid_type",
+    "path": [
+      "changeSet"
+    ],
+    "message": "Invalid input: expected object, received undefined"
+  }
+]
+ ❯ src/mcp/tools/submit-changeset.test.ts:81:49
+     79|   approveChangeSet(f, human, proposed.changeSetId);
+     80|   const application = await f.call(surface, { changeSetId: proposed.ch…
+     81|   const result = changeSetCommandResponseSchema.parse({ ...proposed, o…
+       |                                                 ^
+     82|   expect(result.outcome).toBe("applied");
+     83|   expect(f.repository.listChangeSets(f.project.id)).toHaveLength(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+ FAIL  src/mcp/tools/submit-changeset.test.ts > requires separate review for mixed 'persona' submissions on 'http' with protection disabled
+ FAIL  src/mcp/tools/submit-changeset.test.ts > requires separate review for mixed 'annotation' submissions on 'http' with protection disabled
+ FAIL  src/mcp/tools/submit-changeset.test.ts > requires separate review for mixed 'workflowStatus' submissions on 'http' with protection disabled
+ FAIL  src/mcp/tools/submit-changeset.test.ts > requires separate review for mixed 'storyTemplate' submissions on 'http' with protection disabled
+ FAIL  src/mcp/tools/submit-changeset.test.ts > requires separate review for mixed 'persona' submissions on 'sdk' with protection disabled
+ FAIL  src/mcp/tools/submit-changeset.test.ts > requires separate review for mixed 'annotation' submissions on 'sdk' with protection disabled
+ FAIL  src/mcp/tools/submit-changeset.test.ts > requires separate review for mixed 'workflowStatus' submissions on 'sdk' with protection disabled
+ FAIL  src/mcp/tools/submit-changeset.test.ts > requires separate review for mixed 'storyTemplate' submissions on 'sdk' with protection disabled
+TypeError: Cannot read properties of undefined (reading 'status')
+ ❯ src/mcp/tools/submit-changeset.test.ts:455:28
+    453|   expect(f.repository.getOperationSnapshot(f.project.id)).toEqual(befo…
+    454|   const applied = await f.call(surface, { changeSetId: proposed.change…
+    455|   expect(applied.changeSet.status).toBe("applied");
+       |                            ^
+    456|   expect(f.repository.getCard(f.card.id)?.title).toBe("Reviewed card");
+    457|   const state = f.repository.getOperationSnapshot(f.project.id);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ Test Files  1 failed (1)
+      Tests  10 failed | 33 passed (43)
+   Start at  20:08:19
+   Duration  5.05s (transform 472ms, setup 0ms, collect 870ms, tests 3.97s, environment 0ms, prepare 30ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/mcp/tools/submit-changeset.test.ts

@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+
+ ✓ src/changesets/resolver-write-collections.test.ts (64 tests) 143ms
+
+ Test Files  1 passed (1)
+      Tests  64 passed (64)
+   Start at  10:54:38
+   Duration  651ms (transform 185ms, setup 0ms, collect 322ms, tests 143ms, environment 0ms, prepare 31ms)
+

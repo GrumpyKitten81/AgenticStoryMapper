@@ -1,0 +1,6 @@
+{
+  "ignored.md": "intentional",
+  "ignored.md#private": "intentional",
+  "/missing.md": "intentional",
+  "{mistyped.md": "intentional"
+}

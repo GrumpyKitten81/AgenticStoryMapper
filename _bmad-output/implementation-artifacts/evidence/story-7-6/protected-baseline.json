@@ -1,0 +1,34 @@
+{
+  "_bmad-output/implementation-artifacts/sprint-status.yaml": {
+    "working": "2f670a50b4240211110f7a48a1e3e0f4f7176802a595c00ca535f85e34e995dd",
+    "index": "100644 438627835a6cc32fb292243569edc342e3e5f7b8 0\t_bmad-output/implementation-artifacts/sprint-status.yaml"
+  },
+  "_bmad-output/implementation-artifacts/deferred-work.md": {
+    "working": "9b0a6323479e628f8a8721efe8f7d41e7157f1b9e395a38e22152dd09c669626",
+    "index": "100644 1d149ec12852cf983a0eab0f202caa59590db1c6 0\t_bmad-output/implementation-artifacts/deferred-work.md"
+  },
+  ".bmad-loop/claude-unattended.settings.json": {
+    "working": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767",
+    "index": "100644 bf73d65643999f7c06caf6a8bb1434f42a1eed50 0\t.bmad-loop/claude-unattended.settings.json"
+  },
+  ".bmad-loop/plugins/stop-on-story-failure/plugin.toml": {
+    "working": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f",
+    "index": "100644 6f7b74429b942f07ce70332699a5d944c12874f6 0\t.bmad-loop/plugins/stop-on-story-failure/plugin.toml"
+  },
+  ".bmad-loop/plugins/stop-on-story-failure/stop_on_failure.py": {
+    "working": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6",
+    "index": "100644 90ea6dd780b913e5dddc35d5e803508ccd9e27d2 0\t.bmad-loop/plugins/stop-on-story-failure/stop_on_failure.py"
+  },
+  ".bmad-loop/policy.codex.toml": {
+    "working": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d",
+    "index": "100644 4800453eca90a13fa558d4201520d6f9f3bcef61 0\t.bmad-loop/policy.codex.toml"
+  },
+  ".bmad-loop/policy.macci.bak": {
+    "working": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a",
+    "index": "100644 87240e712c2e4d472d66133364aa82fa70c2cb76 0\t.bmad-loop/policy.macci.bak"
+  },
+  ".bmad-loop/policy.opencode.toml": {
+    "working": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980",
+    "index": "100644 5a10a42bd43f32e597f7f73052b08d18b8bfa220 0\t.bmad-loop/policy.opencode.toml"
+  }
+}

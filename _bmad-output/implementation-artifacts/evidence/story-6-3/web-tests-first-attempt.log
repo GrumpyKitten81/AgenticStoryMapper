@@ -1,0 +1,1397 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/components/Dialog.test.ts (12 tests) 227ms
+ ✓ src/features/project-archive/project-archive-import.test.ts (3 tests) 45ms
+ ✓ src/features/releases/ReleasePanel.test.tsx (3 tests) 58ms
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 111ms
+ ✓ src/features/personas/PersonaDetail.test.ts (8 tests) 116ms
+ ✓ src/features/ai-mcp/TemplateEditor.test.tsx (6 tests) 120ms
+ ✓ src/features/story-map/views/TrackingView.test.tsx (6 tests) 141ms
+ ✓ src/features/ai-mcp/AiMcpPanel.test.tsx (4 tests) 131ms
+ ✓ src/app/routes/audit.test.ts (9 tests) 463ms
+ ✓ src/features/changesets/boards.test.tsx (3 tests) 66ms
+ ✓ src/app/live/live-updates.test.tsx (23 tests) 281ms
+ ✓ src/features/ai-mcp/context-draft.test.ts (3 tests) 22ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 104ms
+ ✓ src/features/github-sync/github-visibility.test.tsx (3 tests) 141ms
+ ✓ src/app/routes/workspace-navigation.test.tsx (14 tests) 623ms
+ ✓ src/features/project-archive/project-archive-runtime.test.ts (3 tests) 272ms
+ ✓ src/features/ai-mcp/undone-changesets.test.ts (1 test) 68ms
+ ✓ src/features/roadmaps/RoadmapEditor.test.ts (3 tests) 61ms
+ ✓ src/features/releases/ReleaseDateFields.test.ts (2 tests) 74ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 55ms
+ ✓ src/features/releases/ReleaseKanban.test.tsx (2 tests) 51ms
+ ✓ src/features/ai-mcp/current-changeset-actions.test.ts (3 tests) 119ms
+ ✓ src/features/story-map/views/DiscoveryView.test.tsx (4 tests) 716ms
+   ✓ keeps filtered Cards display:none from the real stylesheet, including in a standalone export clone outside the workspace 303ms
+ ✓ src/features/story-map/views/SlicesView.test.tsx (11 tests) 789ms
+ ✓ src/features/story-map/components/discovery-navigation.test.tsx (7 tests) 806ms
+ ✓ src/features/story-map/components/card-provenance.test.ts (10 tests) 805ms
+ ❯ src/features/story-map/components/card-choices.test.tsx (5 tests | 1 failed) 401ms
+   × names current category and priority, offers selected listbox options, saves keyboard selection and returns focus on Escape 231ms
+     → expected <button type="button" …(5)>…(2)</button> to be <button type="button" …(5)></button> // Object.is equality
+ ✓ src/features/what-changed/WhatChangedProvider.test.tsx (12 tests) 864ms
+   ✓ retains every affected row while closed without dialog/focus/hold semantics and reuses rows through opening and closing 337ms
+ ✓ src/features/story-map/views/GraphView.test.tsx (17 tests) 915ms
+ ✓ src/features/safety/SafetySwitchStrip.test.tsx (1 test) 139ms
+ ✓ src/app/live/live-origin.test.ts (1 test) 5ms
+stderr | src/features/roadmaps/RoadmapPanel.test.tsx > labels roadmap card estimate totals with the map estimation unit
+An update to RoadmapPanel inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to RoadmapPanel inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | src/features/roadmaps/RoadmapPanel.test.tsx > labels roadmap card estimate totals with the map estimation unit
+An update to RoadmapPanel inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to RoadmapEditor inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/features/roadmaps/RoadmapPanel.test.tsx (1 test) 71ms
+ ✓ src/features/ai-mcp/host-config-copy.test.tsx (1 test) 33ms
+ ✓ src/app/live/live-stream-reader.test.ts (7 tests) 77ms
+ ✓ src/features/reports/PlanDriftDrawer.test.tsx (12 tests) 1083ms
+   ✓ Plan drift drawer > bounds dense DOM creation and makes all 1,000 differences reachable through keyboard-accessible pages 792ms
+ ✓ src/app/card-creation-api.test.ts (7 tests) 7ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > refetches ordinary archived-status Save and inventory Restore into the real board
+Not implemented: HTMLFormElement's requestSubmit() method
+
+ ✓ src/features/personas/PersonasPanel.test.tsx (1 test) 75ms
+ ✓ src/app/live/live-announcements.test.ts (1 test) 5ms
+ ✓ src/features/changesets/shell.test.tsx (8 tests) 1130ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > archives from a Discovery tile through routed Card confirmation and GET refetch
+An update to DiscoveryMatrix inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/features/story-map/export/story-map-view-export.test.ts (1 test) 14ms
+ ✓ src/app/live/live-query-invalidation.test.ts (2 tests) 5ms
+ ✓ src/features/story-map/components/PlanStateComparison.test.tsx (1 test) 81ms
+ ✓ src/features/story-map/components/card-dependencies.test.tsx (12 tests) 1215ms
+ ✓ src/features/what-changed/api.test.ts (3 tests) 9ms
+ ✓ src/app/conflicts.test.ts (6 tests) 6ms
+ ✓ src/features/what-changed/model.test.ts (3 tests) 3ms
+ ✓ src/features/project-archive/project-archive-export.test.ts (4 tests) 7ms
+ ❯ src/features/story-map/components/card-creation.test.tsx (15 tests | 1 failed) 1271ms
+   × renders Activity child Note integration metadata and opens its lifecycle deletion action 41ms
+     → expected 'Delete 1 CardsPermanently delete thes…' to contain 'Delete permanently Activity evidence'
+ ✓ src/features/story-map/export/export-with-progress.test.ts (2 tests) 3ms
+ ✓ src/features/story-map/components/lifecycle.test.tsx (27 tests) 1629ms
+ ✓ src/features/onboarding/getting-started.test.ts (5 tests) 13ms
+ ✓ src/features/story-map/components/card-fields.test.ts (10 tests) 1102ms
+   ✓ saves scalar fields, custom priority/color and zero in the map unit, then reloads supported clears 500ms
+ ✓ src/features/restore-points/restore-points.test.ts (22 tests) 1381ms
+ ✓ src/features/story-map/graph/graph-model.test.ts (9 tests) 9ms
+ ✓ src/app/routes/root-layout.test.ts (1 test) 21ms
+ ❯ src/ui-strings/ui-strings.test.ts (8 tests | 1 failed) 169ms
+   × central English interface copy > has no raw JSX text or literal accessibility copy outside the string module 140ms
+     → expected [ Array(1) ] to deeply equal []
+ ✓ src/app/live/live-stream.test.ts (3 tests) 648ms
+   ✓ relays between independent tabs and relinquishes terminal leadership before later bootstrap and shutdown handoff 564ms
+ ❯ src/features/story-map/components/card-detail.test.ts (28 tests | 1 failed) 2116ms
+   × FR-15 Card detail > archives from a Discovery tile through routed Card confirmation and GET refetch 176ms
+     → expected <button type="button" …(5)>…(2)</button> to be <div …(3)>…(2)</div> // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/ui-strings/ui-strings.test.ts > central English interface copy > has no raw JSX text or literal accessibility copy outside the string module
+AssertionError: expected [ Array(1) ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   "features/story-map/components/MoveAreaDialog.tsx:35",
++ ]
+
+ ❯ src/ui-strings/ui-strings.test.ts:106:24
+    104|       visit(source);
+    105|     }
+    106|     expect(violations).toEqual([]);
+       |                        ^
+    107|   });
+    108| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/features/story-map/components/card-choices.test.tsx > names current category and priority, offers selected listbox options, saves keyboard selection and returns focus on Escape
+AssertionError: expected <button type="button" …(5)>…(2)</button> to be <button type="button" …(5)></button> // Object.is equality
+
+- Expected
++ Received
+
+  <button
+-   aria-expanded="false"
+-   aria-haspopup="listbox"
+-   aria-label="Priority 2. Change priority"
+-   class="card-priority-badge has-priority"
++   aria-description="todo"
++   aria-label="LSM-3 Story Create traceable story cards"
++   class="card-content-button"
++   data-card-id="44bf98e0-ea7e-4941-9f72-d99ba6626318"
+    tabindex="0"
+    type="button"
+  >
+-   2
++   <strong
++     class="card-title"
++   >
++     Create traceable story cards
++   </strong>
++   <div
++     class="card-badges"
++   />
+  </button>
+
+ ❯ src/features/story-map/components/card-choices.test.tsx:29:34
+     27|   expect(tile().querySelector('[aria-selected="true"]')!.textContent).…
+     28|   await press(document.activeElement!, "Escape");
+     29|   expect(document.activeElement).toBe(priority); expect(priority.getAt…
+       |                                  ^
+     30|   await act(async () => priority.click());
+     31|   await act(async () => tile().querySelector<HTMLButtonElement>('[role…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/features/story-map/components/card-creation.test.tsx > renders Activity child Note integration metadata and opens its lifecycle deletion action
+AssertionError: expected 'Delete 1 CardsPermanently delete thes…' to contain 'Delete permanently Activity evidence'
+
+Expected: "Delete permanently Activity evidence"
+Received: "Delete 1 CardsPermanently delete these 1 Cards? Unselected children survive using the chosen strategy. This cannot be undone here.Unexpected test request: /api/story-maps/4dc168ff-7975-46ae-ad58-09fe02aa3560LSM-4 Activity evidence0 unselected child Cards may be rehomed.This Card has no children to reassign.CancelDelete permanently"
+
+ ❯ src/features/story-map/components/card-creation.test.tsx:136:71
+    134|   expect(noteTile.querySelector('.card-provider-icon')!.getAttribute("…
+    135|   await act(async () => noteTile.querySelector<HTMLButtonElement>('[ar…
+    136|   expect(document.querySelector('[role="alertdialog"]')!.textContent).…
+       |                                                                       ^
+    137| });
+    138| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > archives from a Discovery tile through routed Card confirmation and GET refetch
+AssertionError: expected <button type="button" …(5)>…(2)</button> to be <div …(3)>…(2)</div> // Object.is equality
+
+- Expected
++ Received
+
+- <div
+-   class="story-map-shell story-map-shell-fill"
+-   data-story-map-board="true"
+-   tabindex="-1"
+- >
+-   <div
+-     class="story-map-view-header"
+-   >
+-     <div
+-       class="view-tabs story-map-view-toolbar"
+-     >
+-       <button
+-         class="secondary"
+-         type="button"
+-       >
+-         <svg
+-           class="lucide lucide-bell"
+-           fill="none"
+-           height="16"
+-           stroke="currentColor"
+-           stroke-linecap="round"
+-           stroke-linejoin="round"
+-           stroke-width="2"
+-           viewBox="0 0 24 24"
+-           width="16"
+-           xmlns="http://www.w3.org/2000/svg"
+-         >
+-           <path
+-             d="M10.268 21a2 2 0 0 0 3.464 0"
+-           />
+-           <path
+-             d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"
+-           />
+-         </svg>
+-         What changed (0) !
+-       </button>
+-       <nav
+-         aria-label="Views"
+-         class="story-map-view-tab-list"
+-       >
+-         <a
+-           aria-current="page"
+-           class="active"
+-           data-status="active"
+-           href="/projects/b7a01fd5-5a8a-4de3-b2aa-3ab57b441231/story-maps/1e56d9aa-de97-485d-87b1-c585c96cb4a0/discovery"
+-         >
+-           Discovery
+-         </a>
+-         <a
+-           href="/projects/b7a01fd5-5a8a-4de3-b2aa-3ab57b441231/story-maps/1e56d9aa-de97-485d-87b1-c585c96cb4a0/tree"
+-         >
+-           Tree
+-         </a>
+-         <a
+-           href="/projects/b7a01fd5-5a8a-4de3-b2aa-3ab57b441231/story-maps/1e56d9aa-de97-485d-87b1-c585c96cb4a0/planning"
+-         >
+-           Planning
+-         </a>
+-         <a
+-           href="/projects/b7a01fd5-5a8a-4de3-b2aa-3ab57b441231/story-maps/1e56d9aa-de97-485d-87b1-c585c96cb4a0/backlog"
+-         >
+-           Backlog
+-         </a>
+-         <a
+-           href="/projects/b7a01fd5-5a8a-4de3-b2aa-3ab57b441231/story-maps/1e56d9aa-de97-485d-87b1-c585c96cb4a0/tracking"
+-         >
+-           Tracking
+-         </a>
+-         <a
+-           class="view-tab-divider"
+-           href="/projects/b7a01fd5-5a8a-4de3-b2aa-3ab57b441231/story-maps/1e56d9aa-de97-485d-87b1-c585c96cb4a0/slices"
+-         >
+-           Slices
+-         </a>
+-         <a
+-           href="/projects/b7a01fd5-5a8a-4de3-b2aa-3ab57b441231/story-maps/1e56d9aa-de97-485d-87b1-c585c96cb4a0/graph"
+-         >
+-           Graph
+-         </a>
+-         <a
+-           href="/projects/b7a01fd5-5a8a-4de3-b2aa-3ab57b441231/story-maps/1e56d9aa-de97-485d-87b1-c585c96cb4a0/timeline"
+-         >
+-           Timeline
+-           <span
+-             class="experimental-label"
+-           >
+-             Experimental
+-           </span>
+-         </a>
+-         <a
+-           class="view-tab-divider"
+-           href="/projects/b7a01fd5-5a8a-4de3-b2aa-3ab57b441231/story-maps/1e56d9aa-de97-485d-87b1-c585c96cb4a0/github"
+-         >
+-           GitHub Sync
+-         </a>
+-       </nav>
+-       <button
+-         class="secondary"
+-         disabled=""
+-         title="No cards are linked to GitHub issues yet. Import issues or create them from cards first."
+-         type="button"
+-       >
+-         <svg
+-           class="lucide lucide-refresh-ccw"
+-           fill="none"
+-           height="16"
+-           stroke="currentColor"
+-           stroke-linecap="round"
+-           stroke-linejoin="round"
+-           stroke-width="2"
+-           viewBox="0 0 24 24"
+-           width="16"
+-           xmlns="http://www.w3.org/2000/svg"
+-         >
+-           <path
+-             d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
+-           />
+-           <path
+-             d="M3 3v5h5"
+-           />
+-           <path
+-             d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"
+-           />
+-           <path
+-             d="M16 16h5v5"
+-           />
+-         </svg>
+-         Pull GitHub
+-       </button>
+-       <div
+-         aria-label="Story map export actions"
+-         class="story-map-export-actions"
+-       >
+-         <button
+-           class="secondary"
+-           type="button"
+-         >
+-           <svg
+-             class="lucide lucide-file-text"
+-             fill="none"
+-             height="15"
+-             stroke="currentColor"
+-             stroke-linecap="round"
+-             stroke-linejoin="round"
+-             stroke-width="2"
+-             viewBox="0 0 24 24"
+-             width="15"
+-             xmlns="http://www.w3.org/2000/svg"
+-           >
+-             <path
+-               d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"
+-             />
+-             <path
+-               d="M14 2v4a2 2 0 0 0 2 2h4"
+-             />
+-             <path
+-               d="M10 9H8"
+-             />
+-             <path
+-               d="M16 13H8"
+-             />
+-             <path
+-               d="M16 17H8"
+-             />
+-           </svg>
+-           HTML
+-         </button>
+-         <button
+-           class="secondary"
+-           type="button"
+-         >
+-           <svg
+-             class="lucide lucide-image"
+-             fill="none"
+-             height="15"
+-             stroke="currentColor"
+-             stroke-linecap="round"
+-             stroke-linejoin="round"
+-             stroke-width="2"
+-             viewBox="0 0 24 24"
+-             width="15"
+-             xmlns="http://www.w3.org/2000/svg"
+-           >
+-             <rect
+-               height="18"
+-               rx="2"
+-               ry="2"
+-               width="18"
+-               x="3"
+-               y="3"
+-             />
+-             <circle
+-               cx="9"
+-               cy="9"
+-               r="2"
+-             />
+-             <path
+-               d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"
+-             />
+-           </svg>
+-           PNG
+-         </button>
+  <button
+-           class="secondary"
+-           type="button"
+-         >
+-           <svg
+-             class="lucide lucide-download"
+-             fill="none"
+-             height="15"
+-             stroke="currentColor"
+-             stroke-linecap="round"
+-             stroke-linejoin="round"
+-             stroke-width="2"
+-             viewBox="0 0 24 24"
+-             width="15"
+-             xmlns="http://www.w3.org/2000/svg"
+-           >
+-             <path
+-               d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+-             />
+-             <polyline
+-               points="7 10 12 15 17 10"
+-             />
+-             <line
+-               x1="12"
+-               x2="12"
+-               y1="15"
+-               y2="3"
+-             />
+-           </svg>
+-           PDF
+-         </button>
+-       </div>
+-     </div>
+-     <div
+-       class="board-toolbar board-toolbar-expanded"
+-     >
+-       <div
+-         class="board-search-row"
+-       >
+-         <input
+-           aria-label="Search cards"
+-           placeholder="Search cards, sources, GitHub"
+-           value=""
+-         />
+-         <span>
+-           2 matches / 2 cards
+-         </span>
+-         <button
+-           aria-pressed="false"
+-           class="secondary"
+-           type="button"
+-         >
+-           <svg
+-             class="lucide lucide-sliders-horizontal"
+-             fill="none"
+-             height="16"
+-             stroke="currentColor"
+-             stroke-linecap="round"
+-             stroke-linejoin="round"
+-             stroke-width="2"
+-             viewBox="0 0 24 24"
+-             width="16"
+-             xmlns="http://www.w3.org/2000/svg"
+-           >
+-             <line
+-               x1="21"
+-               x2="14"
+-               y1="4"
+-               y2="4"
+-             />
+-             <line
+-               x1="10"
+-               x2="3"
+-               y1="4"
+-               y2="4"
+-             />
+-             <line
+-               x1="21"
+-               x2="12"
+-               y1="12"
+-               y2="12"
+-             />
+-             <line
+-               x1="8"
+-               x2="3"
+-               y1="12"
+-               y2="12"
+-             />
+-             <line
+-               x1="21"
+-               x2="16"
+-               y1="20"
+-               y2="20"
+-             />
+-             <line
+-               x1="12"
+-               x2="3"
+-               y1="20"
+-               y2="20"
+-             />
+-             <line
+-               x1="14"
+-               x2="14"
+-               y1="2"
+-               y2="6"
+-             />
+-             <line
+-               x1="8"
+-               x2="8"
+-               y1="10"
+-               y2="14"
+-             />
+-             <line
+-               x1="16"
+-               x2="16"
+-               y1="18"
+-               y2="22"
+-             />
+-           </svg>
+-            
+-           Filters
+-         </button>
+-         <button
+-           class="secondary"
+-           type="button"
+-         >
+-           Clear
+-         </button>
+-         <button
+-           class="secondary"
+-           type="button"
+-         >
+-           Parked
+-         </button>
+-         <button
+-           class="secondary"
+-           type="button"
+-         >
+-           Archived
+-         </button>
+-       </div>
+-       <p
+-         class="lifecycle-notice"
+-         role="status"
+-       >
+-         Archive: Create traceable story cards.
+-       </p>
+-     </div>
+-   </div>
+-   <section
+-     class="board-workspace discovery-workspace"
+-   >
+-     <div
+-       class="card-create-actions"
+-     >
+-       <button
+-         type="button"
+-       >
+-         Create Activity
+-       </button>
+-       <button
+-         type="button"
+-       >
+-         Create Step
+-       </button>
+-       <button
+-         type="button"
+-       >
+-         Create Story
+-       </button>
+-       <button
+-         type="button"
+-       >
+-         Create Note
+-       </button>
+-     </div>
+-     <div
+-       class="discovery-matrix-scroll"
+-       data-story-map-export-target="discovery"
+-     >
+-       <section
+-         aria-label="Discovery story map"
+-         class="discovery-matrix"
+-         role="grid"
+-         style="grid-template-columns: 232px 42px 42px; --discovery-activity-h: auto; --discovery-zoom: 1; --pinned-na-h: 0px; --pinned-unscheduled-h: 0px;"
+-         tabindex="-1"
+-       >
+-         <div
+-           class="discovery-activity-cell epic-lane-start"
+-           style="grid-column: span 2;"
+-         >
+-           <div>
+-             <article
+-               class="card-tile activity   "
+-               data-export-card-description=""
+-               data-export-card-key="LSM-1"
+-               data-export-card-title="Understand product requirements"
+-               data-live-card-id="9310bdad-b814-4cdf-8313-3ea63dc742fe"
+-               role="gridcell"
+-             >
+-               <button
+    aria-description="todo"
+-                 aria-label="LSM-1 Activity Understand product requirements"
+-                 class="card-content-button"
+-                 data-card-id="9310bdad-b814-4cdf-8313-3ea63dc742fe"
+-                 tabindex="-1"
+-                 type="button"
+-               >
+-                 <strong
+-                   class="card-title"
+-                 >
+-                   Understand product requirements
+-                 </strong>
+-                 <div
+-                   class="card-badges"
+-                 />
+-               </button>
+-               <div
+-                 class="card-selection-row"
+-               >
+-                 <div
+-                   class="card-id-group"
+-                 >
+-                   <label
+-                     class="card-checkbox"
+-                   >
+-                     <input
+-                       tabindex="-1"
+-                       type="checkbox"
+-                     />
+-                     <span>
+-                       LSM-1
+-                     </span>
+-                   </label>
+-                 </div>
+-                 <div
+-                   class="card-level-status"
+-                 >
+-                   <span
+-                     class="card-level-badge"
+-                   >
+-                     Activity
+-                   </span>
+-                   <span>
+-                     todo
+-                   </span>
+-                   <button
+-                     aria-label="Move LSM-1"
+-                     class="card-move"
+-                     tabindex="-1"
+-                     type="button"
+-                   >
+-                     <svg
+-                       class="lucide lucide-chevron-right"
+-                       fill="none"
+-                       height="14"
+-                       stroke="currentColor"
+-                       stroke-linecap="round"
+-                       stroke-linejoin="round"
+-                       stroke-width="2"
+-                       viewBox="0 0 24 24"
+-                       width="14"
+-                       xmlns="http://www.w3.org/2000/svg"
+-                     >
+-                       <path
+-                         d="m9 18 6-6-6-6"
+-                       />
+-                     </svg>
+-                   </button>
+-                   <button
+-                     aria-label="Park Understand product requirements"
+-                     class="card-move"
+-                     tabindex="-1"
+-                     title="Park activity"
+-                     type="button"
+-                   >
+-                     <svg
+-                       class="lucide lucide-arrow-down"
+-                       fill="none"
+-                       height="14"
+-                       stroke="currentColor"
+-                       stroke-linecap="round"
+-                       stroke-linejoin="round"
+-                       stroke-width="2"
+-                       viewBox="0 0 24 24"
+-                       width="14"
+-                       xmlns="http://www.w3.org/2000/svg"
+-                     >
+-                       <path
+-                         d="M12 5v14"
+-                       />
+-                       <path
+-                         d="m19 12-7 7-7-7"
+-                       />
+-                     </svg>
+-                   </button>
+-                   <button
+-                     aria-label="Delete Understand product requirements"
+-                     class="card-delete"
+-                     tabindex="-1"
+-                     type="button"
+-                   >
+-                     <svg
+-                       class="lucide lucide-trash2"
+-                       fill="none"
+-                       height="13"
+-                       stroke="currentColor"
+-                       stroke-linecap="round"
+-                       stroke-linejoin="round"
+-                       stroke-width="2"
+-                       viewBox="0 0 24 24"
+-                       width="13"
+-                       xmlns="http://www.w3.org/2000/svg"
+-                     >
+-                       <path
+-                         d="M3 6h18"
+-                       />
+-                       <path
+-                         d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+-                       />
+-                       <path
+-                         d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+-                       />
+-                       <line
+-                         x1="10"
+-                         x2="10"
+-                         y1="11"
+-                         y2="17"
+-                       />
+-                       <line
+-                         x1="14"
+-                         x2="14"
+-                         y1="11"
+-                         y2="17"
+-                       />
+-                     </svg>
+-                   </button>
+-                 </div>
+-               </div>
+-               <div
+-                 class="card-visual-row"
+-               >
+-                 <div
+-                   class="card-visual-left"
+-                 >
+-                   <span
+-                     class="card-provider-icon"
+-                     title="Not linked"
+-                   >
+-                     <svg
+-                       class="lucide lucide-circle"
+-                       fill="none"
+-                       height="12"
+-                       stroke="currentColor"
+-                       stroke-linecap="round"
+-                       stroke-linejoin="round"
+-                       stroke-width="2"
+-                       viewBox="0 0 24 24"
+-                       width="12"
+-                       xmlns="http://www.w3.org/2000/svg"
+-                     >
+-                       <circle
+-                         cx="12"
+-                         cy="12"
+-                         r="10"
+-                       />
+-                     </svg>
+-                   </span>
+-                   <span
+-                     class="card-ticket-number"
+-                     title="No ticket linked"
+-                   >
+-                     #
+-                   </span>
+-                   <div
+-                     class="card-visual-control"
+-                   >
+-                     <button
+-                       aria-expanded="false"
+-                       aria-haspopup="listbox"
+-                       aria-label="Color: Standard. Change color"
+-                       class="card-category-choice"
+-                       style="border-left: 5px solid rgb(255, 255, 255);"
+-                       tabindex="-1"
+-                       type="button"
+-                     >
+-                       <span
+-                         aria-hidden="true"
+-                       >
+-                         ○
+-                          
+-                       </span>
+-                       Standard
+-                     </button>
+-                   </div>
+-                   <div
+-                     class="card-visual-control"
+-                   >
+-                     <button
+-                       aria-expanded="false"
+-                       aria-haspopup="listbox"
+-                       aria-label="Priority –. Change priority"
+-                       class="card-priority-badge"
+-                       tabindex="-1"
+-                       type="button"
+-                     >
+-                       –
+-                     </button>
+-                   </div>
+-                 </div>
+-                 <button
+-                   aria-describedby="DndDescribedBy-1"
+-                   aria-disabled="false"
+-                   aria-label="Drag Understand product requirements"
+-                   aria-roledescription="draggable"
+-                   class="drag-handle"
+-                   role="button"
+-                   tabindex="-1"
+-                   type="button"
+-                 >
+-                   <svg
+-                     class="lucide lucide-grip-vertical"
+-                     fill="none"
+-                     height="14"
+-                     stroke="currentColor"
+-                     stroke-linecap="round"
+-                     stroke-linejoin="round"
+-                     stroke-width="2"
+-                     viewBox="0 0 24 24"
+-                     width="14"
+-                     xmlns="http://www.w3.org/2000/svg"
+-                   >
+-                     <circle
+-                       cx="9"
+-                       cy="12"
+-                       r="1"
+-                     />
+-                     <circle
+-                       cx="9"
+-                       cy="5"
+-                       r="1"
+-                     />
+-                     <circle
+-                       cx="9"
+-                       cy="19"
+-                       r="1"
+-                     />
+-                     <circle
+-                       cx="15"
+-                       cy="12"
+-                       r="1"
+-                     />
+-                     <circle
+-                       cx="15"
+-                       cy="5"
+-                       r="1"
+-                     />
+-                     <circle
+-                       cx="15"
+-                       cy="19"
+-                       r="1"
+-                     />
+-                   </svg>
+-                 </button>
+-               </div>
+-             </article>
+-           </div>
+-           <button
+-             type="button"
+-           >
+-             Create Note
+-           </button>
+-         </div>
+-         <div
+-           class="discovery-activity-cell discovery-add-activity-cell"
+-         >
+-           <button
+-             aria-label="New activity"
+-             class="add-tile"
+-             type="button"
+-           >
+-             Activity
+-           </button>
+-         </div>
+-         <div
+-           class="discovery-step-cell epic-lane-start"
+-         >
+-           <div>
+-             <article
+-               class="card-tile step   "
+-               data-export-card-description=""
+-               data-export-card-key="LSM-2"
+-               data-export-card-title="Import source document"
+-               data-live-card-id="a46d7413-d39d-447f-9dd2-9b05a6d98f57"
+-               role="gridcell"
+-             >
+-               <button
+-                 aria-description="todo"
+    aria-label="LSM-2 Step Import source document"
+    class="card-content-button"
+    data-card-id="a46d7413-d39d-447f-9dd2-9b05a6d98f57"
+    tabindex="0"
+    type="button"
+  >
+    <strong
+      class="card-title"
+    >
+      Import source document
+    </strong>
+    <div
+      class="card-badges"
+-                 />
+-               </button>
+-               <div
+-                 class="card-selection-row"
+-               >
+-                 <div
+-                   class="card-id-group"
+-                 >
+-                   <label
+-                     class="card-checkbox"
+-                   >
+-                     <input
+-                       tabindex="0"
+-                       type="checkbox"
+-                     />
+-                     <span>
+-                       LSM-2
+-                     </span>
+-                   </label>
+-                 </div>
+-                 <div
+-                   class="card-level-status"
+-                 >
+-                   <span
+-                     class="card-level-badge"
+-                   >
+-                     Step
+-                   </span>
+-                   <span>
+-                     todo
+-                   </span>
+-                   <button
+-                     aria-label="Move LSM-2"
+-                     class="card-move"
+-                     tabindex="0"
+-                     type="button"
+-                   >
+-                     <svg
+-                       class="lucide lucide-chevron-right"
+-                       fill="none"
+-                       height="14"
+-                       stroke="currentColor"
+-                       stroke-linecap="round"
+-                       stroke-linejoin="round"
+-                       stroke-width="2"
+-                       viewBox="0 0 24 24"
+-                       width="14"
+-                       xmlns="http://www.w3.org/2000/svg"
+-                     >
+-                       <path
+-                         d="m9 18 6-6-6-6"
+    />
+-                     </svg>
+  </button>
+-                   <button
+-                     aria-label="Delete Import source document"
+-                     class="card-delete"
+-                     tabindex="0"
+-                     type="button"
+-                   >
+-                     <svg
+-                       class="lucide lucide-trash2"
+-                       fill="none"
+-                       height="13"
+-                       stroke="currentColor"
+-                       stroke-linecap="round"
+-                       stroke-linejoin="round"
+-                       stroke-width="2"
+-                       viewBox="0 0 24 24"
+-                       width="13"
+-                       xmlns="http://www.w3.org/2000/svg"
+-                     >
+-                       <path
+-                         d="M3 6h18"
+-                       />
+-                       <path
+-                         d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"
+-                       />
+-                       <path
+-                         d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"
+-                       />
+-                       <line
+-                         x1="10"
+-                         x2="10"
+-                         y1="11"
+-                         y2="17"
+-                       />
+-                       <line
+-                         x1="14"
+-                         x2="14"
+-                         y1="11"
+-                         y2="17"
+-                       />
+-                     </svg>
+-                   </button>
+-                 </div>
+-               </div>
+-               <div
+-                 class="card-visual-row"
+-               >
+-                 <div
+-                   class="card-visual-left"
+-                 >
+-                   <span
+-                     class="card-provider-icon"
+-                     title="Not linked"
+-                   >
+-                     <svg
+-                       class="lucide lucide-circle"
+-                       fill="none"
+-                       height="12"
+-                       stroke="currentColor"
+-                       stroke-linecap="round"
+-                       stroke-linejoin="round"
+-                       stroke-width="2"
+-                       viewBox="0 0 24 24"
+-                       width="12"
+-                       xmlns="http://www.w3.org/2000/svg"
+-                     >
+-                       <circle
+-                         cx="12"
+-                         cy="12"
+-                         r="10"
+-                       />
+-                     </svg>
+-                   </span>
+-                   <span
+-                     class="card-ticket-number"
+-                     title="No ticket linked"
+-                   >
+-                     #
+-                   </span>
+-                   <div
+-                     class="card-visual-control"
+-                   >
+-                     <button
+-                       aria-expanded="false"
+-                       aria-haspopup="listbox"
+-                       aria-label="Color: Standard. Change color"
+-                       class="card-category-choice"
+-                       style="border-left: 5px solid rgb(255, 255, 255);"
+-                       tabindex="0"
+-                       type="button"
+-                     >
+-                       <span
+-                         aria-hidden="true"
+-                       >
+-                         ○
+-                          
+-                       </span>
+-                       Standard
+-                     </button>
+-                   </div>
+-                   <div
+-                     class="card-visual-control"
+-                   >
+-                     <button
+-                       aria-expanded="false"
+-                       aria-haspopup="listbox"
+-                       aria-label="Priority –. Change priority"
+-                       class="card-priority-badge"
+-                       tabindex="0"
+-                       type="button"
+-                     >
+-                       –
+-                     </button>
+-                   </div>
+-                 </div>
+-                 <button
+-                   aria-describedby="DndDescribedBy-1"
+-                   aria-disabled="false"
+-                   aria-label="Drag Import source document"
+-                   aria-roledescription="draggable"
+-                   class="drag-handle"
+-                   role="button"
+-                   tabindex="0"
+-                   type="button"
+-                 >
+-                   <svg
+-                     class="lucide lucide-grip-vertical"
+-                     fill="none"
+-                     height="14"
+-                     stroke="currentColor"
+-                     stroke-linecap="round"
+-                     stroke-linejoin="round"
+-                     stroke-width="2"
+-                     viewBox="0 0 24 24"
+-                     width="14"
+-                     xmlns="http://www.w3.org/2000/svg"
+-                   >
+-                     <circle
+-                       cx="9"
+-                       cy="12"
+-                       r="1"
+-                     />
+-                     <circle
+-                       cx="9"
+-                       cy="5"
+-                       r="1"
+-                     />
+-                     <circle
+-                       cx="9"
+-                       cy="19"
+-                       r="1"
+-                     />
+-                     <circle
+-                       cx="15"
+-                       cy="12"
+-                       r="1"
+-                     />
+-                     <circle
+-                       cx="15"
+-                       cy="5"
+-                       r="1"
+-                     />
+-                     <circle
+-                       cx="15"
+-                       cy="19"
+-                       r="1"
+-                     />
+-                   </svg>
+-                 </button>
+-               </div>
+-             </article>
+-           </div>
+-           <button
+-             type="button"
+-           >
+-             Create Note
+-           </button>
+-         </div>
+-         <div
+-           class="discovery-step-cell discovery-add-step-cell"
+-         >
+-           <button
+-             aria-label="New step for Understand product requirements"
+-             class="add-tile"
+-             type="button"
+-           >
+-             Step
+-           </button>
+-         </div>
+-         <div
+-           aria-hidden="true"
+-           class="discovery-step-cell discovery-add-activity-cell"
+-         />
+-         <div
+-           class="release-band-header"
+-         >
+-           <div
+-             class="lane-header-left"
+-           >
+-             <button
+-               aria-expanded="true"
+-               aria-pressed="false"
+-               class="lane-collapse"
+-               title="Collapse lane"
+-               type="button"
+-             >
+-               <svg
+-                 class="lucide lucide-chevron-down"
+-                 fill="none"
+-                 height="14"
+-                 stroke="currentColor"
+-                 stroke-linecap="round"
+-                 stroke-linejoin="round"
+-                 stroke-width="2"
+-                 viewBox="0 0 24 24"
+-                 width="14"
+-                 xmlns="http://www.w3.org/2000/svg"
+-               >
+-                 <path
+-                   d="m6 9 6 6 6-6"
+-                 />
+-               </svg>
+-             </button>
+-             <button
+-               aria-pressed="false"
+-               class="lane-pin"
+-               title="Pin lane"
+-               type="button"
+-             >
+-               <svg
+-                 class="lucide lucide-pin"
+-                 fill="none"
+-                 height="14"
+-                 stroke="currentColor"
+-                 stroke-linecap="round"
+-                 stroke-linejoin="round"
+-                 stroke-width="2"
+-                 viewBox="0 0 24 24"
+-                 width="14"
+-                 xmlns="http://www.w3.org/2000/svg"
+-               >
+-                 <path
+-                   d="M12 17v5"
+-                 />
+-                 <path
+-                   d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"
+-                 />
+-               </svg>
+-             </button>
+-             <strong>
+-               Unscheduled cards
+-             </strong>
+-           </div>
+-           <div
+-             class="lane-header-right"
+-           >
+-             <span>
+-               0 stories
+-             </span>
+-           </div>
+-         </div>
+-         <div
+-           class="discovery-cell epic-lane-start discovery-unscheduled-cell"
+-         >
+-           <div
+-             class="story-stack"
+-           />
+-           <button
+-             aria-label="New story for Import source document in Unscheduled cards"
+-             class="add-tile"
+-             type="button"
+-           >
+-             Story
+-           </button>
+-         </div>
+-         <div
+-           aria-hidden="true"
+-           class="discovery-cell discovery-add-step-cell"
+-         />
+-         <div
+-           aria-hidden="true"
+-           class="discovery-cell discovery-add-activity-cell"
+-         />
+-         <div
+-           class="discovery-pinned-block"
+-         >
+-           <div
+-             class="release-band-header not-assigned-header"
+-           >
+-             <div
+-               class="lane-header-left"
+-             >
+-               <button
+-                 aria-pressed="false"
+-                 class="lane-pin"
+-                 title="Pin lane"
+-                 type="button"
+-               >
+-                 <svg
+-                   class="lucide lucide-pin"
+-                   fill="none"
+-                   height="14"
+-                   stroke="currentColor"
+-                   stroke-linecap="round"
+-                   stroke-linejoin="round"
+-                   stroke-width="2"
+-                   viewBox="0 0 24 24"
+-                   width="14"
+-                   xmlns="http://www.w3.org/2000/svg"
+-                 >
+-                   <path
+-                     d="M12 17v5"
+-                   />
+-                   <path
+-                     d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"
+-                   />
+-                 </svg>
+-               </button>
+-               <strong>
+-                 Not assigned
+-               </strong>
+-             </div>
+-             <span>
+-               0 cards
+-             </span>
+-           </div>
+-           <div
+-             class="discovery-notassigned"
+-           >
+-             <p
+-               class="discovery-notassigned-empty"
+-             >
+-               Drag activities or steps here to unassign them.
+-             </p>
+-           </div>
+-         </div>
+-         <div
+-           class="discovery-add-release"
+-         >
+-           <button
+-             aria-label="New release name"
+-             class="add-tile"
+-             title="New release name"
+-             type="button"
+-           >
+-             <svg
+-               class="lucide lucide-plus"
+-               fill="none"
+-               height="14"
+-               stroke="currentColor"
+-               stroke-linecap="round"
+-               stroke-linejoin="round"
+-               stroke-width="2"
+-               viewBox="0 0 24 24"
+-               width="14"
+-               xmlns="http://www.w3.org/2000/svg"
+-             >
+-               <path
+-                 d="M5 12h14"
+-               />
+-               <path
+-                 d="M12 5v14"
+-               />
+-             </svg>
+-             <span>
+-               New release lane
+-             </span>
+-           </button>
+-         </div>
+-       </section>
+-     </div>
+-     <div
+-       id="DndDescribedBy-1"
+-       style="display: none;"
+-     >
+-       
+-     To pick up a draggable item, press the space bar.
+-     While dragging, use the arrow keys to move the item.
+-     Press space again to drop the item in its new position, or press escape to cancel.
+-   
+-     </div>
+-     <div
+-       aria-atomic="true"
+-       aria-live="assertive"
+-       id="DndLiveRegion-1"
+-       role="status"
+-       style="position: fixed; top: 0px; left: 0px; width: 1px; height: 1px; margin: -1px; border: 0px; padding: 0px; overflow: hidden; clip: rect(0px); clip-path: inset(100%); white-space: nowrap;"
+-     />
+-   </section>
+- </div>
+
+ ❯ src/features/story-map/components/card-detail.test.ts:208:36
+    206|     expect(router.state.location.search).toEqual({});
+    207|     expect(state.host.querySelector(`button[data-card-id="${cardId}"]`…
+    208|     expect(document.activeElement).toBe(state.host.querySelector("[dat…
+       |                                    ^
+    209|     await act(async () => button("Archived").click());
+    210|     expect([...document.querySelectorAll(".lifecycle-inventory li > sp…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+ Test Files  4 failed | 54 passed (58)
+      Tests  4 failed | 390 passed (394)
+   Start at  13:25:43
+   Duration  4.47s (transform 4.09s, setup 0ms, collect 37.24s, tests 20.97s, environment 27.69s, prepare 2.86s)
+
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/web@0.1.0 test: `vitest run --passWithNoTests`
+Exit status 1

@@ -1,0 +1,111 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/components/Dialog.test.ts (12 tests) 230ms
+ ✓ src/features/personas/PersonaDetail.test.ts (8 tests) 111ms
+ ✓ src/features/releases/ReleasePanel.test.tsx (7 tests) 99ms
+ ✓ src/features/ai-mcp/TemplateEditor.test.tsx (6 tests) 126ms
+ ✓ src/features/story-map/views/TrackingView.test.tsx (7 tests) 185ms
+ ✓ src/features/ai-mcp/AiMcpPanel.test.tsx (4 tests) 143ms
+ ✓ src/app/routes/audit.test.ts (9 tests) 484ms
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 157ms
+ ✓ src/app/live/live-updates.test.tsx (23 tests) 315ms
+ ✓ src/features/github-sync/github-selection.test.tsx (13 tests) 448ms
+ ✓ src/features/github-sync/github-visibility.test.tsx (3 tests) 158ms
+ ✓ src/app/routes/workspace-navigation.test.tsx (14 tests) 694ms
+ ✓ src/features/changesets/boards.test.tsx (3 tests) 128ms
+ ✓ src/app/routes/CardKeyPrefixEditor.test.tsx (5 tests) 152ms
+ ✓ src/features/project-archive/project-archive-import.test.ts (3 tests) 52ms
+ ✓ src/features/releases/ReleaseKanban.test.tsx (4 tests) 147ms
+ ✓ src/features/ai-mcp/context-draft.test.ts (3 tests) 62ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 106ms
+ ✓ src/features/story-map/components/card-provenance.test.ts (10 tests) 853ms
+ ✓ src/features/what-changed/WhatChangedProvider.test.tsx (12 tests) 954ms
+   ✓ retains every affected row while closed without dialog/focus/hold semantics and reuses rows through opening and closing 354ms
+ ✓ src/features/story-map/views/DiscoveryView.test.tsx (5 tests) 971ms
+   ✓ keeps filtered Cards display:none from the real stylesheet, including in a standalone export clone outside the workspace 349ms
+ ✓ src/features/story-map/views/SlicesView.test.tsx (12 tests) 1005ms
+ ✓ src/features/story-map/views/GraphView.test.tsx (17 tests) 1083ms
+ ✓ src/features/releases/ReleaseDateFields.test.ts (2 tests) 73ms
+ ✓ src/features/ai-mcp/undone-changesets.test.ts (1 test) 58ms
+ ✓ src/features/story-map/components/hierarchy-collapse.test.tsx (8 tests) 1248ms
+   ✓ collapses Activity and Step descendants with aligned placeholders, independent lanes and retained selection 313ms
+   ✓ combines independent hierarchy and Release collapse without losing Note visibility or selection 309ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > refetches ordinary archived-status Save and inventory Restore into the real board
+Not implemented: HTMLFormElement's requestSubmit() method
+
+ ✓ src/features/reports/PlanDriftDrawer.test.tsx (12 tests) 1349ms
+   ✓ Plan drift drawer > bounds dense DOM creation and makes all 1,000 differences reachable through keyboard-accessible pages 924ms
+ ✓ src/features/project-archive/project-archive-runtime.test.ts (3 tests) 292ms
+ ✓ src/features/roadmaps/RoadmapEditor.test.ts (3 tests) 52ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > archives from a Discovery tile through routed Card confirmation and GET refetch
+An update to DiscoveryMatrix inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/features/story-map/components/card-choices.test.tsx (5 tests) 467ms
+ ✓ src/app/routes/root-layout-prefix.test.tsx (1 test) 143ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 38ms
+ ✓ src/features/story-map/components/discovery-navigation.test.tsx (12 tests) 1562ms
+   ✓ captures inactive pointer-drag baseline before a remote snapshot and restores moved primary focus 309ms
+ ✓ src/features/ai-mcp/current-changeset-actions.test.ts (3 tests) 102ms
+ ✓ src/features/story-map/components/card-dependencies.test.tsx (12 tests) 1599ms
+ ✓ src/features/story-map/components/card-creation.test.tsx (15 tests) 1697ms
+   ✓ creates activity under root atomically with actual title, placement and Release and retains it after refetch 350ms
+ ✓ src/features/changesets/shell.test.tsx (10 tests) 1702ms
+   ✓ invalidates review immediately through real transaction stream while suspending and restoring the held dirty Card editor 389ms
+ ✓ src/features/restore-points/restore-points.test.ts (22 tests) 1737ms
+ ✓ src/app/card-creation-api.test.ts (7 tests) 5ms
+ ✓ src/app/live/live-origin.test.ts (1 test) 5ms
+ ✓ src/features/roadmaps/RoadmapPanel.test.tsx (1 test) 27ms
+ ✓ src/features/personas/PersonasPanel.test.tsx (1 test) 74ms
+ ✓ src/features/safety/SafetySwitchStrip.test.tsx (1 test) 138ms
+ ✓ src/app/live/live-stream-reader.test.ts (7 tests) 74ms
+ ✓ src/app/live/live-query-invalidation.test.ts (2 tests) 7ms
+ ✓ src/app/live/live-announcements.test.ts (1 test) 7ms
+ ✓ src/features/story-map/export/story-map-view-export.test.ts (1 test) 14ms
+ ✓ src/features/what-changed/api.test.ts (3 tests) 8ms
+ ✓ src/features/what-changed/model.test.ts (3 tests) 3ms
+ ✓ src/features/ai-mcp/host-config-copy.test.tsx (1 test) 40ms
+ ✓ src/app/conflicts.test.ts (6 tests) 6ms
+ ✓ src/features/project-archive/project-archive-export.test.ts (4 tests) 8ms
+ ✓ src/features/onboarding/getting-started.test.ts (5 tests) 13ms
+ ✓ src/features/story-map/export/export-with-progress.test.ts (2 tests) 2ms
+ ✓ src/features/story-map/components/card-fields.test.ts (10 tests) 1000ms
+   ✓ saves scalar fields, custom priority/color and zero in the map unit, then reloads supported clears 492ms
+ ✓ src/features/story-map/components/PlanStateComparison.test.tsx (1 test) 81ms
+ ✓ src/features/story-map/components/PlanningNumberField.test.tsx (2 tests) 154ms
+ ✓ src/features/story-map/graph/graph-model.test.ts (9 tests) 9ms
+ ✓ src/app/routes/root-layout.test.ts (1 test) 21ms
+ ✓ src/ui-strings/ui-strings.test.ts (8 tests) 192ms
+ ✓ src/app/live/live-stream.test.ts (3 tests) 624ms
+   ✓ relays between independent tabs and relinquishes terminal leadership before later bootstrap and shutdown handoff 555ms
+ ✓ src/features/story-map/components/lifecycle.test.tsx (45 tests) 2906ms
+ ✓ src/features/story-map/components/card-detail.test.ts (28 tests) 2718ms
+ ✓ src/features/story-map/board-filter-selection.test.tsx (19 tests) 5158ms
+   ✓ records complete Discovery DOM input-to-result diagnostics on a legal 1,000-Card hierarchy 4415ms
+ ✓ src/features/story-map/views/core-views.test.tsx (41 tests) 7932ms
+   ✓ retains every eligible Card in a legal 1000-Card discovery projection 2118ms
+   ✓ retains every eligible Card in a legal 1000-Card tree projection 370ms
+   ✓ retains every eligible Card in a legal 1000-Card planning projection 963ms
+   ✓ retains every eligible Card in a legal 1000-Card backlog projection 934ms
+   ✓ retains every eligible Card in a legal 1000-Card tracking projection 363ms
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in discovery 729ms
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in planning 522ms
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in backlog 401ms
+
+ Test Files  65 passed (65)
+      Tests  517 passed (517)
+   Start at  18:14:35
+   Duration  10.38s (transform 4.84s, setup 0ms, collect 45.87s, tests 42.01s, environment 29.91s, prepare 3.21s)

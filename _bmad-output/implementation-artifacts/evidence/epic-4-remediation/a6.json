@@ -1,0 +1,17 @@
+{
+  "action": "epic-4-retro-a6",
+  "checks": {
+    "new_core_independence": 1,
+    "new_md_txt_parity": 6,
+    "permission_parity_total": 11,
+    "focused_db": 36,
+    "source_guards": 13,
+    "typecheck": [
+      "core",
+      "db",
+      "server"
+    ]
+  },
+  "review": "Independent and parent source/test review: no findings. Shared pure document/chunk constructor receives metadata, ID/time, parsed chunks/hash. Exact parity plus separate identity/time/path assertions; actual Agent proposal and human approve/Apply retain dedup and prior linked revisions.",
+  "initial_failure": "Two testfixtures used unsupported ChangeSet source agent; corrected to actual Agent actor and existing mcp source enum. Product contracts unchanged; original failure log retained."
+}

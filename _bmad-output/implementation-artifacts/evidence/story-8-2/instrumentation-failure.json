@@ -1,0 +1,7 @@
+{
+  "initialWrapperFailure": "ENOTDIR: packages/.DS_Store/package.json",
+  "rootCause": "Manifest enumeration initially included non-directory entries.",
+  "correction": "Filter directory entries; rerun frozen install and initial scanner against exact baseline in a disposable directory.",
+  "retainedEvidence": ["audit-initial.log.gz", "vitest3-install.log.gz", "audit-baseline-recheck.log.gz", "vitest3-install-confirm.json"],
+  "scannerFailuresSuppressed": false
+}

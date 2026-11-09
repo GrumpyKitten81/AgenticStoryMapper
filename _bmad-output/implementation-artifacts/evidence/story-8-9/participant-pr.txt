@@ -1,0 +1,19 @@
+Title: docs: correct configured release automation guidance
+
+# Pull request
+
+## Change and reason
+
+README still describes release/tag automation as future Story 8.8 work although the release workflow and maintainer procedure are configured. Replace that stale sentence with the current procedure and explicit hosted-verification limit; bump README metadata/changelog. Source: `.github/workflows/release.yml`, `CONTRIBUTING.md` release guidance and `docs/RUNBOOK.md#versioned-releases`. Scope: README only, preserving publication caveats.
+
+Bounded acceptance: accurate configured release gates, retained unresolved publication/native/hosted limits, valid local links, passing aggregate, independent review and no delivery effects. Baseline/source revision: d93a298d8b27ffbffd19a60102a8a2e24fd674e6. Five supplied staged draft inputs are preserved. Sprint/deferred tracking, user data and credentials are read-only zones. No account, login, remote, tag, publication or commit authorized.
+
+## Validation
+
+Node 24.17.0, Corepack 0.35.0, pnpm 9.15.4. `corepack pnpm install --frozen-lockfile` exited 0 with Node24 selected on PATH. Initial shell Node22 was detected and not used for installation/checks. `git diff --check`, `git diff --cached --check` and local link/heading checks (17 links) pass. `corepack pnpm check` initial attempt exited 1 at DB coverage: 559 passed, 1 test timed out after the unchanged 5000ms limit in `restore-project.test.ts:112` (5298ms observed; DB suite 82.01s). Later workspace/audit/release suites did not execute. Cause remains unresolved. Original log and original→sanitized→gzip hashes are retained. Final candidate aggregate after walkthrough v2 clarification and recorded-plan replay also exited 1 at the same unchanged 5000ms DB test timeout (5233ms observed). This PR draft is prepared for review, but validation is blocked. No successful aggregate or complete rehearsal acceptance is claimed. Offline reprovisioning with `corepack pnpm install --offline --frozen-lockfile` exited 0; the first installation omitted `--offline` and does not establish cache-only provisioning. Check-start source/index SHA256 records retained separately; final gate uses semantic `git ls-files --stage` digest and `GIT_OPTIONAL_LOCKS=0`.
+
+## Review context
+
+A separate non-author Agent reviewed the patch and found the correction accurate with links, metadata and blockers preserved. This reviewer had prior read-only investigation context and had suggested the same correction; no fresh-session or outside-human review is claimed. It observed raw-index stat-cache drift; semantic staged identity and source fingerprints are captured for the final gate. Hosted release/CI/protection, native platform/reader behavior and publication clearance remain unverified. No app/browser/GitHub run or private publication policy needed. Commit title prepared above; commit, push and remote PR are unexecuted.
+
+Procedure observation: this bounded plan draft was originally written after the README patch, contrary to the walkthrough order. After preserving that gap and the first failed gate, README was reversed and reapplied under the recorded plan; corrected bytes match the original corrected candidate SHA256. Walkthrough v2 was supplied before this replay. Only README was changed by the participant; supplied draft overlays were preserved. Graph tools unavailable. No claim of outside-human usability.

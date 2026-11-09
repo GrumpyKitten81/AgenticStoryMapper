@@ -1,0 +1,14 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests "src/features/releases/release-mutation-adoption.test.tsx" "src/ui-strings/ui-strings.test.ts"
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/releases/release-mutation-adoption.test.tsx (3 tests) 142ms
+ ✓ src/ui-strings/ui-strings.test.ts (8 tests) 213ms
+
+ Test Files  2 passed (2)
+      Tests  11 passed (11)
+   Start at  21:23:13
+   Duration  1.15s (transform 618ms, setup 0ms, collect 1.33s, tests 355ms, environment 199ms, prepare 64ms)

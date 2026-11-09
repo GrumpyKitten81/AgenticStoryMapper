@@ -1,0 +1,81 @@
+{
+  "diff_bytes": 839923,
+  "blind_floor_arithmetic": "N=min(floor(sqrt(839923/1000)+1),10)=10",
+  "blind_reports": [
+    {
+      "id": "B1",
+      "claim": "Physical GitHub unlink unconditionally removes Card from githubCards; preserve canonical membership and cover hidden unlink \u2192 delete identity \u2192 edit owner.",
+      "triage": "false: delete chain passes; related reassignment variant independently reproduced and fixed as B1b."
+    },
+    {
+      "id": "B2",
+      "claim": "verify() discards command output; retain a reviewable output artifact or expose failed-command output.",
+      "triage": "low rejected: command index/exit and configured exact command available; additional diagnostic artifact lifecycle not required for safe adoption."
+    },
+    {
+      "id": "B3",
+      "claim": "Inject actual journal append, state replacement, ATTENTION removal and receipt failures; precreated backup/missing receipt do not execute these steps.",
+      "triage": "medium patch completed; four actual fault tests preserve backups/history and refuse retry."
+    },
+    {
+      "id": "B4",
+      "claim": "CRLF Windows checkout can fail LF frontmatter and working/Git blob identity.",
+      "triage": "false: repository eol=lf policy and deliberately exact byte evidence semantics."
+    },
+    {
+      "id": "B5",
+      "claim": "Working executable mode changes escape content/index fingerprint.",
+      "triage": "medium patch completed: regular-file permission mode included; platform-specific chmod fixture verified on POSIX."
+    },
+    {
+      "id": "B6",
+      "claim": "Empty GitHub board import catalog case omits populated/new/existing/cleanup full-reference branches.",
+      "triage": "medium patch completed: three populated cases and explicit rich cascade effects."
+    },
+    {
+      "id": "B7",
+      "claim": "Add full-reference owner reassignment/deletion with hidden physical evidence.",
+      "triage": "medium patch completed: two explicit complete-copy/diff oracle cases."
+    },
+    {
+      "id": "B8",
+      "claim": "State/journal/ATTENTION verification mutations are absent from test matrix.",
+      "triage": "medium patch completed: all three guarded paths executed, exact intentional verifier mutations distinguished."
+    },
+    {
+      "id": "B9",
+      "claim": "Final verification evidence and checklist still pending.",
+      "triage": "false at review stage: explicitly pending closure tasks; final gates/evidence now completed before status transition."
+    },
+    {
+      "id": "B10",
+      "claim": "OpenWolf handoff still describes A5 in progress and later actions/browser pending.",
+      "triage": "false at review stage: ongoing session handoff; existing final closure duty now completed."
+    }
+  ],
+  "additional_confirmed_finding": {
+    "id": "B1b",
+    "claim": "Hidden physical unlink \u2192 canonical owner reassignment \u2192 edit old owner misses actual resolver prerequisite.",
+    "verdict": "medium",
+    "route": "patch",
+    "result": "Canonical membership guard fixed; delete/reassign regression pass."
+  },
+  "edge_case": [],
+  "verification_gap": "No verification gaps found.",
+  "independent_patch_review": [
+    {
+      "finding": "Windows ignores S_IXUSR; mode fixture must use supported Windows write permission mask.",
+      "verdict": "medium",
+      "route": "patch",
+      "result": "Windows write-mask/POSIX executable-mask fixed; final independent check no actionable findings; no Windows run claimed."
+    },
+    {
+      "finding": "Vitest callback type rejects returned OperationResolution",
+      "verdict": "medium",
+      "route": "patch",
+      "result": "Void callback wrapper,69focused tests/core typecheck/full release passed."
+    }
+  ],
+  "final_independent_review": "No actionable findings. The platform-specific permission mask closes the portability issue, and the oracle callback now returns void. Windows execution remains unverified.",
+  "deferred": []
+}

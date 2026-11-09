@@ -1,0 +1,6 @@
+import { appendFileSync } from 'node:fs';
+import { basename } from 'node:path';
+
+const call = basename(process.argv[1]);
+appendFileSync(process.env.GATE_LOG, `${call}\n`);
+if (call === process.env.GATE_FAIL) process.exit(3);

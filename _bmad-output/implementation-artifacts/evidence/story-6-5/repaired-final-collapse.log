@@ -1,0 +1,9 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/story-map/components/hierarchy-collapse.test.tsx (8 tests) 489ms
+
+ Test Files  1 passed (1)
+      Tests  8 passed (8)
+   Start at  17:25:15
+   Duration  1.67s (transform 487ms, setup 0ms, collect 826ms, tests 489ms, environment 172ms, prepare 33ms)

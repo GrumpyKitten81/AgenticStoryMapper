@@ -1,0 +1,735 @@
+{
+  "story": "5.5",
+  "date": "2026-10-16",
+  "result": "passed",
+  "environment": {
+    "browser": "Codex In-app Browser, native trusted input, default viewport",
+    "server": "127.0.0.1:44332",
+    "storage": "temporary synthetic acceptance fixtures v2 and final v3; no user Projects",
+    "canonicalPerfCards": 1000,
+    "sliceStoryButtons": 980
+  },
+  "performance": [
+    {
+      "iteration": "initial",
+      "samples": [
+        {
+          "event": "click",
+          "label": "Plan drift",
+          "trusted": true,
+          "domReadyMs": 98,
+          "elapsedMs": 113.30000007152557,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": false
+        },
+        {
+          "event": "click",
+          "label": "Close plan drift",
+          "trusted": true,
+          "domReadyMs": 0.3999999761581421,
+          "elapsedMs": 24.899999976158142,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": true
+        },
+        {
+          "event": "input",
+          "label": "Search cards",
+          "trusted": true,
+          "domReadyMs": 14.199999928474426,
+          "elapsedMs": 30.399999976158142,
+          "budgetMs": 300,
+          "cardCount": 980,
+          "passed": true
+        },
+        {
+          "event": "input",
+          "label": "Search cards",
+          "trusted": true,
+          "domReadyMs": 12.899999976158142,
+          "elapsedMs": 32.60000002384186,
+          "budgetMs": 300,
+          "cardCount": 980,
+          "passed": true
+        },
+        {
+          "event": "click",
+          "label": "LSM-303: Performance story 3-0todo \u00b7 \u2014",
+          "trusted": true,
+          "domReadyMs": 11.300000071525574,
+          "elapsedMs": 83.30000007152557,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "iteration": "optimized",
+      "samples": [
+        {
+          "event": "click",
+          "label": "Plan drift",
+          "trusted": true,
+          "domReadyMs": 87.09999990463257,
+          "elapsedMs": 109.29999995231628,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "iteration": "projection",
+      "samples": [
+        {
+          "event": "click",
+          "label": "Plan drift",
+          "trusted": true,
+          "domReadyMs": 65.10000002384186,
+          "elapsedMs": 67.10000002384186,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "iteration": "final",
+      "samples": [
+        {
+          "event": "click",
+          "label": "Plan drift",
+          "trusted": true,
+          "domReadyMs": 47.299999952316284,
+          "elapsedMs": 75.29999995231628,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": true
+        },
+        {
+          "event": "click",
+          "label": "Close plan drift",
+          "trusted": true,
+          "domReadyMs": 0.5,
+          "elapsedMs": 29.100000023841858,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": true
+        },
+        {
+          "event": "input",
+          "label": "Search cards",
+          "trusted": true,
+          "domReadyMs": 12.799999952316284,
+          "elapsedMs": 30,
+          "budgetMs": 300,
+          "cardCount": 980,
+          "passed": true
+        },
+        {
+          "event": "input",
+          "label": "Search cards",
+          "trusted": true,
+          "domReadyMs": 12.5,
+          "elapsedMs": 32.59999990463257,
+          "budgetMs": 300,
+          "cardCount": 980,
+          "passed": true
+        },
+        {
+          "event": "click",
+          "label": "LSM-203: Performance story 2-0todo \u00b7 \u2014",
+          "trusted": true,
+          "domReadyMs": 13.399999976158142,
+          "elapsedMs": 96.60000002384186,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "iteration": "dense-before-review-repair",
+      "canonicalCards": 1000,
+      "changedCards": 1000,
+      "samples": [
+        {
+          "event": "click",
+          "label": "Plan drift",
+          "trusted": true,
+          "domReadyMs": 100.10000002384186,
+          "elapsedMs": 414.39999997615814,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "iteration": "dense-offscreen-containment",
+      "canonicalCards": 1000,
+      "changedCards": 1000,
+      "samples": [
+        {
+          "event": "click",
+          "label": "Plan drift",
+          "trusted": true,
+          "domReadyMs": 96.79999995231628,
+          "elapsedMs": 110.79999995231628,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "iteration": "dense-bounded-pages",
+      "canonicalCards": 1000,
+      "changedCards": 1000,
+      "samples": [
+        {
+          "event": "click",
+          "label": "Plan drift",
+          "trusted": true,
+          "domReadyMs": 74.19999992847443,
+          "elapsedMs": 91.5,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "iteration": "dense-final-focus-build",
+      "canonicalCards": 1000,
+      "changedCards": 1000,
+      "samples": [
+        {
+          "event": "click",
+          "label": "Plan drift",
+          "trusted": true,
+          "domReadyMs": 92,
+          "elapsedMs": 111.5,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": false
+        }
+      ]
+    },
+    {
+      "iteration": "final-optimized-cold-report",
+      "canonicalCards": 1000,
+      "changedCards": 1000,
+      "samples": [
+        {
+          "event": "click",
+          "label": "Plan drift",
+          "trusted": true,
+          "domReadyMs": 69.19999992847443,
+          "elapsedMs": 93.09999990463257,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": true
+        },
+        {
+          "event": "click",
+          "label": "Close plan drift",
+          "trusted": true,
+          "domReadyMs": 1.1999999284744263,
+          "elapsedMs": 41.39999997615814,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": true
+        },
+        {
+          "event": "input",
+          "label": "Search cards",
+          "trusted": true,
+          "domReadyMs": 12.400000095367432,
+          "elapsedMs": 38.700000047683716,
+          "budgetMs": 300,
+          "cardCount": 980,
+          "passed": true
+        },
+        {
+          "event": "click",
+          "label": "LSM-203: Performance story 2-0active \u00b7 \u2014",
+          "trusted": true,
+          "domReadyMs": 12.399999976158142,
+          "elapsedMs": 90.10000002384186,
+          "budgetMs": 100,
+          "cardCount": 980,
+          "passed": true
+        },
+        {
+          "event": "input",
+          "label": "Search cards",
+          "trusted": true,
+          "domReadyMs": 12.599999904632568,
+          "elapsedMs": 28.299999952316284,
+          "budgetMs": 300,
+          "cardCount": 980,
+          "passed": true
+        }
+      ]
+    }
+  ],
+  "functional": {
+    "exactOldNewFieldsAndSlices": true,
+    "simultaneousChangedAndMoved": true,
+    "addedArchivedDeletedIdentities": true,
+    "sourceSelectionAndOtherSystemIsolation": true,
+    "keyboardSelectorWrappingEscapeTriggerReturn": true,
+    "failedRefetchHidesCachedSuccessAndRetryRecovers": true,
+    "publicReportContainsAllAcknowledgmentEvidence": true,
+    "agentSubmitApplyTrueRemainsProposed": true,
+    "actualBrowserHumanApproveThenSeparateApply": true,
+    "unapprovedAgentApplyAndAgentApprovalRefused": true,
+    "divergentSubmissionRefusedAtomically": true,
+    "staleBaselineApplyRefusedAtomically": true,
+    "acknowledgmentPreservesFullCards": true,
+    "twoClientLiveAndManualHoldRelease": true,
+    "actualBrowserRestoreCompletesAndOpenReaderRefreshesWithoutReload": true,
+    "manualCaptureKeepsBaselineVersion": 6,
+    "ownOriginSaveRefreshesOpenReportWithoutReload": true,
+    "reviewedRetryFocusReturnsToSurvivingCloseControl": true,
+    "denseNextPageShows51to100Of1000": true,
+    "densePageEscapeReturnsTrigger": true,
+    "finalBuildDenseCanonicalReportDespiteViewFilter": true
+  },
+  "wirePrepare": {
+    "goodId": "bdd2f2bf-c24b-4d3e-87d3-25f1da8e1896",
+    "staleId": "012241a9-96ea-4363-b98c-e335136570e4",
+    "divergentSubmit": 409,
+    "agentApproval": {
+      "status": 403,
+      "body": {
+        "code": "disabled",
+        "message": "Agent ChangeSet approval is disabled for this project."
+      }
+    },
+    "unapprovedApply": {
+      "status": 409,
+      "body": {
+        "code": "conflict",
+        "message": "Stored ChangeSet requires executable recorded approval."
+      }
+    },
+    "badApproval": null,
+    "badApply": {
+      "status": 409,
+      "body": {
+        "code": "conflict",
+        "message": "Publication conflicts with current state.",
+        "details": {
+          "index": 0,
+          "operationId": "ack-beta"
+        },
+        "conflicts": [
+          {
+            "entity": "storyMap",
+            "id": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+            "reason": "fingerprint",
+            "operationId": "ack-beta",
+            "index": 0,
+            "current": {
+              "id": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+              "version": 1,
+              "projectId": "6f127c27-1736-433d-9549-6c95e3a630fc",
+              "name": "Source reconciliation",
+              "estimationUnit": "points",
+              "cardKeyPrefix": "LSM",
+              "createdAt": "2026-10-16T16:04:04.524Z",
+              "updatedAt": "2026-10-16T16:04:04.524Z"
+            },
+            "message": "Source projection does not match the current local Card."
+          }
+        ]
+      }
+    }
+  },
+  "wireComplete": {
+    "baselineVersion": 6,
+    "changes": 0,
+    "staleApproval": {
+      "status": 200,
+      "body": {
+        "changeSet": {
+          "operationsSchemaVersion": 4,
+          "proposedBy": {
+            "actorType": "agent",
+            "actorId": "local-mcp-host",
+            "mcpSessionId": "aaf81e95-053d-49c7-9294-a7cec6eeff57"
+          },
+          "approval": {
+            "actor": {
+              "actorType": "human",
+              "actorId": "local-user"
+            },
+            "approvedAt": "2026-10-16T16:06:36.622Z",
+            "operationsHash": "c768dd0ffa6ea2fb21ef7ff7c69f00924fe641344593174aea35cfcef6b9bae1",
+            "selectedOperationIds": [
+              "ack-beta"
+            ]
+          },
+          "warnings": [],
+          "undoneByRestore": false,
+          "id": "012241a9-96ea-4363-b98c-e335136570e4",
+          "projectId": "6f127c27-1736-433d-9549-6c95e3a630fc",
+          "title": "Race rejection after beta reconciliation",
+          "source": "mcp",
+          "status": "approved",
+          "operations": [
+            {
+              "operationId": "ack-beta",
+              "op": "acknowledge",
+              "entity": "sourcePlan",
+              "after": {
+                "storyMapId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                "system": "beta",
+                "baselineId": "a62f6825-ef40-482a-a2e5-a4a1060c0b8c",
+                "baselineVersion": 5,
+                "entries": [
+                  {
+                    "cardId": "1d61f616-851b-4e96-9d1f-3b2fc50dabd6",
+                    "before": null,
+                    "current": {
+                      "creationOrigin": "manual",
+                      "provenance": "manual",
+                      "version": 1,
+                      "id": "1d61f616-851b-4e96-9d1f-3b2fc50dabd6",
+                      "storyMapId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                      "parentId": "9323009b-1449-47ed-8fc8-1854737ed9ea",
+                      "releaseId": "9d878822-82d8-486a-a89b-163aa1e14f6a",
+                      "key": "LSM-6",
+                      "level": "story",
+                      "title": "Local addition",
+                      "description": "Synchronized description",
+                      "position": 2,
+                      "status": "todo",
+                      "parked": false,
+                      "createdAt": "2026-10-16T16:04:04.574Z",
+                      "updatedAt": "2026-10-16T16:04:04.574Z"
+                    },
+                    "binding": null,
+                    "source": {
+                      "title": "Local addition",
+                      "description": "Synchronized description",
+                      "status": "todo",
+                      "releaseId": "9d878822-82d8-486a-a89b-163aa1e14f6a",
+                      "active": true
+                    }
+                  },
+                  {
+                    "cardId": "48d9192c-2467-422d-b86f-00de761bb4b9",
+                    "before": {
+                      "cardId": "48d9192c-2467-422d-b86f-00de761bb4b9",
+                      "identity": {
+                        "id": "48d9192c-2467-422d-b86f-00de761bb4b9",
+                        "key": "LSM-5",
+                        "title": "Deletion example"
+                      },
+                      "releaseName": "Published Slice",
+                      "card": {
+                        "creationOrigin": "manual",
+                        "provenance": "manual",
+                        "version": 1,
+                        "id": "48d9192c-2467-422d-b86f-00de761bb4b9",
+                        "storyMapId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                        "parentId": "9323009b-1449-47ed-8fc8-1854737ed9ea",
+                        "releaseId": "9d878822-82d8-486a-a89b-163aa1e14f6a",
+                        "key": "LSM-5",
+                        "level": "story",
+                        "title": "Deletion example",
+                        "description": "Synchronized description",
+                        "position": 2,
+                        "status": "todo",
+                        "parked": false,
+                        "createdAt": "2026-10-16T16:04:04.530Z",
+                        "updatedAt": "2026-10-16T16:04:04.530Z"
+                      },
+                      "active": true,
+                      "binding": {
+                        "id": "5f9c7439-d87a-4670-a9aa-cf7b2b64eadf",
+                        "entityType": "card",
+                        "entityId": "48d9192c-2467-422d-b86f-00de761bb4b9",
+                        "system": "beta",
+                        "externalId": "LSM-5",
+                        "scopeId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                        "syncedVersion": 1,
+                        "createdAt": "2026-10-16T16:04:04.568Z"
+                      }
+                    },
+                    "current": null,
+                    "binding": null,
+                    "source": null
+                  },
+                  {
+                    "cardId": "5ac4ba81-704b-4c72-b65a-8c8254fbf39c",
+                    "before": {
+                      "cardId": "5ac4ba81-704b-4c72-b65a-8c8254fbf39c",
+                      "identity": {
+                        "id": "5ac4ba81-704b-4c72-b65a-8c8254fbf39c",
+                        "key": "LSM-3",
+                        "title": "Published Story"
+                      },
+                      "releaseName": "Published Slice",
+                      "card": {
+                        "creationOrigin": "manual",
+                        "provenance": "manual",
+                        "version": 1,
+                        "id": "5ac4ba81-704b-4c72-b65a-8c8254fbf39c",
+                        "storyMapId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                        "parentId": "9323009b-1449-47ed-8fc8-1854737ed9ea",
+                        "releaseId": "9d878822-82d8-486a-a89b-163aa1e14f6a",
+                        "key": "LSM-3",
+                        "level": "story",
+                        "title": "Published Story",
+                        "description": "Synchronized description",
+                        "position": 0,
+                        "status": "todo",
+                        "parked": false,
+                        "createdAt": "2026-10-16T16:04:04.528Z",
+                        "updatedAt": "2026-10-16T16:04:04.528Z"
+                      },
+                      "active": true,
+                      "binding": {
+                        "id": "545eb042-7eb8-40e2-bfca-56a6663a28bf",
+                        "entityType": "card",
+                        "entityId": "5ac4ba81-704b-4c72-b65a-8c8254fbf39c",
+                        "system": "beta",
+                        "externalId": "LSM-3",
+                        "scopeId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                        "syncedVersion": 1,
+                        "createdAt": "2026-10-16T16:04:04.556Z"
+                      }
+                    },
+                    "current": {
+                      "creationOrigin": "manual",
+                      "provenance": "manual",
+                      "version": 1,
+                      "id": "5ac4ba81-704b-4c72-b65a-8c8254fbf39c",
+                      "storyMapId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                      "parentId": "9323009b-1449-47ed-8fc8-1854737ed9ea",
+                      "releaseId": "f8f0e1f5-02cb-4169-a2a9-ad13947ee7a6",
+                      "key": "LSM-3",
+                      "level": "story",
+                      "title": "Human Story",
+                      "description": "Human description",
+                      "position": 0,
+                      "status": "active",
+                      "parked": false,
+                      "createdAt": "2026-10-16T16:04:04.528Z",
+                      "updatedAt": "2026-10-16T16:04:04.571Z"
+                    },
+                    "binding": {
+                      "id": "545eb042-7eb8-40e2-bfca-56a6663a28bf",
+                      "entityType": "card",
+                      "entityId": "5ac4ba81-704b-4c72-b65a-8c8254fbf39c",
+                      "system": "beta",
+                      "externalId": "LSM-3",
+                      "scopeId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                      "syncedVersion": 1,
+                      "createdAt": "2026-10-16T16:04:04.556Z"
+                    },
+                    "source": {
+                      "title": "Human Story",
+                      "description": "Human description",
+                      "status": "active",
+                      "releaseId": "f8f0e1f5-02cb-4169-a2a9-ad13947ee7a6",
+                      "active": true
+                    }
+                  },
+                  {
+                    "cardId": "b62fdad2-4c71-4a06-98b3-336dedf3edc9",
+                    "before": {
+                      "cardId": "b62fdad2-4c71-4a06-98b3-336dedf3edc9",
+                      "identity": {
+                        "id": "b62fdad2-4c71-4a06-98b3-336dedf3edc9",
+                        "key": "LSM-4",
+                        "title": "Archive example"
+                      },
+                      "releaseName": "Published Slice",
+                      "card": {
+                        "creationOrigin": "manual",
+                        "provenance": "manual",
+                        "version": 1,
+                        "id": "b62fdad2-4c71-4a06-98b3-336dedf3edc9",
+                        "storyMapId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                        "parentId": "9323009b-1449-47ed-8fc8-1854737ed9ea",
+                        "releaseId": "9d878822-82d8-486a-a89b-163aa1e14f6a",
+                        "key": "LSM-4",
+                        "level": "story",
+                        "title": "Archive example",
+                        "description": "Synchronized description",
+                        "position": 1,
+                        "status": "todo",
+                        "parked": false,
+                        "createdAt": "2026-10-16T16:04:04.529Z",
+                        "updatedAt": "2026-10-16T16:04:04.529Z"
+                      },
+                      "active": true,
+                      "binding": {
+                        "id": "e78e8014-c5f8-49cb-a07d-dede143a10f1",
+                        "entityType": "card",
+                        "entityId": "b62fdad2-4c71-4a06-98b3-336dedf3edc9",
+                        "system": "beta",
+                        "externalId": "LSM-4",
+                        "scopeId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                        "syncedVersion": 1,
+                        "createdAt": "2026-10-16T16:04:04.562Z"
+                      }
+                    },
+                    "current": {
+                      "creationOrigin": "manual",
+                      "provenance": "manual",
+                      "version": 1,
+                      "id": "b62fdad2-4c71-4a06-98b3-336dedf3edc9",
+                      "storyMapId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                      "parentId": "9323009b-1449-47ed-8fc8-1854737ed9ea",
+                      "releaseId": "9d878822-82d8-486a-a89b-163aa1e14f6a",
+                      "key": "LSM-4",
+                      "level": "story",
+                      "title": "Archive example",
+                      "description": "Synchronized description",
+                      "position": 1,
+                      "status": "archived",
+                      "parked": false,
+                      "createdAt": "2026-10-16T16:04:04.529Z",
+                      "updatedAt": "2026-10-16T16:04:04.572Z"
+                    },
+                    "binding": {
+                      "id": "e78e8014-c5f8-49cb-a07d-dede143a10f1",
+                      "entityType": "card",
+                      "entityId": "b62fdad2-4c71-4a06-98b3-336dedf3edc9",
+                      "system": "beta",
+                      "externalId": "LSM-4",
+                      "scopeId": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+                      "syncedVersion": 1,
+                      "createdAt": "2026-10-16T16:04:04.562Z"
+                    },
+                    "source": {
+                      "title": "Archive example",
+                      "description": "Synchronized description",
+                      "status": "archived",
+                      "releaseId": "9d878822-82d8-486a-a89b-163aa1e14f6a",
+                      "active": false
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "createdAt": "2026-10-16T16:05:51.490Z"
+        }
+      }
+    },
+    "staleApply": {
+      "status": 409,
+      "body": {
+        "code": "conflict",
+        "message": "ChangeSet 012241a9-96ea-4363-b98c-e335136570e4 conflicts with newer changes on 8648013e-1afb-42f7-8fbf-ac8c111faa44.",
+        "details": {
+          "changeSetId": "012241a9-96ea-4363-b98c-e335136570e4",
+          "keys": [
+            "8648013e-1afb-42f7-8fbf-ac8c111faa44"
+          ]
+        },
+        "conflicts": [
+          {
+            "entity": "storyMap",
+            "id": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+            "reason": "fingerprint",
+            "operationId": "ack-beta",
+            "index": 0,
+            "current": {
+              "id": "8648013e-1afb-42f7-8fbf-ac8c111faa44",
+              "version": 1,
+              "projectId": "6f127c27-1736-433d-9549-6c95e3a630fc",
+              "name": "Source reconciliation",
+              "estimationUnit": "points",
+              "cardKeyPrefix": "LSM",
+              "createdAt": "2026-10-16T16:04:04.524Z",
+              "updatedAt": "2026-10-16T16:04:04.524Z"
+            },
+            "message": "Reviewed source baseline is missing, foreign or stale."
+          }
+        ]
+      }
+    },
+    "cardsUnchanged": true
+  },
+  "auditSize": {
+    "operations": 1000,
+    "operationEvidenceBytes": 1970703,
+    "databaseBytes": 10833920,
+    "baselineEntries": 1000
+  },
+  "initialAuditBytes": 897115640,
+  "logs": [
+    "/tmp/story-5-5-stable-test.log",
+    "/tmp/story-5-5-stable-verify.log",
+    "/tmp/story-5-5-stable-lint.log",
+    "/tmp/story-5-5-reviewed-test.log",
+    "/tmp/story-5-5-accepted-test.log",
+    "/tmp/story-5-5-accepted-verify.log",
+    "/tmp/story-5-5-accepted-lint.log"
+  ],
+  "screenshot": "/tmp/story-5-5-final-reconciled.png",
+  "notes": [
+    "All failed samples retained; no Story5.2 exception applied.",
+    "First temporary seed attempt omitted required set-ref fields and was corrected; no product defect.",
+    "Initial full tests began before successful staging and omitted new files in checkout fixtures; preserved failed log and reran after staging.",
+    "A new historical-preview test compared proposal/apply timestamps; it now checks the actual applied timestamp.",
+    "Pending/public historical DTOs use explicit exact addressed-entry evidence; complete internal resolution still has an unverified very-large-batch transient-memory scaling risk.",
+    "Review full-suite run found the new audit regression selected Activity by display order; it now identifies the exact recorded operationId/index and retains exact before/after evidence checks.",
+    "Final optimization retains strict stored/public validation; opaque validated-baseline type avoids reparsing already validated repository output. Scalar Card/ref copies preserve independent report objects. Scoped dependency joins replace large ID lists; timestamp branch order accepts the identical language. No prefetch or probe-budget changes."
+  ],
+  "ownOriginScreenshot": "/tmp/story-5-5-own-origin-reviewed.png",
+  "denseScreenshot": "/tmp/story-5-5-final-dense.png",
+  "cleanup": {
+    "ownedBrowserTabsClosed": true,
+    "ownedLoopbackServerStopped": true,
+    "probeOnlyInTemporaryWebCopy": true
+  },
+  "orchestratorFileHashes": {
+    "sprint-status.yaml": "61f5f09be387b8e6bfba655cb1e5bc1710513f57b8943a09acde975a034cdfed",
+    "deferred-work.md": "a6deb9a64255bf9e59cea0ab24ec6b80e33278f38a7b65e4b456ab40de37cb94"
+  },
+  "readPathProfile": {
+    "input": "readonly synthetic v3 fixture",
+    "serverPipelineColdMsBefore": 55.06,
+    "serverPipelineColdMsAfter": 41.32,
+    "optimizedWarmMs": [
+      17.48,
+      19.8
+    ],
+    "dependencyQueryMsBefore": 4.4,
+    "dependencyQueryMsAfter": 0.48,
+    "timestampChecks": 6000,
+    "timestampColdMsBefore": 6.89,
+    "timestampColdMsAfter": 1.03,
+    "provenance": "independent implementation agents executed direct read-only Node24 profiling through stdin; measurements reported in their tool outputs; no benchmark source persisted"
+  },
+  "verification": {
+    "fullTestExitCode": 0,
+    "totalTests": 1903,
+    "counts": {
+      "scripts": 82,
+      "contracts": 150,
+      "importers": 7,
+      "core": 290,
+      "web": 326,
+      "db": 410,
+      "server": 624,
+      "serialAuditPerformance": 14
+    },
+    "verifyExitCode": 0,
+    "lintExitCode": 0,
+    "capabilities": 129,
+    "capabilityParityExitCode": 0,
+    "intentContractUnchanged": true
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "failure": "check-hygiene rejected github-selection.test.tsx at790lines",
+  "repair": "Remove blank separators immediately before test declarations; retain all executable characters and all tests.",
+  "beforeLines": 789,
+  "afterLines": 746,
+  "nonWhitespaceContentIdentical": true,
+  "testRunPhase": "Root launcher fixtures were running before Vitest collection; only test declaration separators changed, production source unchanged."
+}

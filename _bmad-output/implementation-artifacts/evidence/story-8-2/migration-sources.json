@@ -1,0 +1,10 @@
+{
+  "Vitest3": "https://v3.vitest.dev/guide/migration",
+  "Vitest4": "https://v4.vitest.dev/guide/migration",
+  "Vite7": "https://v7.vite.dev/guide/migration",
+  "Vite8": "https://vite.dev/guide/migration",
+  "Tiptap3": "https://tiptap.dev/docs/guides/upgrade-tiptap-v2",
+  "MarkdownAdapter": "https://github.com/aguingand/tiptap-markdown",
+  "StaticCompatibility": "https://github.com/fastify/fastify-static#compatibility",
+  "StaticReleases": "https://github.com/fastify/fastify-static/releases"
+}

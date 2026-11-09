@@ -1,0 +1,19 @@
+[
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "test"
+    ],
+    "exit_code": 0,
+    "log": "root-tests.log"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/verify.mjs"
+    ],
+    "exit_code": 0,
+    "log": "release-verify.log"
+  }
+]

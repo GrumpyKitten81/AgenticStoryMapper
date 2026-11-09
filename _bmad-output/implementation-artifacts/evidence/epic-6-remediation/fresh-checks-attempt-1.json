@@ -1,0 +1,11 @@
+[
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "test"
+    ],
+    "exit_code": 1,
+    "log": "root-tests.log"
+  }
+]

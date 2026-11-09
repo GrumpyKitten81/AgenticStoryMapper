@@ -1,0 +1,15 @@
+{
+  "entry": {
+    "head": "91d06bba8b3fe1060b4f0d8d2316aa98604a46cf",
+    "sprint_worktree": "c94217f7e45d2ad4c8d89a97e9de0e3e2c28e2eabd98e425b4545d2ba58762d7",
+    "sprint_index": "a276506882f729c8d2181f9049a0175916af9cbab7851d12ee73074965f44233",
+    "intent_contract": "88d8084ba3fb2b460c4346fd315b9a12f7693f4d15e0bb55092e038db69bd4a7"
+  },
+  "final": {
+    "head": "91d06bba8b3fe1060b4f0d8d2316aa98604a46cf",
+    "sprint_worktree": "c94217f7e45d2ad4c8d89a97e9de0e3e2c28e2eabd98e425b4545d2ba58762d7",
+    "sprint_index": "a276506882f729c8d2181f9049a0175916af9cbab7851d12ee73074965f44233",
+    "intent_contract": "88d8084ba3fb2b460c4346fd315b9a12f7693f4d15e0bb55092e038db69bd4a7"
+  },
+  "all_equal": true
+}

@@ -1,0 +1,502 @@
+{
+  "schema_version": 1,
+  "event_id": "epic45-operator-adoption-20261016",
+  "created_at": "2026-10-16T20:41:06.051825+00:00",
+  "provenance": "Explicit operator authorization; adoption of externally completed and accepted work. No fresh browser acceptance or agent execution claimed.",
+  "head": "6171c8298ae15eb21540ddcbc508e071df9ed5f9",
+  "backup_directory": ".bmad-loop/reconciliations/20261016T204022Z",
+  "runs": [
+    {
+      "run_id": "20261010-225213-adbd",
+      "selector": {
+        "epic_filter": 4,
+        "story_filter": null,
+        "max_stories": null
+      },
+      "adopted": [
+        {
+          "story_key": "4-1-import-markdown-and-txt-sources-with-stable-chunks",
+          "previous_phase": "dev-running",
+          "commit": "5b55d694e00f50ef72b67f6654c435d690682ab9",
+          "spec_sha256": "a6f3ac4988a729523f2a4799d4d66128d4d8d150186e8f12862522a9e534609c",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-4-1-import-markdown-and-txt-sources-with-stable-chunks.md"
+        }
+      ],
+      "files": {
+        "ATTENTION": {
+          "before_sha256": "1e608e4a0a045a73b4cec0827eefee0d84d25b05b5c9e4312da885c74397c0c6",
+          "after_sha256": "1e608e4a0a045a73b4cec0827eefee0d84d25b05b5c9e4312da885c74397c0c6"
+        },
+        "state.json": {
+          "before_sha256": "ea7413dbfb4a19c69e1e86e8bcd60a3668d912c72ae0211ef4fa250bf9bf0c4c",
+          "after_sha256": "1d47615d1028a5678b4ac687c9264b55c95713dfd4d95a68e1c9f026eaf38eea"
+        },
+        "journal.jsonl": {
+          "before_sha256": "1172651c8e18b16216fde6139320b4fc91e8243b5f38ad2981a5ce46620e714f",
+          "after_sha256": "d6e5dffd11fecdbc8f8573c4fbd3f4c6d26b053dc8b87ca5a23500db119ffd08"
+        }
+      },
+      "liveness_under_lock": "dead",
+      "finished": true,
+      "original_sessions_preserve_refs_and_journal_prefix_unchanged": true
+    },
+    {
+      "run_id": "20261010-225958-d58b",
+      "selector": {
+        "epic_filter": 4,
+        "story_filter": null,
+        "max_stories": null
+      },
+      "adopted": [
+        {
+          "story_key": "4-2-provenance-on-every-card",
+          "previous_phase": "deferred",
+          "commit": "c6fd520bca02de4937654d72f8ab66c5a1f6dc5e",
+          "spec_sha256": "7c4820fb0eceebb9653d6992db140a16616db8c2abfcea7147a4bca51b118ef1",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-4-2-provenance-on-every-card.md"
+        },
+        {
+          "story_key": "4-4-operation-registry-for-the-core-objects",
+          "previous_phase": "deferred",
+          "commit": "6cbe81dddd5e5db784626ab953677b9da7ea88bf",
+          "spec_sha256": "119b1086fc8345ee7131f48f8922a8d91dea1ee1456722eb2e9fd627b0adb3ba",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-4-4-operation-registry-for-the-core-objects.md"
+        },
+        {
+          "story_key": "4-5-operation-registry-for-the-remaining-objects",
+          "previous_phase": "escalated",
+          "commit": "5a3134a674f8e1a36eb7577b6ac9cba57db1e4e9",
+          "spec_sha256": "9c7d37f0fe64b781fdb836fb4adaa9cee777f1f260ef3c1681d27fa6c339d875",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-4-5-operation-registry-for-the-remaining-objects.md"
+        }
+      ],
+      "files": {
+        "ATTENTION": {
+          "before_sha256": "e5bece7540259deb2977f3e46c4a73ae094d8c8432741e68ebc8b9fa7f90ba61",
+          "after_sha256": "e5bece7540259deb2977f3e46c4a73ae094d8c8432741e68ebc8b9fa7f90ba61"
+        },
+        "state.json": {
+          "before_sha256": "ce6275bb921b14aa715fdf8b2ecb79f60601e9d2bd3e579a07eceb2ff081716e",
+          "after_sha256": "d08cfd5a90bb5b195afc858cf74f6bcc09588e16faace4f5faad388109ba9915"
+        },
+        "journal.jsonl": {
+          "before_sha256": "3eec8381dc0e487712c0186c23ccba71d999e068831559a995314da8e2f1849d",
+          "after_sha256": "8eecef7033ed13843c167f94053097a7ce65f06138fd896b3be53cdd948a3039"
+        }
+      },
+      "liveness_under_lock": "dead",
+      "finished": true,
+      "original_sessions_preserve_refs_and_journal_prefix_unchanged": true
+    },
+    {
+      "run_id": "20261011-212706-e933",
+      "selector": {
+        "epic_filter": 4,
+        "story_filter": null,
+        "max_stories": null
+      },
+      "adopted": [
+        {
+          "story_key": "4-4-operation-registry-for-the-core-objects",
+          "previous_phase": "dev-running",
+          "commit": "6cbe81dddd5e5db784626ab953677b9da7ea88bf",
+          "spec_sha256": "119b1086fc8345ee7131f48f8922a8d91dea1ee1456722eb2e9fd627b0adb3ba",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-4-4-operation-registry-for-the-core-objects.md"
+        }
+      ],
+      "files": {
+        "ATTENTION": {
+          "before_sha256": "e7062ef7fa591e1ad22cc85fed409de5f73fe7765c18c7a79b4cc13c1d79bd71",
+          "after_sha256": "e7062ef7fa591e1ad22cc85fed409de5f73fe7765c18c7a79b4cc13c1d79bd71"
+        },
+        "state.json": {
+          "before_sha256": "0cc1969107208dcd24141ce5c07d891194570f6c860775ba60acd73068dbc9c5",
+          "after_sha256": "d43ed076bf3130ad984cd50f3d7c6880e25bcbe5796f0411d6aad7c112bdbff4"
+        },
+        "journal.jsonl": {
+          "before_sha256": "f18c7f811b79149414232e63ab1153f0c25acd55b4258090f8e1ae5450a4042d",
+          "after_sha256": "631f8726b50fcbd8b6196f56ba3f2407943f7e795d51a70a922b11d8f999db78"
+        }
+      },
+      "liveness_under_lock": "dead",
+      "finished": true,
+      "original_sessions_preserve_refs_and_journal_prefix_unchanged": true
+    },
+    {
+      "run_id": "20261012-001155-4914",
+      "selector": {
+        "epic_filter": 4,
+        "story_filter": null,
+        "max_stories": null
+      },
+      "adopted": [
+        {
+          "story_key": "4-5-operation-registry-for-the-remaining-objects",
+          "previous_phase": "dev-running",
+          "commit": "5a3134a674f8e1a36eb7577b6ac9cba57db1e4e9",
+          "spec_sha256": "9c7d37f0fe64b781fdb836fb4adaa9cee777f1f260ef3c1681d27fa6c339d875",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-4-5-operation-registry-for-the-remaining-objects.md"
+        }
+      ],
+      "files": {
+        "ATTENTION": {
+          "before_sha256": "7e2add4e89d4ff0c64878ba8b13c45165225d4d2b6c7389aff04108a4c1a3b6e",
+          "after_sha256": "7e2add4e89d4ff0c64878ba8b13c45165225d4d2b6c7389aff04108a4c1a3b6e"
+        },
+        "state.json": {
+          "before_sha256": "23f2c725d5ebbd14424dd19bf1d6e5457d6fd668141f1a8c8cfc61c55447d74a",
+          "after_sha256": "4a76feaad517dd9e63063c0ade231dc60d6b136dcf88119bcb85e655cdf65fcb"
+        },
+        "journal.jsonl": {
+          "before_sha256": "463792ff8ac60360bd75eeed1794af817e05af73618281e8669cef5b1bb4b557",
+          "after_sha256": "9c1bd5a63e68aa62d2e46cd6d58cab4489f7282de5b1c92f5b4f488cadc4ce18"
+        }
+      },
+      "liveness_under_lock": "dead",
+      "finished": true,
+      "original_sessions_preserve_refs_and_journal_prefix_unchanged": true
+    },
+    {
+      "run_id": "20261012-010242-7172",
+      "selector": {
+        "epic_filter": 4,
+        "story_filter": null,
+        "max_stories": null
+      },
+      "adopted": [
+        {
+          "story_key": "4-9-preview-a-changeset-on-the-board",
+          "previous_phase": "escalated",
+          "commit": "709c1ae0e7f94ac5e44ed5857cadfc4bed002435",
+          "spec_sha256": "0c5ce87759285dbaf1d0eb53376a41022f857dac3587ed9c15650679de5bd41b",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-4-9-preview-a-changeset-on-the-board.md"
+        },
+        {
+          "story_key": "4-13-validation-gate-with-five-bmad-users",
+          "previous_phase": "escalated",
+          "commit": "98a92fc5d32177e370ca1503b27665386ad83cec",
+          "spec_sha256": "5a77c6912c10fc09c5cd72874076400a5bb32e61a554f995f71ee1bd1c50f6da",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-4-13-validation-gate-with-five-bmad-users.md"
+        }
+      ],
+      "files": {
+        "ATTENTION": {
+          "before_sha256": "1ae236ef5b81c5ba0139e2cdb7c46bd43e3cb7ed07e08c2e0e0f2c1029c3e002",
+          "after_sha256": "1ae236ef5b81c5ba0139e2cdb7c46bd43e3cb7ed07e08c2e0e0f2c1029c3e002"
+        },
+        "state.json": {
+          "before_sha256": "0a12add9f4eda1c1761c95a9e347b8e894f395b95de396e2c6c724fb515b3ebe",
+          "after_sha256": "2da48819ee151a10b4f1a34357bb12f4b01f942807894dbc4dd7de94e061dcfd"
+        },
+        "journal.jsonl": {
+          "before_sha256": "a2f7705131b8d4d7c7251c02e2fc0dec6cbae6839976a325220f1f772711d75e",
+          "after_sha256": "a976b0801bea05aa651159ad72616070abba0169b161442fc03169958543da2b"
+        }
+      },
+      "liveness_under_lock": "dead",
+      "finished": true,
+      "original_sessions_preserve_refs_and_journal_prefix_unchanged": true
+    },
+    {
+      "run_id": "20261013-193420-d734",
+      "selector": {
+        "epic_filter": 4,
+        "story_filter": "4-13",
+        "max_stories": 1
+      },
+      "adopted": [
+        {
+          "story_key": "4-13-validation-gate-with-five-bmad-users",
+          "previous_phase": "escalated",
+          "commit": "98a92fc5d32177e370ca1503b27665386ad83cec",
+          "spec_sha256": "5a77c6912c10fc09c5cd72874076400a5bb32e61a554f995f71ee1bd1c50f6da",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-4-13-validation-gate-with-five-bmad-users.md"
+        }
+      ],
+      "files": {
+        "ATTENTION": {
+          "before_sha256": "53a912514bdb94cb48558050b1f57e53f5ea9f596e6b77b48f4308072d25cf2c",
+          "after_sha256": "53a912514bdb94cb48558050b1f57e53f5ea9f596e6b77b48f4308072d25cf2c"
+        },
+        "state.json": {
+          "before_sha256": "de4fc83e0d8c5f82795b1befb8e989a834ea6fc122f61ea317369d3c912c8194",
+          "after_sha256": "f9415c52c48232c3a128011573665ea47f16f751648d0dfd7c68a0e908660f55"
+        },
+        "journal.jsonl": {
+          "before_sha256": "6ceb6164c119f8a386cbccadbc2fd648292d3a77942c065cd1d14ed5d847d6c8",
+          "after_sha256": "3559ba553e9e65c701e43bc606972b22ec7a57a98f280f160f1543b3c45b94a2"
+        }
+      },
+      "liveness_under_lock": "dead",
+      "finished": true,
+      "original_sessions_preserve_refs_and_journal_prefix_unchanged": true
+    },
+    {
+      "run_id": "20261013-202328-8a54",
+      "selector": {
+        "epic_filter": 5,
+        "story_filter": null,
+        "max_stories": null
+      },
+      "adopted": [
+        {
+          "story_key": "5-1-dependencies-between-cards",
+          "previous_phase": "escalated",
+          "commit": "4e6f7ffa1da04f81a358113257bab580c0c283e1",
+          "spec_sha256": "b75aefdf093b841a75f2efe5598a48df17fe00f66677fb2d01a3974ba10675a2",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-5-1-dependencies-between-cards.md"
+        }
+      ],
+      "files": {
+        "ATTENTION": {
+          "before_sha256": "01d9a0a896f0f3acc0f14ac70ecc0cdedbf5b11e05e7ff75aeca7bca58730286",
+          "after_sha256": "01d9a0a896f0f3acc0f14ac70ecc0cdedbf5b11e05e7ff75aeca7bca58730286"
+        },
+        "state.json": {
+          "before_sha256": "fb8806537c9e3966b19b9d5c2dddc09e00dd0885ebbd81e8bebc94329e28718d",
+          "after_sha256": "505882032c690e4ebe2b0aee6e3a5b0a1ff0268c3614ff1e9d834ea99cbdc65b"
+        },
+        "journal.jsonl": {
+          "before_sha256": "27fabdf8bc25ac058915070c66f70bb19baf8a87b8b19335d243b5ded43819f2",
+          "after_sha256": "7e1b7b1eb7d5c38aa35f16adac03b0ec4e1514c91e0eda8ce3c9f3688846a2a5"
+        }
+      },
+      "liveness_under_lock": "dead",
+      "finished": true,
+      "original_sessions_preserve_refs_and_journal_prefix_unchanged": true
+    },
+    {
+      "run_id": "20261014-081531-7780",
+      "selector": {
+        "epic_filter": 5,
+        "story_filter": null,
+        "max_stories": null
+      },
+      "adopted": [
+        {
+          "story_key": "5-1-dependencies-between-cards",
+          "previous_phase": "escalated",
+          "commit": "4e6f7ffa1da04f81a358113257bab580c0c283e1",
+          "spec_sha256": "b75aefdf093b841a75f2efe5598a48df17fe00f66677fb2d01a3974ba10675a2",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-5-1-dependencies-between-cards.md"
+        }
+      ],
+      "files": {
+        "ATTENTION": {
+          "before_sha256": "0509df17a077675a2c53ba35daf0d3f610a0c2b4dc04af85415b5c297f42c89c",
+          "after_sha256": "0509df17a077675a2c53ba35daf0d3f610a0c2b4dc04af85415b5c297f42c89c"
+        },
+        "state.json": {
+          "before_sha256": "e5459b2f9eb741176e801813306ba0cc84bbf1962d13561c97b9237a79af77a4",
+          "after_sha256": "caf2b2082802b04a754dbf49ae94698e02dd54ce5a275785cdfbf8d615dd2ae9"
+        },
+        "journal.jsonl": {
+          "before_sha256": "6508ed8a84b07322f6858b8026bab63e334723f10b2b529d96a5f7f90b960cf2",
+          "after_sha256": "0503c2e0e49327419e8dbcce3642e6939d371ba1d5f5aeb075dfbcb6fbe85225"
+        }
+      },
+      "liveness_under_lock": "dead",
+      "finished": true,
+      "original_sessions_preserve_refs_and_journal_prefix_unchanged": true
+    },
+    {
+      "run_id": "20261014-193130-22dc",
+      "selector": {
+        "epic_filter": 5,
+        "story_filter": null,
+        "max_stories": null
+      },
+      "adopted": [
+        {
+          "story_key": "5-1-dependencies-between-cards",
+          "previous_phase": "escalated",
+          "commit": "4e6f7ffa1da04f81a358113257bab580c0c283e1",
+          "spec_sha256": "b75aefdf093b841a75f2efe5598a48df17fe00f66677fb2d01a3974ba10675a2",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-5-1-dependencies-between-cards.md"
+        }
+      ],
+      "files": {
+        "ATTENTION": {
+          "before_sha256": "606735740ae7f93f11902720a76c5b0d1d817c720f50d16ce888720c56f62ad5",
+          "after_sha256": "606735740ae7f93f11902720a76c5b0d1d817c720f50d16ce888720c56f62ad5"
+        },
+        "state.json": {
+          "before_sha256": "a5af20e554ac21cfe573964c01d2c52015a8ab4e1725619be724209b34e65599",
+          "after_sha256": "c325804fa7c57af9307b7317fdb2feec9c88bb9db2ab9f21450f7fc4c7eef348"
+        },
+        "journal.jsonl": {
+          "before_sha256": "962642b5fdfcbd46e103ed03c3d4b6d5a923a16f69198f892d8b247db6449a96",
+          "after_sha256": "db32702a027e3af5e22b51b0700704fe51b1487680c94b3e36a80c30ed4783b3"
+        }
+      },
+      "liveness_under_lock": "dead",
+      "finished": true,
+      "original_sessions_preserve_refs_and_journal_prefix_unchanged": true
+    },
+    {
+      "run_id": "20261014-235910-68de",
+      "selector": {
+        "epic_filter": 5,
+        "story_filter": null,
+        "max_stories": null
+      },
+      "adopted": [
+        {
+          "story_key": "5-1-dependencies-between-cards",
+          "previous_phase": "dev-running",
+          "commit": "4e6f7ffa1da04f81a358113257bab580c0c283e1",
+          "spec_sha256": "b75aefdf093b841a75f2efe5598a48df17fe00f66677fb2d01a3974ba10675a2",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-5-1-dependencies-between-cards.md"
+        }
+      ],
+      "files": {
+        "ATTENTION": {
+          "before_sha256": "a68ec825cb177a8a88baac3f64f13b4ea1c3754c4a50fbd83bdc7bd0ea5cf453",
+          "after_sha256": "a68ec825cb177a8a88baac3f64f13b4ea1c3754c4a50fbd83bdc7bd0ea5cf453"
+        },
+        "state.json": {
+          "before_sha256": "377c7cbd777efc16f06535ec1fd334ae2d21854d34bfc984eccc17085ee951f8",
+          "after_sha256": "6434a03d0520312d61884dbaf2900c398d632a71720b9bd8bc436cdfa0cf0c0b"
+        },
+        "journal.jsonl": {
+          "before_sha256": "ff4ad27bf58dcddf9d08f879ed775cc8cad0413223c3e83d193d68db5afb3229",
+          "after_sha256": "83de5b7807cc6df9f05d5de70117b5e76dabce1ce3158b1845a929c3755f5e6f"
+        }
+      },
+      "liveness_under_lock": "dead",
+      "finished": true,
+      "original_sessions_preserve_refs_and_journal_prefix_unchanged": true
+    },
+    {
+      "run_id": "20261015-080645-4f93",
+      "selector": {
+        "epic_filter": 5,
+        "story_filter": null,
+        "max_stories": null
+      },
+      "adopted": [
+        {
+          "story_key": "5-5-plan-drift-report",
+          "previous_phase": "escalated",
+          "commit": "be5f6608634e4938ee1402b0015aaa0b48307ea1",
+          "spec_sha256": "733eb876946546b3639cdf1799a25c2d9a210f93466db5cddb7d380f202d211d",
+          "spec_file": "_bmad-output/implementation-artifacts/spec-5-5-plan-drift-report.md"
+        }
+      ],
+      "files": {
+        "ATTENTION": {
+          "before_sha256": "37161a9018a75c8323d1eabd469f310e1a9de65f03bb2fe70a8be5d8fb096e19",
+          "after_sha256": "37161a9018a75c8323d1eabd469f310e1a9de65f03bb2fe70a8be5d8fb096e19"
+        },
+        "state.json": {
+          "before_sha256": "c09bdb5a0a380cffcbcc241f102ea10d0ba03223ad4e7541baf4abd8420d3d8b",
+          "after_sha256": "32121518fc5023cb58c5c3ca2377c315813621b1fb23cc538c3a551c306ae058"
+        },
+        "journal.jsonl": {
+          "before_sha256": "df492b720b9df452ed987a60b4968fc7d90dd33c2ca58ae1d2baaa17b04bbe9f",
+          "after_sha256": "c859303150fcc77424418f885a5960044bb6a4e29b8e2417e229fadeb8c507db"
+        }
+      },
+      "liveness_under_lock": "dead",
+      "finished": true,
+      "original_sessions_preserve_refs_and_journal_prefix_unchanged": true
+    }
+  ],
+  "board_changes": {
+    "4-13-validation-gate-with-five-bmad-users": {
+      "before": "backlog",
+      "after": "done"
+    },
+    "5-5-plan-drift-report": {
+      "before": "backlog",
+      "after": "done"
+    },
+    "epic-4": {
+      "before": "backlog",
+      "after": "done"
+    },
+    "epic-5": {
+      "before": "in-progress",
+      "after": "done"
+    },
+    "epic-5-retrospective": {
+      "before": "optional",
+      "after": "done"
+    }
+  },
+  "board_api_correction": "sprintstatus.advance supports story keys only. Story rows used that API; epic and retrospective rows used its canonical _board_lock and _set_mapping_value helpers with installed atomic_write_text. Initial epic update refused without mutating those rows; corrected finalization performed no redispatch.",
+  "scope_completion_basis": "Every task checked against its current done spec and exact ancestor completion commit; every spec in each selected epic was independently checked done before any mutation. Ghost dev-running/stopped attempts adopted the verified delivered task and scope, while old attempts and preserve refs remain historical.",
+  "invariants": {
+    "existing_4_9_dirty_done_preserved": true,
+    "epic4_retrospective_optional_preserved": true,
+    "epic6_backlog_preserved": true,
+    "no_product_changes_or_dispatch": true,
+    "deferred_work_not_written": true,
+    "unknown_state_fields_preserved": true,
+    "ATTENTION_unchanged_historical_evidence": true
+  },
+  "non_target_state_snapshot": {
+    ".bmad-loop/runs/20261003-002047-b324/state.json": "b31d549b7d7bf7abcd303f3f23c56094f65e49b4c8b0ba1a3ff179d67de8b58d",
+    ".bmad-loop/runs/20261003-001845-2e87/state.json": "842989edac496bbe084d775feaf411255f73b3fe6b467ed5ecf88cfb78cb9577",
+    ".bmad-loop/runs/20261010-130543-b551/state.json": "796c89bbbfe876fa6786e04be9a65fb381e908cd75113608146a190dd6eec39f",
+    ".bmad-loop/runs/20261010-120227-d68b/state.json": "d31d11bfd4477640032724aa978f58da3a50f0318af3fc26286a94042b021f21",
+    ".bmad-loop/runs/20261010-120635-093b/state.json": "83aa0c00cf270f403ea84d0f8703b13a5c52729d02f408e88162010c679abe77",
+    ".bmad-loop/runs/20261008-214640-6bef/state.json": "7b0be4bcfebbff125ae7a8daba509ce6367e55cb5f46c04d42b0593bd363bf56"
+  },
+  "non_target_states_predate_reconciliation": true,
+  "git_refs_sha256": "fcc440f53536a000dc57d27a26b64f8e881b582ff7bf5adcd9a424c5c8a1f9c5",
+  "attention_status_semantics": {
+    "status_source": {
+      "path": "[REDACTED_HOME]/.local/share/uv/tools/bmad-loop/lib/python3.11/site-packages/bmad_loop/runs.py",
+      "line": 1233,
+      "behavior": "finished precedence"
+    },
+    "attention_badge_source": {
+      "path": "[REDACTED_HOME]/.local/share/uv/tools/bmad-loop/lib/python3.11/site-packages/bmad_loop/tui/screens/dashboard.py",
+      "line": 1053,
+      "behavior": "counts only status PAUSED"
+    },
+    "reason": "Finished state takes precedence; need-attention badge counts only paused runs. Original ATTENTION files remain historical text, superseded by appended operator adoption and run-complete journal events."
+  },
+  "installed_cli_verification": {
+    "command": "bmad-loop list --json",
+    "all_11_target_runs": "finished",
+    "all_target_paused_stages": "empty",
+    "listing_fault": null,
+    "no_resume_stop_resolve_run_commands_issued": true
+  },
+  "board_verification": {
+    "epics": {
+      "4": "done",
+      "5": "done"
+    },
+    "stories": {
+      "4-1-import-markdown-and-txt-sources-with-stable-chunks": "done",
+      "4-2-provenance-on-every-card": "done",
+      "4-3-external-references-on-cards-releases-and-personas": "done",
+      "4-4-operation-registry-for-the-core-objects": "done",
+      "4-5-operation-registry-for-the-remaining-objects": "done",
+      "4-6-changeset-executor": "done",
+      "4-7-writing-agent-tools-run-through-changesets": "done",
+      "4-8-an-agent-submits-its-own-changeset": "done",
+      "4-9-preview-a-changeset-on-the-board": "done",
+      "4-10-slicing-proposals-and-release-notes": "done",
+      "4-11-delivery-status-from-agents": "done",
+      "4-12-the-bmad-round-trip": "done",
+      "4-13-validation-gate-with-five-bmad-users": "done",
+      "5-1-dependencies-between-cards": "done",
+      "5-2-slices-view": "done",
+      "5-3-dependency-graph-view": "done",
+      "5-4-what-changed-since-i-looked": "done",
+      "5-5-plan-drift-report": "done"
+    },
+    "pending_stories": [],
+    "epic6": "backlog",
+    "epic4_retrospective": "optional",
+    "epic5_retrospective": "done"
+  },
+  "root_independent_checks": {
+    "status": "complete",
+    "provenance": "Root orchestrator independently confirmed completion and requested this record; delegated operational agent does not claim to rerun those checks."
+  }
+}

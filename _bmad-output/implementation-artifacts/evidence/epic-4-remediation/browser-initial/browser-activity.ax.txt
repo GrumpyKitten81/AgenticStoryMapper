@@ -1,0 +1,128 @@
+Browser tab: 2, Title: "StoryMapper", URL: "http://127.0.0.1:44357/projects/44ec1dd4-6469-49c9-988a-87782b2dec52/audit".
+1 AXWebArea StoryMapper, URL: 127.0.0.1:44357/projects/44ec1dd4-6469-49c9-988a-87782b2dec52/audit
+	2 container
+		3 image
+		4 text StoryMapper
+		5 container
+			6 link Description: Story Maps, Value: 127.0.0.1:44357/projects/44ec1dd4-6469-49c9-988a-87782b2dec52/story-maps/888675c5-389b-4565-bcee-89ec6bfac57d/discovery
+			7 link Description: Connections, Value: 127.0.0.1:44357/projects/44ec1dd4-6469-49c9-988a-87782b2dec52/github
+			8 link Description: Customize, Value: 127.0.0.1:44357/projects/44ec1dd4-6469-49c9-988a-87782b2dec52/customize
+			9 link Description: Personas, Value: 127.0.0.1:44357/projects/44ec1dd4-6469-49c9-988a-87782b2dec52/personas
+			10 link Description: Onboarding, Value: 127.0.0.1:44357/onboarding
+			11 link Description: Activity, Value: 127.0.0.1:44357/projects/44ec1dd4-6469-49c9-988a-87782b2dec52/audit
+		12 container
+			24 link Description: ALL STORY MAPS, Value: 127.0.0.1:44357/projects/44ec1dd4-6469-49c9-988a-87782b2dec52/story-maps
+			13 heading Remediation fixture, Value: 1
+				14 text Remediation fixture
+			25 button Description: Rename story map Remediation fixture, Help: Rename story map
+				26 image
+			15 text An enabled agent may forward retrieved context to its own provider.
+			16 container Safety switches
+				17 button Agent access: On. Open switch settings
+				18 button GitHub: Off. Open switch settings
+				19 button Agent approval: Off. Open switch settings
+				20 button Agent protection: Off. Open switch settings
+			21 text Live updates connected
+			22 checkbox Hold updates, Value: 0
+			23 text Synthetic remediation acceptance 1 cards 0 releases
+		27 container
+			28 heading Activity, Value: 2
+				29 text Activity
+			30 container Activity views
+				31 checkbox Activity log and exports, Value: 1
+				32 checkbox Restore points, Value: 0
+			33 container
+				34 heading Activity log and exports, Value: 2
+					35 text Activity log and exports
+				36 container
+					37 text Actor type
+					38 pop up button (collapsed, settable) Actor type, Value: All actors, Secondary Actions: Expand
+						39 menu
+							40 (selected) All actors
+							41 Human
+							42 Agent
+							43 GitHub
+							44 System
+				45 container
+					46 text Tool name
+					47 text field (settable) Tool name
+				48 button Apply filters
+				49 content list Activity events
+					50 container
+						51 AXListMarker 1.
+						52 text changeSet.operation.applied Human: local-user Project 17.10.2026, 11:14:57 Affected objects: changeSet:keep
+					53 container
+						54 AXListMarker 2.
+						55 text changeSet.applied Human: local-user Project 17.10.2026, 11:14:57 Affected objects: changeSet:e1288fa6-f7a2-4ead-bd83-033fa2d15457
+					56 container
+						57 AXListMarker 3.
+						58 text changeSet.operation.applied Human: local-user Project 17.10.2026, 11:14:57 Affected objects: changeSet:__proto__
+					59 container
+						60 AXListMarker 4.
+						61 text changeSet.approved Human: local-user Project 17.10.2026, 11:14:42 Affected objects: changeSet:e1288fa6-f7a2-4ead-bd83-033fa2d15457
+					62 container
+						63 AXListMarker 5.
+						64 text SubmitChangeSet Agent: local-mcp-host Project 17.10.2026, 11:13:25 MCP session: fbc6644b-ee45-4e0b-9cd9-2914af266dfb Succeeded Affected objects: mcpTool:SubmitChangeSet, 44ec1dd4-6469-49c9-988a-87782b2dec52, fbc6644b-ee45-4e0b-9cd9-2914af266dfb, e1288fa6-f7a2-4ead-bd83-033fa2d15457 Input hash: 0093f4dbf733c8423558a6cf747cf342610832981d3298b2061b96fc61d10cd2 Output hash: 974a7ec69edad8e467eac49871f46c250a466a3f1ab13588c0a1ce73a18953f1
+					65 container
+						66 AXListMarker 6.
+						67 text changeSet.proposed Agent: local-mcp-host Project 17.10.2026, 11:13:25 MCP session: fbc6644b-ee45-4e0b-9cd9-2914af266dfb Affected objects: changeSet:e1288fa6-f7a2-4ead-bd83-033fa2d15457
+					68 container
+						69 AXListMarker 7.
+						70 text storyMap.created Human: local-user Project 17.10.2026, 11:13:25 Affected objects: storyMap:888675c5-389b-4565-bcee-89ec6bfac57d
+					71 container
+						72 AXListMarker 8.
+						73 text card.created Human: local-user Project 17.10.2026, 11:13:25 Affected objects: card:e72f5192-ebb8-4d9f-a63b-2cc2f2d01f4e
+					74 container
+						75 AXListMarker 9.
+						76 text card.created Human: local-user Project 17.10.2026, 11:13:25 Affected objects: card:dda15499-bb6e-434e-b71c-7d633951fc5c
+					77 container
+						78 AXListMarker 10.
+						79 text release.created Human: local-user Project 17.10.2026, 11:13:25 Affected objects: release:e80a3e20-0132-4f7b-9581-ddce5e9927c3
+					80 container
+						81 AXListMarker 11.
+						82 text card.created Human: local-user Project 17.10.2026, 11:13:25 Affected objects: card:0fcd7d3b-abe0-463e-b301-fc8a817b1b61
+					83 container
+						84 AXListMarker 12.
+						85 text storyMap.created Human: local-user Project 17.10.2026, 11:13:25 Affected objects: storyMap:b898b001-ac4e-4974-875e-771d16699c65
+					86 container
+						87 AXListMarker 13.
+						88 text project.created Human: local-user Project 17.10.2026, 11:13:25 Affected objects: project:44ec1dd4-6469-49c9-988a-87782b2dec52
+			89 button (collapsed) Epic4 remediation acceptance, Secondary Actions: Expand
+			90 container
+				91 heading Export & audit, Value: 2
+					92 text Export & audit
+				93 image
+				94 text github env Set GITHUB_TOKEN in the local .env file.
+				95 image
+				96 text github github-cli GitHub CLI is authenticated.
+				97 image
+				98 button Map JSON
+					99 image
+					100 text Map JSON
+				101 button Map MD
+					102 image
+					103 text Map MD
+				104 button Map CSV
+					105 image
+					106 text Map CSV
+				107 button Audit MD
+					108 image
+					109 text Audit MD
+				110 button Audit JSON
+					111 image
+					112 text Audit JSON
+			113 container
+				114 heading Reports, Value: 2
+					115 text Reports
+				116 image
+				117 text Source Coverage 0 % Backlog Health 0 % Healthy stories 0 / 0
+				118 image
+				119 text 0 descriptions
+				120 image
+				121 text 0 estimates
+				122 image
+				123 text 0 sources
+				124 image
+				125 text 0 GitHub No backlog health issues found.
+
+The focused UI element is 11 link Description: Activity, URL: 127.0.0.1:44357/projects/44ec1dd4-6469-49c9-988a-87782b2dec52/audit

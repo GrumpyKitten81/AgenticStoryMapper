@@ -1,0 +1,37 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/persistence-entity-order.test.ts (1 test) 1ms
+ ❯ src/repositories/operation-executor-persistence.test.ts (21 tests | 1 failed | 20 skipped) 143ms
+   × preserves mixed FK inserts, owner updates, reverse deletions and deleted Card history 143ms
+     → expected { creationOrigin: 'inference', …(15) } to match object { releaseId: null, …(1) }
+(14 matching properties omitted from actual)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/repositories/operation-executor-persistence.test.ts > preserves mixed FK inserts, owner updates, reverse deletions and deleted Card history
+AssertionError: expected { creationOrigin: 'inference', …(15) } to match object { releaseId: null, …(1) }
+(14 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+-   "provenance": "manual",
++   "provenance": "inference",
+    "releaseId": null,
+  }
+
+ ❯ src/repositories/operation-executor-persistence.test.ts:370:62
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 1 passed | 20 skipped (22)
+   Start at  11:11:37
+   Duration  770ms (transform 326ms, setup 0ms, collect 892ms, tests 145ms, environment 0ms, prepare 61ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/packages/db:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/repositories/persistence-entity-order.test.ts src/repositories/operation-executor-persistence.test.ts -t preserves mixed FK|includes each resolver

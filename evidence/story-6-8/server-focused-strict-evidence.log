@@ -1,0 +1,280 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/http/routes/customization-management.test.ts (3 tests) 242ms
+ ✓ src/mcp/adapter.test.ts (4 tests) 435ms
+ ❯ src/http/routes/base-version-conflicts.test.ts (16 tests | 2 failed) 556ms
+   × delete responses > return the final version, equal to the version of the committed live event 32ms
+     → e245d431-c98a-41ac-8f83-89fbe1ea33ec: expected 409 to be 200 // Object.is equality
+   × delete responses > returns executor application over MCP with the final deletion version in its committed event 49ms
+     → {"code":"conflict","message":"Operation d0905820-b206-4954-8c71-ad5b0eec851f at index 0: Customization definition changed; review its current usage again.","details":{"operationId":"d0905820-b206-4954-8c71-ad5b0eec851f","index":0}}: expected 409 to be 200 // Object.is equality
+ ❯ src/http/routes/getting-started.test.ts (15 tests | 1 failed) 557ms
+   × getting-started HTTP boundaries > keeps removed-map customizations readable and editable through the scoped HTTP surface 37ms
+     → expected 409 to be 200 // Object.is equality
+ ❯ src/mcp/tools/delivery-status.test.ts (20 tests | 3 failed) 1473ms
+   × revalidates delayed delivery status and refuses all domain changes 59ms
+     → Customization definition changed; review its current usage again.
+   × assigns method statuses created and adapted through generic Agent tools on http 70ms
+     → Operation 4d93f1bb-4a62-481d-9832-91cfb00715fa at index 0: Customization definition changed; review its current usage again.
+   × assigns method statuses created and adapted through generic Agent tools on sdk 71ms
+     → Operation dc2e4661-857b-4c46-a110-241425786a60 at index 0: Customization definition changed; review its current usage again.
+ ❯ src/mcp/tools/complete-surface.test.ts (30 tests | 3 failed) 2437ms
+   × executes Story Map, Roadmap children, customization, source, report and export capabilities 324ms
+     → {"code":"conflict","message":"Operation 869d3afd-f6b7-4c2c-919c-8898a9891ea4 at index 0: Customization definition changed; review its current usage again.","details":{"operationId":"869d3afd-f6b7-4c2c-919c-8898a9891ea4","index":0}}: expected 409 to be 200 // Object.is equality
+   × resolves historical ownership of deleted releases, personas, GitHub links, source links and parents 24ms
+     → Customization definition changed; review its current usage again.
+   × executes the remaining local MCP adapters with valid arguments and persisted effects 300ms
+     → promise rejected "AssertionError: {"code":"conflict","messa… { …(4) }" instead of resolving
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/mcp/tools/complete-surface.test.ts [ src/mcp/tools/complete-surface.test.ts ]
+AssertionError: expected [ 'BulkUpdateCards', …(48) ] to deeply equal [ 'BulkUpdateCards', …(55) ]
+
+- Expected
++ Received
+
+  Array [
+    "BulkUpdateCards",
+    "CreateAnnotation",
+    "CreateCardAttachment",
+-   "CreateCardSourceLink",
+    "CreateGitHubLink",
+    "CreateRoadmap",
+    "CreateRoadmapCard",
+    "CreateRoadmapColumn",
+    "CreateRoadmapReference",
+    "CreateRoadmapSwimlane",
+    "CreateStoryMap",
+    "CreateStoryMapCard",
+    "CreateStoryMapPersona",
+    "CreateStoryMapRelease",
+-   "CreateStoryTemplate",
+    "CreateWorkflowStatus",
+-   "DeleteAnnotation",
+    "DeleteCard",
+    "DeleteCardAnnotation",
+    "DeleteCardAttachment",
+    "DeleteCardDependency",
+    "DeleteCardPersona",
+    "DeleteCardSourceLink",
+    "DeleteCards",
+    "DeleteGitHubLink",
+    "DeleteOrArchiveStoryMapCard",
+    "DeletePersona",
+    "DeleteRelease",
+-   "DeleteStoryMap",
+-   "DeleteStoryTemplate",
+-   "DeleteWorkflowStatus",
+    "ImportGitHubIssues",
+    "ImportSourceDocument",
+    "MoveStoryMapCard",
+    "ParkCard",
+    "PullStoryMapGitHubLinks",
+    "PushCardsToGitHub",
+    "ResolveSyncConflict",
+-   "SetCardAnnotation",
+    "SetCardDependency",
+    "SetCardPersona",
+    "SetExternalRef",
+    "SubmitChangeSet",
+    "SyncGitHubLinks",
+    "UnparkCard",
+    "UpdateAnnotation",
+    "UpdateDeliveryStatus",
+    "UpdateGitHubLink",
+    "UpdateRoadmap",
+    "UpdateStoryMap",
+    "UpdateStoryMapCard",
+    "UpdateStoryMapPersona",
+    "UpdateStoryMapRelease",
+    "UpdateStoryTemplate",
+    "UpdateWorkflowStatus",
+    "UpsertProductContext",
+  ]
+
+ ❯ src/mcp/tools/complete-surface.test.ts:21:56
+     19| const sourceHash = (content: string) => createHash("sha256").update(co…
+     20| afterEach(async () => { vi.restoreAllMocks(); for (const close of clea…
+     21| afterAll(() => { expect([...exercisedCommands].sort()).toEqual([...cha…
+       |                                                        ^
+     22|
+     23| function seedLegacySourceLink(handle: DatabaseHandle, cardId: string, …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 9 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/http/routes/base-version-conflicts.test.ts > delete responses > return the final version, equal to the version of the committed live event
+AssertionError: e245d431-c98a-41ac-8f83-89fbe1ea33ec: expected 409 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 409
+
+ ❯ src/http/routes/base-version-conflicts.test.ts:158:37
+    156|     for (const { id, response, key } of deletes) {
+    157|       const result = await response();
+    158|       expect(result.statusCode, id).toBe(200);
+       |                                     ^
+    159|       const body = result.json<Record<string, unknown>>();
+    160|       expect(body[key], id).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯
+
+ FAIL  src/http/routes/base-version-conflicts.test.ts > delete responses > returns executor application over MCP with the final deletion version in its committed event
+AssertionError: {"code":"conflict","message":"Operation d0905820-b206-4954-8c71-ad5b0eec851f at index 0: Customization definition changed; review its current usage again.","details":{"operationId":"d0905820-b206-4954-8c71-ad5b0eec851f","index":0}}: expected 409 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 409
+
+ ❯ src/http/routes/base-version-conflicts.test.ts:176:46
+    174|     expect((await f.server.inject({ method: "POST", url: `/api/changes…
+    175|     const applied = await f.server.inject({ method: "POST", url: `/api…
+    176|     expect(applied.statusCode, applied.body).toBe(200);
+       |                                              ^
+    177|     expect(applied.json()).toMatchObject({ changeSet: { status: "appli…
+    178|     expect(f.repository.getPersona(f.persona.id)).toBeUndefined();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯
+
+ FAIL  src/http/routes/getting-started.test.ts > getting-started HTTP boundaries > keeps removed-map customizations readable and editable through the scoped HTTP surface
+AssertionError: expected 409 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 409
+
+ ❯ src/http/routes/getting-started.test.ts:117:38
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯
+
+ FAIL  src/mcp/tools/complete-surface.test.ts > executes Story Map, Roadmap children, customization, source, report and export capabilities
+AssertionError: {"code":"conflict","message":"Operation 869d3afd-f6b7-4c2c-919c-8898a9891ea4 at index 0: Customization definition changed; review its current usage again.","details":{"operationId":"869d3afd-f6b7-4c2c-919c-8898a9891ea4","index":0}}: expected 409 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 409
+
+ ❯ Object.reviewedCall src/mcp/tools/complete-surface.test.ts:75:46
+     73|     expect(approval.statusCode, approval.body).toBe(200);
+     74|     const applied = await server.inject({ method: "POST", url: `/api/c…
+     75|     expect(applied.statusCode, applied.body).toBe(200);
+       |                                              ^
+     76|     return { ...proposed, outcome: "applied", changeSet: applied.json(…
+     77|   };
+ ❯ src/mcp/tools/complete-surface.test.ts:141:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯
+
+ FAIL  src/mcp/tools/complete-surface.test.ts > resolves historical ownership of deleted releases, personas, GitHub links, source links and parents
+DomainError: Customization definition changed; review its current usage again.
+ ❯ Module.assertCustomizationReview ../../packages/core/src/changesets/customization-impact.ts:13:109
+
+ ❯ StoryMapperRepository.deletePersona ../../packages/db/src/repositories/customizations-repository.ts:188:5
+ ❯ src/mcp/tools/complete-surface.test.ts:466:16
+ ❯ ../../packages/db/src/unit-of-work.ts:67:87
+ ❯ ../../packages/db/src/unit-of-work.ts:67:31
+ ❯ ../../packages/db/src/database-handle.ts:129:92
+ ❯ ../../packages/db/src/database-handle.ts:139:26
+ ❯ sqliteTransaction ../../node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/transaction.js:65:24
+ ❯ ../../packages/db/src/database-handle.ts:145:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/10]⎯
+
+ FAIL  src/mcp/tools/complete-surface.test.ts > executes the remaining local MCP adapters with valid arguments and persisted effects
+AssertionError: promise rejected "AssertionError: {"code":"conflict","messa… { …(4) }" instead of resolving
+ ❯ src/mcp/tools/complete-surface.test.ts:641:31
+    639|   for (const [name, input, expected] of cases) {
+    640|     const pending = f.reviewedCall(name, typeof input === "function" ?…
+    641|     await expect(pending, name).resolves.toBeDefined();
+       |                               ^
+    642|     const response = await pending;
+    643|     if (changeSetCommandToolNames.has(name)) expect(response, name).to…
+
+Caused by: AssertionError: {"code":"conflict","message":"Operation d31732a9-8aa5-417d-9870-e52f7def7fef at index 0: Customization definition changed; review its current usage again.","details":{"operationId":"d31732a9-8aa5-417d-9870-e52f7def7fef","index":0}}: expected 409 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 409
+
+ ❯ Object.reviewedCall src/mcp/tools/complete-surface.test.ts:75:46
+ ❯ src/mcp/tools/complete-surface.test.ts:641:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/10]⎯
+
+ FAIL  src/mcp/tools/delivery-status.test.ts > revalidates delayed delivery status and refuses all domain changes
+DomainError: Customization definition changed; review its current usage again.
+ ❯ Module.assertCustomizationReview ../../packages/core/src/changesets/customization-impact.ts:13:109
+
+ ❯ StoryMapperRepository.updateWorkflowStatus ../../packages/db/src/repositories/customizations-repository.ts:70:7
+ ❯ src/mcp/tools/delivery-status.test.ts:136:42
+ ❯ ../../packages/db/src/unit-of-work.ts:67:87
+ ❯ ../../packages/db/src/unit-of-work.ts:67:31
+ ❯ ../../packages/db/src/database-handle.ts:129:92
+ ❯ ../../packages/db/src/database-handle.ts:139:26
+ ❯ sqliteTransaction ../../node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/transaction.js:65:24
+ ❯ ../../packages/db/src/database-handle.ts:145:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/10]⎯
+
+ FAIL  src/mcp/tools/delivery-status.test.ts > assigns method statuses created and adapted through generic Agent tools on http
+OperationResolutionError: Operation 4d93f1bb-4a62-481d-9832-91cfb00715fa at index 0: Customization definition changed; review its current usage again.
+ ❯ Module.refuse ../../packages/core/src/changesets/resolution-context.ts:28:9
+     26|
+     27| export function refuse(context: ResolutionContext, message: string, co…
+     28|   throw new OperationResolutionError(context.operation.operationId, co…
+       |         ^
+     29| }
+     30|
+ ❯ customizationGuard ../../packages/core/src/changesets/customization-resolution.ts:15:39
+ ❯ resolveCustomization ../../packages/core/src/changesets/customization-resolution.ts:21:3
+ ❯ resolveNext ../../packages/core/src/changesets/operation-registry.ts:167:3
+ ❯ ../../packages/core/src/changesets/operation-registry.ts:132:24
+ ❯ simulate ../../packages/core/src/changesets/operation-registry.ts:130:14
+ ❯ Module.resolveOperations ../../packages/core/src/changesets/operation-registry.ts:90:23
+ ❯ deps.unitOfWork.runPrepared.repository.repository src/application/changeset/changeset-executor.ts:40:24
+ ❯ ../../packages/db/src/database-handle.ts:134:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/10]⎯
+
+ FAIL  src/mcp/tools/delivery-status.test.ts > assigns method statuses created and adapted through generic Agent tools on sdk
+OperationResolutionError: Operation dc2e4661-857b-4c46-a110-241425786a60 at index 0: Customization definition changed; review its current usage again.
+ ❯ Module.refuse ../../packages/core/src/changesets/resolution-context.ts:28:9
+     26|
+     27| export function refuse(context: ResolutionContext, message: string, co…
+     28|   throw new OperationResolutionError(context.operation.operationId, co…
+       |         ^
+     29| }
+     30|
+ ❯ customizationGuard ../../packages/core/src/changesets/customization-resolution.ts:15:39
+ ❯ resolveCustomization ../../packages/core/src/changesets/customization-resolution.ts:21:3
+ ❯ resolveNext ../../packages/core/src/changesets/operation-registry.ts:167:3
+ ❯ ../../packages/core/src/changesets/operation-registry.ts:132:24
+ ❯ simulate ../../packages/core/src/changesets/operation-registry.ts:130:14
+ ❯ Module.resolveOperations ../../packages/core/src/changesets/operation-registry.ts:90:23
+ ❯ deps.unitOfWork.runPrepared.repository.repository src/application/changeset/changeset-executor.ts:40:24
+ ❯ ../../packages/db/src/database-handle.ts:134:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/10]⎯
+
+ Test Files  4 failed | 2 passed (6)
+      Tests  9 failed | 79 passed (88)
+   Start at  19:49:01
+   Duration  3.48s (transform 676ms, setup 0ms, collect 5.09s, tests 5.70s, environment 0ms, prepare 199ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/mcp/adapter.test.ts src/http/routes/base-version-conflicts.test.ts src/http/routes/getting-started.test.ts src/mcp/tools/complete-surface.test.ts src/mcp/tools/delivery-status.test.ts src/http/routes/customization-management.test.ts

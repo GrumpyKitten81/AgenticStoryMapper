@@ -1,0 +1,104 @@
+{
+  "date": "2026-10-19",
+  "scope": "Requested review fixes only; parent owns full workspace/release checks",
+  "changes": [
+    "Exact normalized alternate scope casing; GitHub case normalization retained; all supplied remote numbers must match canonical identity.",
+    "Pre-use/pre-write normalized scope/kind/requested-id/bound-canonical guards for Issue reads, marker matches and Milestone evidence; compare marker/detail, reviewed/current and retained/current canonical identities, including nested assigned Milestones. Alternate refs participate in consent fingerprints.",
+    "Parent associations key canonical repository and number, including existing and pending imports.",
+    "Reference provider changes participate in no-op/retirement logic; attached evidence replaces or clears provider. GitHub update boundary refuses alternate refs before mutation.",
+    "Confirmed local conflict persistence forwards normalized identity. Incoming Milestone binding matches provider+canonical externalRef id and advances Release baselines.",
+    "Added real transition/copy/attached evidence, nested portable JSON redaction, archive rejection and incoming/outgoing/recovery regressions.",
+    "complete-surface spies target central resolver; fail-fast central credential/provider defaults isolate every test before execution. Existing scope refusal wording restored.",
+    "Corrected pre-existing combined-connection GH mock to supply remoteNumber matching its requested id, retaining assertions."
+  ],
+  "focusedVerification": {
+    "contracts": 14,
+    "core": 93,
+    "dbCanonical": 14,
+    "serverAffected": 225,
+    "extensionAndRegistry": 47,
+    "uniquePassing": 393,
+    "serverTypecheck": "passed (test agent)",
+    "diffCheck": "passed"
+  },
+  "freeze": {
+    "sourceFiles": 889,
+    "sha256": "46e1a48e671bf23e68cde403d15ddddc0738e95d34f282f92f84f7d6da4b88f6",
+    "changedSourceFilesDuringExercise": [],
+    "before": "story7-8-extension-freeze-review-before.json.gz",
+    "after": "story7-8-extension-freeze-review-after.json.gz"
+  },
+  "rawLogs": [
+    "story7-8-review-remote-final.log.gz",
+    "story7-8-review-targeted-core.log.gz",
+    "story7-8-review-targeted-contracts.log.gz",
+    "story7-8-review-regressions-typecheck-first.log.gz",
+    "story7-8-review-regressions-first.log.gz",
+    "story7-8-review-regressions-typecheck-third.log.gz",
+    "story7-8-review-regressions-third.log.gz",
+    "story7-8-review-regressions-typecheck-final.log.gz",
+    "story7-8-review-targeted-db.log.gz",
+    "story7-8-review-regressions-final.log.gz",
+    "story7-8-review-targeted-server-final.log.gz",
+    "story7-8-review-regressions-second.log.gz",
+    "story7-8-review-targeted-server.log.gz",
+    "story7-8-review-regressions-typecheck-second.log.gz"
+  ],
+  "failures": [
+    "First isolated targeted server run: stale GitHub test fixture remoteNumber conflicted with canonical requested id; fixture corrected, same assertions pass.",
+    "Test-agent first regression attempts: strict archive manifest fields, missing level:story label and TypeScript narrowing in new fixture tests; corrected. Original first/second/third raw logs retained."
+  ],
+  "credentialIsolation": "No real credentials inspected. Existing parent-workspace failure log was not read. All reruns isolated credential/provider resolution before invocation.",
+  "protectedPaths": [
+    {
+      "path": ".bmad-loop/claude-unattended.settings.json",
+      "working": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767",
+      "index": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/plugins/stop-on-story-failure/plugin.toml",
+      "working": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f",
+      "index": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/plugins/stop-on-story-failure/stop_on_failure.py",
+      "working": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6",
+      "index": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/policy.codex.toml",
+      "working": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d",
+      "index": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/policy.macci.bak",
+      "working": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a",
+      "index": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/policy.opencode.toml",
+      "working": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980",
+      "index": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980",
+      "unchanged": true
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/deferred-work.md",
+      "working": "dcc6358b8d42084e16d18de1feae9a898c8041f2a89d472956aa110890960244",
+      "index": "dcc6358b8d42084e16d18de1feae9a898c8041f2a89d472956aa110890960244",
+      "unchanged": true
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/sprint-status.yaml",
+      "working": "19f7582866405bd9cfea67c32f8222d65f12f66169d6e3630ffe6e1d2cd92d05",
+      "index": "19f7582866405bd9cfea67c32f8222d65f12f66169d6e3630ffe6e1d2cd92d05",
+      "unchanged": true
+    }
+  ],
+  "fullWorkspaceAndRelease": "not run; parent owns next gates",
+  "nativeLiveAcceptance": "unexecuted"
+}

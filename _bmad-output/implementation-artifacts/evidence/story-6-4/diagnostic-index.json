@@ -1,0 +1,86 @@
+{
+  "environment": {
+    "os": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "architecture": "arm64",
+    "processor": "Apple M3 Ultra",
+    "node": "24.17.0",
+    "runner": "Vitest2.1.9/jsdom",
+    "build": "working tree based on fc83dba806dcde4fed9b8552a7f939ba20060774"
+  },
+  "captures": [
+    {
+      "file": "dom-timing-delegated.json",
+      "sha256": "495a6d05cd2186d63778f5fc92ff9f8bd15bb6c69682adc6668947c8c9a1464b",
+      "samples": 12,
+      "boundary": "untrusted DOM input/change dispatch through React act to committed match status; board tiles not mounted"
+    },
+    {
+      "file": "story-6-4-discovery-dom-timing-1792247216356.json",
+      "sha256": "304b082b09c057be1a4cff6f38a5d8934d8561276431e03620a69a7eab566f9f",
+      "samples": 9,
+      "boundary": "untrusted DOM input/change through React act to committed complete Discovery tile DOM and match status; visibleTiles excludes hidden ancestors; no native layout/paint claim"
+    },
+    {
+      "file": "story-6-4-discovery-dom-timing-1792247461674.json",
+      "sha256": "d0245f5475885e3102b71895a50e2597d50d9d4e4ff1cbd380b381e21dfa9981",
+      "samples": 9,
+      "boundary": "untrusted DOM input/change through React act to committed complete Discovery tile DOM and match status; visibleTiles excludes hidden ancestors; no native layout/paint claim"
+    },
+    {
+      "file": "story-6-4-dom-timing-1792242993985.json",
+      "sha256": "3456023b56a27d9497e09faa1381ccd78ae1e5ce47055670f5b585b0d0f9e672",
+      "samples": 12,
+      "boundary": "untrusted DOM input/change dispatch through React act to committed match status; board tiles not mounted"
+    },
+    {
+      "file": "story-6-4-dom-timing-1792243258356.json",
+      "sha256": "1abe189230c599c98c175863175493526c95de7ccd31c1cffb079f581c7c12c8",
+      "samples": 12,
+      "boundary": "untrusted DOM input/change dispatch through React act to committed match status; board tiles not mounted"
+    },
+    {
+      "file": "story-6-4-dom-timing-1792244503099.json",
+      "sha256": "1a317e3dca4c071babfeede52a7b03ce8162d7c359a598ae65118e460fce1549",
+      "samples": 12,
+      "boundary": "untrusted DOM input/change dispatch through React act to committed match status; board tiles not mounted"
+    },
+    {
+      "file": "story-6-4-dom-timing-1792244682900.json",
+      "sha256": "18392a786661756f0576f7e56975b080041a6160eb8f560c47a562aafce35859",
+      "samples": 12,
+      "boundary": "untrusted DOM input/change dispatch through React act to committed match status; board tiles not mounted"
+    },
+    {
+      "file": "story-6-4-dom-timing-1792244889746.json",
+      "sha256": "114a89f90f035afeef9a4adeae9bea7317010bf5ed7975ad0fef432ab80e1a52",
+      "samples": 12,
+      "boundary": "untrusted DOM input/change dispatch through React act to committed match status; board tiles not mounted"
+    },
+    {
+      "file": "story-6-4-dom-timing-1792245085377.json",
+      "sha256": "160e3aa6ef3ee233ad900276c731af431ed5a3daaf89817902c1e31398ef7984",
+      "samples": 12,
+      "boundary": "untrusted DOM input/change dispatch through React act to committed match status; board tiles not mounted"
+    },
+    {
+      "file": "story-6-4-dom-timing-1792247212600.json",
+      "sha256": "8ec4b4089ac77e0b3ced769cf54cbece698e862a7d1d9cf319d397092498db61",
+      "samples": 12,
+      "boundary": "untrusted DOM input/change dispatch through React act to committed match status; board tiles not mounted"
+    },
+    {
+      "file": "story-6-4-dom-timing-1792247457243.json",
+      "sha256": "cf177c44395801c934272e51f5e28a3c3d24d7ab6d5e924f7cd5c08b4b29af83",
+      "samples": 12,
+      "boundary": "untrusted DOM input/change dispatch through React act to committed match status; board tiles not mounted"
+    }
+  ],
+  "nativePaintMeasured": false,
+  "referenceMilliseconds": 300,
+  "timingAcceptanceGate": false,
+  "limitations": [
+    "Intermediate delegated toolbar timing files were overwritten before unique naming and cannot be recovered; all extant captures retained.",
+    "Older toolbar fixture has direct Story children under Activity and is not a legal Discovery fixture; complete Discovery captures use1Activity1Step998Stories.",
+    "Full Discovery DOM timings exceed300ms in some samples; retained without waiver, tolerance or pass/fail classification."
+  ]
+}

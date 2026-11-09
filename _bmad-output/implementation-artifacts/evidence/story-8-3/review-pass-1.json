@@ -1,0 +1,303 @@
+{
+  "status": "repairs-applied-full-verification-passed",
+  "reviewers": "Four fresh contexts; retained-context attempts declined/cancelled and excluded. Thread cap required queued launches.",
+  "rows": [
+    {
+      "id": "B1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Core fetch/network effects bypass purity",
+      "evidence": "Isolated core fetch fixture returned no diagnostics; add normalized impure-global detection.",
+      "action": "Normalized global access now rejects fetch and network constructors; the regression fixture asserts exact locations."
+    },
+    {
+      "id": "B2",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Deterministic Date operations are rejected",
+      "evidence": "AD-1 expressly prohibits all Date calls; rejection is the specified policy, including deterministic Date operations."
+    },
+    {
+      "id": "B3",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Computed/qualified random APIs bypass purity",
+      "evidence": "Math[\"random\"] and globalThis.crypto.randomUUID both returned no diagnostics.",
+      "action": "Property and literal computed global chains reject qualified crypto and Math.random; all twelve effect forms are exercised."
+    },
+    {
+      "id": "B4",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Root script imports have no dependency owner",
+      "evidence": "Non-test script importing an undeclared package returned no diagnostics.",
+      "action": "Root scripts now have a manifest owner and declaration checks; final verification also exposed Fastify test use, declared in root devDependencies."
+    },
+    {
+      "id": "B5",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Unexported workspace roots/null exports pass",
+      "evidence": "Reproduced omitted-dot root and null private subpath acceptance against installed checker.",
+      "action": "Export resolution now distinguishes root/subpath, conditional targets, null and wildcard denial with negative fixtures."
+    },
+    {
+      "id": "B6",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "node:sqlite bypasses DB ownership",
+      "evidence": "Server DatabaseSync import/constructor fixture returned no diagnostics.",
+      "action": "node:sqlite and sqlite are included in DB-only ownership checks."
+    },
+    {
+      "id": "B7",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Zero-line executable report evidence passes",
+      "evidence": "Executable core module with zero measured lines passed when another source supplied totals.",
+      "action": "Executable source detection now requires positive measured lines per source; empty/type-only/forwarding modules remain valid."
+    },
+    {
+      "id": "B8",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Foreign report entries inflate package coverage",
+      "evidence": "Uncovered core plus covered foreign web path passed at66.67percent.",
+      "action": "Reports reject paths outside the workspace intended-source inventory before accepting package evidence."
+    },
+    {
+      "id": "B9",
+      "verdict": "high",
+      "route": "patch",
+      "summary": "Tracked gzip evidence bypasses secret signatures",
+      "evidence": "Synthetic supported signature in tracked gzip returned no diagnostics; source plaintext detector recognizes that signature. No real credential exposure is alleged.",
+      "action": "Tracked gzip bytes are decompressed and checked for supported signatures; malformed archives fail safely. Synthetic regression and 426 existing archives were checked without modifying bytes."
+    },
+    {
+      "id": "B10",
+      "verdict": "low",
+      "route": "patch",
+      "summary": "Card Detail context duplicates ninety forwarded fields",
+      "evidence": "New helper manually rebuilds existing state shape; direct model spread removes introduced forwarding duplication without behavior change.",
+      "action": "Card Detail context now spreads its model instead of rebuilding ninety fields; both modal suites pass56tests."
+    },
+    {
+      "id": "I1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Public orchestration has helper-only negative evidence",
+      "evidence": "Coverage/license commands lack caller-level failures; shared process tests and boundary-first aggregate test do not detect those omitted orchestration branches. Address with G2/G3.",
+      "action": "Actual coverage and license CLI negative tests now assert nonzero caller outcomes; shared child/signal and real aggregate boundary-failure tests remain."
+    },
+    {
+      "id": "I2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Test usage can satisfy runtime dependency usage",
+      "evidence": "Reproduced runtime dependency used only in a test passing the unused gate; distinguish non-test and development usage.",
+      "action": "Production use is tracked separately from tests/tools; runtime dependencies used only for development are rejected."
+    },
+    {
+      "id": "I3",
+      "verdict": "medium",
+      "route": "defer",
+      "summary": "English guard remains a German-token heuristic",
+      "evidence": "Pre-existing findViolations algorithm is preserved; no universal language classifier is claimed. Other-language copy needs an acceptance corpus and language review; retain this finite-detector limitation explicitly."
+    },
+    {
+      "id": "I4",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Secret signatures do not establish exhaustive secret/history audit",
+      "evidence": "Current gate explicitly implements supported signature and tracked-path checks; no exhaustive history/unknown-secret certification is claimed. Concrete gzip omission is separately patched as B9."
+    },
+    {
+      "id": "I5",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "License gate does not certify redistribution obligations",
+      "evidence": "Story8.3 requests compatibility allowlist, not publication certification. Policy and command explicitly retain upstream obligations; later publication gates remain open."
+    },
+    {
+      "id": "I6",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Structural test parity does not prove semantics",
+      "evidence": "No claim relies on counts alone: full runtime suites, real launcher/transport checks and independent489-node CSS AST equivalence also ran. Specific missing human parser assertion is patched as G1."
+    },
+    {
+      "id": "I7",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Only Darwin execution is established",
+      "evidence": "This story supplies local checks; three-platform execution is Story8.4. Evidence expressly retains Windows/Linux/native-reader limits and makes no all-platform claim."
+    },
+    {
+      "id": "G1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Human HTTP Markdown parser selection lacks structural assertions",
+      "evidence": "Pre-verified gap: current HTTP test checks body text; direct DB/parity tests inject parsedChunks. Exact heading/locator persistence must be asserted at HTTP import.",
+      "action": "The real human HTTP test now asserts exact nested Markdown headings, source locators and stable repeated-import chunk identities."
+    },
+    {
+      "id": "G2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Coverage orchestration can omit final workspace undetected",
+      "evidence": "Pre-verified gap: tests invoke inspectCoverage, not checkCoverage CLI; slice(0,-1) would evade assertions. Add final-workspace-failure CLI evidence.",
+      "action": "The actual coverage CLI fixture records all eight visits and requires a final server floor failure after preceding passes."
+    },
+    {
+      "id": "G3",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "License inspection violations lack CLI exit assertion",
+      "evidence": "Pre-verified gap: removing violations throw evades helper tests. Add incompatible installed metadata through actual license CLI.",
+      "action": "The actual license CLI installs an offline local GPL tarball and requires nonzero exit with package/version diagnostic."
+    },
+    {
+      "id": "E1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Pure-core global effects bypass checks",
+      "evidence": "Same reproduced fetch/qualified-random defect as B1/B3.",
+      "action": "Same global-access normalization as B1/B3; dedicated source-location regressions cover all reported forms."
+    },
+    {
+      "id": "E2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Nonliteral imports/require evade import checks",
+      "evidence": "Reproduced core import(name) acceptance; inventory found zero current authored nonliteral calls. Fail unresolved dependency syntax with location.",
+      "action": "Nonliteral import/require forms now emit unresolved-dependency diagnostics with exact source locations."
+    },
+    {
+      "id": "E3",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Exports-map absent root/null target bypasses gate",
+      "evidence": "Same reproduced public-entry defect as B5.",
+      "action": "Same root/null/conditional export resolution repair as B5, including exact null denial before wildcard fallback."
+    },
+    {
+      "id": "E4",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Board diagnostics do not run in aggregate",
+      "evidence": "Both board suites were diagnostic-only and excluded from standard acceptance before this change. Binding preparation preserves diagnostic-only timing; all required blocking serial audit/a11y suites ran."
+    }
+  ],
+  "finding_counts": {
+    "total": 24,
+    "high": 1,
+    "medium": 16,
+    "low": 1,
+    "false": 6,
+    "maybe-false": 0
+  },
+  "patch_group_counts": {
+    "high": 1,
+    "medium": 10,
+    "low": 1
+  },
+  "followup_review_recommended": true,
+  "patch_groups": [
+    {
+      "verdict": "medium",
+      "members": [
+        "B1",
+        "B3",
+        "E1"
+      ],
+      "root_cause": "Incomplete core-global effect detection"
+    },
+    {
+      "verdict": "medium",
+      "members": [
+        "B4"
+      ],
+      "root_cause": "Root imports lacked a dependency owner"
+    },
+    {
+      "verdict": "medium",
+      "members": [
+        "B5",
+        "E3"
+      ],
+      "root_cause": "Exports maps accepted unavailable selected targets"
+    },
+    {
+      "verdict": "medium",
+      "members": [
+        "B6"
+      ],
+      "root_cause": "SQLite builtin omitted from DB-only ownership"
+    },
+    {
+      "verdict": "medium",
+      "members": [
+        "B7"
+      ],
+      "root_cause": "Coverage accepted empty executable evidence"
+    },
+    {
+      "verdict": "medium",
+      "members": [
+        "B8"
+      ],
+      "root_cause": "Coverage accepted foreign source membership"
+    },
+    {
+      "verdict": "high",
+      "members": [
+        "B9"
+      ],
+      "root_cause": "Compressed tracked evidence not scanned"
+    },
+    {
+      "verdict": "low",
+      "members": [
+        "B10"
+      ],
+      "root_cause": "Duplicated Card Detail model forwarding"
+    },
+    {
+      "verdict": "medium",
+      "members": [
+        "I1",
+        "G2",
+        "G3"
+      ],
+      "root_cause": "Missing negative command-boundary contract evidence"
+    },
+    {
+      "verdict": "medium",
+      "members": [
+        "I2"
+      ],
+      "root_cause": "Runtime/development dependency usage conflated"
+    },
+    {
+      "verdict": "medium",
+      "members": [
+        "G1"
+      ],
+      "root_cause": "Moved human parser ownership lacked HTTP structural assertions"
+    },
+    {
+      "verdict": "medium",
+      "members": [
+        "E2"
+      ],
+      "root_cause": "Nonliteral dependencies were silently ignored"
+    }
+  ],
+  "additional_gate_repairs": [
+    "Root Fastify development dependency declaration exposed by newly complete ownership check.",
+    "Fixture browser marker published atomically.",
+    "Owned round-trip SDK session terminated and review response bodies consumed before shutdown; no production, deadline, threshold or assertion change."
+  ],
+  "source_diff_sha256": "635f51d2f796adc9b249162d024f4bc7d9fa745dc22836ac83c3bbed58edfbf7",
+  "followup_risk": "Independent adversarial validation of compressed-input failure handling and per-source coverage membership under native Windows path semantics remains unexecuted; current verification is macOS. Final repairs have not had a second fresh-context review."
+}

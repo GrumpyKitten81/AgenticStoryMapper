@@ -1,0 +1,27 @@
+name: Suggest an improvement
+description: Tell us what you want to accomplish with Agentic Story Mapper.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep secrets, personal information and private Project data out of public issues.
+        For security concerns, read SECURITY.md in the repository root; do not submit vulnerability details here.
+  - id: goal
+    type: textarea
+    attributes:
+      label: User goal
+      description: Describe the planning work you want to do and what makes it difficult today.
+    validations:
+      required: true
+  - id: improvement
+    type: textarea
+    attributes:
+      label: Proposed improvement
+      description: What change would help, and how would you know it solves your problem?
+    validations:
+      required: true
+  - id: context
+    type: textarea
+    attributes:
+      label: Alternatives and context (optional)
+      description: Mention approaches you considered, important limits or related requests.

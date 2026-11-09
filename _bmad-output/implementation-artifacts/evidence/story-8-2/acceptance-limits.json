@@ -1,0 +1,23 @@
+{
+  "platform": "macOS; native Node24.17.0",
+  "notExecuted": [
+    {
+      "acceptance": "Windows/Linux native launcher, SQLite binding and clipboard/UI",
+      "owner": "platform acceptance maintainer",
+      "reason": "This run executes only on the available Mac; platform command-construction tests do not certify native operation."
+    },
+    {
+      "acceptance": "Actual screen-reader and native browser clipboard interaction",
+      "owner": "accessibility acceptance maintainer",
+      "reason": "Automated serial accessibility and real editor/ProseMirror paste tests cover application behavior; no screen reader or OS clipboard UI was exercised."
+    }
+  ],
+  "pendingWorkflow": [
+    "Orchestrator single-story finalization"
+  ],
+  "noCommitCreated": true,
+  "completedWorkflow": [
+    "Independent parent verification",
+    "Four fresh-context review lenses and triage"
+  ]
+}

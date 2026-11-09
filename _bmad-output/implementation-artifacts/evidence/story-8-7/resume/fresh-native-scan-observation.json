@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-20T19:11:57.707247+00:00",
+  "command": "node scripts/check-publication.mjs --scan --policy /tmp/story-8-7-policy.json",
+  "node": "24.17.0",
+  "exit": 133,
+  "toolOutput": "empty",
+  "sourceRepairApplied": false,
+  "observation": "Fresh final scan aborted before establishing a current report; native cause remains unresolved. One unchanged retry follows after recording evidence.",
+  "latestDiagnostic": {
+    "file": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/fresh-native-scan-diagnostic.json",
+    "originalSha256": "529b9f2aa154c6bdd36442ed8e998dc9d86fd306068fc6423fa4fbba12bc358c",
+    "mtimeUtc": "2026-10-20T19:11:17.473892+00:00",
+    "qualification": "Selected diagnostic fields retained; full source bytes are identified only by original hash. Temporal alignment does not prove originating JavaScript cause.",
+    "selectedFieldsSha256": "3295955f37a2ea0edd7a48c9f06e69b1bc0ff0d065e9573fe92efc220232da99"
+  },
+  "diagnosticMarkers": {
+    "SyncProcessRunner": true,
+    "corrupt": true,
+    "malloc": true,
+    "SIGTRAP": true
+  }
+}

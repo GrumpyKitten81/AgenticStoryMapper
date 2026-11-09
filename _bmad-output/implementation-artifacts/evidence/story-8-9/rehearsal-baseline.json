@@ -1,0 +1,49 @@
+{
+  "source_revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "overlay": {
+    "docs/agentic-coding.md": "acb9b95cfc72574fe5496c38857cb67ab390ce9d7cd6d04b6e0e0f7a166e6b65",
+    "CONTRIBUTING.md": "5397dcdf039e0cf7c0d2312380610aa4a8890db6402c909ff3b6ba2466aef8e8",
+    "docs/bmad-loop.md": "33967df8122e3ee005b5acf0a9219abb0b48072575811f1ed20b7b9766bafee0",
+    "docs/bmad-epic-preparation.md": "10f6da85c42b807f0b5191ffbb9500e668996ecbd66be9bc92939af0d9e5f668",
+    "_bmad-output/implementation-artifacts/spec-8-9-agentic-coding-reference-material.md": "9b5a6a9376c514a75b077a198942f28593741a4d8ce5e5d1bd449dc717874a86"
+  },
+  "index_sha256": "c35c0cbf7e643a89114eee1e2f7eb0ebbf52c82d53a5c9a53623897cd5a4cc70",
+  "staged_diff_sha256": "423f8596daa6fdfb711a5c3f4af3433227818a93940462bd8ca172b67d7f2d90",
+  "delivery_commit": "not created; prepared/simulated only",
+  "remote": "removed",
+  "overlay_patch": {
+    "path": "rehearsal-overlay.patch.gz",
+    "decoded_sha256": "423f8596daa6fdfb711a5c3f4af3433227818a93940462bd8ca172b67d7f2d90",
+    "compressed_sha256": "4ab54c717373cdb09ec06dff459e20dba6c6d7c27a8f143fbddd588e21ec8557",
+    "provenance": "Derived on2026-10-21 by removing README diff block from retained miscaptured artifact; exact match to captured staged_diff_sha256. Not a newly discovered contemporaneous original stream."
+  },
+  "date": "2026-10-21",
+  "version": 2,
+  "historical_miscaptured_overlay": {
+    "path": "historical-miscaptured-overlay-with-solution.patch.gz",
+    "decoded_sha256": "b2579dadefe7c13cd095235a976df8663bc40b8a020dfe8857f5ab93d120570c",
+    "compressed_sha256": "ab2d46a3d87a3006c766a1add4a7b6b19901bb42d0449de97ef4f154cb5357a3"
+  },
+  "reconstruction": {
+    "date": "2026-10-21",
+    "source_revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+    "changed_paths": [
+      "CONTRIBUTING.md",
+      "_bmad-output/implementation-artifacts/spec-8-9-agentic-coding-reference-material.md",
+      "docs/agentic-coding.md",
+      "docs/bmad-epic-preparation.md",
+      "docs/bmad-loop.md"
+    ],
+    "target_sha256": {
+      "CONTRIBUTING.md": "5397dcdf039e0cf7c0d2312380610aa4a8890db6402c909ff3b6ba2466aef8e8",
+      "_bmad-output/implementation-artifacts/spec-8-9-agentic-coding-reference-material.md": "9b5a6a9376c514a75b077a198942f28593741a4d8ce5e5d1bd449dc717874a86",
+      "docs/agentic-coding.md": "acb9b95cfc72574fe5496c38857cb67ab390ce9d7cd6d04b6e0e0f7a166e6b65",
+      "docs/bmad-epic-preparation.md": "10f6da85c42b807f0b5191ffbb9500e668996ecbd66be9bc92939af0d9e5f668",
+      "docs/bmad-loop.md": "33967df8122e3ee005b5acf0a9219abb0b48072575811f1ed20b7b9766bafee0"
+    },
+    "target_hashes_match_captured_five_inputs": true,
+    "readme_equals_original_revision": true,
+    "scoped_semantic_staged_entries": "100644 759a537b4926a3688e327c3dd18d0941c40dab0d 0\tCONTRIBUTING.md\n100644 50e507719a397ba57ee5f5684ff3c0a9fc2fe173 0\t_bmad-output/implementation-artifacts/spec-8-9-agentic-coding-reference-material.md\n100644 26c9bd98403a41d9ad43936922b98bf4ea5066d2 0\tdocs/agentic-coding.md\n100644 13b34e40af6865e61f5423d0ad717bcb5d1d1074 0\tdocs/bmad-epic-preparation.md\n100644 04ca8455c52d8173d0cb794ca067c4aa6ed858a4 0\tdocs/bmad-loop.md\n",
+    "raw_reconstructed_index_not_compared_to_original": true
+  }
+}

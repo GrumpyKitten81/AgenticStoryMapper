@@ -1,0 +1,46 @@
+{
+  "participant": "Fresh isolated Agent with no conversation history; given only walkthrough path, disposable checkout and bounded README intent",
+  "source_revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "runtime": {
+    "node": "24.17.0",
+    "corepack": "0.35.0",
+    "pnpm": "9.15.4",
+    "initial_shell_node": "22.23.1; detected and not used for install/gate"
+  },
+  "commands": [
+    {
+      "command": "PATH=<installed Node24 bin>:$PATH corepack pnpm install --frozen-lockfile",
+      "exit_code": 0,
+      "limit": "No --offline flag; cache-only/network-free installation not established; no native module copy"
+    },
+    {
+      "command": "PATH=<installed Node24 bin>:$PATH corepack pnpm check",
+      "exit_code": 1,
+      "result": "DB coverage failed; downstream workspace/audit/release-verification stages did not execute",
+      "failure": {
+        "file": "packages/db/src/restore-project.test.ts",
+        "line": 112,
+        "test": "preserves genuinely crashed uncheckpointed WAL commits when startup publication fails and can retry the prepared restore",
+        "diagnostic": "Error: Test timed out in 5000ms.",
+        "elapsed_ms": 5298,
+        "db_tests": {
+          "passed": 559,
+          "failed": 1,
+          "total": 560
+        },
+        "db_files": {
+          "passed": 42,
+          "failed": 1
+        },
+        "db_duration_seconds": 82.01,
+        "root_cause": "unresolved; elapsed time does not establish cause"
+      }
+    }
+  ],
+  "observations": [
+    "Plan/PR draft was originally written after the first edit, contrary to walkthrough ordering; participant later replayed README from original baseline under the recorded plan and proved identical final bytes",
+    "Independent read-only Git review may refresh stat cache; raw index changed while relevant source hashes matched; no first-gate raw-index-stability claim",
+    "Walkthrough v2 clarifies prior reviewer-context disclosure and semantic staged-entry identity"
+  ],
+  "repair": "Original logs/failure retained; final replayed candidate gets its own full aggregate, source/staged identity and real offline install evidence; no product/test/check changes"
+}

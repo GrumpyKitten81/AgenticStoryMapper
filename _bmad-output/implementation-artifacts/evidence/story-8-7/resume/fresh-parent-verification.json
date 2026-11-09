@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-20",
+  "revision": "b4e27634b11dfda679d1fa3c40e5e0771f4c5d29",
+  "publicationTests": {
+    "exit": 0,
+    "tests": 31,
+    "pass": 29,
+    "fail": 0,
+    "skip": 2,
+    "rawLogSha256": "af6de55348b382104df6d9ab39798975967a022e1f197102a9fa615861dde4d6",
+    "command": "node --test scripts/check-publication.test.mjs > /tmp/story87-fresh-parent-publication.log 2>&1",
+    "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/story87-fresh-parent-publication.sanitized.log.gz",
+    "originalStreamSha256": "af6de55348b382104df6d9ab39798975967a022e1f197102a9fa615861dde4d6",
+    "sanitizedDecodedSha256": "af6de55348b382104df6d9ab39798975967a022e1f197102a9fa615861dde4d6",
+    "sanitizedGzipSha256": "7d5f1603c75a12b4df07691bb46349044c7cc3d8b0a604247fbf5056a75786b2",
+    "originalBytes": 3131,
+    "sanitizedDecodedBytes": 3131,
+    "sanitizedGzipBytes": 1463,
+    "sanitization": "Case-insensitive literal transient policy terms and POSIX/Windows personal home prefixes replaced before retention; raw logs remain transient."
+  },
+  "standaloneVerify": {
+    "exit": 0,
+    "rawLogSha256": "cd4ea11e6b63a1797d10889be486500165da7a279aa4899fca7999e8ac93c0c5",
+    "command": "node scripts/verify.mjs > /tmp/story87-fresh-parent-verify.log 2>&1",
+    "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/story87-fresh-parent-verify.sanitized.log.gz",
+    "originalStreamSha256": "cd4ea11e6b63a1797d10889be486500165da7a279aa4899fca7999e8ac93c0c5",
+    "sanitizedDecodedSha256": "0a2fa2043ef1aff05500e430450929518fcb7f448004ac9865c68eb15b822a2f",
+    "sanitizedGzipSha256": "1ad6594628b644b4a86db16d83088c02cda7d6560562b103adda4964fa00910d",
+    "originalBytes": 5340,
+    "sanitizedDecodedBytes": 5331,
+    "sanitizedGzipBytes": 1427,
+    "sanitization": "Case-insensitive literal transient policy terms and POSIX/Windows personal home prefixes replaced before retention; raw logs remain transient."
+  },
+  "matrix": {
+    "clean candidate": "complete clean disposable candidate passes scan and independent check",
+    "candidate drift": "old report refuses changed bytes, modes, paths, revision, refs and objects",
+    "incomplete scope": "shallow, promisor, replaced and missing objects refuse with safe diagnostics",
+    "unresolved findings": "current findings and required private declarations remain blocking",
+    "tampering": "extra, missing, malformed and flipped report fields cannot authorize publication"
+  },
+  "matrixExecuted": true,
+  "aggregate": {
+    "exit": 0,
+    "rootTests": 177,
+    "rootPass": 175,
+    "rootSkip": 2,
+    "workspaceCoverageTests": 3159,
+    "lineFloorsPassed": 8,
+    "serialAuditTests": 14,
+    "accessibilityTests": 261,
+    "rawLogSha256": "01b1d045d9adb04a4c1f7319aeda13fa01e69962284d357d7c96880d01b2aaad",
+    "command": "corepack pnpm check > /tmp/story87-fresh-parent-check.log 2>&1",
+    "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/story87-fresh-parent-check.sanitized.log.gz",
+    "originalStreamSha256": "01b1d045d9adb04a4c1f7319aeda13fa01e69962284d357d7c96880d01b2aaad",
+    "sanitizedDecodedSha256": "50043b99f866228a675a0426df3761870f9a268cac6d81ea3ac3428744fbac8b",
+    "sanitizedGzipSha256": "1ce8015cb068fe93136867738fa692ddbd24beb62d7643fee52afa1d89058fe4",
+    "originalBytes": 265491,
+    "sanitizedDecodedBytes": 265462,
+    "sanitizedGzipBytes": 35166,
+    "sanitization": "Case-insensitive literal transient policy terms and POSIX/Windows personal home prefixes replaced before retention; raw logs remain transient."
+  },
+  "independentSkillPairsEqual": 3,
+  "sprintPreserved": {
+    "head": "b4e27634b11dfda679d1fa3c40e5e0771f4c5d29",
+    "sprint_worktree": "266c57f998fc7d4b5f5d6ecf993087be919d21118c79d444639238d2d7458cd4",
+    "sprint_index": "266c57f998fc7d4b5f5d6ecf993087be919d21118c79d444639238d2d7458cd4"
+  },
+  "runtime": {
+    "node": "24.17.0",
+    "pnpm": "9.15.4",
+    "workingDirectory": "repository root",
+    "pathExport": "export PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH",
+    "pathExportQualification": "Exact exported prefix with only the personal home prefix redacted; remaining inherited PATH was not captured."
+  },
+  "executionQualification": {
+    "source": "Parent-reported exact commands, runtime, exit statuses and overlap; original streams retained by hash.",
+    "concurrency": "Standalone verify and focused publication tests overlapped aggregate check.",
+    "testedWorkingAndIndexState": {
+      "capturedBaseline": {
+        "head": "b4e27634b11dfda679d1fa3c40e5e0771f4c5d29",
+        "sprint_worktree": "266c57f998fc7d4b5f5d6ecf993087be919d21118c79d444639238d2d7458cd4",
+        "sprint_index": "266c57f998fc7d4b5f5d6ecf993087be919d21118c79d444639238d2d7458cd4"
+      },
+      "completeCommandTimeCandidateFingerprintCaptured": false,
+      "limit": "No complete working-tree/index snapshot or candidate fingerprint was captured at command start. Parent reports source unchanged throughout checks; handoff/evidence metadata was written during execution. Baseline revision and protected hashes identify only those captured inputs, not exact tested candidate bytes. No retrospectively measured fingerprint is claimed as command-time evidence."
+    }
+  },
+  "currentSourceObservation": {
+    "observedAt": "2026-10-20T19:09:01.710731+00:00",
+    "qualification": "Hashes measured now after command completion; they are current working/index observations, not a historical tested-candidate fingerprint.",
+    "files": {
+      "scripts/check-publication-audit.mjs": {
+        "workingSha256": "9c7f70f3005570066aa4d2df8c4c3c4be32a181c13ffb2c95f72402da363bcaf",
+        "indexSha256": "9c7f70f3005570066aa4d2df8c4c3c4be32a181c13ffb2c95f72402da363bcaf"
+      },
+      "scripts/check-publication-content.mjs": {
+        "workingSha256": "b155e7ca8389d68e0c0f15fa8e5b3f4957ea0ae827cf8552f2480d7a8129997a",
+        "indexSha256": "b155e7ca8389d68e0c0f15fa8e5b3f4957ea0ae827cf8552f2480d7a8129997a"
+      },
+      "scripts/check-publication-errors.mjs": {
+        "workingSha256": "7ed88de9490a830c08e7e1a7653be425db0195522866b356278c26006a02a583",
+        "indexSha256": "7ed88de9490a830c08e7e1a7653be425db0195522866b356278c26006a02a583"
+      },
+      "scripts/check-publication-git.mjs": {
+        "workingSha256": "45e96041ec5596194ab9bcd6472b59fbb06043959dcd31e4e08a5153b1b45483",
+        "indexSha256": "45e96041ec5596194ab9bcd6472b59fbb06043959dcd31e4e08a5153b1b45483"
+      },
+      "scripts/check-publication.mjs": {
+        "workingSha256": "1e80441ea3b90ae58d18d819e8f3cf4e8c5fed2c401254aec7177f3f9caadcb6",
+        "indexSha256": "1e80441ea3b90ae58d18d819e8f3cf4e8c5fed2c401254aec7177f3f9caadcb6"
+      },
+      "scripts/check-publication.test.mjs": {
+        "workingSha256": "9db560829a355e40919c55dad61fdb0c88bd77cda95c12a158de6e9232da8e8a",
+        "indexSha256": "9db560829a355e40919c55dad61fdb0c88bd77cda95c12a158de6e9232da8e8a"
+      },
+      "scripts/check.mjs": {
+        "workingSha256": "490bb9764e3f677a75c941bef0456739337b6c3670415fb426bbd1401595a2dc",
+        "indexSha256": "490bb9764e3f677a75c941bef0456739337b6c3670415fb426bbd1401595a2dc"
+      },
+      "scripts/verify.mjs": {
+        "workingSha256": "4f2cdafce0b81170019a96ffab584d912b3143f77a230e325b21416f08bf7624",
+        "indexSha256": "4f2cdafce0b81170019a96ffab584d912b3143f77a230e325b21416f08bf7624"
+      },
+      "package.json": {
+        "workingSha256": "0a5e50a35a881042b43dd086300baa63ff332efca8fddd47f95f6ac19efff208",
+        "indexSha256": "0a5e50a35a881042b43dd086300baa63ff332efca8fddd47f95f6ac19efff208"
+      }
+    }
+  }
+}

@@ -1,0 +1,250 @@
+{
+  "date": "2026-10-19",
+  "findings": [
+    {
+      "id": "B1",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "own-milestone-drift",
+      "summary": "Own Milestone updates invalidate dependent Issue snapshots",
+      "evidence": "Milestone title/due fields in remoteBefore are compared unchanged after the dependency updates them.",
+      "action": "Adjusted only completed own Milestone dependency metadata before normalized target comparison; linked rename/date and dated-close regressions pass.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "B2",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "remote-normalization",
+      "summary": "REST marker and detailed provider reads have inconsistent shapes",
+      "evidence": "REST evidence omits assignee/parent; CLI omits due date; entire-object fingerprint compares those inconsistent projections.",
+      "action": "Read detailed marker targets and compare a shared written-field projection with normalized dates and complete Milestone evidence; transport-shape regressions pass.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "B3",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "repeated-failure",
+      "summary": "Repeated failed preparation attempts an invalid outcome transition",
+      "evidence": "Catch handles failed evidence as another failed outcome, while repository failed transitions are empty.",
+      "action": "Permit failed-to-failed evidence updates and retain interrupted state on repeat resume failures; repository/executor regressions pass.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "B4",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "fallback-labels",
+      "summary": "Imported fallback status labels are not retired",
+      "evidence": "Imported managedLabels is empty and managed set includes current fallback status only, so prior generated status survives.",
+      "action": "Include known workflow fallback labels in managed ownership; imported fallback-label regression preserves unrelated labels.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "B5",
+      "verdict": "high",
+      "route": "patch",
+      "group": "field-conflict",
+      "summary": "Resolving one local conflict replaces unrelated baselines and state",
+      "evidence": "Generic bind writes all hashes/state and resolves selected conflict without existing field-specific baseline/state logic.",
+      "action": "Reuse field-specific persistConflictResolution and retain unrelated baselines/open conflicts; chosen-field state regressions pass.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "B6",
+      "verdict": "high",
+      "route": "patch",
+      "group": "saved-scope",
+      "summary": "Saved plan ignores checkbox and Release selection",
+      "evidence": "readPlan compares selectedCardIds prop only; operationDraft Card/Release selection is not checked.",
+      "action": "Validate full checkbox/Release selection, preserving All versus explicit Unscheduled, with synchronous action refusal and saved-plan regressions.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "B7",
+      "verdict": "high",
+      "route": "patch",
+      "group": "incoming-sync",
+      "summary": "Writable Sync skips incoming merge and conflict discovery",
+      "evidence": "Writable launcher branches call plan push directly and tests assert sync API never runs.",
+      "action": "Use existing mode sync for writable panel/quick/modal launchers: incoming merge/conflict discovery first, then only pending safe outgoing effects. Preserve own refreshed review and dirty drafts.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "B8",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "actual-outcome",
+      "summary": "Provider payload discrepancy can be reported synchronized",
+      "evidence": "Outcome uses actual result but generic binding hashes requested title/body and unconditionally sets synced without payload equality.",
+      "action": "Retain actual success evidence but refuse binding/completion when any reviewed Issue/Milestone field differs; repeated resume never replays known remote call.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "B9",
+      "verdict": "high",
+      "route": "patch",
+      "group": "metadata-drift",
+      "summary": "Sync memberships are absent from local fingerprints",
+      "evidence": "Type, managed-label and canonical sync metadata feed plan construction but fingerprint includes only roots/annotations/conflicts.",
+      "action": "Fingerprint selected canonical refs and sync memberships; metadata-only and canonical-identity-only drift regressions pass while own progress advances.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "B10",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "served-origin",
+      "summary": "Saved plan can publish an obsolete served origin",
+      "evidence": "Confirmation receives no current origin and validates no origin against the generated footer payload.",
+      "action": "Inject actual served-origin dependency into confirmation/resume and refuse generated footer-origin drift; actual HTTP origin restart regression passes.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "E1",
+      "verdict": "false",
+      "route": "reject",
+      "group": "prototype-schema",
+      "summary": "Old prototype databases do not receive new sync columns",
+      "evidence": "Binding Epic7 schema policy explicitly makes pre-release prototype DBs disposable; story8.1 owns release baseline migrations. Current-schema reopen/Restore passes; compatibility is intentionally excluded.",
+      "action": "Binding Epic7 schema policy explicitly makes pre-release prototype DBs disposable; story8.1 owns release baseline migrations. Current-schema reopen/Restore passes; compatibility is intentionally excluded.",
+      "status": "rejected with recorded refutation"
+    },
+    {
+      "id": "E2",
+      "verdict": "high",
+      "route": "patch",
+      "group": "overlap-intents",
+      "summary": "Different concurrent plans can create duplicate Issues",
+      "evidence": "activePlans is keyed by plan id and repository intent checks only the same execution, permitting distinct plans to pass absent-marker reads before either binding.",
+      "action": "Atomically guard overlapping entity intents and capture overlapping execution-state SHA256 before lookup. Parent reproduced delayed absence after another create became uncertain; fixed admission rejects stale proof, retains original uncertainty and explicit resume yields one create.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "E3",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "own-milestone-drift",
+      "summary": "Own Milestone rename/date causes false Issue drift",
+      "evidence": "Same verified defect as B1; own dependency updates must adjust compared milestone evidence only.",
+      "action": "Adjusted only completed own Milestone dependency metadata before normalized target comparison; linked rename/date and dated-close regressions pass.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "E4",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "remote-normalization",
+      "summary": "Recovered assigned or parented Issues fail unchanged confirmation",
+      "evidence": "Same verified defect as B2; detailed read and REST marker result differ in unmodified fields.",
+      "action": "Read detailed marker targets and compare a shared written-field projection with normalized dates and complete Milestone evidence; transport-shape regressions pass.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "E5",
+      "verdict": "high",
+      "route": "patch",
+      "group": "metadata-drift",
+      "summary": "Metadata-only changes escape reviewed local checks",
+      "evidence": "Same verified defect as B9; upsert sync metadata need not bump root version.",
+      "action": "Fingerprint selected canonical refs and sync memberships; metadata-only and canonical-identity-only drift regressions pass while own progress advances.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "E6",
+      "verdict": "high",
+      "route": "patch",
+      "group": "field-conflict",
+      "summary": "Field resolution advances unrelated baselines",
+      "evidence": "Same verified defect as B5; existing persistConflictResolution retains unrelated fields and recomputes state, unlike new generic bind.",
+      "action": "Reuse field-specific persistConflictResolution and retain unrelated baselines/open conflicts; chosen-field state regressions pass.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "E7",
+      "verdict": "high",
+      "route": "patch",
+      "group": "incoming-sync",
+      "summary": "Writable Sync can overwrite remote-only content",
+      "evidence": "Same verified defect as B7; outgoing full local payload is prepared before any incoming merge.",
+      "action": "Use existing mode sync for writable panel/quick/modal launchers: incoming merge/conflict discovery first, then only pending safe outgoing effects. Preserve own refreshed review and dirty drafts.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "V1",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "modal-tests",
+      "summary": "Card Detail confirm/resume consumer lacks behavioral verification",
+      "evidence": "Pre-verified gap: routed fixture has no connections, static rendering does not run mutations, navigation mocks modal. Resume-to-confirm mutation would remain undetected.",
+      "action": "Added actual routed modal preview/confirm/interruption/resume exact-id, pending dirty-draft, scope/epoch and Sync-refetch acceptance tests.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "V2",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "restore-corruption-tests",
+      "summary": "Restore remote evidence rejection lacks corruption coverage",
+      "evidence": "Pre-verified gap: current tests restore valid rows only, so removing correspondence check does not fail tests.",
+      "action": "Added malformed JSON, item mismatch, ownership and status corruption through actual Restore; refusal leaves live serialized database bytes unchanged.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "I1",
+      "verdict": "high",
+      "route": "patch",
+      "group": "incoming-sync",
+      "summary": "Changed UI Sync does not preserve incoming semantics",
+      "evidence": "Descriptive intent audit identifies same source-proven regression B7/E7; preserve incoming merging before reviewed outgoing work.",
+      "action": "Use existing mode sync for writable panel/quick/modal launchers: incoming merge/conflict discovery first, then only pending safe outgoing effects. Preserve own refreshed review and dirty drafts.",
+      "status": "repaired and focused regression passed"
+    },
+    {
+      "id": "I2",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "native-journey",
+      "summary": "One integrated native browser/provider journey remains unverified",
+      "evidence": "Component API mocks plus actual HTTP/MCP/provider transport tests establish separate seams; a native controlled browser journey would establish the combined UI surface.",
+      "action": "Component API mocks plus actual HTTP/MCP/provider transport tests establish separate seams; a native controlled browser journey would establish the combined UI surface.",
+      "status": "explicitly unverified; recorded in spec deferred list"
+    },
+    {
+      "id": "I3",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "process-death",
+      "summary": "Abrupt OS termination during a remote call remains unverified",
+      "evidence": "Fault-injected outcomes and actual SQLite reopen/Restore verify durable recovery; a separately controlled child-process kill with persistent fake remote state would establish literal process-death acceptance.",
+      "action": "Fault-injected outcomes and actual SQLite reopen/Restore verify durable recovery; a separately controlled child-process kill with persistent fake remote state would establish literal process-death acceptance.",
+      "status": "explicitly unverified; recorded in spec deferred list"
+    },
+    {
+      "id": "I4",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": "native-live",
+      "summary": "Native platform/reader and live GitHub/installed CLI acceptance remain unverified",
+      "evidence": "CUA has no browser surface; no live-account acceptance run authorized. Native/platform and separately authorized account observations would settle these boundaries.",
+      "action": "CUA has no browser surface; no live-account acceptance run authorized. Native/platform and separately authorized account observations would settle these boundaries.",
+      "status": "explicitly unverified; recorded in spec deferred list"
+    }
+  ],
+  "counts": {
+    "high": 9,
+    "medium": 10,
+    "low": 0,
+    "false": 1,
+    "maybe-false": 3
+  },
+  "patchGroups": 13,
+  "status": "Complete: all23 findings logged;13 repair groups implemented; parent full workspace and release gates pass;3 explicit unverified deferrals;1 rejection.",
+  "patchedEntryCounts": {
+    "high": 5,
+    "medium": 8,
+    "low": 0
+  },
+  "followupReviewRecommended": true
+}

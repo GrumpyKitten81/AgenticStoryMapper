@@ -1,0 +1,118 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/components/Dialog.test.ts (12 tests) 235ms
+ ✓ src/features/project-archive/project-archive-import.test.ts (3 tests) 43ms
+ ✓ src/features/releases/ReleasePanel.test.tsx (3 tests) 56ms
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 104ms
+ ✓ src/features/personas/PersonaDetail.test.ts (8 tests) 115ms
+ ✓ src/features/ai-mcp/context-draft.test.ts (3 tests) 26ms
+ ✓ src/features/ai-mcp/TemplateEditor.test.tsx (6 tests) 122ms
+ ✓ src/features/story-map/views/TrackingView.test.tsx (6 tests) 140ms
+ ✓ src/features/ai-mcp/AiMcpPanel.test.tsx (4 tests) 130ms
+ ✓ src/app/routes/audit.test.ts (9 tests) 486ms
+ ✓ src/features/changesets/boards.test.tsx (3 tests) 72ms
+ ✓ src/app/live/live-updates.test.tsx (23 tests) 293ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 79ms
+ ✓ src/features/releases/ReleaseDateFields.test.ts (2 tests) 48ms
+ ✓ src/features/ai-mcp/undone-changesets.test.ts (1 test) 74ms
+ ✓ src/features/github-sync/github-visibility.test.tsx (3 tests) 133ms
+ ✓ src/app/routes/workspace-navigation.test.tsx (14 tests) 630ms
+ ✓ src/features/roadmaps/RoadmapEditor.test.ts (3 tests) 72ms
+ ✓ src/features/project-archive/project-archive-runtime.test.ts (3 tests) 282ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 49ms
+ ✓ src/features/releases/ReleaseKanban.test.tsx (2 tests) 41ms
+ ✓ src/features/ai-mcp/current-changeset-actions.test.ts (3 tests) 108ms
+ ✓ src/features/safety/SafetySwitchStrip.test.tsx (1 test) 84ms
+ ✓ src/features/story-map/views/DiscoveryView.test.tsx (4 tests) 687ms
+ ✓ src/features/ai-mcp/host-config-copy.test.tsx (1 test) 46ms
+ ✓ src/features/story-map/views/SlicesView.test.tsx (11 tests) 744ms
+ ✓ src/features/story-map/components/card-provenance.test.ts (10 tests) 751ms
+ ✓ src/app/live/live-stream-reader.test.ts (7 tests) 71ms
+ ✓ src/app/live/live-origin.test.ts (1 test) 5ms
+ ✓ src/features/what-changed/WhatChangedProvider.test.tsx (12 tests) 861ms
+   ✓ retains every affected row while closed without dialog/focus/hold semantics and reuses rows through opening and closing 339ms
+ ✓ src/features/story-map/views/GraphView.test.tsx (17 tests) 865ms
+ ❯ src/features/story-map/components/lifecycle.test.tsx (20 tests | 1 failed) 1244ms
+   × shows the add-first-Activity prompt when no visible Activity remains 19ms
+     → the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string
+ ✓ src/features/personas/PersonasPanel.test.tsx (1 test) 75ms
+ ✓ src/features/project-archive/project-archive-export.test.ts (4 tests) 7ms
+ ✓ src/features/story-map/components/card-choices.test.tsx (3 tests) 187ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > refetches ordinary archived-status Save and inventory Restore into the real board
+Not implemented: HTMLFormElement's requestSubmit() method
+
+ ✓ src/app/live/live-query-invalidation.test.ts (2 tests) 9ms
+ ✓ src/app/live/live-announcements.test.ts (1 test) 7ms
+ ✓ src/features/story-map/export/story-map-view-export.test.ts (1 test) 13ms
+ ✓ src/features/what-changed/api.test.ts (3 tests) 9ms
+ ✓ src/features/reports/PlanDriftDrawer.test.tsx (12 tests) 1072ms
+   ✓ Plan drift drawer > bounds dense DOM creation and makes all 1,000 differences reachable through keyboard-accessible pages 765ms
+ ✓ src/features/story-map/components/card-creation.test.tsx (10 tests) 877ms
+ ✓ src/features/onboarding/getting-started.test.ts (5 tests) 15ms
+ ✓ src/features/what-changed/model.test.ts (3 tests) 3ms
+ ✓ src/app/conflicts.test.ts (6 tests) 6ms
+ ✓ src/features/story-map/export/export-with-progress.test.ts (2 tests) 2ms
+ ✓ src/features/story-map/components/card-dependencies.test.tsx (12 tests) 1150ms
+ ✓ src/features/story-map/components/PlanStateComparison.test.tsx (1 test) 82ms
+ ✓ src/features/story-map/components/card-fields.test.ts (9 tests) 1138ms
+   ✓ saves scalar fields, custom priority/color and zero in the map unit, then reloads supported clears 533ms
+ ✓ src/features/changesets/shell.test.tsx (8 tests) 1160ms
+   ✓ removes only applied preview search and retains selected Card, Tree navigation and Activity explanation 319ms
+ ✓ src/features/story-map/graph/graph-model.test.ts (9 tests) 9ms
+ ✓ src/app/routes/root-layout.test.ts (1 test) 20ms
+ ✓ src/features/restore-points/restore-points.test.ts (22 tests) 1343ms
+ ❯ src/ui-strings/ui-strings.test.ts (8 tests | 1 failed) 157ms
+   × central English interface copy > has no raw JSX text or literal accessibility copy outside the string module 126ms
+     → expected [ Array(1) ] to deeply equal []
+ ✓ src/app/live/live-stream.test.ts (3 tests) 720ms
+   ✓ relays between independent tabs and relinquishes terminal leadership before later bootstrap and shutdown handoff 645ms
+ ✓ src/features/story-map/components/card-detail.test.ts (28 tests) 2021ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/ui-strings/ui-strings.test.ts > central English interface copy > has no raw JSX text or literal accessibility copy outside the string module
+AssertionError: expected [ Array(1) ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   "features/story-map/components/CardComposer.tsx:32",
++ ]
+
+ ❯ src/ui-strings/ui-strings.test.ts:106:24
+    104|       visit(source);
+    105|     }
+    106|     expect(violations).toEqual([]);
+       |                        ^
+    107|   });
+    108|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/features/story-map/components/lifecycle.test.tsx > shows the add-first-Activity prompt when no visible Activity remains
+AssertionError: the given combination of arguments (undefined and string) is invalid for this assertion. You can use an array, a map, an object, a set, a string, or a weakset instead of a string
+ ❯ src/features/story-map/components/lifecycle.test.tsx:392:63
+    390| it("shows the add-first-Activity prompt when no visible Activity remai…
+    391|   await refreshServer({ ...snapshot, cards: snapshot.cards.map((item) …
+    392|   expect(host.querySelector(".discovery-empty")?.textContent).toContai…
+       |                                                               ^
+    393|   expect(host.querySelector(".discovery-empty button")).not.toBeNull();
+    394| });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+ Test Files  2 failed | 53 passed (55)
+      Tests  2 failed | 362 passed (364)
+   Start at  12:40:05
+   Duration  4.42s (transform 4.06s, setup 0ms, collect 36.63s, tests 18.78s, environment 27.61s, prepare 2.85s)
+
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/web@0.1.0 test: `vitest run --passWithNoTests`
+Exit status 1

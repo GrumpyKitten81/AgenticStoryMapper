@@ -1,0 +1,37 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/changesets/shell.test.tsx (13 tests) 1328ms
+ ❯ src/features/changesets/review-focus.test.tsx (9 tests | 1 failed) 1337ms
+   × preserves Reject focus through delayed refusal then closes to a meaningful heading on retry 1028ms
+     → expected 'Request failed: 409' to contain 'Reject refused'
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 84ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 64ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 29ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/changesets/review-focus.test.tsx > preserves Reject focus through delayed refusal then closes to a meaningful heading on retry
+AssertionError: expected 'Request failed: 409' to contain 'Reject refused'
+
+Expected: "Reject refused"
+Received: "Request failed: 409"
+
+ ❯ src/features/changesets/review-focus.test.tsx:242:81
+    240|     expect(fixture.pending[0]!.path).toBe(`/api/changesets/${fixture.i…
+    241|     await act(async () => fixture.pending[0]!.resolve(Response.json({ …
+    242|     await vi.waitFor(() => expect(getByRole(fixture.host, "alert").tex…
+       |                                                                                 ^
+    243|     expect(document.activeElement).toBe(reject); expect(reject.getAttr…
+    244|     await act(async () => fireEvent.click(reject)); await vi.waitFor((…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  1 failed | 36 passed (37)
+   Start at  22:31:46
+   Duration  5.63s (transform 603ms, setup 0ms, collect 1.41s, tests 2.84s, environment 868ms, prepare 113ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/features/changesets/review-focus.test.tsx src/features/changesets/review.test.tsx src/features/changesets/review-outcomes.test.tsx src/features/changesets/selection-race.test.tsx src/features/changesets/shell.test.tsx --maxWorkers=1 --minWorkers=1

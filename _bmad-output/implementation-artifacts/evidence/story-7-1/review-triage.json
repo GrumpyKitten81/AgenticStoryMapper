@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-19",
+  "findings": [
+    {
+      "id": "blind-1",
+      "verdict": "high",
+      "route": "patch",
+      "summary": "Windows fixture can touch real APPDATA credentials",
+      "evidence": "BeforeEach changes homedir but not APPDATA; credentialFilePath selects APPDATA on Windows. Isolate every test and use native-path assertions. Applied per-test disposable APPDATA and platform-correct assertions; simulated Windows create/reopen regression passes."
+    },
+    {
+      "id": "blind-2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Exposed POSIX token files are accepted",
+      "evidence": "checkTarget checks type/link/owner only;0644 token file is consumed. Refuse group/other exposure on read. Applied fstat permission refusal before reading;0644 refusal/no fall-through and0600 replacement regression passes."
+    },
+    {
+      "id": "blind-3",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Foreign-owned in-home ancestor can replace credential descendants",
+      "evidence": "checkParents verifies owner only at final parent; differently owned0755 .config passes. Verify ownership for in-home ancestors. Applied ownership checks to inside-home ancestors; injected foreign-owned.config refusal and trusted outside-home regression passes."
+    },
+    {
+      "id": "blind-4",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Validation status snapshot can disagree with actual source",
+      "evidence": "validateConnectorConnection probes statuses before a separate auth resolution. Report selected source from the actual resolved context. Applied selected-source projection from actual resolved auth.source; deterministic source-change regression passes."
+    },
+    {
+      "id": "blind-5",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Active CLI account may change after resolution",
+      "evidence": "githubCliConfigured discards token and returns boolean; provider independently selects current CLI account. Pin transient resolved auth across calls. Applied transient cliToken capture and explicit selected GH_TOKEN after inherited environment cleanup for every provider CLI call; configuration-change regression passes."
+    },
+    {
+      "id": "blind-6",
+      "verdict": "low",
+      "route": "reject",
+      "summary": "Concurrent first-time writers may fail with EEXIST",
+      "evidence": "No token-write HTTP/UI exists yet; direct concurrent internal calls fail loudly without corrupting credentials. This low-frequency case would add creation-race branches; reject under low finding rule."
+    },
+    {
+      "id": "blind-7",
+      "verdict": "medium",
+      "route": "defer",
+      "summary": "Partial GraphQL results suppress incomplete-response failures",
+      "evidence": "Both CLI and Octokit partial-search suppression existed before this diff; only comment changed at CLI catch. Broader provider completeness remains pre-existing follow-up."
+    },
+    {
+      "id": "blind-8",
+      "verdict": "medium",
+      "route": "defer",
+      "summary": "HTTP422 milestone errors are treated as existing milestone",
+      "evidence": "Prior implementation suppressed every milestone create failure. This change narrows that suppression to422 but does not prove duplicate identity; pre-existing reconciliation issue remains."
+    },
+    {
+      "id": "blind-9",
+      "verdict": "low",
+      "route": "patch",
+      "summary": "Nested sanitization loses specific credential failure",
+      "evidence": "Nested public read throws sanitized DomainError; outer wrapper sanitizes it again with no status. Preserve trusted sanitized DomainError. Applied WeakSet recognition of trusted sanitized provider DomainErrors; nested401 preserves selected-credential error regression passes."
+    },
+    {
+      "id": "blind-10",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Native Windows credential ACL/replacement safety unverified",
+      "evidence": "Tests run on macOS and simulate Windows path selection; native ACL, unsafe parent and atomic replacement need a Windows runner. If true impact medium; no cross-platform acceptance claimed."
+    },
+    {
+      "id": "edge-1",
+      "verdict": "high",
+      "route": "patch",
+      "summary": "Windows fixture can overwrite real credential file",
+      "evidence": "Same verified beforeEach APPDATA omission as blind-1; same isolation repair. Same APPDATA repair as blind-1; isolated Windows storage/reopen test passes."
+    },
+    {
+      "id": "edge-2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Reported and supplied credential sources can diverge",
+      "evidence": "Same independently awaited status/auth probes as blind-4; selected metadata must follow captured resolution. Same captured-source repair as blind-4; response has exactly the resolved selected source."
+    },
+    {
+      "id": "edge-3",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Host-qualified owner bypasses pinned CLI hostname",
+      "evidence": "owner is only min(1); repoSlug permits other.example/owner/repo. gh --repo accepts HOST/OWNER/REPO. Reject host-qualified input before provider calls. Applied shared contract plain-name validation plus provider admission checks; six host/path variants refused in both modes before external calls."
+    },
+    {
+      "id": "gap-1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Changed milestone failure branch lacks regression test",
+      "evidence": "Pre-verified gap: all real provider test items omit milestone; fake provider server tests cannot cover ensureMilestone. Add milestone-bearing rejection/422 cases. Applied milestone-bearing unexpected failure and permitted422 cases; unexpected error stops before issue create/update and messages remain sanitized."
+    },
+    {
+      "id": "intent-1",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Human entry flow is not exercised",
+      "evidence": "Original Story7.1/detail plan supplies storage foundation to7.2; original adjacent7.2 explicitly owns guided connection/token entry. The story boundary precedes this generated spec."
+    },
+    {
+      "id": "intent-2",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Human-only writer authority is application-only",
+      "evidence": "No writing HTTP/MCP surface is introduced or required in7.1. Direct actor refusal tests exercise the actual outermost writer boundary;7.2 owns route/UI integration."
+    },
+    {
+      "id": "intent-3",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Consumption tests intercept GitHub/CLI",
+      "evidence": "Original acceptance requires generated in-memory canary/output inspection; real token/live GitHub use is excluded by binding plan. Real provider with intercepted transport and actual HTTP/storage satisfies this boundary."
+    },
+    {
+      "id": "intent-4",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Windows paths are simulated rather than native acceptance",
+      "evidence": "Same unverified native Windows boundary as blind-10; one shared deferred item records the limitation and required evidence."
+    },
+    {
+      "id": "intent-5",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Diff reports do not independently prove skill/test execution",
+      "evidence": "Parent ran renderer exactly once, read printed snapshot and observed package/root/release processes exit0. No sprint row supplies verification. Evidence is observed tool execution, not authored claims alone."
+    },
+    {
+      "id": "intent-6",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "OpenWolf records unrelated orchestration history",
+      "evidence": "Launcher handoff appeared concurrently during investigation and is preserved under explicit OpenWolf/dirty allowlist. Product/orchestrator policy was not changed by this implementation; no sprint diff exists."
+    }
+  ],
+  "counts": {
+    "high": 2,
+    "medium": 9,
+    "low": 2,
+    "false": 5,
+    "maybe-false": 2
+  },
+  "groups": {
+    "patch": 8,
+    "defer": 3,
+    "reject_rows": 6
+  },
+  "patch_status": "applied; parent post-repair server709+audit14,provider19,workspace2520 and release verification all passed"
+}

@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@storymapper/web/*": ["apps/web/src/*"],
+      "@storymapper/server/*": ["apps/server/src/*"],
+      "@storymapper/contracts": ["packages/contracts/src/index.ts"],
+      "@storymapper/contracts/*": ["packages/contracts/src/*"],
+      "@storymapper/core": ["packages/core/src/index.ts"],
+      "@storymapper/core/*": ["packages/core/src/*"],
+      "@storymapper/db": ["packages/db/src/index.ts"],
+      "@storymapper/db/*": ["packages/db/src/*"],
+      "@storymapper/importers": ["packages/importers/src/index.ts"],
+      "@storymapper/github": ["packages/github/src/index.ts"],
+      "@storymapper/github/*": ["packages/github/src/*"],
+      "@storymapper/mcp": ["packages/mcp/src/index.ts"],
+      "@storymapper/mcp/*": ["packages/mcp/src/*"],
+      "@storymapper/ui-strings": ["apps/web/src/ui-strings/index.ts"]
+    }
+  }
+}

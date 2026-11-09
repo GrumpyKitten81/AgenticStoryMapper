@@ -1,0 +1,6 @@
+{
+  "surface": "actual server stop/restart and TCP read",
+  "persistedSnapshotEqualExceptSynthesizedProductContext": true,
+  "cards": 10,
+  "mapId": "d148787f-4c32-4c6c-a700-50e951dcc525"
+}

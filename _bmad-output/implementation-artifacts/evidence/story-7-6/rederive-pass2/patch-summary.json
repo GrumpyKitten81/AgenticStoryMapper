@@ -1,0 +1,28 @@
+{
+  "covered": [
+    "P2B2",
+    "P2B3",
+    "P2B6",
+    "P2E2",
+    "P2E1",
+    "P2B8",
+    "P2B9",
+    "P2B10",
+    "P2V1",
+    "P2V2"
+  ],
+  "tests": {
+    "core_agreement": 13,
+    "server_targeted": 74,
+    "web_targeted": 90
+  },
+  "logs": [
+    "core-agreement-final.log.gz",
+    "server-targeted-1.log.gz",
+    "server-resolution-final.log.gz",
+    "ui-focused-final.log.gz"
+  ],
+  "verification_scope": "Only tests covering edited files; no full tests or typechecks.",
+  "full_gates": "Parent-owned.",
+  "wire_contract_changes": false
+}

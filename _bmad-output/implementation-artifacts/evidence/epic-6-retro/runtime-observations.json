@@ -1,0 +1,32 @@
+{
+  "revision": "0ab788ae126be12acd48cbf0f546dbcca39cd692",
+  "fixture": "isolated built-in sample; disposable SQLite outside repository",
+  "origin": "http://127.0.0.1:44377",
+  "observations": [
+    {
+      "scenario": "Discovery initial",
+      "observed": "3 matches / 3 cards; all three visible chips name Color: Standard. Change color"
+    },
+    {
+      "scenario": "Filters -> Color category Standard",
+      "observed": "0 matches / 3 cards; all three cards absent",
+      "verdict": "failed"
+    },
+    {
+      "scenario": "Color category All colors",
+      "observed": "3 matches / 3 cards restored",
+      "verdict": "passed"
+    },
+    {
+      "scenario": "Open LSM-3; edit Title; Close; Cancel",
+      "observed": "Unsaved changes opens with Cancel focused; Cancel returns to same modal with Retrospective unsaved draft retained",
+      "verdict": "passed"
+    },
+    {
+      "scenario": "Restore original title text; Close",
+      "observed": "Modal closes without save; original visible card label remains",
+      "verdict": "passed"
+    }
+  ],
+  "limits": "No full UJ, native screen reader, release operation, GitHub mutation or actual Restore exercised in this retrospective. No persisted Card write submitted. The color failure alone is runtime reproduced; other findings retain their stated source-only or unverified status."
+}

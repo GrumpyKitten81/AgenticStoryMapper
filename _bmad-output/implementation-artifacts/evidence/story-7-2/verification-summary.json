@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-19",
+  "baseline_revision": "68dcf5017298f34db7553118bf60d6898085d430",
+  "workspace": {
+    "command": "PATH=Node24 corepack pnpm test",
+    "exit_code": 0,
+    "script_tests": 83,
+    "package_suite_counts": [
+      153,
+      7,
+      31,
+      390,
+      735,
+      451,
+      738,
+      14
+    ],
+    "total": 2602,
+    "failures": 0,
+    "log": "/tmp/story-7-2-workspace-final.log",
+    "sha256": "17155d77390a91b3642d76a4440b904cdd4a62f84714d3d98c3cae5ceaaec338"
+  },
+  "intent_sha256": "568cbbdc2d5686743f4cefc90ea1f4930342a5b482434bbcdb6c3131e18ea004",
+  "sprint_sha256_before": "b876350f0a9000daf2b0cb8115b961d050280f7b7a5c8155eab7b45d6c509122",
+  "limitations": [
+    "Real GitHub account and installed CLI acceptance remains unverified",
+    "Full native platform/screen-reader matrix remains unverified",
+    "Native multi-window lost-response/Restore recovery remains unverified beyond controlled tests"
+  ],
+  "release_verify": {
+    "command": "PATH=Node24 node scripts/verify.mjs",
+    "exit_code": 0,
+    "capabilities": 133,
+    "accessibility_tests": 260,
+    "hygiene": true,
+    "typecheck": true,
+    "build": true,
+    "log": "/tmp/story-7-2-verify-final.log",
+    "sha256": "2fdf2b0419931160b9df0cf12a121f644d980458546aa11b133eaf5762763258"
+  },
+  "initial_workspace": {
+    "command": "PATH=Node24 corepack pnpm test",
+    "exit_code": 0,
+    "script_tests": 83,
+    "package_suite_counts": [
+      153,
+      7,
+      31,
+      390,
+      721,
+      451,
+      731,
+      14
+    ],
+    "total": 2581,
+    "failures": 0,
+    "log": "/tmp/story-7-2-workspace.log",
+    "sha256": "122437127f92529385c0b82e2cb1315910b97e538a05c6c4f267ab6f9208481b"
+  },
+  "sprint_sha256_after": "b876350f0a9000daf2b0cb8115b961d050280f7b7a5c8155eab7b45d6c509122",
+  "intent_unchanged": true,
+  "product_source_sha256": "98f86bc8375afe9ec76c5de1a44bbff087cf3254dd1c692fa8bb5c6a85048905",
+  "staged_before_final_gates_matches_disk": true,
+  "native_acceptance": "native-acceptance.json",
+  "review": "review-triage.json"
+}

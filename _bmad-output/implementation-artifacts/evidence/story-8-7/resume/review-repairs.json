@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-20",
+  "scope": "Targeted publication review repairs; no full verification rerun by this implementation agent",
+  "command": "node --test scripts/check-publication.test.mjs",
+  "runtime": "Node24.17.0; reviewed native fixture execution",
+  "exit": 0,
+  "tests": 31,
+  "passed": 29,
+  "failed": 0,
+  "skipped": 2,
+  "skipLimit": "Native invalid-byte fixture creation remains unavailable; unchanged skips and raw-byte/tree parser tests retained.",
+  "artifact": "review-repairs-publication-tests.sanitized.log.gz",
+  "originalStreamSha256": "8356c891532ff8134e2bd4860a685a0af6e9b92560dbd96f08a0db2470ee4f1b",
+  "sanitizedDecodedSha256": "8356c891532ff8134e2bd4860a685a0af6e9b92560dbd96f08a0db2470ee4f1b",
+  "sanitizedGzipSha256": "7f791f0d3490de973b2e51873988688880fa60baf4968f1422a826074dbcfe94",
+  "files": {
+    "scripts/check-publication-git.mjs": "45e96041ec5596194ab9bcd6472b59fbb06043959dcd31e4e08a5153b1b45483",
+    "scripts/check-publication-content.mjs": "b155e7ca8389d68e0c0f15fa8e5b3f4957ea0ae827cf8552f2480d7a8129997a",
+    "scripts/check-publication-audit.mjs": "9c7f70f3005570066aa4d2df8c4c3c4be32a181c13ffb2c95f72402da363bcaf",
+    "scripts/check-publication.test.mjs": "9db560829a355e40919c55dad61fdb0c88bd77cda95c12a158de6e9232da8e8a"
+  },
+  "fullVerification": "Earlier full-aggregate evidence predates these source repairs; parent owns fresh full verification and final exact-candidate scan.",
+  "finalAssertionSupplement": {
+    "command": "node --test --test-name-pattern='matches complete employer' scripts/check-publication.test.mjs",
+    "exit": 0,
+    "passed": 1,
+    "failed": 0,
+    "scope": "After the full targeted suite, expand the same unit case to both separator forms in both host and repository components.",
+    "artifact": "review-repairs-employer-separators.log.gz",
+    "decodedSha256": "803bb723a2768b36082ce64adffed948bd75b003f2c401777cf7c0361f389773",
+    "gzipSha256": "831b91c93035da972330d1edd1280fa2b1ad83fed1cad2c84758af79cd20a82f"
+  }
+}

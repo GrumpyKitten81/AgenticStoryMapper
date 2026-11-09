@@ -1,0 +1,26 @@
+> @storymapper/contracts@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/packages/contracts
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/contracts
+
+ ✓ src/schemas/changeset-preview.test.ts (2 tests) 3ms
+ ✓ src/schemas/card-timestamps.test.ts (14 tests) 3ms
+ ✓ src/events/live-events.test.ts (2 tests) 4ms
+ ✓ src/schemas/audit.test.ts (2 tests) 4ms
+ ✓ src/schemas/provenance.test.ts (3 tests) 6ms
+ ✓ src/migration.test.ts (19 tests) 23ms
+ ✓ src/release-slicing.test.ts (1 test) 3ms
+ ✓ src/api/delivery-status.test.ts (12 tests) 3ms
+ ✓ src/external-refs.test.ts (2 tests) 4ms
+ ✓ src/base-version.test.ts (24 tests) 6ms
+ ✓ src/schemas/operation-schema-version.test.ts (1 test) 12ms
+ ✓ src/card-dependencies.test.ts (1 test) 21ms
+ ✓ src/card-key-prefix.test.ts (2 tests) 22ms
+ ✓ src/mcp/tool-inputs.test.ts (6 tests) 46ms
+ ✓ src/schemas/change-operations.test.ts (61 tests) 70ms
+
+ Test Files  15 passed (15)
+      Tests  152 passed (152)
+   Start at  19:55:30
+   Duration  431ms (transform 408ms, setup 0ms, collect 2.21s, tests 232ms, environment 1ms, prepare 594ms)

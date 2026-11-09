@@ -1,0 +1,31 @@
+✔ complete clean disposable candidate passes scan and independent check (544.604417ms)
+✔ policy is mandatory, strict and never echoed in sanitized failures (173.104083ms)
+✔ matches complete employer terms across host and repository components (2.215708ms)
+✔ scans nested gzip and UTF16 while blocking unsupported and malformed archives (2.158583ms)
+✔ classifies synthetic examples separately from private email and home paths (0.075458ms)
+✔ current findings and required private declarations remain blocking (402.925292ms)
+✔ old report refuses changed bytes, modes, paths, revision, refs and objects (1523.817584ms)
+✔ extra, missing, malformed and flipped report fields cannot authorize publication (763.383791ms)
+✔ all-ref scope includes preserved tree refs and historical commit metadata (393.833209ms)
+✔ shallow, promisor, replaced and missing objects refuse with safe diagnostics (296.799125ms)
+✔ deleted declarations and unreviewed binary/archive content block publication (227.126541ms)
+✔ grafts, unreadable Git inputs and symlink parents cannot narrow publication scope (195.722334ms)
+✔ new nonignored files invalidate prior reports and enter the next scan (907.037ms)
+✔ ignored actual files are excluded without reading their contents or permissions (365.808958ms)
+✔ report symlinks into ignored files and nonregular reports are refused before reading (259.155125ms)
+✔ Git timeout and nonzero failures use bounded sanitized diagnostics (127.868625ms)
+✔ CLI reasons distinguish policy, missing report, malformed report, stale report and scope (687.262333ms)
+✔ retired detector covers separator and identifier variants (0.122334ms)
+✔ raw malformed UTF-8 scope buffers refuse without native filenames (0.114291ms)
+﹣ invalid UTF-8 nonignored and indexed filenames refuse without treating bytes as deleted (60.866917ms) # Sandbox cannot create invalid-byte input; native integration remains unverified.
+﹣ invalid UTF-8 ref bytes refuse with a fixed scope error (67.622792ms) # Sandbox cannot create invalid-byte input; native integration remains unverified.
+✔ invalid UTF-8 historical tree names refuse independently of native filename semantics (153.310959ms)
+✔ annotated tag metadata enters all-ref findings with its exact object location (219.752166ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 2
+ℹ todo 0
+ℹ duration_ms 7413.870958

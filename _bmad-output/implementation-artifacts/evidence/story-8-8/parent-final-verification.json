@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-20T20:46:59.813586+00:00",
+  "baselineRevision": "8161081f43c794f3ddf77c516ccc2a64c8601b16",
+  "currentRevision": "8161081f43c794f3ddf77c516ccc2a64c8601b16",
+  "runtime": {
+    "node": "24.17.0",
+    "pnpm": "9.15.4"
+  },
+  "commands": [
+    {
+      "command": "corepack pnpm check",
+      "exitCode": 0,
+      "rootPassed": 222,
+      "rootSkipped": 2,
+      "rootFailed": 0,
+      "workspaceCoveragePassed": 3159,
+      "workspaceLineFloorsPassed": 8,
+      "serialAuditPassed": 14,
+      "accessibilityPassed": 261
+    },
+    {
+      "command": "node scripts/verify.mjs",
+      "exitCode": 0
+    },
+    {
+      "command": "actionlint .github/workflows/release.yml",
+      "version": "1.7.12",
+      "exitCode": 0
+    },
+    {
+      "command": "scoped local documentation links/anchors",
+      "checked": 25,
+      "exitCode": 0
+    }
+  ],
+  "sourceHashes": {
+    ".github/workflows/release.yml": "e2d43d2bdf3c681a2cccf3aa4683e474b435ac4d333bfaca62ccff4375a3076e",
+    "CONTRIBUTING.md": "4f0ff4268d8e6bcf7df56b8ef0597063c9f7b31a3c48d2042bd75d5cd64541f3",
+    "apps/server/src/app-version.ts": "810b905c1a246d25fce1d2c656e3401ff00a947536edaa73f27dc00e15ac2d07",
+    "apps/server/src/fixtures/app-version.mjs": "03eb71378452f9d091d0e87e9493016124aa609d915d6de08255804bc241529e",
+    "apps/server/src/http/routes/infrastructure-routes.ts": "c8a0d1d3bd6f2e722554ccbdda040d025a0b6885f22555311057ca7aa3065d77",
+    "apps/server/src/mcp/http.ts": "86292d37c038e149e16e839d0176f12ce05bc057b3cbef815548508cab44dbc9",
+    "apps/server/src/services/project-archive.ts": "235d6425a341be4aaf0dd187df111dce3bd7e893e136af20db87e9c3a150e197",
+    "docs/RUNBOOK.md": "46c92c4e5e82515c41a21a66988046ff5e8e5c56facaa0c814f950d3a05746bb",
+    "scripts/app-version.test.mjs": "606ab2c0ad8872725cd12cd2114cf9c6e50286509523417d1a343f5cb064b71b",
+    "scripts/fixtures/app-version-bridge-failure.mjs": "ceda6badcdadba1680b12b133b6085414442bab427c8e58f02ea293e4561914d",
+    "scripts/release-candidate.mjs": "ac2b875e6e3d97d171bfc6bc86875351e1bb373d21c5745e92b21c2169d46457",
+    "scripts/release-cli.test.mjs": "7c70a113760632029dc39d1b3c40c2305fe859cea63eb7033ca5d09d270fc955",
+    "scripts/release-diagnostics.mjs": "f83013cb86f435aa0b85ac2428b54922216321d5977c45f26cf881ae112d2cb3",
+    "scripts/release-notes.md": "aaeea9b2a58708086b9df2d9664c1f4b7cd9df9645cdce11d59e1f115e3dc5f3",
+    "scripts/release-range.test.mjs": "0f36a1b3fcf9382a6f92219f3c2f34330bbfc05a9a1e53ddfe2458e22de6e3ed",
+    "scripts/release.mjs": "90031a3e1a26377650bb68f3d27c8fbe12920e969bc2cd92f2751777f46e688c",
+    "scripts/release.test.mjs": "4b451106e3cc09db91bcca3853487a248e793c1c765b065e70a2e7d1ec48c8a7"
+  },
+  "sourceFingerprint": "4f42c32f201c0c0ebe8999d4101c2e19dbfaeae83c5096dac749114aba310890",
+  "fingerprintRecipe": "SHA256 of sourceHashes JSON with sorted keys and compact separators",
+  "commandStartFilesAndIndexUnchangedThroughVerification": true,
+  "sprint": {
+    "initialWorkingBlob": "3ca10921a23c362cc3eeabc1a030271d7e84ddfd",
+    "initialIndexBlob": "3ca10921a23c362cc3eeabc1a030271d7e84ddfd",
+    "observedWorkingBlob": "3ca10921a23c362cc3eeabc1a030271d7e84ddfd",
+    "observedIndexBlob": "3ca10921a23c362cc3eeabc1a030271d7e84ddfd",
+    "agentWroteOrReverted": false
+  },
+  "publicationReportUnchangedFromCommandStart": true,
+  "review": {
+    "findings": 17,
+    "patchedRows": 11,
+    "patchGroups": 9,
+    "deferred": 1,
+    "rejected": 5,
+    "patchedGroupsByVerdict": {
+      "high": 1,
+      "medium": 7,
+      "low": 1
+    },
+    "followupRecommended": true,
+    "secondPostPatchReviewPerformed": false
+  },
+  "limits": [
+    "No real tag, push, release, history rewrite or commit performed.",
+    "Hosted three-platform execution, tag protection and native acceptance remain unverified.",
+    "Current publication evidence remains blocked/stale; declarations, history disposition, privacy/rights and later contributor material require maintainer resolution and a fresh exact-candidate scan.",
+    "Compiled tests exercise emitted modules with explicit fixture aliases/assets/dependencies; they do not certify an independently packaged plain-Node runtime.",
+    "New bridge-failure tests passed locally; real hosted/platform startup timing is not established.",
+    "OpenWolf rescan was partial (642 visited); existing unvisited entries were retained and full-index freshness was not advanced."
+  ],
+  "contextIndex": {
+    "command": "openwolf scan",
+    "exitCode": 0,
+    "visited": 642,
+    "partial": true,
+    "unvisitedRetained": true,
+    "freshnessAdvanced": false
+  }
+}

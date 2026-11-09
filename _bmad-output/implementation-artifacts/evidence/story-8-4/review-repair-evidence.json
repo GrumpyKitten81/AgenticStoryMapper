@@ -1,0 +1,36 @@
+{
+  "focused_logs": [
+    {
+      "log": "review-fix-actionlint.log.gz",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "decoded_sanitized_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressed_sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "log": "review-fix-audit-tests.log.gz",
+      "original_sha256": "dcd0fb274f62f71426a0a05718bb0a459fb04ab739630a782d09852b27803d95",
+      "decoded_sanitized_sha256": "dcd0fb274f62f71426a0a05718bb0a459fb04ab739630a782d09852b27803d95",
+      "compressed_sha256": "aab9b65cd206eafdeb8d07e3e46035975c46f520a092e949be88c69c08a2031a"
+    },
+    {
+      "log": "renderer-mutation.log.gz",
+      "original_sha256": "ec58ec7349115253b77846ba0a6eb12cfb27f0ecebe49604d6e502d42e87a0e4",
+      "decoded_sanitized_sha256": "ec58ec7349115253b77846ba0a6eb12cfb27f0ecebe49604d6e502d42e87a0e4",
+      "compressed_sha256": "ad579ac49a7cbf7eb9784fc14c0c272b787e2851c50645cb04c571e191bbc42f"
+    }
+  ],
+  "mutation_expected_exit": 1,
+  "mutation_assertion": "literal false-clean reports fail the CLI tests",
+  "corepack": {
+    "version": "0.35.0",
+    "engines": {
+      "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
+    },
+    "source": "https://registry.npmjs.org/corepack/0.35.0"
+  },
+  "history_reproduction": {
+    "full_history_detects_env": true,
+    "depth_one_detects_env": false,
+    "contains_credentials": false
+  }
+}

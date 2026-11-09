@@ -1,0 +1,30 @@
+{
+  "command": "corepack pnpm --filter @storymapper/server exec vitest run src/mcp/tools/complete-surface.test.ts",
+  "passed": 30,
+  "failed": 0,
+  "fixed_runtime_gaps": [
+    {
+      "files": [
+        "apps/server/src/http/routes/index.ts",
+        "apps/server/src/http/routes/infrastructure-routes.ts"
+      ],
+      "cause": "Custom HTTP MCP registry omitted the actual served-origin callback.",
+      "fix": "Thread the route origin into registry ApplicationDeps; actual ephemeral-listener Dry Run and push body assertions verify its deep-link origin."
+    },
+    {
+      "file": "apps/server/src/mcp/tools/project-scopes.ts",
+      "cause": "Canonical detachment audits use externalRef.detached, so history scope ownership lookup ignored detached reference evidence.",
+      "fix": "Recognize explicit canonical detachment events for historical Project authorization only; current identity continues to resolve exclusively from live refs."
+    }
+  ],
+  "fixture_ports": [
+    "Canonical historical githubExternalRef operations replace removed legacy githubLink commands.",
+    "Repository refuses foreign sync scope; explicit deliberately inconsistent stored sync association retains read-side defense-in-depth oracle.",
+    "GitHub identity changes specify agreeing canonical URL/repository/Issue number.",
+    "Listening-server fixture now derives actual origin rather than injecting a fixed port."
+  ],
+  "limits": [
+    "No live GitHub or native browser acceptance.",
+    "No full workspace gate repeated."
+  ]
+}

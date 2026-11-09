@@ -1,0 +1,42 @@
+import { createHash } from "node:crypto";
+import { expect, it, vi } from "vitest";
+import { actor, remotePushFixture } from "@storymapper/server/fixtures/remote-push-execution";
+import { createWorkItemProvider } from "@storymapper/github";
+import { buildWorkItemSyncHealthReport } from "@storymapper/core";
+
+vi.mock("@storymapper/github", async (original) => ({ ...await original<typeof import("@storymapper/github")>(), createWorkItemProvider: vi.fn() }));
+vi.mock("@storymapper/server/services/credentials", () => ({ resolveProviderAuth: vi.fn(async (connection) => ({ connection, auth: {} })) }));
+
+it("observes parent evidence before and after a reviewed Issue update", async () => {
+  const data = remotePushFixture(1);
+  const card = data.cards[0]!;
+  const remote = { remoteId: "1", remoteNumber: 1, url: "https://github.com/reviewed/fixture/issues/1", title: card.title, body: card.description, state: "open", labels: [], issueType: "Task", parentNumber: 42 };
+  data.issues.push(remote);
+  data.unitOfWork.run(actor, ({ repository }) => repository.bindRemoteWorkItemLink({ connectionId: data.connection.id, provider: "github", cardId: card.id, remoteId: remote.remoteId, url: remote.url, labels: [], remoteParentNumber: remote.parentNumber, syncState: "synced" }));
+  const before = data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.remoteParentNumber;
+  const plan = await data.prepare();
+  expect(plan.plan.blockers).toEqual([]);
+  const result = await data.execute(plan.plan.id);
+  const after = data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.remoteParentNumber;
+  expect(result.execution.items.every((item) => item.state === "succeeded")).toBe(true);
+  expect(before).toBe(42);
+  expect(after).toBeNull();
+  console.log("RETRO_OBSERVATION", JSON.stringify({ scenario: "reviewed-issue-parent-evidence", before, after, effects: result.execution.items.map((item) => item.state) }));
+});
+
+it("observes Release-only goal and released changes through the real health projection", async () => {
+  const data = remotePushFixture(1);
+  const release = data.unitOfWork.run(actor, ({ repository }) => repository.createRelease({ storyMapId: data.map.id, name: "Release 1", goal: "Authored body 1" }));
+  const plan = await data.prepare([], release.id);
+  expect(plan.plan.blockers).toEqual([]);
+  await data.execute(plan.plan.id);
+  const health = () => buildWorkItemSyncHealthReport(data.repository.getWorkItemSyncHealthData(data.map.id), (value) => createHash("sha256").update(value).digest("hex"));
+  expect(health().links.find((link) => link.releaseId === release.id)!.syncState).toBe("synced");
+  data.unitOfWork.run(actor, ({ repository }) => repository.updateRelease(release.id, { goal: "Remote body" }));
+  const afterGoal = health().links.find((link) => link.releaseId === release.id)!.syncState;
+  data.unitOfWork.run(actor, ({ repository }) => repository.updateRelease(release.id, { released: true }));
+  const afterReleased = health().links.find((link) => link.releaseId === release.id)!.syncState;
+  expect(afterGoal).toBe("synced");
+  expect(afterReleased).toBe("synced");
+  console.log("RETRO_OBSERVATION", JSON.stringify({ scenario: "release-goal-released-health", afterGoal, afterReleased, persistedRelease: data.repository.getRelease(release.id), remoteMilestone: data.milestones[0] }));
+});

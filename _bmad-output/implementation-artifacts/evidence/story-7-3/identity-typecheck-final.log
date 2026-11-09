@@ -1,0 +1,25 @@
+Scope: 8 of 9 workspace projects
+packages/contracts typecheck$ tsc -p tsconfig.json --noEmit
+packages/contracts typecheck: Done
+apps/web typecheck$ tsc -p tsconfig.json --noEmit
+packages/importers typecheck$ tsc -p tsconfig.json --noEmit
+packages/core typecheck$ tsc -p tsconfig.json --noEmit
+packages/github typecheck$ tsc -p tsconfig.json --noEmit
+packages/importers typecheck: Done
+packages/mcp typecheck$ tsc -p tsconfig.json --noEmit
+packages/github typecheck: Done
+packages/mcp typecheck: Done
+packages/core typecheck: Done
+apps/web typecheck: Done
+packages/db typecheck$ tsc -p tsconfig.json --noEmit
+packages/db typecheck: Done
+apps/server typecheck$ tsc -p tsconfig.json --noEmit
+apps/server typecheck: src/mcp/tools/register-tools.test.ts(136,7): error TS2353: Object literal may only specify known properties, and 'syncState' does not exist in type '{ repo: string; url: string; cardId?: string | undefined; releaseId?: string | undefined; issueNumber?: number | undefined; apply?: boolean | undefined; }'.
+apps/server typecheck: src/services/sync-review.test.ts(394,68): error TS2783: 'localOrigin' is specified more than once, so this usage will be overwritten.
+apps/server typecheck: src/services/sync-review.test.ts(398,68): error TS2783: 'localOrigin' is specified more than once, so this usage will be overwritten.
+apps/server typecheck: src/services/sync-review.test.ts(402,68): error TS2783: 'localOrigin' is specified more than once, so this usage will be overwritten.
+apps/server typecheck: src/services/work-item-sync.ts(556,124): error TS2353: Object literal may only specify known properties, and 'localOrigin' does not exist in type 'Omit<{ storyMapId: string; connectionId: string; confirm: true; cardIds?: string[] | undefined; releaseId?: string | null | undefined; parentIssueNumber?: number | undefined; apply?: boolean | undefined; }, "confirm">'.
+apps/server typecheck: Failed
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/server@0.1.0 typecheck: `tsc -p tsconfig.json --noEmit`
+Exit status 2

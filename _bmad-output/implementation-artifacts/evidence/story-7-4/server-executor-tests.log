@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/services/remote-push-execution.test.ts (36 tests) 2225ms
+   ✓ reopens twelve reviewed Issues after the sixth remote effect loses its local outcome and resumes without duplication 366ms
+
+ Test Files  1 passed (1)
+      Tests  36 passed (36)
+   Start at  03:36:34
+   Duration  3.13s (transform 407ms, setup 0ms, collect 721ms, tests 2.23s, environment 0ms, prepare 31ms)

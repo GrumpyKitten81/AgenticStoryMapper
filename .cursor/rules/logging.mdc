@@ -1,0 +1,14 @@
+---
+description: Diagnostic logging without duplicate errors or private payloads
+globs: "**/*.ts,**/*.tsx,**/*.js,**/*.mjs"
+alwaysApply: false
+---
+
+# Logging
+
+- In `apps/server`, use Fastify's server, plugin or request logger; add no separate logging library or wrapper.
+- Log failures once at the boundary that handles them. Throwing an error does not itself require a log; avoid duplicate logs in helpers and their callers.
+- Log the operation and safe diagnostic context, not raw requests, Card/document contents, credentials, tokens or identifying local paths. Keep existing redaction and audit controls intact.
+- Do not add entry/exit tracing, logger-availability checks or configurable log levels without a concrete diagnostic need.
+- Keep pure domain logic free of logging side effects. CLI scripts may print their intended user-facing results and actionable diagnostics using their existing output helpers.
+- Use the existing logger's levels and plain text messages without symbols or images.

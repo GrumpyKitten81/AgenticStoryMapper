@@ -1,0 +1,86 @@
+{
+  "intent_sha256": "905d28b2eb16492a7dde270271aa285f39ee113bbc756a95c67904c81a44e2b0",
+  "command": "corepack pnpm test",
+  "artifact": "parent-review-root-test-final.log",
+  "exit_code": 0,
+  "unique_tests": 2659,
+  "matrix": [
+    {
+      "row": "Duplicate identity",
+      "tests": [
+        "apps/server/src/mcp/github-command-sdk.test.ts",
+        "packages/db/src/repositories/canonical-github-identity.test.ts"
+      ],
+      "status": "ran-and-passed-in-independent-root-run"
+    },
+    {
+      "row": "Evidence",
+      "tests": [
+        "packages/db/src/repositories/card-provenance.test.ts",
+        "packages/db/src/repositories/canonical-github-identity.test.ts",
+        "apps/web/src/features/story-map/components/card-provenance.test.ts"
+      ],
+      "status": "ran-and-passed-in-independent-root-run"
+    },
+    {
+      "row": "Hard delete",
+      "tests": [
+        "packages/db/src/repositories/canonical-github-identity.test.ts"
+      ],
+      "status": "ran-and-passed-in-independent-root-run"
+    },
+    {
+      "row": "Nondelete lifecycle",
+      "tests": [
+        "packages/db/src/repositories/canonical-github-identity.test.ts"
+      ],
+      "status": "ran-and-passed-in-independent-root-run"
+    },
+    {
+      "row": "Provider read",
+      "tests": [
+        "packages/github/src/providers/github-provider.test.ts",
+        "apps/server/src/application/sync/github-command-regressions.test.ts"
+      ],
+      "status": "ran-and-passed-in-independent-root-run"
+    },
+    {
+      "row": "Footer",
+      "tests": [
+        "packages/core/src/publishing/github-footer.test.ts",
+        "apps/server/src/config/served-origin.test.ts",
+        "apps/server/src/mcp/tools/complete-surface.test.ts"
+      ],
+      "status": "ran-and-passed-in-independent-root-run"
+    },
+    {
+      "row": "Archive / Restore",
+      "tests": [
+        "packages/db/src/snapshot.test.ts",
+        "packages/db/src/restore-project.test.ts",
+        "apps/server/src/services/project-archive.test.ts"
+      ],
+      "status": "ran-and-passed-in-independent-root-run"
+    },
+    {
+      "row": "Old operations",
+      "tests": [
+        "packages/contracts/src/schemas/operation-schema-version.test.ts",
+        "packages/db/src/operation-schema-transition.test.ts"
+      ],
+      "status": "ran-and-passed-in-independent-root-run"
+    }
+  ],
+  "detailed_names": [
+    "storage-verification-matrix.json",
+    "operations-verification-matrix.json"
+  ],
+  "native_boundary": "native-acceptance.json",
+  "review_regressions": [
+    "main-review-repairs-summary.json",
+    "main-review-sequential-owner-db.log",
+    "storage-archive-review-repairs-summary.json",
+    "operations-review-footer.log",
+    "operations-review-provider.log"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-20",
+  "node": "24.17.0",
+  "command": "node --test scripts/check-publication.test.mjs",
+  "exit": 0,
+  "total": 23,
+  "passed": 21,
+  "failed": 0,
+  "skipped": 2,
+  "limitation": "Native filesystem rejects invalid-byte fixture creation; malformed raw-byte/tree refusal tests pass.",
+  "originalStreamSha256": "80e5f0b73fbbdbfc359de7bb4700a630caba5fedb31b44ae9b92042f6df944bb",
+  "sanitizedDecodedSha256": "80e5f0b73fbbdbfc359de7bb4700a630caba5fedb31b44ae9b92042f6df944bb",
+  "sanitizedGzipSha256": "fbb45d34659e400e928ea0c891be26b134ad356c979d0ae49b0bb903a24b184f",
+  "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/parent-publication.sanitized.log.gz",
+  "sanitization": "Local home prefix and transient employer terms replaced before retention."
+}

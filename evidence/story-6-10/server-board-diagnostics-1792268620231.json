@@ -1,0 +1,65 @@
+{
+  "measuredAt": "2026-10-17T20:23:40.231Z",
+  "environment": {
+    "node": "v24.17.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "27.0.0",
+    "cpu": "Apple M3 Ultra",
+    "runner": "Vitest source transform; Fastify inject; real SQLite WAL",
+    "build": "TypeScript source, no native socket/network",
+    "nativePaint": false
+  },
+  "fixture": {
+    "cards": 1000,
+    "activities": 1,
+    "steps": 1,
+    "stories": 998,
+    "values": "fixed labels/positions; generated repository UUIDs/timestamps",
+    "storage": "fresh temporary SQLite database"
+  },
+  "coldWarm": "cold is first operation on fresh fixture, not OS cache eviction; warm is subsequent operation",
+  "timingAcceptanceGate": false,
+  "durability": "functional assertions verify mutation samples after database close/reopen outside timers; suite failures remain failures",
+  "samples": [
+    {
+      "boundary": "Fastify inject GET full map through serialized response",
+      "phase": "cold-first-read",
+      "milliseconds": 47.56874999999991,
+      "referenceMilliseconds": 150
+    },
+    {
+      "boundary": "Fastify inject GET full map through serialized response",
+      "phase": "warm-1",
+      "milliseconds": 38.65008399999988,
+      "referenceMilliseconds": 150
+    },
+    {
+      "boundary": "Fastify inject GET full map through serialized response",
+      "phase": "warm-2",
+      "milliseconds": 38.75783299999989,
+      "referenceMilliseconds": 150
+    },
+    {
+      "boundary": "Fastify inject versioned PATCH through SQLite commit and serialized response",
+      "phase": "cold-first-mutation",
+      "milliseconds": 69.10200000000032,
+      "referenceMilliseconds": 30,
+      "version": 2
+    },
+    {
+      "boundary": "Fastify inject versioned PATCH through SQLite commit and serialized response",
+      "phase": "warm-1",
+      "milliseconds": 3.778291999999965,
+      "referenceMilliseconds": 30,
+      "version": 2
+    },
+    {
+      "boundary": "Fastify inject versioned PATCH through SQLite commit and serialized response",
+      "phase": "warm-2",
+      "milliseconds": 2.3311249999997017,
+      "referenceMilliseconds": 30,
+      "version": 2
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/customization-impact.test.ts (13 tests) 371ms
+ ❯ src/repositories/getting-started.test.ts (31 tests | 1 failed) 620ms
+   × logical sample removal > preserves customizations, settings, cross-map links and roadmap references across reopen 39ms
+     → expected [Function] to throw an error
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/repositories/getting-started.test.ts > logical sample removal > preserves customizations, settings, cross-map links and roadmap references across reopen
+AssertionError: expected [Function] to throw an error
+
+- Expected:
+null
+
++ Received:
+undefined
+
+ ❯ src/repositories/getting-started.test.ts:483:230
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 43 passed (44)
+   Start at  19:54:54
+   Duration  1.45s (transform 376ms, setup 0ms, collect 1.28s, tests 991ms, environment 0ms, prepare 58ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/packages/db:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/repositories/customization-impact.test.ts src/repositories/getting-started.test.ts

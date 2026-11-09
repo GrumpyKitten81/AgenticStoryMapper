@@ -1,0 +1,19 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/http/routes/customization-management.test.ts (3 tests) 439ms
+ ✓ src/application/changeset/historical-changesets.test.ts (11 tests) 521ms
+ ✓ src/mcp/adapter.test.ts (4 tests) 993ms
+   ✓ preserves persisted unrelated Card, Release and Persona fields through empty and sparse MCP patches 389ms
+ ✓ src/http/routes/base-version-conflicts.test.ts (16 tests) 1224ms
+ ✓ src/http/routes/getting-started.test.ts (15 tests) 1263ms
+ ✓ src/mcp/tools/delivery-status.test.ts (20 tests) 2537ms
+   ✓ applies mixed delivery atomically on http with durable actual actor, history, isolated baselines and live updates 397ms
+ ✓ src/mcp/tools/complete-surface.test.ts (30 tests) 3957ms
+   ✓ executes Story Map, Roadmap children, customization, source, report and export capabilities 1220ms
+   ✓ executes the remaining local MCP adapters with valid arguments and persisted effects 370ms
+
+ Test Files  7 passed (7)
+      Tests  99 passed (99)
+   Start at  19:49:34
+   Duration  6.55s (transform 1.75s, setup 0ms, collect 16.46s, tests 10.93s, environment 1ms, prepare 257ms)

@@ -1,0 +1,20 @@
+Re-implement Story 3.10 (live board updates) in C:\Local\github\StoryMapper from scratch. All prior untracked source was lost; nothing is in git history.
+
+AUTHORITATIVE SPEC: _bmad-output/implementation-artifacts/spec-3-10-live-board-updates.md — read the full intent contract, matrix, review triage repairs, and "Changed files" table. Recreate every listed file and wire-up edit.
+
+BASELINE: origin/main app code (~84e0df91). Do NOT write/revert sprint-status.yaml. Leave caller-owned staged spec-3-11 and deferred-work.md untouched unless compile requires. No commit, no push.
+
+MUST RECREATE (non-exhaustive): packages/contracts/src/events/live-events*.ts, packages/db/src/live-events*.ts, live-change-tracking.ts, apps/server/src/http/live-events*.ts, request-origin.ts, apps/web/src/app/live/*, plus all modified files in spec Changed files table.
+
+REVIEW TRIAGE BEHAVIOR (must implement): hold-start cancels in-flight refetch; leader flag cleared in finally; deleted card retains editor draft; parser cancels reader on malformed/large frames; 30s byte-idle deadline; replay stays active until all pending batches drain; non-map live hooks disable focus/reconnect refetch; failed invalidation must not advance cursor; Product Context/Persona/CardDetail draft baselines; functional relay/handoff tests; runtime-lifecycle test "reclaims an actual dead server" timeout 30_000ms and tolerate EPERM on Windows loser output.
+
+VERIFICATION (all must pass before you stop):
+corepack pnpm typecheck
+corepack pnpm lint
+corepack pnpm --filter @storymapper/contracts test
+corepack pnpm --filter @storymapper/core test
+corepack pnpm --filter @storymapper/mcp test
+corepack pnpm --filter @storymapper/server test -- src/mcp src/services/project-archive.test.ts
+Run focused live-events / web live / card-detail tests if web suite fails.
+
+When done, print: (1) count of files from Changed files table that exist, (2) test pass summary for each verify command.

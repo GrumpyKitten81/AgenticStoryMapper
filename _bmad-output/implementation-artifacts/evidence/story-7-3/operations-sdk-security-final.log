@@ -1,0 +1,9 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/mcp/github-command-sdk.test.ts (13 tests) 1065ms
+
+ Test Files  1 passed (1)
+      Tests  13 passed (13)
+   Start at  02:02:41
+   Duration  2.19s (transform 520ms, setup 0ms, collect 947ms, tests 1.06s, environment 0ms, prepare 30ms)

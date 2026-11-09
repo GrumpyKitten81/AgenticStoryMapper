@@ -1,0 +1,64 @@
+{
+  "start_revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "source_files": 3328,
+  "source_unchanged": true,
+  "changed_paths": [],
+  "semantic_index_unchanged": true,
+  "raw_index_unchanged": true,
+  "revision_unchanged": true,
+  "commands": [
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "check"
+      ],
+      "runtime": "Node24.17.0/pnpm9.15.4",
+      "environment": {
+        "PATH": "<installed Node24 bin>:$PATH",
+        "TMPDIR": "<task-owned temporary directory>",
+        "GIT_OPTIONAL_LOCKS": "0",
+        "TSX_DISABLE_CACHE": "absent; caching enabled"
+      },
+      "exit": 0,
+      "duration_seconds": 691.5230445419438,
+      "log": {
+        "artifact": "parent-aggregate.log.gz",
+        "original_sha256": "d90df58e9ff5a242a38eaceabb361b0472dd9f1efb5a3f1b1a59c320b9b71dac",
+        "sanitized_decoded_sha256": "94cd1cb3770dbca58b2c3dc810848cc600116cb4e44be67859b7b9a76826f63d",
+        "compressed_sha256": "bfaed34e56e76b7ddcd79107d0111af0f92fa06083df0ac8b1809e51e71449a1",
+        "redaction": "Project, home and task-temp paths replaced; original remains transient. No original hash reconstruction claim."
+      }
+    },
+    {
+      "command": [
+        "node",
+        "scripts/verify.mjs"
+      ],
+      "runtime": "Node24.17.0/pnpm9.15.4",
+      "environment": {
+        "PATH": "<installed Node24 bin>:$PATH",
+        "TMPDIR": "<task-owned temporary directory>",
+        "GIT_OPTIONAL_LOCKS": "0",
+        "TSX_DISABLE_CACHE": "absent; caching enabled"
+      },
+      "exit": 0,
+      "duration_seconds": 55.25368941714987,
+      "log": {
+        "artifact": "parent-verifier.log.gz",
+        "original_sha256": "92b0d1322978f1110228f3eba6e36e7fc4982af396763655af053cfebed46acf",
+        "sanitized_decoded_sha256": "b66d61c506803aa8046c60fba7b9c9b6c7f5c86e9a427c4b6f59e19dcc1c9c07",
+        "compressed_sha256": "b9bf9696048ee469df838dfde1745da389bf873e1c58a2e7a0e3e5b5b848813a",
+        "redaction": "Project, home and task-temp paths replaced; original remains transient. No original hash reconstruction claim."
+      }
+    }
+  ],
+  "parent-command-start": {
+    "decoded_sha256": "2ec58d031b9dce300ecc87085e391b6764929b9085323e3214b48d0fe158876f",
+    "compressed_sha256": "d9f889d5769202d58606efe556fb9660038f461f1594c57684b6a8f415222496"
+  },
+  "parent-command-end": {
+    "decoded_sha256": "2ec58d031b9dce300ecc87085e391b6764929b9085323e3214b48d0fe158876f",
+    "compressed_sha256": "d9f889d5769202d58606efe556fb9660038f461f1594c57684b6a8f415222496"
+  }
+}

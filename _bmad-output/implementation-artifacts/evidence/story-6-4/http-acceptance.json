@@ -1,0 +1,173 @@
+{
+  "surface": "actual TCP HTTP",
+  "storage": "disposable external temporary fixture",
+  "mapId": "d148787f-4c32-4c6c-a700-50e951dcc525",
+  "projectId": "53964b92-352c-430b-afd0-2c98be2e2946",
+  "records": [
+    {
+      "case": "bulk patch two stale roots aborts complete target set",
+      "status": 409,
+      "conflicts": [
+        {
+          "entity": "card",
+          "id": "e7ccffa2-ef91-4a63-947e-a66bcdb38005",
+          "baseVersion": 1,
+          "currentVersion": 2,
+          "current": {
+            "creationOrigin": "manual",
+            "provenance": "manual",
+            "id": "e7ccffa2-ef91-4a63-947e-a66bcdb38005",
+            "version": 2,
+            "storyMapId": "d148787f-4c32-4c6c-a700-50e951dcc525",
+            "parentId": null,
+            "releaseId": null,
+            "key": "LSM-7",
+            "level": "story",
+            "title": "Bulk selected visible",
+            "description": "Concurrent edit",
+            "position": 4,
+            "status": "todo",
+            "parked": false,
+            "createdAt": "2026-10-17T13:23:31.761Z",
+            "updatedAt": "2026-10-17T13:23:31.769Z"
+          }
+        },
+        {
+          "entity": "card",
+          "id": "d725ab44-68a9-4838-bb93-aeae26615816",
+          "baseVersion": 1,
+          "currentVersion": 2,
+          "current": {
+            "creationOrigin": "manual",
+            "provenance": "manual",
+            "id": "d725ab44-68a9-4838-bb93-aeae26615816",
+            "version": 2,
+            "storyMapId": "d148787f-4c32-4c6c-a700-50e951dcc525",
+            "parentId": null,
+            "releaseId": null,
+            "key": "LSM-8",
+            "level": "story",
+            "title": "Bulk selected hidden",
+            "description": "Concurrent edit",
+            "position": 5,
+            "status": "todo",
+            "parked": false,
+            "createdAt": "2026-10-17T13:23:31.764Z",
+            "updatedAt": "2026-10-17T13:23:31.772Z"
+          }
+        }
+      ]
+    },
+    {
+      "case": "complete selected patch with hidden representative and Note",
+      "status": 200,
+      "cards": [
+        {
+          "id": "e7ccffa2-ef91-4a63-947e-a66bcdb38005",
+          "baseVersion": 3
+        },
+        {
+          "id": "d725ab44-68a9-4838-bb93-aeae26615816",
+          "baseVersion": 3
+        },
+        {
+          "id": "db35e1b3-ec04-425f-adc6-d4d38d8b3b2f",
+          "baseVersion": 2
+        }
+      ]
+    },
+    {
+      "case": "Archive retains Cards distinct from permanent Delete",
+      "status": 200,
+      "ids": [
+        "e7ccffa2-ef91-4a63-947e-a66bcdb38005",
+        "d725ab44-68a9-4838-bb93-aeae26615816",
+        "db35e1b3-ec04-425f-adc6-d4d38d8b3b2f"
+      ]
+    },
+    {
+      "case": "atomic Delete two stale selected overlapping roots",
+      "status": 409,
+      "conflicts": [
+        {
+          "entity": "card",
+          "id": "91013ef7-adce-487b-90db-c35ec2ecb99e",
+          "baseVersion": 1,
+          "currentVersion": 2,
+          "current": {
+            "creationOrigin": "manual",
+            "provenance": "manual",
+            "id": "91013ef7-adce-487b-90db-c35ec2ecb99e",
+            "version": 2,
+            "storyMapId": "d148787f-4c32-4c6c-a700-50e951dcc525",
+            "parentId": null,
+            "releaseId": null,
+            "key": "LSM-10",
+            "level": "activity",
+            "title": "Delete overlap parent",
+            "description": "Concurrent edit",
+            "position": 7,
+            "status": "todo",
+            "parked": false,
+            "createdAt": "2026-10-17T13:23:31.804Z",
+            "updatedAt": "2026-10-17T13:23:31.814Z"
+          },
+          "operationId": "c1f9d39a-d7bd-4955-be8f-bf99010dcd7b",
+          "index": 0
+        },
+        {
+          "entity": "card",
+          "id": "e0ac518a-ecf9-40a8-822b-4ad82e9df09e",
+          "baseVersion": 1,
+          "currentVersion": 2,
+          "current": {
+            "creationOrigin": "manual",
+            "provenance": "manual",
+            "id": "e0ac518a-ecf9-40a8-822b-4ad82e9df09e",
+            "version": 2,
+            "storyMapId": "d148787f-4c32-4c6c-a700-50e951dcc525",
+            "parentId": "91013ef7-adce-487b-90db-c35ec2ecb99e",
+            "releaseId": null,
+            "key": "LSM-11",
+            "level": "step",
+            "title": "Delete overlap selected child",
+            "description": "Concurrent edit",
+            "position": 0,
+            "status": "todo",
+            "parked": false,
+            "createdAt": "2026-10-17T13:23:31.806Z",
+            "updatedAt": "2026-10-17T13:23:31.816Z"
+          },
+          "operationId": "c1f9d39a-d7bd-4955-be8f-bf99010dcd7b",
+          "index": 0
+        }
+      ]
+    },
+    {
+      "case": "overlap Delete removes explicit set once and retains unselected descendant",
+      "status": 200,
+      "deleted": [
+        "91013ef7-adce-487b-90db-c35ec2ecb99e",
+        "e0ac518a-ecf9-40a8-822b-4ad82e9df09e"
+      ],
+      "survivor": {
+        "creationOrigin": "manual",
+        "provenance": "manual",
+        "id": "a64c4cf6-c64f-4ab1-b97c-6f8086df15e2",
+        "version": 2,
+        "storyMapId": "d148787f-4c32-4c6c-a700-50e951dcc525",
+        "parentId": null,
+        "releaseId": null,
+        "key": "LSM-12",
+        "level": "note",
+        "title": "Delete overlap surviving descendant",
+        "description": "",
+        "position": 1,
+        "status": "todo",
+        "parked": false,
+        "createdAt": "2026-10-17T13:23:31.808Z",
+        "updatedAt": "2026-10-17T13:23:31.847Z"
+      }
+    }
+  ]
+}

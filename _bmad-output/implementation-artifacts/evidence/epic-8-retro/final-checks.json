@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-21T19:25:42.712688+00:00",
+  "productRevision": "ec7348dc4524918c68d26b3d47e1035d012d6a46",
+  "retrospectiveSha256": "480247d3e3533b67d69474be0e91ff1b1941d7886af45ec16d09591182456e80",
+  "checks": {
+    "documentLinksExist": true,
+    "protectedWorkingAndIndexUnchanged": true,
+    "HEADUnchanged": true,
+    "runStateAndJournalUnchanged": true,
+    "trackedChangesOnlyOpenWolf": true,
+    "nothingStaged": true,
+    "privateRawEvidenceIgnored": true,
+    "retentionChainsMatch": true,
+    "supplementalDigestsMatch": true,
+    "fullDiffMatches": true,
+    "verdictAndActionCountConsistent": true,
+    "JSONFilesParse": true,
+    "newEvidenceContainsNoActualLocalHome": true
+  },
+  "scope": "Artifact consistency and no-mutation checks; not a final publication clearance or full product aggregate."
+}

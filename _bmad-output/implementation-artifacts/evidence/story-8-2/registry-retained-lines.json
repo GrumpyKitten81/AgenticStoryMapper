@@ -1,0 +1,102 @@
+{
+  "drizzle-kit": {
+    "source": "https://registry.npmjs.org/drizzle-kit",
+    "latestStableLine": "0.31.11",
+    "distTags": {
+      "numeric-modes": "1.0.0-beta.1-867d080",
+      "rqb-v1-schema-fix": "1.0.0-beta.1-b96a4f8",
+      "rqb-typeperf": "1.0.0-beta.1-69a2ca0",
+      "effect": "1.0.0-beta.1-cdf226f",
+      "workflows": "1.0.0-beta.1-37e2608",
+      "sqlite-cloud-studio": "1.0.0-beta.1-bc61bbe",
+      "beta-next-pack": "1.0.0-beta.1-140e6cc",
+      "alternation-engine": "1.0.0-beta.2-6565b14",
+      "kit-cli-wrong-config-hints": "1.0.0-beta.2-a1a6b39",
+      "studio-benchmark": "1.0.0-beta.2-01787d6",
+      "rqb-perf-patch": "1.0.0-beta.2-f9236e3",
+      "kit-duckdb": "1.0.0-beta.3-d4ff358",
+      "mysql-blob-rqb-v2-fix": "1.0.0-beta.5-e0482ac",
+      "beta-fixes": "1.0.0-beta.6-7419dcb",
+      "beelink": "1.0.0-beta.9-c26fd2f",
+      "effect3": "1.0.0-beta.9-635dfc2",
+      "effect-fixes": "1.0.0-beta.10-9f1399e",
+      "bun-timestampstring-patch": "1.0.0-beta.10-4a698ad",
+      "drizzle-seed/bug-fixes": "1.0.0-beta.10-7f0f68a",
+      "issues": "1.0.0-beta.11-165921d",
+      "effect-cache-fix": "1.0.0-beta.11-88ca292",
+      "data-migrator": "1.0.0-beta.11-c3fb442",
+      "update/migrator-strategy": "1.0.0-beta.12-5845444",
+      "drizzle-effect": "1.0.0-beta.13-f16bdca",
+      "pg-prepare-nameless": "1.0.0-beta.13-4ef3fca",
+      "kit-introspect": "1.0.0-beta.13-ba3365d",
+      "effect-validator": "1.0.0-beta.14-56118cc",
+      "sql-explicit-origin": "1.0.0-beta.15-90d1d1a",
+      "beta.16": "1.0.0-beta.16-2ffd1a5",
+      "node-sqlite": "1.0.0-beta.16-c2458b2",
+      "sqlite-indexes": "1.0.0-beta.16-501e9b2",
+      "beta.17": "1.0.0-beta.17-160831b",
+      "kit/node-sqlite": "1.0.0-beta.17-8a36f93",
+      "fix-duckdb": "1.0.0-beta.17-c09bdc5",
+      "latest": "0.31.11",
+      "fix-jiti-tsconfig-paths": "1.0.0-beta.18-905b79a",
+      "query-comments": "1.0.0-beta.19-dca1773",
+      "conditions-wrap": "1.0.0-beta.19-c49995f",
+      "beta21": "1.0.0-beta.21-b0c345d",
+      "casing-rework": "1.0.0-beta.21-3269112",
+      "issues2": "1.0.0-beta.22-17a476d",
+      "beta": "1.0.0-beta.22",
+      "netlify-constructor": "1.0.0-beta.22-d23690d",
+      "revert-netlify": "1.0.0-beta.23-c10d10c",
+      "codecs": "1.0.0-beta.23-5d05836",
+      "pg-introspect": "1.0.0-rc.1-929a083",
+      "rc1-fixes": "1.0.0-rc.2-8feace6",
+      "turso-sls": "1.0.0-rc.2-640c81e",
+      "jiti-import-fix": "1.0.0-rc.2-67a3509",
+      "mysql-update": "1.0.0-rc.2-2be6d1e",
+      "rc4": "1.0.0-rc.4-5d5b77c",
+      "ai": "1.0.0-rc.3-abc2ef6",
+      "sqlite-update": "1.0.0-rc.4-ca0f029",
+      "rc": "1.0.0-rc.4",
+      "rc5": "1.0.0-rc.5-5935859"
+    },
+    "dependencies": {
+      "tsx": "^4.21.0",
+      "esbuild": "^0.25.4",
+      "@drizzle-team/brocli": "^0.10.2",
+      "@esbuild-kit/esm-loader": "^2.5.5"
+    }
+  },
+  "@fastify/static": {
+    "source": "https://registry.npmjs.org/@fastify/static",
+    "latestStableLine": "9.3.0",
+    "distTags": {
+      "next": "8.0.0",
+      "latest": "10.1.6"
+    },
+    "dependencies": {
+      "glob": "^13.0.0",
+      "fastq": "^1.17.1",
+      "@fastify/send": "^4.0.0",
+      "fastify-plugin": "^6.0.0",
+      "content-disposition": "^1.0.1",
+      "@fastify/accept-negotiator": "^2.0.0"
+    }
+  },
+  "@fastify/multipart": {
+    "source": "https://registry.npmjs.org/@fastify/multipart",
+    "latestStableLine": "9.4.0",
+    "distTags": {
+      "six": "6.0.1",
+      "next": "9.0.0",
+      "eight": "8.3.1",
+      "latest": "10.1.4"
+    },
+    "dependencies": {
+      "@fastify/error": "^4.0.0",
+      "fastify-plugin": "^5.0.0",
+      "@fastify/busboy": "^3.0.0",
+      "secure-json-parse": "^4.0.0",
+      "@fastify/deepmerge": "^3.0.0"
+    }
+  }
+}

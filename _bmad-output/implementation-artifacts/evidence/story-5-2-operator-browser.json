@@ -1,0 +1,172 @@
+{
+  "story": "5.2",
+  "date": "2026-10-15",
+  "implementationCommit": "9505074",
+  "testedHead": "582f671c8df7700c05c3669f61def398c2682041",
+  "outcome": "accepted-with-maintainer-exceptions",
+  "scope": "Current HEAD including committed Stories5.3/5.4; no new application edits. Synthetic disposable SQLite backup only. Existing historical acceptance is retained separately.",
+  "fixture": {
+    "cards": 1000,
+    "activities": 10,
+    "steps": 10,
+    "stories": 980,
+    "releases": 3,
+    "storage": "/tmp/story-5-2-operator-acceptance.lsm"
+  },
+  "browser": "macOS Chrome, two independently mounted tabs; native trusted input for measured actions",
+  "method": "Production web build. Loopback proxy on44329 forwards44328 and injects existing DOM timing observer only on performance fixture HTML. Event capture to expected DOM/visible geometry plus two animation frames; instrumentation overhead included. No budgets relaxed and no failed sample discarded.",
+  "checks": [
+    {
+      "id": "slice-summary",
+      "status": "pass",
+      "observation": "Story-only Release/Unscheduled summaries and named open prerequisites displayed."
+    },
+    {
+      "id": "captured-forward-reverse-equal",
+      "status": "pass",
+      "observation": "Forward Added/Removed/Moved categories, inverse endpoints, equal-state no changes, and captured titles preserved after canonical edits/deletion."
+    },
+    {
+      "id": "canonical-keyboard-move",
+      "status": "pass",
+      "observation": "Actual native keyboard next-Slice move persisted; dependency ordering cue cleared while open prerequisite remained."
+    },
+    {
+      "id": "human-plan-capture",
+      "status": "pass",
+      "observation": "Actual Record plan state UI created state 42b8e6de-a252-4fc8-a31e-35f639fb03c2."
+    },
+    {
+      "id": "stale-target-no-write",
+      "status": "pass",
+      "observation": "Second browser deleted empty First release after restore point creation. First browser retained selected unavailable release, displayed explicit warning and refused submit; Card version8 and Second release unchanged."
+    },
+    {
+      "id": "restore-inflight-comparison",
+      "status": "pass",
+      "observation": "Proxy held old comparison200. Real Restore in second client removed selected state. Old response canceled; new404 displayed unavailable-state error with no stale comparison columns. Selecting valid state recovered equal comparison."
+    },
+    {
+      "id": "restore-initiator-auto-navigation",
+      "status": "not-accepted",
+      "observation": "Initiating browser still displayed Restoring all Projects after DB completed and comparison responses released. Explicit reload then displayed Restoration complete. Root cause not diagnosed; automatic navigation not verified."
+    },
+    {
+      "id": "fresh-web-typecheck-build",
+      "status": "pass",
+      "observation": "Both commands completed exit0 on tested HEAD; full suite not rerun."
+    }
+  ],
+  "timings": [
+    {
+      "label": "Filter to Story 979",
+      "eventType": "input",
+      "trusted": true,
+      "domReadyMs": 12.600000023841858,
+      "visibleReadyMs": 13.899999976158142,
+      "firstFrameMs": 14.399999976158142,
+      "elapsedMs": 27.5,
+      "budgetMs": 300,
+      "passed": true,
+      "url": "http://127.0.0.1:44329/projects/d95517db-e738-412b-bb2a-dc8ddc22b4cc/story-maps/c739a26c-2604-469e-810a-07a07fef8253/slices",
+      "recordedAt": "2026-10-15T15:55:39.695Z"
+    },
+    {
+      "label": "Clear filter to 980 Stories",
+      "eventType": "click",
+      "trusted": true,
+      "domReadyMs": 14.199999928474426,
+      "visibleReadyMs": 31.399999976158142,
+      "firstFrameMs": 32.89999997615814,
+      "elapsedMs": 91.5,
+      "budgetMs": 300,
+      "passed": true,
+      "url": "http://127.0.0.1:44329/projects/d95517db-e738-412b-bb2a-dc8ddc22b4cc/story-maps/c739a26c-2604-469e-810a-07a07fef8253/slices",
+      "recordedAt": "2026-10-15T15:55:43.815Z"
+    },
+    {
+      "label": "Card opening",
+      "eventType": "click",
+      "trusted": true,
+      "domReadyMs": 80.69999992847443,
+      "visibleReadyMs": 81.09999990463257,
+      "firstFrameMs": 90.79999995231628,
+      "elapsedMs": 116.89999997615814,
+      "budgetMs": 100,
+      "passed": false,
+      "url": "http://127.0.0.1:44329/projects/d95517db-e738-412b-bb2a-dc8ddc22b4cc/story-maps/c739a26c-2604-469e-810a-07a07fef8253/slices?card=d6713b87-4888-4cd3-906d-ad67facddf46",
+      "recordedAt": "2026-10-15T15:55:54.542Z"
+    }
+  ],
+  "comparisonProxyEvents": [
+    {
+      "time": "2026-10-15T15:50:17.781Z",
+      "event": "comparison-sent",
+      "status": 200,
+      "url": "/api/story-maps/417bed75-3e4c-4c2c-958f-005dc5a9d811/plan-states/compare?beforeId=e95d3a36-70fd-48b5-8629-375a4bb1905e&afterId=42b8e6de-a252-4fc8-a31e-35f639fb03c2"
+    },
+    {
+      "time": "2026-10-15T15:50:57.364Z",
+      "event": "comparison-held",
+      "status": 200,
+      "url": "/api/story-maps/417bed75-3e4c-4c2c-958f-005dc5a9d811/plan-states/compare?beforeId=e95d3a36-70fd-48b5-8629-375a4bb1905e&afterId=42b8e6de-a252-4fc8-a31e-35f639fb03c2"
+    },
+    {
+      "time": "2026-10-15T15:51:19.035Z",
+      "event": "comparison-held",
+      "status": 404,
+      "url": "/api/story-maps/417bed75-3e4c-4c2c-958f-005dc5a9d811/plan-states/compare?beforeId=e95d3a36-70fd-48b5-8629-375a4bb1905e&afterId=42b8e6de-a252-4fc8-a31e-35f639fb03c2"
+    },
+    {
+      "time": "2026-10-15T15:51:31.830Z",
+      "event": "canceled-held-response",
+      "url": "/api/story-maps/417bed75-3e4c-4c2c-958f-005dc5a9d811/plan-states/compare?beforeId=e95d3a36-70fd-48b5-8629-375a4bb1905e&afterId=42b8e6de-a252-4fc8-a31e-35f639fb03c2"
+    },
+    {
+      "time": "2026-10-15T15:51:31.830Z",
+      "event": "comparison-sent",
+      "status": 404,
+      "url": "/api/story-maps/417bed75-3e4c-4c2c-958f-005dc5a9d811/plan-states/compare?beforeId=e95d3a36-70fd-48b5-8629-375a4bb1905e&afterId=42b8e6de-a252-4fc8-a31e-35f639fb03c2"
+    },
+    {
+      "time": "2026-10-15T15:55:09.819Z",
+      "event": "comparison-sent",
+      "status": 200,
+      "url": "/api/story-maps/417bed75-3e4c-4c2c-958f-005dc5a9d811/plan-states/compare?beforeId=e95d3a36-70fd-48b5-8629-375a4bb1905e&afterId=e95d3a36-70fd-48b5-8629-375a4bb1905e"
+    }
+  ],
+  "limitations": [
+    "Restore/stale-target and delayed comparison were exercised sequentially within the same two-client run; simultaneous stale-target selection across Restore itself not claimed.",
+    "Fresh pointer drag and all-platform graphical coverage not repeated. Historical evidence retained without treating it as a new run.",
+    "REST setup move to trigger invalidation is test setup, not claimed as browser movement.",
+    "Card opening116.9ms exceeds unchanged100ms budget. Filter27.5ms and reset91.5ms satisfy300ms.",
+    "Restore initiator recovered only after explicit reload in this run."
+  ],
+  "screenshot": "story-5-2-operator-performance.png",
+  "probes": {
+    "story-5-2-browser-probe.js": "67c4e1538177954f93deb5856d745b2d25e0bccc066a00885063c8b352b22e07",
+    "story-5-2-probe-controls.js": "26c3f334fc64ca93a570ff84a8b45c2515e324a5b38d16b1306df53ba0441cb9"
+  },
+  "originalOutcome": "not-accepted",
+  "storyStatus": "done",
+  "acceptanceDecision": {
+    "date": "2026-10-15",
+    "authority": "Explicit maintainer instruction in this session",
+    "instruction": "Relax acceptance constraints as previously, record optimization topics for later, close the story successfully.",
+    "scope": "Story5.2 only; accept observed116.9ms Card opening and manual reload after successful Restore. No global waiver, new numeric budget, application fix or fresh passing run.",
+    "exceptions": [
+      {
+        "id": "card-opening",
+        "nominalBudgetMs": 100,
+        "observedMs": 116.89999997615814,
+        "decision": "accepted for completion; optimization deferred"
+      },
+      {
+        "id": "restore-initiator-auto-navigation",
+        "decision": "manual reload accepted for completion; automatic navigation investigation deferred"
+      }
+    ],
+    "deferredWorkLocation": "../spec-5-2-slices-view.md frontmatter deferred list",
+    "rawEvidencePreserved": true
+  }
+}

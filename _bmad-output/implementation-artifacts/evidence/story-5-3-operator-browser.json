@@ -1,0 +1,272 @@
+{
+  "story": "5.3",
+  "date": "2026-10-15",
+  "outcome": "accepted",
+  "testedHead": "20cdca5a2c6c243d4b041f936bd71ee78ab43921",
+  "implementationCommit": "5a23ced",
+  "browser": "Codex In-app Browser (actual embedded browser on macOS); Chrome extension unavailable in this turn",
+  "storage": "/tmp/story-5-3-operator-acceptance.lsm",
+  "fixture": {
+    "source": "Existing synthetic /tmp/story-5-3-acceptance.lsm copied with SQLite backup; no user Project opened",
+    "performanceCards": 200,
+    "performanceEdges": 120,
+    "semanticInitialNodes": 6,
+    "semanticInitialEdges": 3
+  },
+  "checks": [
+    {
+      "id": "route-navigation",
+      "status": "pass",
+      "observation": "Direct Graph URL, Slices navigation and return to Graph work."
+    },
+    {
+      "id": "canonical-relationships",
+      "status": "pass",
+      "observation": "All active Card levels; 6 visible nodes/3 directed edges. Selected/Requires/Required by words and named archived prerequisite LSM-6 retained outside dataset. Released prerequisite not treated as open; Blocked order remains independent."
+    },
+    {
+      "id": "canvas-table-parity",
+      "status": "pass",
+      "observation": "Same selected LSM-4 across toggle; four columns; 3 edge rows plus 2 isolated Cards. Canvas removed while table active."
+    },
+    {
+      "id": "filters-empty-selection",
+      "status": "pass",
+      "observation": "Activity, Slice, Status and Assignee operated through native controls. First Slice gives1/0 with canonical outside names; adding Released yields0/0 and clears selection; Ada gives1/0 and remains1/0 with Activity ancestry."
+    },
+    {
+      "id": "keyboard",
+      "status": "pass",
+      "observation": "Native Tab starts at prerequisite LSM-3, then ActivityLSM-1, StepLSM-2, ReleasedLSM-5, dependentLSM-4, NoteLSM-7 and exits to Open Card; Enter selects. Shift+Tab from canvas exits to Graph table."
+    },
+    {
+      "id": "scoped-pan-zoom",
+      "status": "pass",
+      "observation": "Filter ArrowRight leaves viewport unchanged; canvas ArrowRight changes translate and + changes scale. Other arrows/minus exercised, Control+ArrowRight leaves viewport unchanged. Native pointer drag changes translate without changing selection."
+    },
+    {
+      "id": "focus-and-layout-replacement",
+      "status": "pass",
+      "observation": "Distant focused node remains inside canvas and visible viewport after zoom. Actual Activity filter resets viewport to translate(0px,0px) scale(1)."
+    },
+    {
+      "id": "shared-modal-dirty-guard",
+      "status": "pass",
+      "observation": "Explicit Open Card opens canonical modal. Dirty draft triggers Unsaved changes, Cancel retains draft, Discard returns focus to Open Card without saving draft."
+    },
+    {
+      "id": "readonly-preview",
+      "status": "pass",
+      "observation": "Existing submitted synthetic ChangeSet opened, Review current state projects Preview checkout title, Open Card disabled. Close preview restores Complete checkout; no apply."
+    },
+    {
+      "id": "live-restore",
+      "status": "pass",
+      "observation": "HTTP test setup creates existing ephemeral-note fixture; actual browser live count6->7 and selection succeeds. Actual human HTTP Restore while graph stays open returns6/3, removes note and clears selection without reload."
+    },
+    {
+      "id": "stale-assignee-option",
+      "status": "pass",
+      "observation": "Filter Ada, open modal, change Assignee to Grace, Save and close: Ada option disappears, effective filter resets to All and all6 nodes return."
+    },
+    {
+      "id": "literal-and-absent-assignee",
+      "status": "pass",
+      "observation": "Replay existing literal-unassigned regression note via regular test API. Literal unassigned gives1 Card; absent Unassigned gives4 distinct Cards. Restore cleans fixture."
+    },
+    {
+      "id": "console",
+      "status": "pass",
+      "observation": "No browser warning/error logs observed at completion."
+    },
+    {
+      "id": "performance",
+      "status": "pass",
+      "observation": "Primary selection/filter/reset/key-pan/pointer-pan samples all trusted and <=100ms on actual200-Card/120-edge map; layout measured separately. All12 collected samples retained; no relaxation."
+    }
+  ],
+  "method": "Fresh production build copied into temporary web root with existing passive graph-acceptance-probe.js appended. Capture trusted browser event to DOM mutation and two animation frames. Node counts checked after native filter actions. Layout duration from actual DOM data-layout-duration. DOM reads only through cua_repl; no source/runtime state injection through browser evaluate. HTTP calls used only to replay existing fixture/Restore setup, not as browser observations.",
+  "initialLayoutMs": 12.899999976158142,
+  "performanceSamples": [
+    {
+      "event": "click",
+      "label": "activityLSM-1: Activity 01todo ",
+      "trusted": true,
+      "elapsedMs": 32.60000002384186,
+      "domReadyMs": 3.299999952316284,
+      "nodeCount": 200,
+      "layoutMs": 12.899999976158142,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "change",
+      "label": "Graph Activity",
+      "trusted": true,
+      "elapsedMs": 21.899999976158142,
+      "domReadyMs": 6.600000023841858,
+      "nodeCount": 20,
+      "layoutMs": 2,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "change",
+      "label": "Graph Activity",
+      "trusted": true,
+      "elapsedMs": 36.699999928474426,
+      "domReadyMs": 18.299999952316284,
+      "nodeCount": 200,
+      "layoutMs": 12.600000023841858,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "keydown",
+      "key": "ArrowRight",
+      "label": "Graph canvas",
+      "trusted": true,
+      "elapsedMs": 22.700000047683716,
+      "domReadyMs": 0.8000000715255737,
+      "nodeCount": 200,
+      "layoutMs": 12.600000023841858,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "pointermove",
+      "label": "Graph canvas",
+      "trusted": true,
+      "elapsedMs": 34.700000047683716,
+      "domReadyMs": 0.20000004768371582,
+      "nodeCount": 200,
+      "layoutMs": 12.600000023841858,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "pointermove",
+      "label": "Graph canvas",
+      "trusted": true,
+      "elapsedMs": 33.5,
+      "domReadyMs": 1.100000023841858,
+      "nodeCount": 200,
+      "layoutMs": 12.600000023841858,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "pointermove",
+      "label": "Graph canvas",
+      "trusted": true,
+      "elapsedMs": 33.40000009536743,
+      "domReadyMs": 0.9000000953674316,
+      "nodeCount": 200,
+      "layoutMs": 12.600000023841858,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "keydown",
+      "key": "+",
+      "label": "stepLSM-162: Step 9todo ",
+      "trusted": true,
+      "elapsedMs": 20,
+      "domReadyMs": 2.100000023841858,
+      "nodeCount": 200,
+      "layoutMs": 12.600000023841858,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "keydown",
+      "key": "ArrowLeft",
+      "label": "Graph canvas",
+      "trusted": true,
+      "elapsedMs": 25.600000023841858,
+      "domReadyMs": 1,
+      "nodeCount": 200,
+      "layoutMs": 12.600000023841858,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "keydown",
+      "key": "ArrowRight",
+      "label": "Graph canvas",
+      "trusted": true,
+      "elapsedMs": 40.299999952316284,
+      "domReadyMs": 11.199999928474426,
+      "nodeCount": 200,
+      "layoutMs": 12.600000023841858,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "change",
+      "label": "Graph Activity",
+      "trusted": true,
+      "elapsedMs": 16.799999952316284,
+      "domReadyMs": 5.5,
+      "nodeCount": 20,
+      "layoutMs": 2.100000023841858,
+      "budgetMs": 100,
+      "passed": true
+    },
+    {
+      "event": "change",
+      "label": "Graph Activity",
+      "trusted": true,
+      "elapsedMs": 46.300000071525574,
+      "domReadyMs": 25.700000047683716,
+      "nodeCount": 200,
+      "layoutMs": 19.699999928474426,
+      "budgetMs": 100,
+      "passed": true
+    }
+  ],
+  "primaryTimingSampleIndices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "supplementalTimingNote": "Samples7-11 retain subsequent focus/zoom, grouped keyboard and repeat filter interactions. Sample9 is a modifier-key no-op diagnostic; its elapsed time does not prove panning. Primary gate evidence is separately identified.",
+  "restore": {
+    "pointCreatedAt": "2026-10-15T17:24:50.439Z",
+    "before": {
+      "nodes": 7,
+      "edges": 3,
+      "selected": "LSM-8: Ephemeral Restore selection"
+    },
+    "after": {
+      "nodes": 6,
+      "edges": 3,
+      "selected": null,
+      "reload": false
+    },
+    "delivery": "Normal human Restore HTTP endpoint; initiating Restore UI not retested here"
+  },
+  "freshVerification": {
+    "webBuild": "pass",
+    "webTypecheck": "pass",
+    "fullSuite": "not rerun; no application edits"
+  },
+  "limitations": [
+    "No native screen-reader or cross-platform claim.",
+    "Pointer cancellation and zoom-bound extremes not repeated in this browser pass; existing mounted/historical coverage is preserved.",
+    "REST replay of existing synthetic test actions is setup evidence; ordinary modal Save, navigation, filters and graph interactions were actual browser UI actions.",
+    "Story5.2 acceptance exceptions do not apply; Story5.3 passed unchanged100ms budget."
+  ],
+  "screenshot": "story-5-3-operator-graph.png",
+  "probeSha256": "22f91626e9be9ac9ad0453bf34f4d9771f3d803837f7a832c5a1a974382132b6",
+  "cleanup": {
+    "ownedTab": "closed",
+    "ownedServerPort44330": "stopped",
+    "temporaryBuiltProbe": "isolated copied web build only; repository dist unchanged",
+    "orchestratorLedgers": "unchanged hashes"
+  }
+}

@@ -1,0 +1,702 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+{"level":30,"time":1792368251656,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368251658,"pid":35332,"reqId":"req-1","responseTime":1.418333999999959,"msg":"request completed"}
+{"level":30,"time":1792368251661,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368251667,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368251685,"pid":35332,"reqId":"req-2","responseTime":16.994250000000193,"msg":"request completed"}
+{"level":30,"time":1792368251691,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368251692,"pid":35332,"reqId":"req-3","responseTime":0.3361250000000382,"msg":"request completed"}
+{"level":30,"time":1792368251694,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368251696,"pid":35332,"reqId":"req-4","responseTime":1.8975000000000364,"msg":"request completed"}
+{"level":30,"time":1792368251698,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368251714,"pid":35332,"reqId":"req-5","responseTime":15.502083999999968,"msg":"request completed"}
+{"level":30,"time":1792368251717,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368251718,"pid":35332,"reqId":"req-6","responseTime":0.9101250000001073,"msg":"request completed"}
+{"level":30,"time":1792368251720,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368251726,"pid":35332,"reqId":"req-7","responseTime":5.806166999999959,"msg":"request completed"}
+{"level":30,"time":1792368251728,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368251738,"pid":35332,"reqId":"req-8","responseTime":9.606625000000122,"msg":"request completed"}
+{"level":30,"time":1792368251740,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368251769,"pid":35332,"reqId":"req-9","responseTime":28.792083000000048,"msg":"request completed"}
+{"level":30,"time":1792368251773,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368251774,"pid":35332,"reqId":"req-a","responseTime":0.30304099999989376,"msg":"request completed"}
+{"level":30,"time":1792368251776,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368251779,"pid":35332,"reqId":"req-b","responseTime":3.309500000000071,"msg":"request completed"}
+{"level":30,"time":1792368251782,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368251785,"pid":35332,"reqId":"req-c","responseTime":2.4066250000000764,"msg":"request completed"}
+{"level":30,"time":1792368251787,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368251790,"pid":35332,"reqId":"req-d","responseTime":3.812582999999904,"msg":"request completed"}
+{"level":30,"time":1792368251793,"pid":35332,"reqId":"req-e","msg":"incoming request"}
+{"level":30,"time":1792368251804,"pid":35332,"reqId":"req-e","responseTime":11.48745800000006,"msg":"request completed"}
+{"level":30,"time":1792368251806,"pid":35332,"reqId":"req-f","msg":"incoming request"}
+{"level":30,"time":1792368251825,"pid":35332,"reqId":"req-f","responseTime":18.476750000000038,"msg":"request completed"}
+{"level":30,"time":1792368251827,"pid":35332,"reqId":"req-g","msg":"incoming request"}
+{"level":30,"time":1792368251827,"pid":35332,"reqId":"req-g","responseTime":0.15604099999995924,"msg":"request completed"}
+{"level":30,"time":1792368251829,"pid":35332,"reqId":"req-h","msg":"incoming request"}
+{"level":30,"time":1792368251831,"pid":35332,"reqId":"req-h","responseTime":2.511167000000114,"msg":"request completed"}
+{"level":30,"time":1792368251855,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368251856,"pid":35332,"reqId":"req-1","responseTime":0.25270799999998417,"msg":"request completed"}
+{"level":30,"time":1792368251857,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368251860,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368251862,"pid":35332,"reqId":"req-2","responseTime":1.1979169999999613,"msg":"request completed"}
+{"level":30,"time":1792368251863,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368251871,"pid":35332,"reqId":"req-3","responseTime":7.881125000000111,"msg":"request completed"}
+{"level":30,"time":1792368251873,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368251886,"pid":35332,"reqId":"req-4","responseTime":13.133125000000064,"msg":"request completed"}
+{"level":30,"time":1792368251888,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368251888,"pid":35332,"reqId":"req-5","responseTime":0.15320900000006077,"msg":"request completed"}
+{"level":30,"time":1792368251890,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368251892,"pid":35332,"reqId":"req-6","responseTime":2.0010419999998703,"msg":"request completed"}
+{"level":30,"time":1792368251894,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368251896,"pid":35332,"reqId":"req-7","responseTime":2.011916999999812,"msg":"request completed"}
+{"level":30,"time":1792368251898,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368251900,"pid":35332,"reqId":"req-8","responseTime":1.7124170000001868,"msg":"request completed"}
+{"level":30,"time":1792368251901,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368251902,"pid":35332,"reqId":"req-9","responseTime":0.12895800000001145,"msg":"request completed"}
+{"level":30,"time":1792368251903,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368251905,"pid":35332,"reqId":"req-a","responseTime":1.9367499999998472,"msg":"request completed"}
+{"level":30,"time":1792368251907,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368251917,"pid":35332,"reqId":"req-b","responseTime":9.71308399999998,"msg":"request completed"}
+{"level":30,"time":1792368251919,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368251924,"pid":35332,"reqId":"req-c","responseTime":5.321916999999985,"msg":"request completed"}
+{"level":30,"time":1792368251926,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368251926,"pid":35332,"reqId":"req-d","responseTime":0.1571249999999509,"msg":"request completed"}
+{"level":30,"time":1792368251928,"pid":35332,"reqId":"req-e","msg":"incoming request"}
+{"level":30,"time":1792368251930,"pid":35332,"reqId":"req-e","responseTime":1.926333999999997,"msg":"request completed"}
+{"level":30,"time":1792368251932,"pid":35332,"reqId":"req-f","msg":"incoming request"}
+{"level":30,"time":1792368251933,"pid":35332,"reqId":"req-f","responseTime":0.8070000000000164,"msg":"request completed"}
+{"level":30,"time":1792368251935,"pid":35332,"reqId":"req-g","msg":"incoming request"}
+{"level":30,"time":1792368251936,"pid":35332,"reqId":"req-g","responseTime":1.4505830000000515,"msg":"request completed"}
+{"level":30,"time":1792368251938,"pid":35332,"reqId":"req-h","msg":"incoming request"}
+{"level":30,"time":1792368251938,"pid":35332,"reqId":"req-h","responseTime":0.33399999999983265,"msg":"request completed"}
+{"level":30,"time":1792368251957,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368251958,"pid":35332,"reqId":"req-1","responseTime":0.18399999999996908,"msg":"request completed"}
+{"level":30,"time":1792368251958,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368252019,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368252019,"pid":35332,"reqId":"req-2","responseTime":0.3564169999999649,"msg":"request completed"}
+{"level":30,"time":1792368252020,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368252021,"pid":35332,"reqId":"req-3","responseTime":1.083417000000054,"msg":"request completed"}
+{"level":30,"time":1792368252073,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368252081,"pid":35332,"reqId":"req-4","responseTime":8.023249999999962,"msg":"request completed"}
+{"level":30,"time":1792368252082,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368252095,"pid":35332,"reqId":"req-5","responseTime":13.109583000000157,"msg":"request completed"}
+{"level":30,"time":1792368252103,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368252103,"pid":35332,"reqId":"req-6","responseTime":0.1758750000001328,"msg":"request completed"}
+{"level":30,"time":1792368252104,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368252106,"pid":35332,"reqId":"req-7","responseTime":2.076334000000088,"msg":"request completed"}
+{"level":30,"time":1792368252150,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368252150,"pid":35332,"reqId":"req-8","responseTime":0.18170899999995527,"msg":"request completed"}
+{"level":30,"time":1792368252151,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368252151,"pid":35332,"reqId":"req-9","responseTime":0.19237500000008367,"msg":"request completed"}
+{"level":30,"time":1792368252151,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368252153,"pid":35332,"reqId":"req-a","responseTime":2.107624999999871,"msg":"request completed"}
+{"level":30,"time":1792368252154,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368252156,"pid":35332,"reqId":"req-b","responseTime":2.2512500000000273,"msg":"request completed"}
+{"level":30,"time":1792368252209,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368252219,"pid":35332,"reqId":"req-c","responseTime":10.143334000000095,"msg":"request completed"}
+{"level":30,"time":1792368252221,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368252235,"pid":35332,"reqId":"req-d","responseTime":13.428457999999864,"msg":"request completed"}
+{"level":30,"time":1792368252244,"pid":35332,"reqId":"req-e","msg":"incoming request"}
+{"level":30,"time":1792368252244,"pid":35332,"reqId":"req-e","responseTime":0.18558299999995143,"msg":"request completed"}
+{"level":30,"time":1792368252246,"pid":35332,"reqId":"req-f","msg":"incoming request"}
+{"level":30,"time":1792368252248,"pid":35332,"reqId":"req-f","responseTime":2.0485000000001037,"msg":"request completed"}
+{"level":30,"time":1792368252287,"pid":35332,"reqId":"req-g","msg":"incoming request"}
+{"level":30,"time":1792368252288,"pid":35332,"reqId":"req-g","responseTime":0.20445900000004258,"msg":"request completed"}
+{"level":30,"time":1792368252288,"pid":35332,"reqId":"req-h","msg":"incoming request"}
+{"level":30,"time":1792368252290,"pid":35332,"reqId":"req-h","responseTime":2.0276249999999436,"msg":"request completed"}
+{"level":30,"time":1792368252290,"pid":35332,"reqId":"req-i","msg":"incoming request"}
+{"level":30,"time":1792368252293,"pid":35332,"reqId":"req-i","responseTime":2.771041999999852,"msg":"request completed"}
+{"level":30,"time":1792368252338,"pid":35332,"reqId":"req-j","msg":"incoming request"}
+{"level":30,"time":1792368252349,"pid":35332,"reqId":"req-j","responseTime":10.832832999999937,"msg":"request completed"}
+{"level":30,"time":1792368252349,"pid":35332,"reqId":"req-k","msg":"incoming request"}
+{"level":30,"time":1792368252365,"pid":35332,"reqId":"req-k","responseTime":15.362957999999935,"msg":"request completed"}
+{"level":30,"time":1792368252373,"pid":35332,"reqId":"req-l","msg":"incoming request"}
+{"level":30,"time":1792368252375,"pid":35332,"reqId":"req-l","responseTime":2.0880420000000868,"msg":"request completed"}
+{"level":30,"time":1792368252377,"pid":35332,"reqId":"req-m","msg":"incoming request"}
+{"level":30,"time":1792368252378,"pid":35332,"reqId":"req-m","responseTime":0.8709579999999733,"msg":"request completed"}
+{"level":30,"time":1792368252423,"pid":35332,"reqId":"req-n","msg":"incoming request"}
+{"level":30,"time":1792368252423,"pid":35332,"reqId":"req-n","responseTime":0.18299999999999272,"msg":"request completed"}
+{"level":30,"time":1792368252423,"pid":35332,"reqId":"req-o","msg":"incoming request"}
+{"level":30,"time":1792368252424,"pid":35332,"reqId":"req-o","responseTime":0.14454200000000128,"msg":"request completed"}
+{"level":30,"time":1792368252424,"pid":35332,"reqId":"req-p","msg":"incoming request"}
+{"level":30,"time":1792368252426,"pid":35332,"reqId":"req-p","responseTime":2.1021670000000086,"msg":"request completed"}
+{"level":30,"time":1792368252434,"pid":35332,"reqId":"req-q","msg":"incoming request"}
+{"level":30,"time":1792368252435,"pid":35332,"reqId":"req-q","responseTime":0.1645419999999831,"msg":"request completed"}
+{"level":30,"time":1792368252436,"pid":35332,"reqId":"req-r","msg":"incoming request"}
+{"level":30,"time":1792368252439,"pid":35332,"reqId":"req-r","responseTime":2.0697500000001128,"msg":"request completed"}
+{"level":30,"time":1792368252482,"pid":35332,"reqId":"req-s","msg":"incoming request"}
+{"level":30,"time":1792368252482,"pid":35332,"reqId":"req-s","responseTime":0.14770900000007714,"msg":"request completed"}
+{"level":30,"time":1792368252483,"pid":35332,"reqId":"req-t","msg":"incoming request"}
+{"level":30,"time":1792368252483,"pid":35332,"reqId":"req-t","responseTime":0.10712499999999636,"msg":"request completed"}
+{"level":30,"time":1792368252483,"pid":35332,"reqId":"req-u","msg":"incoming request"}
+{"level":30,"time":1792368252485,"pid":35332,"reqId":"req-u","responseTime":2.1885829999998805,"msg":"request completed"}
+{"level":30,"time":1792368252486,"pid":35332,"reqId":"req-v","msg":"incoming request"}
+{"level":30,"time":1792368252488,"pid":35332,"reqId":"req-v","responseTime":2.4957079999999223,"msg":"request completed"}
+{"level":30,"time":1792368252540,"pid":35332,"reqId":"req-w","msg":"incoming request"}
+{"level":30,"time":1792368252552,"pid":35332,"reqId":"req-w","responseTime":11.96504200000004,"msg":"request completed"}
+{"level":30,"time":1792368252553,"pid":35332,"reqId":"req-x","msg":"incoming request"}
+{"level":30,"time":1792368252569,"pid":35332,"reqId":"req-x","responseTime":16.83070799999996,"msg":"request completed"}
+{"level":30,"time":1792368252578,"pid":35332,"reqId":"req-y","msg":"incoming request"}
+{"level":30,"time":1792368252578,"pid":35332,"reqId":"req-y","responseTime":0.19158299999980954,"msg":"request completed"}
+{"level":30,"time":1792368252580,"pid":35332,"reqId":"req-z","msg":"incoming request"}
+{"level":30,"time":1792368252582,"pid":35332,"reqId":"req-z","responseTime":1.9659999999998945,"msg":"request completed"}
+{"level":30,"time":1792368252602,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368252602,"pid":35332,"reqId":"req-1","responseTime":0.18020800000022064,"msg":"request completed"}
+{"level":30,"time":1792368252603,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368252634,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368252635,"pid":35332,"reqId":"req-1","responseTime":0.16304100000024846,"msg":"request completed"}
+{"level":30,"time":1792368252635,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368252636,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368252637,"pid":35332,"reqId":"req-2","responseTime":0.6053329999999733,"msg":"request completed"}
+{"level":30,"time":1792368252638,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368252639,"pid":35332,"reqId":"req-3","responseTime":0.8634170000000267,"msg":"request completed"}
+{"level":30,"time":1792368252640,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368252642,"pid":35332,"reqId":"req-4","responseTime":1.3041250000001128,"msg":"request completed"}
+{"level":30,"time":1792368252644,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368252645,"pid":35332,"reqId":"req-5","responseTime":1.2276670000001104,"msg":"request completed"}
+{"level":30,"time":1792368252647,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368252648,"pid":35332,"reqId":"req-6","responseTime":1.2035000000000764,"msg":"request completed"}
+{"level":30,"time":1792368252650,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368252651,"pid":35332,"reqId":"req-7","responseTime":1.0313750000000255,"msg":"request completed"}
+{"level":30,"time":1792368252653,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368252653,"pid":35332,"reqId":"req-8","responseTime":0.6510829999997441,"msg":"request completed"}
+{"level":30,"time":1792368252655,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368252656,"pid":35332,"reqId":"req-9","responseTime":1.20049999999992,"msg":"request completed"}
+{"level":30,"time":1792368252658,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368252659,"pid":35332,"reqId":"req-a","responseTime":1.1252079999999296,"msg":"request completed"}
+{"level":30,"time":1792368252661,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368252662,"pid":35332,"reqId":"req-b","responseTime":1.0382920000001832,"msg":"request completed"}
+{"level":30,"time":1792368252664,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368252665,"pid":35332,"reqId":"req-c","responseTime":0.6486250000002656,"msg":"request completed"}
+{"level":30,"time":1792368252666,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368252667,"pid":35332,"reqId":"req-d","responseTime":0.8915830000000824,"msg":"request completed"}
+{"level":30,"time":1792368252669,"pid":35332,"reqId":"req-e","msg":"incoming request"}
+{"level":30,"time":1792368252670,"pid":35332,"reqId":"req-e","responseTime":1.0449169999997139,"msg":"request completed"}
+{"level":30,"time":1792368252672,"pid":35332,"reqId":"req-f","msg":"incoming request"}
+{"level":30,"time":1792368252673,"pid":35332,"reqId":"req-f","responseTime":1.364875000000211,"msg":"request completed"}
+{"level":30,"time":1792368252675,"pid":35332,"reqId":"req-g","msg":"incoming request"}
+{"level":30,"time":1792368252676,"pid":35332,"reqId":"req-g","responseTime":1.1034169999998085,"msg":"request completed"}
+{"level":30,"time":1792368252678,"pid":35332,"reqId":"req-h","msg":"incoming request"}
+{"level":30,"time":1792368252679,"pid":35332,"reqId":"req-h","responseTime":1.175166999999874,"msg":"request completed"}
+{"level":30,"time":1792368252681,"pid":35332,"reqId":"req-i","msg":"incoming request"}
+{"level":30,"time":1792368252682,"pid":35332,"reqId":"req-i","responseTime":0.6408339999998134,"msg":"request completed"}
+{"level":30,"time":1792368252683,"pid":35332,"reqId":"req-j","msg":"incoming request"}
+{"level":30,"time":1792368252684,"pid":35332,"reqId":"req-j","responseTime":0.5910420000000158,"msg":"request completed"}
+{"level":30,"time":1792368252686,"pid":35332,"reqId":"req-k","msg":"incoming request"}
+{"level":30,"time":1792368252687,"pid":35332,"reqId":"req-k","responseTime":0.8257090000001881,"msg":"request completed"}
+{"level":30,"time":1792368252688,"pid":35332,"reqId":"req-l","msg":"incoming request"}
+{"level":30,"time":1792368252689,"pid":35332,"reqId":"req-l","responseTime":0.840708000000177,"msg":"request completed"}
+{"level":30,"time":1792368252691,"pid":35332,"reqId":"req-m","msg":"incoming request"}
+{"level":30,"time":1792368252692,"pid":35332,"reqId":"req-m","responseTime":0.6029159999998228,"msg":"request completed"}
+{"level":30,"time":1792368252693,"pid":35332,"reqId":"req-n","msg":"incoming request"}
+{"level":30,"time":1792368252696,"pid":35332,"reqId":"req-n","responseTime":3.077874999999949,"msg":"request completed"}
+{"level":30,"time":1792368252698,"pid":35332,"reqId":"req-o","msg":"incoming request"}
+{"level":30,"time":1792368252709,"pid":35332,"reqId":"req-o","responseTime":10.805625000000418,"msg":"request completed"}
+{"level":30,"time":1792368252711,"pid":35332,"reqId":"req-p","msg":"incoming request"}
+{"level":30,"time":1792368252728,"pid":35332,"reqId":"req-p","responseTime":17.019041000000016,"msg":"request completed"}
+{"level":30,"time":1792368252731,"pid":35332,"reqId":"req-q","msg":"incoming request"}
+{"level":30,"time":1792368252733,"pid":35332,"reqId":"req-q","responseTime":2.128624999999829,"msg":"request completed"}
+{"level":30,"time":1792368252735,"pid":35332,"reqId":"req-r","msg":"incoming request"}
+{"level":30,"time":1792368252736,"pid":35332,"reqId":"req-r","responseTime":0.5898339999998825,"msg":"request completed"}
+{"level":30,"time":1792368252737,"pid":35332,"reqId":"req-s","msg":"incoming request"}
+{"level":30,"time":1792368252738,"pid":35332,"reqId":"req-s","responseTime":0.9986250000001746,"msg":"request completed"}
+{"level":30,"time":1792368252756,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368252757,"pid":35332,"reqId":"req-1","responseTime":0.15570800000023155,"msg":"request completed"}
+{"level":30,"time":1792368252757,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368252766,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368252767,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368252768,"pid":35332,"reqId":"req-1","responseTime":1.2114999999998872,"msg":"request completed"}
+{"level":30,"time":1792368252769,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368252777,"pid":35332,"reqId":"req-2","responseTime":7.852791999999681,"msg":"request completed"}
+{"level":30,"time":1792368252779,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368252780,"pid":35332,"reqId":"req-3","responseTime":0.13541600000007747,"msg":"request completed"}
+{"level":30,"time":1792368252781,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368252781,"pid":35332,"reqId":"req-4","responseTime":0.16029200000002675,"msg":"request completed"}
+{"level":30,"time":1792368252783,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368252783,"pid":35332,"reqId":"req-5","responseTime":0.2635409999998046,"msg":"request completed"}
+{"level":30,"time":1792368252785,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368252797,"pid":35332,"reqId":"req-6","responseTime":11.19904200000019,"msg":"request completed"}
+{"level":30,"time":1792368252798,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368252799,"pid":35332,"reqId":"req-7","responseTime":0.17633299999988594,"msg":"request completed"}
+{"level":30,"time":1792368252800,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368252801,"pid":35332,"reqId":"req-8","responseTime":0.13774999999986903,"msg":"request completed"}
+{"level":30,"time":1792368252802,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368252803,"pid":35332,"reqId":"req-9","responseTime":0.2644159999999829,"msg":"request completed"}
+{"level":30,"time":1792368252819,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368252820,"pid":35332,"reqId":"req-1","responseTime":0.15845900000022084,"msg":"request completed"}
+{"level":30,"time":1792368252820,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368252823,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368252827,"pid":35332,"reqId":"req-2","responseTime":4.336582999999791,"msg":"request completed"}
+{"level":30,"time":1792368252828,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368252828,"pid":35332,"reqId":"req-3","responseTime":0.4917499999996835,"msg":"request completed"}
+{"level":30,"time":1792368252830,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368252831,"pid":35332,"reqId":"req-4","responseTime":1.2652499999999236,"msg":"request completed"}
+{"level":30,"time":1792368252833,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368252834,"pid":35332,"reqId":"req-5","responseTime":0.5017089999996642,"msg":"request completed"}
+{"level":30,"time":1792368252836,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368252836,"pid":35332,"reqId":"req-6","responseTime":0.46029200000020865,"msg":"request completed"}
+{"level":30,"time":1792368252838,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368252839,"pid":35332,"reqId":"req-7","responseTime":1.09829099999979,"msg":"request completed"}
+{"level":30,"time":1792368252841,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368252842,"pid":35332,"reqId":"req-8","responseTime":0.4812499999998181,"msg":"request completed"}
+{"level":30,"time":1792368252843,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368252844,"pid":35332,"reqId":"req-9","responseTime":0.49887500000022555,"msg":"request completed"}
+{"level":30,"time":1792368252846,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368252846,"pid":35332,"reqId":"req-a","responseTime":0.5892499999999927,"msg":"request completed"}
+{"level":30,"time":1792368252848,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368252848,"pid":35332,"reqId":"req-b","responseTime":0.12525000000005093,"msg":"request completed"}
+{"level":30,"time":1792368252850,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368252851,"pid":35332,"reqId":"req-c","responseTime":0.5387500000001637,"msg":"request completed"}
+{"level":30,"time":1792368252852,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368252853,"pid":35332,"reqId":"req-d","responseTime":0.5331670000000486,"msg":"request completed"}
+{"level":30,"time":1792368252854,"pid":35332,"reqId":"req-e","msg":"incoming request"}
+{"level":30,"time":1792368252855,"pid":35332,"reqId":"req-e","responseTime":0.11099999999987631,"msg":"request completed"}
+{"level":30,"time":1792368252855,"pid":35332,"reqId":"req-f","msg":"incoming request"}
+{"level":30,"time":1792368252857,"pid":35332,"reqId":"req-f","responseTime":1.8530829999999696,"msg":"request completed"}
+{"level":30,"time":1792368252857,"pid":35332,"reqId":"req-g","msg":"incoming request"}
+{"level":30,"time":1792368252859,"pid":35332,"reqId":"req-g","responseTime":1.8679159999996955,"msg":"request completed"}
+{"level":30,"time":1792368252861,"pid":35332,"reqId":"req-h","msg":"incoming request"}
+{"level":30,"time":1792368252861,"pid":35332,"reqId":"req-h","responseTime":0.3993329999998423,"msg":"request completed"}
+{"level":30,"time":1792368252863,"pid":35332,"reqId":"req-i","msg":"incoming request"}
+{"level":30,"time":1792368252864,"pid":35332,"reqId":"req-i","responseTime":0.9745410000000447,"msg":"request completed"}
+{"level":30,"time":1792368252866,"pid":35332,"reqId":"req-j","msg":"incoming request"}
+{"level":30,"time":1792368252874,"pid":35332,"reqId":"req-j","responseTime":7.357208999999784,"msg":"request completed"}
+{"level":30,"time":1792368252875,"pid":35332,"reqId":"req-k","msg":"incoming request"}
+{"level":30,"time":1792368252888,"pid":35332,"reqId":"req-k","responseTime":12.80600000000004,"msg":"request completed"}
+{"level":30,"time":1792368252890,"pid":35332,"reqId":"req-l","msg":"incoming request"}
+{"level":30,"time":1792368252895,"pid":35332,"reqId":"req-l","responseTime":4.514874999999847,"msg":"request completed"}
+{"level":30,"time":1792368252897,"pid":35332,"reqId":"req-m","msg":"incoming request"}
+{"level":30,"time":1792368252897,"pid":35332,"reqId":"req-m","responseTime":0.13145799999983865,"msg":"request completed"}
+{"level":30,"time":1792368252899,"pid":35332,"reqId":"req-n","msg":"incoming request"}
+{"level":30,"time":1792368252901,"pid":35332,"reqId":"req-n","responseTime":2.075333000000228,"msg":"request completed"}
+{"level":30,"time":1792368252903,"pid":35332,"reqId":"req-o","msg":"incoming request"}
+{"level":30,"time":1792368252903,"pid":35332,"reqId":"req-o","responseTime":0.13445799999999508,"msg":"request completed"}
+{"level":30,"time":1792368252906,"pid":35332,"reqId":"req-p","msg":"incoming request"}
+{"level":30,"time":1792368252906,"pid":35332,"reqId":"req-p","responseTime":0.5903330000001006,"msg":"request completed"}
+{"level":30,"time":1792368252908,"pid":35332,"reqId":"req-q","msg":"incoming request"}
+{"level":30,"time":1792368252919,"pid":35332,"reqId":"req-q","responseTime":11.127708999999868,"msg":"request completed"}
+{"level":30,"time":1792368252921,"pid":35332,"reqId":"req-r","msg":"incoming request"}
+{"level":30,"time":1792368252921,"pid":35332,"reqId":"req-r","responseTime":0.14145899999994072,"msg":"request completed"}
+{"level":30,"time":1792368252923,"pid":35332,"reqId":"req-s","msg":"incoming request"}
+{"level":30,"time":1792368252929,"pid":35332,"reqId":"req-s","responseTime":5.70824999999968,"msg":"request completed"}
+{"level":30,"time":1792368252931,"pid":35332,"reqId":"req-t","msg":"incoming request"}
+{"level":30,"time":1792368252931,"pid":35332,"reqId":"req-t","responseTime":0.13158400000020265,"msg":"request completed"}
+{"level":30,"time":1792368252933,"pid":35332,"reqId":"req-u","msg":"incoming request"}
+{"level":30,"time":1792368252939,"pid":35332,"reqId":"req-u","responseTime":5.965542000000369,"msg":"request completed"}
+{"level":30,"time":1792368252941,"pid":35332,"reqId":"req-v","msg":"incoming request"}
+{"level":30,"time":1792368252951,"pid":35332,"reqId":"req-v","responseTime":10.764083000000028,"msg":"request completed"}
+{"level":30,"time":1792368252953,"pid":35332,"reqId":"req-w","msg":"incoming request"}
+{"level":30,"time":1792368252970,"pid":35332,"reqId":"req-w","responseTime":17.09329200000002,"msg":"request completed"}
+{"level":30,"time":1792368252973,"pid":35332,"reqId":"req-x","msg":"incoming request"}
+{"level":30,"time":1792368252973,"pid":35332,"reqId":"req-x","responseTime":0.18620800000007875,"msg":"request completed"}
+{"level":30,"time":1792368252975,"pid":35332,"reqId":"req-y","msg":"incoming request"}
+{"level":30,"time":1792368252975,"pid":35332,"reqId":"req-y","responseTime":0.12387499999977081,"msg":"request completed"}
+{"level":30,"time":1792368252977,"pid":35332,"reqId":"req-z","msg":"incoming request"}
+{"level":30,"time":1792368252979,"pid":35332,"reqId":"req-z","responseTime":1.9120829999997113,"msg":"request completed"}
+{"level":30,"time":1792368252980,"pid":35332,"reqId":"req-10","msg":"incoming request"}
+{"level":30,"time":1792368252981,"pid":35332,"reqId":"req-10","responseTime":0.11033399999996618,"msg":"request completed"}
+{"level":30,"time":1792368252982,"pid":35332,"reqId":"req-11","msg":"incoming request"}
+{"level":30,"time":1792368252984,"pid":35332,"reqId":"req-11","responseTime":1.8206660000000738,"msg":"request completed"}
+{"level":30,"time":1792368252984,"pid":35332,"reqId":"req-12","msg":"incoming request"}
+{"level":30,"time":1792368252986,"pid":35332,"reqId":"req-12","responseTime":1.6871660000001611,"msg":"request completed"}
+{"level":30,"time":1792368252988,"pid":35332,"reqId":"req-13","msg":"incoming request"}
+{"level":30,"time":1792368252988,"pid":35332,"reqId":"req-13","responseTime":0.38795799999979863,"msg":"request completed"}
+{"level":30,"time":1792368253006,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253007,"pid":35332,"reqId":"req-1","responseTime":0.16220800000019153,"msg":"request completed"}
+{"level":30,"time":1792368253007,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253008,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253009,"pid":35332,"reqId":"req-2","responseTime":0.9344160000000556,"msg":"request completed"}
+{"level":30,"time":1792368253056,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253064,"pid":35332,"reqId":"req-3","responseTime":7.789624999999887,"msg":"request completed"}
+{"level":30,"time":1792368253065,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253077,"pid":35332,"reqId":"req-4","responseTime":12.520958000000064,"msg":"request completed"}
+{"level":30,"time":1792368253086,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253087,"pid":35332,"reqId":"req-5","responseTime":0.17570900000009715,"msg":"request completed"}
+{"level":30,"time":1792368253133,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253133,"pid":35332,"reqId":"req-6","responseTime":0.3689159999998992,"msg":"request completed"}
+{"level":30,"time":1792368253143,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253143,"pid":35332,"reqId":"req-7","responseTime":0.21770799999967494,"msg":"request completed"}
+{"level":30,"time":1792368253161,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253162,"pid":35332,"reqId":"req-1","responseTime":0.16958299999987503,"msg":"request completed"}
+{"level":30,"time":1792368253162,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253164,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253165,"pid":35332,"reqId":"req-2","responseTime":1.0725419999998849,"msg":"request completed"}
+{"level":30,"time":1792368253166,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253174,"pid":35332,"reqId":"req-3","responseTime":7.300666999999976,"msg":"request completed"}
+{"level":30,"time":1792368253176,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253190,"pid":35332,"reqId":"req-4","responseTime":14.548874999999953,"msg":"request completed"}
+{"level":30,"time":1792368253192,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253192,"pid":35332,"reqId":"req-5","responseTime":0.14120900000034453,"msg":"request completed"}
+{"level":30,"time":1792368253194,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253196,"pid":35332,"reqId":"req-6","responseTime":2.0709170000000086,"msg":"request completed"}
+{"level":30,"time":1792368253198,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253200,"pid":35332,"reqId":"req-7","responseTime":2.4199170000001686,"msg":"request completed"}
+{"level":30,"time":1792368253202,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368253212,"pid":35332,"reqId":"req-8","responseTime":9.483416999999918,"msg":"request completed"}
+{"level":30,"time":1792368253214,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368253230,"pid":35332,"reqId":"req-9","responseTime":16.111207999999806,"msg":"request completed"}
+{"level":30,"time":1792368253232,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368253233,"pid":35332,"reqId":"req-a","responseTime":0.16837500000019645,"msg":"request completed"}
+{"level":30,"time":1792368253234,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368253236,"pid":35332,"reqId":"req-b","responseTime":2.008125000000291,"msg":"request completed"}
+{"level":30,"time":1792368253238,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368253239,"pid":35332,"reqId":"req-c","responseTime":0.4442909999997937,"msg":"request completed"}
+{"level":30,"time":1792368253240,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368253241,"pid":35332,"reqId":"req-d","responseTime":0.34400000000005093,"msg":"request completed"}
+{"level":30,"time":1792368253241,"pid":35332,"reqId":"req-e","msg":"incoming request"}
+{"level":30,"time":1792368253242,"pid":35332,"reqId":"req-e","responseTime":0.37541700000019773,"msg":"request completed"}
+{"level":30,"time":1792368253259,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253259,"pid":35332,"reqId":"req-1","responseTime":0.15899999999965075,"msg":"request completed"}
+{"level":30,"time":1792368253260,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253260,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253262,"pid":35332,"reqId":"req-2","responseTime":0.9755419999996775,"msg":"request completed"}
+{"level":30,"time":1792368253262,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253270,"pid":35332,"reqId":"req-3","responseTime":7.2390409999998155,"msg":"request completed"}
+{"level":30,"time":1792368253272,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253285,"pid":35332,"reqId":"req-4","responseTime":13.193374999999833,"msg":"request completed"}
+{"level":30,"time":1792368253287,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253287,"pid":35332,"reqId":"req-5","responseTime":0.1443330000001879,"msg":"request completed"}
+{"level":30,"time":1792368253289,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253291,"pid":35332,"reqId":"req-6","responseTime":1.9977909999997792,"msg":"request completed"}
+{"level":30,"time":1792368253293,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253293,"pid":35332,"reqId":"req-7","responseTime":0.15145799999982046,"msg":"request completed"}
+{"level":30,"time":1792368253295,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368253297,"pid":35332,"reqId":"req-8","responseTime":2.086457999999766,"msg":"request completed"}
+{"level":30,"time":1792368253299,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368253308,"pid":35332,"reqId":"req-9","responseTime":9.487082999999984,"msg":"request completed"}
+{"level":30,"time":1792368253311,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368253324,"pid":35332,"reqId":"req-a","responseTime":12.939708000000337,"msg":"request completed"}
+{"level":30,"time":1792368253326,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368253326,"pid":35332,"reqId":"req-b","responseTime":0.13383299999986775,"msg":"request completed"}
+{"level":30,"time":1792368253327,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368253330,"pid":35332,"reqId":"req-c","responseTime":2.0048329999999623,"msg":"request completed"}
+{"level":30,"time":1792368253331,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368253331,"pid":35332,"reqId":"req-d","responseTime":0.13612499999999272,"msg":"request completed"}
+{"level":30,"time":1792368253348,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253349,"pid":35332,"reqId":"req-1","responseTime":0.14762500000006185,"msg":"request completed"}
+{"level":30,"time":1792368253349,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253350,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253350,"pid":35332,"reqId":"req-2","responseTime":0.13087499999983265,"msg":"request completed"}
+{"level":30,"time":1792368253350,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253351,"pid":35332,"reqId":"req-3","responseTime":0.16329199999972843,"msg":"request completed"}
+{"level":30,"time":1792368253352,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253353,"pid":35332,"reqId":"req-4","responseTime":0.1327499999997599,"msg":"request completed"}
+{"level":30,"time":1792368253354,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253354,"pid":35332,"reqId":"req-5","responseTime":0.25387499999987995,"msg":"request completed"}
+{"level":30,"time":1792368253356,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253357,"pid":35332,"reqId":"req-6","responseTime":0.4155420000001868,"msg":"request completed"}
+{"level":30,"time":1792368253358,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253358,"pid":35332,"reqId":"req-7","responseTime":0.10066699999970297,"msg":"request completed"}
+{"level":30,"time":1792368253360,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368253360,"pid":35332,"reqId":"req-8","responseTime":0.10708399999975882,"msg":"request completed"}
+{"level":30,"time":1792368253362,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368253362,"pid":35332,"reqId":"req-9","responseTime":0.1070409999997537,"msg":"request completed"}
+{"level":30,"time":1792368253364,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368253364,"pid":35332,"reqId":"req-a","responseTime":0.19362499999988358,"msg":"request completed"}
+{"level":30,"time":1792368253380,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253381,"pid":35332,"reqId":"req-1","responseTime":0.13483300000007148,"msg":"request completed"}
+{"level":30,"time":1792368253381,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253382,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253383,"pid":35332,"reqId":"req-2","responseTime":1.1987500000000182,"msg":"request completed"}
+{"level":30,"time":1792368253384,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253385,"pid":35332,"reqId":"req-3","responseTime":1.0117499999996653,"msg":"request completed"}
+{"level":30,"time":1792368253387,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253388,"pid":35332,"reqId":"req-4","responseTime":0.7866659999999683,"msg":"request completed"}
+{"level":30,"time":1792368253389,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253397,"pid":35332,"reqId":"req-5","responseTime":7.376957999999831,"msg":"request completed"}
+{"level":30,"time":1792368253400,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253400,"pid":35332,"reqId":"req-6","responseTime":0.14045900000019174,"msg":"request completed"}
+{"level":30,"time":1792368253402,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253402,"pid":35332,"reqId":"req-7","responseTime":0.12954099999979007,"msg":"request completed"}
+{"level":30,"time":1792368253404,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368253404,"pid":35332,"reqId":"req-8","responseTime":0.26612500000010186,"msg":"request completed"}
+{"level":30,"time":1792368253406,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368253410,"pid":35332,"reqId":"req-9","responseTime":3.930917000000136,"msg":"request completed"}
+{"level":30,"time":1792368253410,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368253410,"pid":35332,"reqId":"req-a","responseTime":0.1040419999999358,"msg":"request completed"}
+{"level":30,"time":1792368253412,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368253412,"pid":35332,"reqId":"req-b","responseTime":0.1242499999998472,"msg":"request completed"}
+{"level":30,"time":1792368253414,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368253414,"pid":35332,"reqId":"req-c","responseTime":0.25458400000024994,"msg":"request completed"}
+{"level":30,"time":1792368253416,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368253417,"pid":35332,"reqId":"req-d","responseTime":0.9216670000000704,"msg":"request completed"}
+{"level":30,"time":1792368253419,"pid":35332,"reqId":"req-e","msg":"incoming request"}
+{"level":30,"time":1792368253420,"pid":35332,"reqId":"req-e","responseTime":0.46054199999980483,"msg":"request completed"}
+{"level":30,"time":1792368253421,"pid":35332,"reqId":"req-f","msg":"incoming request"}
+{"level":30,"time":1792368253429,"pid":35332,"reqId":"req-f","responseTime":7.180749999999989,"msg":"request completed"}
+{"level":30,"time":1792368253430,"pid":35332,"reqId":"req-g","msg":"incoming request"}
+{"level":30,"time":1792368253431,"pid":35332,"reqId":"req-g","responseTime":0.13908300000002782,"msg":"request completed"}
+{"level":30,"time":1792368253432,"pid":35332,"reqId":"req-h","msg":"incoming request"}
+{"level":30,"time":1792368253436,"pid":35332,"reqId":"req-h","responseTime":3.7841670000002523,"msg":"request completed"}
+{"level":30,"time":1792368253438,"pid":35332,"reqId":"req-i","msg":"incoming request"}
+{"level":30,"time":1792368253438,"pid":35332,"reqId":"req-i","responseTime":0.11208299999998417,"msg":"request completed"}
+{"level":30,"time":1792368253440,"pid":35332,"reqId":"req-j","msg":"incoming request"}
+{"level":30,"time":1792368253440,"pid":35332,"reqId":"req-j","responseTime":0.12416600000005928,"msg":"request completed"}
+{"level":30,"time":1792368253457,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253457,"pid":35332,"reqId":"req-1","responseTime":0.14870799999971496,"msg":"request completed"}
+{"level":30,"time":1792368253457,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253458,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253459,"pid":35332,"reqId":"req-2","responseTime":0.5224589999997988,"msg":"request completed"}
+{"level":30,"time":1792368253459,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253460,"pid":35332,"reqId":"req-3","responseTime":0.43100000000004,"msg":"request completed"}
+{"level":30,"time":1792368253462,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253463,"pid":35332,"reqId":"req-4","responseTime":0.863166000000092,"msg":"request completed"}
+{"level":30,"time":1792368253464,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253465,"pid":35332,"reqId":"req-5","responseTime":0.43108299999994415,"msg":"request completed"}
+{"level":30,"time":1792368253466,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253469,"pid":35332,"reqId":"req-6","responseTime":2.0264170000000377,"msg":"request completed"}
+{"level":30,"time":1792368253489,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253490,"pid":35332,"reqId":"req-1","responseTime":0.1376669999999649,"msg":"request completed"}
+{"level":30,"time":1792368253490,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253492,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253493,"pid":35332,"reqId":"req-2","responseTime":0.9660420000000158,"msg":"request completed"}
+{"level":30,"time":1792368253494,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253502,"pid":35332,"reqId":"req-3","responseTime":7.482250000000022,"msg":"request completed"}
+{"level":30,"time":1792368253504,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253518,"pid":35332,"reqId":"req-4","responseTime":14.002708999999868,"msg":"request completed"}
+{"level":30,"time":1792368253520,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253520,"pid":35332,"reqId":"req-5","responseTime":0.1362500000000182,"msg":"request completed"}
+{"level":30,"time":1792368253520,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253522,"pid":35332,"reqId":"req-6","responseTime":2.072708000000148,"msg":"request completed"}
+{"level":30,"time":1792368253524,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253527,"pid":35332,"reqId":"req-7","responseTime":2.542790999999852,"msg":"request completed"}
+{"level":30,"time":1792368253529,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368253529,"pid":35332,"reqId":"req-8","responseTime":0.11887500000011642,"msg":"request completed"}
+{"level":30,"time":1792368253531,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368253533,"pid":35332,"reqId":"req-9","responseTime":1.9799160000002303,"msg":"request completed"}
+{"level":30,"time":1792368253534,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368253544,"pid":35332,"reqId":"req-a","responseTime":9.48720800000001,"msg":"request completed"}
+{"level":30,"time":1792368253546,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368253562,"pid":35332,"reqId":"req-b","responseTime":16.277042000000165,"msg":"request completed"}
+{"level":30,"time":1792368253565,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368253565,"pid":35332,"reqId":"req-c","responseTime":0.1472089999997479,"msg":"request completed"}
+{"level":30,"time":1792368253567,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368253569,"pid":35332,"reqId":"req-d","responseTime":1.9484999999999673,"msg":"request completed"}
+{"level":30,"time":1792368253586,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253586,"pid":35332,"reqId":"req-1","responseTime":0.13320800000019517,"msg":"request completed"}
+{"level":30,"time":1792368253586,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253587,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253588,"pid":35332,"reqId":"req-2","responseTime":0.8778339999998934,"msg":"request completed"}
+{"level":30,"time":1792368253589,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253596,"pid":35332,"reqId":"req-3","responseTime":7.274499999999989,"msg":"request completed"}
+{"level":30,"time":1792368253598,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253610,"pid":35332,"reqId":"req-4","responseTime":12.135584000000108,"msg":"request completed"}
+{"level":30,"time":1792368253612,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253612,"pid":35332,"reqId":"req-5","responseTime":0.13829200000009223,"msg":"request completed"}
+{"level":30,"time":1792368253614,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253616,"pid":35332,"reqId":"req-6","responseTime":1.8974590000002536,"msg":"request completed"}
+{"level":30,"time":1792368253618,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253619,"pid":35332,"reqId":"req-7","responseTime":0.6578750000003311,"msg":"request completed"}
+{"level":30,"time":1792368253636,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253636,"pid":35332,"reqId":"req-1","responseTime":0.1520829999999478,"msg":"request completed"}
+{"level":30,"time":1792368253636,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253637,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253638,"pid":35332,"reqId":"req-2","responseTime":0.9214999999999236,"msg":"request completed"}
+{"level":30,"time":1792368253640,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253647,"pid":35332,"reqId":"req-3","responseTime":7.171916999999667,"msg":"request completed"}
+{"level":30,"time":1792368253649,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253661,"pid":35332,"reqId":"req-4","responseTime":11.88045800000009,"msg":"request completed"}
+{"level":30,"time":1792368253663,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253663,"pid":35332,"reqId":"req-5","responseTime":0.1364579999999478,"msg":"request completed"}
+{"level":30,"time":1792368253665,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253667,"pid":35332,"reqId":"req-6","responseTime":2.081709000000046,"msg":"request completed"}
+{"level":30,"time":1792368253669,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253669,"pid":35332,"reqId":"req-7","responseTime":0.3170410000002448,"msg":"request completed"}
+{"level":30,"time":1792368253686,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253687,"pid":35332,"reqId":"req-1","responseTime":0.14316600000029212,"msg":"request completed"}
+{"level":30,"time":1792368253687,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253687,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253688,"pid":35332,"reqId":"req-2","responseTime":0.13795900000013717,"msg":"request completed"}
+{"level":30,"time":1792368253688,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253688,"pid":35332,"reqId":"req-3","responseTime":0.12320799999997689,"msg":"request completed"}
+{"level":30,"time":1792368253690,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253690,"pid":35332,"reqId":"req-4","responseTime":0.20775000000003274,"msg":"request completed"}
+{"level":30,"time":1792368253692,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253693,"pid":35332,"reqId":"req-5","responseTime":0.2802499999997963,"msg":"request completed"}
+{"level":30,"time":1792368253694,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253695,"pid":35332,"reqId":"req-6","responseTime":0.2897090000001299,"msg":"request completed"}
+{"level":30,"time":1792368253696,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253697,"pid":35332,"reqId":"req-7","responseTime":0.11987500000032014,"msg":"request completed"}
+{"level":30,"time":1792368253698,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368253699,"pid":35332,"reqId":"req-8","responseTime":0.1459580000000642,"msg":"request completed"}
+{"level":30,"time":1792368253700,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368253700,"pid":35332,"reqId":"req-9","responseTime":0.10708299999987503,"msg":"request completed"}
+{"level":30,"time":1792368253702,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368253702,"pid":35332,"reqId":"req-a","responseTime":0.11670800000001691,"msg":"request completed"}
+{"level":30,"time":1792368253704,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368253704,"pid":35332,"reqId":"req-b","responseTime":0.11075000000028012,"msg":"request completed"}
+{"level":30,"time":1792368253704,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368253704,"pid":35332,"reqId":"req-c","responseTime":0.12087500000006912,"msg":"request completed"}
+{"level":30,"time":1792368253706,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368253706,"pid":35332,"reqId":"req-d","responseTime":0.21424999999999272,"msg":"request completed"}
+{"level":30,"time":1792368253723,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253723,"pid":35332,"reqId":"req-1","responseTime":0.14820800000006784,"msg":"request completed"}
+{"level":30,"time":1792368253723,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253724,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253725,"pid":35332,"reqId":"req-2","responseTime":0.9268339999998716,"msg":"request completed"}
+{"level":30,"time":1792368253727,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253735,"pid":35332,"reqId":"req-3","responseTime":7.1506249999997635,"msg":"request completed"}
+{"level":30,"time":1792368253736,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253749,"pid":35332,"reqId":"req-4","responseTime":12.34866699999975,"msg":"request completed"}
+{"level":30,"time":1792368253751,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253751,"pid":35332,"reqId":"req-5","responseTime":0.13450000000011642,"msg":"request completed"}
+{"level":30,"time":1792368253753,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253755,"pid":35332,"reqId":"req-6","responseTime":1.9983750000001237,"msg":"request completed"}
+{"level":30,"time":1792368253757,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253757,"pid":35332,"reqId":"req-7","responseTime":0.41829199999983757,"msg":"request completed"}
+{"level":30,"time":1792368253774,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253775,"pid":35332,"reqId":"req-1","responseTime":0.1516660000002048,"msg":"request completed"}
+{"level":30,"time":1792368253775,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253776,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253777,"pid":35332,"reqId":"req-2","responseTime":0.9582499999996799,"msg":"request completed"}
+{"level":30,"time":1792368253824,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253831,"pid":35332,"reqId":"req-3","responseTime":7.406582999999955,"msg":"request completed"}
+{"level":30,"time":1792368253832,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253845,"pid":35332,"reqId":"req-4","responseTime":13.081040999999914,"msg":"request completed"}
+{"level":30,"time":1792368253854,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253854,"pid":35332,"reqId":"req-5","responseTime":0.1975830000001224,"msg":"request completed"}
+{"level":30,"time":1792368253855,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253857,"pid":35332,"reqId":"req-6","responseTime":1.949833000000126,"msg":"request completed"}
+{"level":30,"time":1792368253859,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253859,"pid":35332,"reqId":"req-7","responseTime":0.17337499999985084,"msg":"request completed"}
+{"level":30,"time":1792368253861,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368253862,"pid":35332,"reqId":"req-8","responseTime":0.8785419999999249,"msg":"request completed"}
+{"level":30,"time":1792368253908,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368253918,"pid":35332,"reqId":"req-9","responseTime":9.692708999999923,"msg":"request completed"}
+{"level":30,"time":1792368253918,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368253933,"pid":35332,"reqId":"req-a","responseTime":14.701958999999988,"msg":"request completed"}
+{"level":30,"time":1792368253942,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368253942,"pid":35332,"reqId":"req-b","responseTime":0.15912500000013097,"msg":"request completed"}
+{"level":30,"time":1792368253944,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368253946,"pid":35332,"reqId":"req-c","responseTime":1.9553329999998823,"msg":"request completed"}
+{"level":30,"time":1792368253948,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368253948,"pid":35332,"reqId":"req-d","responseTime":0.1829170000000886,"msg":"request completed"}
+{"level":30,"time":1792368253965,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368253966,"pid":35332,"reqId":"req-1","responseTime":0.1404170000000704,"msg":"request completed"}
+{"level":30,"time":1792368253966,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368253967,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368253967,"pid":35332,"reqId":"req-2","responseTime":0.5315420000001723,"msg":"request completed"}
+{"level":30,"time":1792368253968,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368253969,"pid":35332,"reqId":"req-3","responseTime":1.1484580000001188,"msg":"request completed"}
+{"level":30,"time":1792368253971,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368253973,"pid":35332,"reqId":"req-4","responseTime":2.1000410000001466,"msg":"request completed"}
+{"level":30,"time":1792368253975,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368253984,"pid":35332,"reqId":"req-5","responseTime":8.980958999999984,"msg":"request completed"}
+{"level":30,"time":1792368253987,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368253988,"pid":35332,"reqId":"req-6","responseTime":0.8850830000001224,"msg":"request completed"}
+{"level":30,"time":1792368253990,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368253991,"pid":35332,"reqId":"req-7","responseTime":0.1360420000000886,"msg":"request completed"}
+{"level":30,"time":1792368253991,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368253992,"pid":35332,"reqId":"req-8","responseTime":0.27874999999994543,"msg":"request completed"}
+{"level":30,"time":1792368253993,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368253993,"pid":35332,"reqId":"req-9","responseTime":0.15541699999994307,"msg":"request completed"}
+{"level":30,"time":1792368253995,"pid":35332,"reqId":"req-a","msg":"incoming request"}
+{"level":30,"time":1792368253999,"pid":35332,"reqId":"req-a","responseTime":4.0319580000000315,"msg":"request completed"}
+{"level":30,"time":1792368254001,"pid":35332,"reqId":"req-b","msg":"incoming request"}
+{"level":30,"time":1792368254001,"pid":35332,"reqId":"req-b","responseTime":0.11149999999997817,"msg":"request completed"}
+{"level":30,"time":1792368254003,"pid":35332,"reqId":"req-c","msg":"incoming request"}
+{"level":30,"time":1792368254003,"pid":35332,"reqId":"req-c","responseTime":0.12620800000013332,"msg":"request completed"}
+{"level":30,"time":1792368254005,"pid":35332,"reqId":"req-d","msg":"incoming request"}
+{"level":30,"time":1792368254005,"pid":35332,"reqId":"req-d","responseTime":0.2395419999998012,"msg":"request completed"}
+{"level":30,"time":1792368254021,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368254022,"pid":35332,"reqId":"req-1","responseTime":0.14825000000018917,"msg":"request completed"}
+{"level":30,"time":1792368254022,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368254084,"pid":35332,"reqId":"req-1","msg":"incoming request"}
+{"level":30,"time":1792368254085,"pid":35332,"reqId":"req-1","responseTime":0.14637500000026193,"msg":"request completed"}
+{"level":30,"time":1792368254085,"pid":35332,"msg":"Runtime event; private details omitted."}
+{"level":30,"time":1792368254086,"pid":35332,"reqId":"req-2","msg":"incoming request"}
+{"level":30,"time":1792368254086,"pid":35332,"reqId":"req-2","responseTime":0.5040409999996882,"msg":"request completed"}
+{"level":30,"time":1792368254087,"pid":35332,"reqId":"req-3","msg":"incoming request"}
+{"level":30,"time":1792368254088,"pid":35332,"reqId":"req-3","responseTime":1.1366250000000946,"msg":"request completed"}
+{"level":30,"time":1792368254090,"pid":35332,"reqId":"req-4","msg":"incoming request"}
+{"level":30,"time":1792368254091,"pid":35332,"reqId":"req-4","responseTime":1.4294999999997344,"msg":"request completed"}
+{"level":30,"time":1792368254093,"pid":35332,"reqId":"req-5","msg":"incoming request"}
+{"level":30,"time":1792368254095,"pid":35332,"reqId":"req-5","responseTime":1.8112919999998667,"msg":"request completed"}
+{"level":30,"time":1792368254097,"pid":35332,"reqId":"req-6","msg":"incoming request"}
+{"level":30,"time":1792368254097,"pid":35332,"reqId":"req-6","responseTime":0.18166699999983393,"msg":"request completed"}
+{"level":30,"time":1792368254099,"pid":35332,"reqId":"req-7","msg":"incoming request"}
+{"level":30,"time":1792368254101,"pid":35332,"reqId":"req-7","responseTime":1.771708000000217,"msg":"request completed"}
+{"level":30,"time":1792368254102,"pid":35332,"reqId":"req-8","msg":"incoming request"}
+{"level":30,"time":1792368254104,"pid":35332,"reqId":"req-8","responseTime":1.2174169999998412,"msg":"request completed"}
+{"level":30,"time":1792368254105,"pid":35332,"reqId":"req-9","msg":"incoming request"}
+{"level":30,"time":1792368254107,"pid":35332,"reqId":"req-9","responseTime":1.7089169999999285,"msg":"request completed"}
+ ❯ src/http/routes/tool-proposals.test.ts (22 tests | 4 failed) 2514ms
+   ✓ runs the actual Python import and copy commands over HTTP with separate application 645ms
+   × previews the exact copy inventory and refuses changed templates and Roadmap children 32ms
+     → expected { storyMaps: 1, releases: +0, …(18) } to deeply equal { storyMaps: 1, releases: +0, …(18) }
+   × rejects multiple incoming issues targeting one Card including repository Fixture/Repository before proposal persistence 50ms
+     → {"code":"conflict","message":"Entity already has a different GitHub reference."}: expected 409 to be less than 300
+   × rejects multiple incoming issues targeting one Card including repository other/repository before proposal persistence 51ms
+     → {"code":"conflict","message":"Entity already has a different GitHub reference."}: expected 409 to be less than 300
+   × rejects duplicate removal IDs atomically and deduplicates actual Python multi-link removal planning 52ms
+     → {"code":"conflict","message":"Entity already has a different GitHub reference."}: expected 409 to be less than 300
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 4 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/http/routes/tool-proposals.test.ts > previews the exact copy inventory and refuses changed templates and Roadmap children
+AssertionError: expected { storyMaps: 1, releases: +0, …(18) } to deeply equal { storyMaps: 1, releases: +0, …(18) }
+
+- Expected
++ Received
+
+  Object {
+    "annotations": 0,
+    "cardAnnotations": 0,
+    "cardAttachments": 0,
+    "cardDependencies": 0,
+    "cardGithubEvidence": 0,
+    "cardPersonas": 0,
+    "cardSourceLinks": 0,
+    "cards": 0,
+-   "githubLinks": 0,
++   "externalRefs": 0,
+    "personas": 0,
+    "productContexts": 0,
+    "releases": 0,
+    "roadmapCards": 0,
+    "roadmapColumns": 4,
+    "roadmapReferences": 0,
+    "roadmapSwimlanes": 1,
+    "roadmaps": 1,
+    "storyMaps": 1,
+    "storyTemplates": 1,
+    "workflowStatuses": 0,
+  }
+
+ ❯ src/http/routes/tool-proposals.test.ts:369:114
+    367|     inventory: { storyMaps: 1, cards: 0, storyTemplates: 1, roadmaps: …
+    368|   } });
+    369|   expect((pending.operations[0]!.after as { preview: { inventory: Reco…
+       |                                                                                                                  ^
+    370|     storyMaps: 1, releases: 0, cards: 0, personas: 0, workflowStatuses…
+    371|     roadmaps: 1, cardPersonas: 0, cardAnnotations: 0, cardDependencies…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+ FAIL  src/http/routes/tool-proposals.test.ts > rejects multiple incoming issues targeting one Card including repository Fixture/Repository before proposal persistence
+ FAIL  src/http/routes/tool-proposals.test.ts > rejects multiple incoming issues targeting one Card including repository other/repository before proposal persistence
+AssertionError: {"code":"conflict","message":"Entity already has a different GitHub reference."}: expected 409 to be less than 300
+ ❯ request src/http/routes/tool-proposals.test.ts:44:49
+
+ ❯ src/http/routes/tool-proposals.test.ts:422:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/http/routes/tool-proposals.test.ts > rejects duplicate removal IDs atomically and deduplicates actual Python multi-link removal planning
+AssertionError: {"code":"conflict","message":"Entity already has a different GitHub reference."}: expected 409 to be less than 300
+ ❯ request src/http/routes/tool-proposals.test.ts:44:49
+
+ ❯ src/http/routes/tool-proposals.test.ts:463:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ Test Files  1 failed (1)
+      Tests  4 failed | 18 passed (22)
+   Start at  02:04:10
+   Duration  3.63s (transform 527ms, setup 0ms, collect 947ms, tests 2.51s, environment 0ms, prepare 31ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/http/routes/tool-proposals.test.ts

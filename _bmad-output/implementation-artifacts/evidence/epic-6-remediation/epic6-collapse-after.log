@@ -1,0 +1,12 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/story-map/board-filter-selection.test.tsx (20 tests) 4208ms
+   ✓ records complete Discovery DOM input-to-result diagnostics on a legal 1,000-Card hierarchy 3800ms
+ ✓ src/features/story-map/components/hierarchy-collapse.test.tsx (9 tests) 627ms
+
+ Test Files  2 passed (2)
+      Tests  29 passed (29)
+   Start at  01:08:28
+   Duration  6.56s (transform 575ms, setup 0ms, collect 1.15s, tests 4.83s, environment 353ms, prepare 50ms)
+

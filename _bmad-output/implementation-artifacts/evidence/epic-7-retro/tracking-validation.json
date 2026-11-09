@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "priorActionsUnchanged": true,
+  "newOpenActions": 7,
+  "developmentChanges": {
+    "epic-7-retrospective": [
+      "optional",
+      "done"
+    ]
+  },
+  "epic7": "backlog",
+  "lastUpdated": "10-19-2026 19:08"
+}

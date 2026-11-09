@@ -1,0 +1,34 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/persistence-entity-order.test.ts (1 test) 1ms
+ ❯ src/repositories/operation-executor-persistence.test.ts (21 tests | 1 failed) 2701ms
+   ✓ persists 200 selected operations on 1,000 Cards with snapshot, history and audit 1933ms
+   × preserves mixed FK inserts, owner updates, reverse deletions and deleted Card history 13ms
+     → Operation release at index 0: entityId: Operation ID and entity/local ID must be distinct.
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/repositories/operation-executor-persistence.test.ts > preserves mixed FK inserts, owner updates, reverse deletions and deleted Card history
+OperationResolutionError: Operation release at index 0: entityId: Operation ID and entity/local ID must be distinct.
+ ❯ normalizeOperation ../core/src/changesets/operation-registry.ts:96:30
+     94| function normalizeOperation(operation: ChangeOperation, index: number)…
+     95|   const parsed = changeOperationSchema.safeParse(operation);
+     96|   if (!parsed.success) throw new OperationResolutionError(operation.op…
+       |                              ^
+     97|   return parsed.data;
+     98| }
+ ❯ Module.resolveOperations ../core/src/changesets/operation-registry.ts:76:27
+ ❯ execute src/repositories/operation-executor-persistence.test.ts:36:22
+ ❯ src/repositories/operation-executor-persistence.test.ts:342:18
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 21 passed (22)
+   Start at  11:11:09
+   Duration  3.35s (transform 323ms, setup 0ms, collect 895ms, tests 2.70s, environment 0ms, prepare 61ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/packages/db:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/repositories/persistence-entity-order.test.ts src/repositories/operation-executor-persistence.test.ts

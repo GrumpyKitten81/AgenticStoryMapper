@@ -1,0 +1,81 @@
+{
+  "node": "24.17.0",
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "scripts/check-publication.test.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 6.888,
+      "log": "parent-publication-tests.log",
+      "originalSha256": "b7e454bcd4ba2ecb8d7baa87f065c6c0185e1064a1bb3785be8e75dc01435735",
+      "sanitizedSha256": "b7e454bcd4ba2ecb8d7baa87f065c6c0185e1064a1bb3785be8e75dc01435735"
+    },
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "--filter",
+        "@storymapper/db",
+        "exec",
+        "vitest",
+        "run",
+        "src/repositories/getting-started.test.ts"
+      ],
+      "exitCode": 0,
+      "seconds": 1.668,
+      "log": "parent-getting-started-tests.log",
+      "originalSha256": "49799ebb4a04706e7839383e74f6a788c0a4b49bee47c04637f3c1da08cc08aa",
+      "sanitizedSha256": "445d19c5f93efc13b09e1d9035fff24f2334e23ac747891b4a3b9bf947219054"
+    },
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "check"
+      ],
+      "exitCode": 1,
+      "seconds": 2.574,
+      "log": "parent-quality.log",
+      "originalSha256": "b32df3fbd07f6c88d694e82ef88399ee664b7bdb5f7a9195c34c177d0a40bf0f",
+      "sanitizedSha256": "3b821c03a3cef5048920b976171406d773af489a69b87a2d8757614e0d235fa7"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/verify.mjs"
+      ],
+      "exitCode": 1,
+      "seconds": 0.957,
+      "log": "parent-verify.log",
+      "originalSha256": "3efefb123c4059732091ccd650e1326340ebd7ab5b08db2632bf1bd41f9d168d",
+      "sanitizedSha256": "4a1771b1b9437bb33d784a11fb17885939be21dc6854cad7039075e631c2b927"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/check-size.mjs"
+      ],
+      "exitCode": 0,
+      "seconds": 0.565,
+      "log": "parent-size.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "seconds": 0.282,
+      "log": "parent-whitespace.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sanitation": "Home prefixes redacted before retained logs; original stream digests computed in memory."
+}

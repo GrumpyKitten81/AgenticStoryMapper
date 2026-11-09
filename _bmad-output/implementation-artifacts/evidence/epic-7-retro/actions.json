@@ -1,0 +1,37 @@
+[
+  {
+    "id": "epic-7-retro-a1",
+    "action": "Obtain complete bulk Issue label evidence or visibly refuse incomplete reads; regress managed labels beyond position 50 through import and baseline persistence. R1.",
+    "owner": "GitHub adapter / import developer"
+  },
+  {
+    "id": "epic-7-retro-a2",
+    "action": "Refuse conflicting iteration evidence across complete Project items or require explicit source identity; prove item order cannot change Release selection. R2.",
+    "owner": "GitHub adapter / sync developer"
+  },
+  {
+    "id": "epic-7-retro-a3",
+    "action": "Preserve remote-parent evidence through ordinary Issue writes and later sync; cover real REST response through execution and canonical binding. R3.",
+    "owner": "Remote push / DB developer"
+  },
+  {
+    "id": "epic-7-retro-a4",
+    "action": "Include Release goal and released state in baselines, health, outgoing Sync and conflict protection; verify each independent edit and post-sync health. R4; Story7.6 P2B5.",
+    "owner": "Core / sync developer"
+  },
+  {
+    "id": "epic-7-retro-a5",
+    "action": "Regress successful composer Connect through selected connection, lookup and linked create with retained draft, parent, position and Release. V1.",
+    "owner": "Web test developer"
+  },
+  {
+    "id": "epic-7-retro-a6",
+    "action": "Restore public feature API boundaries for new cross-feature imports and assess the expanded sync runtime cycle without unrelated refactoring.",
+    "owner": "Web / server architecture maintainer"
+  },
+  {
+    "id": "epic-7-retro-a7",
+    "action": "Execute remaining existing native credential, platform, reader, interrupted-push and pending-Restore acceptance boundaries; separately authorize live-account and Milestone due-date round-trip observations. Reuse Epic6 A9 and story deferred entries.",
+    "owner": "Release QA / operator"
+  }
+]

@@ -1,0 +1,46 @@
+# Independent review of bounded README correction
+
+Date: 2026-10-21. Version: 3.
+Reproducing statement: Independently review the participant README correction and actual tracked OpenWolf changes against the prior bounded plan, supplied fixture provenance and release sources; report findings without claiming final verification or publication clearance.
+
+Current status: followup review below supersedes original-attempt candidate identity and no-failure observations. The retry aggregate remains pending.
+
+Reviewer context: separate non-author Agent session; no previous project work or project conversation before this review assignment. Context came from the assignment and repository/evidence reads during this review. This was an Agent review, not an external-human usability trial. Code-review-graph tools were unavailable. No other skill or workflow was invoked.
+
+Source and original revision both identify `d93a298d8b27ffbffd19a60102a8a2e24fd674e6`. Read `plan-initial.md`, both revision files, the five-input staged-entry manifest and recorded object hashes. Recomputed manifest/overlay Git blob hashes match `813d118b1a13513c70286db6d799387e7dd5016a` and `94da7aad8d369c3d6e5cbd817b31d190dbbeeef6`; current staged entries for all five inputs match the supplied manifest. The plan records its creation before claim investigation or edits and transparently discloses that mandatory CONTRIBUTING reading had already exposed release guidance. Review cannot independently reconstruct historical command ordering from the plan alone.
+
+Reviewed `git diff HEAD` participant content: `README.md`, `.wolf/buglog.json`, `.wolf/cerebrum.md`, and the subsequently supplied `.wolf/memory.md` and `.wolf/STATUS.md` changes, including the memory wording repair and added bug-100 disposition. The five staged supplied inputs are fixture overlay, separate from participant business scope: `CONTRIBUTING.md`, `docs/agentic-coding.md`, `docs/bmad-loop.md`, `docs/bmad-epic-preparation.md`, and the Story 8.9 runnable spec. Inspected their manifest identity and overall diff scope; did not conduct an outer Story 8.9 implementation review. No participant diff existed for `.wolf/anatomy.md` or `.wolf/anatomy-index.json`. The finalized pre-gate STATUS handoff was included in this review.
+
+Read repository instructions, OpenWolf protocol/current handoff, Markdown rules, full README and CONTRIBUTING, Runbook publication prerequisites/CI/versioned-release sections, and full release workflow. Used targeted anatomy searches before further unfamiliar source reads. Inspected package scripts and verifier flag handling without execution. Private local instruction content is omitted from this report.
+
+## Original-attempt findings and dispositions
+
+- F1, low, `.wolf/memory.md`, new manual-rehearsal row: “exact final gate and review evidence retained separately” reads as an existing result, but the aggregate has not started and this review was still underway. Disposition: repaired and independently rechecked. Memory now says “final gate pending; gate and review evidence to be retained separately”; STATUS likewise explicitly records gate/export as pending. Bug-100 preserves the finding and disposition. No open actionable finding remains. This was evidence wording, not a README correctness defect.
+- No actionable README correctness, metadata, publication-caveat or scope defect found. Configured version-tag automation is supported by the checked-in workflow; the README explicitly retains unverified hosted execution and all prior publication/native prerequisites. It links the maintainer-controlled procedure without granting tag/release authorization.
+- Bug entry `bug-099` accurately records the stale README claim, cause and bounded correction, includes all protocol-required fields, has one identifier occurrence, and bug-100 accurately records the review repair with required fields. Both new identifiers occur once, and `next_id` advances to 101. JSON parses successfully. No new failed build/test was supplied or observed during this review.
+- Cerebrum records the actual fixture/environment/release-proof learning with updated date/version/reproducing statement/changelog. Memory similarly updates required metadata; its premature evidence wording is repaired as recorded in F1. STATUS updates date/version/reproducing statement/changelog, preserves the historical handoff, records local prerequisites and clearly leaves gate/export pending. The retained install exit is 0 with a completed installation log; no final aggregate success is asserted.
+
+## Original-attempt verification and limits
+
+`git diff --check` and final `git diff --cached --check` passed. Final `git diff --exit-code` passed and `git ls-files --others --exclude-standard` returned no paths. The staged five-participant-path textual diff has Git blob hash `9c5233572bd4df5801a37ce69bb1e3024c081537`; five fixture inputs remain separately staged. This binds the reviewed pre-gate diff, not a final aggregate/export result. Checked every relative README target against tracked files or tracked directory contents, including the new Runbook release link. Checked each fragment against actual headings, including the architecture AD-6 fragment and both Runbook publication/release headings; all matched. An ephemeral local read-only inspection script aided target/fragment and JSON checks; no checker or tracked file was added.
+
+No full aggregate, app/browser run, hosted workflow, account/authentication, loop action, commit, push, tag, publication audit or release was performed. No tracked file was edited by this reviewer. Exact staged candidate manifests, aggregate and export remain author work after this report. Any subsequent tracked change requires renewed review as appropriate and final verification. This review does not establish aggregate success, native or hosted acceptance, publication clearance, or final export identity.
+
+## Changelog
+
+- 2026-10-21 v2: Verify F1 repair, bug-100 and finalized pre-gate STATUS; no open actionable findings.
+- 2026-10-21 v1: Record independent review scope, one evidence-wording finding and bounded verification.
+
+## Environment-retry followup review
+
+Date: 2026-10-21. Same non-author reviewer session with reused project and solution context; this is not a new fresh-context review or independent rediscovery. Read `retry-plan.md` and inspected the complete current staged participant diff for README, STATUS, cerebrum, memory and buglog. README remains identical to the previously reviewed correction (blob `b58cd4a` prefix). The remaining participant changes accurately distinguish original plan-led discovery from same-author replay and explicitly leave the new final gate/export pending.
+
+Source/original revisions remain `d93a298d8b27ffbffd19a60102a8a2e24fd674e6`. Recomputed retry supplied-entry and overlay Git blob hashes match `47cfed832cbd327a369784518bf64cf564ffc613` and `53f4d532902ae97e15efbee80da29b22b218fc1e`. Checked staged five-input identities against the retained manifest. Four supplied draft blobs remain unchanged. The supplied outer spec changed from `adc1ea3e58a622ab066fcfb6c63ce31014e1d916` to `8273a37e13c06c2baf651417e268c32144c8ce62`; compared the retained first/retry overlays and confirmed the difference is 27 added outer-story review-triage lines. These are fixture provenance, separate from participant scope; no outer-story verdict validation is claimed.
+
+Inspected preserved first-attempt aggregate summary: exit 1, 225 root tests, 207 pass, 16 fail, two skipped, duration 149723.020416 ms. Failure excerpts show tsx IPC `listen EINVAL` under the long macOS temporary parent. Preserved standalone tsx diagnostic also exits 1. The new short-parent standalone diagnostic exits 0 and reports tsx 4.23.0 / Node 24.17.0; retry installation exits 0. These observations support an environment retry while preserving normal caching. They do not establish a successful replacement aggregate. No tests, assertions, deadlines, coverage floors, caching policy or application configuration were changed in the staged candidate.
+
+Bug-101 records the failed aggregate, diagnosed socket-path issue and short-parent replay; required fields are present, JSON parses and next_id is 102. Prior F1 repair remains intact in memory and STATUS; bug-100 remains preserved. No open actionable findings were identified in the followup. No attempt-1 failure is represented as a passing gate. Keeping a short parent is a runtime prerequisite, not evidence of final verification.
+
+Final followup checks: `git diff --exit-code` and `git diff --cached --check` passed; untracked candidate listing was empty. Current staged five-participant-path textual diff Git blob hash is `1832855898548f49ba68a78622269073d74ee71e`. There are exactly those five participant paths plus the separately retained five fixture inputs staged. This hash supersedes the first-attempt reviewed participant-diff hash. No tracked files were edited by this reviewer. The author must capture the new complete candidate manifests, run the complete aggregate and compare/export afterward; no aggregate success or publication/native/hosted clearance is claimed here.
+
+- 2026-10-21 v3: Review environment replay, retained failure/provenance, pending-gate bookkeeping and current participant candidate; no open findings.

@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-19",
+  "rows": {
+    "runtimeLookup": [
+      "provider-registration: refuses malformed, inherited or unknown runtime provider (10 values) before any handler"
+    ],
+    "registrationCompleteness": [
+      "provider-registration: ships exactly the contracts enum in both complete immutable registrations",
+      "provider-registration: rejects missing, inherited and foreign registrations for either production or extended enum"
+    ],
+    "alternateReads": [
+      "provider-extension: integrates an isolated enum, real factory registration and paired credentials with no GitHub probes",
+      "provider-extension: retains unavailable identities and reports adapter failures without implying remote deletion",
+      "provider-extension: rejects foreign identities and read-only or drifted plans before remote effects"
+    ],
+    "incomingConflict": [
+      "provider-extension: persists reviewed incoming identity, attributed audit and baselines and resolves a real pull conflict",
+      "provider-extension: keeps protected incoming changes proposed until human approval and preserves atomicity after audit failure",
+      "provider-extension: refuses renewed conflict evidence after remote drift and permits a fresh reviewed choice",
+      "provider-extension: refuses a database replacement while alternate-provider preparation is awaiting a read"
+    ],
+    "confirmedEffects": [
+      "provider-extension: executes exact human-confirmed Issue and Milestone effects with durable intents and reopening",
+      "provider-extension: reconciles an interrupted create by its stable marker after reopening without duplicate writes",
+      "provider-extension: stops ambiguous reconciliation after an uncertain create without granting another write",
+      "provider-extension: retains alternate identity history through deletion and actual Restore while invalidating prior consent"
+    ],
+    "extensionFreeze": [
+      "24passing frozen extension/registration tests plus server typecheck;888product/source files unchanged; manifests recorded"
+    ],
+    "regression": [
+      "contracts190/core449/DB489/server217 focused tests pass",
+      "provider-extension: redacts alternate operational references, credentials and remote plans from portable snapshots",
+      "fullWorkspace and serialRelease: pending parent independent gates"
+    ]
+  },
+  "nativeAcceptance": "unexecuted; no inference from test fixtures"
+}

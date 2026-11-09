@@ -1,0 +1,12 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/story-map/components/card-detail-root-focus.test.ts (3 tests) 476ms
+   ✓ keeps actual RootLayout heading behind the modal across route changes and restores normal heading focus after closing 328ms
+ ✓ src/features/changesets/shell.test.tsx (11 tests) 1183ms
+   ✓ invalidates review immediately through real transaction stream while suspending and restoring the held dirty Card editor 312ms
+
+ Test Files  2 passed (2)
+      Tests  14 passed (14)
+   Start at  18:53:29
+   Duration  2.45s (transform 616ms, setup 0ms, collect 1.76s, tests 1.66s, environment 381ms, prepare 58ms)

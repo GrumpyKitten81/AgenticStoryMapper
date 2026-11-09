@@ -1,0 +1,63 @@
+{
+  "rows": [
+    {
+      "row": "Labels",
+      "tests": [
+        "github-push-transports.test.ts: completes token/github-cli bulk labels beyond50 and rejects failed continuation",
+        "github-push-transports.test.ts: multiple Issues/search pages and missing completeness",
+        "epic7-retro-blockers.test.ts: imports actual adapter label output atomically"
+      ],
+      "observed": "Complete102labels, correct status/Annotation assignments and baselines; small complete lists avoid REST; failed continuation rejects."
+    },
+    {
+      "row": "Iteration",
+      "tests": [
+        "github-push-transports.test.ts: refuses ambiguous token/github-cli iteration tuples in either order and accepts identical evidence",
+        "epic7-retro-blockers.test.ts: later ambiguous Issue refuses all local effects"
+      ],
+      "observed": "Order-independent conflict; snapshot, Releases and proposals unchanged despite earlier valid Issue."
+    },
+    {
+      "row": "Parent",
+      "tests": [
+        "remote-push-merge.test.ts: partial write/reopen/full-read removal",
+        "epic7-retro-blockers.test.ts: durable partial outcome adoption",
+        "epic7-retro-blockers.test.ts: parent-only post-review drift refusal"
+      ],
+      "observed": "42 preserved on partial outcome and adoption; genuine full-read removal explicitly null; stale parent change sends no write."
+    },
+    {
+      "row": "Release edits",
+      "tests": [
+        "epic7-retro-blockers.test.ts: goal/released/clearing-only edit via Cards and explicit empty-card Sync",
+        "epic7-retro-blockers.test.ts: move to unchanged bound Release"
+      ],
+      "observed": "unsynced->reviewed exact effect->synced; unchanged repeat0effects; existing target number retained without redundant Milestone effect."
+    },
+    {
+      "row": "Remote Release",
+      "tests": [
+        "epic7-retro-blockers.test.ts: readOnly false/true remote changes/clearing",
+        "epic7-retro-blockers.test.ts: readOnly false/true both-side conflicts",
+        "github-command-regressions.test.ts: first inbound Release authored goal/closed state",
+        "github-ticket-command.test.ts: independent description/state-only lookup drift",
+        "epic7-retro-blockers.test.ts: missing consumed metadata refusal"
+      ],
+      "observed": "First create and existing update preserve authored goal/state; explicit clearing succeeds; incomplete metadata/drift reject with no local/proposal writes; local divergence stays conflicted."
+    },
+    {
+      "row": "Dependencies/recovery",
+      "tests": [
+        "epic7-retro-blockers.test.ts: completed Milestone and dependent Issue success",
+        "epic7-retro-blockers.test.ts: external Milestone description drift after own effect",
+        "epic7-retro-blockers.test.ts: local/remote title-only choice excludes Release metadata",
+        "epic7-retro-blockers.test.ts: reopened local_failed/remote_succeeded title-choice adoption"
+      ],
+      "observed": "Own effects remain executable; external drift rejects; excluded acknowledged/observed metadata remains intact through immediate and recovered choices."
+    }
+  ],
+  "focusedEvidence": "implementation-focused-results.json and implementation-review-*.log",
+  "parentFinalGates": "Node24 workspace3165passed; serial release138capabilities/260accessibility/all typechecks+build+hygiene passed",
+  "liveProvider": false,
+  "allRowsCoveredByExecutedPassingTests": true
+}

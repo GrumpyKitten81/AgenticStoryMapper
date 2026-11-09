@@ -1,0 +1,11 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/mcp/tools/complete-surface.test.ts (30 tests) 2937ms
+   ✓ executes Story Map, Roadmap children, customization, source, report and export capabilities 578ms
+   ✓ executes the remaining local MCP adapters with valid arguments and persisted effects 366ms
+
+ Test Files  1 passed (1)
+      Tests  30 passed (30)
+   Start at  02:18:38
+   Duration  4.05s (transform 526ms, setup 0ms, collect 923ms, tests 2.94s, environment 0ms, prepare 27ms)

@@ -1,0 +1,110 @@
+import assert from "node:assert/strict";
+import { randomUUID } from "node:crypto";
+import { mkdtemp, mkdir, writeFile } from "node:fs/promises";
+import os, { tmpdir } from "node:os";
+import { join } from "node:path";
+import childProcess from "node:child_process";
+import { syncBuiltinESMExports } from "node:module";
+import { promisify } from "node:util";
+import { request } from "node:http";
+
+const root = await mkdtemp(join(tmpdir(), "epic7-remediation-http-"));
+const home = join(root, "home");
+await mkdir(home, { mode: 0o700 });
+Object.assign(process.env, { APPDATA: join(root, "appdata"), GH_CONFIG_DIR: join(root, "gh"), GH_TOKEN: "", GITHUB_TOKEN: "", GH_ENTERPRISE_TOKEN: "", GITHUB_ENTERPRISE_TOKEN: "", STORYMAPPER_DB_PATH: join(root, "fixture.lsm", "storymapper.sqlite"), LOG_LEVEL: "error" });
+os.homedir = () => home;
+const canary = randomUUID().replaceAll("-", "");
+childProcess.execFile = Object.assign(() => { throw new Error("Unexpected fixture subprocess."); }, { [promisify.custom]: async (command: string, args: string[]) => {
+  assert.equal(command, "gh");
+  assert.deepEqual(args, ["auth", "token", "--hostname", "github.com"]);
+  return { stdout: canary, stderr: "" };
+} }) as typeof childProcess.execFile;
+syncBuiltinESMExports();
+globalThis.fetch = async () => { throw new Error("External transport is forbidden."); };
+
+const { GitHubProvider } = await import("[REDACTED_HOME]/Projects/StoryMapper/packages/github/src/index.ts");
+const { DatabaseHandle, StoryMapperRepository, UnitOfWork, openStoryMapperDb } = await import("[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/index.ts");
+const handle = new DatabaseHandle(openStoryMapperDb(process.env.STORYMAPPER_DB_PATH));
+const unitOfWork = new UnitOfWork(handle);
+const actor = { actorType: "human", actorId: "reviewing-human" } as const;
+const seed = unitOfWork.run(actor, ({ repository }) => {
+  const project = repository.createProject({ name: "Reviewed remote effects" });
+  repository.updateSafetySettings(project.id, { github: true });
+  const map = repository.createStoryMap({ projectId: project.id, name: "Remote review" });
+  const card = repository.createCard({ storyMapId: map.id, level: "activity", title: "Issue 1", description: "Authored body 1" });
+  const release = repository.createRelease({ storyMapId: map.id, name: "Release 1", goal: "Authored body 1" });
+  const connection = repository.createConnectorConnection({ projectId: project.id, provider: "github", owner: "reviewed", repository: "fixture", name: "Reviewed", authMode: "github-cli", readOnly: false, issueTypeMapping: [{ level: "activity", issueType: "Task" }] });
+  repository.bindRemoteWorkItemLink({ connectionId: connection.id, provider: "github", cardId: card.id, remoteId: "7", remoteNumber: 7, url: "https://github.com/reviewed/fixture/issues/7", labels: [], remoteParentNumber: 42, syncState: "synced" });
+  return { project, map, card, release, connection };
+});
+handle.current.$client.close();
+let issue = { remoteId: "7", remoteNumber: 7, url: "https://github.com/reviewed/fixture/issues/7", title: seed.card.title, body: seed.card.description, state: "open", labels: [] as string[], issueType: "Task", parentNumber: 42 };
+const milestones: Array<{ remoteId: string; remoteNumber: number; url: string; title: string; description: string; dueOn: string | null; state: "open" | "closed" }> = [];
+GitHubProvider.prototype.readPushInputs = async () => structuredClone({ issueTypes: ["Task"], labels: ["local-story-map", "story-map:LSM", "level:activity", "status:todo"], writable: true, milestones });
+GitHubProvider.prototype.getRemoteItem = async () => ({ status: "found", item: structuredClone(issue) });
+GitHubProvider.prototype.findRemoteItemsByMarker = async (_connection, _auth, kind, marker) => ({ complete: true, matches: structuredClone(kind === "milestone" ? milestones.filter((row) => row.description.includes(marker)) : issue.body.includes(marker) ? [issue] : []) });
+GitHubProvider.prototype.writeRemoteIssue = async (_connection, _auth, payload) => {
+  issue = { ...issue, title: payload.title, body: payload.body, labels: payload.labels, issueType: payload.issueType, state: payload.remoteState };
+  const { parentNumber: _parent, ...partial } = issue;
+  return structuredClone(partial);
+};
+GitHubProvider.prototype.writeMilestone = async (_connection, _auth, payload) => {
+  const remoteNumber = payload.remoteId ? Number(payload.remoteId) : milestones.length + 1;
+  const milestone = { title: payload.title, description: payload.description, dueOn: payload.dueOn, state: payload.state, remoteId: String(remoteNumber), remoteNumber, url: `https://github.com/reviewed/fixture/milestone/${remoteNumber}` };
+  const index = milestones.findIndex((row) => row.remoteId === milestone.remoteId);
+  if (index < 0) milestones.push(milestone); else milestones[index] = milestone;
+  return structuredClone(milestone);
+};
+const { buildServer } = await import("[REDACTED_HOME]/Projects/StoryMapper/apps/server/src/server.ts");
+const port = 44378;
+const server = await buildServer({ webBuildDirectory: "[REDACTED_HOME]/Projects/StoryMapper/apps/web/dist", runtimeConfig: { host: "127.0.0.1", port, allowRemoteHost: false } });
+await server.listen({ host: "127.0.0.1", port });
+async function api(method: string, path: string, body?: object): Promise<any> {
+  return new Promise((resolve, reject) => {
+    const call = request({ hostname: "127.0.0.1", port, method, path, headers: { origin: `http://127.0.0.1:${port}`, ...(body ? { "content-type": "application/json" } : {}) } }, (response) => {
+      let data = "";
+      response.on("data", (chunk) => { data += chunk; });
+      response.on("end", () => {
+        if ((response.statusCode ?? 500) >= 400) reject(new Error(`${method} ${path} returned ${response.statusCode}: ${data}`));
+        else resolve(JSON.parse(data));
+      });
+    });
+    call.on("error", reject);
+    call.end(body ? JSON.stringify(body) : undefined);
+  });
+}
+const selection = { storyMapId: seed.map.id, connectionId: seed.connection.id };
+const observations: object[] = [];
+try {
+  const { plan: cardPlan } = await api("POST", "/api/sync/work-items/plan", { ...selection, mode: "push", cardIds: [seed.card.id] });
+  assert.deepEqual(cardPlan.blockers, []);
+  const cardResult = await api("POST", "/api/sync/work-items/confirm", { planId: cardPlan.id });
+  assert.equal(cardResult.execution.status, "completed");
+  const snapshot = await api("GET", `/api/story-maps/${seed.map.id}`);
+  assert.equal(snapshot.remoteWorkItemLinks.find((link: any) => link.cardId === seed.card.id).remoteParentNumber, 42);
+  observations.push({ scenario: "partial-Issue-write-preserves-parent", parentNumber: 42, outcome: "completed" });
+  const releaseSelection = { ...selection, cardIds: [], releaseId: seed.release.id };
+  const { plan: initial } = await api("POST", "/api/sync/work-items/plan", { ...releaseSelection, mode: "push" });
+  assert.equal(initial.items.length, 1);
+  assert.equal((await api("POST", "/api/sync/work-items/confirm", { planId: initial.id })).execution.status, "completed");
+  for (const [field, value] of [["goal", "Remote body"], ["released", true]] as const) {
+    const before = await api("GET", `/api/story-maps/${seed.map.id}`);
+    await api("PATCH", `/api/releases/${seed.release.id}`, { baseVersion: before.releases.find((release: any) => release.id === seed.release.id).version, [field]: value });
+    const health = await api("GET", `/api/sync/work-items/health?storyMapId=${seed.map.id}`);
+    assert.equal(health.links.find((link: any) => link.releaseId === seed.release.id).syncState, "unsynced");
+    const { plan } = await api("POST", "/api/sync/work-items/plan", { ...releaseSelection, mode: "sync" });
+    assert.equal(plan.items.length, 1);
+    assert.equal(plan.items[0].kind, "milestone");
+    assert.equal((await api("POST", "/api/sync/work-items/confirm", { planId: plan.id })).execution.status, "completed");
+    const after = await api("GET", `/api/sync/work-items/health?storyMapId=${seed.map.id}`);
+    assert.equal(after.links.find((link: any) => link.releaseId === seed.release.id).syncState, "synced");
+    observations.push({ scenario: `Release-only-${field}`, before: "unsynced", after: "synced", remoteDescription: milestones[0]!.description, remoteState: milestones[0]!.state });
+  }
+  const { plan: unchanged } = await api("POST", "/api/sync/work-items/plan", { ...releaseSelection, mode: "sync" });
+  assert.equal(unchanged.items.length, 0);
+  const result = { passed: true, transport: "actual-loopback-TCP", externalTransport: "blocked", credentials: "intercepted-fake-only", fixtureData: "existing remote-push fixture", observations, unchangedEffects: unchanged.items.length };
+  await writeFile("/private/tmp/epic7-remediation-http-result.json", JSON.stringify(result, null, 2));
+  process.stdout.write(JSON.stringify(result) + "\n");
+} finally {
+  await server.close();
+}

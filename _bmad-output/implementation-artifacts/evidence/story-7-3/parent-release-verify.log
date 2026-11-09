@@ -1,0 +1,9 @@
+
+> storymapper@0.1.0 check-hygiene [REDACTED_HOME]/Projects/StoryMapper
+> node scripts/check-hygiene.mjs
+
+apps/server/src/mcp/tools/complete-surface.test.ts:755: German text: source file exceeds 750 lines
+packages/contracts/src/schemas/domain.ts:757: German text: source file exceeds 750 lines
+packages/db/src/repositories/storymapper-repository.test.ts:752: German text: source file exceeds 750 lines
+ ELIFECYCLE  Command failed with exit code 1.
+[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin/node failed with exit code 1.

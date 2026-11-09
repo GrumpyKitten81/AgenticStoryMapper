@@ -1,0 +1,146 @@
+{
+  "status": "passed",
+  "rows": [
+    {
+      "row": "Repeated disagreement",
+      "tests": [
+        {
+          "file": "packages/db/src/repositories/canonical-github-identity.test.ts",
+          "testNameContains": "preserves one canonical field disagreement",
+          "executedAndPassed": true
+        },
+        {
+          "file": "apps/server/src/services/sync-review.test.ts",
+          "testNameContains": "preserves original conflict evidence",
+          "executedAndPassed": true
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "row": "Precise locks",
+      "tests": [
+        {
+          "file": "packages/core/src/changesets/remaining-operation-resolution.test.ts",
+          "testNameContains": "locks only changed disputed fields",
+          "executedAndPassed": true
+        },
+        {
+          "file": "apps/server/src/mcp/github-command-sdk.test.ts",
+          "testNameContains": "retains combined field/version disputes",
+          "executedAndPassed": true
+        },
+        {
+          "file": "apps/web/src/features/story-map/components/sync-field-locks.test.tsx",
+          "testNameContains": "permits unmanaged modal Annotation",
+          "executedAndPassed": true
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "row": "Remote choice",
+      "tests": [
+        {
+          "file": "apps/server/src/http/routes/unit-of-work.test.ts",
+          "testNameContains": "incoming remote conflict resolution",
+          "executedAndPassed": true
+        },
+        {
+          "file": "apps/web/src/features/github-sync/github-selection.test.tsx",
+          "testNameContains": "shows captured values and prepares the incoming ChangeSet",
+          "executedAndPassed": true
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "row": "Local choice",
+      "tests": [
+        {
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "testNameContains": "updates only the chosen conflict baseline",
+          "executedAndPassed": true
+        },
+        {
+          "file": "apps/web/src/features/github-sync/github-selection.test.tsx",
+          "testNameContains": "cancels a local resolution Dry Run",
+          "executedAndPassed": true
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "row": "Evidence drift",
+      "tests": [
+        {
+          "file": "apps/server/src/services/sync-review.test.ts",
+          "testNameContains": "requires explicit renewed review",
+          "executedAndPassed": true
+        },
+        {
+          "file": "apps/web/src/features/github-sync/github-selection.test.tsx",
+          "testNameContains": "requires deliberate re-review after drift",
+          "executedAndPassed": true
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "row": "Health",
+      "tests": [
+        {
+          "file": "packages/core/src/reports/sync-health.test.ts",
+          "testNameContains": "retains proven remote deletion",
+          "executedAndPassed": true
+        },
+        {
+          "file": "packages/core/src/reports/sync-health.test.ts",
+          "testNameContains": "retains unacknowledged links",
+          "executedAndPassed": true
+        },
+        {
+          "file": "apps/server/src/mcp/github-command-sdk.test.ts",
+          "testNameContains": "retains combined field/version disputes",
+          "executedAndPassed": true
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "row": "Deleted local",
+      "tests": [
+        {
+          "file": "packages/core/src/reports/sync-health.test.ts",
+          "testNameContains": "counts typed deleted owners once",
+          "executedAndPassed": true
+        },
+        {
+          "file": "apps/server/src/services/sync-review.test.ts",
+          "testNameContains": "reports deleted local identities",
+          "executedAndPassed": true
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "row": "Mounted concurrency",
+      "tests": [
+        {
+          "file": "apps/web/src/features/github-sync/github-selection.test.tsx",
+          "testNameContains": "holds and excludes sibling actions",
+          "executedAndPassed": true
+        },
+        {
+          "file": "apps/web/src/features/story-map/components/sync-field-locks.test.tsx",
+          "testNameContains": "ignores late Card Save adoption",
+          "executedAndPassed": true
+        }
+      ],
+      "status": "passed"
+    }
+  ],
+  "sourceReview": "Parent read complete source diff and follow-up deltas; tests assert stated behaviors.",
+  "executionLog": "parent-tests-final.log.gz",
+  "nativeAcceptance": "native-acceptance.json"
+}

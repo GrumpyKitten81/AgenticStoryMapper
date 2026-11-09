@@ -1,0 +1,99 @@
+{
+  "range": "efb20dc55897e6784459221ac42b86e4d3d65b03..0ab788ae126be12acd48cbf0f546dbcca39cd692",
+  "commitCount": 13,
+  "mergeCount": 0,
+  "measuredMerges": 0,
+  "changedPaths": 532,
+  "binaryRevisions": 0,
+  "aggregateCounts": {
+    "productionPaths": 121,
+    "literalImportReferences": 873,
+    "layerEdgeKinds": 50,
+    "above750TotalLines": 1,
+    "above100000Bytes": 0,
+    "newRuleCandidates": 4
+  },
+  "topProductionChurn": [
+    {
+      "path": "apps/web/src/features/story-map/components/DiscoveryMatrix.tsx",
+      "added": 171,
+      "deleted": 170,
+      "net": 1,
+      "commit_count": 5,
+      "binary_revisions": 0
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardTile.tsx",
+      "added": 80,
+      "deleted": 131,
+      "net": -51,
+      "commit_count": 5,
+      "binary_revisions": 0
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "added": 141,
+      "deleted": 53,
+      "net": 88,
+      "commit_count": 4,
+      "binary_revisions": 0
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleasePanel.tsx",
+      "added": 68,
+      "deleted": 98,
+      "net": -30,
+      "commit_count": 3,
+      "binary_revisions": 0
+    },
+    {
+      "path": "apps/web/src/features/customization/CustomizationPanel.tsx",
+      "added": 37,
+      "deleted": 128,
+      "net": -91,
+      "commit_count": 1,
+      "binary_revisions": 0
+    },
+    {
+      "path": "apps/web/src/features/story-map/useStoryMapBoardState.ts",
+      "added": 114,
+      "deleted": 50,
+      "net": 64,
+      "commit_count": 4,
+      "binary_revisions": 0
+    },
+    {
+      "path": "apps/web/src/styles/global.css",
+      "added": 91,
+      "deleted": 49,
+      "net": 42,
+      "commit_count": 7,
+      "binary_revisions": 0
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/DiscoveryLanes.tsx",
+      "added": 69,
+      "deleted": 61,
+      "net": 8,
+      "commit_count": 3,
+      "binary_revisions": 0
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "added": 90,
+      "deleted": 36,
+      "net": 54,
+      "commit_count": 1,
+      "binary_revisions": 0
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/BoardToolbar.tsx",
+      "added": 77,
+      "deleted": 39,
+      "net": 38,
+      "commit_count": 2,
+      "binary_revisions": 0
+    }
+  ],
+  "attributionNote": "git_evidence helper subject matcher misses hyphenated story subjects. run-status task commit_shas supplies exact completion mapping; those commits were verified ancestors of HEAD."
+}

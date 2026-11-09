@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "participant": "read-only investigation Agent with earlier source/rehearsal review context",
+  "revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "runtime": {
+    "node": "24.17.0",
+    "pnpm": "9.15.4",
+    "vitest": "4.1.12"
+  },
+  "workingDirectory": "DISPOSABLE_CHECKOUT",
+  "taskOwnedTmpdir": "TASK_TMPDIR (local location recorded outside retained evidence)",
+  "commands": [
+    {
+      "command": "corepack pnpm --filter @storymapper/db exec vitest run src/restore-project.test.ts -t \"preserves genuinely crashed uncheckpointed WAL commits\" --coverage",
+      "environment": "Node24 PATH; default shared TMPDIR",
+      "exit": 1,
+      "testMilliseconds": 5236,
+      "result": "1 failed;28 name-filter skips;5000ms timeout"
+    },
+    {
+      "argv": [
+        "node",
+        "apps/server/node_modules/tsx/dist/cli.mjs",
+        "--tsconfig",
+        "apps/server/tsconfig.json",
+        "packages/db/src/fixtures/restore-crash.ts",
+        "TASK_FIXTURE_DB"
+      ],
+      "environment": "Node24 PATH; default shared TMPDIR",
+      "milliseconds": 5211.71675,
+      "childExit": 137,
+      "stderr": "",
+      "walBytes": 45352,
+      "readyMarker": true,
+      "fixtureMetadata": true
+    },
+    {
+      "argv": [
+        "node",
+        "apps/server/node_modules/tsx/dist/cli.mjs",
+        "--no-cache",
+        "--tsconfig",
+        "apps/server/tsconfig.json",
+        "packages/db/src/fixtures/restore-crash.ts",
+        "TASK_FIXTURE_DB"
+      ],
+      "environment": "diagnostic cache-disabled comparison only",
+      "milliseconds": 605.339416,
+      "childExit": 137,
+      "stderr": ""
+    },
+    {
+      "command": "corepack pnpm --filter @storymapper/db exec vitest run src/restore-project.test.ts -t \"preserves genuinely crashed uncheckpointed WAL commits\"",
+      "environment": "Node24 PATH; TMPDIR=TASK_TMPDIR; TSX_DISABLE_CACHE absent",
+      "exit": 0,
+      "passed": 1,
+      "nameFilterSkipped": 28,
+      "testMilliseconds": 658,
+      "durationMilliseconds": 1370,
+      "coverageEnabled": false
+    }
+  ],
+  "cache": {
+    "entries": 912111,
+    "enumerationMilliseconds": 1045.085959,
+    "rootExpression": "join(os.tmpdir(), `tsx-${process.geteuid()}`)",
+    "source": "apps/server/node_modules/tsx/dist/temporary-directory-BDDVQOvU.mjs",
+    "algorithmSource": "apps/server/node_modules/tsx/dist/index-XurvG3JN.mjs",
+    "algorithm": "FileCache constructor synchronously readdirSync+maps all cache entries; get uses cacheFiles.find followed by JSON cache read",
+    "sharedCacheMutated": false
+  },
+  "instrumentation": {
+    "scope": "temporary disposable fixture copy only; original imports/tsx/config/cwd retained",
+    "initialFailure": "An inserted timing mark separated try and finally and caused esbuild parse rejection; corrected copy then executed; both copies removed.",
+    "moduleClock": {
+      "beforeModuleBodyMilliseconds": 5093,
+      "bodyMilliseconds": 76,
+      "afterKillMilliseconds": 20
+    },
+    "originalFixtureSha256": "ec3a584f9468c015fe85ab8f124affcddb7cd4707721e6d2e759b481c35ed6c3",
+    "originalFixtureMatchesCommandStart": true
+  },
+  "conclusion": "Enormous shared tsx transformation cache caused child startup to consume unchanged test deadline. Isolated task-owned TMPDIR retains caching and permits unchanged focused test; full aggregate and coverage acceptance remain separate.",
+  "limitations": [
+    "No coverage-pass claim from focused test.",
+    "Original raw streams were not retained; observations transcribed from tool results.",
+    "Direct crash fixture status137 is expected SIGKILL behavior, not test success alone.",
+    "Task-owned cache isolation is explicit validation provisioning, not repository source correction."
+  ],
+  "log": {
+    "path": "restore-timeout-diagnostic-observations.log.gz",
+    "originalRawSha256": null,
+    "decodedSha256": "0995b63acda22788991977487302b62894f3a0f49578ce06c48fc19d9fc2959f",
+    "compressedSha256": "179633156cd11d5513b4294e2be90a75316b1711cbc67ad72b626ee672f5709d",
+    "provenance": "Derived observation transcript; not reconstructed original raw command output."
+  }
+}

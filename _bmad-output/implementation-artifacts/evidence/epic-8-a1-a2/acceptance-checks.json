@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "checkedAt": "2026-10-22T17:05:58.141334+00:00",
+  "scannerCommit": "5044b2dff2e02c5265db5130f51e3a868f1a2781",
+  "retrospectiveVersion": 2,
+  "verdict": "rejected",
+  "resolved": [
+    "epic-8-retro-a1",
+    "epic-8-retro-a2"
+  ],
+  "remainingDeclaredAcceptance": [
+    "epic-8-retro-a3",
+    "epic-8-retro-a4"
+  ],
+  "rootTests": {
+    "returncode": 0,
+    "tests": 235,
+    "passed": 233,
+    "failed": 0,
+    "skipped": 2,
+    "milliseconds": 197861.425583
+  },
+  "verifierReturncode": 0,
+  "protectedWorkingIndexAndRunUnchanged": true,
+  "scannerSourcesMatchVerifiedCandidate": true,
+  "documents": {
+    "epic-8-retro-2026-10-21.md": "9b0dc67b7532d1a25d3510cc75ae0b309e489a99b7b373b86b3ba0f2297a2298",
+    "epic-8-retro-2026-10-21-v1.md": "480247d3e3533b67d69474be0e91ff1b1941d7886af45ec16d09591182456e80"
+  },
+  "publicationClearance": false,
+  "limitations": [
+    "Raw plus one JSON serialization layer; no arbitrary repeated serialization or privacy certification",
+    "Two native invalid-byte filename cases remain skipped",
+    "Intermediate reviewed root run overlapped final review edits and is not final-candidate verification",
+    "Earlier full publication test failed deep-path10s bound before individual path guard; no timeout raised",
+    "Real repository audit refused candidate-changed-during-scan while work artifacts changed; no completed exact final publication audit",
+    "Full workspace test/coverage aggregate and hosted/native acceptance not newly run",
+    "Initial durable raw-evidence destination failed the ignore assertion before any raw copy; used the verified ignored run-retrospective directory instead."
+  ]
+}

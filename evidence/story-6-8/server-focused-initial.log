@@ -1,0 +1,305 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ❯ src/mcp/adapter.test.ts (4 tests | 1 failed) 431ms
+   × runs MCP read, protected proposal, validation and attributed application routes on the SDK2 adapter 101ms
+     → expected { status: 200, body: { …(4) } } to match object { status: 200, body: { …(3) } }
+(27 matching properties omitted from actual)
+ ❯ src/http/routes/getting-started.test.ts (15 tests | 1 failed) 563ms
+   × getting-started HTTP boundaries > keeps removed-map customizations readable and editable through the scoped HTTP surface 29ms
+     → expected { workflowStatuses: [ …(5) ], …(6) } to deeply equal { workflowStatuses: [ …(5) ], …(6) }
+ ✓ src/http/routes/base-version-conflicts.test.ts (16 tests) 568ms
+ ✓ src/mcp/tools/delivery-status.test.ts (20 tests) 1646ms
+ ❯ src/mcp/tools/complete-surface.test.ts (30 tests | 1 failed) 2788ms
+   × executes Story Map, Roadmap children, customization, source, report and export capabilities 510ms
+     → {"code":"conflict","message":"Operation a39230d2-0ddb-4736-b460-ab2bc34c19ec at index 0: Customization definition changed; review its current usage again.","details":{"operationId":"a39230d2-0ddb-4736-b460-ab2bc34c19ec","index":0}}: expected 409 to be 200 // Object.is equality
+   ✓ executes the remaining local MCP adapters with valid arguments and persisted effects 351ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/mcp/tools/complete-surface.test.ts [ src/mcp/tools/complete-surface.test.ts ]
+AssertionError: expected [ 'BulkUpdateCards', …(53) ] to deeply equal [ 'BulkUpdateCards', …(55) ]
+
+- Expected
++ Received
+
+  Array [
+    "BulkUpdateCards",
+    "CreateAnnotation",
+    "CreateCardAttachment",
+    "CreateCardSourceLink",
+    "CreateGitHubLink",
+    "CreateRoadmap",
+    "CreateRoadmapCard",
+    "CreateRoadmapColumn",
+    "CreateRoadmapReference",
+    "CreateRoadmapSwimlane",
+    "CreateStoryMap",
+    "CreateStoryMapCard",
+    "CreateStoryMapPersona",
+    "CreateStoryMapRelease",
+    "CreateStoryTemplate",
+    "CreateWorkflowStatus",
+    "DeleteAnnotation",
+    "DeleteCard",
+    "DeleteCardAnnotation",
+    "DeleteCardAttachment",
+    "DeleteCardDependency",
+    "DeleteCardPersona",
+    "DeleteCardSourceLink",
+    "DeleteCards",
+    "DeleteGitHubLink",
+    "DeleteOrArchiveStoryMapCard",
+    "DeletePersona",
+    "DeleteRelease",
+    "DeleteStoryMap",
+-   "DeleteStoryTemplate",
+-   "DeleteWorkflowStatus",
+    "ImportGitHubIssues",
+    "ImportSourceDocument",
+    "MoveStoryMapCard",
+    "ParkCard",
+    "PullStoryMapGitHubLinks",
+    "PushCardsToGitHub",
+    "ResolveSyncConflict",
+    "SetCardAnnotation",
+    "SetCardDependency",
+    "SetCardPersona",
+    "SetExternalRef",
+    "SubmitChangeSet",
+    "SyncGitHubLinks",
+    "UnparkCard",
+    "UpdateAnnotation",
+    "UpdateDeliveryStatus",
+    "UpdateGitHubLink",
+    "UpdateRoadmap",
+    "UpdateStoryMap",
+    "UpdateStoryMapCard",
+    "UpdateStoryMapPersona",
+    "UpdateStoryMapRelease",
+    "UpdateStoryTemplate",
+    "UpdateWorkflowStatus",
+    "UpsertProductContext",
+  ]
+
+ ❯ src/mcp/tools/complete-surface.test.ts:21:56
+     19| const sourceHash = (content: string) => createHash("sha256").update(co…
+     20| afterEach(async () => { vi.restoreAllMocks(); for (const close of clea…
+     21| afterAll(() => { expect([...exercisedCommands].sort()).toEqual([...cha…
+       |                                                        ^
+     22|
+     23| function seedLegacySourceLink(handle: DatabaseHandle, cardId: string, …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/mcp/adapter.test.ts > runs MCP read, protected proposal, validation and attributed application routes on the SDK2 adapter
+AssertionError: expected { status: 200, body: { …(4) } } to match object { status: 200, body: { …(3) } }
+(27 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+    "body": Object {
+      "changeSet": Object {
+-       "status": "proposed",
++       "status": "applied",
+      },
+      "changeSetId": Any<String>,
+-     "outcome": "proposed",
++     "outcome": "applied",
+    },
+    "status": 200,
+  }
+
+ ❯ src/mcp/adapter.test.ts:81:20
+     79|   f.unitOfWork.run(actor, ({ repository }) => repository.updateSafetyS…
+     80|   const proposed = await f.call("UpdateStoryMapCard", input);
+     81|   expect(proposed).toMatchObject({ status: 200, body: { outcome: "prop…
+       |                    ^
+     82|   expect(f.repository.getChangeSet(proposed.body.changeSetId)).toMatch…
+     83|   expect(f.repository.getCardDetails(f.card.id)?.title).toBe(f.card.ti…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯
+
+ FAIL  src/http/routes/getting-started.test.ts > getting-started HTTP boundaries > keeps removed-map customizations readable and editable through the scoped HTTP surface
+AssertionError: expected { workflowStatuses: [ …(5) ], …(6) } to deeply equal { workflowStatuses: [ …(5) ], …(6) }
+
+- Expected
++ Received
+
+  Object {
+    "annotations": Array [],
+    "cardAnnotations": Array [],
+    "cardPersonas": Array [],
+    "personas": Array [
+      Object {
+        "age": "",
+        "avatar": "",
+        "centralNeed": "",
+        "country": "",
+        "description": "",
+        "expectations": "",
+        "fachexpertise": "",
+        "goals": Array [],
+        "id": "68686786-9c6f-49e9-b9c4-178d09f32b27",
+        "name": "Sample Persona",
+        "pains": Array [],
+        "personaType": "",
+        "productExperience": "",
+        "projectId": "8aeeff96-2e3b-4312-8d25-38ef86f4a10d",
+        "represents": "",
+        "role": "Reader",
+        "scopeNote": "",
+        "storyMapId": "de842d4d-618c-41f8-b158-8b8cd7fbfaed",
+        "successIndicators": "",
+        "version": 1,
+        "workLife": "",
+      },
+    ],
+    "storyTemplates": Array [],
+-   "usageCards": Array [
+-     Object {
+-       "createdAt": "2026-10-17T17:47:49.219Z",
+-       "creationOrigin": "inference",
+-       "description": "Collect PRD/SRD input and preserve provenance.",
+-       "id": "9313970c-4cfd-4363-a9c7-1f5a1bcb09c7",
+-       "key": "LSM-1",
+-       "level": "activity",
+-       "parentId": null,
+-       "parked": false,
+-       "position": 0,
+-       "provenance": "inference",
+-       "releaseId": null,
+-       "status": "todo",
+-       "storyMapId": "de842d4d-618c-41f8-b158-8b8cd7fbfaed",
+-       "title": "Understand product requirements",
+-       "updatedAt": "2026-10-17T17:47:49.219Z",
+-       "version": 1,
+-     },
+-     Object {
+-       "createdAt": "2026-10-17T17:47:49.220Z",
+-       "creationOrigin": "inference",
+-       "description": "As a product owner, I want generated cards to link back to source chunks.",
+-       "id": "dfd0056f-ee66-4a36-8047-1ab95d1e9c1f",
+-       "key": "LSM-3",
+-       "level": "story",
+-       "parentId": "7ea99b7a-5915-4d46-b03d-bd3c5543a7f9",
+-       "parked": false,
+-       "position": 0,
+-       "provenance": "inference",
+-       "releaseId": "515fc12a-58a7-4546-a266-e3f9d5cf2832",
+-       "status": "todo",
+-       "storyMapId": "de842d4d-618c-41f8-b158-8b8cd7fbfaed",
+-       "title": "Create traceable story cards",
+-       "updatedAt": "2026-10-17T17:47:49.220Z",
+-       "version": 1,
+-     },
+-     Object {
+-       "createdAt": "2026-10-17T17:47:49.220Z",
+-       "creationOrigin": "inference",
+-       "description": "Chunk Markdown or TXT into stable source chunks.",
+-       "id": "7ea99b7a-5915-4d46-b03d-bd3c5543a7f9",
+-       "key": "LSM-2",
+-       "level": "step",
+-       "parentId": "9313970c-4cfd-4363-a9c7-1f5a1bcb09c7",
+-       "parked": false,
+-       "position": 0,
+-       "provenance": "inference",
+-       "releaseId": null,
+-       "status": "todo",
+-       "storyMapId": "de842d4d-618c-41f8-b158-8b8cd7fbfaed",
+-       "title": "Import source document",
+-       "updatedAt": "2026-10-17T17:47:49.220Z",
+-       "version": 1,
+-     },
+-   ],
++   "usageCards": Array [],
+    "workflowStatuses": Array [
+      Object {
+        "color": "#eef2ff",
+        "group": "todo",
+        "id": "9c49b9c6-3a9e-4c10-bf22-26f5f1d483b8",
+        "name": "todo",
+        "position": 0,
+        "projectId": "8aeeff96-2e3b-4312-8d25-38ef86f4a10d",
+        "storyMapId": null,
+      },
+      Object {
+        "color": "#fff7ed",
+        "group": "active",
+        "id": "bfc0e830-02a8-4664-9e4a-be3cf069fe6b",
+        "name": "active",
+        "position": 1,
+        "projectId": "8aeeff96-2e3b-4312-8d25-38ef86f4a10d",
+        "storyMapId": null,
+      },
+      Object {
+        "color": "#ecfdf5",
+        "group": "done",
+        "id": "b66d6e05-f4e6-4b25-9ab1-fa481495bd09",
+        "name": "done",
+        "position": 2,
+        "projectId": "8aeeff96-2e3b-4312-8d25-38ef86f4a10d",
+        "storyMapId": null,
+      },
+      Object {
+        "color": "#f8fafc",
+        "group": "done",
+        "id": "6df832f7-51e9-4675-8a87-d6612f51937a",
+        "name": "archived",
+        "position": 3,
+        "projectId": "8aeeff96-2e3b-4312-8d25-38ef86f4a10d",
+        "storyMapId": null,
+      },
+      Object {
+        "group": "active",
+        "id": "56ec1039-c283-49e1-9a66-7120fa2a65a8",
+        "name": "Sample review",
+        "position": 4,
+        "projectId": "8aeeff96-2e3b-4312-8d25-38ef86f4a10d",
+        "storyMapId": "de842d4d-618c-41f8-b158-8b8cd7fbfaed",
+      },
+    ],
+  }
+
+ ❯ src/http/routes/getting-started.test.ts:110:26
+    108|     const after = await server.inject(path);
+    109|     expect(after.statusCode).toBe(200);
+    110|     expect(after.json()).toEqual(before.json());
+       |                          ^
+    111|     expect(after.json().personas).toEqual(expect.arrayContaining([expe…
+    112|     expect(after.json().workflowStatuses).toEqual(expect.arrayContaini…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯
+
+ FAIL  src/mcp/tools/complete-surface.test.ts > executes Story Map, Roadmap children, customization, source, report and export capabilities
+AssertionError: {"code":"conflict","message":"Operation a39230d2-0ddb-4736-b460-ab2bc34c19ec at index 0: Customization definition changed; review its current usage again.","details":{"operationId":"a39230d2-0ddb-4736-b460-ab2bc34c19ec","index":0}}: expected 409 to be 200 // Object.is equality
+
+- Expected
++ Received
+
+- 200
++ 409
+
+ ❯ Object.reviewedCall src/mcp/tools/complete-surface.test.ts:75:46
+     73|     expect(approval.statusCode, approval.body).toBe(200);
+     74|     const applied = await server.inject({ method: "POST", url: `/api/c…
+     75|     expect(applied.statusCode, applied.body).toBe(200);
+       |                                              ^
+     76|     return { ...proposed, outcome: "applied", changeSet: applied.json(…
+     77|   };
+ ❯ src/mcp/tools/complete-surface.test.ts:153:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯
+
+ Test Files  3 failed | 2 passed (5)
+      Tests  3 failed | 82 passed (85)
+   Start at  19:47:47
+   Duration  3.90s (transform 763ms, setup 0ms, collect 4.66s, tests 6.00s, environment 0ms, prepare 152ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/mcp/adapter.test.ts src/http/routes/base-version-conflicts.test.ts src/http/routes/getting-started.test.ts src/mcp/tools/complete-surface.test.ts src/mcp/tools/delivery-status.test.ts

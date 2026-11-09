@@ -1,0 +1,38 @@
+{
+  "action": "epic-4-retro-a4",
+  "checks": {
+    "reference_cases": 64,
+    "catalog_keys": 60,
+    "full_core": 367,
+    "focused_db": 64,
+    "recorded_http_sdk": 14,
+    "core_typecheck": "passed"
+  },
+  "measurements_ms": {
+    "preview_before": [
+      263.633709,
+      226.791625,
+      230.326208
+    ],
+    "preview_after": [
+      254.971459,
+      213.3355,
+      210.020333
+    ],
+    "executor_before": [
+      590.8845,
+      544.674459,
+      542.543209
+    ],
+    "executor_after": [
+      569.825583,
+      527.146583,
+      524.267541
+    ],
+    "recorded_publication_test_ms_before": 30529,
+    "recorded_publication_test_ms_after": 26940
+  },
+  "bounds": "unchanged: preview500ms; executor2000msnominal/4000mstolerance",
+  "review": "Independent complete resolver mutator/write catalog and final source/test review: no findings; parent read diff/tests. Golden fixture moves lossless. Everyresolverkey executes fullclone+allcollection reference; readonlyshared collections frozen; publication/ACKrecapture and input/history independence tested.",
+  "initial_failures": "TypeScript Map typing and test literals/schema-required IDs corrected; one sandbox loopbackEPERM publicationattempt retained, elevated14/14pass. All raw logs retained."
+}

@@ -1,0 +1,90 @@
+{
+  "result": {
+    "command": "corepack pnpm check",
+    "exit": 0,
+    "durationSeconds": 695.3420537081547,
+    "sourceUnchanged": true,
+    "semanticIndexUnchanged": true,
+    "rawIndexUnchanged": true,
+    "headUnchanged": true
+  },
+  "rootScripts": {
+    "tests": 225,
+    "pass": 223,
+    "fail": 0,
+    "skipped": 2
+  },
+  "workspaceCoverageTestCounts": [
+    193,
+    7,
+    66,
+    449,
+    560,
+    5,
+    853,
+    1026
+  ],
+  "workspaceCoverageTestsTotal": 3159,
+  "coverage": {
+    "packages/contracts": {
+      "percent": 91.34,
+      "covered": 496,
+      "lines": 543
+    },
+    "packages/importers": {
+      "percent": 100.0,
+      "covered": 39,
+      "lines": 39
+    },
+    "packages/github": {
+      "percent": 91.19,
+      "covered": 176,
+      "lines": 193
+    },
+    "packages/core": {
+      "percent": 93.14,
+      "covered": 2228,
+      "lines": 2392
+    },
+    "packages/db": {
+      "percent": 93.7,
+      "covered": 3199,
+      "lines": 3414
+    },
+    "packages/mcp": {
+      "percent": 83.33,
+      "covered": 30,
+      "lines": 36
+    },
+    "apps/web": {
+      "percent": 87.8,
+      "covered": 4831,
+      "lines": 5502
+    },
+    "apps/server": {
+      "percent": 94.82,
+      "covered": 3683,
+      "lines": 3884
+    }
+  },
+  "coverageFloorsPassed": 8,
+  "serialAuditPerformanceTests": 14,
+  "accessibilityTests": 261,
+  "capabilities": 138,
+  "sameCandidateAsPreviousFailedFinalGate": true,
+  "protected": {
+    "_bmad-output/implementation-artifacts/sprint-status.yaml": {
+      "beforeSha256": "3b1d55b464d8d77a091d3b230422c16ba59c7794184df7ab8fe67bc37f5c7c87",
+      "afterSha256": "3b1d55b464d8d77a091d3b230422c16ba59c7794184df7ab8fe67bc37f5c7c87",
+      "unchanged": true
+    },
+    "_bmad-output/implementation-artifacts/deferred-work.md": {
+      "beforeSha256": "dedfb09de713b97b83c3df6aeb8f091b5d9ac028f43bbce75f9a9acf1ff9262c",
+      "afterSha256": "dedfb09de713b97b83c3df6aeb8f091b5d9ac028f43bbce75f9a9acf1ff9262c",
+      "unchanged": true
+    }
+  },
+  "environmentPrerequisite": "Installed Node24.17.0, Corepack0.35.0/pnpm9.15.4; task-owned TMPDIR read from /tmp/story-8-9-owned-tmpdir and reused from prior focused diagnostic, not observed empty at aggregate start; TSX_DISABLE_CACHE absent; GIT_OPTIONAL_LOCKS=0. Parent-authorized validation-environment correction; no code/test/deadline/floor change or shared-cache deletion.",
+  "previousEvidence": "Original two failed aggregates, participant report and PR draft preserved unchanged. This continuation adds an environment-qualified successful result; it does not erase earlier failures.",
+  "limits": "No hosted/native external acceptance, outside-human trial or publication clearance. No commit/push/remote PR/tag/release."
+}

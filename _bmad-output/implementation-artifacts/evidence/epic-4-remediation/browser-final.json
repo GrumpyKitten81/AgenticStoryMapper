@@ -1,0 +1,722 @@
+{
+  "snapshot": {
+    "storyMap": {
+      "id": "74810cba-fa66-467d-8fc4-576775cba671",
+      "version": 1,
+      "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+      "name": "Remediation fixture",
+      "estimationUnit": "points",
+      "cardKeyPrefix": "LSM",
+      "createdAt": "2026-10-17T09:28:38.168Z",
+      "updatedAt": "2026-10-17T09:28:38.168Z"
+    },
+    "cards": [
+      {
+        "creationOrigin": "inference",
+        "provenance": "inference",
+        "id": "7611ab53-77e1-4ad1-adc9-731af751c3db",
+        "version": 1,
+        "storyMapId": "74810cba-fa66-467d-8fc4-576775cba671",
+        "parentId": null,
+        "releaseId": null,
+        "key": "LSM-1",
+        "level": "activity",
+        "title": "Accepted activity",
+        "description": "",
+        "position": 0,
+        "status": "todo",
+        "parked": false,
+        "createdAt": "2026-10-17T09:29:54.171Z",
+        "updatedAt": "2026-10-17T09:29:54.171Z"
+      }
+    ],
+    "releases": [],
+    "externalRefs": [],
+    "personas": [],
+    "workflowStatuses": [
+      {
+        "id": "865130aa-3e2d-4d66-91d6-322fd6008e69",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "storyMapId": null,
+        "name": "todo",
+        "group": "todo",
+        "position": 0,
+        "color": "#eef2ff"
+      },
+      {
+        "id": "be5701b3-3df1-40aa-9c7f-b9e2131288f2",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "storyMapId": null,
+        "name": "active",
+        "group": "active",
+        "position": 1,
+        "color": "#fff7ed"
+      },
+      {
+        "id": "774dd08e-a2ae-4058-8ebf-797f08b79348",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "storyMapId": null,
+        "name": "done",
+        "group": "done",
+        "position": 2,
+        "color": "#ecfdf5"
+      },
+      {
+        "id": "1615a337-e0a1-4851-b5e3-c016043441c2",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "storyMapId": null,
+        "name": "archived",
+        "group": "done",
+        "position": 3,
+        "color": "#f8fafc"
+      }
+    ],
+    "cardPersonas": [],
+    "annotations": [],
+    "cardAnnotations": [],
+    "cardDependencies": [],
+    "storyTemplates": [],
+    "roadmaps": [],
+    "productContext": {
+      "id": "ffe3aaca-c626-44e7-963d-9e4fc1e8bac4",
+      "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+      "storyMapId": "74810cba-fa66-467d-8fc4-576775cba671",
+      "productType": "",
+      "purpose": "",
+      "keyFeatures": [],
+      "targetUsers": "",
+      "platform": "",
+      "pricing": "",
+      "notes": "",
+      "glossary": "",
+      "nonGoals": "",
+      "complianceConstraints": "",
+      "updatedAt": "2026-10-17T09:30:43.806Z"
+    },
+    "sourceChunks": [],
+    "sourceLinks": [],
+    "cardAttachments": [],
+    "githubLinks": [],
+    "remoteWorkItemLinks": []
+  },
+  "preview": {
+    "changeSet": {
+      "operationsSchemaVersion": 4,
+      "proposedBy": {
+        "actorType": "agent",
+        "actorId": "local-mcp-host",
+        "mcpSessionId": "512542bd-a4e5-436f-a9cd-6a39ce01515e"
+      },
+      "approval": {
+        "actor": {
+          "actorType": "human",
+          "actorId": "local-user"
+        },
+        "approvedAt": "2026-10-17T09:29:37.953Z",
+        "operationsHash": "1f4dd9062f9682f95e58d60627e75673098d33273d43dc8b9ae36a24f8f04f4e",
+        "selectedOperationIds": [
+          "__proto__",
+          "keep"
+        ]
+      },
+      "execution": {
+        "actor": {
+          "actorType": "human",
+          "actorId": "local-user"
+        },
+        "appliedAt": "2026-10-17T09:29:54.187Z",
+        "selectedOperationIds": [
+          "__proto__",
+          "keep"
+        ],
+        "operationResults": [
+          {
+            "operationId": "__proto__",
+            "index": 0,
+            "entityIds": [
+              "9823d703-c385-404c-861f-6354d71c8875",
+              "ba0c73e4855783feb32cf579858d60065c45d0c61543ef0bd9a68c0f82bb8c23",
+              "3f913c0e1b6676e65a659cde8163591c04551ad2bb91788e1314d758065afa0b",
+              "21474d6a8e6a033d56d2777ed64ce34700450ada19763b4f9b586e664e2370f2",
+              "e7433088d0f4ca21cadb3f549dd5bc17686e3b89f66c8119ff70732882e1fd5d",
+              "840a2ebb8ae27bfa747291c9b450e5cb24503843161f9e67722ee291f341e4f9",
+              "505721b19bd6460e71fb5d38873c94155a68d3182f8105e241859ce928664c54"
+            ]
+          },
+          {
+            "operationId": "keep",
+            "index": 4,
+            "entityIds": [
+              "7611ab53-77e1-4ad1-adc9-731af751c3db"
+            ]
+          }
+        ],
+        "restorePoint": "3d980d115e32918b265f2d232583b64a20ed3c1f4bcaf6a60f3226ffd7a02885__pre-apply__2026-10-17T09_29_54_173Z__00000001__ef0e2fa4e6854edab6ee3210e37b48f1__409600__dev-sha256-2580d0784b3925d688ac9a5012add6707377e44be3e958f678e74f89aab53129.sqlite",
+        "retainedPreparedEffects": []
+      },
+      "warnings": [],
+      "undoneByRestore": false,
+      "id": "037c9971-3064-4e6f-84d2-f02b8d66ee3f",
+      "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+      "title": "Epic4 remediation acceptance",
+      "source": "mcp",
+      "status": "applied",
+      "operations": [
+        {
+          "operationId": "__proto__",
+          "op": "import",
+          "entity": "sourceDocument",
+          "after": {
+            "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+            "title": "epics.md",
+            "type": "markdown",
+            "fileHash": "6cc5bfcbba8006d3265ac01ba4c51552c8cc533f11aa3cbc31d324adafa749de",
+            "inlineContent": "# Epic 1: Organize research\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under organize research.\n\n# Epic 2: Shape the map\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under shape the map.\n\n# Epic 3: Plan delivery\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under plan delivery.\n\n# Epic 4: Collaborate safely\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under collaborate safely.\n\n# Epic 5: Trace decisions\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under trace decisions.\n\n# Epic 6: Publish outcomes\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under publish outcomes.\n"
+          }
+        },
+        {
+          "operationId": "constructor",
+          "entityId": "excluded-local",
+          "op": "create",
+          "entity": "card",
+          "after": {
+            "title": "Excluded activity",
+            "storyMapId": "74810cba-fa66-467d-8fc4-576775cba671",
+            "level": "activity"
+          }
+        },
+        {
+          "operationId": "toString",
+          "entityId": "excluded-local",
+          "op": "update",
+          "entity": "card",
+          "after": {
+            "description": "Dependent edit must be excluded"
+          }
+        },
+        {
+          "operationId": "source-link",
+          "entityId": "excluded-source-link",
+          "op": "link",
+          "entity": "sourceLink",
+          "after": {
+            "kind": "chunk",
+            "cardId": "excluded-local",
+            "chunk": {
+              "kind": "import",
+              "operationId": "__proto__",
+              "locator": "Epic 1: Organize research#1"
+            }
+          }
+        },
+        {
+          "operationId": "keep",
+          "entityId": "kept-local",
+          "op": "create",
+          "entity": "card",
+          "after": {
+            "title": "Accepted activity",
+            "storyMapId": "74810cba-fa66-467d-8fc4-576775cba671",
+            "level": "activity"
+          }
+        }
+      ],
+      "createdAt": "2026-10-17T09:28:38.211Z"
+    },
+    "presentationStatus": "applied",
+    "closed": true,
+    "canApprove": false,
+    "canApply": false,
+    "selectedOperationIds": [],
+    "conflicts": [],
+    "boards": [],
+    "explanation": "Applied: this ChangeSet remains available in Activity.",
+    "operations": [
+      {
+        "operationId": "__proto__",
+        "index": 0,
+        "kind": "import:sourceDocument",
+        "label": "import",
+        "status": "changed",
+        "dependencies": [],
+        "owners": [],
+        "changes": [
+          {
+            "entity": "sourceDocument",
+            "entityId": "9823d703-c385-404c-861f-6354d71c8875",
+            "after": {
+              "id": "9823d703-c385-404c-861f-6354d71c8875",
+              "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+              "title": "epics.md",
+              "type": "markdown",
+              "filePath": "inline://reviewed-source",
+              "fileHash": "6cc5bfcbba8006d3265ac01ba4c51552c8cc533f11aa3cbc31d324adafa749de",
+              "importedAt": "2026-10-17T09:29:54.171Z"
+            }
+          },
+          {
+            "entity": "sourceChunk",
+            "entityId": "ba0c73e4855783feb32cf579858d60065c45d0c61543ef0bd9a68c0f82bb8c23",
+            "after": {
+              "id": "ba0c73e4855783feb32cf579858d60065c45d0c61543ef0bd9a68c0f82bb8c23",
+              "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+              "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under organize research.",
+              "locator": "Epic 1: Organize research#1",
+              "heading": "Epic 1: Organize research"
+            }
+          },
+          {
+            "entity": "sourceChunk",
+            "entityId": "3f913c0e1b6676e65a659cde8163591c04551ad2bb91788e1314d758065afa0b",
+            "after": {
+              "id": "3f913c0e1b6676e65a659cde8163591c04551ad2bb91788e1314d758065afa0b",
+              "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+              "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under shape the map.",
+              "locator": "Epic 2: Shape the map#2",
+              "heading": "Epic 2: Shape the map"
+            }
+          },
+          {
+            "entity": "sourceChunk",
+            "entityId": "21474d6a8e6a033d56d2777ed64ce34700450ada19763b4f9b586e664e2370f2",
+            "after": {
+              "id": "21474d6a8e6a033d56d2777ed64ce34700450ada19763b4f9b586e664e2370f2",
+              "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+              "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under plan delivery.",
+              "locator": "Epic 3: Plan delivery#3",
+              "heading": "Epic 3: Plan delivery"
+            }
+          },
+          {
+            "entity": "sourceChunk",
+            "entityId": "e7433088d0f4ca21cadb3f549dd5bc17686e3b89f66c8119ff70732882e1fd5d",
+            "after": {
+              "id": "e7433088d0f4ca21cadb3f549dd5bc17686e3b89f66c8119ff70732882e1fd5d",
+              "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+              "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under collaborate safely.",
+              "locator": "Epic 4: Collaborate safely#4",
+              "heading": "Epic 4: Collaborate safely"
+            }
+          },
+          {
+            "entity": "sourceChunk",
+            "entityId": "840a2ebb8ae27bfa747291c9b450e5cb24503843161f9e67722ee291f341e4f9",
+            "after": {
+              "id": "840a2ebb8ae27bfa747291c9b450e5cb24503843161f9e67722ee291f341e4f9",
+              "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+              "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under trace decisions.",
+              "locator": "Epic 5: Trace decisions#5",
+              "heading": "Epic 5: Trace decisions"
+            }
+          },
+          {
+            "entity": "sourceChunk",
+            "entityId": "505721b19bd6460e71fb5d38873c94155a68d3182f8105e241859ce928664c54",
+            "after": {
+              "id": "505721b19bd6460e71fb5d38873c94155a68d3182f8105e241859ce928664c54",
+              "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+              "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under publish outcomes.",
+              "locator": "Epic 6: Publish outcomes#6",
+              "heading": "Epic 6: Publish outcomes"
+            }
+          }
+        ],
+        "operation": {
+          "operationId": "__proto__",
+          "op": "import",
+          "entity": "sourceDocument",
+          "after": {
+            "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+            "title": "epics.md",
+            "type": "markdown",
+            "fileHash": "6cc5bfcbba8006d3265ac01ba4c51552c8cc533f11aa3cbc31d324adafa749de",
+            "inlineContent": "# Epic 1: Organize research\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under organize research.\n\n# Epic 2: Shape the map\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under shape the map.\n\n# Epic 3: Plan delivery\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under plan delivery.\n\n# Epic 4: Collaborate safely\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under collaborate safely.\n\n# Epic 5: Trace decisions\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under trace decisions.\n\n# Epic 6: Publish outcomes\nGiven recorded planning inputs, when the planner opens this epic, then its stories are grouped under publish outcomes.\n"
+          }
+        }
+      },
+      {
+        "operationId": "constructor",
+        "index": 1,
+        "kind": "create:card",
+        "label": "create",
+        "status": "excluded",
+        "dependencies": [],
+        "owners": [],
+        "changes": [],
+        "operation": {
+          "operationId": "constructor",
+          "entityId": "excluded-local",
+          "op": "create",
+          "entity": "card",
+          "after": {
+            "title": "Excluded activity",
+            "storyMapId": "74810cba-fa66-467d-8fc4-576775cba671",
+            "level": "activity"
+          }
+        }
+      },
+      {
+        "operationId": "toString",
+        "index": 2,
+        "kind": "update:card",
+        "label": "update",
+        "status": "excluded",
+        "dependencies": [],
+        "owners": [],
+        "changes": [],
+        "operation": {
+          "operationId": "toString",
+          "entityId": "excluded-local",
+          "op": "update",
+          "entity": "card",
+          "after": {
+            "description": "Dependent edit must be excluded"
+          }
+        }
+      },
+      {
+        "operationId": "source-link",
+        "index": 3,
+        "kind": "link:sourceLink",
+        "label": "link",
+        "status": "excluded",
+        "dependencies": [],
+        "owners": [],
+        "changes": [],
+        "operation": {
+          "operationId": "source-link",
+          "entityId": "excluded-source-link",
+          "op": "link",
+          "entity": "sourceLink",
+          "after": {
+            "kind": "chunk",
+            "cardId": "excluded-local",
+            "chunk": {
+              "kind": "import",
+              "operationId": "__proto__",
+              "locator": "Epic 1: Organize research#1"
+            }
+          }
+        }
+      },
+      {
+        "operationId": "keep",
+        "index": 4,
+        "kind": "create:card",
+        "label": "create",
+        "status": "changed",
+        "dependencies": [],
+        "owners": [],
+        "changes": [
+          {
+            "entity": "card",
+            "entityId": "7611ab53-77e1-4ad1-adc9-731af751c3db",
+            "after": {
+              "title": "Accepted activity",
+              "storyMapId": "74810cba-fa66-467d-8fc4-576775cba671",
+              "level": "activity",
+              "id": "7611ab53-77e1-4ad1-adc9-731af751c3db",
+              "parentId": null,
+              "releaseId": null,
+              "version": 1,
+              "key": "LSM-1",
+              "description": "",
+              "status": "todo",
+              "parked": false,
+              "position": 0,
+              "creationOrigin": "inference",
+              "provenance": "inference",
+              "createdAt": "2026-10-17T09:29:54.171Z",
+              "updatedAt": "2026-10-17T09:29:54.171Z"
+            }
+          }
+        ],
+        "operation": {
+          "operationId": "keep",
+          "entityId": "kept-local",
+          "op": "create",
+          "entity": "card",
+          "after": {
+            "title": "Accepted activity",
+            "storyMapId": "74810cba-fa66-467d-8fc4-576775cba671",
+            "level": "activity"
+          }
+        }
+      }
+    ]
+  },
+  "sources": {
+    "documents": [
+      {
+        "id": "9823d703-c385-404c-861f-6354d71c8875",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "title": "epics.md",
+        "type": "markdown",
+        "filePath": "inline://reviewed-source",
+        "fileHash": "6cc5bfcbba8006d3265ac01ba4c51552c8cc533f11aa3cbc31d324adafa749de",
+        "importedAt": "2026-10-17T09:29:54.171Z",
+        "chunkCount": 6,
+        "linkedChunkCount": 0,
+        "coverageRatio": 0
+      }
+    ]
+  },
+  "source": {
+    "document": {
+      "id": "9823d703-c385-404c-861f-6354d71c8875",
+      "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+      "title": "epics.md",
+      "type": "markdown",
+      "filePath": "inline://reviewed-source",
+      "fileHash": "6cc5bfcbba8006d3265ac01ba4c51552c8cc533f11aa3cbc31d324adafa749de",
+      "importedAt": "2026-10-17T09:29:54.171Z"
+    },
+    "chunks": [
+      {
+        "id": "ba0c73e4855783feb32cf579858d60065c45d0c61543ef0bd9a68c0f82bb8c23",
+        "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+        "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under organize research.",
+        "locator": "Epic 1: Organize research#1",
+        "heading": "Epic 1: Organize research"
+      },
+      {
+        "id": "3f913c0e1b6676e65a659cde8163591c04551ad2bb91788e1314d758065afa0b",
+        "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+        "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under shape the map.",
+        "locator": "Epic 2: Shape the map#2",
+        "heading": "Epic 2: Shape the map"
+      },
+      {
+        "id": "21474d6a8e6a033d56d2777ed64ce34700450ada19763b4f9b586e664e2370f2",
+        "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+        "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under plan delivery.",
+        "locator": "Epic 3: Plan delivery#3",
+        "heading": "Epic 3: Plan delivery"
+      },
+      {
+        "id": "e7433088d0f4ca21cadb3f549dd5bc17686e3b89f66c8119ff70732882e1fd5d",
+        "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+        "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under collaborate safely.",
+        "locator": "Epic 4: Collaborate safely#4",
+        "heading": "Epic 4: Collaborate safely"
+      },
+      {
+        "id": "840a2ebb8ae27bfa747291c9b450e5cb24503843161f9e67722ee291f341e4f9",
+        "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+        "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under trace decisions.",
+        "locator": "Epic 5: Trace decisions#5",
+        "heading": "Epic 5: Trace decisions"
+      },
+      {
+        "id": "505721b19bd6460e71fb5d38873c94155a68d3182f8105e241859ce928664c54",
+        "documentId": "9823d703-c385-404c-861f-6354d71c8875",
+        "text": "Given recorded planning inputs, when the planner opens this epic, then its stories are grouped under publish outcomes.",
+        "locator": "Epic 6: Publish outcomes#6",
+        "heading": "Epic 6: Publish outcomes"
+      }
+    ],
+    "links": [],
+    "linkedCardsByChunkId": {}
+  },
+  "activity": {
+    "activityEvents": [
+      {
+        "seq": 19,
+        "originClientId": "e5f219d6-782c-4cec-b483-33c14a86b8ac",
+        "undoneByRestore": false,
+        "id": "d85c3314-9e63-44c8-996c-af9e460e6be7",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-user",
+        "actorType": "human",
+        "action": "changeSet.applied",
+        "affectedEntityType": "changeSet",
+        "affectedEntityId": "037c9971-3064-4e6f-84d2-f02b8d66ee3f",
+        "createdAt": "2026-10-17T09:29:54.188Z",
+        "scope": "project"
+      },
+      {
+        "seq": 18,
+        "originClientId": "e5f219d6-782c-4cec-b483-33c14a86b8ac",
+        "undoneByRestore": false,
+        "id": "0eb307e3-3ac8-4383-97b4-74c5008dfec2",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-user",
+        "actorType": "human",
+        "action": "changeSet.operation.applied",
+        "affectedEntityType": "changeSet",
+        "affectedEntityId": "keep",
+        "createdAt": "2026-10-17T09:29:54.187Z",
+        "scope": "project"
+      },
+      {
+        "seq": 17,
+        "originClientId": "e5f219d6-782c-4cec-b483-33c14a86b8ac",
+        "undoneByRestore": false,
+        "id": "fc1638f4-6c32-4004-b71e-6afb43a58ab1",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-user",
+        "actorType": "human",
+        "action": "changeSet.operation.applied",
+        "affectedEntityType": "changeSet",
+        "affectedEntityId": "__proto__",
+        "createdAt": "2026-10-17T09:29:54.186Z",
+        "scope": "project"
+      },
+      {
+        "seq": 16,
+        "originClientId": "e5f219d6-782c-4cec-b483-33c14a86b8ac",
+        "undoneByRestore": false,
+        "id": "b8123d49-e681-489f-9d99-cde6331b8e7e",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-user",
+        "actorType": "human",
+        "action": "changeSet.approved",
+        "affectedEntityType": "changeSet",
+        "affectedEntityId": "037c9971-3064-4e6f-84d2-f02b8d66ee3f",
+        "createdAt": "2026-10-17T09:29:37.953Z",
+        "scope": "project"
+      },
+      {
+        "seq": 15,
+        "undoneByRestore": false,
+        "id": "49b637b2-0286-42ce-9851-075a133c68de",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-mcp-host",
+        "actorType": "agent",
+        "mcpSessionId": "512542bd-a4e5-436f-a9cd-6a39ce01515e",
+        "action": "tool_call",
+        "affectedEntityType": "mcpTool",
+        "affectedEntityId": "SubmitChangeSet",
+        "createdAt": "2026-10-17T09:28:38.218Z",
+        "scope": "project",
+        "toolCall": {
+          "toolName": "SubmitChangeSet",
+          "inputHash": "79f7766334178aeb3ada6c7f14f9a1bf8f2859204104478639901d949214eb48",
+          "outputHash": "4e74a53c4888565fbb7cd6843d333da4c4fd3818cdd076871e06774952997852",
+          "outcome": "ok",
+          "affectedEntityIds": [
+            "84ff5e48-7302-45f2-8994-f83ddebbc260",
+            "512542bd-a4e5-436f-a9cd-6a39ce01515e",
+            "037c9971-3064-4e6f-84d2-f02b8d66ee3f"
+          ]
+        }
+      },
+      {
+        "seq": 14,
+        "undoneByRestore": false,
+        "id": "944d075a-6e4f-4f8f-b528-3e2f11a1fa48",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-mcp-host",
+        "actorType": "agent",
+        "mcpSessionId": "512542bd-a4e5-436f-a9cd-6a39ce01515e",
+        "action": "changeSet.proposed",
+        "affectedEntityType": "changeSet",
+        "affectedEntityId": "037c9971-3064-4e6f-84d2-f02b8d66ee3f",
+        "createdAt": "2026-10-17T09:28:38.216Z",
+        "scope": "project"
+      },
+      {
+        "seq": 13,
+        "undoneByRestore": false,
+        "id": "9158e366-24b8-4f02-b2db-a51c244d96b5",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-user",
+        "actorType": "human",
+        "action": "storyMap.created",
+        "affectedEntityType": "storyMap",
+        "affectedEntityId": "74810cba-fa66-467d-8fc4-576775cba671",
+        "createdAt": "2026-10-17T09:28:38.168Z",
+        "scope": "project"
+      },
+      {
+        "seq": 12,
+        "undoneByRestore": false,
+        "id": "3b427078-c9fb-420c-a90c-94f8f23946dd",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-user",
+        "actorType": "human",
+        "action": "card.created",
+        "affectedEntityType": "card",
+        "affectedEntityId": "2770c0fa-a1c6-459e-b347-729fd7d13cfd",
+        "createdAt": "2026-10-17T09:28:38.160Z",
+        "scope": "project"
+      },
+      {
+        "seq": 11,
+        "undoneByRestore": false,
+        "id": "df95e328-3970-4805-b178-58742895ee38",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-user",
+        "actorType": "human",
+        "action": "card.created",
+        "affectedEntityType": "card",
+        "affectedEntityId": "42406fd3-fde0-4b4f-bd5d-cb7ab1986da9",
+        "createdAt": "2026-10-17T09:28:38.159Z",
+        "scope": "project"
+      },
+      {
+        "seq": 10,
+        "undoneByRestore": false,
+        "id": "d60fb31b-4951-45b4-a501-28e3305e40ab",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-user",
+        "actorType": "human",
+        "action": "card.created",
+        "affectedEntityType": "card",
+        "affectedEntityId": "6a571940-495c-4bb3-ae2b-00636b4d2349",
+        "createdAt": "2026-10-17T09:28:38.159Z",
+        "scope": "project"
+      },
+      {
+        "seq": 9,
+        "undoneByRestore": false,
+        "id": "a72f1238-6885-46d9-9557-e675ac88bc80",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-user",
+        "actorType": "human",
+        "action": "release.created",
+        "affectedEntityType": "release",
+        "affectedEntityId": "b2fa20d2-54db-4b73-9dbc-cb3111c5a018",
+        "createdAt": "2026-10-17T09:28:38.158Z",
+        "scope": "project"
+      },
+      {
+        "seq": 8,
+        "undoneByRestore": false,
+        "id": "3db13ce7-a2c7-4ab8-a739-43e759c3ccf9",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-user",
+        "actorType": "human",
+        "action": "storyMap.created",
+        "affectedEntityType": "storyMap",
+        "affectedEntityId": "14ef2686-c356-4adc-b186-8f547ec3c882",
+        "createdAt": "2026-10-17T09:28:38.158Z",
+        "scope": "project"
+      },
+      {
+        "seq": 7,
+        "undoneByRestore": false,
+        "id": "32bce556-cb6b-4405-b5ae-9ed96868639c",
+        "projectId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "actor": "local-user",
+        "actorType": "human",
+        "action": "project.created",
+        "affectedEntityType": "project",
+        "affectedEntityId": "84ff5e48-7302-45f2-8994-f83ddebbc260",
+        "createdAt": "2026-10-17T09:28:38.157Z",
+        "scope": "project"
+      }
+    ],
+    "nextCursor": null
+  },
+  "assertions": {
+    "singleAcceptedCard": true,
+    "noSourceLinks": true,
+    "sixImportedChunks": true,
+    "approvedAndAppliedSelection": [
+      "__proto__",
+      "keep"
+    ],
+    "humanActivityForExactlySelectedOperations": true
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "start_revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "source_files": 3432,
+  "source_unchanged": true,
+  "changed_paths": [],
+  "semantic_index_unchanged": true,
+  "raw_index_unchanged": true,
+  "revision_unchanged": true,
+  "commands": [
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "check"
+      ],
+      "runtime": {
+        "node": "v24.17.0",
+        "pnpm": "9.15.4",
+        "corepack": "0.35.0"
+      },
+      "environment": {
+        "PATH": "<installed Node24 bin>:$PATH",
+        "TMPDIR": "<task-owned temporary directory>",
+        "GIT_OPTIONAL_LOCKS": "0",
+        "TSX_DISABLE_CACHE": "absent; caching enabled"
+      },
+      "exit": 0,
+      "duration_seconds": 687.7585852090269,
+      "log": {
+        "artifact": "post-review-parent-aggregate.log.gz",
+        "original_sha256": "342fe1b51ad47b56f2a64bc33fd509d2a808a02c4d3bdf243ae61157c90ac412",
+        "sanitized_decoded_sha256": "de2265a7dc3edc340b1c562a69b8ff23c46d1af19cd36d5559716f1ca422e624",
+        "compressed_sha256": "659b9a68c635267bff74e5b36db038a17369f0a5829ebe2107bdaaf43d24b5ac",
+        "redaction": "Project, home and task-temp paths plus present credential environment values replaced; original remains transient. No original hash reconstruction claim."
+      }
+    },
+    {
+      "command": [
+        "node",
+        "scripts/verify.mjs"
+      ],
+      "runtime": {
+        "node": "v24.17.0",
+        "pnpm": "9.15.4",
+        "corepack": "0.35.0"
+      },
+      "environment": {
+        "PATH": "<installed Node24 bin>:$PATH",
+        "TMPDIR": "<task-owned temporary directory>",
+        "GIT_OPTIONAL_LOCKS": "0",
+        "TSX_DISABLE_CACHE": "absent; caching enabled"
+      },
+      "exit": 0,
+      "duration_seconds": 55.43107341695577,
+      "log": {
+        "artifact": "post-review-parent-verifier.log.gz",
+        "original_sha256": "00c37770f0acf5eeb3f0679c119ddbbebba2afd859577c8b674aa01f231f75f7",
+        "sanitized_decoded_sha256": "e269a6b40847481fba2c82eb293ebf0721c31ae682c3c18db86e882e909bbeb4",
+        "compressed_sha256": "1e42c0c2f3b58af6597c4916583ec324d9f12c7136346eaee720112cceefd1da",
+        "redaction": "Project, home and task-temp paths plus present credential environment values replaced; original remains transient. No original hash reconstruction claim."
+      }
+    }
+  ],
+  "post-review-parent-command-start": {
+    "decoded_sha256": "385f6c9bf01163d9203b29d2a7287bc0733981467352d9b125fc8fee123e015c",
+    "compressed_sha256": "098bd0860e66bebe1f0fe7d6b2f5e05a940ec34ceead53e189eb79396e9b0697"
+  },
+  "post-review-parent-command-end": {
+    "decoded_sha256": "385f6c9bf01163d9203b29d2a7287bc0733981467352d9b125fc8fee123e015c",
+    "compressed_sha256": "098bd0860e66bebe1f0fe7d6b2f5e05a940ec34ceead53e189eb79396e9b0697"
+  }
+}

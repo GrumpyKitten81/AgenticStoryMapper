@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "behavior": "unchanged; all coverage retained",
+  "source_files": {
+    "apps/server/src/mcp/tools/complete-surface.test.ts": 745,
+    "packages/contracts/src/schemas/domain.ts": 738,
+    "packages/db/src/repositories/storymapper-repository.test.ts": 747
+  },
+  "changes": [
+    "Extract independent identifier primitives and external-reference schemas; reexport existing public names from domain without circular imports.",
+    "Extract raw historical/source scope-evidence fixture seed helpers.",
+    "Reuse existing hashText instead of duplicate local SHA256 helper."
+  ],
+  "verification": {
+    "source_hygiene": "pass",
+    "contracts_tests": 155,
+    "complete_surface_tests": 30,
+    "repository_tests": 18,
+    "contracts_typecheck": "pass",
+    "server_typecheck": "pass",
+    "db_typecheck": "pass"
+  },
+  "new_modules_explicitly_staged": true,
+  "full_root_repeated": false
+}

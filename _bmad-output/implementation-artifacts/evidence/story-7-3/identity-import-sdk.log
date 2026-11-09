@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/application/sync/github-command-regressions.test.ts (12 tests) 574ms
+ ✓ src/mcp/github-command-sdk.test.ts (9 tests) 850ms
+
+ Test Files  2 passed (2)
+      Tests  21 passed (21)
+   Start at  01:51:36
+   Duration  1.85s (transform 556ms, setup 0ms, collect 1.41s, tests 1.42s, environment 0ms, prepare 66ms)

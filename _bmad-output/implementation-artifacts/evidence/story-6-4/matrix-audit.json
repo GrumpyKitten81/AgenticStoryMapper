@@ -1,0 +1,18 @@
+{
+  "executedWebTests": 447,
+  "serverTests": 667,
+  "serverPerformanceTests": 14,
+  "dbTests": 417,
+  "rows": {
+    "Search and conjunction": "board-filter-selection combined remote/color/status/zero; lifecycle source note/github and existing source chunk tests; native match status",
+    "Literal values": "board-filter-selection reserved status/relationship/Release/custom color and literal __none multi-field patch",
+    "Retained selection": "hidden patch/Archive; lifecycle toolbar+tile Delete; native2hidden selection",
+    "Scope lifecycle": "prune archive/delete/map; preview refusal and dialog map/preview roundtrip; same-map unavailable Delete target archive/remove",
+    "Local changes": "actual multi-field patch and successful hidden Archive; invalid estimates refuse",
+    "Delete": "lifecycle explicit strategy/Cancel/full-set; server overlap normalization, actual TCP overlap and surviving descendant",
+    "Conflicts and failure": "base-version-conflicts/DeleteCards typed all stale and injected rollback, HTTP two stale command cases, DOM typed list",
+    "Selected GitHub": "github-selection explicit empty/Note/>8/full reviewed scope, late plan/connection/release/version/mode invalidation; real toolbar/panel/Project-scoped integration and delayed duplicate-Push/Sync overlap",
+    "Accessibility": "names and region/status controls; actual stylesheet absence tests; native AX controls/counts before repairs; successful Apply/Archive focus recovery without stealing focus"
+  },
+  "diagnosticTimings": "11extant captures/126raw samples including2legal complete Discovery1000Card9sample captures, all1000tiles. Exact boundaries and lost earlier intermediate captures disclosed in diagnostic-index.json; no native paint or timing pass."
+}

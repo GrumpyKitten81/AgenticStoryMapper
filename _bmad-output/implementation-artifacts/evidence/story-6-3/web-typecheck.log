@@ -1,0 +1,4 @@
+
+> @storymapper/web@0.1.0 typecheck [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> tsc -p tsconfig.json --noEmit
+

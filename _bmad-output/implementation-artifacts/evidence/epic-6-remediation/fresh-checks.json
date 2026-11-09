@@ -1,0 +1,31 @@
+[
+  {
+    "command": [
+      "node",
+      "--test",
+      "scripts/*.test.mjs"
+    ],
+    "exit_code": 0,
+    "tests": 83,
+    "log": "root-tests-attempt-2.log",
+    "scope": "completed83scripts before test-only navigation mock export correction; no subsequent product changes"
+  },
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "-r",
+      "test"
+    ],
+    "exit_code": 0,
+    "log": "workspace-tests.log"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/verify.mjs"
+    ],
+    "exit_code": 0,
+    "log": "release-verify.log"
+  }
+]

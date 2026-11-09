@@ -1,0 +1,11 @@
+{
+  "package": "@fastify/static",
+  "version": "10.1.6",
+  "primarySource": "https://github.com/fastify/fastify-static/blob/v10.1.6/index.js",
+  "installedSourceSha256": "38a5bdf81007e9020c09d4665bc1604c72247df9067a77e9f5b06d27f3774e77",
+  "cause": "getPathSpellingStatus maps ENAMETOOLONG to unverifiable. pumpSendToReply rejects alias/unverifiable with403 before allowedPath.",
+  "decision": "Preserve upstream admission and unchanged production web-app.ts. Invalid overlong filename response intentionally changes404 to403; canonical assets/API/health retain their existing contracts.",
+  "authorization": "Parent explicitly directed this security-preserving migration rather than bypassing or duplicating upstream guards.",
+  "coverage": "static10-security-focused:18/18 including canonical200, overlong JSON403, noncanonical403, filesystem-case-alias refusal and healthy API/health; original traversal/containment tests retained.",
+  "failureEvidence": "final-test.log.gz"
+}

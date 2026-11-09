@@ -1,0 +1,9 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/app/live/live-updates.test.tsx (29 tests) 208ms
+
+ Test Files  1 passed (1)
+      Tests  29 passed (29)
+   Start at  21:27:01
+   Duration  1.10s (transform 309ms, setup 0ms, collect 528ms, tests 208ms, environment 186ms, prepare 34ms)

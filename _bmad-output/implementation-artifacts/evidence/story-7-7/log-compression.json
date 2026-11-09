@@ -1,0 +1,137 @@
+[
+  {
+    "path": "ticket-final-transport.log.gz",
+    "rawBytes": 314,
+    "rawSha256": "4c73c03e9b02e1121af30421cde94eec350a43fe7388631a38c2895605bd3571"
+  },
+  {
+    "path": "web-final-focused-tests.log.gz",
+    "rawBytes": 535,
+    "rawSha256": "e2491f26624bb04ab7404775f9e6f70bc3df8f7f80cc32bde643ab9390f39efa"
+  },
+  {
+    "path": "implementation-release-verify-final.log.gz",
+    "rawBytes": 333941,
+    "rawSha256": "c0a6fc8dd4cd3b61b04221fa90dd54ca9e5c9622781df6452fe38811c30176cf"
+  },
+  {
+    "path": "ticket-focused-server-final.log.gz",
+    "rawBytes": 453,
+    "rawSha256": "a6fa3220be65f3d1dddf4268b8d1baaa7b24eedfadfd076f3e5b39a99bfd0af6"
+  },
+  {
+    "path": "ticket-capability-scan.log.gz",
+    "rawBytes": 1230,
+    "rawSha256": "abaef86a56c9919bfcc7f637c8848da343fefa3017ec9bf160e967b5885d4b6f"
+  },
+  {
+    "path": "web-partial-apply-tests.log.gz",
+    "rawBytes": 535,
+    "rawSha256": "f9552c61f3a8069883a0ee9a89cce2ebafdda8032a4b9aea871d4d26c5bf5fee"
+  },
+  {
+    "path": "web-partial-apply-typecheck-final.log.gz",
+    "rawBytes": 116,
+    "rawSha256": "1286a4b4e35d0bfc717d05ee5740d9d797891226cce06f956ac0512b0ea62120"
+  },
+  {
+    "path": "ticket-protected-capability-parity.log.gz",
+    "rawBytes": 170,
+    "rawSha256": "af1766a308cb18fd79840011cf0615284e96d469d815cce6a14bdec08e1831d6"
+  },
+  {
+    "path": "web-partial-apply-typecheck.log.gz",
+    "rawBytes": 1661,
+    "rawSha256": "e35c5e9d1878fe19b48dd0dde739441c8043151bf203c203c0c260bf8fa32d67"
+  },
+  {
+    "path": "ticket-focused-contracts.log.gz",
+    "rawBytes": 304,
+    "rawSha256": "f3bb25d38baf7df7b7fdac3c1021ab8722e94a00024b89da74aa1016644ebece"
+  },
+  {
+    "path": "ticket-focused-server.log.gz",
+    "rawBytes": 452,
+    "rawSha256": "5caf17ca9fdc4bda67ef25d3406ab552e85167be9b91b90ed04d9025f130116e"
+  },
+  {
+    "path": "web-focused-tests.log.gz",
+    "rawBytes": 536,
+    "rawSha256": "5cdde09f5bec59dd14d6ab4a8d9f06852ce20e06fb20a6d4d93ff867d61b3143"
+  },
+  {
+    "path": "implementation-workspace.log.gz",
+    "rawBytes": 746995,
+    "rawSha256": "fc6eff5143e2d94748a32393ef7affdf81a30c9e6d162c555466930a1c8509ad"
+  },
+  {
+    "path": "ticket-protected-transport.log.gz",
+    "rawBytes": 314,
+    "rawSha256": "40ac5df66c0b0a90ed31f2070b488395cf15d2e2bb707a153efcd24ba8d4e0f9"
+  },
+  {
+    "path": "ticket-protected-capability-scan.log.gz",
+    "rawBytes": 1228,
+    "rawSha256": "1618580cb295f0ec0c50126b26fc8519799abd75c1c122b1da9f21f24844fd5f"
+  },
+  {
+    "path": "implementation-command-routing.log.gz",
+    "rawBytes": 3066,
+    "rawSha256": "adb0a2ba0aa603a5dc9094a32099342a55384c480467456b53088758326708bb"
+  },
+  {
+    "path": "implementation-command-routing-final.log.gz",
+    "rawBytes": 579,
+    "rawSha256": "983271435300bab6652880721ddce06167eb05ca84682604cd2ec18b2f029717"
+  },
+  {
+    "path": "web-final-typecheck.log.gz",
+    "rawBytes": 116,
+    "rawSha256": "1286a4b4e35d0bfc717d05ee5740d9d797891226cce06f956ac0512b0ea62120"
+  },
+  {
+    "path": "implementation-release-verify-size-failed.log.gz",
+    "rawBytes": 335,
+    "rawSha256": "224456b4eaea911ae6fa411f21ceb29d3c4748e8a7a5143d767f75960f90dfa5"
+  },
+  {
+    "path": "ticket-schema-transition.log.gz",
+    "rawBytes": 309,
+    "rawSha256": "c171718a9902ea05b9cb0b7bc6b4dcf53cfc5afc073b24eded3ac36031b0d324"
+  },
+  {
+    "path": "implementation-release-verify-initial-failed.log.gz",
+    "rawBytes": 1715,
+    "rawSha256": "b9b5d318b9bd3be3504d2e4b53ae2479b44d61ed0e237e61a3fa8ba9323364c7"
+  },
+  {
+    "path": "review-gap-execution.log.gz",
+    "rawBytes": 552348,
+    "rawSha256": "ed11a8675f3be763cd12ca70d213af41b6c7ec3580777069dc9a98e18ad7084a"
+  },
+  {
+    "path": "review-intent-execution.log.gz",
+    "rawBytes": 385192,
+    "rawSha256": "9735d11bf2a5574d31fe69dbceaf1fb70753dbe56f5c58863817698934094b95"
+  },
+  {
+    "path": "parent-workspace.log.gz",
+    "rawBytes": 749664,
+    "rawSha256": "11124fe47c4e1b2fbe4c8a815d8f4c4397c55e0c6bd8305f30b6c585a0797213"
+  },
+  {
+    "path": "parent-release.log.gz",
+    "rawBytes": 333941,
+    "rawSha256": "7b27afb681bb1fc42613503bfc092f30883ad177d92d94751965f4dbe1ab6691"
+  },
+  {
+    "path": "parent-release-final.log.gz",
+    "rawBytes": 333941,
+    "rawSha256": "a8f60ed832c781b4195a76014ec569b6227f0053774768688102f83c4a0327ca"
+  },
+  {
+    "path": "parent-workspace-final.log.gz",
+    "rawBytes": 744369,
+    "rawSha256": "9e05ebf0de5ce056262fc3ed3747d9fabb6b5c916434d868e560583efe402d81"
+  }
+]

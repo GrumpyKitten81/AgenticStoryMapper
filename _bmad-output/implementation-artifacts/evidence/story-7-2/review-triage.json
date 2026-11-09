@@ -1,0 +1,193 @@
+{
+  "date": "2026-10-19",
+  "findings": [
+    {
+      "id": "gap-1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Successful existing-connection update branch unverified",
+      "evidence": "Pre-verified gap: create-only successes and stale-update rejection never executed the update branch. New actual HTTP success asserts retained ID, changed persisted fields, unchanged count and authoritative result.",
+      "group": "existing-update-test"
+    },
+    {
+      "id": "blind-1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Late Connect effects discarded",
+      "evidence": "Initial onSuccess returned before any authoritative refresh when current(intent) failed. Fresh origin-scoped recovery now refreshes connection/safety/credential queries and retains scoped file-effect notices without replacing drafts; late-result and Restore consumer tests pass.",
+      "group": "cache-recovery"
+    },
+    {
+      "id": "blind-2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Lost Connect response permits duplicate creation",
+      "evidence": "Initial transport failure only advised Verify again after a possible commit. Explicit saved-state review now blocks retry, refreshes authoritative data and reuses an unambiguous existing ID; lost-response and failed-recovery tests pass.",
+      "group": "uncertain-outcome"
+    },
+    {
+      "id": "blind-3",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Shared credential file has only Project admission",
+      "evidence": "Two Projects could interleave rename and status awaits before either transaction. Shared token-finalization admission now refuses the second call and releases on every exit; controlled cross-Project and failure retry cases pass.",
+      "group": "shared-file-admission"
+    },
+    {
+      "id": "blind-4",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "CLI fingerprint checked before later status await",
+      "evidence": "The later credential-status probe could observe an altered CLI identity. Final operational resolution and private source/hash comparison now occur after that await and immediately before UoW; controlled account/removal tests pass.",
+      "group": "operational-auth"
+    },
+    {
+      "id": "blind-5",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Token proof omits reviewed operational CLI identity",
+      "evidence": "Verify displayed a source but retained only candidate token hash. Proof now privately binds reviewed operational source/hash and refuses CLI installation/removal/account drift after file storage with truthful retained-file effects.",
+      "group": "operational-auth"
+    },
+    {
+      "id": "blind-6",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Reconnect ignores selected connection",
+      "evidence": "The panel omitted connection prop. It now passes the selected configuration and distinguishes uninitialized selection from explicit New; HTTP stable-ID and consumer selection tests pass.",
+      "group": "reconnect-selection"
+    },
+    {
+      "id": "blind-7",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Malformed nonblank inputs become generic request errors",
+      "evidence": "Nonblank admission allowed malformed owner/repo/token to HTTP. Shared candidate schema now rejects them locally with actionable central text before mutation; invalid-input and cache privacy tests pass.",
+      "group": "candidate-validation"
+    },
+    {
+      "id": "blind-8",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Failed safety read silently blocks Verify",
+      "evidence": "canVerify required safety.data but surfaced no query error. Existing Verify action becomes local Recheck settings with a cause/next action and retains draft; consumer recovery test passes.",
+      "group": "safety-read-recovery"
+    },
+    {
+      "id": "blind-9",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Credential messages cross scope",
+      "evidence": "invalidate did not clear error/cliStatus on Project/connection changes. Ordinary messages now reset on actual scope changes while scoped retained-effect notices and same-scope Cancel drafts survive.",
+      "group": "scoped-messages"
+    },
+    {
+      "id": "blind-10",
+      "verdict": "low",
+      "route": "patch",
+      "summary": "Failure fixtures do not match wire enums",
+      "evidence": "Unsupported credentials/repository failure-kind strings were present and are corrected; fabricated responses now parse shared schemas. The separate claim that the success fixture lacked capabilities.read is disproved by its existing read:true field.",
+      "group": "wire-fixtures"
+    },
+    {
+      "id": "edge-1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Late Connect commits or stored-file effects are hidden",
+      "evidence": "Same verified early-return defect as blind-1. Fresh authoritative recovery and scope-retained notices repair both successful commits and partial credential effects; no stale response is directly adopted after Restore.",
+      "group": "cache-recovery"
+    },
+    {
+      "id": "edge-2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "CLI changes during final status probe",
+      "evidence": "Same verified post-fingerprint await as blind-4. Final operational capture/comparison refuses changed account/source and selected metadata follows that capture.",
+      "group": "operational-auth"
+    },
+    {
+      "id": "intent-auth",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Embedded login reading",
+      "evidence": "Accepted D4 in the named story preparation and original Epic7 acceptance explicitly select human-terminal gh auth login or pasted tokens; embedded/OAuth login is not an unresolved reading of that story.",
+      "group": ""
+    },
+    {
+      "id": "intent-workflow",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Diff cannot prove workflow execution",
+      "evidence": "The diff alone cannot show execution history, but parent tool results establish exactly one renderer call, snapshot reads, mandatory implementation/four review agents and independent gates. Sprint hash remains unchanged and no tracking row was used as proof.",
+      "group": ""
+    },
+    {
+      "id": "intent-route",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Running app entry point not exercised",
+      "evidence": "Final parent Safari fixture opened the actual built Connections route and dialog, performed Verify/Connect and observed actual header state. Native acceptance evidence supersedes the initial jsdom-only limitation.",
+      "group": ""
+    },
+    {
+      "id": "intent-journey",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Continuous browser to persistence journey missing",
+      "evidence": "Final native Safari fixture crossed real UI, HTTP, application, repository and disposable SQLite with controlled CLI/provider boundary, proved off/no rows before Connect and one read-only row/On after, then retained ID on reconnect/reload. Live account acceptance is separately deferred.",
+      "group": ""
+    },
+    {
+      "id": "intent-header",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Header only inferred from query-cache assertions",
+      "evidence": "Actual SafetySwitchStrip is now mounted alongside the panel and its Off-to-On labels asserted. Parent native Safari additionally observed the real header after Connect and reload.",
+      "group": "header-consumer-test"
+    },
+    {
+      "id": "intent-live-auth",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Real account and installed CLI acceptance remains unverified",
+      "evidence": "Transport interception and disposable CLI/provider fixture establish boundaries but not an actual account/repository authentication. If broken the impact is medium; a separately authorized presence-confirmed real GitHub/CLI smoke would settle it.",
+      "group": "live-auth-acceptance"
+    },
+    {
+      "id": "intent-native-a11y",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Complete native platform and reader matrix unperformed",
+      "evidence": "Parent Mac Safari observed heading focus, reverse-tab containment and keyboard opener return, but did not execute full VoiceOver/Windows/NVDA/Firefox release matrix. If native reader behavior is broken impact is medium; execute that bounded matrix to settle it.",
+      "group": "native-release-acceptance"
+    },
+    {
+      "id": "intent-cancel",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Server does not receive a browser cancellation event",
+      "evidence": "An already submitted explicit Connect is authorized for its captured original Project. Client closing does not promise rollback/revocation. Proof binds submitted scope/epoch; late effects are now reconciled through fresh scoped reads and cannot enable another Project.",
+      "group": ""
+    },
+    {
+      "id": "parent-1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Ambiguous recovered connections selected arbitrarily",
+      "evidence": "New recovery initially used .find although same-name/target configurations are permitted. It now reuses only exactly one match; multiple matches keep creation blocked until explicit saved selection. Two-match consumer regression passes.",
+      "group": "ambiguous-recovery"
+    }
+  ],
+  "counts": {
+    "medium": 14,
+    "low": 1,
+    "false": 5,
+    "maybe-false": 2
+  },
+  "patch_entries": {
+    "medium": 11,
+    "low": 1
+  },
+  "followup_review_recommended": true,
+  "followup_risk": "Native multiple-window lost-response/Restore recovery and actual CLI account transitions remain unverified beyond controlled consumer/server tests."
+}

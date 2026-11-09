@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-20",
+  "status": "Completed unchanged aggregate rerun passes; parent owns independent review and final exact-candidate audit",
+  "validation": {
+    "exit": 0,
+    "scope": "29 correction hashes;13 synchronized pairs; actual documented CLI parsers; JSON/TOML; doc links/anchor; unchanged resolved hook/plugin executable identities and arguments; unchanged Windows status-line"
+  },
+  "publicationTests": {
+    "exit": 0,
+    "total": 23,
+    "pass": 21,
+    "fail": 0,
+    "skip": 2,
+    "limit": "Native invalid-byte fixture creation unavailable even in reviewed execution; raw malformed-byte/tree tests pass. No sandbox-cause assertion."
+  },
+  "toolProposals": {
+    "exit": 0,
+    "pass": 22
+  },
+  "aggregateInitial": {
+    "exit": 1,
+    "rootTotal": 169,
+    "rootPass": 166,
+    "rootFail": 1,
+    "rootSkip": 2,
+    "failure": "scripts/runtime-port.test.mjs:28; foreign request count1 instead of0",
+    "limit": "Root failure stops before coverage and serial audit stages; preserve full failed log. Extra request origin unresolved."
+  },
+  "standaloneVerifier": {
+    "exit": 0,
+    "capabilities": 138,
+    "a11yPass": 261,
+    "typecheck": "pass",
+    "build": "pass",
+    "hygiene": "pass"
+  },
+  "runtimePortIsolated": {
+    "exit": 0,
+    "pass": 1,
+    "meaning": "Diagnostic pass only; not a repair or full aggregate acceptance"
+  },
+  "runtimeDoctorObservation": {
+    "exit": 0,
+    "pass": 31,
+    "fixedPortRequestsObserved": 0,
+    "instrumentationSha256": "36e3a38350927be7a5681a2d24601ce669489af944876254909d6d74083079a5",
+    "meaning": "Temporary listener metadata wrapper; original assertions unchanged. No reproduced caller; no scheduling or production change justified."
+  },
+  "protectedLedgers": {
+    "_bmad-output/implementation-artifacts/sprint-status.yaml": {
+      "sha256": "266c57f998fc7d4b5f5d6ecf993087be919d21118c79d444639238d2d7458cd4",
+      "matchesResumeHead": true
+    },
+    "_bmad-output/implementation-artifacts/deferred-work.md": {
+      "sha256": "23b53b078ca1b6b90bbf6fb964c6c973f425c92ced5337f6e9cc2940467969fa",
+      "matchesResumeHead": true
+    }
+  },
+  "aggregateRerun": {
+    "exit": 0,
+    "rootTotal": 169,
+    "rootPass": 167,
+    "rootFail": 0,
+    "rootSkip": 2,
+    "workspaceTests": 3159,
+    "workspaceCounts": {
+      "contracts": 193,
+      "importers": 7,
+      "github": 66,
+      "core": 449,
+      "db": 560,
+      "mcp": 5,
+      "web": 853,
+      "server": 1026
+    },
+    "serialAuditTests": 14,
+    "accessibilityTests": 261,
+    "lineCoveragePercent": {
+      "contracts": 91.34,
+      "importers": 100.0,
+      "github": 91.19,
+      "core": 93.14,
+      "db": 93.7,
+      "mcp": 83.33,
+      "web": 87.8,
+      "server": 94.88
+    },
+    "allEightLineFloors": "pass",
+    "boundaries": "pass",
+    "size": "pass",
+    "hygiene": "pass",
+    "licenses": "pass",
+    "capabilities": 138,
+    "typecheck": "pass",
+    "build": "pass",
+    "evidence": "pnpm-check-rerun.sanitized.log.gz",
+    "qualification": "One unchanged authorized rerun; earlier extra-request failure remains retained and unexplained. No source, deadline, assertion or scheduling repair was made."
+  },
+  "provenanceStages": {
+    "originalImplementation": "correction-provenance.json remains unchanged:29 implementation-stage before/after hashes",
+    "subsequentParentDocumentMetadata": {
+      "path": "parent-document-metadata.json",
+      "sha256": "53607fdc4a667c5b83027b569764a2e452e50d6870b81190e73c3b082517d722",
+      "scope": "Eight already changed BMAD Markdown documents; separate metadata stage preserves original implementation provenance."
+    }
+  }
+}

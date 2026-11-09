@@ -1,0 +1,87 @@
+{
+  "procName": "node",
+  "captureTime": "2026-10-20 19:12:25.2424 +0200",
+  "pid": 69547,
+  "exception": {
+    "codes": "0x0000000000000001, 0x000000018544a318",
+    "rawCodes": [
+      1,
+      6530835224
+    ],
+    "type": "EXC_BREAKPOINT",
+    "signal": "SIGTRAP"
+  },
+  "termination": {
+    "flags": 0,
+    "code": 5,
+    "namespace": "SIGNAL",
+    "indicator": "Trace/BPT trap: 5",
+    "byProc": "exc handler",
+    "byPid": 69547
+  },
+  "asi": {
+    "libsystem_malloc.dylib": [
+      "BUG IN CLIENT OF LIBMALLOC: memory corruption of free block",
+      "Abort Cause 525079332096"
+    ]
+  },
+  "faultingThread": 0,
+  "frames": [
+    {
+      "symbol": "_xzm_xzone_malloc_freelist_outlined",
+      "imageIndex": 1
+    },
+    {
+      "symbol": "operator new(unsigned long)",
+      "imageIndex": 2
+    },
+    {
+      "symbol": "node::SyncProcessRunner::AddStdioPipe(unsigned int, bool, bool, uv_buf_t)",
+      "imageIndex": 0
+    },
+    {
+      "symbol": "node::SyncProcessRunner::ParseStdioOption(int, v8::Local<v8::Object>)",
+      "imageIndex": 0
+    },
+    {
+      "symbol": "node::SyncProcessRunner::ParseStdioOptions(v8::Local<v8::Value>)",
+      "imageIndex": 0
+    },
+    {
+      "symbol": "node::SyncProcessRunner::ParseOptions(v8::Local<v8::Value>)",
+      "imageIndex": 0
+    },
+    {
+      "symbol": "node::SyncProcessRunner::TryInitializeAndRunLoop(v8::Local<v8::Value>)",
+      "imageIndex": 0
+    },
+    {
+      "symbol": "node::SyncProcessRunner::Run(v8::Local<v8::Value>)",
+      "imageIndex": 0
+    },
+    {
+      "symbol": "node::SyncProcessRunner::Spawn(v8::FunctionCallbackInfo<v8::Value> const&)",
+      "imageIndex": 0
+    },
+    {
+      "symbol": "Builtins_CallApiCallbackGeneric",
+      "imageIndex": 0
+    },
+    {
+      "symbol": null,
+      "imageIndex": 3
+    },
+    {
+      "symbol": null,
+      "imageIndex": 3
+    },
+    {
+      "symbol": null,
+      "imageIndex": 3
+    },
+    {
+      "symbol": null,
+      "imageIndex": 3
+    }
+  ]
+}

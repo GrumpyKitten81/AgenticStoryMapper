@@ -1,0 +1,190 @@
+{
+  "reviewDate": "2026-10-20",
+  "blindFloor": {
+    "bytes": 58444,
+    "kilobytes": 58.444,
+    "minimum": 8
+  },
+  "findings": [
+    {
+      "id": "E1",
+      "layer": "edge",
+      "summary": "Partial transient-policy writes can retain private input.",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "policy-cleanup",
+      "evidence": "privatePolicy writes before publishRelease enters its cleanup finally; an interrupted/failed write can leave its owned file.",
+      "action": "Added construction finally cleanup, focused ENOSPC classification and unchanged unexpected-error propagation; partial-write and error-identity tests pass."
+    },
+    {
+      "id": "E2",
+      "layer": "edge",
+      "summary": "A bridge exiting before its first line leaves the fixture waiting for its outer timeout.",
+      "verdict": "low",
+      "route": "patch",
+      "group": "bridge-exit",
+      "evidence": "The response awaits only readline line; child close cannot settle that promise.",
+      "action": "Raced first response with close/error, retained bounded diagnostics and added static exit-23 source/compiled assertions."
+    },
+    {
+      "id": "B1",
+      "layer": "blind",
+      "summary": "Replacement-pattern commit subjects corrupt generated notes.",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "note-replacement",
+      "evidence": "Parent actual generateNotes probe retained {{COMMITS}} and lost the literal subject; string replacement interprets dollar patterns.",
+      "action": "Inserted generated subjects with a callback and asserted literal dollar replacement sequences."
+    },
+    {
+      "id": "B2",
+      "layer": "blind",
+      "summary": "A replacement annotated tag with the same commit escapes the scanned object identity.",
+      "verdict": "high",
+      "route": "patch",
+      "group": "tag-object",
+      "evidence": "Parent actual verifyRemoteTag probe admitted a different raw tag object when its peeled commit matched; local scan covers only the original annotation.",
+      "action": "Captured the raw local tag object and compared remote raw identity plus peeled commit; same-commit replacement annotation is refused."
+    },
+    {
+      "id": "B3",
+      "layer": "blind",
+      "summary": "Accepted publication report and policy digest are not retained for maintainer evidence.",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "report-retention",
+      "evidence": "The report remains only in the ephemeral checkout and gh output is suppressed. Release notes themselves do persist in the created release; retain the sanitized report and notes digest in workflow output.",
+      "action": "Emitted the accepted sanitized exact report and notes SHA256 to workflow output before the write; tests exclude policy values and token input."
+    },
+    {
+      "id": "B4",
+      "layer": "blind",
+      "summary": "Generic CLI failure hides causes and next actions.",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "diagnostics",
+      "evidence": "The catch emits one message for all failures; after a create timeout, its no-release claim can also be false because the remote outcome is unknown.",
+      "action": "Added fixed allowlisted cause/action categories and an explicitly unconfirmed write outcome; actual CLI and timeout tests withhold raw diagnostics."
+    },
+    {
+      "id": "B5",
+      "layer": "blind",
+      "summary": "Preview instructions require notes before the local tag that the command requires.",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "preview-order",
+      "evidence": "The runbook prerequisite precedes tag creation, while validateCandidate requires the matching local tag and four event variables.",
+      "action": "Documented an independent disposable clone with its local preview tag and explicit event environment, followed by original-repository tag review and separately authorized push."
+    },
+    {
+      "id": "B6",
+      "layer": "blind",
+      "summary": "Duplicated SemVer admission could silently diverge.",
+      "verdict": "false",
+      "route": "reject",
+      "group": null,
+      "evidence": "Both current readers enforce the same strict grammar and 64-character bound; no currently divergent input was identified. The release validator must run before workspace dependencies are installed. Hypothetical future divergence is not an observed defect."
+    },
+    {
+      "id": "B7",
+      "layer": "blind",
+      "summary": "Bridge first-line wait does not settle on child exit.",
+      "verdict": "low",
+      "route": "patch",
+      "group": "bridge-exit",
+      "evidence": "Same verified first-line promise defect as E2; preserve a separate reviewer row.",
+      "action": "Raced first response with close/error, retained bounded diagnostics and added static exit-23 source/compiled assertions."
+    },
+    {
+      "id": "B8",
+      "layer": "blind",
+      "summary": "Release range lacks competing, annotated, merged and tie boundary tests.",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "range-coverage",
+      "evidence": "The one-prior-tag fixture cannot detect ordering regressions; all these branch/range cases are absent.",
+      "action": "Added competing, annotated, unreachable, merged and equal-distance tag fixtures asserting exact included commits."
+    },
+    {
+      "id": "V1",
+      "layer": "verification",
+      "summary": "The actual release audit CLI dispatch is untested.",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "audit-entrypoint",
+      "evidence": "Preverified: existing tests invoke requireAudit/auditOutcome, never releaseMain or the CLI; removing dispatch leaves assertions green.",
+      "action": "Executed actual audit CLI against the existing deterministic scanner fixture for accepted and blocked outcomes."
+    },
+    {
+      "id": "V2",
+      "layer": "verification",
+      "summary": "Nearest-boundary selection among multiple previous release tags is untested.",
+      "verdict": "medium",
+      "route": "patch",
+      "group": "range-coverage",
+      "evidence": "Preverified: reversing the distance comparator passes the only eligible previous-tag test; resulting notes can repeat earlier releases.",
+      "action": "Added competing, annotated, unreachable, merged and equal-distance tag fixtures asserting exact included commits."
+    },
+    {
+      "id": "I1",
+      "layer": "intent",
+      "summary": "A source diff cannot establish workflow execution.",
+      "verdict": "false",
+      "route": "reject",
+      "group": null,
+      "evidence": "The activation command, rendered workflow, delegated implementation and reviews were actually executed; source-only review is not the run evidence. Retained command results establish execution."
+    },
+    {
+      "id": "I2",
+      "layer": "intent",
+      "summary": "Local fixtures do not establish a hosted release or real three-platform execution.",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "group": null,
+      "evidence": "No hosted run or real release is authorized/executed. A separately authorized exact-tag hosted run with all three job URLs and authenticated remote checks would settle operational behavior; local success does not claim it."
+    },
+    {
+      "id": "I3",
+      "layer": "intent",
+      "summary": "Runtime identity tests exercise the relevant version surfaces directly.",
+      "verdict": "false",
+      "route": "reject",
+      "group": null,
+      "evidence": "This is positive alignment, not a defect: actual source/compiled health, archive, HTTP MCP and stdio assertions passed."
+    },
+    {
+      "id": "I4",
+      "layer": "intent",
+      "summary": "The diff adds no migration behavior or new upgrade tests.",
+      "verdict": "false",
+      "route": "reject",
+      "group": null,
+      "evidence": "Migration changes were not needed: existing 27 focused regressions passed and were included in the parent full DB coverage run; documentation preserves the inspected boundary."
+    },
+    {
+      "id": "I5",
+      "layer": "intent",
+      "summary": "Test definitions alone do not prove execution or verification status.",
+      "verdict": "false",
+      "route": "reject",
+      "group": null,
+      "evidence": "Parent command-start file/index evidence and successful aggregate/verifier exits are independent of all sprint rows; no bookkeeping value was used as proof."
+    }
+  ],
+  "counts": {
+    "total": 17,
+    "high": 1,
+    "medium": 8,
+    "low": 2,
+    "false": 5,
+    "maybe-false": 1
+  },
+  "patchGroups": {
+    "high": 1,
+    "medium": 7,
+    "low": 1
+  },
+  "status": "all corrections applied; final parent aggregate and standalone verifier passed",
+  "followupReviewRecommended": true,
+  "followupRisk": "The raw annotated-tag binding and its final evidence/output/GitHub write sequence have focused proofs but have not received a second independent review or an authorized hosted execution."
+}

@@ -1,0 +1,9 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/mcp/tools/agent-approval.test.ts (21 tests) 857ms
+
+ Test Files  1 passed (1)
+      Tests  21 passed (21)
+   Start at  19:50:42
+   Duration  1.89s (transform 462ms, setup 0ms, collect 856ms, tests 857ms, environment 0ms, prepare 35ms)

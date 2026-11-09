@@ -1,0 +1,15 @@
+
+> @storymapper/web@0.1.0 test:a11y [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run src/features/story-map/board-accessibility.test.tsx src/styles/contrast-tokens.test.ts src/features/story-map/components/discovery-navigation.test.tsx src/features/story-map/views/SlicesView.test.tsx src/features/story-map/components/card-detail.test.ts src/features/story-map/components/card-detail-navigation.test.ts src/app/routes/workspace-navigation.test.tsx src/components/Dialog.test.ts src/app/live/live-updates.test.tsx src/features/changesets/review-focus.test.tsx src/features/changesets/review.test.tsx src/features/changesets/selection-race.test.tsx src/features/changesets/review-outcomes.test.tsx --maxWorkers=1 --minWorkers=1 "--exclude" "**/*"
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+filter:  src/features/story-map/board-accessibility.test.tsx, src/styles/contrast-tokens.test.ts, src/features/story-map/components/discovery-navigation.test.tsx, src/features/story-map/views/SlicesView.test.tsx, src/features/story-map/components/card-detail.test.ts, src/features/story-map/components/card-detail-navigation.test.ts, src/app/routes/workspace-navigation.test.tsx, src/components/Dialog.test.ts, src/app/live/live-updates.test.tsx, src/features/changesets/review-focus.test.tsx, src/features/changesets/review.test.tsx, src/features/changesets/selection-race.test.tsx, src/features/changesets/review-outcomes.test.tsx
+include: **/*.{test,spec}.?(c|m)[jt]s?(x)
+exclude:  **/node_modules/**, **/dist/**, **/cypress/**, **/.{idea,git,cache,output,temp}/**, **/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*, **/*
+
+No test files found, exiting with code 1
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/web@0.1.0 test:a11y: `vitest run src/features/story-map/board-accessibility.test.tsx src/styles/contrast-tokens.test.ts src/features/story-map/components/discovery-navigation.test.tsx src/features/story-map/views/SlicesView.test.tsx src/features/story-map/components/card-detail.test.ts src/features/story-map/components/card-detail-navigation.test.ts src/app/routes/workspace-navigation.test.tsx src/components/Dialog.test.ts src/app/live/live-updates.test.tsx src/features/changesets/review-focus.test.tsx src/features/changesets/review.test.tsx src/features/changesets/selection-race.test.tsx src/features/changesets/review-outcomes.test.tsx --maxWorkers=1 --minWorkers=1 "--exclude" "**/*"`
+Exit status 1

@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-17",
+  "rows": [
+    {
+      "scenario": "CRUD",
+      "tests": [
+        "apps/web/src/features/customization/CustomizationEditor.test.tsx",
+        "apps/web/src/features/personas/PersonaDetail.test.ts",
+        "apps/web/src/app/routes/workspace-navigation.test.tsx"
+      ],
+      "coverage": "Full fields, pending/refusal, scoped controls; existing Persona editor tests retained"
+    },
+    {
+      "scenario": "Used status rename",
+      "tests": [
+        "packages/db/src/repositories/customization-impact.test.ts",
+        "apps/server/src/http/routes/customization-management.test.ts"
+      ],
+      "coverage": "Two maps, parked Card, persistence, old-name collision and exact usage/definition/version drift rollback"
+    },
+    {
+      "scenario": "Used status delete",
+      "tests": [
+        "packages/db/src/repositories/customization-impact.test.ts",
+        "apps/web/src/features/customization/CustomizationEditor.test.tsx",
+        "apps/server/src/http/routes/customization-management.test.ts"
+      ],
+      "coverage": "Replacement, self/narrow scope/drift refusal; captured UI evidence and persisted reopen"
+    },
+    {
+      "scenario": "Persona/Annotation delete",
+      "tests": [
+        "packages/db/src/repositories/customization-impact.test.ts",
+        "packages/db/src/repositories/root-versions.test.ts",
+        "apps/web/src/features/personas/PersonaDetail.test.ts"
+      ],
+      "coverage": "Explicit unlink, new/stale usage refusal, per-Card version/history and hidden-link rollback"
+    },
+    {
+      "scenario": "Scoped isolation",
+      "tests": [
+        "apps/web/src/app/routes/workspace-navigation.test.tsx",
+        "packages/db/src/repositories/customization-impact.test.ts"
+      ],
+      "coverage": "Project switching and foreign map read refusal; unrelated scope names"
+    },
+    {
+      "scenario": "Template copy",
+      "tests": [
+        "apps/web/src/features/story-map/components/card-creation.test.tsx",
+        "apps/web/src/features/story-map/components/card-fields.test.ts",
+        "packages/db/src/repositories/customization-impact.test.ts"
+      ],
+      "coverage": "Atomic zero estimate, skeleton, independent persisted Card after template deletion, dirty Cancel/replace"
+    },
+    {
+      "scenario": "Agent flow",
+      "tests": [
+        "apps/server/src/http/routes/customization-management.test.ts",
+        "packages/db/src/repositories/customization-impact.test.ts",
+        "apps/server/src/mcp/tools/complete-surface.test.ts"
+      ],
+      "coverage": "MCP captured evidence, proposal/approval/Apply, drift rollback and actual executor parity"
+    }
+  ],
+  "verification": "Final parent root2335passed; optional-forwarding correction44focused passed; full release verify passed130capability/typecheck/build; native boundary separately recorded",
+  "counts": {
+    "scripts": 83,
+    "contracts": 152,
+    "importers": 7,
+    "core": 388,
+    "web": 574,
+    "db": 437,
+    "server": 680,
+    "server_performance": 14,
+    "total": 2335
+  }
+}

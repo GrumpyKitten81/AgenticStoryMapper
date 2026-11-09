@@ -1,0 +1,12 @@
+import { writeFileSync } from 'node:fs';
+import { changeOperationSchema } from '[REDACTED_HOME]/Projects/StoryMapper/packages/contracts/src/index.ts';
+import { prepareOperationSupply } from '[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/repositories/operation-supply-repository.ts';
+import { allocatedId } from '[REDACTED_HOME]/Projects/StoryMapper/packages/core/src/changesets/resolution-context.ts';
+const operation = changeOperationSchema.parse({operationId:'__proto__',op:'create',entity:'storyMap',after:{projectId:'18b14a2d-6415-4e7c-a242-76366539844c',name:'Disposable prototype probe'}});
+const collections=['projects','connections','storyMaps','cards','releases','personas','sourceLinks','githubLinks','externalRefs','sourceDocuments','sourceChunks','roadmaps','roadmapColumns','roadmapSwimlanes','roadmapCards','roadmapReferences','annotations','workflowStatuses','storyTemplates','productContexts','attachments','cardPersonas','cardAnnotations','cardDependencies','remoteWorkItemLinks'];
+const snapshot=Object.fromEntries(collections.map(key=>[key,[]]));
+const supply=prepareOperationSupply.call({} as never,[operation],snapshot as never);
+const id=allocatedId({operation,supply,state:snapshot} as never);
+const result={kind:'source-execution-no-server-mutation',schemaAccepted:true,operationId:operation.operationId,ownAllocatedProperty:Object.hasOwn(supply.ids,'__proto__'),allocatedType:typeof id,allocatedTruthy:Boolean(id),allocatedIsObjectPrototype:id===Object.prototype};
+writeFileSync('/tmp/epic4-proto-probe.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify(result));

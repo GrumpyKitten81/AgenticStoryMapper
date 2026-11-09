@@ -1,0 +1,21 @@
+[plugin]
+name = "stop-on-story-failure"
+version = "1.0.0"
+api_version = 1
+description = "Stop before continuing after a deferred or skipped story."
+
+[hooks.post_story]
+cmd = '"$HOME/.local/share/uv/tools/bmad-loop/bin/python" "{scripts}/stop_on_failure.py"'
+timeout_sec = 10
+
+[hooks.pre_story]
+cmd = '"$HOME/.local/share/uv/tools/bmad-loop/bin/python" "{scripts}/stop_on_failure.py"'
+timeout_sec = 10
+blocking = true
+fail_closed = true
+
+[hooks.pre_run]
+cmd = '"$HOME/.local/share/uv/tools/bmad-loop/bin/python" "{scripts}/stop_on_failure.py"'
+timeout_sec = 10
+blocking = true
+fail_closed = true

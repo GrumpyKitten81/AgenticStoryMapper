@@ -1,0 +1,21 @@
+- Finding floor: `N = min(floor(sqrt(334835 / 1000) + 1), 10) = min(19, 10) = 10`.
+
+- **Refresh the publication audit after the repair.** [publication-audit.json]([PROJECT_ROOT]/publication-audit.json:10) covers 3,438 files, while the repair snapshot records 3,440 inputs and six repair artifacts follow it. The independent check returned `report-stale`; the final candidate still needs scanning and recomputation.
+
+- **Provision tools before invoking them.** The [bootstrap block]([PROJECT_ROOT]/docs/agentic-coding.md:61) invokes Corepack under `set -eu`, but instructions for provisioning missing Corepack appear afterward in step 2. Move provisioning ahead of the block so a fresh environment can reach it.
+
+- **Preserve evidence separately for each verification attempt.** The [gate commands]([PROJECT_ROOT]/docs/agentic-coding.md:105) overwrite `check.log`, `check.exit` and the start/end manifests. Following the instruction to repair and repeat verification in the same checkout destroys the previous failure evidence. Use distinct attempt directories or archive those files before retrying.
+
+- **Check for new untracked files after verification and before export.** [Candidate capture]([PROJECT_ROOT]/docs/agentic-coding.md:97) inventories tracked files only, and `git diff --exit-code` ignores untracked files. An unexpected file generated during the gate can therefore escape every final comparison. Repeat and inspect the untracked-file check at both boundaries.
+
+- **Verify that export includes every reviewed participant change.** The [export command]([PROJECT_ROOT]/docs/agentic-coding.md:131) uses seven fixed paths, while the instructions allow required tracked hook output. An additional intended staged file can pass candidate comparisons yet disappear from `participant.patch`. Assert the participant path set or export from its reviewed manifest.
+
+- **Make the login procedure follow its stated ordering.** The new paragraph in [loop setup]([PROJECT_ROOT]/docs/bmad-loop.md:156) requires noninteractive checks first, but the numbered procedure immediately starts with authentication and trust, placing preflight third. Reorder the procedure and explain how an expected unauthenticated preflight result is handled.
+
+- **Execute the final documented recipe.** [Retention evidence]([PROJECT_ROOT]/_bmad-output/implementation-artifacts/evidence/story-8-9/fresh-replay/retention.json:4) records v3 plus a modified retry; the delivered walkthrough is v5. Parent application gates do not exercise its clone, shell-session, staging and export instructions. Retain one execution of the final recipe before treating its reproduction requirement as complete.
+
+- **Reconcile the follow-up review metadata.** The [spec frontmatter]([PROJECT_ROOT]/_bmad-output/implementation-artifacts/spec-8-9-agentic-coding-reference-material.md:8) says `followup_review_recommended: false`, while the handoff and terminal verification say it is recommended. Give operators and automation one consistent disposition.
+
+- **Record the deterministic repair in OpenWolf.** The new [handoff]([PROJECT_ROOT]/.wolf/STATUS.md:11) reports the earlier v4 verification, and the bug-log additions omit the subsequently repaired runtime-lifecycle timeout. Add the fixture-isolation repair, root audit command and latest verification outcome so the required session handoff describes the repaired state.
+
+- **Retain diagnostic evidence for the latest timeout repair.** [deterministic-repair.json]([PROJECT_ROOT]/_bmad-output/implementation-artifacts/evidence/story-8-9/deterministic-repair.json:7) explicitly relies on the implementing Agent’s transcript for the failed test and cache diagnosis. Preserve sanitized failure and diagnostic outputs with command provenance; the retained passing logs establish success but cannot substantiate the recorded root cause.

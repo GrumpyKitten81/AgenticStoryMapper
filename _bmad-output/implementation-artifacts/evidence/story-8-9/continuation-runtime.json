@@ -1,0 +1,13 @@
+{
+  "node": "v24.17.0",
+  "corepack": "0.35.0",
+  "pnpm": "9.15.4",
+  "TMPDIR": "[TASK_OWNED_TMPDIR] read from /tmp/story-8-9-owned-tmpdir",
+  "TSX_DISABLE_CACHE": "absent",
+  "GIT_OPTIONAL_LOCKS": "0",
+  "purpose": "Task-owned TMPDIR is an explicit validation environment prerequisite; no source/test/deadline/floor change or shared cache deletion.",
+  "platform": "Darwin",
+  "platformRelease": "27.0.0",
+  "machine": "arm64",
+  "TMPDIRReuse": "Task-owned root reused from focused diagnostic; emptiness at aggregate start was not observed and is not claimed."
+}

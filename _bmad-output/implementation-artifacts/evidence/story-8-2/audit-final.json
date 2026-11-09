@@ -1,0 +1,30 @@
+{
+  "highGateExitStatus": 0,
+  "fullScannerExitStatus": 1,
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 1,
+      "high": 0,
+      "critical": 0
+    },
+    "dependencies": 516,
+    "devDependencies": 0,
+    "optionalDependencies": 0,
+    "totalDependencies": 516
+  },
+  "remaining": [
+    {
+      "id": "GHSA-67mh-4wv8-2f99",
+      "package": "esbuild",
+      "version": "0.18.20",
+      "path": "packages/db > drizzle-kit@0.31.11 > @esbuild-kit/esm-loader@2.6.5 > @esbuild-kit/core-utils@3.3.2 > esbuild@0.18.20",
+      "severity": "moderate",
+      "patched": ">=0.25.0",
+      "classification": "development",
+      "owner": "development-tooling maintainer",
+      "reason": "Latest stable drizzle-kit0.31.11 retains deprecated @esbuild-kit/esm-loader2.6.5/core-utils3.3.2 with esbuild^0.18.20. No supported compatible parent update reaches patched esbuild>=0.25.0; no forced override or DB migration was introduced."
+    }
+  ]
+}

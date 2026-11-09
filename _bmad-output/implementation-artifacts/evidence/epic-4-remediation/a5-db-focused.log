@@ -1,0 +1,19 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/operation-catalog-executor.test.ts (2 tests) 261ms
+ ✓ src/repositories/card-provenance.test.ts (15 tests) 424ms
+stdout | src/repositories/operation-snapshot-scope.test.ts > materializes no additional target rows after a large foreign Project is added
+{"action":"A3","foreignCards":2503,"foreignExtraChunks":2500,"before":{"rows":67,"elapsedMs":5.7862499999999955},"referenceAfter":{"rows":5112,"elapsedMs":21.585625000000164},"scopedAfter":{"rows":67,"elapsedMs":4.538624999999911}}
+
+ ✓ src/repositories/operation-snapshot-scope.test.ts (4 tests) 452ms
+   ✓ materializes no additional target rows after a large foreign Project is added 362ms
+ ✓ src/repositories/changeset-executor.test.ts (22 tests) 884ms
+ ✓ src/repositories/operation-executor-persistence.test.ts (20 tests) 3076ms
+   ✓ persists 200 selected operations on 1,000 Cards with snapshot, history and audit 2282ms
+
+ Test Files  5 passed (5)
+      Tests  63 passed (63)
+   Start at  11:05:14
+   Duration  3.78s (transform 540ms, setup 0ms, collect 2.63s, tests 5.10s, environment 0ms, prepare 149ms)
+

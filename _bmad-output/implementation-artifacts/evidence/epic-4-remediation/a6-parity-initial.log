@@ -1,0 +1,86 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ❯ src/application/changeset/source-import-construction-parity.test.ts (6 tests | 2 failed) 110ms
+   × deduplicates actual Human/Agent markdown imports while retaining prior revision identities and linked evidence 17ms
+     → [
+  {
+    "code": "invalid_value",
+    "values": [
+      "human",
+      "ai",
+      "mcp",
+      "github",
+      "import"
+    ],
+    "path": [
+      "source"
+    ],
+    "message": "Invalid option: expected one of \"human\"|\"ai\"|\"mcp\"|\"github\"|\"import\""
+  }
+]
+   × deduplicates actual Human/Agent txt imports while retaining prior revision identities and linked evidence 14ms
+     → [
+  {
+    "code": "invalid_value",
+    "values": [
+      "human",
+      "ai",
+      "mcp",
+      "github",
+      "import"
+    ],
+    "path": [
+      "source"
+    ],
+    "message": "Invalid option: expected one of \"human\"|\"ai\"|\"mcp\"|\"github\"|\"import\""
+  }
+]
+ ✓ src/application/changeset/source-permission-conflicts.test.ts (5 tests) 222ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/application/changeset/source-import-construction-parity.test.ts > deduplicates actual Human/Agent markdown imports while retaining prior revision identities and linked evidence
+ FAIL  src/application/changeset/source-import-construction-parity.test.ts > deduplicates actual Human/Agent txt imports while retaining prior revision identities and linked evidence
+ZodError: [
+  {
+    "code": "invalid_value",
+    "values": [
+      "human",
+      "ai",
+      "mcp",
+      "github",
+      "import"
+    ],
+    "path": [
+      "source"
+    ],
+    "message": "Invalid option: expected one of \"human\"|\"ai\"|\"mcp\"|\"github\"|\"import\""
+  }
+]
+ ❯ StoryMapperRepository.createChangeSet ../../packages/db/src/repositories/changesets-repository.ts:40:39
+     38|     this.assertWritable();
+     39|     if (this.actor.actorType === "agent" && !this.getSafetySettings(in…
+     40|     const changeSet = changeSetSchema.parse({ ...input, status: "propo…
+       |                                       ^
+     41|     changeSet.warnings = pendingExternalReferenceWarnings(changeSet.op…
+     42|     if (changeSet.undoneByRestore || changeSet.status === "stale") thr…
+ ❯ src/application/changeset/source-import-construction-parity.test.ts:69:78
+ ❯ ../../packages/db/src/unit-of-work.ts:67:87
+ ❯ ../../packages/db/src/unit-of-work.ts:67:31
+ ❯ ../../packages/db/src/database-handle.ts:129:92
+ ❯ ../../packages/db/src/database-handle.ts:139:26
+ ❯ sqliteTransaction ../../node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/transaction.js:65:24
+ ❯ ../../packages/db/src/database-handle.ts:145:10
+ ❯ DatabaseHandle.exclusive ../../packages/db/src/database-handle.ts:98:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  2 failed | 9 passed (11)
+   Start at  11:08:47
+   Duration  971ms (transform 375ms, setup 0ms, collect 1.14s, tests 332ms, environment 0ms, prepare 58ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/application/changeset/source-import-construction-parity.test.ts src/application/changeset/source-permission-conflicts.test.ts

@@ -1,0 +1,1517 @@
+{
+  "baseline": "91d06bba8b3fe1060b4f0d8d2316aa98604a46cf",
+  "paths": [
+    {
+      "path": ".wolf/STATUS.md",
+      "purpose": "Refresh project handoff, learned pitfalls, bug evidence or bounded source index."
+    },
+    {
+      "path": ".wolf/anatomy-index.json",
+      "purpose": "Refresh project handoff, learned pitfalls, bug evidence or bounded source index."
+    },
+    {
+      "path": ".wolf/anatomy.md",
+      "purpose": "Refresh project handoff, learned pitfalls, bug evidence or bounded source index."
+    },
+    {
+      "path": ".wolf/buglog.json",
+      "purpose": "Refresh project handoff, learned pitfalls, bug evidence or bounded source index."
+    },
+    {
+      "path": ".wolf/cerebrum.md",
+      "purpose": "Refresh project handoff, learned pitfalls, bug evidence or bounded source index."
+    },
+    {
+      "path": ".wolf/memory.md",
+      "purpose": "Refresh project handoff, learned pitfalls, bug evidence or bounded source index."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/epic-8-context.md",
+      "purpose": "Refresh stale binding Epic8implementation context."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/changed-files.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/final-coverage.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/implementation.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-accepted-check.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-accepted-install.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-accepted-verify.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-check-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-css-parity.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-install.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-matrix-audit.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-post-review-check.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-post-review-cleanup-failure.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-post-review-cleanup-failure.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-post-review-final-install.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-post-review-install.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-test-inventory.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-verification.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/parent-verify.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/post-review-install-and-first-attempt.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/protected-final.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/review-pass-1.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/review-reproductions.json",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-a11y-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-audit-performance-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-bmad-cleanup-boundaries.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-bmad-cleanup-fixed-timings.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-bmad-cleanup-mcp-stage-probe.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-bmad-cleanup-owned-response-probe.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-bmad-cleanup-size.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-bmad-cleanup-socket-stage-probe.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-bmad-cleanup-stage-probe.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-boundaries-allsource.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-boundaries-final-candidate.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-boundaries-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-browser-publication-fix.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-check-first.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-check-second.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-contracts-coverage-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-contracts-coverage.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-core-coverage.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-coverage-all-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-db-coverage-serial.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-db-coverage.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-frozen-install-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-gate-tests-aggregate.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-gate-tests-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-gate-tests.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-github-coverage.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-hygiene-current.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-hygiene-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-hygiene-pre-aggregate.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-importers-coverage.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-install.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-license-policy-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-licenses-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-matrix-complete-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-matrix-complete.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-matrix-final-candidate.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-matrix-final-verified.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-matrix-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-matrix-parent-fixes.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-matrix-shared-verifier.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-mcp-coverage.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-offline-setup-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-parent-check.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-review-card-detail.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-review-gates-accepted.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-review-gates-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-review-gates.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-review-http-import-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-review-http-import-fixed.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-review-http-import.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-review-license-cli.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-root-fastify-boundaries.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-root-fastify-frozen.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-root-fastify-install.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-root-fastify-licenses.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-script-fixes.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-server-typecheck.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-size-allsource.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-size-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-size-near-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-typecheck-complete.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-web-before-aggregate-typecheck.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-whitespace-current.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-whitespace-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-whitespace-midrun.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story-8-3-whitespace.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-semantic-server-tests.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-semantic-server-types-final.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-semantic-server-types.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-server-focused-tests.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-size-final-readback.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-test-extraction-db-types.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-test-extraction-db-types3.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-test-extraction-db-types4.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-test-extraction-server-types.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-test-extraction-server-types2.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-test-extraction-server-types4.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-test-extraction-typecheck.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-test-extraction-web-types.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-test-extraction-web-types3.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-test-extraction-web-types4.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-3/story83-web-focused-tests.log.gz",
+      "purpose": "Retain command, review, parity, coverage or failure evidence for Story8.3."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/spec-8-3-quality-gate-scripts.md",
+      "purpose": "Record immutable intent, implementation, all24review rows and final acceptance."
+    },
+    {
+      "path": "apps/server/package.json",
+      "purpose": "Declare evidenced dependencies and quality/coverage commands with pinned installed graph."
+    },
+    {
+      "path": "apps/server/src/application/capability-manifest.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/application/changeset/changeset-executor.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/application/changeset/historical-changesets.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/application/changeset/preview-changeset.use-cases.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/application/changeset/source-import-construction-parity.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/application/mcp-http-parity.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/application/source-document/source-document.use-cases.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-command-regressions.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-import-command.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-pull-command.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-ticket-command.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/config/project-lock.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/fixtures/bmad-round-trip/harness.ts",
+      "purpose": "Preserve scenario state, prepared source inputs and owned fixture resource cleanup."
+    },
+    {
+      "path": "apps/server/src/fixtures/mcp-surface-assertions.ts",
+      "purpose": "Preserve scenario state, prepared source inputs and owned fixture resource cleanup."
+    },
+    {
+      "path": "apps/server/src/http/routes/base-version-conflicts.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/http/routes/board-diagnostics.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/http/routes/card-markdown.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/http/routes/customization-management.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/http/routes/getting-started.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/http/routes/index.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/http/routes/restore-points.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/http/routes/unit-of-work.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/mcp/github-command-transports.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/mcp/http.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/mcp/stdio-main.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/audit-tool-call.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/complete-surface.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/project-scopes.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/project-scopes.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/register-tools.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/submit-changeset.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/surface.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/tool-call-audit.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/runtime-lifecycle.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/server.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/services/ai-proposal-change-set.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/services/credential-outputs.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/services/credentials.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/services/prepare-source-document-import.ts",
+      "purpose": "Parse at the application boundary and retain DB-owned persistence/provenance."
+    },
+    {
+      "path": "apps/server/src/services/project-archive.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/services/project-archive.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/services/sync-conflict-resolution.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/services/sync-merge.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/src/services/sync-review.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/services/sync-values.ts",
+      "purpose": "Share existing deterministic sync values without the runtime service cycle."
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/server/vitest.config.ts",
+      "purpose": "Instrument intended source and enforce the independent60%line floor."
+    },
+    {
+      "path": "apps/web/package.json",
+      "purpose": "Declare evidenced dependencies and quality/coverage commands with pinned installed graph."
+    },
+    {
+      "path": "apps/web/src/app/live/live-stream-reader.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/app/live/live-stream.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/app/live/live-stream.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/app/live/live-update-session.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/app/live/useLiveUpdates.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/app/routes/RootLayout.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/app/routes/audit.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/app/routes/story-map-shell.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/app/routes/story-maps.index.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/components/ActorBadge.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/components/CardDependencyBadges.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/components/Dialog.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/components/Dialog.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/components/PreviewMarker.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/ai-mcp/AiMcpPanel.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/ai-mcp/AiMcpPanel.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/ai-mcp/context-draft.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/ai-mcp/undone-changesets.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/changesets/ChangeSetReview.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/changesets/boards.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/changesets/index.ts",
+      "purpose": "Expose intentional public feature/workspace entries required by architecture checks."
+    },
+    {
+      "path": "apps/web/src/features/changesets/review-focus.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/changesets/shell.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/changesets/useChangeSetReview.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/conflicts/ConflictAlert.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/conflicts/conflict-envelope.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/conflicts/index.ts",
+      "purpose": "Expose intentional public feature/workspace entries required by architecture checks."
+    },
+    {
+      "path": "apps/web/src/features/customization/CustomizationEditor.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/customization/customization-impact.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/customization/index.ts",
+      "purpose": "Expose intentional public feature/workspace entries required by architecture checks."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectDialog.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubConnectionsPanel.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/IncomingGitHubReview.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/github-selection.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/index.ts",
+      "purpose": "Expose intentional public feature/workspace entries required by architecture checks."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/use-github-connect.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/onboarding/OnboardingPanel.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/personas/PersonaDetail.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/personas/PersonaDetail.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/personas/PersonasPanel.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/project-archive/ProjectArchivePanel.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseDateFields.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseEditor.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/releases/ReleaseKanban.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/releases/index.ts",
+      "purpose": "Expose intentional public feature/workspace entries required by architecture checks."
+    },
+    {
+      "path": "apps/web/src/features/releases/release-mutation-adoption.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/releases/release-preview-route.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/reports/PlanDriftDrawer.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/reports/ReportsPanel.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/reports/index.ts",
+      "purpose": "Expose intentional public feature/workspace entries required by architecture checks."
+    },
+    {
+      "path": "apps/web/src/features/restore-points/RestorePointsPanel.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/restore-points/RestoreResultDialog.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/restore-points/restore-points.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/roadmaps/RoadmapEditor.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/roadmaps/RoadmapPanel.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/safety/SafetySwitchStrip.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/safety/index.ts",
+      "purpose": "Expose intentional public feature/workspace entries required by architecture checks."
+    },
+    {
+      "path": "apps/web/src/features/source-documents/SourceDocumentsPanel.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/board-accessibility.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/board-diagnostics.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/board-filter-selection.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/BacklogList.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/BoardToolbar.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardComposer.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDependenciesSection.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDependencyBadges.tsx",
+      "purpose": "Replace the former module with its extracted shared/public implementation."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailSections.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardTile.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/DeleteCardsDialog.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/DiscoveryLanes.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/DiscoveryMatrix.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/LifecycleActions.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/LifecycleDialog.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/MoveAreaDialog.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/PlanStateComparison.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/PlanningNumberField.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/PlanningNumberField.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/StorySliceMove.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/SwimlaneGrid.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/TicketCardComposer.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/TreeGrid.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-choices.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-creation.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-dependencies.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-detail-github.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-detail-model.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-detail-navigation.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-detail-root-focus.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-detail-test-fixture.ts",
+      "purpose": "Replace the former module with its extracted shared/public implementation."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-detail.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-fields.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-provenance.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/discovery-navigation.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/hierarchy-collapse.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/lifecycle.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/move-position.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/sync-field-locks.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/ticket-creation.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/useTicketCardComposer.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/graph/GraphCanvas.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/graph/GraphTable.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/index.ts",
+      "purpose": "Expose intentional public feature/workspace entries required by architecture checks."
+    },
+    {
+      "path": "apps/web/src/features/story-map/useStoryMapBoardState.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/views/DiscoveryView.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/views/GraphView.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/views/SlicesView.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/story-map/views/SlicesView.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/views/TimelineView.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/views/TrackingView.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/story-map/views/core-views.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/what-changed/WhatChangedDrawer.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/what-changed/WhatChangedProvider.test.tsx",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/features/what-changed/WhatChangedProvider.tsx",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "apps/web/src/features/what-changed/index.ts",
+      "purpose": "Expose intentional public feature/workspace entries required by architecture checks."
+    },
+    {
+      "path": "apps/web/src/styles/card-editing.css",
+      "purpose": "Preserve ordered CSS rules while meeting complete file-size bounds."
+    },
+    {
+      "path": "apps/web/src/styles/changeset-panels.css",
+      "purpose": "Preserve ordered CSS rules while meeting complete file-size bounds."
+    },
+    {
+      "path": "apps/web/src/styles/contrast-tokens.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "apps/web/src/styles/discovery-board.css",
+      "purpose": "Preserve ordered CSS rules while meeting complete file-size bounds."
+    },
+    {
+      "path": "apps/web/src/styles/foundation.css",
+      "purpose": "Preserve ordered CSS rules while meeting complete file-size bounds."
+    },
+    {
+      "path": "apps/web/src/styles/global.css",
+      "purpose": "Preserve ordered CSS rules while meeting complete file-size bounds."
+    },
+    {
+      "path": "apps/web/src/styles/responsive-and-accessibility.css",
+      "purpose": "Preserve ordered CSS rules while meeting complete file-size bounds."
+    },
+    {
+      "path": "apps/web/src/styles/workspace-panels.css",
+      "purpose": "Preserve ordered CSS rules while meeting complete file-size bounds."
+    },
+    {
+      "path": "apps/web/src/test-fixtures/card-detail-history.ts",
+      "purpose": "Preserve scenario state, prepared source inputs and owned fixture resource cleanup."
+    },
+    {
+      "path": "apps/web/src/test-fixtures/card-detail.ts",
+      "purpose": "Preserve scenario state, prepared source inputs and owned fixture resource cleanup."
+    },
+    {
+      "path": "apps/web/src/test-fixtures/lifecycle-ids.ts",
+      "purpose": "Preserve scenario state, prepared source inputs and owned fixture resource cleanup."
+    },
+    {
+      "path": "apps/web/src/test-fixtures/styles.ts",
+      "purpose": "Preserve scenario state, prepared source inputs and owned fixture resource cleanup."
+    },
+    {
+      "path": "apps/web/src/ui-strings/ui-strings.test.ts",
+      "purpose": "Preserve canonical English UI strings through required extraction."
+    },
+    {
+      "path": "apps/web/vite.config.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "package.json",
+      "purpose": "Declare evidenced dependencies and quality/coverage commands with pinned installed graph."
+    },
+    {
+      "path": "packages/contracts/package.json",
+      "purpose": "Declare evidenced dependencies and quality/coverage commands with pinned installed graph."
+    },
+    {
+      "path": "packages/contracts/src/api/http.ts",
+      "purpose": "Keep prepared source-document chunks in the canonical contracts schema."
+    },
+    {
+      "path": "packages/contracts/src/mcp/tool-inputs.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/contracts/src/migration.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/contracts/src/schemas/change-operations.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/contracts/vitest.config.ts",
+      "purpose": "Instrument intended source and enforce the independent60%line floor."
+    },
+    {
+      "path": "packages/core/package.json",
+      "purpose": "Declare evidenced dependencies and quality/coverage commands with pinned installed graph."
+    },
+    {
+      "path": "packages/core/src/changesets/dependency-resolution.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/core/src/changesets/fixtures/operation-context-cases.ts",
+      "purpose": "Preserve scenario state, prepared source inputs and owned fixture resource cleanup."
+    },
+    {
+      "path": "packages/core/src/changesets/operation-conflicts.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "packages/core/src/changesets/operation-dependencies.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "packages/core/src/changesets/operation-resolution.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/core/src/proposals/proposal-builders.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "packages/core/src/proposals/proposals.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/core/src/reports/reports.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/core/src/reports/sync-health.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/core/vitest.config.ts",
+      "purpose": "Instrument intended source and enforce the independent60%line floor."
+    },
+    {
+      "path": "packages/db/package.json",
+      "purpose": "Declare evidenced dependencies and quality/coverage commands with pinned installed graph."
+    },
+    {
+      "path": "packages/db/src/fixtures/archive-demo.ts",
+      "purpose": "Preserve scenario state, prepared source inputs and owned fixture resource cleanup."
+    },
+    {
+      "path": "packages/db/src/fixtures/operation-snapshot-reference.ts",
+      "purpose": "Preserve scenario state, prepared source inputs and owned fixture resource cleanup."
+    },
+    {
+      "path": "packages/db/src/index.ts",
+      "purpose": "Expose intentional public feature/workspace entries required by architecture checks."
+    },
+    {
+      "path": "packages/db/src/live-events.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/migration-runner.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/repositories/audit-repository.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "packages/db/src/repositories/card-history.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/repositories/card-provenance.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/repositories/card-visibility.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/repositories/getting-started.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-catalog-executor.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-resolution-parity.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-selector-regressions.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/repositories/release-report-data.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/repositories/root-versions.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/repositories/source-document-import.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/repositories/sources-repository.ts",
+      "purpose": "Parse at the application boundary and retain DB-owned persistence/provenance."
+    },
+    {
+      "path": "packages/db/src/repositories/storymapper-repository.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/restore-failures.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/restore-points.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/restore-project.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/schema/classification.ts",
+      "purpose": "Enforce complete unique aggregate/infrastructure table ownership."
+    },
+    {
+      "path": "packages/db/src/snapshot.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/source-document-migration.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/src/test-fixtures/populated-migration.ts",
+      "purpose": "Preserve scenario state, prepared source inputs and owned fixture resource cleanup."
+    },
+    {
+      "path": "packages/db/src/test-fixtures/source-link-operations.ts",
+      "purpose": "Preserve scenario state, prepared source inputs and owned fixture resource cleanup."
+    },
+    {
+      "path": "packages/db/src/unit-of-work.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/db/vitest.config.ts",
+      "purpose": "Instrument intended source and enforce the independent60%line floor."
+    },
+    {
+      "path": "packages/github/package.json",
+      "purpose": "Declare evidenced dependencies and quality/coverage commands with pinned installed graph."
+    },
+    {
+      "path": "packages/github/src/providers/github-provider.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/github/vitest.config.ts",
+      "purpose": "Instrument intended source and enforce the independent60%line floor."
+    },
+    {
+      "path": "packages/importers/package.json",
+      "purpose": "Declare evidenced dependencies and quality/coverage commands with pinned installed graph."
+    },
+    {
+      "path": "packages/importers/src/markdown/import-markdown.ts",
+      "purpose": "Preserve existing behavior through cohesive extraction or declared public imports required by quality gates."
+    },
+    {
+      "path": "packages/importers/vitest.config.ts",
+      "purpose": "Instrument intended source and enforce the independent60%line floor."
+    },
+    {
+      "path": "packages/mcp/package.json",
+      "purpose": "Declare evidenced dependencies and quality/coverage commands with pinned installed graph."
+    },
+    {
+      "path": "packages/mcp/src/mcp-behavior.test.ts",
+      "purpose": "Retain regression assertions through required extraction and verify the changed ownership contract."
+    },
+    {
+      "path": "packages/mcp/vitest.config.ts",
+      "purpose": "Instrument intended source and enforce the independent60%line floor."
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "purpose": "Declare evidenced dependencies and quality/coverage commands with pinned installed graph."
+    },
+    {
+      "path": "scripts/check-boundaries.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/check-coverage.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/check-hygiene.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/check-hygiene.test.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/check-licenses.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/check-size.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/check.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/browser.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/checkout.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/absolute-import.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/command.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/core-effects.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/coverage-corepack.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/executable.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/forbidden.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/function-shapes.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/global-effects.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/import-syntax.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/public-entry.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/script-db-only.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/test-import.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/unresolved-imports.fixture",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/fixtures/quality/worker.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/license-policy.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/processes.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/quality-gates.test.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/source-inventory.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    },
+    {
+      "path": "scripts/verify.mjs",
+      "purpose": "Implement or verify local quality gates, shared process ownership and fixture lifecycle."
+    }
+  ]
+}

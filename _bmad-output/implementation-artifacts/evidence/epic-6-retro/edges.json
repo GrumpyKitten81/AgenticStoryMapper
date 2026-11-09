@@ -1,0 +1,16 @@
+[
+  {
+    "lens": "edge-case-hunter",
+    "location": "apps/web/src/features/story-map/useStoryMapBoardState.ts:435",
+    "trigger_condition": "Standard color filter is selected for Cards whose optional color is unset.",
+    "guard_snippet": "if (filters.color !== \"all\" && (card.color ?? DEFAULT_CARD_COLOR) !== decodeFilterValue(filters.color)) return false;",
+    "potential_consequence": "Newly created Cards displayed as Standard disappear from the Standard category filter."
+  },
+  {
+    "lens": "edge-case-hunter",
+    "location": "apps/web/src/features/customization/CustomizationEditor.tsx:38",
+    "trigger_condition": "Status changes name remotely; retained original-name draft is retried after explicit usage re-review.",
+    "guard_snippet": "const renamed = input.name !== (evidence!.definitionBefore as WorkflowStatus).name;",
+    "potential_consequence": "Retry omits refreshed evidence and conflicts repeatedly, preventing saving the explicitly re-reviewed draft."
+  }
+]

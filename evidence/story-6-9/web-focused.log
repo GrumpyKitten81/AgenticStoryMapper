@@ -1,0 +1,22 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/releases/ReleaseDateFields.test.ts (3 tests) 32ms
+ ✓ src/features/releases/ReleaseEditor.test.tsx (5 tests) 117ms
+ ✓ src/features/releases/ReleaseKanban.test.tsx (4 tests) 62ms
+ ✓ src/features/releases/ReleasePanel.test.tsx (10 tests) 98ms
+ ✓ src/features/story-map/views/TrackingView.test.tsx (7 tests) 133ms
+ ✓ src/app/live/live-updates.test.tsx (24 tests) 167ms
+ ✓ src/features/story-map/views/core-views.test.tsx (41 tests) 6422ms
+   ✓ retains every eligible Card in a legal 1000-Card discovery projection 1537ms
+   ✓ retains every eligible Card in a legal 1000-Card planning projection 921ms
+   ✓ retains every eligible Card in a legal 1000-Card backlog projection 833ms
+   ✓ retains every eligible Card in a legal 1000-Card tracking projection 321ms
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in discovery 706ms
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in planning 495ms
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in backlog 378ms
+
+ Test Files  7 passed (7)
+      Tests  94 passed (94)
+   Start at  21:04:08
+   Duration  7.74s (transform 993ms, setup 0ms, collect 3.43s, tests 7.03s, environment 1.67s, prepare 228ms)

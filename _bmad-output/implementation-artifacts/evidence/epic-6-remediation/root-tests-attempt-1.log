@@ -1,0 +1,119 @@
+
+> storymapper@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper
+> node --test scripts/*.test.mjs && corepack pnpm -r test
+
+✔ external completion worker verifies and adopts only isolated temporary runs (28017.154458ms)
+✔ scans TypeScript syntax without executing descriptor initializers (4.611542ms)
+✔ rejects missing and wrongly named use-case mappings in both directions (0.641084ms)
+✔ permits ordinary HTTP reads and requires effectful capabilities to have tools (0.802666ms)
+✔ manifest output is deterministic and checking never rewrites stale data (11.663125ms)
+✔ generated tool metadata and documentation are deterministic and checked without rewriting (12.978166ms)
+✔ documentation names human-only capabilities and every classified write membership (0.232208ms)
+✔ registry parity rejects omitted, duplicate and incorrectly imported descriptors (8.939083ms)
+✔ rejects duplicate capability names, route mappings and tool mappings (7.551458ms)
+✔ rejects missing registrations, orphan tool metadata, schemas and routes (9.325917ms)
+✔ operation coverage rejects new unclassified writes and preserves mixed sync effects (0.286458ms)
+✔ operation coverage includes indirect local effects of provider writes (0.146375ms)
+✔ classifies effectful reads and refuses direct MCP handler domain persistence (6.53225ms)
+✔ rejects every umlaut and sharp s with correct locations (1.676417ms)
+✔ normalizes decomposed umlauts without changing line diagnostics (0.137125ms)
+✔ matches complete case-insensitive German words without substring failures (0.068584ms)
+✔ scans every required source and reports relative paths while ignoring authoring documents (84.73825ms)
+✖ setup performs a real frozen install, build and folder creation without config, and repeats safely (16811.839542ms)
+✔ frozen install and build failures prevent later setup steps (1263.387042ms)
+✔ real setup rejects a manifest that disagrees with the frozen lockfile (692.5735ms)
+✔ start serves actual app/API on its owned URL and only opens the browser after health (18268.351583ms)
+✔ IPv6 host overrides reach the real server and exact browser URL (4455.335708ms)
+✔ invalid configuration and missing dependencies/runtime fail before database creation or browser opening (2934.511833ms)
+✔ unexpected pnpm version rejects public setup and start before later work (665.630208ms)
+✔ launcher preflight rejects server-local non-loopback configuration before spawning the server, DB or bind (461.209083ms)
+✔ server IPC loopback guard rejects non-loopback configuration before DB or bind (1282.079125ms)
+✔ a healthy occupied port cannot authorize browser opening (548.069167ms)
+✔ failed missing-asset build and early server exit never open a browser (1071.820125ms)
+✔ unhealthy owned server times out loudly and releases its port (30636.005542ms)
+✔ browser failure is loud and cleans up the healthy real server (4232.737209ms)
+✔ hanging opener deadline fails nonzero and cleans its descendants and server (18940.491458ms)
+✔ unexpected ready server exit fails the launcher during and after browser opening (13647.820542ms)
+✔ platform browser commands and Windows Corepack discovery preserve argument boundaries (1.823958ms)
+✔ abrupt launcher loss disconnects and stops its owned real server (4089.906708ms)
+✔ fixture cleanup after abrupt setup install loss stops descendants before fixture removal (601.845209ms)
+✔ test-only IPC interruption invokes the launcher signal handler and cancellation (5454.316875ms)
+✔ interrupted preflight, build and opener terminate their whole process trees within a bound (20202.294208ms)
+✔ cancellation waits for the owned delayed shutdown beyond the former two-second cutoff (3272.037208ms)
+✔ interruption before server readiness stops the child without a browser (563.525333ms)
+✔ public verify preserves hygiene and gate failure propagation (2459.397875ms)
+✔ public verify rejects missing env ignore, ignored env example and env history (1129.506583ms)
+✔ public verify rejects tracked input, local Project and SQLite data (1765.432708ms)
+✔ public verify rejects an unusable default Project folder and accepts a usable one (1167.461125ms)
+✔ public verify health requires exact HTTP200 and valid databasePath (3842.900042ms)
+✔ public verify loads repository-root config from an unrelated cwd and preserves explicit overrides (677.740334ms)
+✔ public verify refuses a healthy service belonging to a different runtime (467.639375ms)
+✔ doctor before setup collects independent failures without writes or Corepack downloads (557.89375ms)
+✔ doctor on installed checkout passes seven checks read-only without opening Project data (4419.981792ms)
+✔ doctor reports healthy, unhealthy, malformed, stalled, oversized and redirected occupied services within a bound (10457.724542ms)
+✔ public commands validate flags and keep default failures free of diagnostic traces (1607.590458ms)
+✔ native binding failures stop start before DB or browser and remain diagnosable in doctor (1410.573625ms)
+✔ setup child diagnostics identify phase and redact credentials in normal and debug output (1039.839792ms)
+✔ setup redacts credentials split across UTF-8 byte chunks on stdout and stderr (3145.7835ms)
+✔ doctor and start use process, root and nearest server env precedence from unrelated cwd (1048.781125ms)
+✔ server database startup failure is reported at the launcher boundary without a default stack (8372.897291ms)
+✔ bind race is reported through real server IPC with actionable cause and no browser (4340.352625ms)
+✔ direct server startup catches configuration, binding and native failures in normal and debug mode (17761.912625ms)
+✔ direct server flushes a large startup diagnostic to piped stderr before exiting (3524.194792ms)
+✔ doctor rejects an empty local Corepack entry while collecting seven checks without cache writes (397.070166ms)
+✔ doctor rejects missing CommonJS entries and imported ESM subpath targets with intact CommonJS counterparts (1732.903458ms)
+✔ start and doctor report malformed installed dependency metadata with the setup action (717.692833ms)
+✔ doctor rejects a directory web entry and start attempts its missing-build repair (644.296084ms)
+✔ normal build failures include one redacted compiler cause without stack lines (624.981ms)
+✔ doctor loads SQLite JavaScript but fails at the native constructor without Project writes (403.396709ms)
+✔ successful launch forwards redacted server stdout including an unterminated final line (595.261833ms)
+✔ doctor ignores a .env in the working directory when no checkout .env exists (363.488917ms)
+✔ successful normal launch suppresses confirmed server stderr diagnostics and stack lines (596.608166ms)
+✔ successful debug launch forwards redacted stderr across chunk boundaries and omits overlong lines (658.805042ms)
+✔ owned server launched from unrelated cwd uses root PORT before conflicting server-local PORT (4256.789167ms)
+✔ server reports a concrete writable-directory repair when SQLite cannot open the database (4084.496334ms)
+✔ direct server reports unreadable optional env without a Project database directory repair (1323.996833ms)
+✔ redacts raw and serialized environment secrets with quotes and backslashes (0.794333ms)
+✔ redacts full multiline environment secrets and nonempty raw and serialized line fragments (0.180125ms)
+✔ redacts URL userinfo and Basic or Bearer authorization tokens (0.05625ms)
+✔ redacts entire escaped quoted credential values without an environment match (0.370458ms)
+✔ port closure waits for a silent TCP listener to stop accepting connections (107.790708ms)
+✔ port closure propagates invalid connection origins (0.434417ms)
+✔ occupied default port starts an owned listener, publishes its port and cleans it at shutdown (7878.66175ms)
+✔ runtime publication refuses an existing file and shutdown preserves a replacement owner (48.14675ms)
+✔ owned launcher drains an actual agent HTTP call beyond two seconds before WAL and runtime cleanup (7254.545167ms)
+✔ bridge fails explicitly for missing discovery or a foreign service without creating a database (122.180166ms)
+✔ doctor discovery uses stable runtime identity after the active database directory changes (30.363167ms)
+✔ relative database startup and discovery resolve from the checkout when called elsewhere (5384.867083ms)
+ℹ tests 83
+ℹ suites 0
+ℹ pass 82
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 161690.510291
+
+✖ failing tests:
+
+test at scripts/commands.test.mjs:11:1
+✖ setup performs a real frozen install, build and folder creation without config, and repeats safely (16811.839542ms)
+  AssertionError [ERR_ASSERTION]: Web build failed with exit code 2 (ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL). Next action: Run node scripts/setup.mjs --debug and repair the reported web build error.
+  
+  
+  1 !== 0
+  
+      at file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:16:14
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async withFixture (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/fixtures/checkout.mjs:170:9)
+      at async TestContext.<anonymous> (file://[REDACTED_HOME]/Projects/StoryMapper/scripts/commands.test.mjs:12:3)
+      at async Test.run (node:internal/test_runner/test:1313:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+ ELIFECYCLE  Test failed. See above for more details.

@@ -1,0 +1,133 @@
+{
+  "date": "2026-10-17",
+  "status": "native bounded checks complete; full WCAG/manual platform matrix unverified",
+  "environment": {
+    "runtime": "Node24.17.0, source server with built Vite app, loopback44370",
+    "browser": "native Safari via CUA",
+    "data": "disposable SQLite outside repository, no userProject/liveGitHub",
+    "viewport": "native screenshot1800x975; desktop; precise CSS viewport not instrumented"
+  },
+  "uj1": {
+    "status": "passed UI segment",
+    "actions": [
+      "keyboard created Keyboard acceptance map",
+      "keyboard created Activity, Step(parent Activity), Story(parent Step)",
+      "roving Discovery Down/Down and Enter opened Story",
+      "keyboard edited Title; Escape dirty-close initially focused Cancel; Tab wrapped to Save; Space saved; focus returned to same Story",
+      "m shortcut opened Move; native Parent/Position/Release named; keyboard Move submitted; exact moved status and same tile focus observed",
+      "keyboard HTML export generated downloaded file containing all three persisted titles",
+      "keyboard opened sample map, traversed grid, edited sample Story and saved via dirty-close",
+      "Story Maps Getting started showed Create map/Add first Cards/Export once Complete, optional GitHub Pending"
+    ],
+    "limits": [
+      "setup/start launcher UI flow not re-executed natively; exact root setup/launch tests ran",
+      "browser local-download permission prompt handled with pointer; product actions above used keyboard"
+    ],
+    "download": {
+      "bytes": 89322,
+      "sha256": "79b452a191d0461fde052cb6e45b150b418b51ca8b6b7b8f9ba926b7801059d3",
+      "contentChecks": [
+        "Activity",
+        "Step",
+        "edited Story"
+      ]
+    }
+  },
+  "uj3": {
+    "status": "passed bounded keyboard selection/approval/application/live flow",
+    "fixture": "human imported TXT, Agent protectionOn, actual agent47Card proposal plus separate8operation source-linked dependency cut; no live provider/GitHub",
+    "observed": [
+      "47cut: native keyboard deselected46/47 and retained focus after repaired actual preview responses",
+      "source-linked8cut: keyboard deselected create3/create4; canonical dependent link7/link8 became unchecked; same checkbox focus remained",
+      "keyboard Approve retained exact focused Approve button; Tab reached Apply",
+      "keyboard Apply selected4operations; Applied status and named review heading focus observed",
+      "already-mounted native Tree tab updated3\u21925Cards without reload; new linked Activity/Step displayed",
+      "actual GET snapshot confirms exactly2linked roots,2physical chunkSourceLinks, neither excluded Story created"
+    ],
+    "priorDefects": "initial checkbox/lifecycle focus loss retained in buglog; final built native retest passed",
+    "limits": [
+      "provider terminal/toast exact wording not asserted",
+      "Tree +New projection and full later-slice/failure matrix not exercised natively",
+      "initial47cut remains approved/unapplied; distinct source-linked8cut supplies dependency and physical-provenance proof"
+    ]
+  },
+  "manual": {
+    "focusContainmentRestoration": {
+      "status": "passed bounded checks",
+      "evidence": "dirty-close Cancel initial focus, Tab wrap Save; saved/Move dialog returns exact Story tile"
+    },
+    "renderedContrast": {
+      "status": "partially observed; no full conformance claim",
+      "evidence": "native Move select focus ring visible, text and boundaries discernible; source token ratios verified separately"
+    },
+    "targets": {
+      "status": "partially observed; exact computed sizes unverified",
+      "evidence": "native Move controls operable by keyboard; screenshot shows compact native selects; no pixel-size pass claimed"
+    },
+    "stickyFocus": {
+      "status": "partially observed",
+      "evidence": "Discovery keyboard navigation/modal controls visible and operable; comprehensive scrolled sticky-row matrix unexecuted"
+    },
+    "zoom200": {
+      "status": "observed",
+      "evidence": "five native View\u2192Zoom In menu steps from Actual Size; Safari page menu explicitly reads200%; Activity review text/actions remain accessible through scrolling; navigation becomes horizontal and scrollable; Reflow excluded"
+    },
+    "forcedColors": {
+      "status": "unexecuted",
+      "reason": "no Windows forced-colors environment; native macOS high-contrast not equivalent"
+    },
+    "reducedMotion": {
+      "status": "unexecuted native preference matrix",
+      "reason": "no preference emulation via native CUA; no invented pass"
+    },
+    "NVDAFirefox": {
+      "status": "unexecuted",
+      "reason": "macOS host; Windows/NVDA unavailable"
+    },
+    "VoiceOverSafari": {
+      "status": "unexecuted",
+      "reason": "native AX observation is not actual screen-reader speech/interaction acceptance"
+    }
+  },
+  "fullWCAGConformance": "not established",
+  "cleanup": "Both owned disposable Safari tabs closed; owned44370listener gracefully stopped; fresh socket refused. Temporary disposable database retained outside repository for diagnosis. Own HTML download retained.",
+  "persistedNativeSnapshot": {
+    "cards": 5,
+    "linkedCards": [
+      {
+        "id": "f3db4437-babc-4e84-945f-69bce230a8d7",
+        "title": "Linked keyboard activity 0",
+        "provenance": "linked"
+      },
+      {
+        "id": "0a39a994-a986-4b1d-b909-1d0e78960607",
+        "title": "Linked keyboard step 1",
+        "provenance": "linked"
+      }
+    ],
+    "physicalChunkLinks": [
+      {
+        "kind": "chunk",
+        "id": "56a16518-eed6-4607-81cb-2bb87da5c549",
+        "cardId": "0a39a994-a986-4b1d-b909-1d0e78960607",
+        "chunkId": "bccbdbd0355dd5e6befc2e21ca50a05bea8ec11f57abe65c068127b7f0588082",
+        "confidence": null,
+        "createdAt": "2026-10-17T20:23:06.109Z"
+      },
+      {
+        "kind": "chunk",
+        "id": "cd91372c-87d5-4b59-aee8-af5275dda7e6",
+        "cardId": "f3db4437-babc-4e84-945f-69bce230a8d7",
+        "chunkId": "bccbdbd0355dd5e6befc2e21ca50a05bea8ec11f57abe65c068127b7f0588082",
+        "confidence": null,
+        "createdAt": "2026-10-17T20:23:06.109Z"
+      }
+    ]
+  },
+  "finalReviewPatchRetest": {
+    "status": "unexecuted native; connected automated regression passed",
+    "reason": "Final native Safari binding and reacquisition both returned Computer Use server error -10005: cgWindowNotFound; inventory lists Safari running but exposes no browser surfaces. No final server was started.",
+    "coverage": "Final root includes connected delayed Apply with and without dirty Card, pending/error/retry/reject/unknown/refused outcomes and synchronous Refresh/live-invalidated admission. These DOM checks do not prove final native focus or speech.",
+    "earlierEvidence": "Earlier native UJ1/UJ3 observations predate final review patches and retain only their recorded bounded scope."
+  }
+}

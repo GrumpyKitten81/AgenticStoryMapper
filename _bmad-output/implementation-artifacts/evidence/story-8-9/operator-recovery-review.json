@@ -1,0 +1,52 @@
+{
+  "scope": "Recovery code delta only: scripts/app-version.test.mjs elapsed assertion 10000ms to 20000ms. Prior full-story reviews remain historical; orchestrator review follows recovery.",
+  "layers": {
+    "blind": [
+      "Date.now follows system clock adjustments; backward/forward corrections can change the elapsed assertion result. Suggested monotonic clock and measured failure duration."
+    ],
+    "edge": [],
+    "verification_gap": [],
+    "intent": [
+      "The broader request includes preservation, recovery, verification, preflight and loop execution; the diff changes only the test acceptance threshold.",
+      "The test measures wall-clock duration and retains exit and diagnostic checks.",
+      "The diff alone does not establish the child timeout value or change it.",
+      "The diff alone does not evidence backup, other repairs, successful gates, preflight or loop continuation. Those may occur operationally."
+    ]
+  },
+  "triage": [
+    {
+      "layer": "blind",
+      "verdict": "maybe-false",
+      "route": "reject",
+      "evidence": "No clock adjustment was observed or reproduced; Date.now predates this delta. Demonstrating a practical false result requires a clock-step reproduction. If true the developer-only impact is low; reject the unverified low claim without adding clock instrumentation."
+    },
+    {
+      "layer": "intent",
+      "verdict": "false",
+      "route": "reject",
+      "evidence": "Descriptive scope boundary, not a demonstrated defect: operational recovery and evidence are performed separately from this one-line code delta."
+    },
+    {
+      "layer": "intent",
+      "verdict": "false",
+      "route": "reject",
+      "evidence": "Accurate description of the implemented user-authorized assertion relaxation; preserved functional assertions are intended."
+    },
+    {
+      "layer": "intent",
+      "verdict": "false",
+      "route": "reject",
+      "evidence": "Source inspection verifies the unchanged spawnSync timeout of30000ms in versionFixture, above the20000ms assertion."
+    },
+    {
+      "layer": "intent",
+      "verdict": "false",
+      "route": "reject",
+      "evidence": "Operational backup, spec recovery and retained gate logs provide those observations; no claim is made that a source diff proves them. Loop continuation remains pending until gates and preflight pass."
+    }
+  ],
+  "patches": 0,
+  "new_deferrals": 0,
+  "followup_review_recommended": false,
+  "launch_note": "Fourth reviewer initially hit concurrency limit and was launched once a slot became available; all four outputs collected before triage."
+}

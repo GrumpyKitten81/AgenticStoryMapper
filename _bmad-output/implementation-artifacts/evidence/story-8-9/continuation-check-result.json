@@ -1,0 +1,9 @@
+{
+  "command": "corepack pnpm check",
+  "exit": 0,
+  "durationSeconds": 695.3420537081547,
+  "sourceUnchanged": true,
+  "semanticIndexUnchanged": true,
+  "rawIndexUnchanged": true,
+  "headUnchanged": true
+}

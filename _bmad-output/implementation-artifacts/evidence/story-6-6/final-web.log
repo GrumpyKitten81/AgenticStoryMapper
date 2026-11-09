@@ -1,0 +1,173 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/components/Dialog.test.ts (12 tests) 222ms
+ ✓ src/features/personas/PersonaDetail.test.ts (8 tests) 113ms
+ ✓ src/features/releases/ReleasePanel.test.tsx (7 tests) 91ms
+ ✓ src/features/ai-mcp/TemplateEditor.test.tsx (6 tests) 123ms
+ ✓ src/features/story-map/views/TrackingView.test.tsx (7 tests) 168ms
+ ✓ src/features/ai-mcp/AiMcpPanel.test.tsx (4 tests) 141ms
+ ✓ src/app/routes/audit.test.ts (9 tests) 497ms
+ ✓ src/app/live/live-updates.test.tsx (23 tests) 317ms
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 152ms
+ ✓ src/features/github-sync/github-selection.test.tsx (13 tests) 452ms
+ ✓ src/features/github-sync/github-visibility.test.tsx (3 tests) 156ms
+ ✓ src/app/routes/workspace-navigation.test.tsx (14 tests) 719ms
+ ✓ src/features/changesets/boards.test.tsx (3 tests) 151ms
+ ✓ src/app/routes/CardKeyPrefixEditor.test.tsx (5 tests) 162ms
+ ✓ src/features/project-archive/project-archive-import.test.ts (3 tests) 84ms
+ ✓ src/features/releases/ReleaseKanban.test.tsx (4 tests) 109ms
+ ✓ src/features/ai-mcp/context-draft.test.ts (3 tests) 49ms
+ ✓ src/features/story-map/components/card-provenance.test.ts (10 tests) 787ms
+ ❯ src/features/changesets/shell.test.tsx (8 tests | 2 failed) 857ms
+   × invalidates review immediately through real transaction stream while preserving held dirty CardDetailModal and focus 35ms
+     → Cannot read properties of null (reading 'editor')
+   × invalidates review immediately through real reset stream while preserving held dirty CardDetailModal and focus 92ms
+     → Cannot read properties of null (reading 'editor')
+ ✓ src/features/story-map/views/SlicesView.test.tsx (12 tests) 938ms
+ ✓ src/features/what-changed/WhatChangedProvider.test.tsx (12 tests) 950ms
+   ✓ retains every affected row while closed without dialog/focus/hold semantics and reuses rows through opening and closing 312ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 147ms
+ ✓ src/features/story-map/views/DiscoveryView.test.tsx (5 tests) 1009ms
+   ✓ retains filtered lanes and Stories, excludes their controls/drag sources and restores the same nodes and accurate counts 303ms
+   ✓ keeps filtered Cards display:none from the real stylesheet, including in a standalone export clone outside the workspace 321ms
+ ✓ src/features/story-map/views/GraphView.test.tsx (17 tests) 1112ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > refetches ordinary archived-status Save and inventory Restore into the real board
+Not implemented: HTMLFormElement's requestSubmit() method
+
+ ✓ src/features/releases/ReleaseDateFields.test.ts (2 tests) 81ms
+ ✓ src/features/ai-mcp/undone-changesets.test.ts (1 test) 50ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > archives from a Discovery tile through routed Card confirmation and GET refetch
+An update to DiscoveryMatrix inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/features/story-map/components/hierarchy-collapse.test.tsx (8 tests) 1277ms
+   ✓ collapses Activity and Step descendants with aligned placeholders, independent lanes and retained selection 314ms
+   ✓ combines independent hierarchy and Release collapse without losing Note visibility or selection 365ms
+ ✓ src/features/reports/PlanDriftDrawer.test.tsx (12 tests) 1279ms
+   ✓ Plan drift drawer > bounds dense DOM creation and makes all 1,000 differences reachable through keyboard-accessible pages 872ms
+ ✓ src/features/project-archive/project-archive-runtime.test.ts (3 tests) 311ms
+ ✓ src/features/roadmaps/RoadmapEditor.test.ts (3 tests) 51ms
+ ✓ src/features/story-map/components/card-dependencies.test.tsx (12 tests) 1490ms
+ ✓ src/features/story-map/components/discovery-navigation.test.tsx (12 tests) 1515ms
+   ✓ confirms the full selection without writes, retains captured baselines on conflicts and cancels safely 309ms
+   ✓ captures inactive pointer-drag baseline before a remote snapshot and restores moved primary focus 310ms
+ ✓ src/features/story-map/components/card-choices.test.tsx (5 tests) 461ms
+ ✓ src/features/story-map/components/card-creation.test.tsx (15 tests) 1615ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 45ms
+ ✓ src/features/restore-points/restore-points.test.ts (22 tests) 1727ms
+ ✓ src/app/routes/root-layout-prefix.test.tsx (1 test) 134ms
+ ✓ src/features/ai-mcp/current-changeset-actions.test.ts (3 tests) 119ms
+stderr | src/features/roadmaps/RoadmapPanel.test.tsx > labels roadmap card estimate totals with the map estimation unit
+An update to RoadmapPanel inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to RoadmapPanel inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+stderr | src/features/roadmaps/RoadmapPanel.test.tsx > labels roadmap card estimate totals with the map estimation unit
+An update to RoadmapPanel inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+An update to RoadmapEditor inside a test was not wrapped in act(...).
+
+When testing, code that causes React state updates should be wrapped into act(...):
+
+act(() => {
+  /* fire events that update state */
+});
+/* assert on the output */
+
+This ensures that you're testing the behavior the user would see in the browser. Learn more at https://react.dev/link/wrap-tests-with-act
+
+ ✓ src/app/live/live-origin.test.ts (1 test) 6ms
+ ✓ src/features/roadmaps/RoadmapPanel.test.tsx (1 test) 73ms
+ ✓ src/features/ai-mcp/host-config-copy.test.tsx (1 test) 37ms
+ ✓ src/features/personas/PersonasPanel.test.tsx (1 test) 74ms
+ ✓ src/app/card-creation-api.test.ts (7 tests) 6ms
+ ✓ src/app/live/live-query-invalidation.test.ts (2 tests) 6ms
+ ✓ src/app/live/live-stream-reader.test.ts (7 tests) 68ms
+ ✓ src/features/safety/SafetySwitchStrip.test.tsx (1 test) 144ms
+ ✓ src/features/what-changed/api.test.ts (3 tests) 9ms
+ ✓ src/app/live/live-announcements.test.ts (1 test) 5ms
+ ✓ src/features/story-map/export/story-map-view-export.test.ts (1 test) 17ms
+ ✓ src/features/project-archive/project-archive-export.test.ts (4 tests) 7ms
+ ✓ src/features/onboarding/getting-started.test.ts (5 tests) 20ms
+ ✓ src/features/what-changed/model.test.ts (3 tests) 3ms
+ ✓ src/app/conflicts.test.ts (6 tests) 6ms
+ ✓ src/features/story-map/export/export-with-progress.test.ts (2 tests) 3ms
+ ✓ src/features/story-map/graph/graph-model.test.ts (9 tests) 10ms
+ ✓ src/features/story-map/components/PlanStateComparison.test.tsx (1 test) 76ms
+ ✓ src/features/story-map/components/card-fields.test.ts (10 tests) 990ms
+   ✓ saves scalar fields, custom priority/color and zero in the map unit, then reloads supported clears 471ms
+ ✓ src/features/story-map/components/PlanningNumberField.test.tsx (2 tests) 148ms
+ ✓ src/app/routes/root-layout.test.ts (1 test) 21ms
+ ✓ src/ui-strings/ui-strings.test.ts (8 tests) 204ms
+ ✓ src/app/live/live-stream.test.ts (3 tests) 643ms
+   ✓ relays between independent tabs and relinquishes terminal leadership before later bootstrap and shutdown handoff 574ms
+ ✓ src/features/story-map/components/lifecycle.test.tsx (45 tests) 2955ms
+ ✓ src/features/story-map/components/card-detail.test.ts (28 tests) 2728ms
+ ✓ src/features/story-map/board-filter-selection.test.tsx (19 tests) 5241ms
+   ✓ records complete Discovery DOM input-to-result diagnostics on a legal 1,000-Card hierarchy 4494ms
+ ✓ src/features/story-map/views/core-views.test.tsx (40 tests) 7836ms
+   ✓ retains every eligible Card in a legal 1000-Card discovery projection 2167ms
+   ✓ retains every eligible Card in a legal 1000-Card tree projection 374ms
+   ✓ retains every eligible Card in a legal 1000-Card planning projection 938ms
+   ✓ retains every eligible Card in a legal 1000-Card backlog projection 918ms
+   ✓ retains every eligible Card in a legal 1000-Card tracking projection 303ms
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in discovery 669ms
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in planning 526ms
+   ✓ projects a distributed legal1000-Card map with Notes, Releases and hidden ancestry in backlog 340ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/changesets/shell.test.tsx > invalidates review immediately through real transaction stream while preserving held dirty CardDetailModal and focus
+ FAIL  src/features/changesets/shell.test.tsx > invalidates review immediately through real reset stream while preserving held dirty CardDetailModal and focus
+TypeError: Cannot read properties of null (reading 'editor')
+ ❯ src/features/changesets/shell.test.tsx:45:87
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ Test Files  1 failed | 64 passed (65)
+      Tests  2 failed | 512 passed (514)
+   Start at  18:06:40
+   Duration  10.29s (transform 4.80s, setup 0ms, collect 44.84s, tests 41.00s, environment 32.00s, prepare 3.28s)
+
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/web@0.1.0 test: `vitest run --passWithNoTests`
+Exit status 1

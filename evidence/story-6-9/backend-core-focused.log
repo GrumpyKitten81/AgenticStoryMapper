@@ -1,0 +1,15 @@
+
+> @storymapper/core@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/packages/core
+> vitest run --passWithNoTests "reports.test.ts" "operation-resolution.test.ts"
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+
+ ✓ src/reports/reports.test.ts (8 tests) 4ms
+ ✓ src/changesets/remaining-operation-resolution.test.ts (73 tests) 131ms
+ ✓ src/changesets/operation-resolution.test.ts (70 tests) 163ms
+
+ Test Files  3 passed (3)
+      Tests  151 passed (151)
+   Start at  21:03:32
+   Duration  666ms (transform 282ms, setup 0ms, collect 949ms, tests 298ms, environment 0ms, prepare 107ms)

@@ -1,0 +1,45 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+
+ ❯ src/changesets/dependency-effect-parity.test.ts (6 tests | 2 failed) 38ms
+   × closes shared evidence dependencies after deleting identity 19ms
+     → shared must retain resolver read remove: expected [] to include 'remove'
+   × matches effects through local aliases, placement, nullable Release assignment and shared deletion 2ms
+     → shared must retain resolver read remove: expected [ 'reassign', 'create' ] to include 'remove'
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/changesets/dependency-effect-parity.test.ts > closes shared evidence dependencies after deleting identity
+AssertionError: shared must retain resolver read remove: expected [] to include 'remove'
+ ❯ assertDependencyParity src/changesets/dependency-effect-parity.test.ts:28:125
+     26|   const result = resolveOperations(state, operations, supply);
+     27|   for (const operation of result.operations) for (const dependency of …
+     28|     expect(prerequisites(graph, operation.operationId), `${operation.o…
+       |                                                                                                                             ^
+     29|   }
+     30| }
+ ❯ src/changesets/dependency-effect-parity.test.ts:50:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/changesets/dependency-effect-parity.test.ts > matches effects through local aliases, placement, nullable Release assignment and shared deletion
+AssertionError: shared must retain resolver read remove: expected [ 'reassign', 'create' ] to include 'remove'
+ ❯ assertDependencyParity src/changesets/dependency-effect-parity.test.ts:28:125
+     26|   const result = resolveOperations(state, operations, supply);
+     27|   for (const operation of result.operations) for (const dependency of …
+     28|     expect(prerequisites(graph, operation.operationId), `${operation.o…
+       |                                                                                                                             ^
+     29|   }
+     30| }
+ ❯ src/changesets/dependency-effect-parity.test.ts:75:3
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 4 passed (6)
+   Start at  10:58:53
+   Duration  466ms (transform 171ms, setup 0ms, collect 262ms, tests 38ms, environment 0ms, prepare 32ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/packages/core:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/changesets/dependency-effect-parity.test.ts

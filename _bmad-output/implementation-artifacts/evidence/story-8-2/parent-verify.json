@@ -1,0 +1,10 @@
+{
+  "command": [
+    "node",
+    "scripts/verify.mjs"
+  ],
+  "started": "2026-10-19T23:57:34.861385+00:00",
+  "finished": "2026-10-19T23:58:32.061184+00:00",
+  "exitCode": 0,
+  "log": "parent-verify.log.gz"
+}

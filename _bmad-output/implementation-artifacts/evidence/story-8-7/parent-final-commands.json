@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "scripts/check-publication.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "parent-publication-final.log",
+      "originalSha256": "37a3fc6ded915bf800a70aba4a2e2581484e2f7160761a4075e37c0ffa1dbb5c",
+      "sanitizedSha256": "37a3fc6ded915bf800a70aba4a2e2581484e2f7160761a4075e37c0ffa1dbb5c"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/check-size.mjs"
+      ],
+      "exitCode": 0,
+      "log": "parent-size-final.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "log": "parent-whitespace-final.log",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sanitation": "Home prefixes redacted in memory before retained logs."
+}

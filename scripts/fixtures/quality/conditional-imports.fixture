@@ -1,0 +1,17 @@
+import { value } from '@storymapper/contracts/public';
+export { value } from '@storymapper/contracts/public';
+export * from '@storymapper/contracts/public';
+const dynamic = import('@storymapper/contracts/public');
+import '@storymapper/contracts/public';
+import { value, type Shape } from '@storymapper/contracts/public';
+import { type Shape } from '@storymapper/contracts/public';
+import {} from '@storymapper/contracts/public';
+import common = require('@storymapper/contracts/public');
+const commonValue = require('@storymapper/contracts/public');
+import type { Shape } from '@storymapper/contracts/public';
+export type { Shape } from '@storymapper/contracts/public';
+type ShapeQuery = import('@storymapper/contracts/public').Shape;
+import type CommonShape = require('@storymapper/contracts/public');
+import type { RequiredShape } from '@storymapper/contracts/public' with { "resolution-mode": "require" };
+type RequiredQuery = import('@storymapper/contracts/public', { with: { "resolution-mode": "require" } }).Shape;
+import type { ImportedShape } from '@storymapper/contracts/public' with { "resolution-mode": "import" };

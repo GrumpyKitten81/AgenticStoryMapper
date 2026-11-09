@@ -1,0 +1,3 @@
+
+> @storymapper/core@0.1.0 typecheck [REDACTED_HOME]/Projects/StoryMapper/packages/core
+> tsc -p tsconfig.json --noEmit

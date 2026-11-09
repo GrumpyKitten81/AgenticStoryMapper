@@ -1,0 +1,131 @@
+{
+  "status": "passed",
+  "node": "24.17.0",
+  "pnpm": "9.15.4",
+  "baseline_revision": "91d06bba8b3fe1060b4f0d8d2316aa98604a46cf",
+  "source_diff_sha256": "48b6cf61701e400431bcc90f103f3acc9ab6ce66d8b91adbcf4e74c4ea0d63d7",
+  "repair_files": [
+    "package.json",
+    "packages/db/package.json",
+    "packages/db/vitest.config.ts"
+  ],
+  "commands": [
+    {
+      "command": "corepack pnpm test",
+      "exit_code": 0,
+      "owner": "implementation agent",
+      "tests": 3277
+    },
+    {
+      "command": "corepack pnpm install --frozen-lockfile",
+      "exit_code": 0,
+      "owner": "parent"
+    },
+    {
+      "command": "corepack pnpm check",
+      "exit_code": 0,
+      "owner": "parent",
+      "scripts": 104,
+      "coverage_tests": 3159,
+      "serial_audits": 14,
+      "serial_accessibility": 261
+    },
+    {
+      "command": "node scripts/verify.mjs",
+      "exit_code": 0,
+      "owner": "parent"
+    },
+    {
+      "command": "git diff --check HEAD",
+      "exit_code": 0,
+      "owner": "parent"
+    }
+  ],
+  "coverage": [
+    {
+      "workspace": "packages/contracts",
+      "total": 543,
+      "covered": 496,
+      "skipped": 0,
+      "pct": 91.34,
+      "summary_sha256": "5fd0bad32f934746a3aed61b2120cf6615f8145905220b7692c984c982453567"
+    },
+    {
+      "workspace": "packages/importers",
+      "total": 39,
+      "covered": 39,
+      "skipped": 0,
+      "pct": 100,
+      "summary_sha256": "225359c0007938b6426c7b5bf96e98563d34f06287dad2e0622d0b5394bf1d2f"
+    },
+    {
+      "workspace": "packages/github",
+      "total": 193,
+      "covered": 176,
+      "skipped": 0,
+      "pct": 91.19,
+      "summary_sha256": "677462387e947192bcc0cbaefc0c7d9eb0a52536d047c6228b385403239bf037"
+    },
+    {
+      "workspace": "packages/core",
+      "total": 2392,
+      "covered": 2228,
+      "skipped": 0,
+      "pct": 93.14,
+      "summary_sha256": "447c4c46bbd1ec8968fbdd9c2d89707a8fdb44fb57257c0ced844b0947a2f1c0"
+    },
+    {
+      "workspace": "packages/db",
+      "total": 3414,
+      "covered": 3199,
+      "skipped": 0,
+      "pct": 93.7,
+      "summary_sha256": "c17a144fb964e3fe282c8f32052f53323fc1301519bfb10fa27505e77248c70a"
+    },
+    {
+      "workspace": "packages/mcp",
+      "total": 36,
+      "covered": 30,
+      "skipped": 0,
+      "pct": 83.33,
+      "summary_sha256": "55cb88d3dc99e02ef7dcc428219cc31f7a8266cde94d63021c1c0ba8653b64c3"
+    },
+    {
+      "workspace": "apps/web",
+      "total": 5502,
+      "covered": 4831,
+      "skipped": 0,
+      "pct": 87.8,
+      "summary_sha256": "71f3bac18db5e1896d72a1ecac6bdb392888c649fa4a75dd721c63f332628e0b"
+    },
+    {
+      "workspace": "apps/server",
+      "total": 3869,
+      "covered": 3671,
+      "skipped": 0,
+      "pct": 94.88,
+      "summary_sha256": "cf3bf381d7836b8a08f492541bdcfb6a4811a199b15297951e8b8e152d829495"
+    }
+  ],
+  "logs": "repair-log-manifest.json",
+  "matrix": "repair-matrix-audit.json",
+  "review": "repair-review.json",
+  "protected": "repair-protected-final.json",
+  "limits": [
+    "macOS only; Windows/Linux/native reader acceptance unchanged",
+    "One passing exact root rerun and a separate passing serial workspace trial; no claim against arbitrary external CPU saturation",
+    "DB ordinary run wall time increased from19.25s in isolated parallel baseline to59.12s in serial final run; deadlines unchanged"
+  ],
+  "final_checks": {
+    "tracked_hygiene": 0,
+    "whitespace": 0,
+    "spec_yaml": "parsed with installed bmad-loop Python/PyYAML; one preserved deferred list",
+    "protected_hashes": "entry/final sprint worktree and index separately equal; frozen intent equal",
+    "source_unchanged_after_required_gates": true,
+    "migration_assets": "unchanged from HEAD",
+    "finalization": "Reviewed work staged; no commit; protected orchestrator dirt preserved"
+  },
+  "metadata_probe_notes": [
+    "System python lacks PyYAML; attempted Node hoisted yaml module also absent. Metadata parsed successfully using existing bmad-loop Python environment; no dependency installed."
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "baseline_revision": "ecf3ef5ba72f6c99300e2c9c580f5e3c4cdd2822",
+  "source_fingerprint": "73b43e2f104114c0fa049bf672e664d5cd00ddf8c90a2944d3dabcfb90c95c09",
+  "workspace": {
+    "exit_code": 0,
+    "passed": 2833,
+    "failed": 0,
+    "scripts": 83,
+    "counts": {
+      "contracts": 169,
+      "importers": 7,
+      "github": 57,
+      "core": 410,
+      "web": 781,
+      "db": 488,
+      "server": 824,
+      "audit_performance": 14
+    },
+    "log": "parent-post-review-workspace.log.gz",
+    "source_fingerprint": "73b43e2f104114c0fa049bf672e664d5cd00ddf8c90a2944d3dabcfb90c95c09"
+  },
+  "stdio": {
+    "passed": 9,
+    "failed": 0,
+    "log": "parent-stdio.log.gz",
+    "journey": "actual generated stdio bridge -> local MCP -> fake provider; import proposal -> human approval/apply -> pull proposal -> human approval/apply; no remote modifying call"
+  },
+  "schema_split": {
+    "passed": 62,
+    "failed": 0,
+    "log": "parent-schema-split.log.gz"
+  },
+  "protected_paths": {
+    "_bmad-output/implementation-artifacts/sprint-status.yaml": {
+      "baseline_sha256": "3855d02e51743dfe5b899f39470fa25a697ed8da545bdf03609c069eae16e743",
+      "working_sha256": "3855d02e51743dfe5b899f39470fa25a697ed8da545bdf03609c069eae16e743",
+      "index_sha256": "3855d02e51743dfe5b899f39470fa25a697ed8da545bdf03609c069eae16e743",
+      "unchanged": true
+    },
+    "_bmad-output/implementation-artifacts/deferred-work.md": {
+      "baseline_sha256": "7e3ad7565037e8f2b30ecf80e9adb71d0f532fb20350a25cb8a97da8e580cfc5",
+      "working_sha256": "7e3ad7565037e8f2b30ecf80e9adb71d0f532fb20350a25cb8a97da8e580cfc5",
+      "index_sha256": "7e3ad7565037e8f2b30ecf80e9adb71d0f532fb20350a25cb8a97da8e580cfc5",
+      "unchanged": true
+    },
+    "_bmad-output/implementation-artifacts/evidence/epic-4-5-orchestrator-reconciliation-20261016.json": {
+      "baseline_sha256": "bc0205a7c8e843364c43fed47f136fc76403d4df57915bada677a59d577f2607",
+      "working_sha256": "bc0205a7c8e843364c43fed47f136fc76403d4df57915bada677a59d577f2607",
+      "index_sha256": "bc0205a7c8e843364c43fed47f136fc76403d4df57915bada677a59d577f2607",
+      "unchanged": true
+    },
+    "_bmad-output/implementation-artifacts/spec-orchestrator-epic-4-5-completion-reconciliation.md": {
+      "baseline_sha256": "9a9df02fbe908a3edbbb8833b9ef0f278d5f5152a23e6e6cc9316a5b8b73dab5",
+      "working_sha256": "9a9df02fbe908a3edbbb8833b9ef0f278d5f5152a23e6e6cc9316a5b8b73dab5",
+      "index_sha256": "9a9df02fbe908a3edbbb8833b9ef0f278d5f5152a23e6e6cc9316a5b8b73dab5",
+      "unchanged": true
+    }
+  },
+  "intent_unchanged": true,
+  "release": {
+    "exit_code": 0,
+    "capabilities": 136,
+    "accessibility_tests": 260,
+    "hygiene": "passed",
+    "typecheck": "passed",
+    "build": "passed",
+    "source_fingerprint": "73b43e2f104114c0fa049bf672e664d5cd00ddf8c90a2944d3dabcfb90c95c09",
+    "log": "parent-post-review-release.log.gz"
+  },
+  "review_repairs": {
+    "server_focused": 198,
+    "core_focused": 8,
+    "db_focused": 13,
+    "web_focused": 50,
+    "provider_tests": 53,
+    "provider_server_regressions": 110,
+    "cross_connection_server": 76,
+    "cross_connection_core": 7,
+    "logs": "rederive-*.log and review-web.log.gz"
+  },
+  "prior_final_gates": {
+    "source_fingerprint": "b47a04e5ac450ed32fab200f8bf7e306201d0c98a27ca0475ceea65e88462729",
+    "workspace": {
+      "exit_code": 0,
+      "passed": 2811,
+      "failed": 0,
+      "scripts": 83,
+      "counts": {
+        "contracts": 169,
+        "importers": 7,
+        "github": 53,
+        "core": 407,
+        "web": 778,
+        "db": 488,
+        "server": 812,
+        "audit_performance": 14
+      },
+      "log": "parent-final-workspace.log.gz",
+      "source_fingerprint": "b5d46eee7a791db77c0cd9e6ce8691acea0e62334f5a43fedabbceaa4adc3da3",
+      "code_state": "Final behavioral tree; two trailing EOF blank lines in new source were normalized afterward. Release verification runs the normalized source."
+    },
+    "release": {
+      "exit_code": 0,
+      "capabilities": 136,
+      "accessibility_tests": 260,
+      "hygiene": "passed",
+      "typecheck": "passed",
+      "build": "passed",
+      "source_fingerprint": "b47a04e5ac450ed32fab200f8bf7e306201d0c98a27ca0475ceea65e88462729",
+      "log": "parent-final-release.log.gz"
+    }
+  },
+  "review_pass_2": {
+    "web_focused": 76,
+    "server_focused_prior_final_boundaries": 124,
+    "core_focused": 85,
+    "final_boundary_server": 48,
+    "final_provider_focused": 39,
+    "all_final_changes_ran_in_workspace": true,
+    "logs": "review2-*.log.gz and rederive-review-*.log.gz",
+    "additional_parent_checks": [
+      "Initial admission precedes source capture/error decoration.",
+      "Only iteration sources refuse truncated project evidence; milestone/none remain available.",
+      "Confirmed lost Apply response refreshes health and releases the live hold."
+    ]
+  },
+  "finalization": {
+    "all_owned_changes_staged": true,
+    "new_commits": 0,
+    "pushes": 0,
+    "complete_baseline_whitespace": "passed",
+    "json_gzip_and_spec_frontmatter": "valid",
+    "frozen_intent": "unchanged",
+    "protected_working_and_index": "unchanged",
+    "source_after_metadata": "same exact source as final workspace/release gates",
+    "override": "Global explicit-commit policy and frozen intent forbid an unrequested commit; no approval question or commit is introduced."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "native_verified": false,
+  "cua_inventory": {
+    "apps": [
+      "Activity Monitor",
+      "ChatGPT",
+      "Finder",
+      "LM Studio",
+      "Terminal"
+    ],
+    "browsers": []
+  },
+  "verified_in_jsdom": [
+    "incoming approve/apply separation",
+    "same-event scope refusal",
+    "actual Card Detail dirty draft retention and outgoing plan/confirm separation",
+    "quick Card exact retained selection",
+    "closed/rejected/inactive incoming review releases live holds",
+    "shared mutation count excludes same-event sibling decisions and linked Card actions",
+    "health consumers refresh after successful Apply and confirmed lost-response readback"
+  ],
+  "not_claimed": [
+    "native keyboard/focus/link activation",
+    "screen reader/zoom/platform matrix",
+    "real GitHub account or installed CLI"
+  ]
+}

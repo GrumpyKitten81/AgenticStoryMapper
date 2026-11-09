@@ -1,0 +1,16 @@
+---
+description: Maintain useful documentation without boilerplate or duplicated facts
+globs: "**/*.md"
+alwaysApply: false
+---
+
+# Markdown documents
+
+Generate documentation only when requested or required by an applicable instruction. Edit the existing source of truth instead of creating parallel guides.
+
+- Keep user instructions short, actionable and consistent with the actual setup/start commands. AI tooling stays optional.
+- Preserve the document's established language, structure and useful metadata. Update an existing date, version, reproducing statement or changelog when the change warrants it; do not add a metadata ceremony to every template or small guide.
+- Use plain language, descriptive links, inline code for paths and commands, and language-tagged fences for multiline examples.
+- Provide meaningful alt text for documentation images.
+- Verify affected local links and anchors. Clearly distinguish historical evidence from current behavior and actual results from unverified claims.
+- Do not create directory READMEs, duplicate architecture guidance or request review checkpoints solely to satisfy a formatting convention.

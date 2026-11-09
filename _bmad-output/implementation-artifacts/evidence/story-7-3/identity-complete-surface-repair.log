@@ -1,0 +1,114 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ❯ src/mcp/tools/complete-surface.test.ts (30 tests | 1 failed) 2384ms
+   ✓ executes Story Map, Roadmap children, customization, source, report and export capabilities 496ms
+   × executes the remaining local MCP adapters with valid arguments and persisted effects 185ms
+     → promise rejected "DomainError: GitHub identity, owner and l… { …(3) }" instead of resolving
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/mcp/tools/complete-surface.test.ts [ src/mcp/tools/complete-surface.test.ts ]
+AssertionError: expected [ 'CreateAnnotation', …(50) ] to deeply equal [ 'BulkUpdateCards', …(55) ]
+
+- Expected
++ Received
+
+  Array [
+-   "BulkUpdateCards",
+    "CreateAnnotation",
+    "CreateCardAttachment",
+    "CreateCardSourceLink",
+    "CreateGitHubLink",
+    "CreateRoadmap",
+    "CreateRoadmapCard",
+    "CreateRoadmapColumn",
+    "CreateRoadmapReference",
+    "CreateRoadmapSwimlane",
+    "CreateStoryMap",
+    "CreateStoryMapCard",
+    "CreateStoryMapPersona",
+    "CreateStoryMapRelease",
+    "CreateStoryTemplate",
+    "CreateWorkflowStatus",
+    "DeleteAnnotation",
+    "DeleteCard",
+    "DeleteCardAnnotation",
+    "DeleteCardAttachment",
+    "DeleteCardDependency",
+    "DeleteCardPersona",
+    "DeleteCardSourceLink",
+    "DeleteCards",
+-   "DeleteGitHubLink",
+    "DeleteOrArchiveStoryMapCard",
+-   "DeletePersona",
+    "DeleteRelease",
+-   "DeleteStoryMap",
+    "DeleteStoryTemplate",
+    "DeleteWorkflowStatus",
+    "ImportGitHubIssues",
+    "ImportSourceDocument",
+    "MoveStoryMapCard",
+    "ParkCard",
+    "PullStoryMapGitHubLinks",
+    "PushCardsToGitHub",
+    "ResolveSyncConflict",
+    "SetCardAnnotation",
+    "SetCardDependency",
+    "SetCardPersona",
+    "SetExternalRef",
+    "SubmitChangeSet",
+    "SyncGitHubLinks",
+    "UnparkCard",
+    "UpdateAnnotation",
+    "UpdateDeliveryStatus",
+    "UpdateGitHubLink",
+    "UpdateRoadmap",
+    "UpdateStoryMap",
+    "UpdateStoryMapCard",
+    "UpdateStoryMapPersona",
+    "UpdateStoryMapRelease",
+    "UpdateStoryTemplate",
+    "UpdateWorkflowStatus",
+-   "UpsertProductContext",
+  ]
+
+ ❯ src/mcp/tools/complete-surface.test.ts:22:56
+     20| const sourceHash = (content: string) => createHash("sha256").update(co…
+     21| afterEach(async () => { vi.restoreAllMocks(); for (const close of clea…
+     22| afterAll(() => { expect([...exercisedCommands].sort()).toEqual([...cha…
+       |                                                        ^
+     23|
+     24| function seedLegacySourceLink(handle: DatabaseHandle, cardId: string, …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/mcp/tools/complete-surface.test.ts > executes the remaining local MCP adapters with valid arguments and persisted effects
+AssertionError: promise rejected "DomainError: GitHub identity, owner and l… { …(3) }" instead of resolving
+ ❯ src/mcp/tools/complete-surface.test.ts:636:31
+    634|   for (const [name, input, expected] of cases) {
+    635|     const pending = f.reviewedCall(name, typeof input === "function" ?…
+    636|     await expect(pending, name).resolves.toBeDefined();
+       |                               ^
+    637|     const response = await pending;
+    638|     if (changeSetCommandToolNames.has(name)) expect(response, name).to…
+
+Caused by: DomainError: GitHub identity, owner and locator must agree.
+ ❯ call src/mcp/tools/complete-surface.test.ts:62:29
+ ❯ Object.reviewedCall src/fixtures/reviewed-mcp-call.ts:7:22
+ ❯ src/mcp/tools/complete-surface.test.ts:636:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'validation', details: undefined, conflicts: undefined }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 29 passed (30)
+   Start at  02:10:58
+   Duration  3.50s (transform 530ms, setup 0ms, collect 934ms, tests 2.38s, environment 0ms, prepare 32ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/mcp/tools/complete-surface.test.ts

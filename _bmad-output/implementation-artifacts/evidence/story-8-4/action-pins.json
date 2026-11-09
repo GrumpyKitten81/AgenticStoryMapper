@@ -1,0 +1,14 @@
+[
+  {
+    "action": "actions/checkout",
+    "tag": "v6.0.2",
+    "sha": "de0fac2e4500dabe0009e67214ff5f5447ce83dd",
+    "source": "https://api.github.com/repos/actions/checkout/commits/v6.0.2"
+  },
+  {
+    "action": "actions/setup-node",
+    "tag": "v6.3.0",
+    "sha": "53b83947a5a98c8d113130e565377fae1a50d02f",
+    "source": "https://api.github.com/repos/actions/setup-node/commits/v6.3.0"
+  }
+]

@@ -1,0 +1,45 @@
+
+> @storymapper/web@0.1.0 build [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> tsc -p tsconfig.json && vite build
+
+src/app/routes/story-map-shell.tsx(70,397): error TS2339: Property 'closed' does not exist on type '{}'.
+src/app/routes/story-map-shell.tsx(70,427): error TS2339: Property 'boards' does not exist on type '{}'.
+src/app/routes/story-map-shell.tsx(70,440): error TS7006: Parameter 'board' implicitly has an 'any' type.
+src/app/routes/story-map-shell.tsx(72,46): error TS2339: Property 'closed' does not exist on type '{}'.
+src/app/routes/story-map-shell.tsx(73,42): error TS2339: Property 'explanation' does not exist on type '{}'.
+src/app/routes/story-map-shell.tsx(76,39): error TS2339: Property 'closed' does not exist on type '{}'.
+src/app/routes/story-map-shell.tsx(76,68): error TS2339: Property 'explanation' does not exist on type '{}'.
+src/features/changesets/ChangeSetReview.tsx(14,11): error TS2339: Property 'changeSet' does not exist on type '{}'.
+src/features/changesets/ChangeSetReview.tsx(17,42): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ readonly proposed: "Proposed"; readonly approved: "Approved"; readonly applied: "Applied"; readonly rejected: "Rejected"; readonly discarded: "Discarded"; readonly stale: "Stale"; readonly conflict: "Conflict"; }'.
+src/features/changesets/ChangeSetReview.tsx(17,64): error TS2339: Property 'presentationStatus' does not exist on type '{}'.
+src/features/changesets/ChangeSetReview.tsx(21,11): error TS2339: Property 'explanation' does not exist on type '{}'.
+src/features/changesets/ChangeSetReview.tsx(21,48): error TS2339: Property 'explanation' does not exist on type '{}'.
+src/features/changesets/ChangeSetReview.tsx(25,11): error TS2339: Property 'conflicts' does not exist on type '{}'.
+src/features/changesets/ChangeSetReview.tsx(25,26): error TS7006: Parameter 'conflict' implicitly has an 'any' type.
+src/features/changesets/ChangeSetReview.tsx(25,36): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/features/changesets/ChangeSetReview.tsx(26,53): error TS2339: Property 'operations' does not exist on type '{}'.
+src/features/changesets/ChangeSetReview.tsx(26,69): error TS7006: Parameter 'operation' implicitly has an 'any' type.
+src/features/changesets/ChangeSetReview.tsx(27,169): error TS2339: Property 'closed' does not exist on type '{}'.
+src/features/changesets/ChangeSetReview.tsx(27,184): error TS2339: Property 'presentationStatus' does not exist on type '{}'.
+src/features/changesets/ChangeSetReview.tsx(28,36): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ readonly changed: "~"; readonly unchanged: "="; readonly excluded: "−"; readonly conflict: "⇄"; readonly stale: "◷"; }'.
+src/features/changesets/ChangeSetReview.tsx(31,110): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ readonly changed: "Resolved effects are unavailable."; readonly unchanged: "No changes resolved."; readonly excluded: "Excluded from this projection."; readonly conflict: "Resolved effects are unavailable because projection conflicts."; readonly stale: "Resolved effects are unavailable for this stale ChangeSet."; }'.
+src/features/changesets/ChangeSetReview.tsx(31,187): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{ readonly changed: "Resolved effects are unavailable."; readonly unchanged: "No changes resolved."; readonly excluded: "Excluded from this projection."; readonly conflict: "Resolved effects are unavailable because projection conflicts."; readonly stale: "Resolved effects are unavailable for this stale ChangeSet."; }'.
+src/features/changesets/ChangeSetReview.tsx(32,31): error TS7006: Parameter 'change' implicitly has an 'any' type.
+src/features/changesets/ChangeSetReview.tsx(32,39): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/features/changesets/ChangeSetReview.tsx(39,12): error TS2339: Property 'closed' does not exist on type '{}'.
+src/features/changesets/ChangeSetReview.tsx(42,74): error TS2339: Property 'presentationStatus' does not exist on type '{}'.
+src/features/changesets/review-focus.test.tsx(27,60): error TS2379: Argument of type '{ selection: string[]; resolve: (value: Response | PromiseLike<Response>) => void; signal: AbortSignal | undefined; }' is not assignable to parameter of type '{ selection: string[]; resolve: (response: Response) => void; signal?: AbortSignal; }' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'signal' are incompatible.
+    Type 'AbortSignal | undefined' is not assignable to type 'AbortSignal'.
+      Type 'undefined' is not assignable to type 'AbortSignal'.
+src/features/changesets/useChangeSetReview.ts(21,80): error TS2339: Property 'selectedOperationIds' does not exist on type '{}'.
+src/features/changesets/useChangeSetReview.ts(45,43): error TS2339: Property 'changeSet' does not exist on type '{}'.
+src/features/changesets/useChangeSetReview.ts(49,73): error TS2339: Property 'closed' does not exist on type '{}'.
+src/features/changesets/useChangeSetReview.ts(49,97): error TS2339: Property 'presentationStatus' does not exist on type '{}'.
+src/features/changesets/useChangeSetReview.ts(52,5): error TS2322: Type 'unknown[]' is not assignable to type 'string[]'.
+  Type 'unknown' is not assignable to type 'string'.
+src/features/changesets/useChangeSetReview.ts(60,115): error TS2339: Property 'canApprove' does not exist on type '{}'.
+src/features/changesets/useChangeSetReview.ts(60,169): error TS2339: Property 'canApply' does not exist on type '{}'.
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/web@0.1.0 build: `tsc -p tsconfig.json && vite build`
+Exit status 2

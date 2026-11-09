@@ -1,0 +1,14 @@
+
+> @storymapper/contracts@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/packages/contracts
+> vitest run --passWithNoTests "migration.test.ts" "change-operations.test.ts"
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/contracts
+
+ ✓ src/migration.test.ts (20 tests) 23ms
+ ✓ src/schemas/change-operations.test.ts (61 tests) 64ms
+
+ Test Files  2 passed (2)
+      Tests  81 passed (81)
+   Start at  21:03:57
+   Duration  388ms (transform 101ms, setup 0ms, collect 243ms, tests 86ms, environment 0ms, prepare 60ms)

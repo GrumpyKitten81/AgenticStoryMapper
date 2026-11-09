@@ -1,0 +1,23 @@
+{
+  "continuation-check-start.json": {
+    "artifact": "continuation-check-start.json.gz",
+    "originalSha256": "cd93cae497807088289faf1b29e2ed02f0e2d4980e23065dba1afb554141a1fd",
+    "decodedSha256": "cd93cae497807088289faf1b29e2ed02f0e2d4980e23065dba1afb554141a1fd",
+    "compressedSha256": "6d80deea6181adaf0c9b81d9a507575c31f212b99345366b058929d22d6f1f8d",
+    "transform": "none except gzip mtime0; repository-relative source hashes/metadata"
+  },
+  "continuation-check-end.json": {
+    "artifact": "continuation-check-end.json.gz",
+    "originalSha256": "cd93cae497807088289faf1b29e2ed02f0e2d4980e23065dba1afb554141a1fd",
+    "decodedSha256": "cd93cae497807088289faf1b29e2ed02f0e2d4980e23065dba1afb554141a1fd",
+    "compressedSha256": "6d80deea6181adaf0c9b81d9a507575c31f212b99345366b058929d22d6f1f8d",
+    "transform": "none except gzip mtime0; repository-relative source hashes/metadata"
+  },
+  "independentValidation": {
+    "sourcePaths": 3286,
+    "startEndRecordsEqual": true,
+    "sourceMapEqualsEarlierFailedCandidate": true,
+    "semanticIndexEqualsEarlierFailedCandidate": true,
+    "logRawDecodedCompressedHashesVerified": true
+  }
+}

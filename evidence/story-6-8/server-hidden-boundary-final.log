@@ -1,0 +1,13 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/http/routes/customization-management.test.ts (3 tests) 221ms
+ ✓ src/http/routes/getting-started.test.ts (15 tests) 504ms
+ ✓ src/mcp/tools/complete-surface.test.ts (30 tests) 2531ms
+   ✓ executes Story Map, Roadmap children, customization, source, report and export capabilities 515ms
+   ✓ executes the remaining local MCP adapters with valid arguments and persisted effects 309ms
+
+ Test Files  3 passed (3)
+      Tests  48 passed (48)
+   Start at  19:55:11
+   Duration  3.57s (transform 635ms, setup 0ms, collect 2.60s, tests 3.25s, environment 0ms, prepare 92ms)

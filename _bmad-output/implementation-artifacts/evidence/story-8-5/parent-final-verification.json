@@ -1,0 +1,94 @@
+{
+  "story": "8.5",
+  "baseline_revision": "f404c1b62ff8f1ed558ae7be1c273a26cb28597f",
+  "environment": {
+    "node": "v24.17.0",
+    "pnpm": "9.15.4"
+  },
+  "commands": [
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "check-licenses"
+      ],
+      "exit_code": 0,
+      "seconds": 0.67,
+      "artifact": "parent-final-licenses.log.gz",
+      "sha256": "05960a031b6412df2c104b385aafafe79d7badf97e21c6efb8c609697ebf8971",
+      "decoded_sha256": "8e6e44d25c775976bdeafc90c724a891dc21a1f0210accaa3e1e29239745008a"
+    },
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "check-hygiene"
+      ],
+      "exit_code": 0,
+      "seconds": 0.88,
+      "artifact": "parent-final-hygiene.log.gz",
+      "sha256": "00828f93287bf786179489d698d7ecd7605ce715e552865f26ba07182bd6c12d",
+      "decoded_sha256": "706b8c0b507e4c5dd23df0367e311ec297aa681762344f167cdb4e7638fa7aa2"
+    },
+    {
+      "command": [
+        "ruby",
+        "_bmad-output/implementation-artifacts/evidence/story-8-5/validate.rb"
+      ],
+      "exit_code": 0,
+      "seconds": 0.08,
+      "artifact": "parent-final-static.json",
+      "sha256": "fc225f65dec8b04c9106a0dcd50d756b89d84b1b33d96b44d9fddf7b68cd803a",
+      "decoded_sha256": "fc225f65dec8b04c9106a0dcd50d756b89d84b1b33d96b44d9fddf7b68cd803a"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 0.01,
+      "artifact": "parent-final-whitespace.log.gz",
+      "sha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64",
+      "decoded_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "product_tests_build_typecheck": "Not run: static contributor content only. No product code or dependency changes.",
+  "publication_clearance": false,
+  "protected_sprint": {
+    "worktree": {
+      "sha256": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+      "entry_sha256": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+      "matches_entry": true
+    },
+    "index": {
+      "sha256": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+      "entry_sha256": "08133f9d486ba6d3f054887eaa2f1f249c9323cc15848823cba1754f67ece5a5",
+      "matches_entry": true
+    }
+  },
+  "finalization": {
+    "surface_hashes_verified": 13,
+    "sprint_worktree_matches_entry": true,
+    "sprint_index_matches_entry": true,
+    "sprint_staged_diff_empty": true,
+    "head_unchanged": true,
+    "post_handoff_hygiene_exit": 0,
+    "post_handoff_whitespace_exit": 0,
+    "spec_frontmatter_valid": true,
+    "review": {
+      "layers": 4,
+      "findings": 17,
+      "patch_entries": 8,
+      "patch_medium": 4,
+      "patch_low": 4,
+      "rejected": 4,
+      "new_deferred": 0,
+      "followup_review_recommended": true
+    },
+    "commit_created": false,
+    "state": "Staged for orchestrator finalization; explicit user commit policy overrides skill commit instruction."
+  }
+}

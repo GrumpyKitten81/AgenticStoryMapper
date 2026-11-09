@@ -1,0 +1,16 @@
+{
+  "surface": "actual TCP public HTTP",
+  "db": "disposable sample outside repository",
+  "assertions": [
+    "assigned existing sample Persona to3sampleCards",
+    "created Release and linked Story then versioned released PATCH",
+    "updated0estimate and read canonical snapshot"
+  ],
+  "setupCorrection": "CreateRelease ignores released input; applied supported versioned update before asserting release status. Earlier Safari observation therefore did not exercise released filtering.",
+  "mapId": "bdaeb5a0-5120-4aec-bdb4-5d2a63a1ef2a",
+  "projectId": "0fb68763-be53-4680-b4f7-812c2ad2ff96",
+  "userDataTouched": false,
+  "remoteWrites": false,
+  "restart": "cards/releases/personas/cardPersonas exact equality through public snapshot after server process restart",
+  "notProven": "native open/show-all or graceful shutdown"
+}

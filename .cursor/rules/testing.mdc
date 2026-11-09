@@ -1,0 +1,16 @@
+---
+description: Focused regression tests and honest verification for Agentic Story Mapper
+globs: "**/*.test.ts,**/*.test.tsx,**/*.test.mjs,**/*.spec.ts,**/*.spec.tsx"
+alwaysApply: false
+---
+
+# Testing
+
+Follow the verification commands in `AGENTS.md` and the affected package's scripts.
+
+- Add tests when they protect changed behavior or reproduce a defect. Skip boilerplate and implementation-mirroring tests for mechanical edits.
+- Exercise the real consumer or public boundary for the behavior being changed; a mocked callback alone does not prove that a dialog saves or preserves unrelated fields.
+- Check relevant refusals, conflicts and error paths as well as success. Do not hide unexpected warnings or weaken assertions to obtain a pass.
+- Use disposable fixtures and existing test helpers. Never run tests against user Projects or initiate live GitHub writes without their explicit authorization.
+- Run focused checks first. Use the complete local quality gate for release preparation or changes spanning its boundaries; avoid repeating unaffected suites without a reason.
+- Report the commands actually run, skips and unverified behavior. Passing source-pattern or jsdom tests does not establish visual or native-platform acceptance.

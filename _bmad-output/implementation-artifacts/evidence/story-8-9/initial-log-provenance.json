@@ -1,0 +1,30 @@
+{
+  "install.log": {
+    "originalSha256": "8ebaf73966134f81aa348ed88ff96842b5978e5eb2c7d84e539cce947f86d4e8",
+    "sanitizedDecodedSha256": "eaace7e98bbec92f60aa17eeff42713c453e2a809efdaeb8665f2d286909b26b",
+    "compressedSha256": "de60276fa35d7aab45e546a2886d75da39626dca9e67e68576424177954559fd",
+    "redaction": "Disposable checkout paths and current home path replaced; original raw logs retained only transiently. Hashes do not reconstruct original streams.",
+    "artifact": "initial-install.log.gz"
+  },
+  "check.log": {
+    "originalSha256": "7c69c3a94856286e29827308f10d486af50d9d834b734626e619b823bc5da5f3",
+    "sanitizedDecodedSha256": "b5be98f1ddc812f9e284ce3d00ad07d3f4403077371a918d8b7208d51323b58b",
+    "compressedSha256": "1c07dab866ec0bc994d9b6181d57f3c48b830fda03f403ce0b328f823600a693",
+    "redaction": "Disposable checkout paths and current home path replaced; original raw logs retained only transiently. Hashes do not reconstruct original streams.",
+    "artifact": "initial-check.log.gz"
+  },
+  "initial-check-start.json": {
+    "original_sha256": "234574a52a45cd31ec1aca29c852b7adae45520e963225ccdf5b83c43bff4db7",
+    "sanitized_decoded_sha256": "234574a52a45cd31ec1aca29c852b7adae45520e963225ccdf5b83c43bff4db7",
+    "compressed_sha256": "f92b7edaf2fcecb510e1e54d9b85147bdee2c73caa628dc64c7f850951c80aeb",
+    "transform": "none; repository-relative file hashes/metadata only, gzip mtime0",
+    "artifact": "initial-check-start.json.gz"
+  },
+  "initial-replay.json": {
+    "original_sha256": "5ac488823e2da0591097759b336987fc754f89b2e790d20542e99515280c0b75",
+    "sanitized_decoded_sha256": "5ac488823e2da0591097759b336987fc754f89b2e790d20542e99515280c0b75",
+    "compressed_sha256": "ad15586eb4f568057192446b9a355d0c57e2b39097bb1e7f98ece833429d2fba",
+    "transform": "none; repository-relative file hashes/metadata only, gzip mtime0",
+    "artifact": "initial-replay.json.gz"
+  }
+}

@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/mcp/tools/reserved-operation-ids.test.ts (2 tests) 352ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  10:43:36
+   Duration  1.51s (transform 514ms, setup 0ms, collect 959ms, tests 352ms, environment 0ms, prepare 32ms)
+

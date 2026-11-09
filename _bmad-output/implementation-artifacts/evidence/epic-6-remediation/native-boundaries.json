@@ -1,0 +1,21 @@
+{
+  "clientDate": "2026-10-18",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "available": "macOS with in-app browser; disposable sample runtime",
+  "automated": "Actual populated CRUD axe/name/focus/error/confirmation coverage added, color-contrast disabled in jsdom as before",
+  "runtimeVerified": [
+    "Standard color membership",
+    "real Tracking edit-Restore-edit without reload and persisted version1->2->1->2",
+    "mixed-role native Move dialog and actual storage readback after server close/reopen"
+  ],
+  "stillUnverified": [
+    "complete final-build rendered contrast and target matrix",
+    "full sticky-focus and200percent zoom matrix",
+    "full keyboard UJ1/UJ3",
+    "native forced-colors and reduced-motion preferences",
+    "VoiceOver/Safari speech and navigation",
+    "NVDA/Firefox on Windows"
+  ],
+  "reason": "Windows/NVDA unavailable on this host; real reader output and full native platform matrix were not exercised. In-app accessibility tree and DOM tests are not speech conformance evidence.",
+  "tracking": "epic-6-retro-a9 remains in-progress; reuse DW-91/95/96; required before release"
+}

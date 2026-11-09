@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-20",
+  "changes": [
+    {
+      "path": ".wolf/cerebrum.md",
+      "beforeSha256": "abb45404fe9fb0e35f398961a8d0c75f0cd7e0f1a548a19919eaaea5144bbed6",
+      "afterSha256": "35e4bf3efe0d26bbdb2b986bdd8d50941feead79f9edad5bbee9a8552c9a199d"
+    },
+    {
+      "path": ".wolf/memory.md",
+      "beforeSha256": "f4792c7ddfc5b2fee00d3f7d70fe2f27a46beec0d95eba4f7396576672ac5c66",
+      "afterSha256": "c2d2139b19c1af279d693166807e510f0de8d572b197119de15ff4aa68791f23"
+    }
+  ],
+  "hookScope": "Current Codex hooks have no OpenWolf memory writer; session-end record written explicitly under project instructions.",
+  "intermediateStages": [
+    {
+      "path": ".wolf/cerebrum.md",
+      "sha256": "7d25309cb06942c14bde70ddb60d94ef748684bcddafd2f7047c292f5b12a0bb",
+      "reason": "Learning snapshot before the final real-candidate native abort observation."
+    }
+  ]
+}

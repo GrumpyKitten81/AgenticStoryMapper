@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-19",
+  "baseline": "b2f2e967cc45a0c948ad3c2bb7378efb35eaf3e3",
+  "request": "Fix retrospective blockers A1-A4; reassess acceptance and close Epic7 if possible.",
+  "existingDirtyPaths": [
+    ".wolf/STATUS.md",
+    ".wolf/buglog.json",
+    ".wolf/cerebrum.md",
+    "_bmad-output/implementation-artifacts/sprint-status.yaml",
+    "_bmad-output/implementation-artifacts/epic-7-retro-2026-10-19.md",
+    "_bmad-output/implementation-artifacts/evidence/epic-7-retro/"
+  ],
+  "graphTools": "unavailable",
+  "commitAuthorized": false,
+  "liveAccountAuthorized": false
+}

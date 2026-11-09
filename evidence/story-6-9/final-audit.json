@@ -1,0 +1,23 @@
+{
+  "baseline": "a2f001ed1e1c13464b0519c0006d41cdb9e4557d",
+  "protectedStartingAndFinalSha256": {
+    "_bmad-output/implementation-artifacts/sprint-status.yaml": "b29b3bf6b91d8f095ffaa3f10391999e8fb3bdb6f1624b282a7740b0ec149145",
+    "_bmad-output/implementation-artifacts/deferred-work.md": "4464ab89d4e238d62739149d7ad448c74c27b1a70582087707b0f118f5b04cf8"
+  },
+  "frozenIntentSha256": "ef7152460da16057307ebacd889dde1050a9d2376b574705f2f6038500758bc3",
+  "testsPassed": 2375,
+  "skipped": 0,
+  "releaseVerification": "passed",
+  "capabilities": 130,
+  "reviewFindingRows": 20,
+  "patchedGroups": {
+    "high": 1,
+    "medium": 8
+  },
+  "deferredGroups": 1,
+  "rejectedRows": 4,
+  "followupReviewRecommended": true,
+  "commitOrPush": false,
+  "reviewedWork": "staged; global explicit-commit policy",
+  "unownedFileWrites": false
+}

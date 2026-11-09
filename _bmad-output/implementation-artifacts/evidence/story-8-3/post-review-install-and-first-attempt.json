@@ -1,0 +1,23 @@
+{
+  "status": "first aggregate correctly failed newly enforced root Fastify dependency; repaired without weakening policy",
+  "logs": [
+    {
+      "file": "parent-post-review-check.log.gz",
+      "exit_code": 1,
+      "raw_bytes": 308,
+      "raw_sha256": "094288d7f570999018f07fbb032630f5019560d2fc4a30f3f8dab436daea4e83"
+    },
+    {
+      "file": "parent-post-review-install.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 571,
+      "raw_sha256": "2f9e7ef39fc4f0029937245fc1a1894c49794d7617cfe5f6d2b47df2bff91c57"
+    },
+    {
+      "file": "parent-post-review-final-install.log.gz",
+      "exit_code": 0,
+      "raw_bytes": 571,
+      "raw_sha256": "321cf98e1c9b84f7fb9f0e060ffc0d967ee41226fadf819643041096102c7d99"
+    }
+  ]
+}

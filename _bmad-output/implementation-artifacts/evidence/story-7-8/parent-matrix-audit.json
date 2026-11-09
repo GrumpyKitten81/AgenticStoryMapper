@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-19",
+  "auditedBy": "parent source/test/diff inspection and independent executed gates",
+  "rows": [
+    {
+      "row": "Runtime lookup",
+      "tests": [
+        "provider-registration:10malformed/inherited/unknown values refuse before handlers"
+      ],
+      "executed": "parent-extension-final.log.gz:12registry tests pass"
+    },
+    {
+      "row": "Registration completeness",
+      "tests": [
+        "ships exactly contracts enum in complete immutable registrations",
+        "rejects missing/inherited/foreign registrations"
+      ],
+      "executed": "parent-extension-final.log.gz:12registry tests pass"
+    },
+    {
+      "row": "Alternate reads",
+      "tests": [
+        "real validate with paired status/auth and no GitHub probes",
+        "unavailable/error truthfulness",
+        "foreign scope/requested/canonical/marker/Milestone refusals"
+      ],
+      "executed": "parent-extension-final.log.gz:35extension tests pass"
+    },
+    {
+      "row": "Incoming and conflict",
+      "tests": [
+        "real import/pull and explicit remote resolution",
+        "confirmed local choice closes only after exact plan",
+        "protected proposal/audit rollback",
+        "Restore and database replacement",
+        "incoming Milestone baseline rename/date and subsequent unchanged pull"
+      ],
+      "executed": "parent-extension-final.log.gz:35extension tests pass"
+    },
+    {
+      "row": "Confirmed effects",
+      "tests": [
+        "Issue/Milestone intent before write, no writes without confirmation, Agent/read-only/drift refusal",
+        "lost-response reconciliation and ambiguity",
+        "nested Milestone and marker/detail/retained identity drift stop before extra writes",
+        "existing web local-resolution Dry Run Cancel and hold/focus tests"
+      ],
+      "executed": "parent-extension-final.log.gz:35extension tests; parent-workspace-final.log.gz:web848pass",
+      "limit": "No alternate-provider public UI ships. Withholding exact confirmation is tested; native Cancel/reader/platform/live-account acceptance unexecuted."
+    },
+    {
+      "row": "Extension freeze",
+      "tests": [
+        "real isolated enum/factory/credential registrations without orchestration/persistence mocks"
+      ],
+      "executed": "parent-extension-final.log.gz:47pass;892source files byte-identical before/after; production enum asserts github only",
+      "before": "parent-exercise-before.json.gz",
+      "after": "parent-exercise-after.json.gz"
+    },
+    {
+      "row": "Regression",
+      "tests": [
+        "contracts/core/DB/GitHub/server/web existing suites",
+        "real reviewed alternate copy/attached provider transitions, nested export and archive rejection",
+        "current-schema reopen, actual Restore and no copied outbound ownership"
+      ],
+      "executed": "parent-workspace-final.log.gz:3130pass; parent-contracts-final.log.gz:192pass after formatting-only correction",
+      "release": "parent-release-final.log.gz:exit0;138capabilities/260a11y/alltypechecks/build/hygiene"
+    }
+  ],
+  "allRowsExecutedAndPassed": true,
+  "workspaceCounts": {
+    "scripts": 83,
+    "contracts": 192,
+    "importers": 7,
+    "github": 57,
+    "core": 449,
+    "web": 848,
+    "db": 489,
+    "server": 1005
+  },
+  "workspaceTotal": 3130,
+  "sourceFingerprint": "dfbda7eb6ec85ebd3d64403f5220c2476692be7b9d88860aed36cea7ae6f9881",
+  "sourceFiles": 892,
+  "frozenSourceFiles": 892,
+  "sourceFingerprintUnchangedThroughRelease": true,
+  "formattingCorrection": "Full3130workspace pass preceded removal of one blank line in domain.ts; parent192contracts and47extension/registry reran afterward, followed by release verification."
+}

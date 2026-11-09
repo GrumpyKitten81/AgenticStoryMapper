@@ -1,0 +1,39 @@
+name: Report a bug
+description: Help us reproduce something that does not work.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep secrets, personal information and private Project data out of public issues.
+        For security concerns, read SECURITY.md in the repository root; do not submit vulnerability details here.
+  - id: observed
+    type: textarea
+    attributes:
+      label: Observed problem
+      description: What went wrong, and how does it affect your work?
+    validations:
+      required: true
+  - id: steps
+    type: textarea
+    attributes:
+      label: Reproduce it
+      description: Describe the actions that trigger the problem using data you can share publicly.
+    validations:
+      required: true
+  - id: expected
+    type: textarea
+    attributes:
+      label: Expected behavior
+      description: What should have happened after those actions?
+    validations:
+      required: true
+  - id: setup
+    type: textarea
+    attributes:
+      label: Setup details (optional)
+      description: Share the app version or commit, operating system, browser and Node version if known.
+  - id: evidence
+    type: textarea
+    attributes:
+      label: Extra evidence (optional)
+      description: Add related links or sanitized logs and images that help explain the problem.

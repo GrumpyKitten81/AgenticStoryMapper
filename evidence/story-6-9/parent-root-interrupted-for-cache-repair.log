@@ -1,0 +1,43 @@
+
+> storymapper@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper
+> node --test scripts/*.test.mjs && corepack pnpm -r test
+
+✔ external completion worker verifies and adopts only isolated temporary runs (28669.665917ms)
+✔ scans TypeScript syntax without executing descriptor initializers (4.67675ms)
+✔ rejects missing and wrongly named use-case mappings in both directions (0.635917ms)
+✔ permits ordinary HTTP reads and requires effectful capabilities to have tools (0.814208ms)
+✔ manifest output is deterministic and checking never rewrites stale data (12.685292ms)
+✔ generated tool metadata and documentation are deterministic and checked without rewriting (14.625459ms)
+✔ documentation names human-only capabilities and every classified write membership (0.24725ms)
+✔ registry parity rejects omitted, duplicate and incorrectly imported descriptors (8.551666ms)
+✔ rejects duplicate capability names, route mappings and tool mappings (8.154417ms)
+✔ rejects missing registrations, orphan tool metadata, schemas and routes (10.498584ms)
+✔ operation coverage rejects new unclassified writes and preserves mixed sync effects (0.274042ms)
+✔ operation coverage includes indirect local effects of provider writes (0.137708ms)
+✔ classifies effectful reads and refuses direct MCP handler domain persistence (7.6665ms)
+✔ rejects every umlaut and sharp s with correct locations (2.019667ms)
+✔ normalizes decomposed umlauts without changing line diagnostics (0.164334ms)
+✔ matches complete case-insensitive German words without substring failures (0.075ms)
+✔ scans every required source and reports relative paths while ignoring authoring documents (82.426834ms)
+✔ setup performs a real frozen install, build and folder creation without config, and repeats safely (29606.065625ms)
+✔ frozen install and build failures prevent later setup steps (1148.989458ms)
+✔ real setup rejects a manifest that disagrees with the frozen lockfile (642.909292ms)
+✔ start serves actual app/API on its owned URL and only opens the browser after health (16846.490042ms)
+✔ IPv6 host overrides reach the real server and exact browser URL (3891.238875ms)
+✔ invalid configuration and missing dependencies/runtime fail before database creation or browser opening (2962.127667ms)
+✔ unexpected pnpm version rejects public setup and start before later work (728.468292ms)
+✔ launcher preflight rejects server-local non-loopback configuration before spawning the server, DB or bind (471.383042ms)
+✔ server IPC loopback guard rejects non-loopback configuration before DB or bind (1226.61025ms)
+✔ a healthy occupied port cannot authorize browser opening (548.056458ms)
+✔ failed missing-asset build and early server exit never open a browser (1125.902ms)
+✔ unhealthy owned server times out loudly and releases its port (30670.086208ms)
+✔ browser failure is loud and cleans up the healthy real server (3666.151ms)
+
+Interrupted while running:
+
+⚠ scripts/commands.test.mjs (scripts/commands.test.mjs:1:1)
+⚠ scripts/doctor.test.mjs (scripts/doctor.test.mjs:1:1)
+⚠ scripts/failures.test.mjs (scripts/failures.test.mjs:1:1)
+⚠ scripts/port-closed.test.mjs (scripts/port-closed.test.mjs:1:1)
+⚠ scripts/runtime-port.test.mjs (scripts/runtime-port.test.mjs:1:1)
+ ELIFECYCLE  Test failed. See above for more details.

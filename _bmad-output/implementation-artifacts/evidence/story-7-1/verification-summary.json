@@ -1,0 +1,66 @@
+{
+  "story": "7.1",
+  "date": "2026-10-19",
+  "baseline_revision": "e8bd5873acb2be7ecb138667f7165fe36659f46d",
+  "observed_head": "e8bd5873acb2be7ecb138667f7165fe36659f46d",
+  "source_sha256": "29cb521229d252b63800ae98ce6299be27adc5ae72cbd322221584a0deed026b",
+  "source_paths": [
+    "apps/server/src/application/capability-manifest.json",
+    "apps/server/src/application/connector/connector.use-cases.ts",
+    "apps/server/src/application/connector/credential.use-cases.ts",
+    "apps/server/src/application/descriptors.ts",
+    "apps/server/src/http/routes/infrastructure-routes.ts",
+    "apps/server/src/services/credential-file.ts",
+    "apps/server/src/services/credential-outputs.test.ts",
+    "apps/server/src/services/credentials.test.ts",
+    "apps/server/src/services/credentials.ts",
+    "packages/contracts/src/api/http.ts",
+    "packages/contracts/src/schemas/domain.ts",
+    "packages/github/src/auth/github-cli-environment.ts",
+    "packages/github/src/index.ts",
+    "packages/github/src/providers/github-provider.test.ts",
+    "packages/github/src/providers/github-provider.ts",
+    "packages/github/src/providers/work-item-provider.ts",
+    "packages/github/vitest.config.ts",
+    "scripts/capability-operation-coverage.mjs"
+  ],
+  "intent_contract_sha256": "222efbe039b8a61d9e713360bc6b6339e3a7fdd19c70a4cc8f816ba4b3b6ca7a",
+  "verification": {
+    "before_review": {
+      "workspace": 2506,
+      "release": "passed"
+    },
+    "after_review": {
+      "server": 709,
+      "audit": 14,
+      "provider": 19,
+      "workspace": 2520,
+      "release": "passed; hygiene,131 capabilities,260 accessibility tests,typecheck,production build"
+    }
+  },
+  "review": {
+    "findings": 20,
+    "patch_groups": 8,
+    "patch_verdicts": {
+      "high": 1,
+      "medium": 6,
+      "low": 1
+    },
+    "deferred_groups": 3,
+    "rejected_rows": 6
+  },
+  "restrictions": {
+    "sprint_status_written": false,
+    "sprint_status_staged": false,
+    "commit_created": false,
+    "push_performed": false,
+    "real_credentials_accessed": false
+  },
+  "fixture_incident": "Initial output fixture module mock missed package resolution and sent one generated disposable canary request to GitHub, receiving401. Replaced with global fetch interception and fail-fast default; all subsequent fixture requests intercepted.",
+  "status": "done",
+  "followup_review_recommended": true,
+  "residual_risks": [
+    "Native Windows ACL/atomic replacement and real CLI/account acceptance remain unverified.",
+    "Pre-existing partial GraphQL suppression and undifferentiated milestone422 handling remain deferred."
+  ]
+}

@@ -1,0 +1,11 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/ui-strings/ui-strings.test.ts (8 tests) 160ms
+ ✓ src/features/story-map/components/lifecycle.test.tsx (38 tests) 1089ms
+
+ Test Files  2 passed (2)
+      Tests  46 passed (46)
+   Start at  13:48:26
+   Duration  2.08s (transform 626ms, setup 0ms, collect 1.30s, tests 1.25s, environment 186ms, prepare 59ms)
+

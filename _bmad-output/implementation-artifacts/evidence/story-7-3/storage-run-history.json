@@ -1,0 +1,90 @@
+{
+  "runs": [
+    {
+      "stage": "initial in-flight storage cutover",
+      "command": "vitest run src/snapshot.test.ts src/restore-project.test.ts",
+      "passed": 20,
+      "failed": 6,
+      "capture": "Tool stdout only; full raw stream was not saved.",
+      "failures": [
+        "Removed-column/table consumers: work-item repository upsert/list and operation snapshot legacy table references.",
+        "Crash child failed before WAL creation while code was in flight."
+      ]
+    },
+    {
+      "stage": "intermediate scoped storage",
+      "command": "vitest run src/snapshot.test.ts src/restore-project.test.ts src/repositories/operation-snapshot-scope.test.ts src/map-copy-resolution.test.ts",
+      "passed": 32,
+      "failed": 3,
+      "capture": "Tool stdout only; full raw stream was not saved.",
+      "failures": [
+        "Deletion index depended on the epoch fixture dropped column.",
+        "Canonical projection order and new Release canonical-ref cardinality needed alignment."
+      ]
+    },
+    {
+      "stage": "old fixtures ported",
+      "command": "seven focused DB files",
+      "passed": 207,
+      "failed": 10,
+      "capture": "Tool stdout only; full raw stream was not saved.",
+      "failures": [
+        "Old githubLink operation and dual-owner fixtures were invalid under the canonical schema.",
+        "Source-only refs derive unsynced state; displayed identity creation versions the owning Card."
+      ]
+    },
+    {
+      "stage": "focused retained failures",
+      "report": "storage-focused-initial-failures.json",
+      "passed": 276,
+      "failed": 2,
+      "capture": "Raw Vitest JSON retained.",
+      "failures": [
+        "Adapter bind missing initial writable admission.",
+        "Board import retained releaseId:null on Card projection."
+      ]
+    },
+    {
+      "stage": "provenance retained failures",
+      "report": "storage-provenance-initial-failures.json",
+      "passed": 41,
+      "failed": 2,
+      "capture": "Raw Vitest JSON retained.",
+      "failures": [
+        "Old fixture placed Issue and Milestone on the same Release.",
+        "Canonical identity remains readable through logically removed owner Map."
+      ]
+    },
+    {
+      "stage": "first full DB run",
+      "passed": 457,
+      "failed": 7,
+      "capture": "Tool stdout summary retained here; JSON report was overwritten by final rerun.",
+      "failures": [
+        "Board import canonical reference/fixture parity.",
+        "Isolated remote-state live-event fixture first created a new canonical identity and thus additional root audit.",
+        "Cross-Project error wording changed.",
+        "Derived retained-ref scope map included ordinary live-owner citations.",
+        "Persistence-order expectation retained removed legacy entity."
+      ]
+    },
+    {
+      "stage": "dedicated canonical regression",
+      "passed": 6,
+      "failed": 1,
+      "capture": "Tool stdout only; full raw stream was not saved.",
+      "failures": [
+        "Required direct-path surviving-root Activity was absent; executor path already emitted it."
+      ],
+      "resolution": "Central finalization now logs attributed card.sourceEvidence.updated; final canonical7 passes."
+    },
+    {
+      "stage": "final full DB",
+      "report": "storage-full-db-final.json",
+      "passed": 464,
+      "failed": 0,
+      "capture": "Raw Vitest JSON retained; stdout/stderr were not redirected."
+    }
+  ],
+  "no_failures_excluded": true
+}

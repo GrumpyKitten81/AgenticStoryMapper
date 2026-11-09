@@ -1,0 +1,12 @@
+{
+  "sourceFingerprint": "481e668ed764a675aa8bad9b223a095e67dc6b284db3376469b8fe2b9cdb7bc2",
+  "changedSourceFiles": 96,
+  "review": "Parent read full initial source diff, full rederivation delta1425lines and full patch delta589lines plus new JSON equality helper. Final test declaration separator reduction preserves executable content. New customization-management HTTP regression delta also read.",
+  "patchGroups": {
+    "medium": 8,
+    "low": 1
+  },
+  "newPublicWireContractsInPatch": false,
+  "protectedPathsUnchanged": true,
+  "gates": "2943 tests passed; release verify passed136capabilities/260a11y/alltypechecks/build/hygiene"
+}

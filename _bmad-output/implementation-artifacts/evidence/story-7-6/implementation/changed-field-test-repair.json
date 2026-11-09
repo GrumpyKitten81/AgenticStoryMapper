@@ -1,0 +1,20 @@
+{
+  "rootCause": "The full-suite Card-fields test expected unchanged custom color and unchanged estimate0 in transport patches, contrary to required changed-field saves. Snapshot merging and reopened editor preserve both values; no product state loss found.",
+  "change": "Test-only: verify unchanged custom priority/color and numeric zero against retained snapshot and reopened editor; retain all clears/scalar assertions and add reopened title/status/business-value/effort assertions.",
+  "validation": {
+    "fullWebSuite": {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/web test",
+      "files": 83,
+      "tests": 798,
+      "passed": true,
+      "log": "story-7-6-web-full-repair.log.gz"
+    },
+    "webTypecheck": {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/web typecheck",
+      "passed": true,
+      "log": "story-7-6-web-full-repair-typecheck.log.gz"
+    },
+    "whitespace": "git diff --check HEAD -- apps/web/src/features/story-map/components/card-fields.test.ts passed"
+  },
+  "initialFailure": "Parent-owned full pnpm test log; no new failing run in this repair."
+}

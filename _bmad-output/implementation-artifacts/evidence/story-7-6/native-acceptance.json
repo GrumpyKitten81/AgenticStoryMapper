@@ -1,0 +1,14 @@
+{
+  "status": "unverified",
+  "observations": [
+    "CUA inventory on 2026-10-19 exposed no browser and no running Safari/Chrome.",
+    "Creating an isolated in-app browser failed: Browser is not available: iab."
+  ],
+  "unexecuted": [
+    "native conflict diff keyboard and focus journey",
+    "native Issue link activation",
+    "screen-reader and platform matrix",
+    "live GitHub account/installed CLI acceptance"
+  ],
+  "user_data_or_real_credentials_used": false
+}

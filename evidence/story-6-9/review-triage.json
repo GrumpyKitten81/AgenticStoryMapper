@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-17",
+  "status": "all9repairgroupscomplete; independent recheck settled; parent root2375tests/releaseverify and final native preview/Restore passed",
+  "findings": [
+    {
+      "id": "Edge1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Release preview never becomes ready",
+      "evidence": "Shell projection whitelist excludes /releases; adding it connects the existing provider. Shared with Blind1 and VG2."
+    },
+    {
+      "id": "VG1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Save success lacks mounted list/report adoption proof",
+      "evidence": "Filed consumer search confirms isolated request assertions and helper tests miss editor invalidation. Add mounted save\u2192refetch/list/summary adoption; shared with Blind9."
+    },
+    {
+      "id": "VG2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Actual Release preview route lacks consumer verification",
+      "evidence": "Direct Panel previewReady props bypass shell whitelist and route forwarding. Add actual routed projection/loading/read-only/draft regression; shared with Edge1/Blind1."
+    },
+    {
+      "id": "Blind1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Release projection route omitted",
+      "evidence": "Verified shell route condition omits Releases; shared with Edge1/VG2."
+    },
+    {
+      "id": "Blind2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Projected summary counts retained removal ghosts",
+      "evidence": "ReleasePanel sends every projected Card to builder without preview removal markers, unlike Tracking; exclude removed IDs after preserving ancestor eligibility."
+    },
+    {
+      "id": "Blind3",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Suspended clean editor adopts projected Release values/version",
+      "evidence": "Editor effect lacks suspended guard; route passes displayed releases so clean fields/version can become proposal values and refuse canonical downgrade. Keep canonical editor props."
+    },
+    {
+      "id": "Blind4",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Timeline failed draft blocks Restore refresh indefinitely",
+      "evidence": "New dirty marker holds flush, while Timeline date editor lacks actual-epoch lifetime reset. Same epoch/admission boundary repair as Blind6."
+    },
+    {
+      "id": "Blind5",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Second date success masks failed first date write",
+      "evidence": "change only sends the latest patch; onSuccess removes error while earlier displayed date stays unpersisted and hold remains. Submit complete retained dates."
+    },
+    {
+      "id": "Blind6",
+      "verdict": "high",
+      "route": "patch",
+      "summary": "Restore permits reopening cached pre-epoch Release before refresh",
+      "evidence": "recordEpoch remounts immediately before held authoritative reset refresh, allowing stale fields and overlapping root versions to be captured. Disable Release admission until successful epoch refresh; shared boundary group with Blind4."
+    },
+    {
+      "id": "Blind7",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Background report refetch leaves unlabeled stale totals",
+      "evidence": "Panel uses data without isFetching while Query retains populated cache after invalidation. Show refreshing status during actual delayed refresh."
+    },
+    {
+      "id": "Blind8",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Failed report scope has no direct retry",
+      "evidence": "Hook disables focus/reconnect refresh and error branch lacks refetch control. Add named retry bound to current scope Query refetch."
+    },
+    {
+      "id": "Blind9",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Create success lifecycle lacks mounted consumer proof",
+      "evidence": "Editor rejection test does not prove close/hold release/list/refetch. Same adoption test group as VG1."
+    },
+    {
+      "id": "Blind10",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Assignment evidence proves endpoint rereads rather than mounted refresh",
+      "evidence": "HTTP tests explicitly GET reports; existing UI tests separately simulate controls. Add connected mutation/query adoption regressions; shared with Intent2."
+    },
+    {
+      "id": "Intent1",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Editor component tests alone omit native HTTP workflow",
+      "evidence": "Parent actually exercised native full fields/create/reopen, dirty Cancel, real external409, Keep mine and released action against disposable TCP server; native-acceptance.json records limits separately."
+    },
+    {
+      "id": "Intent2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Actual assignment and visible refresh exceed direct endpoint tests",
+      "evidence": "Same verified consumer coverage gap as Blind10; connected form/move/bulk mutation adoption tests supply missing boundary, no native drag claim."
+    },
+    {
+      "id": "Intent3",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Cross-view defaults depend mainly on inherited regression suites",
+      "evidence": "Parent native list/Planning/Tracking default/show-all and Discovery retained released lanes verify those current inherited surfaces; canonical scope builder and existing suite also ran."
+    },
+    {
+      "id": "Intent4",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "DB reopen does not prove reopened application fields",
+      "evidence": "Parent stopped/restarted actual server, compared exact Cards/Releases and reloaded native application, then opened editor and verified name/goal/dates/released state; native-acceptance.json."
+    },
+    {
+      "id": "Intent5",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "API all default differs from a broader possible open default",
+      "evidence": "Accepted intent specifically names default Release list/Planning/Tracking display scopes. UI explicitly sends false; exact report Release/Unscheduled semantics are intentional and tested."
+    },
+    {
+      "id": "Intent6",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Complete native accessibility and combined acceptance remain unverified",
+      "evidence": "Native dates/dirty/conflict/released/default/show-all/reopen were exercised; full screen-reader/zoom/forced-colors/WCAG and final repaired combined preview/Restore flow remain unproved. Native combined flow plus manual accessibility checks would settle this medium-if-true boundary."
+    },
+    {
+      "id": "RepairCheck1",
+      "verdict": "high",
+      "route": "patch",
+      "summary": "Restore admission clears while inactive cached maps/Timeline retain old roots",
+      "evidence": "Independent source check confirms reset set includes inactive queries but default invalidateQueries refetches active only; useWorkspaceScope exposes cached data during delayed/failed B read. Evict stale inactive reset caches before releasing the existing epoch admission barrier. Same root group as Blind4/6."
+    }
+  ],
+  "groups": {
+    "patch": 9,
+    "high": 1,
+    "medium": 8,
+    "defer": 1,
+    "reject": 4
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "PRD to Delivery Map",
+  "description": "Sample story map showing the three-level structure.",
+  "releases": [{ "ref": "mvp", "name": "MVP", "goal": "Import source documents and create a traceable first story map." }],
+  "cards": [
+    { "ref": "activity", "level": "activity", "title": "Understand product requirements", "description": "Collect PRD/SRD input and preserve provenance." },
+    { "ref": "step", "parentRef": "activity", "level": "step", "title": "Import source document", "description": "Chunk Markdown or TXT into stable source chunks." },
+    { "ref": "story", "parentRef": "step", "releaseRef": "mvp", "level": "story", "title": "Create traceable story cards", "description": "As a product owner, I want generated cards to link back to source chunks." }
+  ]
+}

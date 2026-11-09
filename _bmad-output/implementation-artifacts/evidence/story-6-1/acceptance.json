@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-17",
+  "baseline_revision": "efb20dc55897e6784459221ac42b86e4d3d65b03",
+  "runtime": "Node 24.17.0",
+  "automated": {
+    "web_files": 52,
+    "web_tests": 340,
+    "release_verify": "passed; workspace typecheck/build/source hygiene/129 capabilities",
+    "whitespace": "passed"
+  },
+  "browser": {
+    "surface": "Native Safari via cua_repl; iab unavailable and browser inventory empty",
+    "storage": "temporary fixture.lsm, built-in sample only; no user Projects",
+    "base": "http://127.0.0.1:44361",
+    "verified": [
+      "visible Work/Setup/Trust links and all nine View links; Timeline/Roadmaps Experimental",
+      "Planning, Releases, AI/MCP and Sources real page navigation with correct document title and focused route h1",
+      "direct final-build Planning URL/reload and untruncated heading",
+      "existing View HTML/PNG/PDF controls visibly reachable",
+      "Card opens via Planning and focus enters Card heading",
+      "dirty title close initially focuses Cancel; Cancel preserves draft; Discard closes without saving",
+      "skip activation followed by native Tab continues inside workspace",
+      "final native browser Back/Forward restores Planning/list and focused route heading",
+      "final Story Maps list visible active rail entry and href target list",
+      "one labelled main follows route heading in native AX"
+    ],
+    "limits": [
+      "not a full screen-reader/WCAG acceptance",
+      "no new real-browser Restore or ChangeSet-preview application acceptance",
+      "no export downloaded; reachability inspected"
+    ],
+    "cleanup": "owned Safari tab closed; server stopped"
+  },
+  "review": {
+    "layers": 4,
+    "reported_rows": 18,
+    "parent_rows": 2,
+    "verdicts": {
+      "medium": 11,
+      "low": 3,
+      "false": 6
+    },
+    "deferred": 0,
+    "followup_review_recommended": true,
+    "risk": "Async scope reconciliation across actual browser Restore/epoch transitions remains unexercised; focused dirty-background tests cover inventory/snapshot failures."
+  },
+  "preserved": [
+    "sprint-status.yaml never written/staged/reverted",
+    "unrelated .bmad-loop/policy.codex.toml and policy.opencode.toml left untouched"
+  ],
+  "implementation_revision": "14161b0caa757b750e1182275d3e51c61a376254",
+  "workflow_finalization": {
+    "status": "blocked",
+    "condition": "finalization left repository dirty",
+    "unrelated_untracked": [
+      ".bmad-loop/policy.codex.toml",
+      ".bmad-loop/policy.opencode.toml"
+    ],
+    "action": "preserved untouched and unstaged"
+  }
+}

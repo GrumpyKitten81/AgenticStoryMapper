@@ -1,0 +1,37 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ❯ src/mcp/github-command-sdk.test.ts (16 tests | 1 failed) 1241ms
+   × refuses public human mutations of a canonical owner in a removed Map while retaining its readable source identity 36ms
+     → DELETE /api/story-maps/c018b249-d40b-42c2-95f9-c08b77594803?baseVersion=1: 415: expected false to be true // Object.is equality
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/mcp/github-command-sdk.test.ts > refuses public human mutations of a canonical owner in a removed Map while retaining its readable source identity
+AssertionError: DELETE /api/story-maps/c018b249-d40b-42c2-95f9-c08b77594803?baseVersion=1: 415: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ Object.http src/mcp/github-command-sdk.test.ts:30:66
+     28|   const http = async (path: string, method = "GET", body?: unknown) =>…
+     29|     const response = await fetch(`${origin}${path}`, { method, ...(bod…
+     30|     expect(response.ok, `${method} ${path}: ${response.status}`).toBe(…
+       |                                                                  ^
+     31|     return response.json();
+     32|   };
+ ❯ src/mcp/github-command-sdk.test.ts:294:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 15 passed (16)
+   Start at  02:31:51
+   Duration  2.35s (transform 507ms, setup 0ms, collect 918ms, tests 1.24s, environment 0ms, prepare 31ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/mcp/github-command-sdk.test.ts

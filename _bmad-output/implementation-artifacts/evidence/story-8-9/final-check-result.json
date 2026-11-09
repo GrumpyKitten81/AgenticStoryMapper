@@ -1,0 +1,5 @@
+{
+  "command": "corepack pnpm check",
+  "exit": 1,
+  "durationSeconds": 339.06125516607426
+}

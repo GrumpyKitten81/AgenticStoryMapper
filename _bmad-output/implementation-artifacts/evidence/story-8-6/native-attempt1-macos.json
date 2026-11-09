@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-20T05:32:12Z",
+  "root": "/tmp/storymapper-story-8-6-1f6ycf4g",
+  "platform": {
+    "system": "Darwin",
+    "release": "27.0.0",
+    "machine": "arm64",
+    "sw_vers": "ProductName:\t\tmacOS\nProductVersion:\t\t27.0.1\nBuildVersion:\t\t26A434"
+  },
+  "commands": [
+    {
+      "argv": [
+        "sw_vers"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-1f6ycf4g",
+      "log": "native-attempt1-platform.log",
+      "exit_code": 0,
+      "seconds": 0.008
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "<SOURCE_CHECKOUT>",
+      "log": "native-attempt1-source-revision.log",
+      "exit_code": 0,
+      "seconds": 0.009
+    },
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--no-hardlinks",
+        "--no-checkout",
+        "<SOURCE_CHECKOUT>",
+        "/tmp/storymapper-story-8-6-1f6ycf4g/checkout"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-1f6ycf4g",
+      "log": "native-attempt1-clone.log",
+      "exit_code": 0,
+      "seconds": 0.082
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "3e761f7deb60fc0c12639995ff801fdfcfc5a990"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-1f6ycf4g/checkout",
+      "log": "native-attempt1-checkout.log",
+      "exit_code": 0,
+      "seconds": 0.278
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "remove",
+        "origin"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-1f6ycf4g/checkout",
+      "log": "native-attempt1-remove-origin.log",
+      "exit_code": 0,
+      "seconds": 0.012
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-1f6ycf4g/checkout",
+      "log": "native-attempt1-revision.log",
+      "exit_code": 0,
+      "seconds": 0.009
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "/tmp/storymapper-story-8-6-1f6ycf4g/checkout",
+      "log": "native-attempt1-clean-status.log",
+      "exit_code": 0,
+      "seconds": 0.291
+    }
+  ],
+  "outcomes": {
+    "failure": {
+      "phase": "fresh-checkout preflight before setup",
+      "exit_code": 1,
+      "message": "Fresh checkout unexpectedly contains or inherits environment/dependency/user state",
+      "root_cause": "Preflight incorrectly rejected tracked local-projects/.gitkeep parent directory. No setup/start ran.",
+      "repair": "Permit only tracked .gitkeep in local-projects; still reject .lsm and all other initial user state."
+    }
+  },
+  "unverified": [
+    "Windows native quickstart: environment unavailable",
+    "Linux native quickstart: environment unavailable",
+    "No hosted CI, screen-reader, native clipboard, credential or provider certification"
+  ],
+  "revision": "3e761f7deb60fc0c12639995ff801fdfcfc5a990",
+  "log_hashes": {
+    "native-attempt1-clean-status.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-attempt1-remove-origin.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native-attempt1-checkout.log": "0547ebf55a915f2a5b12882cb375791e62d12a745c9c2312df27d16a9f4a3c52",
+    "native-attempt1-platform.log": "4ef10a0fc370704ea84699cf3851e51488598c5f1ab35cb572eb6b96278a8e5c",
+    "native-attempt1-revision.log": "69d2a35f9261445a03d27ae4fcf2d517a7926c325f794987df5325f4150f5c31",
+    "native-attempt1-clone.log": "e2e0cc4b343b026c5962d1a558e39148ecad65a5fd8e10830becff56dbca06e8",
+    "native-attempt1-source-revision.log": "69d2a35f9261445a03d27ae4fcf2d517a7926c325f794987df5325f4150f5c31"
+  }
+}

@@ -1,0 +1,32 @@
+
+> storymapper@0.1.0 check-hygiene [REDACTED_HOME]/Projects/StoryMapper
+> node scripts/check-hygiene.mjs
+
+
+> storymapper@0.1.0 check-capabilities [REDACTED_HOME]/Projects/StoryMapper
+> node scripts/check-capabilities.mjs
+
+Capability manifest check passed (129 capabilities).
+
+> storymapper@0.1.0 typecheck [REDACTED_HOME]/Projects/StoryMapper
+> corepack pnpm -r typecheck
+
+Scope: 8 of 9 workspace projects
+packages/contracts typecheck$ tsc -p tsconfig.json --noEmit
+packages/contracts typecheck: Done
+apps/web typecheck$ tsc -p tsconfig.json --noEmit
+packages/github typecheck$ tsc -p tsconfig.json --noEmit
+packages/core typecheck$ tsc -p tsconfig.json --noEmit
+packages/importers typecheck$ tsc -p tsconfig.json --noEmit
+packages/importers typecheck: Done
+packages/mcp typecheck$ tsc -p tsconfig.json --noEmit
+packages/github typecheck: Done
+packages/mcp typecheck: Done
+packages/core typecheck: src/changesets/resolver-write-collections.test.ts(88,110): error TS2345: Argument of type '({ state, operation, supply }: Case) => OperationResolution' is not assignable to parameter of type '(...args: Case[]) => Awaitable<void>'.
+packages/core typecheck:   Type 'OperationResolution' is not assignable to type 'Awaitable<void>'.
+packages/core typecheck: Failed
+[REDACTED_HOME]/Projects/StoryMapper/packages/core:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/core@0.1.0 typecheck: `tsc -p tsconfig.json --noEmit`
+Exit status 2
+ ELIFECYCLE  Command failed with exit code 2.
+[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin/node failed with exit code 2.

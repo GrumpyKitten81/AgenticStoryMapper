@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-20",
+  "homePathFindings": [
+    {
+      "path": "_bmad-output/implementation-artifacts/deferred-work.md",
+      "classification": "orchestrator-owned; preserve bytes; maintainer must resolve its publication privacy before release",
+      "resolution": "unresolved"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-8-2/vitest4-test-3.log.gz",
+      "classification": "historical test output of temporary fixture home, nested under a disposable test directory",
+      "resolution": "synthetic-fixture"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/review-3-9-pass-1-preserved.patch",
+      "classification": "retained log-redaction test fixture, with deliberately sensitive-shaped invented input",
+      "resolution": "synthetic-fixture"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/review-3-9-pass-2-preserved.patch",
+      "classification": "retained log-redaction test fixture, with deliberately sensitive-shaped invented input",
+      "resolution": "synthetic-fixture"
+    },
+    {
+      "path": "apps/server/src/runtime-lifecycle.test.ts",
+      "classification": "log-redaction test fixture, with deliberately sensitive-shaped invented input",
+      "resolution": "synthetic-fixture"
+    },
+    {
+      "path": "scripts/check-publication.test.mjs",
+      "classification": "publication detector acceptance fixture",
+      "resolution": "synthetic-fixture"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/story-plan-6-3-move-cards-by-mouse-keyboard-or-form.md",
+      "classification": "slash-separated Home and End keyboard names match a path-shaped detector",
+      "resolution": "false-positive"
+    }
+  ],
+  "effect": "No scanner suppression or publication waiver; all raw findings stay in the exact-candidate report. Employer and retired-provider current findings are zero. Email, binary privacy, asset redistribution, copied-material ownership, private declarations and historical findings remain manual publication prerequisites.",
+  "validationHelper": {
+    "initialExit": 1,
+    "safeError": "ModuleNotFoundError: storymapper_http",
+    "cause": "runpy does not insert the imported script directory in sys.path",
+    "repair": "validation helper inserts each actual script directory before loading its parser",
+    "productChange": false,
+    "rerunExit": 0
+  }
+}

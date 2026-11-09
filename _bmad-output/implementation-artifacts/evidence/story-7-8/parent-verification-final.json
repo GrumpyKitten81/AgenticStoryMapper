@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-19",
+  "workspace": {
+    "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm test",
+    "exitCode": 0,
+    "counts": {
+      "scripts": 83,
+      "contracts": 192,
+      "importers": 7,
+      "github": 57,
+      "core": 449,
+      "web": 848,
+      "db": 489,
+      "server": 1005
+    },
+    "totalPassing": 3130,
+    "failed": 0,
+    "log": "parent-workspace-final.log.gz"
+  },
+  "postFormatting": {
+    "contractsPassing": 192,
+    "extensionRegistryPassing": 47,
+    "log": [
+      "parent-contracts-final.log.gz",
+      "parent-extension-final.log.gz"
+    ]
+  },
+  "release": {
+    "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH node scripts/verify.mjs",
+    "exitCode": 0,
+    "capabilities": 138,
+    "accessibilityTests": 260,
+    "allTypechecks": "passed",
+    "allBuilds": "passed",
+    "sourceHygiene": "passed",
+    "log": "parent-release-final.log.gz"
+  },
+  "matrix": {
+    "rows": 7,
+    "executedAndPassed": 7,
+    "evidence": "parent-matrix-audit.json"
+  },
+  "sourceFingerprint": "dfbda7eb6ec85ebd3d64403f5220c2476692be7b9d88860aed36cea7ae6f9881",
+  "sourceFiles": 892,
+  "exerciseSourceHashes": "parent-exercise-before.json.gz and parent-exercise-after.json.gz byte-identical for892files",
+  "review": {
+    "findings": 24,
+    "patchedRows": 18,
+    "patchGroups": 14,
+    "patchGroupVerdicts": {
+      "high": 0,
+      "medium": 13,
+      "low": 1
+    },
+    "rejected": 6,
+    "deferred": 0,
+    "executionLimit": "Four lenses across3agents with context reuse due agent thread limit; fresh follow-up review recommended."
+  },
+  "credentialIncident": {
+    "initialFailure": "Old resolver spy let a fake-provider MCP test reach the local CLI resolver. Captured failure log temporarily contained2credential fields.",
+    "containment": "Both fields immediately redacted before staging or exposing their values; pattern scan found no additional credential values. Corrected central resolver spies and default fail-fast auth/provider mocks.",
+    "evidence": "parent-workspace-first-redacted.log.gz",
+    "finalEvidenceScan": "No credential-value patterns found. No live provider call used."
+  },
+  "limits": [
+    "Native/browser/reader/platform/live-provider acceptance not executed.",
+    "Mixed provider transitions during interrupted multi-effect Issue/Milestone recovery beyond executed examples merit independent follow-up.",
+    "No commit/push; source changes staged for orchestrator adoption."
+  ],
+  "protectedPaths": "All8original working/index hashes unchanged; protected-paths-final.json"
+}

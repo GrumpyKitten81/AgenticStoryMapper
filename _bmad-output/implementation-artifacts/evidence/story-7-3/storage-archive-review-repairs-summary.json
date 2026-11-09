@@ -1,0 +1,139 @@
+{
+  "changes": [
+    "Scope whole externalRef.deleted payload redaction/rejection to typed GitHub reference evidence; preserve bmad/Agent/non-GitHub deletion history.",
+    "Filter deletion-health history reads by before.system=github before strict typed parsing.",
+    "Scan serialized Activity, ChangeSet and Card-history payloads in bounded32-row keyset batches; safe integer rowid cursor covers negative/zero and large integer rowids."
+  ],
+  "files": [
+    "packages/db/src/snapshot.ts",
+    "packages/db/src/archive-database.ts",
+    "packages/db/src/github-archive-redaction.ts",
+    "packages/db/src/repositories/external-refs-repository.ts",
+    "packages/db/src/snapshot.test.ts",
+    "packages/db/src/github-archive-redaction.test.ts"
+  ],
+  "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/db exec vitest run src/snapshot.test.ts src/github-archive-redaction.test.ts src/repositories/canonical-github-identity.test.ts --reporter=json --outputFile=/tmp/story-7-3-archive-review-repairs.json",
+  "passed": 23,
+  "failed": 0,
+  "suites": [
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/github-archive-redaction.test.ts",
+      "tests": [
+        {
+          "name": "removes canonical identity, sync state and evidence recursively while preserving other bindings and source plans",
+          "status": "passed"
+        },
+        {
+          "name": "reconciles copied Card provenance from retained chunk/note evidence and preserves creation origins",
+          "status": "passed"
+        },
+        {
+          "name": "redacts and validates sizeable serialized histories with bounded batches while retaining business payloads",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/snapshot.test.ts",
+      "tests": [
+        {
+          "name": "reconciles provenance after excluding GitHub evidence while retaining origin notes",
+          "status": "passed"
+        },
+        {
+          "name": "classifies every physical and declared table and names new unclassified tables",
+          "status": "passed"
+        },
+        {
+          "name": "scopes to one demo Project, keeps business links and deleted Card history, and removes secret free-page bytes",
+          "status": "passed"
+        },
+        {
+          "name": "redacts copied Map Activity identities without removing chunk/note evidence or business metadata",
+          "status": "passed"
+        },
+        {
+          "name": "refuses an archive with inconsistent provenance",
+          "status": "passed"
+        },
+        {
+          "name": "refuses an archive with GitHub reference row",
+          "status": "passed"
+        },
+        {
+          "name": "refuses an archive with GitHub sourceLink payload",
+          "status": "passed"
+        },
+        {
+          "name": "refuses an archive with canonical deletion payload",
+          "status": "passed"
+        },
+        {
+          "name": "refuses an archive with canonical command payload",
+          "status": "passed"
+        },
+        {
+          "name": "refuses an archive with copied identity payload",
+          "status": "passed"
+        },
+        {
+          "name": "refuses an archive with copied evidence payload",
+          "status": "passed"
+        },
+        {
+          "name": "redacts nested canonical deletion and historical command evidence while retaining Agent bindings and business operations",
+          "status": "passed"
+        },
+        {
+          "name": "roundtrips non-GitHub deletion Activity while removing and refusing typed GitHub deletion payloads",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "file": "[REDACTED_HOME]/Projects/StoryMapper/packages/db/src/repositories/canonical-github-identity.test.ts",
+      "tests": [
+        {
+          "name": "keeps one canonical Issue owner and one sync association across two connections",
+          "status": "passed"
+        },
+        {
+          "name": "refuses generic mutation and deletion of adapter-owned canonical refs",
+          "status": "passed"
+        },
+        {
+          "name": "atomically records typed entity-deletion evidence and excludes undone or live-equivalent events",
+          "status": "passed"
+        },
+        {
+          "name": "does not record entity deletion for source detach, canonical rebind, park or archive",
+          "status": "passed"
+        },
+        {
+          "name": "versions and audits removed-map citation roots on direct canonical edit and hard deletion",
+          "status": "passed"
+        },
+        {
+          "name": "versions and audits removed-map citation roots on executor canonical edit and hard deletion",
+          "status": "passed"
+        },
+        {
+          "name": "copies Release-owned Issue evidence without sync ownership and reopens the populated current schema intact",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "sizeable_history_fixture": {
+    "rows_per_table": 257,
+    "tables": 3,
+    "serialized_business_text_per_row_bytes": 8704,
+    "negative_zero_positive_rowids": true,
+    "assertions": [
+      "No payload scan materializes an entire history table.",
+      "All771 rows survive with business data retained and GitHub canary absent.",
+      "No timing or heap performance threshold added."
+    ]
+  },
+  "scope": "Only focused tests covering edited source files ran; no broad gates or orchestrator writes."
+}

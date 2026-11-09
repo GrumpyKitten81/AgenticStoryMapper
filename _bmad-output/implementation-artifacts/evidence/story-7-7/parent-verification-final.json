@@ -1,0 +1,44 @@
+{
+  "status": "pass",
+  "workspace": {
+    "exitCode": 0,
+    "log": "parent-workspace-final.log.gz",
+    "tests": {
+      "scripts": 83,
+      "contracts": 190,
+      "importers": 7,
+      "github": 57,
+      "core": 449,
+      "web": 848,
+      "db": 489,
+      "server": 939,
+      "auditPerformance": 14
+    },
+    "total": 3076
+  },
+  "release": {
+    "exitCode": 0,
+    "log": "parent-release-final.log.gz",
+    "capabilities": 138,
+    "accessibilityTests": 260,
+    "typecheck": true,
+    "build": true,
+    "hygiene": true
+  },
+  "matrixRows": 8,
+  "review": {
+    "layers": 4,
+    "findings": 22,
+    "patchGroups": {
+      "medium": 10,
+      "low": 2
+    },
+    "deferredGroups": 1,
+    "rejectedRows": 5,
+    "followupReviewRecommended": true
+  },
+  "protectedPaths": 18,
+  "sourceFingerprint": "5f324f5ad8e4720b74576242b7a0dc32cf2a323838f68eb0076d5dff933b458f",
+  "residual": "Assembled native/browser/reader/platform/live-provider acceptance remains unverified; fixture/DOM/transport evidence is scoped accordingly.",
+  "versionControl": "Reviewed changes staged; no commit/push under explicit user commit policy."
+}

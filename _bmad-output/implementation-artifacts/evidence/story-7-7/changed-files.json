@@ -1,0 +1,154 @@
+[
+  {
+    "path": "apps/server/src/application/capability-manifest.json",
+    "description": "Generated read lookup/write incoming command capability inventory and operation coverage."
+  },
+  {
+    "path": "apps/server/src/application/capability-manifest.test.ts",
+    "description": "Pins GitHub permission classifications for both ticket tools."
+  },
+  {
+    "path": "apps/server/src/application/descriptors.ts",
+    "description": "Registers ticket capability descriptors."
+  },
+  {
+    "path": "apps/server/src/application/sync/github-command.ts",
+    "description": "Captures and revalidates canonical database epoch for GitHub preparation."
+  },
+  {
+    "path": "apps/server/src/application/sync/github-import-command.ts",
+    "description": "Shares per-Issue atomic construction and canonical baselines with command-scoped managed Annotations."
+  },
+  {
+    "path": "apps/server/src/application/sync/github-ticket-command.test.ts",
+    "description": "Exercises reopen, protection, rollback, duplicates, Restore, unchanged pulls and delayed placement refusal."
+  },
+  {
+    "path": "apps/server/src/application/sync/github-ticket-command.ts",
+    "description": "Validates selector, scope and reviewed provider evidence; imports at exact placement or reports existing owner."
+  },
+  {
+    "path": "apps/server/src/application/sync/sync.use-cases.ts",
+    "description": "Exposes typed lookup/import use-cases and capability descriptors."
+  },
+  {
+    "path": "apps/server/src/http/routes/sync-routes.ts",
+    "description": "Registers shared-schema HTTP ticket endpoints."
+  },
+  {
+    "path": "apps/server/src/mcp/github-ticket-transports.test.ts",
+    "description": "Exercises actual HTTP/MCP/SDK/stdio with ownership, protection, repeat and strict-schema refusals."
+  },
+  {
+    "path": "apps/server/src/mcp/tools/complete-surface.test.ts",
+    "description": "Extends exhaustive actual command routing to single-ticket imports."
+  },
+  {
+    "path": "apps/server/src/mcp/tools/project-scopes.ts",
+    "description": "Collects actual parent/Release owning Projects from nested placement."
+  },
+  {
+    "path": "apps/server/src/mcp/tools/register-tools.ts",
+    "description": "Registers ticket tools and projects the incoming-command/duplicate result union."
+  },
+  {
+    "path": "apps/web/src/app/api.ts",
+    "description": "Adds cancellable lookup and typed single-ticket import requests."
+  },
+  {
+    "path": "apps/web/src/features/github-sync/IncomingGitHubReview.tsx",
+    "description": "Notifies actual reviewed ChangeSet application without assuming Card creation."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/CardComposer.tsx",
+    "description": "Retains manual/template placement and integrates ticket flow with synchronous write admission."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/DiscoveryMatrix.tsx",
+    "description": "Connects duplicate Card selection to existing navigation."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/TicketCardComposer.tsx",
+    "description": "Renders lookup/replacement/connection/review controls and readable Issue preview."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/ticket-creation.test.tsx",
+    "description": "Exercises mounted requests, placement, drafts, cancellation, Restore, proposals, announcements and navigation."
+  },
+  {
+    "path": "apps/web/src/features/story-map/components/useTicketCardComposer.ts",
+    "description": "Guards lookup/import lifetimes, cancellation, draft adoption, scope/epoch and actual completion."
+  },
+  {
+    "path": "apps/web/src/ui-strings/ticket-composer.ts",
+    "description": "Central English ticket-composer copy and lookup announcements."
+  },
+  {
+    "path": "docs/mcp-tools.md",
+    "description": "Generated ticket tool inventory and classified operations."
+  },
+  {
+    "path": "packages/contracts/src/api/github-ticket.test.ts",
+    "description": "Validates allowed selectors and shared strict HTTP/MCP input contracts."
+  },
+  {
+    "path": "packages/contracts/src/api/github-ticket.ts",
+    "description": "Sole strict placement, lookup review and import result schemas/types."
+  },
+  {
+    "path": "packages/contracts/src/index.ts",
+    "description": "Exports ticket contracts."
+  },
+  {
+    "path": "packages/contracts/src/mcp/tool-inputs.ts",
+    "description": "Reuses ticket HTTP schemas for MCP discovery/validation."
+  },
+  {
+    "path": "packages/contracts/src/mcp/tools.ts",
+    "description": "Adds ticket names and incoming-command classification."
+  },
+  {
+    "path": "packages/contracts/src/schemas/change-operations.ts",
+    "description": "Carries durable parent/Release/Map placement evidence on ticket baseline operations."
+  },
+  {
+    "path": "packages/contracts/src/schemas/change-set-schemas.ts",
+    "description": "Advances operation schema to9 so older open proposals cannot execute."
+  },
+  {
+    "path": "packages/contracts/src/schemas/github-identity.ts",
+    "description": "Normalizes allowed Issue URL/short/bare selectors in selected repository."
+  },
+  {
+    "path": "packages/core/src/changesets/github-import-dependencies.test.ts",
+    "description": "Verifies independent Issue groups and generated parent dependency closure."
+  },
+  {
+    "path": "packages/core/src/changesets/github-import-dependencies.ts",
+    "description": "Indexes complete indivisible imported Card/ref/baseline/Annotation groups."
+  },
+  {
+    "path": "packages/core/src/changesets/github-sync-resolution.ts",
+    "description": "Refuses changed or hidden reviewed placement at delayed Apply."
+  },
+  {
+    "path": "packages/core/src/changesets/operation-dependencies.ts",
+    "description": "Includes import groups in selection closure."
+  },
+  {
+    "path": "packages/core/src/changesets/operation-registry.ts",
+    "description": "Exposes indivisible group dependencies during simulation."
+  },
+  {
+    "path": "packages/mcp/src/tool-definitions/capabilities.ts",
+    "description": "Generated ticket tool descriptions and permissions."
+  },
+  {
+    "path": "scripts/capability-operation-coverage.mjs",
+    "description": "Classifies incoming ticket operation membership and bookkeeping."
+  },
+  {
+    "path": "scripts/mcp-tool-metadata.json",
+    "description": "Supplies ticket tool metadata for deterministic generation."
+  }
+]

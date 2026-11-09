@@ -1,0 +1,102 @@
+{
+  "start_revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+  "source_files": 3440,
+  "source_unchanged": true,
+  "changed_paths": [],
+  "semantic_index_unchanged": true,
+  "raw_index_unchanged": true,
+  "revision_unchanged": true,
+  "commands": [
+    {
+      "command": [
+        "/bin/zsh",
+        "-c",
+        "corepack pnpm test && corepack pnpm test:audit-performance"
+      ],
+      "runtime": {
+        "node": "v24.17.0",
+        "pnpm": "9.15.4",
+        "corepack": "0.35.0"
+      },
+      "name": "repair-parent-deterministic",
+      "environment": {
+        "PATH": "<installed Node24 bin>:$PATH",
+        "TMPDIR": "inherited default macOS tmp; no task override",
+        "GIT_OPTIONAL_LOCKS": "0",
+        "TSX_DISABLE_CACHE": "absent; caching enabled"
+      },
+      "exit": 0,
+      "duration_seconds": 361.9164419169538,
+      "log": {
+        "artifact": "repair-parent-deterministic.log.gz",
+        "original_sha256": "410aaf8c40b6d038ce44c05cb11b390187e74042ace0c6f2973641baef2cd285",
+        "sanitized_decoded_sha256": "5541fd92cbcf50a2614ff43346320c213fdf9f5853b8b246c457b0f9232946c6",
+        "compressed_sha256": "31a683dad48235e12969ceb56a76d80adc1c13636d26f70a46cba0fe962e2243",
+        "redaction": "Project, home and task-temp paths plus present credential environment values replaced; original remains transient. No original hash reconstruction claim."
+      }
+    },
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "check"
+      ],
+      "runtime": {
+        "node": "v24.17.0",
+        "pnpm": "9.15.4",
+        "corepack": "0.35.0"
+      },
+      "name": "repair-parent-aggregate",
+      "environment": {
+        "PATH": "<installed Node24 bin>:$PATH",
+        "TMPDIR": "<task-owned temporary directory>",
+        "GIT_OPTIONAL_LOCKS": "0",
+        "TSX_DISABLE_CACHE": "absent; caching enabled"
+      },
+      "exit": 0,
+      "duration_seconds": 689.7789776248392,
+      "log": {
+        "artifact": "repair-parent-aggregate.log.gz",
+        "original_sha256": "92a01319fe83e541e1221361939d84808398c57bab44dc458ae173b6ae7b967a",
+        "sanitized_decoded_sha256": "3be4712392c1d1f6caa5835aec83ed2cb63d7381fd48154c46d75ab2777821ae",
+        "compressed_sha256": "23c567aacd254e41a6758e5d5c28a06a033e94aa246411f222568f3155c90ea4",
+        "redaction": "Project, home and task-temp paths plus present credential environment values replaced; original remains transient. No original hash reconstruction claim."
+      }
+    },
+    {
+      "command": [
+        "node",
+        "scripts/verify.mjs"
+      ],
+      "runtime": {
+        "node": "v24.17.0",
+        "pnpm": "9.15.4",
+        "corepack": "0.35.0"
+      },
+      "name": "repair-parent-verifier",
+      "environment": {
+        "PATH": "<installed Node24 bin>:$PATH",
+        "TMPDIR": "<task-owned temporary directory>",
+        "GIT_OPTIONAL_LOCKS": "0",
+        "TSX_DISABLE_CACHE": "absent; caching enabled"
+      },
+      "exit": 0,
+      "duration_seconds": 55.466082625091076,
+      "log": {
+        "artifact": "repair-parent-verifier.log.gz",
+        "original_sha256": "712c2532c39e630d1a6ed1b5550c4d3df90b84c53b72fbd2a3fdaab91a1ed253",
+        "sanitized_decoded_sha256": "4816b6232dea4e3b67ee2af3d7b19fc65cff1a3ee6c83a7c0c62992a495cd04b",
+        "compressed_sha256": "977954fffefa1b0ac43321019d3cc3720ac31b9ed09129cb1815d708e5f2c8dc",
+        "redaction": "Project, home and task-temp paths plus present credential environment values replaced; original remains transient. No original hash reconstruction claim."
+      }
+    }
+  ],
+  "repair-parent-command-start": {
+    "decoded_sha256": "c9a094a4f90fe54e21a85273f78efbddf68c6ce6d8064a5d380f3b232993dc52",
+    "compressed_sha256": "aaf489f16af75ca27d0fe031fbe995e0b368ab8786d4921f358da79e2947b590"
+  },
+  "repair-parent-command-end": {
+    "decoded_sha256": "c9a094a4f90fe54e21a85273f78efbddf68c6ce6d8064a5d380f3b232993dc52",
+    "compressed_sha256": "aaf489f16af75ca27d0fe031fbe995e0b368ab8786d4921f358da79e2947b590"
+  }
+}

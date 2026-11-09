@@ -1,0 +1,10 @@
+{
+  "requiredDefaultPort": 4317,
+  "listenProcessesObserved": 1,
+  "method": "read-only lsof; no HTTP health probe",
+  "diagnosticPairExit": 0,
+  "diagnosticPairTests": 31,
+  "diagnosticPairOwnFixtureCleanup": "Original withFixture finally and explicit foreign.close completed; full suite exited normally.",
+  "originalAggregateExtraRequestOrigin": "unresolved",
+  "noClaimedRepair": true
+}

@@ -1,0 +1,223 @@
+{
+  "baseline_revision": "74c5921401223e1fbfd3ad96bcfc582208ae5565",
+  "server": {
+    "passed": 113,
+    "failed": 0,
+    "pending": 0,
+    "source": "parent-post-review-tests.log",
+    "phase": "post-review full workspace run",
+    "suites": {
+      "remote-push-execution": 61,
+      "http-unit-of-work": 28,
+      "github-command-sdk": 16,
+      "github-command-transports": 8
+    }
+  },
+  "rows": [
+    {
+      "row": "Scope and review",
+      "tests": [
+        {
+          "test": "refuses foreign selections before credential resolution and reports selected Notes as exclusions",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "stops dependent Issues after Milestone failure and can review an empty Release without expanding Card selection",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        }
+      ],
+      "serverPass": true,
+      "finalEvidence": "All tests in the named files ran and passed in parent-post-review-tests.log; no matrix row skipped."
+    },
+    {
+      "row": "Confirmation",
+      "tests": [
+        {
+          "test": "admits one confirmation while its provider call is pending and refuses an Agent confirmation before credentials",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "keeps SDK push as a persisted Dry Run until the separate human HTTP confirmation mutates the provider",
+          "file": "apps/server/src/mcp/github-command-sdk.test.ts",
+          "status": "passed"
+        }
+      ],
+      "serverPass": true,
+      "finalEvidence": "All tests in the named files ran and passed in parent-post-review-tests.log; no matrix row skipped."
+    },
+    {
+      "row": "Drift",
+      "tests": [
+        {
+          "test": "refuses changed content inputs before modifying GitHub",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "refuses changed mapping inputs before modifying GitHub",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "retains earlier success when repository capability drifts before the next exact effect",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "refuses canonical-identity-only drift without a Card version change",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        }
+      ],
+      "serverPass": true,
+      "finalEvidence": "All tests in the named files ran and passed in parent-post-review-tests.log; no matrix row skipped."
+    },
+    {
+      "row": "Mapping and labels",
+      "tests": [
+        {
+          "test": "preserves the imported native type when the connection maps this level to another type",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "removes previously managed labels after configuration changes while preserving unrelated remote labels",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "persists an actionable blocked plan for missing mapping without sending hidden writes",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "persists an actionable blocked plan for missing label without sending hidden writes",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "persists an actionable blocked plan for missing permissions without sending hidden writes",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        }
+      ],
+      "serverPass": true,
+      "finalEvidence": "All tests in the named files ran and passed in parent-post-review-tests.log; no matrix row skipped."
+    },
+    {
+      "row": "Milestones",
+      "tests": [
+        {
+          "test": "reviews one shared Milestone and materializes its identity in each durable Issue intent",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "reviews Milestone rename, clearing, due date and closed state as an explicit update",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        }
+      ],
+      "serverPass": true,
+      "finalEvidence": "All tests in the named files ran and passed in parent-post-review-tests.log; no matrix row skipped."
+    },
+    {
+      "row": "Interrupted batch",
+      "tests": [
+        {
+          "test": "reopens twelve reviewed Issues after the sixth remote effect loses its local outcome and resumes without duplication",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "retains remote success after canonical binding audit failure and retries only local persistence",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "sends no modifying provider call when durable intent persistence fails",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "sends no modifying provider call when durable confirmation-audit persistence fails",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        }
+      ],
+      "serverPass": true,
+      "finalEvidence": "All tests in the named files ran and passed in parent-post-review-tests.log; no matrix row skipped."
+    },
+    {
+      "row": "Reconciliation",
+      "tests": [
+        {
+          "test": "reconciles an unknown create response after reopening instead of issuing another create",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "does not turn a partial marker lookup into permission to recreate an uncertain Issue",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "requires a new review after actual Restore and reuses the stable marker when the rewound local binding is absent",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "refuses delayed absence captured while another plan's create was in flight",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        }
+      ],
+      "serverPass": true,
+      "finalEvidence": "All tests in the named files ran and passed in parent-post-review-tests.log; no matrix row skipped."
+    },
+    {
+      "row": "Persistence and UI",
+      "tests": [
+        {
+          "test": "requires a new review after actual Restore and reuses the stable marker when the rewound local binding is absent",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "retains known success only in the original database when a provider response crosses database replacement",
+          "file": "apps/server/src/services/remote-push-execution.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "routes modal preview, exact confirmation, interruption and same-plan resume while retaining pending dirty drafts",
+          "file": "apps/web/src/features/story-map/components/card-detail-github.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "retains a linked Card Sync plan after its own incoming root refresh and preserves the editor draft",
+          "file": "apps/web/src/features/story-map/components/card-detail-github.test.ts",
+          "status": "passed"
+        },
+        {
+          "test": "rejects stale absence evidence when the overlapping execution changes during lookup",
+          "file": "packages/db/src/remote-push.test.ts",
+          "status": "passed"
+        }
+      ],
+      "serverPass": true,
+      "finalEvidence": "All tests in the named files ran and passed in parent-post-review-tests.log; no matrix row skipped."
+    }
+  ],
+  "uiVerification": "Final full web suite passed766 tests, including33 selection and6 actual routed modal tests. Native browser acceptance remains explicitly unverified.",
+  "priorFocusedServer": {
+    "passed": 88,
+    "failed": 0,
+    "pending": 0,
+    "source": "parent-matrix-server.json",
+    "phase": "pre-review"
+  },
+  "restoreCorruptionVerification": "Final full DB suite passed488 tests, including16 remote-push tests with four actual-Restore corruption cases."
+}

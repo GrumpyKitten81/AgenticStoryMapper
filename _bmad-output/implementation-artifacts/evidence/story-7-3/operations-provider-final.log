@@ -1,0 +1,25 @@
+
+> @storymapper/github@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/packages/github
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/github
+
+stderr | src/providers/github-verification.test.ts > normalizes token HTTP failures without raw output
+GET /repos/fixture-owner/fixture-repo - 401 with id UNKNOWN in 0ms
+GET /repos/fixture-owner/fixture-repo - 403 with id UNKNOWN in 0ms
+GET /repos/fixture-owner/fixture-repo - 404 with id UNKNOWN in 0ms
+GET /repos/fixture-owner/fixture-repo - 429 with id UNKNOWN in 0ms
+GET /repos/fixture-owner/fixture-repo - 500 with id UNKNOWN in 1ms
+
+stderr | src/providers/github-verification.test.ts > recognizes token rate-limited403 and offline failures
+GET /repos/fixture-owner/fixture-repo - 403 with id UNKNOWN in 0ms
+GET /repos/fixture-owner/fixture-repo - 500 with id UNKNOWN in 0ms
+
+ ✓ src/providers/github-verification.test.ts (11 tests) 10ms
+ ✓ src/providers/github-provider.test.ts (23 tests) 14ms
+
+ Test Files  2 passed (2)
+      Tests  34 passed (34)
+   Start at  02:03:08
+   Duration  365ms (transform 114ms, setup 0ms, collect 352ms, tests 24ms, environment 0ms, prepare 72ms)

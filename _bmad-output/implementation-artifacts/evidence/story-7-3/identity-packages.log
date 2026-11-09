@@ -1,0 +1,137 @@
+Scope: 8 of 9 workspace projects
+packages/contracts test$ vitest run --passWithNoTests
+packages/contracts test:  RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/contracts
+packages/contracts test:  ✓ src/schemas/changeset-preview.test.ts (2 tests) 3ms
+packages/contracts test:  ✓ src/schemas/card-timestamps.test.ts (14 tests) 3ms
+packages/contracts test:  ✓ src/events/live-events.test.ts (2 tests) 4ms
+packages/contracts test:  ✓ src/schemas/audit.test.ts (2 tests) 4ms
+packages/contracts test:  ✓ src/schemas/provenance.test.ts (3 tests) 7ms
+packages/contracts test:  ✓ src/migration.test.ts (20 tests) 24ms
+packages/contracts test:  ✓ src/release-slicing.test.ts (1 test) 3ms
+packages/contracts test:  ✓ src/api/delivery-status.test.ts (12 tests) 3ms
+packages/contracts test:  ✓ src/external-refs.test.ts (2 tests) 4ms
+packages/contracts test:  ✓ src/base-version.test.ts (24 tests) 7ms
+packages/contracts test:  ✓ src/card-dependencies.test.ts (1 test) 22ms
+packages/contracts test:  ✓ src/card-key-prefix.test.ts (2 tests) 22ms
+packages/contracts test:  ✓ src/schemas/operation-schema-version.test.ts (2 tests) 24ms
+packages/contracts test:  ✓ src/mcp/tool-inputs.test.ts (6 tests) 47ms
+packages/contracts test:  ✓ src/schemas/change-operations.test.ts (62 tests) 75ms
+packages/contracts test:  Test Files  15 passed (15)
+packages/contracts test:       Tests  155 passed (155)
+packages/contracts test:    Start at  01:55:33
+packages/contracts test:    Duration  441ms (transform 469ms, setup 0ms, collect 2.25s, tests 250ms, environment 1ms, prepare 621ms)
+packages/contracts test: Done
+apps/web test$ vitest run --passWithNoTests --exclude src/features/story-map/board-diagnostics.test.tsx
+packages/github test$ vitest run --passWithNoTests
+packages/core test$ vitest run --passWithNoTests
+packages/importers test$ vitest run --passWithNoTests
+packages/importers test:  RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/importers
+packages/github test:  RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/github
+packages/core test:  RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+apps/web test:  RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+packages/importers test:  ✓ src/txt/import-txt.test.ts (2 tests) 2ms
+packages/importers test:  ✓ src/markdown/import-markdown.test.ts (5 tests) 4ms
+packages/importers test:  Test Files  2 passed (2)
+packages/importers test:       Tests  7 passed (7)
+packages/importers test:    Start at  01:55:33
+packages/importers test:    Duration  654ms (transform 73ms, setup 0ms, collect 191ms, tests 6ms, environment 0ms, prepare 303ms)
+packages/importers test: Done
+packages/mcp test$ vitest run --passWithNoTests
+packages/core test:  ✓ src/story-map/hierarchy.test.ts (2 tests) 2ms
+packages/core test:  ✓ src/reports/iso-date.test.ts (17 tests) 2ms
+packages/core test:  ✓ src/reports/dependency-cues.test.ts (5 tests) 8ms
+packages/core test:  ✓ src/story-map/visibility.test.ts (1 test) 2ms
+packages/core test:  ✓ src/coverage/backlog-health.test.ts (3 tests) 1ms
+packages/core test:  ✓ src/sources/prepared-source-import.test.ts (1 test) 2ms
+packages/mcp test:  RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/mcp
+packages/mcp test: include: **/*.{test,spec}.?(c|m)[jt]s?(x)
+packages/mcp test: exclude:  **/node_modules/**, **/dist/**, **/cypress/**, **/.{idea,git,cache,output,temp}/**, **/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*
+packages/mcp test: No test files found, exiting with code 0
+packages/mcp test: Done
+packages/github test:  ✓ src/providers/github-provider.test.ts (23 tests) 16ms
+packages/github test: stderr | src/providers/github-verification.test.ts > normalizes token HTTP failures without raw output
+packages/github test: GET /repos/fixture-owner/fixture-repo - 401 with id UNKNOWN in 0ms
+packages/github test: GET /repos/fixture-owner/fixture-repo - 403 with id UNKNOWN in 0ms
+packages/github test: GET /repos/fixture-owner/fixture-repo - 404 with id UNKNOWN in 0ms
+packages/github test: GET /repos/fixture-owner/fixture-repo - 429 with id UNKNOWN in 0ms
+packages/github test: GET /repos/fixture-owner/fixture-repo - 500 with id UNKNOWN in 0ms
+packages/github test: stderr | src/providers/github-verification.test.ts > recognizes token rate-limited403 and offline failures
+packages/github test: GET /repos/fixture-owner/fixture-repo - 403 with id UNKNOWN in 0ms
+packages/github test: GET /repos/fixture-owner/fixture-repo - 500 with id UNKNOWN in 0ms
+packages/github test:  ✓ src/providers/github-verification.test.ts (11 tests) 11ms
+packages/github test:  Test Files  2 passed (2)
+packages/github test:       Tests  34 passed (34)
+packages/github test:    Start at  01:55:33
+packages/github test:    Duration  1.52s (transform 632ms, setup 0ms, collect 1.86s, tests 27ms, environment 0ms, prepare 412ms)
+packages/github test: Done
+packages/core test:  ✓ src/story-map/template.test.ts (8 tests) 5ms
+packages/core test:  ✓ src/reports/release-notes.test.ts (4 tests) 2ms
+packages/core test:  ✓ src/publishing/sync-fields.test.ts (2 tests) 1ms
+packages/core test:  ✓ src/reports/slices.test.ts (4 tests) 3ms
+packages/core test:  ✓ src/audit/summaries.test.ts (2 tests) 4ms
+packages/core test:  ✓ src/publishing/github-footer.test.ts (8 tests) 3ms
+packages/core test:  ✓ src/reports/reports.test.ts (8 tests) 5ms
+packages/core test:  ✓ src/proposals/proposals.test.ts (11 tests) 5ms
+packages/core test:  ✓ src/reports/sync-health.test.ts (6 tests) 3ms
+packages/core test:  ✓ src/changesets/dependency-resolution.test.ts (18 tests) 51ms
+packages/core test:  ✓ src/changesets/reserved-operation-ids.test.ts (13 tests) 58ms
+packages/core test:  ✓ src/changesets/source-plan-resolution.test.ts (14 tests) 78ms
+packages/core test:  ✓ src/changesets/dependency-effect-parity.test.ts (14 tests) 101ms
+apps/web test: stderr | src/components/Dialog.test.ts > shared Dialog > hands the first Escape from a marked editor descendant to its owning heading
+apps/web test: A component is `contentEditable` and contains `children` managed by React. It is now your responsibility to guarantee that none of those nodes are unexpectedly modified or duplicated. This is probably not intentional.
+packages/core test:  ✓ src/changesets/operation-selection-regressions.test.ts (45 tests) 125ms
+packages/core test:  ✓ src/changesets/remaining-operation-resolution.test.ts (75 tests) 165ms
+packages/core test:  ❯ src/changesets/operation-resolution.test.ts (70 tests | 2 failed) 215ms
+packages/core test:    × registry domain golden effects > distinguishes shared GitHub detach from direct canonical unlink and includes every affected Card 7ms
+packages/core test:      → expected [] to deeply equal [ { …(6) } ]
+packages/core test:    × additional placement and GitHub identity goldens > reuses direct and attached GitHub evidence without duplicate links or version writes 2ms
+packages/core test:      → Operation direct-link at index 0: GitHub Issue evidence is unknown.
+packages/core test:  ✓ src/changesets/resolver-write-collections.test.ts (69 tests) 233ms
+packages/core test: ⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+packages/core test:  FAIL  src/changesets/operation-resolution.test.ts > registry domain golden effects > distinguishes shared GitHub detach from direct canonical unlink and includes every affected Card
+packages/core test: AssertionError: expected [] to deeply equal [ { …(6) } ]
+packages/core test: - Expected
+packages/core test: + Received
+packages/core test: - Array [
+packages/core test: -   Object {
+packages/core test: -     "cardId": "00000000-0000-4000-8000-000000000005",
+packages/core test: -     "id": "00000000-0000-4000-8000-000000000016",
+packages/core test: -     "issueNumber": 42,
+packages/core test: -     "repo": "org/repo",
+packages/core test: -     "syncState": "synced",
+packages/core test: -     "url": "https://github.com/org/repo/issues/42",
+packages/core test: -   },
+packages/core test: - ]
+packages/core test: + Array []
+packages/core test:  ❯ src/changesets/operation-resolution.test.ts:151:40
+packages/core test:     149|     const shared = operation({ operationId: "shared", op: "unlink", en…
+packages/core test:     150|     const detached = resolveOperation(state, shared, supply([shared]));
+packages/core test:     151|     expect(detached.state.githubLinks).toEqual(state.githubLinks);
+packages/core test:        |                                        ^
+packages/core test:     152|     expect(detached.state.cards.find((entry) => entry.id === id(5))).t…
+packages/core test:     153|     const direct = operation({ operationId: "direct", op: "unlink", en…
+packages/core test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+packages/core test:  FAIL  src/changesets/operation-resolution.test.ts > additional placement and GitHub identity goldens > reuses direct and attached GitHub evidence without duplicate links or version writes
+packages/core test: OperationResolutionError: Operation direct-link at index 0: GitHub Issue evidence is unknown.
+packages/core test:  ❯ Module.refuse src/changesets/resolution-context.ts:28:9
+packages/core test:      26|
+packages/core test:      27| export function refuse(context: ResolutionContext, message: string, co…
+packages/core test:      28|   throw new OperationResolutionError(context.operation.operationId, co…
+packages/core test:        |         ^
+packages/core test:      29| }
+packages/core test:      30|
+packages/core test:  ❯ validateGithub src/changesets/source-resolution.ts:51:56
+packages/core test:  ❯ linkSource src/changesets/source-resolution.ts:81:22
+packages/core test:  ❯ resolveNext src/changesets/operation-registry.ts:169:3
+packages/core test:  ❯ Module.resolveOperation src/changesets/operation-registry.ts:68:10
+packages/core test:  ❯ src/changesets/operation-resolution.test.ts:329:12
+packages/core test: ⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+packages/core test:  Test Files  1 failed | 22 passed (23)
+packages/core test:       Tests  2 failed | 398 passed (400)
+packages/core test:    Start at  01:55:33
+packages/core test:    Duration  2.08s (transform 3.56s, setup 0ms, collect 20.18s, tests 1.07s, environment 2ms, prepare 3.19s)
+packages/core test: Failed
+[REDACTED_HOME]/Projects/StoryMapper/packages/core:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/core@0.1.0 test: `vitest run --passWithNoTests`
+Exit status 1
+apps/web test:  ✓ src/components/Dialog.test.ts (13 tests) 302ms

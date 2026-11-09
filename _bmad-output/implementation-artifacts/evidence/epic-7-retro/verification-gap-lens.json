@@ -1,0 +1,25 @@
+{
+  "lens": "verification-gap",
+  "reviewed_range": "e8bd5873acb2be7ecb138667f7165fe36659f46d..b2f2e967cc45a0c948ad3c2bb7378efb35eaf3e3",
+  "scope": {
+    "checked": "Targeted source tracing and test inspection for ticket composer/Connect handoff, reviewed push/recovery, credential resolver isolation, and provider-extension shared consumers. No tests or live credential/provider calls were executed by this reviewer.",
+    "limits": "This is a narrowed verification-gap review, not exhaustive whole-epic coverage certification. Repository-wide symbol/control searches supported the specific composer handoff finding. No claim that the full journey lacks component or server coverage.",
+    "provider_extension_observation": "Read provider-extension.test.ts: it exercises real shared import/conflict/execution/recovery/copy/Restore/archive paths with explicit CLI/file/fetch guards. The checked extension coverage is not limited to fake helper assertions."
+  },
+  "findings": [
+    {
+      "location": "apps/web/src/features/story-map/components/TicketCardComposer.tsx:60",
+      "trigger_condition": "Successful guided Connect returns a newly saved connection while the ticket composer already has another connection selected.",
+      "guard_snippet": "Complete Connect from the mounted ticket composer, assert its selected connection becomes the returned connection, then assert lookup and linked creation use that connection while preserving the authored draft and placement.",
+      "potential_consequence": "Removing flow.setConnectionId(connection.id) from this callback would leave the composer targeting its previous repository after a successful Connect. The checked tests would still pass: ticket creation begins with an existing connection, its shared-dialog test only cancels, and successful Connect adoption is asserted through ConnectionsPanel. This is missing verification evidence, not an observed implementation defect.",
+      "gap_shape": "regression-gap",
+      "consumer": "TicketCardComposer's successful Connect callback at apps/web/src/features/story-map/components/TicketCardComposer.tsx:60, consumed by selectedId and findTicket in apps/web/src/features/story-map/components/useTicketCardComposer.ts:17 and :48.",
+      "evidence": "Read ticket-creation.test.tsx, including its existing-connection setup at :36, linked-creation test at :42, and Connect cancellation test at :138; read GitHubConnectDialog.test.tsx successful cache adoption and panel selection tests at :72 and :97. Repository searches by TicketCardComposer/useTicketCardComposer and visible ticket controls located no additional successful composer-Connect test. Scope was narrowed to this handoff; no claim that the whole Connect/import/sync journey lacks component or server coverage. Separately inspected provider-extension.test.ts: its real shared import/conflict/execution/recovery/copy/Restore/archive exercises and explicit CLI/file/fetch guards do protect those tested boundaries."
+    }
+  ],
+  "subsequent_parent_observation": {
+    "attribution": "Reported by the parent reviewer after this independent finding was completed; not independently executed by this lens reviewer.",
+    "result": "Parent manually verified successful Connect -> retained draft/new selected connection -> lookup42 -> keep draft -> create linked MVP Story in Chrome, using a disposable database and fake provider.",
+    "interpretation": "This confirms the observed runtime handoff in that manual fixture. The finding remains a missing automated regression assertion, not an observed runtime defect or a claim that the manual journey failed."
+  }
+}

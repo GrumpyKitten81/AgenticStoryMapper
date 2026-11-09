@@ -1,0 +1,106 @@
+{
+  "recordedAt": "2026-10-14T18:33:32.638737+00:00",
+  "sourceRevision": "fecba85636b8abeab6542f8b96d8b63aa9ba77ff",
+  "verifiedSourceFiles": 725,
+  "database": "/tmp/story-5-1-fresh-browser.lsm/storymapper.sqlite",
+  "cycleMessage": "Dependency cycle: LSM-1 -> LSM-3 -> LSM-2 -> LSM-1.",
+  "cycleRejectedWithoutCardOrEdgeMutation": true,
+  "cards": [
+    {
+      "id": "d6ff3573-8b9e-4c96-929e-472b8dbfaa9f",
+      "key": "LSM-1",
+      "title": "Understand product requirements",
+      "version": 1
+    },
+    {
+      "id": "748ab492-6b59-4f5f-8333-dde28847f7e2",
+      "key": "LSM-2",
+      "title": "Import source document",
+      "version": 2
+    },
+    {
+      "id": "bbf445bd-127c-47d7-9ef2-258f4b11b88d",
+      "key": "LSM-3",
+      "title": "Concurrent pending baseline",
+      "version": 22
+    }
+  ],
+  "edges": [
+    {
+      "card_id": "748ab492-6b59-4f5f-8333-dde28847f7e2",
+      "prerequisite_card_id": "d6ff3573-8b9e-4c96-929e-472b8dbfaa9f"
+    },
+    {
+      "card_id": "bbf445bd-127c-47d7-9ef2-258f4b11b88d",
+      "prerequisite_card_id": "748ab492-6b59-4f5f-8333-dde28847f7e2"
+    }
+  ],
+  "performanceCards": 1000,
+  "finalBrowserMeasurements": [
+    {
+      "event": "filter",
+      "isTrusted": true,
+      "value": "Performanc",
+      "elapsedMs": 33,
+      "cards": 1000
+    },
+    {
+      "event": "filter",
+      "isTrusted": true,
+      "value": "Performance Sto",
+      "elapsedMs": 39,
+      "cards": 1000
+    },
+    {
+      "event": "filter",
+      "isTrusted": true,
+      "value": "Performance Story",
+      "elapsedMs": 35,
+      "cards": 1000
+    },
+    {
+      "event": "filter",
+      "isTrusted": true,
+      "value": "Performance Story 000",
+      "elapsedMs": 12,
+      "cards": 3
+    },
+    {
+      "event": "filter",
+      "isTrusted": true,
+      "value": "",
+      "elapsedMs": 346,
+      "cards": 1000
+    },
+    {
+      "event": "open-card",
+      "isTrusted": true,
+      "elapsedMs": 214
+    }
+  ],
+  "filterResetBoundMs": 1000,
+  "nominalCardOpenBoundMs": 100,
+  "filterResetPassed": true,
+  "cardOpenNominalPassed": false,
+  "cardOpenExceptionAuthorized": true,
+  "observerSha256": "7dac6685cb65761670410810b6ecfd8fc58888984bf7188801c9620f1fb0c42a",
+  "testedBundleSha256": "9562001ff3d2be5a8bc62cb4f1844ebec529897da0bb56f8e5656637339b4a91",
+  "nativeScreenshotSha256": "d86a813b19b318a3b822bc474ef408c6f01ac6716205f8e4a8cf2bbd6e96e5b4",
+  "screenshotLocalOnly": true,
+  "finalFilterResetMs": 346,
+  "finalFilteredResultMs": 12,
+  "finalCardOpenMs": 214,
+  "finalCardOpenSamples": 1,
+  "cleanup": {
+    "ownedSafariTabClosed": true,
+    "loopbackListenersStopped": [
+      44323,
+      44324
+    ]
+  },
+  "maintainerDecision": {
+    "date": "2026-10-14",
+    "text": "Funktional abschlie\u00dfen, Optimierung sp\u00e4ter (empfohlen)",
+    "scope": "Story 5.1 functional completion accepting the observed 214 ms Card-opening measurement; nominal 100 ms remains a failed target, optimization later; no global waiver"
+  }
+}

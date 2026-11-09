@@ -1,0 +1,103 @@
+{
+  "root": "/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-epic6-remediation-x89c6sxt",
+  "db": "/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/storymapper-epic6-remediation-x89c6sxt/sample.lsm/storymapper.sqlite",
+  "port": 44378,
+  "projectId": "a524dfcf-fb74-42d8-ba3f-d76b998b15ec",
+  "mapId": "cdc1b5d4-46fe-45d1-bd07-ca477ba7223c",
+  "point": {
+    "fileName": "3d980d115e32918b265f2d232583b64a20ed3c1f4bcaf6a60f3226ffd7a02885__manual__2026-10-17T23_10_46_439Z__00000001__e0e1a457541744e2a4dcee898ca80d98__401408__dev-sha256-b7159dad90677397acb9380520012a13189b5b369f64cc1c6f8032d73652c8b0.sqlite",
+    "class": "manual",
+    "createdAt": "2026-10-17T23:10:46.439Z",
+    "sizeBytes": 401408,
+    "schemaVersion": "dev-sha256-b7159dad90677397acb9380520012a13189b5b369f64cc1c6f8032d73652c8b0",
+    "scope": "local-database"
+  },
+  "cardsBefore": [
+    {
+      "id": "f4aacba8-d4db-46e4-b58f-5e0890da2f7b",
+      "key": "LSM-1",
+      "version": 1
+    },
+    {
+      "id": "70e8e9ea-8580-48e7-bda2-b66a13e8f6dd",
+      "key": "LSM-3",
+      "version": 1
+    },
+    {
+      "id": "160299d3-de96-4efc-ade9-3123dcb5494d",
+      "key": "LSM-2",
+      "version": 1
+    }
+  ],
+  "beforeTrackingRestore": [
+    {
+      "key": "LSM-1",
+      "version": 1,
+      "status": "todo"
+    },
+    {
+      "key": "LSM-3",
+      "version": 2,
+      "status": "active"
+    },
+    {
+      "key": "LSM-2",
+      "version": 1,
+      "status": "todo"
+    }
+  ],
+  "trackingRestoreEpoch": "0e79f904-9393-4c3e-81f9-dd919be74377",
+  "afterTrackingRestoreEdit": [
+    {
+      "key": "LSM-1",
+      "version": 1,
+      "status": "todo"
+    },
+    {
+      "key": "LSM-3",
+      "version": 2,
+      "status": "done"
+    },
+    {
+      "key": "LSM-2",
+      "version": 1,
+      "status": "todo"
+    }
+  ],
+  "observations": [
+    "Standard filter now3matches/3cards vs previous0/3",
+    "Actual mounted Tracking edit todo/v1 -> active/v2; real human Restore returns todo/v1 and live UI adopted without reload; subsequent UI status edit persisted done/v2",
+    "Native pointer targeting on below-fold Discovery was unreliable; no claim of completed sticky-focus or full keyboard matrix",
+    "Mixed Step/Note UI Move chose Position1 (stored0); HTTP readback after server close/reopen confirms LSM-2/v3/position0, sibling Step1 and Note4 preserved."
+  ],
+  "moveTarget": "160299d3-de96-4efc-ade9-3123dcb5494d",
+  "moveSetupVersion": 2,
+  "moveReadback": [
+    {
+      "key": "LSM-2",
+      "level": "step",
+      "title": "Import source document",
+      "position": 0,
+      "version": 3
+    },
+    {
+      "key": "LSM-4",
+      "level": "step",
+      "title": "Earlier same role",
+      "position": 1,
+      "version": 1
+    },
+    {
+      "key": "LSM-5",
+      "level": "note",
+      "title": "Other role",
+      "position": 4,
+      "version": 1
+    }
+  ],
+  "reopenedMoveReadback": {
+    "key": "LSM-2",
+    "version": 3,
+    "position": 0
+  }
+}

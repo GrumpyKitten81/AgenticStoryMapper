@@ -1,0 +1,21 @@
+
+> storymapper@0.1.0 typecheck [REDACTED_HOME]/Projects/StoryMapper
+> corepack pnpm -r typecheck
+
+Scope: 8 of 9 workspace projects
+packages/contracts typecheck$ tsc -p tsconfig.json --noEmit
+packages/contracts typecheck: Done
+apps/web typecheck$ tsc -p tsconfig.json --noEmit
+packages/core typecheck$ tsc -p tsconfig.json --noEmit
+packages/importers typecheck$ tsc -p tsconfig.json --noEmit
+packages/github typecheck$ tsc -p tsconfig.json --noEmit
+packages/importers typecheck: Done
+packages/mcp typecheck$ tsc -p tsconfig.json --noEmit
+packages/github typecheck: Done
+packages/mcp typecheck: Done
+packages/core typecheck: Done
+apps/web typecheck: Done
+packages/db typecheck$ tsc -p tsconfig.json --noEmit
+packages/db typecheck: Done
+apps/server typecheck$ tsc -p tsconfig.json --noEmit
+apps/server typecheck: Done

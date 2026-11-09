@@ -1,0 +1,3622 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+
+ ❯ src/changesets/resolver-write-collections.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/changesets/resolver-write-collections.test.ts [ src/changesets/resolver-write-collections.test.ts ]
+ZodError: [
+  {
+    "code": "invalid_union",
+    "errors": [
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmap"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmap\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmap"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmap\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "At least one field is required."
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmapColumn"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmapColumn\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "roadmapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmapSwimlane"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmapSwimlane\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "roadmapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmapCard"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmapCard\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "roadmapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "columnId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "title"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "roadmapReference"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"roadmapReference\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "roadmapCardId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "release",
+            "card"
+          ],
+          "path": [
+            "after",
+            "targetType"
+          ],
+          "message": "Invalid option: expected one of \"release\"|\"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "targetId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "annotation"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"annotation\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "annotation"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"annotation\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "At least one field is required."
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "annotation"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"annotation\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "workflowStatus"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"workflowStatus\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "todo",
+            "active",
+            "done"
+          ],
+          "path": [
+            "after",
+            "group"
+          ],
+          "message": "Invalid option: expected one of \"todo\"|\"active\"|\"done\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "workflowStatus"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"workflowStatus\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "At least one field is required."
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "workflowStatus"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"workflowStatus\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyTemplate"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyTemplate\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyTemplate"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyTemplate\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "At least one field is required."
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyTemplate"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyTemplate\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "productContext"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"productContext\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "attachment"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"attachment\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "cardId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "label"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "filePath"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "attachment"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"attachment\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "park"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"park\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "reassign-left",
+            "reassign-right",
+            "unassign"
+          ],
+          "path": [
+            "after",
+            "childStrategy"
+          ],
+          "message": "Invalid option: expected one of \"reassign-left\"|\"reassign-right\"|\"unassign\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "unpark"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unpark\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "archive"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"archive\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "unarchive"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unarchive\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "status"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "reassign-left",
+            "reassign-right",
+            "unassign"
+          ],
+          "path": [
+            "after",
+            "strategy"
+          ],
+          "message": "Invalid option: expected one of \"reassign-left\"|\"reassign-right\"|\"unassign\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "persona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"persona\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "release"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"release\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyMap"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyMap\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardDependency"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardDependency\""
+        },
+        {
+          "code": "invalid_union",
+          "errors": [
+            [
+              {
+                "code": "invalid_type",
+                "expected": "object",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ],
+            [
+              {
+                "expected": "object",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ]
+          ],
+          "path": [
+            "after",
+            "cardId"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "code": "invalid_union",
+          "errors": [
+            [
+              {
+                "code": "invalid_type",
+                "expected": "object",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ],
+            [
+              {
+                "expected": "object",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ]
+          ],
+          "path": [
+            "after",
+            "prerequisiteCardId"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "unset"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unset\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardDependency"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardDependency\""
+        },
+        {
+          "code": "invalid_union",
+          "errors": [
+            [
+              {
+                "code": "invalid_type",
+                "expected": "object",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ],
+            [
+              {
+                "expected": "object",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ]
+          ],
+          "path": [
+            "after",
+            "cardId"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "code": "invalid_union",
+          "errors": [
+            [
+              {
+                "code": "invalid_type",
+                "expected": "object",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ],
+            [
+              {
+                "expected": "object",
+                "code": "invalid_type",
+                "path": [],
+                "message": "Invalid input: expected object, received undefined"
+              }
+            ]
+          ],
+          "path": [
+            "after",
+            "prerequisiteCardId"
+          ],
+          "message": "Invalid input"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardPersona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardPersona\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "cardId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "personaId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "unset"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unset\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardPersona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardPersona\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "cardId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "personaId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardAnnotation"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardAnnotation\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "cardId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "annotationId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "unset"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unset\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "cardAnnotation"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"cardAnnotation\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "cardId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "annotationId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "githubLink"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"githubLink\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "repo"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "url"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "githubLink"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"githubLink\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "At least one field is required."
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "githubLink"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"githubLink\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "delete"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"delete\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "bulk"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"bulk\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "array",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "cards"
+          ],
+          "message": "Invalid input: expected array, received undefined"
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "patch"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "acknowledge"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"acknowledge\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "sourcePlan"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"sourcePlan\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "baselineId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "number",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "baselineVersion"
+          ],
+          "message": "Invalid input: expected number, received undefined"
+        },
+        {
+          "expected": "array",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "entries"
+          ],
+          "message": "Invalid input: expected array, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "remoteWorkItemLink"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"remoteWorkItemLink\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "connectionId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "github"
+          ],
+          "path": [
+            "after",
+            "provider"
+          ],
+          "message": "Invalid input: expected \"github\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "remoteId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "url"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "synced",
+            "unsynced",
+            "conflict",
+            "stale",
+            "remote_deleted",
+            "local_deleted"
+          ],
+          "path": [
+            "after",
+            "syncState"
+          ],
+          "message": "Invalid option: expected one of \"synced\"|\"unsynced\"|\"conflict\"|\"stale\"|\"remote_deleted\"|\"local_deleted\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "syncRun"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"syncRun\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "connectionId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "github"
+          ],
+          "path": [
+            "after",
+            "provider"
+          ],
+          "message": "Invalid input: expected \"github\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "push",
+            "import",
+            "sync"
+          ],
+          "path": [
+            "after",
+            "mode"
+          ],
+          "message": "Invalid option: expected one of \"push\"|\"import\"|\"sync\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "planned",
+            "applied",
+            "failed"
+          ],
+          "path": [
+            "after",
+            "status"
+          ],
+          "message": "Invalid option: expected one of \"planned\"|\"applied\"|\"failed\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "syncConflict"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"syncConflict\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "syncRunId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "connectionId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "title",
+            "description",
+            "status",
+            "milestone"
+          ],
+          "path": [
+            "after",
+            "field"
+          ],
+          "message": "Invalid option: expected one of \"title\"|\"description\"|\"status\"|\"milestone\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "resolve"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"resolve\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "syncConflict"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"syncConflict\""
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "before"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "local",
+            "remote"
+          ],
+          "path": [
+            "after",
+            "resolution"
+          ],
+          "message": "Invalid option: expected one of \"local\"|\"remote\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "import"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"import\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "sourceDocument"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"sourceDocument\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "title"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "markdown",
+            "txt"
+          ],
+          "path": [
+            "after",
+            "type"
+          ],
+          "message": "Invalid option: expected one of \"markdown\"|\"txt\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "fileHash"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyMap"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyMap\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyMap"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyMap\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "Invalid input"
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "title"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "activity",
+            "step",
+            "story",
+            "note"
+          ],
+          "path": [
+            "after",
+            "level"
+          ],
+          "message": "Invalid option: expected one of \"activity\"|\"step\"|\"story\"|\"note\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "Invalid input"
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "move"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"move\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "parentId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "number",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "position"
+          ],
+          "message": "Invalid input: expected number, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "release"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"release\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "release"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"release\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "Invalid input"
+        }
+      ],
+      [
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "persona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"persona\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "update"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"update\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "persona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"persona\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        },
+        {
+          "code": "custom",
+          "path": [
+            "after"
+          ],
+          "message": "Invalid input"
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "link"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"link\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "sourceLink"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"sourceLink\""
+        },
+        {
+          "code": "invalid_union",
+          "errors": [
+            [
+              {
+                "code": "invalid_value",
+                "values": [
+                  "chunk"
+                ],
+                "path": [
+                  "kind"
+                ],
+                "message": "Invalid input: expected \"chunk\""
+              },
+              {
+                "expected": "string",
+                "code": "invalid_type",
+                "path": [
+                  "cardId"
+                ],
+                "message": "Invalid input: expected string, received undefined"
+              },
+              {
+                "expected": "string",
+                "code": "invalid_type",
+                "path": [
+                  "chunkId"
+                ],
+                "message": "Invalid input: expected string, received undefined"
+              },
+              {
+                "code": "unrecognized_keys",
+                "keys": [
+                  "entityType",
+                  "entityId",
+                  "system",
+                  "externalId",
+                  "scopeId"
+                ],
+                "path": [],
+                "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+              }
+            ],
+            [
+              {
+                "code": "invalid_value",
+                "values": [
+                  "chunk"
+                ],
+                "path": [
+                  "kind"
+                ],
+                "message": "Invalid input: expected \"chunk\""
+              },
+              {
+                "expected": "string",
+                "code": "invalid_type",
+                "path": [
+                  "cardId"
+                ],
+                "message": "Invalid input: expected string, received undefined"
+              },
+              {
+                "code": "invalid_type",
+                "expected": "object",
+                "path": [
+                  "chunk"
+                ],
+                "message": "Invalid input: expected object, received undefined"
+              },
+              {
+                "code": "unrecognized_keys",
+                "keys": [
+                  "entityType",
+                  "entityId",
+                  "system",
+                  "externalId",
+                  "scopeId"
+                ],
+                "path": [],
+                "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+              }
+            ],
+            [
+              {
+                "code": "invalid_value",
+                "values": [
+                  "github"
+                ],
+                "path": [
+                  "kind"
+                ],
+                "message": "Invalid input: expected \"github\""
+              },
+              {
+                "expected": "string",
+                "code": "invalid_type",
+                "path": [
+                  "cardId"
+                ],
+                "message": "Invalid input: expected string, received undefined"
+              },
+              {
+                "expected": "string",
+                "code": "invalid_type",
+                "path": [
+                  "githubLinkId"
+                ],
+                "message": "Invalid input: expected string, received undefined"
+              },
+              {
+                "code": "unrecognized_keys",
+                "keys": [
+                  "entityType",
+                  "entityId",
+                  "system",
+                  "externalId",
+                  "scopeId"
+                ],
+                "path": [],
+                "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+              }
+            ],
+            [
+              {
+                "code": "invalid_value",
+                "values": [
+                  "note"
+                ],
+                "path": [
+                  "kind"
+                ],
+                "message": "Invalid input: expected \"note\""
+              },
+              {
+                "expected": "string",
+                "code": "invalid_type",
+                "path": [
+                  "cardId"
+                ],
+                "message": "Invalid input: expected string, received undefined"
+              },
+              {
+                "expected": "string",
+                "code": "invalid_type",
+                "path": [
+                  "note"
+                ],
+                "message": "Invalid input: expected string, received undefined"
+              },
+              {
+                "code": "unrecognized_keys",
+                "keys": [
+                  "entityType",
+                  "entityId",
+                  "system",
+                  "externalId",
+                  "scopeId"
+                ],
+                "path": [],
+                "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+              }
+            ]
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Invalid input"
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "unlink"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"unlink\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "sourceLink"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"sourceLink\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "cardId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "chunk",
+            "note",
+            "github"
+          ],
+          "path": [
+            "after",
+            "kind"
+          ],
+          "message": "Invalid option: expected one of \"chunk\"|\"note\"|\"github\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "id"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "selector"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "upsert"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"upsert\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "card"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"card\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "title"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "activity",
+            "step",
+            "story",
+            "note"
+          ],
+          "path": [
+            "after",
+            "level"
+          ],
+          "message": "Invalid option: expected one of \"activity\"|\"step\"|\"story\"|\"note\""
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "selector"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "upsert"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"upsert\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "release"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"release\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "storyMapId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "selector"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "upsert"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"upsert\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "persona"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"persona\""
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "name"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "projectId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "storyMapCopy"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"storyMapCopy\""
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "input"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "expected": "record",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "expected"
+          ],
+          "message": "Invalid input: expected record, received undefined"
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "preview"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ],
+      [
+        {
+          "expected": "string",
+          "code": "invalid_type",
+          "path": [
+            "entityId"
+          ],
+          "message": "Invalid input: expected string, received undefined"
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "create"
+          ],
+          "path": [
+            "op"
+          ],
+          "message": "Invalid input: expected \"create\""
+        },
+        {
+          "code": "invalid_value",
+          "values": [
+            "githubBoardImport"
+          ],
+          "path": [
+            "entity"
+          ],
+          "message": "Invalid input: expected \"githubBoardImport\""
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "input"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "expected": "record",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "expected"
+          ],
+          "message": "Invalid input: expected record, received undefined"
+        },
+        {
+          "expected": "object",
+          "code": "invalid_type",
+          "path": [
+            "after",
+            "preview"
+          ],
+          "message": "Invalid input: expected object, received undefined"
+        },
+        {
+          "code": "unrecognized_keys",
+          "keys": [
+            "entityType",
+            "entityId",
+            "system",
+            "externalId",
+            "scopeId"
+          ],
+          "path": [
+            "after"
+          ],
+          "message": "Unrecognized keys: \"entityType\", \"entityId\", \"system\", \"externalId\", \"scopeId\""
+        }
+      ]
+    ],
+    "path": [],
+    "message": "Invalid input"
+  }
+]
+ ❯ op src/changesets/fixtures/remaining-operation-resolution-fixture.ts:6:77
+      4| export const createdAt = "2026-10-12T12:00:00.000Z";
+      5| export const chunkId = "a".repeat(64);
+      6| export const op = (value: object): ChangeOperation => changeOperationS…
+       |                                                                             ^
+      7| 
+      8| export function snapshot(): OperationSnapshot {
+ ❯ acknowledgmentCase src/changesets/resolver-write-collections.test.ts:71:16
+ ❯ extraCases src/changesets/resolver-write-collections.test.ts:51:21
+ ❯ cases src/changesets/resolver-write-collections.test.ts:16:22
+ ❯ src/changesets/resolver-write-collections.test.ts:82:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  10:53:54
+   Duration  525ms (transform 194ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 29ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/packages/core:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/changesets/resolver-write-collections.test.ts

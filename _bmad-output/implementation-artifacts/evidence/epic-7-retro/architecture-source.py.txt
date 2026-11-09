@@ -1,0 +1,64 @@
+import subprocess,json,re,posixpath,collections,sys
+sys.setrecursionlimit(10000)
+A='e8bd587'; B='b2f2e96'
+def prod(p):
+ return p.startswith(('apps/','packages/','scripts/','tools/')) and bool(re.search(r'\.(?:tsx?|[cm]?js|py)$',p)) and not re.search(r'(?:^|/)(?:__tests__|fixtures|__fixtures__)(?:/|$)|(?:\.test\.|\.spec\.|-fixture\.|-fixtures\.|(?:^|/)fixture[s]?\.)|(?:^|/)(?:vitest|vite|drizzle)\.config\.',p)
+def blobs(ref):
+ rows=[]
+ for line in subprocess.check_output(['git','ls-tree','-r',ref],text=True).splitlines():
+  meta,p=line.split('\t',1)
+  if prod(p):rows.append((meta.split()[2],p))
+ data=subprocess.check_output(['git','cat-file','--batch'],input=('\n'.join(x[0] for x in rows)+'\n').encode()); pos=0; out={}
+ for sha,p in rows:
+  end=data.index(b'\n',pos); size=int(data[pos:end].split()[-1]); pos=end+1; out[p]=data[pos:pos+size].decode(errors='replace');pos+=size+1
+ return out
+pat=re.compile(r'(?:\b(?:import|export)\s+(?:type\s+)?(?:[^;\n]*?\s+from\s*)?|\bimport\s*\(|\brequire\s*\()\s*[\'\"]([^\'\"]+)[\'\"]')
+def unit(p): return '/'.join(p.split('/')[:2]) if p.startswith(('apps/','packages/')) else p.split('/')[0]
+def graph(src,runtime_only=False):
+ edges=set(); extern=[]
+ ast=json.loads(subprocess.check_output(['node','-e',r'''const ts=require('typescript');let data='';process.stdin.on('data',x=>data+=x);process.stdin.on('end',()=>{let out={};for(const [p,s] of Object.entries(JSON.parse(data))){const sf=ts.createSourceFile(p,s,ts.ScriptTarget.Latest,true,p.endsWith('tsx')?ts.ScriptKind.TSX:ts.ScriptKind.TS),rows=[];function walk(n){if((ts.isImportDeclaration(n)||ts.isExportDeclaration(n))&&n.moduleSpecifier&&ts.isStringLiteral(n.moduleSpecifier)){const c=n.importClause;let typeOnly=n.isTypeOnly||c?.isTypeOnly||false;if(c?.namedBindings&&ts.isNamedImports(c.namedBindings)&&!c.name)typeOnly=typeOnly||c.namedBindings.elements.length>0&&c.namedBindings.elements.every(e=>e.isTypeOnly);rows.push({imp:n.moduleSpecifier.text,raw:s.slice(n.getStart(sf),n.end),line:sf.getLineAndCharacterOfPosition(n.getStart(sf)).line+1,type_only:typeOnly});}else if(ts.isCallExpression(n)&&n.arguments.length&&ts.isStringLiteral(n.arguments[0])&&(n.expression.kind===ts.SyntaxKind.ImportKeyword||n.expression.getText(sf)==='require'))rows.push({imp:n.arguments[0].text,raw:s.slice(n.getStart(sf),n.end),line:sf.getLineAndCharacterOfPosition(n.getStart(sf)).line+1,type_only:false});ts.forEachChild(n,walk);}walk(sf);out[p]=rows;}process.stdout.write(JSON.stringify(out));});'''],input=json.dumps(src).encode()))
+ for p,s in src.items():
+  for m in ast[p]:
+   imp=m['imp']; base=None
+   if runtime_only and m['type_only']:continue
+   if imp.startswith('.') :base=posixpath.normpath(posixpath.join(posixpath.dirname(p),imp))
+   elif imp.startswith('@storymapper/'):
+    parts=imp[len('@storymapper/'):].split('/'); pkg=parts[0]; root=('apps/'+pkg if pkg in ['web','server'] else 'packages/'+pkg)+'/src';base=('apps/web/src/ui-strings/index' if pkg=='ui-strings' else root+('/'+'/'.join(parts[1:]) if len(parts)>1 else '/index'))
+   if base:
+    for cand in [base,base+'.ts',base+'.tsx',base+'.mjs',base+'.js',base+'/index.ts',re.sub(r'\.js$','.ts',base)]:
+     if cand in src: edges.add((p,cand));break
+   extern.append((p,imp,m['raw'],m['line'],m['type_only']))
+ return edges,extern
+def scc(src,edges):
+ g=collections.defaultdict(list)
+ for a,b in edges:g[a].append(b)
+ ind={};low={};st=[];on=set();ans=[]
+ def visit(v):
+  ind[v]=low[v]=len(ind);st.append(v);on.add(v)
+  for w in g[v]:
+   if w not in ind: visit(w);low[v]=min(low[v],low[w])
+   elif w in on:low[v]=min(low[v],ind[w])
+  if low[v]==ind[v]:
+   group=[]
+   while True:
+    w=st.pop();on.remove(w);group.append(w)
+    if w==v:break
+   if len(group)>1:ans.append(sorted(group))
+ for p in src:
+  if p not in ind:visit(p)
+ return sorted(ans,key=lambda x:(-len(x),x))
+a=blobs(A);b=blobs(B);ea,ia=graph(a);eb,ib=graph(b)
+changed={p for p in a.keys()|b.keys() if a.get(p)!=b.get(p)}
+size=lambda src: {'files':len(src),'lines':sum(len(s.splitlines()) for s in src.values()),'bytes':sum(len(s.encode()) for s in src.values())}
+units=sorted(set(map(unit,a))|set(map(unit,b)))
+pairs=lambda edges:collections.Counter((unit(a),unit(b)) for a,b in edges if unit(a)!=unit(b))
+pa=pairs(ea);pb=pairs(eb)
+newimports=[x for x in ib if (x[0],x[1]) not in {(y[0],y[1]) for y in ia}]
+runtime=lambda e,i: {edge for edge in e if not any(p==edge[0] and typ and ((imp.startswith('.') and posixpath.normpath(posixpath.join(posixpath.dirname(p),imp)) in [edge[1], re.sub(r'\.(?:tsx?|mjs|js)$','',edge[1])])) or (p==edge[0] and typ and imp.startswith('@storymapper/') and edge in e and False) for p,imp,raw,n,typ in i)}
+res={'method':'Tracked production code suffixes ts/tsx/js/mjs/cjs/py; excludes tests/specs/fixture paths and Vite/Vitest/Drizzle config; static import/export/require regex incl type-only; resolves relative and StoryMapper aliases; line counts include blanks/comments. Not dynamic execution analysis.', 'before':size(a),'after':size(b),'changed_production_files':len(changed),'added_files':len(b.keys()-a.keys()),'deleted_files':len(a.keys()-b.keys()),'units':{u:{'before':size({p:s for p,s in a.items() if unit(p)==u}),'after':size({p:s for p,s in b.items() if unit(p)==u})} for u in units},'largest_changed_after':sorted([{'path':p,'before_lines':len(a.get(p,'').splitlines()),'after_lines':len(b.get(p,'').splitlines()),'net':len(b.get(p,'').splitlines())-len(a.get(p,'').splitlines())} for p in changed if p in b],key=lambda x:-x['after_lines'])[:20],'largest_growth':sorted([{'path':p,'net':len(b.get(p,'').splitlines())-len(a.get(p,'').splitlines())} for p in changed if p in b],key=lambda x:-x['net'])[:20],'file_edges':{'before':len(ea),'after':len(eb),'added':len(eb-ea),'removed':len(ea-eb)},'workspace_pair_delta':[{'from':u,'to':v,'before':pa[u,v],'after':pb[u,v]} for u,v in sorted(pa.keys()|pb.keys()) if pa[u,v]!=pb[u,v]],'scc_before':scc(a,ea),'scc_after':scc(b,eb),'new_workspace_imports':[{'path':p,'import':i,'line':n,'type_only':typ} for p,i,raw,n,typ in newimports if i.startswith('@storymapper/')], 'new_forbidden_candidates':[{'path':p,'import':i,'line':n} for p,i,raw,n,typ in newimports if (p.startswith('packages/core/') and (i.startswith('node:') or i.startswith('@storymapper/') and not i.startswith(('@storymapper/core','@storymapper/contracts')))) or (not p.startswith('packages/db/') and i.startswith(('drizzle-orm','better-sqlite3'))) ]}
+ra,_=graph(a,True);rb,_=graph(b,True)
+res['runtime_scc_before']=scc(a,ra);res['runtime_scc_after']=scc(b,rb)
+res['runtime_file_edges']={'before':len(ra),'after':len(rb),'added':len(rb-ra),'removed':len(ra-rb)}
+res['method']=res['method'].replace('regex incl type-only','TypeScript AST incl type-only; runtime SCC excludes explicit type-only imports')
+json.dump(res,open('/private/tmp/retro7-architecture.json','w'),indent=2)
+print(json.dumps({k:v for k,v in res.items() if k not in ('scc_before','scc_after','new_workspace_imports')},indent=2));print('SCC sizes', [len(s) for s in res['scc_before']], [len(s) for s in res['scc_after']]);print('new SCC', [s for s in res['scc_after'] if s not in res['scc_before']])

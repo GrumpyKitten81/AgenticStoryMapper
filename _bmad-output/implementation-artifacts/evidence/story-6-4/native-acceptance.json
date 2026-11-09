@@ -1,0 +1,25 @@
+{
+  "surface": "Safari native AX and screenshot against isolated built UI at44364",
+  "observed": [
+    "Named Select key/title checkboxes",
+    "Selected Story and Note; search hid all results and announced2selected/0visible/2hidden",
+    "Delete dialog listed both hidden Cards; Cancel focused board and left persisted snapshot unchanged",
+    "Selected GitHub scope listed2selected/1eligible with Note excluded; GitHubOff disabled Plan/Push",
+    "All ten filters exposed accessible names"
+  ],
+  "discoveredAndRepaired": [
+    "CSS overrode hidden, exposing unrelated GitHub operations; replaced with conditional rendering and stylesheet-loaded DOM regressions",
+    "Pointer triggers did not focus opener; callers now focus before opening, tested Cancel/Escape restoration",
+    "Two-column header clipped expanded toolbar; single shrinkable column and auto-fit filter tracks, stylesheet regression"
+  ],
+  "finalNativeRecheck": {
+    "passed": false,
+    "reason": "Safari pressKey and getApp both returned cgWindowNotFound (-10005) after final build; no further native interaction",
+    "ownedTabCleanup": "Cannot close test tab while window unavailable; no other user tab intentionally changed"
+  },
+  "limits": [
+    "No native final-build layout/focus pass",
+    "No full WCAG/screen-reader/zoom/forced-colors acceptance",
+    "No live GitHub write or native planned remote-push acceptance"
+  ]
+}

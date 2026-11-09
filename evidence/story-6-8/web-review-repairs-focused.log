@@ -1,0 +1,18 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests "src/features/customization/CustomizationEditor.test.tsx" "src/app/routes/workspace-navigation.test.tsx" "src/features/story-map/components/card-creation.test.tsx" "src/features/personas/PersonaDetail.test.ts" "src/features/personas/PersonasPanel.test.tsx" "src/features/personas/PersonasPanel.scope.test.tsx"
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/personas/PersonasPanel.scope.test.tsx (1 test) 53ms
+ ✓ src/features/personas/PersonasPanel.test.tsx (1 test) 70ms
+ ✓ src/features/customization/CustomizationEditor.test.tsx (15 tests) 135ms
+ ✓ src/features/personas/PersonaDetail.test.ts (9 tests) 139ms
+ ✓ src/app/routes/workspace-navigation.test.tsx (16 tests) 570ms
+ ✓ src/features/story-map/components/card-creation.test.tsx (17 tests) 722ms
+
+ Test Files  6 passed (6)
+      Tests  59 passed (59)
+   Start at  20:10:35
+   Duration  1.95s (transform 855ms, setup 0ms, collect 2.35s, tests 1.69s, environment 1.27s, prepare 177ms)

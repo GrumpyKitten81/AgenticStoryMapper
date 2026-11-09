@@ -1,0 +1,61 @@
+import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
+import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import { dirname, join } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { gzipSync, gunzipSync } from 'node:zlib';
+
+const root = process.env.RETRO_ROOT;
+const load = name => import(pathToFileURL(join(root, 'scripts', name)).href);
+const { runPublication } = await load('check-publication-audit.mjs');
+const { inspectContent, parsePolicy, textCategories } = await load('check-publication-content.mjs');
+const { inspectTrackedFile } = await load('check-hygiene.mjs');
+const { sourceImports } = await load('check-boundaries.mjs');
+const require = createRequire(join(root, 'package.json'));
+const ts = require('typescript');
+const policyValue = { employerTerms: ['Synthetic Organization'] };
+const policy = parsePolicy(JSON.stringify(policyValue));
+const rows = [];
+
+async function historyProbe(kind) {
+  const baseDirectory = mkdtempSync('/tmp/sm-e8-gate-');
+  const directory = join(baseDirectory, 'repository');
+  mkdirSync(directory);
+  const git = (...args) => execFileSync('git', args, { cwd: directory, stdio: ['pipe', 'pipe', 'pipe'], encoding: 'utf8' }).trim();
+  const write = (path, bytes) => { mkdirSync(dirname(join(directory, path)), { recursive: true }); writeFileSync(join(directory, path), bytes); };
+  try {
+    git('init', '--quiet'); git('config', 'user.name', 'Synthetic Author'); git('config', 'user.email', 'author@example.test');
+    for (const file of ['check-publication.mjs', 'check-publication-audit.mjs', 'check-publication-git.mjs', 'check-publication-content.mjs', 'check-publication-errors.mjs']) {
+      mkdirSync(join(directory, 'scripts'), { recursive: true }); copyFileSync(join(root, 'scripts', file), join(directory, 'scripts', file));
+    }
+    for (const file of ['LICENSE', 'SECURITY.md', 'CODE_OF_CONDUCT.md']) write(file, 'Synthetic fixture declaration.');
+    git('add', '.'); git('commit', '--quiet', '-m', 'Create synthetic fixture');
+    const path = { copied: '.agents/skills/bmad-build/SKILL.md', placeholder: 'local-projects/.gitkeep', json: 'content.json' }[kind];
+    write(path, kind === 'copied' ? 'Generic content.' : kind === 'json' ? JSON.stringify({ path: 'C:\\Users\\private-person\\project' }) : '');
+    git('add', '.'); git('commit', '--quiet', '-m', 'Add publication fixture');
+    if (kind === 'copied') { git('rm', '--quiet', path); git('commit', '--quiet', '-m', 'Remove publication fixture'); }
+    const policyPath = join(baseDirectory, 'policy.json'); writeFileSync(policyPath, JSON.stringify(policyValue));
+    const report = await runPublication({ root: directory, policyPath, scan: true });
+    assert.equal(report.verdict, kind === 'placeholder' ? 'blocked' : 'accepted');
+    rows.push({ probe: { copied: 'committed then deleted copied skill', placeholder: 'allowed placeholder directory only', json: 'JSON-escaped Windows path in tracked current and historical content' }[kind], verdict: report.verdict, categories: report.findings.map(({ category, scope }) => ({ category, scope })) });
+  } finally { rmSync(baseDirectory, { recursive: true, force: true }); }
+}
+await historyProbe('copied');
+await historyProbe('placeholder');
+await historyProbe('json');
+for (const kind of ['DSA', 'ENCRYPTED']) {
+  const bytes = Buffer.from(`-----BEGIN ${kind} PRIVATE KEY-----`);
+  rows.push({ probe: kind + ' header', local: inspectTrackedFile('fixture.txt', bytes.toString('utf8'), []).map(x => x.category), publication: inspectContent(bytes, policy) });
+}
+const header = Buffer.from(['-----BEGIN', 'RSA PRIVATE KEY-----'].join(' '));
+rows.push({ probe: 'UTF16 header', local: inspectTrackedFile('fixture.txt', Buffer.from(header.toString(), 'utf16le').toString('utf8'), []).map(x => x.category), publication: inspectContent(Buffer.from(header.toString(), 'utf16le'), policy) });
+const nested = gzipSync(gzipSync(header));
+rows.push({ probe: 'nested gzip header after one hygiene expansion', local: inspectTrackedFile('fixture.log.gz', gunzipSync(nested).toString('utf8'), []).map(x => x.category), publication: inspectContent(nested, policy) });
+rows.push({ probe: 'JSON-escaped Windows path', rawCategories: textCategories('C:\\Users\\private-person\\project', policy), serializedCategories: textCategories(JSON.stringify({ path: 'C:\\Users\\private-person\\project' }), policy) });
+rows.push({ probe: 'private IPv4 URL', categories: textCategories('http://192.168.1.1/service', policy) });
+for (const [name, text] of [['import equals', 'import x = require("@storymapper/core");'], ['all named imports type-only', 'import { type Card } from "@storymapper/contracts";']]) {
+  const source = ts.createSourceFile('fixture.ts', text, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
+  rows.push({ probe: name, classifications: sourceImports(source).map(x => x.condition) });
+}
+process.stdout.write(JSON.stringify({ productRevision: process.env.RETRO_REVISION, runtime: process.version, policy: 'same synthetic policy as existing publication fixtures; no real private input', observations: rows }, null, 2) + '\n');

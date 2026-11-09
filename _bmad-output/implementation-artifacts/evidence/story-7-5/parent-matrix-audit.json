@@ -1,0 +1,109 @@
+{
+  "all_eight_rows_covered": true,
+  "tests_enabled": true,
+  "all_covering_files_ran_and_passed": true,
+  "workspace_tests_passed": 2833,
+  "matrix": [
+    {
+      "row": "Hierarchical import",
+      "tests": [
+        "github-command-regressions.test.ts: prepares one executable Unscheduled import for $actorType with explicit duplicate outcomes",
+        "work-item-sync.test.ts: imports child-first Agent hierarchy and reuses the imported fallback activity",
+        "github-command-sdk.test.ts: keeps protected %s incoming import separate from human approval and Apply"
+      ]
+    },
+    {
+      "row": "Duplicate import",
+      "tests": [
+        "github-command-regressions.test.ts: prepares one executable Unscheduled import for $actorType with explicit duplicate outcomes",
+        "github-command-sdk.test.ts: deduplicates one Issue across two connections and refuses another Card owner through HTTP and SDK",
+        "github-command-regressions.test.ts: does not parent Agent imports under a same-numbered Issue of another repository"
+      ]
+    },
+    {
+      "row": "First Release sync",
+      "tests": [
+        "github-command-regressions.test.ts: prepares one executable Unscheduled import for $actorType with explicit duplicate outcomes",
+        "github-command-regressions.test.ts: imports iteration sources Unscheduled and reviews their inbound-only Release assignment",
+        "canonical-github-identity.test.ts: persists distinct acknowledged and observed sync fields through executor, populated reopen and Restore, while redacting portable copies",
+        "github-push-transports.test.ts: reads complete %s Issue details with iteration, Milestone dates and paginated labels",
+        "github-command-regressions.test.ts: reuses persisted iteration tuples across batches and keeps a shared old Release unchanged when one Card moves",
+        "github-incoming-pipeline.test.ts: coalesces identical shared Milestone updates and exact binding baselines across the combined batch",
+        "github-incoming-pipeline.test.ts: refuses different metadata for a public source-only canonical Release without last-winning updates"
+      ]
+    },
+    {
+      "row": "Independent edits",
+      "tests": [
+        "work-item-sync.test.ts: merges incoming remote body while retaining a local title pending review",
+        "work-item-sync.test.ts: merges an independent remote body while leaving a divergent title conflict",
+        "github-command-regressions.test.ts: keeps explicit empty selection empty and retains open conflict evidence on repeat",
+        "github-command-regressions.test.ts: compares an imported unmapped remote status to observed evidence on repeat and after a local status edit",
+        "github-command-regressions.test.ts: updates canonical Milestone metadata without changing the Release identity or a local start date",
+        "github-command-regressions.test.ts: shares canonical Milestone metadata evidence across connections during %s assignment",
+        "remote-push-merge.test.ts: retains unreviewed remote observations after a single-field %s resolution"
+      ]
+    },
+    {
+      "row": "Read-only divergence",
+      "tests": [
+        "github-command-regressions.test.ts: preserves local divergence and records conflicts with a read-only connection",
+        "work-item-sync.test.ts: retains edits arriving during fetch with readOnly=%s",
+        "github-command-regressions.test.ts: adds and removes only existing unambiguous Annotation assignments with a healthy repeated pull"
+      ]
+    },
+    {
+      "row": "Managed labels",
+      "tests": [
+        "github-command-regressions.test.ts: adds and removes only existing unambiguous Annotation assignments with a healthy repeated pull",
+        "work-item-sync.test.ts: imports mapped Agent labels as durable annotations while excluding status and default labels",
+        "sync-review.test.ts: merges local status with independent remote labels without removing them",
+        "github-command-regressions.test.ts: retains divergent managed-label assignments and durable evidence through repeat and reviewed remote resolution",
+        "sync-health.test.ts: marks only the linked Card stale after a managed Annotation assignment %s"
+      ]
+    },
+    {
+      "row": "Stale or failed preparation",
+      "tests": [
+        "github-command-regressions.test.ts: reports prepared, failed and not-attempted source rows without applying a partial incoming batch",
+        "github-command-regressions.test.ts: refuses an Agent pull when its %s changes while the provider is pending",
+        "sync-review.test.ts: reports %s invalidation of a prepared item during the later fetch as not applied",
+        "unit-of-work.test.ts: attributes incoming remote conflict resolution to github and rolls back Card/link/conflict together",
+        "work-item-sync.test.ts: refuses import after %s is disabled while the provider is pending",
+        "incoming-github-api.test.ts: retains all structured %s failure results without reporting success",
+        "github-selection.test.tsx: shows failed and not-attempted preparation rows and allows a fresh incoming retry",
+        "github-selection.test.tsx: ignores a late incoming preparation failure after the database epoch changes",
+        "github-push-transports.test.ts: distinguishes unavailable %s Issues from partial, refused and failed detail projections",
+        "github-incoming-pipeline.test.ts: retains every source result when combined incoming %s preparation fails",
+        "github-incoming-pipeline.test.ts: marks an incoming run failed with all-ineligible selection=%s",
+        "github-incoming-pipeline.test.ts: retains ineligible selected failures alongside an authentication preparation failure",
+        "github-incoming-pipeline.test.ts: refuses %s admission before exposing linked source identities",
+        "github-push-transports.test.ts: refuses truncated %s iteration evidence at both detail and search boundaries"
+      ]
+    },
+    {
+      "row": "Review separation",
+      "tests": [
+        "github-command-sdk.test.ts: keeps protected %s incoming import separate from human approval and Apply",
+        "github-command-sdk.test.ts: routes SDK %s with protection=%s while retaining outgoing local fields for human confirmation",
+        "github-command-sdk.test.ts: keeps SDK push as a persisted Dry Run until the separate human HTTP confirmation mutates the provider",
+        "github-command-transports.test.ts: refuses ${surface} GitHub application when ${flag} changes during ${stage} (surface SDK StreamableHTTP and HTTP call endpoint)",
+        "remote-push-execution.test.ts: requires separate incoming review before preparing %s outgoing Sync",
+        "incoming-review.test.tsx: reviews local operations, refreshes health and releases the live hold after Apply (lost response=%s), then separately prepares outgoing",
+        "github-command-transports.test.ts: imports and pulls through the actual stdio bridge with separate local approval and no remote writes",
+        "github-selection.test.tsx: keeps the exact quick-Card scope for a separately requested outgoing plan after incoming Apply",
+        "card-detail-github.test.ts: reviews linked Card incoming changes before a separate outgoing plan and preserves the dirty editor",
+        "remote-push-merge.test.ts: excludes %s Releases from outgoing Milestone effects and preserves an existing remote assignment through confirmation",
+        "remote-push-merge.test.ts: retains inbound iteration evidence and local metadata divergence when an unrelated Issue push returns no iteration",
+        "incoming-review.test.tsx: excludes same-event sibling decisions sharing one Card mutation key"
+      ]
+    }
+  ],
+  "limits": [
+    "Native browser/OS keyboard, focus, links, zoom/contrast and screen-reader acceptance unverified",
+    "Live GitHub/installed CLI acceptance unverified"
+  ],
+  "workspace_log": "parent-post-review-workspace.log.gz",
+  "covering_file_evidence": "All listed test modules ran and passed in the full workspace log. New cases use enabled it/it.each registration; no skip/only flags or gate relaxation were introduced.",
+  "source_fingerprint": "73b43e2f104114c0fa049bf672e664d5cd00ddf8c90a2944d3dabcfb90c95c09"
+}

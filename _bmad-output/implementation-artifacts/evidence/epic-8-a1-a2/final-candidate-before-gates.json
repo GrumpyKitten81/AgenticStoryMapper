@@ -1,0 +1,9 @@
+{
+  "HEAD": "ec7348dc4524918c68d26b3d47e1035d012d6a46",
+  "files": {
+    "scripts/check-publication-content.mjs": "cf5136f722e9bb8338a455e7cd4cac691e3f915154edb2f30f77655100012031",
+    "scripts/check-publication-git.mjs": "2eb1f821126dbfa68d63da6e14ce0fb8c086d8f0b86dd72779b207c1a075aaef",
+    "scripts/check-publication.test.mjs": "86a39fdcaa797d53e9c15585c3f13dab46d0b1aa0a39082dff13c1d6ea6bac2e",
+    "scripts/test-fixtures/publication-malformed-strings.mjs": "e90580788b273a6e27705073fa5eef1f33dbbb9997d4f22cd8ed5ec3a10a0bbb"
+  }
+}

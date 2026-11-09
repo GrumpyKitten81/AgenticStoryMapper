@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-20",
+  "artifacts": [
+    {
+      "artifact": "implementation-version.log.gz",
+      "originalSource": "/tmp/story88-version.log",
+      "originalSha256": "4bb7050df0476769fa57753d3e8d50778410e705cb1c9b7b9b94712cc50df0bf",
+      "decodedSha256": "4bb7050df0476769fa57753d3e8d50778410e705cb1c9b7b9b94712cc50df0bf",
+      "compressedSha256": "89a5fad8895da96aa286de9cfc843716f6e094bddbd8a5d5b87b8d99c82f9b0e",
+      "originalBytes": 1271,
+      "decodedBytes": 1271,
+      "compressedBytes": 396,
+      "redacted": false
+    },
+    {
+      "artifact": "implementation-transports.log.gz",
+      "originalSource": "/tmp/story88-transports.log",
+      "originalSha256": "7b496023a484a1f11524bcf53eb0ee5a1359cb04020a99aff095375f5c977bee",
+      "decodedSha256": "dea778a8d6f45cd0de1f648d0b4e40d1eab509029b02c3e92ebc4ccdee76e764",
+      "compressedSha256": "5bae24663fbbcdec90ba64a7c5805b501e60ee634585b4937c34875cd3e738d6",
+      "originalBytes": 238,
+      "decodedBytes": 237,
+      "compressedBytes": 205,
+      "redacted": true
+    },
+    {
+      "artifact": "implementation-migrations.log.gz",
+      "originalSource": "/tmp/story88-migrations.log",
+      "originalSha256": "34364a1ccfd688ed6ca6a0d2a29efbe0ae57b779d79de3a0235b1e311ce889cc",
+      "decodedSha256": "b087393175458800eb8bf6610e8769ad1fbf88ad691d5134e5299036c72083d0",
+      "compressedSha256": "3f49de52ab711b5b93ffdbdf672fc5ce1538fb756b6ba8f012aaf39d9dd704f9",
+      "originalBytes": 238,
+      "decodedBytes": 237,
+      "compressedBytes": 205,
+      "redacted": true
+    },
+    {
+      "artifact": "implementation-release-before-review.log.gz",
+      "originalSource": "/tmp/story88-release-final.log",
+      "originalSha256": "8b3a85609e954624ff3e9c01f0eb4b00d684edb320d37fa7a9230157d4dcbfbc",
+      "decodedSha256": "8b3a85609e954624ff3e9c01f0eb4b00d684edb320d37fa7a9230157d4dcbfbc",
+      "compressedSha256": "d2fff387a708f0206e8b3d624d3d234958181f9eda7cd746566c1935c597f720",
+      "originalBytes": 1454,
+      "decodedBytes": 1454,
+      "compressedBytes": 754,
+      "redacted": false
+    },
+    {
+      "artifact": "implementation-pre-repair-aggregate.log.gz",
+      "originalSource": "/tmp/story88-check.log",
+      "originalSha256": "b3fdb469920115699d04c2e80e795bf39e5e04c07c6199f0f7a80acaeb965366",
+      "decodedSha256": "d1198dd172bb9afe5c4e9faea400a53dfdf5999be6829da85940a83b77a92462",
+      "compressedSha256": "4dda0390d181c8cfa8433d41e6e3713dc3be7742de769208cf576eb3c2329b42",
+      "originalBytes": 267823,
+      "decodedBytes": 267794,
+      "compressedBytes": 36009,
+      "redacted": true
+    },
+    {
+      "artifact": "implementation-verifier.log.gz",
+      "originalSource": "/tmp/story88-verify.log",
+      "originalSha256": "0aeba4aed69e94d19fa3cf67036cef6f71d45373a582744553ac0b434e8ae04c",
+      "decodedSha256": "0aaae9096a806b7c08d2634d3d98d7124a42d45775943ed9cc74f5870081b1af",
+      "compressedSha256": "8020f9a8bc2d1f89d6eb6aaad1e3bc3d70ef9e10f06dced9e0ef59b13b4fbaa5",
+      "originalBytes": 5340,
+      "decodedBytes": 5331,
+      "compressedBytes": 1425,
+      "redacted": true
+    },
+    {
+      "artifact": "pre-review-parent-aggregate.log.gz",
+      "originalSource": "/tmp/story88-parent-check.log",
+      "originalSha256": "a3e911dd1a7e49149ec20b28505fa38ead3689033c2935f78bd1e98bc48d9ead",
+      "decodedSha256": "5d75ea871e688b4fbe7f03ce50395693f4639a1a0dd024475236d9569ab30d8c",
+      "compressedSha256": "dafe73bc368f902e70fa320111a03f1744ff33c2504caf4f0e371292d41ab951",
+      "originalBytes": 268067,
+      "decodedBytes": 268038,
+      "compressedBytes": 35941,
+      "redacted": true
+    },
+    {
+      "artifact": "pre-review-parent-verifier.log.gz",
+      "originalSource": "/tmp/story88-parent-verify.log",
+      "originalSha256": "d9b19b72b84b9cdc3a7aba59a49c19bf286c7f79850d76f2770ad7ba07310ddd",
+      "decodedSha256": "2e5dedf79f9605ba8ccabc5a7506e27ea2d5cda6fe8a86a0d97d258d7d377079",
+      "compressedSha256": "a8ec39c1edb0e0a861e6a2c86d5a262d17b6cbf782d7367c8756955492d65732",
+      "originalBytes": 5340,
+      "decodedBytes": 5331,
+      "compressedBytes": 1430,
+      "redacted": true
+    },
+    {
+      "artifact": "parent-review-probes.log.gz",
+      "originalSource": "/tmp/story88-parent-review-probes.log",
+      "originalSha256": "64c2658aa1120b7238fe625df3250162bcd07641440b0acead9a58938b36b332",
+      "decodedSha256": "64c2658aa1120b7238fe625df3250162bcd07641440b0acead9a58938b36b332",
+      "compressedSha256": "6f449e42932909edab0d7e5e8ea165e5cc2c831b36a42dece86362216d1ae01a",
+      "originalBytes": 120,
+      "decodedBytes": 120,
+      "compressedBytes": 105,
+      "redacted": false
+    },
+    {
+      "artifact": "intermediate-release-before-remote-stub.log.gz",
+      "originalSource": "/tmp/story88-release-before-remote-stub.log",
+      "originalSha256": "f32e55aeda1bf94ee82c4e1bebcf49b558fddf8cc03ee9e4bd1dc68bbbb15a3d",
+      "decodedSha256": "f32e55aeda1bf94ee82c4e1bebcf49b558fddf8cc03ee9e4bd1dc68bbbb15a3d",
+      "compressedSha256": "6690239faf7baf8b040b25699b8cfce6ef34774981d6574dcdf5823cb3578cf4",
+      "originalBytes": 1454,
+      "decodedBytes": 1454,
+      "compressedBytes": 752,
+      "redacted": false
+    },
+    {
+      "artifact": "parent-command-start.json.gz",
+      "originalSource": "/tmp/story88-parent-command-start.json",
+      "originalSha256": "2113d99b50b836b31dbd49201431ba8a7055e87a98a6e716b420746f9222e45b",
+      "decodedSha256": "2113d99b50b836b31dbd49201431ba8a7055e87a98a6e716b420746f9222e45b",
+      "compressedSha256": "3d25d9b6437315b4bd0d1ae9a34a728ab82818f3328485fd734084dd7f4f709c",
+      "originalBytes": 844309,
+      "decodedBytes": 844309,
+      "compressedBytes": 237845,
+      "redacted": false
+    },
+    {
+      "artifact": "post-review-helper-tests.log.gz",
+      "originalSource": "/tmp/story88-review-release.log",
+      "originalSha256": "4dba6c4b4b12425228b3c8fe4d7eca5deda03fb41cc6eced04c399205b301ba9",
+      "decodedSha256": "4dba6c4b4b12425228b3c8fe4d7eca5deda03fb41cc6eced04c399205b301ba9",
+      "compressedSha256": "fbe2ff961f36c5eb2fcdb5f5bd691fec4709cb60874feebf66e9a69cea348c5c",
+      "originalBytes": 2083,
+      "decodedBytes": 2083,
+      "compressedBytes": 1034,
+      "redacted": false,
+      "capturedAt": "2026-10-20T20:46:59.813586+00:00"
+    },
+    {
+      "artifact": "post-review-version-tests.log.gz",
+      "originalSource": "/tmp/story88-bridge-review.log",
+      "originalSha256": "2ab33836ffbffe749def70ecdaf737c41f630cbfe70e95768aebdfe3c19793aa",
+      "decodedSha256": "2ab33836ffbffe749def70ecdaf737c41f630cbfe70e95768aebdfe3c19793aa",
+      "compressedSha256": "44727391112507efcf79a6d2e07e7f61d3e64ee567f7582ce086156e4e808343",
+      "originalBytes": 1432,
+      "decodedBytes": 1432,
+      "compressedBytes": 439,
+      "redacted": false,
+      "capturedAt": "2026-10-20T20:46:59.813586+00:00"
+    },
+    {
+      "artifact": "post-review-policy-tests.log.gz",
+      "originalSource": "/tmp/story88-focused-policy.log",
+      "originalSha256": "48204424c5bcfc81d860af9bb97cb80ed05f82756f1d2170262f2d8867027059",
+      "decodedSha256": "48204424c5bcfc81d860af9bb97cb80ed05f82756f1d2170262f2d8867027059",
+      "compressedSha256": "c09b4bc45ac555a253700adfdc76175f82adf4ea7fb8e3fa86a1aacaacc34733",
+      "originalBytes": 2193,
+      "decodedBytes": 2193,
+      "compressedBytes": 1080,
+      "redacted": false,
+      "capturedAt": "2026-10-20T20:46:59.813586+00:00"
+    },
+    {
+      "artifact": "final-parent-aggregate.log.gz",
+      "originalSource": "/tmp/story88-parent-final-check.log",
+      "originalSha256": "11db54013d855c46a78ec680b0e320b0ecca97c9028121067e863a3eed968138",
+      "decodedSha256": "3a0ff86a6afe1295bed1d1cb611f2e4a15c92ee77f3860cf414cfc0d4c72938f",
+      "compressedSha256": "0d5253636f347f77cdb1a632810a9e33ee831a9b9ea3e1d7b9e8d3ff0480cf3d",
+      "originalBytes": 269757,
+      "decodedBytes": 269728,
+      "compressedBytes": 36700,
+      "redacted": true,
+      "capturedAt": "2026-10-20T20:46:59.813586+00:00"
+    },
+    {
+      "artifact": "final-parent-verifier.log.gz",
+      "originalSource": "/tmp/story88-parent-final-verify.log",
+      "originalSha256": "6737f6914886a37d9d27b35002d8ccbffd5294e5a0fd3f8a3c97d2d5b7c6bfa4",
+      "decodedSha256": "529fec2b2d233ed0beb604010f026b6d6f32266980e9b7f9fa0f698d71c9ac96",
+      "compressedSha256": "c9f0516a48b992429304509016e353d4040be0039713202788cea7ecf0dcc07a",
+      "originalBytes": 5340,
+      "decodedBytes": 5331,
+      "compressedBytes": 1428,
+      "redacted": true,
+      "capturedAt": "2026-10-20T20:46:59.813586+00:00"
+    },
+    {
+      "artifact": "final-command-start.json.gz",
+      "originalSource": "/tmp/story88-final-command-start.json",
+      "originalSha256": "542f6be12b6a9a706a69e759b7bd228b16b900d1d077b53e98d8b953b2d79281",
+      "decodedSha256": "542f6be12b6a9a706a69e759b7bd228b16b900d1d077b53e98d8b953b2d79281",
+      "compressedSha256": "1b87b2cc3fe06eab62ef4de156913d0272d8429c2493b904e7809f7db671dd03",
+      "originalBytes": 850593,
+      "decodedBytes": 850593,
+      "compressedBytes": 239479,
+      "redacted": false,
+      "capturedAt": "2026-10-20T20:46:59.813586+00:00"
+    },
+    {
+      "artifact": "original-review-diff.patch.gz",
+      "originalSource": "/tmp/story88-review-original.patch",
+      "originalSha256": "29ef290773feed5566eb0468b9a6c33b2c9eef2f9987b7e2c3c39373c7157edb",
+      "decodedSha256": "29ef290773feed5566eb0468b9a6c33b2c9eef2f9987b7e2c3c39373c7157edb",
+      "compressedSha256": "05952219e79ce0d85599f11273716592c71823918782d2cdbe431669a81d39ea",
+      "originalBytes": 58444,
+      "decodedBytes": 58444,
+      "compressedBytes": 16588,
+      "redacted": false,
+      "capturedAt": "2026-10-20T20:46:59.813586+00:00"
+    },
+    {
+      "artifact": "repaired-source-diff.patch.gz",
+      "originalSource": "/var/folders/yk/kp5r12sn1cd_q53r53_zkmyw0000gn/T/story88-parent-diff-qb9uo06t.patch",
+      "originalSha256": "0cdad89989bf2d944369c8bd90d7fc2b675acd64fa29f90de7811e8af10cc903",
+      "decodedSha256": "0cdad89989bf2d944369c8bd90d7fc2b675acd64fa29f90de7811e8af10cc903",
+      "compressedSha256": "5b5abb252a1a687dc258c0e72ccb70245d9a43ff5e28067a6b65b3dc9b8132ed",
+      "originalBytes": 82220,
+      "decodedBytes": 82220,
+      "compressedBytes": 21593,
+      "redacted": false,
+      "capturedAt": "2026-10-20T20:46:59.813586+00:00"
+    },
+    {
+      "artifact": "openwolf-scan.log.gz",
+      "originalSource": "/tmp/story88-openwolf-scan.log",
+      "originalSha256": "091d205e6603b1909ab3d53a84383f5ded79b0c3abd142c85062716d7bded192",
+      "decodedSha256": "091d205e6603b1909ab3d53a84383f5ded79b0c3abd142c85062716d7bded192",
+      "compressedSha256": "5c54fc59ebdbd06b3784905eeac282b106ce95445981fc1168429fff5b3cc718",
+      "originalBytes": 171,
+      "decodedBytes": 171,
+      "compressedBytes": 154,
+      "redacted": false
+    }
+  ],
+  "limits": [
+    "Implementation initial fixture failures have transcript summaries only; original logs were not captured.",
+    "The implementation aggregate preceded its final release-only repairs.",
+    "Pre-review parent aggregate/verifier cover the full code before formal review corrections.",
+    "Intermediate fake gh read attempts created only an owned state artifact; its value was not read or retained, and it was removed.",
+    "Final aggregate and verifier input files/index were unchanged through completion. Later handoff/evidence/index updates are metadata-only and require a fresh publication scan of any future release candidate."
+  ]
+}

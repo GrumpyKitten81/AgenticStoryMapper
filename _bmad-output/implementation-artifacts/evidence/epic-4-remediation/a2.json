@@ -1,0 +1,10 @@
+{
+  "action": "epic-4-retro-a2",
+  "checks": {
+    "injected_permission_lifecycles": 5,
+    "http_preview_regressions": 20,
+    "db_executor_regressions": 22,
+    "server_typecheck": "passed"
+  },
+  "review": "Parent inspected classifier and all tests: expected error set expanded only; unexpected EIO propagates. Source/domain snapshots, zero card_versions, no applied Activity or Restore snapshot establish atomic refusal. Excluded source permits independent approved work."
+}

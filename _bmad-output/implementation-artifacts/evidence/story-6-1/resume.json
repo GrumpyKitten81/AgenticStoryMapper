@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-17",
+  "baseline_revision": "1865742392b7940de20fb0930849b89b31b431b5",
+  "historical_implementation_revision": "14161b0caa757b750e1182275d3e51c61a376254",
+  "runtime": "Node 24.17.0",
+  "automated": {
+    "web_files": 52,
+    "web_tests": 341,
+    "web_typecheck": "passed",
+    "release_verify": "passed; workspace typecheck/build/source hygiene/129 capabilities",
+    "whitespace": "passed"
+  },
+  "review": {
+    "layers": 4,
+    "reported_rows": 8,
+    "verdicts": {
+      "high": 0,
+      "medium": 0,
+      "low": 1,
+      "false": 7,
+      "maybe_false": 0
+    },
+    "patched_groups": {
+      "low": 1
+    },
+    "deferred": 0,
+    "followup_review_recommended": false,
+    "scope": "incremental resume diff; prior implementation inspected and full web suite rerun"
+  },
+  "browser": {
+    "fresh_acceptance": false,
+    "historical_evidence": "acceptance.json",
+    "limits": "No fresh browser acceptance; historical actual Restore/epoch scope reconciliation remains unexercised."
+  },
+  "preserved": [
+    "sprint-status.yaml never written/staged/reverted",
+    "No .bmad-loop state file mutation"
+  ]
+}

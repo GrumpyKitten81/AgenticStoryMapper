@@ -1,0 +1,29 @@
+{
+  "review": "verification-gap",
+  "content": "/private/tmp/epic7-remediation-review-final.diff",
+  "findings": [],
+  "otherFindings": [],
+  "resolvedFindings": [
+    {
+      "title": "New inbound Releases do not verify authored goal and released state",
+      "evidence": "github-command-regressions.test.ts:211-235 now supplies authored description/closed state and asserts both proposed create fields and applied Release values."
+    },
+    {
+      "title": "Ticket review evidence does not verify Milestone-only drift",
+      "evidence": "github-ticket-command.test.ts:424-435 independently changes description/state and asserts conflict with unchanged snapshot, no ChangeSet and no link."
+    }
+  ],
+  "additionalSurfacesChecked": [
+    "verified unchanged Release reassignment without redundant milestone effects",
+    "reopened title-conflict outcome adoption preserving excluded Release evidence",
+    "parent-only remote drift before write",
+    "incomplete consumed Milestone evidence rejected atomically",
+    "complete and truncated bulk labels across Issue/search pages",
+    "composed actual-adapter import and ambiguous iteration rejection"
+  ],
+  "validation": {
+    "command": "corepack pnpm --filter @storymapper/server exec vitest run src/application/sync/github-command-regressions.test.ts src/application/sync/github-ticket-command.test.ts src/services/epic7-retro-blockers.test.ts --maxWorkers=1 --minWorkers=1",
+    "result": "3 files, 119 tests passed",
+    "runtime": "Node v22.23.1; engine warning requires >=24 <25. This run does not establish required Node 24 release validation."
+  }
+}

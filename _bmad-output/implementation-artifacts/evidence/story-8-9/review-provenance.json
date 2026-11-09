@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-21",
+  "launch": "Four noninteractive CLI subprocesses launched together and awaited in same parent turn; collaboration-tool thread limit blocked further fresh threads. Existing local authentication status checked; no login run.",
+  "diff_scope": "All changed source/evidence; current claims spec omitted except edge path; binary diff payloads replaced by references to actual gzip artifacts, available for direct inspection. Full parent diff retained transiently.",
+  "review_diff_sha256": "de2ab6b5588ee6faf9a5f9eaa533edc7560b98ab75584087eebb22b76302f180",
+  "results": [
+    {
+      "lens": "blind",
+      "model": "gpt-6.1-sol",
+      "source": "fresh ephemeral local Codex CLI; no prior conversation context",
+      "sandbox": "read-only",
+      "exit": 0,
+      "artifact": "review-blind.txt",
+      "sha256": "e265ebc27be9d14dd5cbbd7d7e4da3d814a2ae5c157c30225b92d3df37570bc9"
+    },
+    {
+      "lens": "edge",
+      "model": "gpt-6.1-sol",
+      "source": "fresh ephemeral local Codex CLI; no prior conversation context",
+      "sandbox": "read-only",
+      "exit": 0,
+      "artifact": "review-edge.txt",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "lens": "gap",
+      "model": "gpt-6.1-sol",
+      "source": "fresh ephemeral local Codex CLI; no prior conversation context",
+      "sandbox": "read-only",
+      "exit": 0,
+      "artifact": "review-gap.txt",
+      "sha256": "cf87c32d185d257a566f972441f0b6160112e6bf4ec0bc1cd98dfbbdf87ce05b"
+    },
+    {
+      "lens": "intent",
+      "model": "gpt-6.1-sol",
+      "source": "fresh ephemeral local Codex CLI; no prior conversation context",
+      "sandbox": "read-only",
+      "exit": 0,
+      "artifact": "review-intent.txt",
+      "sha256": "cdc69b6ef2aee088a1ce570c8e51c91ffb889d3175140b8d866b82b68e06015e"
+    }
+  ],
+  "triage": "review-triage.json:19 rows classified,8 medium patch groups, no deferrals; original reviewer outputs preserved"
+}

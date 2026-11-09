@@ -1,0 +1,925 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ❯ src/application/sync/github-command-regressions.test.ts (12 tests | 1 failed) 557ms
+   × imports Agent stories under an Activity parent with a shared Release, assignee and General step 32ms
+     → Target entity not found.
+ ❯ src/services/sync-review.test.ts (48 tests | 13 failed) 1625ms
+   × field-aware sync review regressions > rechecks human agentAccess during pending local conflict fetch 31ms
+     → StoryMapper Issue links require a served loopback origin.
+   × field-aware sync review regressions > rechecks human agentProtection during pending local conflict fetch 29ms
+     → StoryMapper Issue links require a served loopback origin.
+   × field-aware sync review regressions > keeps outgoing Agent conflict resolution as a Dry Run without provider mutation 33ms
+     → StoryMapper Issue links require a served loopback origin.
+   × field-aware sync review regressions > returns the actual provider identity and URL after a successful sync write 31ms
+     → expected [ { status: 'failed', …(6) } ] to match object [ { status: 'succeeded', …(2) } ]
+(7 matching properties omitted from actual)
+   × field-aware sync review regressions > accounts for all three push items when the second remote operation fails 21ms
+     → StoryMapper Issue links require a served loopback origin.
+   × field-aware sync review regressions > accounts for all three sync items when the second remote operation fails 28ms
+     → expected [ { status: 'failed', …(4) }, …(2) ] to match object [ { status: 'succeeded', …(1) }, …(2) ]
+(6 matching properties omitted from actual)
+   × field-aware sync review regressions > retains known push remote outcomes when the original connector is deleted 23ms
+     → expected DomainError: StoryMapper Issue links requ… { …(3) } to match object { code: 'conflict', …(1) }
+(2 matching properties omitted from actual)
+   × field-aware sync review regressions > retains known sync remote outcomes when the original connector is deleted 26ms
+     → promise resolved "{ run: { …(9) }, …(2) }" instead of rejecting
+   × field-aware sync review regressions > audits known push writes only into the original database after replacement 23ms
+     → expected DomainError: StoryMapper Issue links requ… { …(3) } to match object { code: 'conflict', …(1) }
+(2 matching properties omitted from actual)
+   × field-aware sync review regressions > audits known sync writes only into the original database after replacement 26ms
+     → promise resolved "{ run: { …(9) }, …(2) }" instead of rejecting
+   × field-aware sync review regressions > returns known push writes when the map is deleted without creating a run 21ms
+     → expected DomainError: StoryMapper Issue links requ… { …(3) } to match object { code: 'conflict', …(1) }
+(2 matching properties omitted from actual)
+   × field-aware sync review regressions > returns known sync writes when the map is deleted without creating a run 26ms
+     → promise resolved "{ run: { …(9) }, …(2) }" instead of rejecting
+   × field-aware sync review regressions > reports missing-link invalidation of a prepared item during the later fetch as not applied 32ms
+     → expected { status: 'succeeded', …(3) } to match object { status: 'failed', …(3) }
+(1 matching property omitted from actual)
+ ❯ src/services/work-item-sync.test.ts (54 tests | 21 failed) 31941ms
+   × writable push through actual HTTP and MCP callers > persists successful http push results and only then creates the applied run 40ms
+     → expected { run: { …(9) }, …(2) } to match object { run: { mode: 'push', …(2) }, …(1) }
+(7 matching properties omitted from actual)
+   × writable push through actual HTTP and MCP callers > retains the first http creation when the next provider call fails 31ms
+     → expected [] to match object [ { actorType: StringMatching{…} } ]
+   × writable push through actual HTTP and MCP callers > rolls back every write of a later http result when its legacy activity fails 32ms
+     → expected { run: { …(9) }, …(2) } to match object { run: { status: 'failed' }, …(1) }
+(7 matching properties omitted from actual)
+   × local edits during remote sync > preserves existing hierarchy overrides through push results 5026ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   × local edits during remote sync > preserves during-provider hierarchy overrides through push results 5037ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   × local edits during remote sync > preserves existing hierarchy overrides through sync results 5046ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   × local edits during remote sync > preserves during-provider hierarchy overrides through sync results 5041ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   × local edits during remote sync > retains the first linked sync result when the later provider write rejects 80ms
+     → expected [ { …(6) }, { …(6) } ] to match object [ { …(2) } ]
+   × local edits during remote sync > generates the title conflict with its local/remote values and run in the health report 37ms
+     → expected [ { …(8) }, { …(8) } ] to have a length of 1 but got 2
+   × local edits during remote sync > marks an earlier completed push result unsynced when it is edited during a later remote call 5020ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   × local edits during remote sync > marks an earlier completed sync result unsynced when it is edited during a later remote call 5046ms
+     → Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+   × local edits during remote sync > retains edits arriving during fetch with readOnly=false 58ms
+     → expected [ { …(8) }, { …(8) } ] to have a length of 1 but got 2
+   × local edits during remote sync > retains edits arriving during fetch with readOnly=true 27ms
+     → expected [ { …(8) }, { …(8) } ] to have a length of 1 but got 2
+   × approved sync repairs > clears the removed remote milestone in both the Card and persisted link 30ms
+     → no such column: card_id
+   × approved sync repairs > preserves a dependent release-push rename arriving during remote I/O 29ms
+     → expected { creationOrigin: 'manual', …(15) } to deeply equal { creationOrigin: 'manual', …(15) }
+   × approved sync repairs > preserves a dependent map-push rename arriving during remote I/O 29ms
+     → expected { creationOrigin: 'manual', …(15) } to deeply equal { creationOrigin: 'manual', …(15) }
+   × GitHub Agent local ChangeSet execution > imports a reviewed remote issue with protection=false and records both identities 37ms
+     → Target entity not found.
+   × GitHub Agent local ChangeSet execution > imports a reviewed remote issue with protection=true and records both identities 32ms
+     → Target entity not found.
+   × imports mapped Agent labels as durable annotations while excluding status and default labels 32ms
+     → Target entity not found.
+   × combines two Agent connections with divergent=true and one shared pending milestone 17ms
+     → Entity already has a different GitHub reference.
+   × imports child-first Agent hierarchy and reuses the imported fallback activity 46ms
+     → Target entity not found.
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 35 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > rechecks human agentAccess during pending local conflict fetch
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > rechecks human agentProtection during pending local conflict fetch
+DomainError: StoryMapper Issue links require a served loopback origin.
+ ❯ Module.buildGitHubIssueBody ../../packages/core/src/publishing/github-footer.ts:17:61
+
+ ❯ Module.conflictWritePayload src/services/sync-conflict-resolution.ts:50:46
+ ❯ Module.resolveSyncConflict src/application/sync/sync-conflict.use-cases.ts:24:114
+ ❯ src/services/sync-review.test.ts:174:22
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/35]⎯
+
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > keeps outgoing Agent conflict resolution as a Dry Run without provider mutation
+DomainError: StoryMapper Issue links require a served loopback origin.
+ ❯ Module.buildGitHubIssueBody ../../packages/core/src/publishing/github-footer.ts:17:61
+
+ ❯ Module.conflictWritePayload src/services/sync-conflict-resolution.ts:50:46
+ ❯ Module.resolveGitHubConflictCommand src/application/sync/github-conflict-command.ts:25:207
+ ❯ src/services/sync-review.test.ts:194:20
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/35]⎯
+
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > returns the actual provider identity and URL after a successful sync write
+AssertionError: expected [ { status: 'failed', …(6) } ] to match object [ { status: 'succeeded', …(2) } ]
+(7 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Array [
+    Object {
+      "remoteId": "81",
+-     "status": "succeeded",
++     "status": "failed",
+      "url": "https://github.com/owner/repo/issues/81",
+    },
+  ]
+
+ ❯ src/services/sync-review.test.ts:205:26
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/35]⎯
+
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > accounts for all three push items when the second remote operation fails
+DomainError: StoryMapper Issue links require a served loopback origin.
+ ❯ Module.buildGitHubIssueBody ../../packages/core/src/publishing/github-footer.ts:17:61
+
+ ❯ ../../packages/db/src/repositories/work-item-repository.ts:139:17
+ ❯ StoryMapperRepository.createWorkItemPushPlan ../../packages/db/src/repositories/work-item-repository.ts:132:8
+ ❯ src/services/work-item-sync.ts:124:60
+ ❯ ../../packages/db/src/unit-of-work.ts:67:87
+ ❯ ../../packages/db/src/unit-of-work.ts:67:31
+ ❯ ../../packages/db/src/database-handle.ts:129:92
+ ❯ ../../packages/db/src/database-handle.ts:139:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/35]⎯
+
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > accounts for all three sync items when the second remote operation fails
+AssertionError: expected [ { status: 'failed', …(4) }, …(2) ] to match object [ { status: 'succeeded', …(1) }, …(2) ]
+(6 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Array [
+    Object {
+      "cardId": "e441f7e8-2e9f-49e9-94a0-fc7a2823f3ca",
+-     "status": "succeeded",
++     "status": "failed",
+    },
+    Object {
+      "cardId": "df13bcb7-a9e0-4df0-a092-26b1ff53b1a9",
+      "details": Object {
+-       "phase": "remote_write",
++       "phase": "not_attempted",
+      },
+      "status": "failed",
+    },
+    Object {
+      "cardId": "c039e9f6-6e57-479a-b065-89474296184a",
+      "details": Object {
+        "phase": "not_attempted",
+      },
+      "status": "failed",
+    },
+  ]
+
+ ❯ src/services/sync-review.test.ts:310:26
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/35]⎯
+
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > retains known push remote outcomes when the original connector is deleted
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > audits known push writes only into the original database after replacement
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > returns known push writes when the map is deleted without creating a run
+AssertionError: expected DomainError: StoryMapper Issue links requ… { …(3) } to match object { code: 'conflict', …(1) }
+(2 matching properties omitted from actual)
+
+- Expected
++ Received
+
+- Object {
+-   "code": "conflict",
+-   "details": Object {
+-     "items": Array [
+-       Object {
+-         "details": Object {
+-           "phase": "persist",
+-         },
+-         "remoteId": "1",
+-         "status": "failed",
+-         "url": "https://github.com/owner/repo/issues/1",
+-       },
+-     ],
+-   },
++ DomainError {
++   "code": "validation",
++   "details": undefined,
+  }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/35]⎯
+
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > retains known sync remote outcomes when the original connector is deleted
+AssertionError: promise resolved "{ run: { …(9) }, …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- [Error: rejected promise]
++ Object {
++   "items": Array [
++     Object {
++       "cardId": "da6d4526-f074-4e36-b6d1-72968809a1ad",
++       "code": "validation",
++       "details": Object {
++         "phase": "prepare",
++       },
++       "message": "StoryMapper Issue links require a served loopback origin.",
++       "status": "failed",
++     },
++   ],
++   "links": Array [
++     Object {
++       "bodyHash": "eec975127648cf593548c5bd9b77d2a5dbea9e698dce1804f4d5e9afb25062b8",
++       "cardId": "da6d4526-f074-4e36-b6d1-72968809a1ad",
++       "connectionId": "78479a75-819d-49b9-b099-812926b11f4c",
++       "externalRefId": "8b86cf6d-ece1-435a-8173-c7a58ca74506",
++       "id": "ccf86510-bf43-4325-a886-28b1de349cb8",
++       "labels": Array [
++         "local-story-map",
++         "ready",
++         "story-map:LSM",
++       ],
++       "lastSyncedAt": "2026-10-18T23:49:35.298Z",
++       "milestone": null,
++       "parentOverrideLocal": false,
++       "provider": "github",
++       "remoteId": "1",
++       "remoteNumber": 1,
++       "remoteParentNumber": null,
++       "remoteState": "open",
++       "syncState": "synced",
++       "titleHash": "a151ceb1711aad529a7704248f03333990022ebbfa07a7f04c004d70c167919f",
++       "url": "https://github.com/owner/repo/issues/1",
++     },
++     Object {
++       "bodyHash": "eec975127648cf593548c5bd9b77d2a5dbea9e698dce1804f4d5e9afb25062b8",
++       "cardId": "3228a727-b5e0-4e2b-83bd-d57891b7ca81",
++       "connectionId": "78479a75-819d-49b9-b099-812926b11f4c",
++       "externalRefId": "181e57bb-a893-44b2-a784-ca193bbe9e72",
++       "id": "cf5f61fa-4488-40cb-80ff-ebeff05b12e5",
++       "labels": Array [
++         "local-story-map",
++         "ready",
++         "story-map:LSM",
++       ],
++       "lastSyncedAt": "2026-10-18T23:49:35.299Z",
++       "milestone": null,
++       "parentOverrideLocal": false,
++       "provider": "github",
++       "remoteId": "2",
++       "remoteNumber": 2,
++       "remoteParentNumber": null,
++       "remoteState": "open",
++       "syncState": "synced",
++       "titleHash": "8b88a85089561b7978c4e52c3150112912125f3d34ec59b6ff1450fc1079979c",
++       "url": "https://github.com/owner/repo/issues/2",
++     },
++     Object {
++       "bodyHash": "eec975127648cf593548c5bd9b77d2a5dbea9e698dce1804f4d5e9afb25062b8",
++       "cardId": "a84ecd1d-544f-4e48-b707-70a5a03c7528",
++       "connectionId": "78479a75-819d-49b9-b099-812926b11f4c",
++       "externalRefId": "da5083af-6cc4-494e-b615-a0f983a39782",
++       "id": "60d1c0b5-d261-4e99-93fb-a37c204abf73",
++       "labels": Array [
++         "local-story-map",
++         "ready",
++         "story-map:LSM",
++       ],
++       "lastSyncedAt": "2026-10-18T23:49:35.300Z",
++       "milestone": null,
++       "parentOverrideLocal": false,
++       "provider": "github",
++       "remoteId": "3",
++       "remoteNumber": 3,
++       "remoteParentNumber": null,
++       "remoteState": "open",
++       "syncState": "synced",
++       "titleHash": "5e7425d72f32c5c80a5f7a131585657b80723ae22e01fd69776828feb19e3bd5",
++       "url": "https://github.com/owner/repo/issues/3",
++     },
++   ],
++   "run": Object {
++     "connectionId": "78479a75-819d-49b9-b099-812926b11f4c",
++     "createdAt": "2026-10-18T23:49:35.312Z",
++     "id": "51e5b1d9-6bd9-4306-a44d-4b2dce539353",
++     "mode": "sync",
++     "projectId": "bb36141d-0e17-4c90-95c7-bb7fce8936cd",
++     "provider": "github",
++     "status": "failed",
++     "storyMapId": "a80503de-b270-42f7-85f0-2bd785fad5a1",
++     "summary": "Work item sync executed.",
++   },
++ }
+
+ ❯ src/services/sync-review.test.ts:327:128
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/35]⎯
+
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > audits known sync writes only into the original database after replacement
+AssertionError: promise resolved "{ run: { …(9) }, …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- [Error: rejected promise]
++ Object {
++   "items": Array [
++     Object {
++       "cardId": "0fde5a72-66d8-4832-8009-af18b4786117",
++       "code": "validation",
++       "details": Object {
++         "phase": "prepare",
++       },
++       "message": "StoryMapper Issue links require a served loopback origin.",
++       "status": "failed",
++     },
++   ],
++   "links": Array [
++     Object {
++       "bodyHash": "eec975127648cf593548c5bd9b77d2a5dbea9e698dce1804f4d5e9afb25062b8",
++       "cardId": "0fde5a72-66d8-4832-8009-af18b4786117",
++       "connectionId": "9c159823-f99a-4628-b095-f60594196469",
++       "externalRefId": "030814ef-31e2-4939-8db6-452315cbe371",
++       "id": "fa84735f-0122-4eb1-b56f-e4396cb58034",
++       "labels": Array [
++         "local-story-map",
++         "ready",
++         "story-map:LSM",
++       ],
++       "lastSyncedAt": "2026-10-18T23:49:35.378Z",
++       "milestone": null,
++       "parentOverrideLocal": false,
++       "provider": "github",
++       "remoteId": "1",
++       "remoteNumber": 1,
++       "remoteParentNumber": null,
++       "remoteState": "open",
++       "syncState": "synced",
++       "titleHash": "a151ceb1711aad529a7704248f03333990022ebbfa07a7f04c004d70c167919f",
++       "url": "https://github.com/owner/repo/issues/1",
++     },
++     Object {
++       "bodyHash": "eec975127648cf593548c5bd9b77d2a5dbea9e698dce1804f4d5e9afb25062b8",
++       "cardId": "8a3eab50-5dfd-4fcf-b989-8cb7a73161e7",
++       "connectionId": "9c159823-f99a-4628-b095-f60594196469",
++       "externalRefId": "ed06610c-9fe3-4830-92d3-7cd68f997404",
++       "id": "168ab5c3-39e2-42af-8e40-8e92087d567f",
++       "labels": Array [
++         "local-story-map",
++         "ready",
++         "story-map:LSM",
++       ],
++       "lastSyncedAt": "2026-10-18T23:49:35.379Z",
++       "milestone": null,
++       "parentOverrideLocal": false,
++       "provider": "github",
++       "remoteId": "2",
++       "remoteNumber": 2,
++       "remoteParentNumber": null,
++       "remoteState": "open",
++       "syncState": "synced",
++       "titleHash": "8b88a85089561b7978c4e52c3150112912125f3d34ec59b6ff1450fc1079979c",
++       "url": "https://github.com/owner/repo/issues/2",
++     },
++     Object {
++       "bodyHash": "eec975127648cf593548c5bd9b77d2a5dbea9e698dce1804f4d5e9afb25062b8",
++       "cardId": "d389127b-66ef-4556-9e07-127977751d4a",
++       "connectionId": "9c159823-f99a-4628-b095-f60594196469",
++       "externalRefId": "12a0e70a-4101-41c5-b896-b333631d9490",
++       "id": "84afdb94-2d49-4272-a4ea-103d6e9707c0",
++       "labels": Array [
++         "local-story-map",
++         "ready",
++         "story-map:LSM",
++       ],
++       "lastSyncedAt": "2026-10-18T23:49:35.380Z",
++       "milestone": null,
++       "parentOverrideLocal": false,
++       "provider": "github",
++       "remoteId": "3",
++       "remoteNumber": 3,
++       "remoteParentNumber": null,
++       "remoteState": "open",
++       "syncState": "synced",
++       "titleHash": "5e7425d72f32c5c80a5f7a131585657b80723ae22e01fd69776828feb19e3bd5",
++       "url": "https://github.com/owner/repo/issues/3",
++     },
++   ],
++   "run": Object {
++     "connectionId": "9c159823-f99a-4628-b095-f60594196469",
++     "createdAt": "2026-10-18T23:49:35.392Z",
++     "id": "f20ee7ee-3046-4a6a-82ae-51532162a0d5",
++     "mode": "sync",
++     "projectId": "c45c414b-17df-4777-a783-d5cbd29274a9",
++     "provider": "github",
++     "status": "failed",
++     "storyMapId": "6c0b3957-f53c-49f7-90ef-a689335ff737",
++     "summary": "Work item sync executed.",
++   },
++ }
+
+ ❯ src/services/sync-review.test.ts:340:126
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/35]⎯
+
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > returns known sync writes when the map is deleted without creating a run
+AssertionError: promise resolved "{ run: { …(9) }, …(2) }" instead of rejecting
+
+- Expected
++ Received
+
+- [Error: rejected promise]
++ Object {
++   "items": Array [
++     Object {
++       "cardId": "481ee882-9e05-498f-9bf2-b80a4fb8184c",
++       "code": "validation",
++       "details": Object {
++         "phase": "prepare",
++       },
++       "message": "StoryMapper Issue links require a served loopback origin.",
++       "status": "failed",
++     },
++   ],
++   "links": Array [
++     Object {
++       "bodyHash": "eec975127648cf593548c5bd9b77d2a5dbea9e698dce1804f4d5e9afb25062b8",
++       "cardId": "481ee882-9e05-498f-9bf2-b80a4fb8184c",
++       "connectionId": "24173908-7b96-4356-bfc5-8c5ba657f47d",
++       "externalRefId": "e6bfdfec-2228-4c0f-9dce-5cbcf2face7e",
++       "id": "d4a3e26c-fc4c-43e5-8dcd-14147f41d86c",
++       "labels": Array [
++         "local-story-map",
++         "ready",
++         "story-map:LSM",
++       ],
++       "lastSyncedAt": "2026-10-18T23:49:35.458Z",
++       "milestone": null,
++       "parentOverrideLocal": false,
++       "provider": "github",
++       "remoteId": "1",
++       "remoteNumber": 1,
++       "remoteParentNumber": null,
++       "remoteState": "open",
++       "syncState": "synced",
++       "titleHash": "a151ceb1711aad529a7704248f03333990022ebbfa07a7f04c004d70c167919f",
++       "url": "https://github.com/owner/repo/issues/1",
++     },
++     Object {
++       "bodyHash": "eec975127648cf593548c5bd9b77d2a5dbea9e698dce1804f4d5e9afb25062b8",
++       "cardId": "2a03d23a-d985-443c-b4da-6cbe74b9d489",
++       "connectionId": "24173908-7b96-4356-bfc5-8c5ba657f47d",
++       "externalRefId": "06b9a973-627c-42fe-ad22-c3e8bb92e586",
++       "id": "455ac4a1-de9d-43df-ac77-6900edddcc6e",
++       "labels": Array [
++         "local-story-map",
++         "ready",
++         "story-map:LSM",
++       ],
++       "lastSyncedAt": "2026-10-18T23:49:35.459Z",
++       "milestone": null,
++       "parentOverrideLocal": false,
++       "provider": "github",
++       "remoteId": "2",
++       "remoteNumber": 2,
++       "remoteParentNumber": null,
++       "remoteState": "open",
++       "syncState": "synced",
++       "titleHash": "8b88a85089561b7978c4e52c3150112912125f3d34ec59b6ff1450fc1079979c",
++       "url": "https://github.com/owner/repo/issues/2",
++     },
++     Object {
++       "bodyHash": "eec975127648cf593548c5bd9b77d2a5dbea9e698dce1804f4d5e9afb25062b8",
++       "cardId": "0f627a7e-fedd-47ac-b690-cb82becd4333",
++       "connectionId": "24173908-7b96-4356-bfc5-8c5ba657f47d",
++       "externalRefId": "23917de8-6ac6-412e-af67-e3c5fa8c191e",
++       "id": "051d9546-da85-473d-b731-c6c81bef7afa",
++       "labels": Array [
++         "local-story-map",
++         "ready",
++         "story-map:LSM",
++       ],
++       "lastSyncedAt": "2026-10-18T23:49:35.460Z",
++       "milestone": null,
++       "parentOverrideLocal": false,
++       "provider": "github",
++       "remoteId": "3",
++       "remoteNumber": 3,
++       "remoteParentNumber": null,
++       "remoteState": "open",
++       "syncState": "synced",
++       "titleHash": "5e7425d72f32c5c80a5f7a131585657b80723ae22e01fd69776828feb19e3bd5",
++       "url": "https://github.com/owner/repo/issues/3",
++     },
++   ],
++   "run": Object {
++     "connectionId": "24173908-7b96-4356-bfc5-8c5ba657f47d",
++     "createdAt": "2026-10-18T23:49:35.472Z",
++     "id": "4015107c-776d-4d43-b52e-25603c66106e",
++     "mode": "sync",
++     "projectId": "d59ba824-156f-496f-818f-ec387b4a2fec",
++     "provider": "github",
++     "status": "failed",
++     "storyMapId": "1f70f981-2eac-492c-916a-83c88ecabeaf",
++     "summary": "Work item sync executed.",
++   },
++ }
+
+ ❯ src/services/sync-review.test.ts:358:128
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/35]⎯
+
+ FAIL  src/services/sync-review.test.ts > field-aware sync review regressions > reports missing-link invalidation of a prepared item during the later fetch as not applied
+AssertionError: expected { status: 'succeeded', …(3) } to match object { status: 'failed', …(3) }
+(1 matching property omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+-   "details": Object {
+-     "phase": "finalize",
+-   },
+    "remoteId": "1",
+-   "status": "failed",
++   "status": "succeeded",
+    "url": "https://github.com/owner/repo/issues/1",
+  }
+
+ ❯ src/services/sync-review.test.ts:377:29
+    375|     const result = await syncWorkItems(data.repository, data.unitOfWor…
+    376|     expect(result.run.status).toBe("failed");
+    377|     expect(result.items[0]).toMatchObject({ status: "failed", remoteId…
+       |                             ^
+    378|     if (dependency !== "card") expect(data.repository.getCardDetails(d…
+    379|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/35]⎯
+
+ FAIL  src/services/work-item-sync.test.ts > writable push through actual HTTP and MCP callers > persists successful http push results and only then creates the applied run
+AssertionError: expected { run: { …(9) }, …(2) } to match object { run: { mode: 'push', …(2) }, …(1) }
+(7 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+    "links": Array [
+      Object {
++       "bodyHash": "eec975127648cf593548c5bd9b77d2a5dbea9e698dce1804f4d5e9afb25062b8",
++       "cardId": "5c0f0e87-f0cf-46e3-8485-7120cbf999bb",
++       "connectionId": "d94c9be9-9358-46a7-a628-813ca35ac418",
++       "externalRefId": "75b94e5e-59fb-46c0-bc27-2d64e4f9659a",
++       "id": "36f7b07a-79e6-4644-b1f6-9a3b01d8f6d7",
++       "labels": Array [
++         "local-story-map",
++         "status:todo",
++         "story-map:LSM",
++         "level:activity",
++       ],
++       "lastSyncedAt": "2026-10-18T23:49:34.593Z",
++       "milestone": null,
++       "parentOverrideLocal": false,
++       "provider": "github",
++       "remoteId": "1",
+        "remoteNumber": 1,
+-     },
+-     Object {
+-       "remoteNumber": 2,
++       "remoteParentNumber": null,
++       "remoteState": "open",
++       "syncState": "synced",
++       "titleHash": "a151ceb1711aad529a7704248f03333990022ebbfa07a7f04c004d70c167919f",
++       "url": "https://github.com/owner/repo/issues/1",
+      },
+    ],
+    "run": Object {
+      "connectionId": "d94c9be9-9358-46a7-a628-813ca35ac418",
+      "mode": "push",
+-     "status": "applied",
++     "status": "failed",
+    },
+  }
+
+ ❯ src/services/work-item-sync.test.ts:208:20
+    206|     });
+    207|     const result = await callPush(data, caller);
+    208|     expect(result).toMatchObject({ run: { mode: "push", status: "appli…
+       |                    ^
+    209|     const links = data.repository.listRemoteWorkItemLinksForStoryMap(d…
+    210|     expect(links).toHaveLength(2);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/35]⎯
+
+ FAIL  src/services/work-item-sync.test.ts > writable push through actual HTTP and MCP callers > retains the first http creation when the next provider call fails
+AssertionError: expected [] to match object [ { actorType: StringMatching{…} } ]
+
+- Expected
++ Received
+
+- Array [
+-   Object {
+-     "actorType": StringMatching /human|agent/u,
+-   },
+- ]
++ Array []
+
+ ❯ expectRetainedFirst src/services/work-item-sync.test.ts:86:114
+     84|   expect(data.repository.listGitHubLinksForStoryMap(data.map.id)).toMa…
+     85|   if (!final) expect(rows(data, "sync_runs")).toEqual([]);
+     86|   expect(data.repository.listActivity(data.project.id).filter((event) …
+       |                                                                                                                  ^
+     87| }
+     88|
+ ❯ src/services/work-item-sync.test.ts:225:5
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/35]⎯
+
+ FAIL  src/services/work-item-sync.test.ts > writable push through actual HTTP and MCP callers > rolls back every write of a later http result when its legacy activity fails
+AssertionError: expected { run: { …(9) }, …(2) } to match object { run: { status: 'failed' }, …(1) }
+(7 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  Object {
+    "items": Array [
+      Object {
+        "status": "succeeded",
+      },
+      Object {
+-       "remoteId": "2",
+        "status": "failed",
+-       "url": "https://github.com/owner/repo/issues/2",
+      },
+    ],
+    "run": Object {
+      "status": "failed",
+    },
+  }
+
+ ❯ src/services/work-item-sync.test.ts:242:20
+    240|     });
+    241|     const result = await callPush(data, caller);
+    242|     expect(result).toMatchObject({ run: { status: "failed" }, items: […
+       |                    ^
+    243|     expectRetainedFirst(data, true);
+    244|     const afterVersions = data.cards.map((card) => data.repository.lis…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/35]⎯
+
+ FAIL  src/services/work-item-sync.test.ts > local edits during remote sync > preserves existing hierarchy overrides through push results
+ FAIL  src/services/work-item-sync.test.ts > local edits during remote sync > preserves during-provider hierarchy overrides through push results
+ FAIL  src/services/work-item-sync.test.ts > local edits during remote sync > preserves existing hierarchy overrides through sync results
+ FAIL  src/services/work-item-sync.test.ts > local edits during remote sync > preserves during-provider hierarchy overrides through sync results
+ FAIL  src/services/work-item-sync.test.ts > local edits during remote sync > marks an earlier completed push result unsynced when it is edited during a later remote call
+ FAIL  src/services/work-item-sync.test.ts > local edits during remote sync > marks an earlier completed sync result unsynced when it is edited during a later remote call
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[14/35]⎯
+
+ FAIL  src/services/work-item-sync.test.ts > local edits during remote sync > retains the first linked sync result when the later provider write rejects
+AssertionError: expected [ { …(6) }, { …(6) } ] to match object [ { …(2) } ]
+
+- Expected
++ Received
+
+  Array [
+    Object {
+      "cardId": "dd0b54cf-6f46-45f2-81f5-e21ced977f6f",
++     "id": "fdde44cb-2da9-446e-82ba-061a4fbc185d",
+      "issueNumber": 1,
++     "repo": "owner/repo",
++     "syncState": "synced",
++     "url": "https://github.com/owner/repo/issues/1",
++   },
++   Object {
++     "cardId": "964cac25-37e3-47fd-9521-efcee98fd6b4",
++     "id": "f37ccedf-9dec-4dea-8c20-b9b712961136",
++     "issueNumber": 2,
++     "repo": "owner/repo",
++     "syncState": "synced",
++     "url": "https://github.com/owner/repo/issues/2",
+    },
+  ]
+
+ ❯ src/services/work-item-sync.test.ts:296:69
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[15/35]⎯
+
+ FAIL  src/services/work-item-sync.test.ts > local edits during remote sync > generates the title conflict with its local/remote values and run in the health report
+AssertionError: expected [ { …(8) }, { …(8) } ] to have a length of 1 but got 2
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ src/services/work-item-sync.test.ts:314:59
+    312|     expect(result.links[0]?.syncState).toBe("conflict");
+    313|     expect(data.repository.getCardDetails(data.card.id)).toEqual(befor…
+    314|     expect(data.repository.listCardHistory(data.card.id)).toHaveLength…
+       |                                                           ^
+    315|     expect(data.provider.createOrUpdateRemoteItem).not.toHaveBeenCalle…
+    316|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[16/35]⎯
+
+ FAIL  src/services/work-item-sync.test.ts > local edits during remote sync > retains edits arriving during fetch with readOnly=false
+ FAIL  src/services/work-item-sync.test.ts > local edits during remote sync > retains edits arriving during fetch with readOnly=true
+AssertionError: expected [ { …(8) }, { …(8) } ] to have a length of 1 but got 2
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ src/services/work-item-sync.test.ts:368:59
+    366|     expect(data.repository.getCardDetails(data.card.id)).toMatchObject…
+    367|     expect(result.links[0]).toMatchObject({ syncState: "unsynced", tit…
+    368|     expect(data.repository.listCardHistory(data.card.id)).toHaveLength…
+       |                                                           ^
+    369|   });
+    370|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[17/35]⎯
+
+ FAIL  src/services/work-item-sync.test.ts > approved sync repairs > clears the removed remote milestone in both the Card and persisted link
+SqliteError: no such column: card_id
+ ❯ Database.prepare ../../node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/wrappers.js:5:21
+ ❯ src/services/work-item-sync.test.ts:451:40
+    449|     await syncWorkItems(data.repository, data.unitOfWork, ACTOR, { loc…
+    450|     expect(data.repository.getCardDetails(data.card.id)?.releaseId).to…
+    451|     expect(data.handle.current.$client.prepare("SELECT milestone FROM …
+       |                                        ^
+    452|   });
+    453|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[18/35]⎯
+
+ FAIL  src/services/work-item-sync.test.ts > approved sync repairs > preserves a dependent release-push rename arriving during remote I/O
+ FAIL  src/services/work-item-sync.test.ts > approved sync repairs > preserves a dependent map-push rename arriving during remote I/O
+AssertionError: expected { creationOrigin: 'manual', …(15) } to deeply equal { creationOrigin: 'manual', …(15) }
+
+- Expected
++ Received
+
+  Object {
+    "createdAt": "2026-10-18T23:50:05.448Z",
+    "creationOrigin": "manual",
+    "description": "Original body",
+    "id": "01e5f1ea-a047-42db-b81e-c8fb6b2b6f02",
+    "key": "LSM-1",
+    "level": "activity",
+    "parentId": null,
+    "parked": false,
+    "position": 0,
+    "provenance": "linked",
+    "releaseId": "d7df7d51-0c79-494d-b81a-9f9884cf7a9a",
+    "status": "todo",
+    "storyMapId": "1a8ea204-80ea-43ba-a5d0-903cd715a0e0",
+    "title": "Local title",
+    "updatedAt": "2026-10-18T23:50:05.455Z",
+-   "version": 4,
++   "version": 3,
+  }
+
+ ❯ src/services/work-item-sync.test.ts:538:58
+    536|     data.provider.createOrUpdateRemoteItem.mockImplementation(async (_…
+    537|     const result = await syncWorkItems(data.repository, data.unitOfWor…
+    538|     expect(data.repository.getCardDetails(data.card.id)).toEqual(mode.…
+       |                                                          ^
+    539|     expect(result.links[0]?.syncState).toBe("unsynced");
+    540|     expect(data.provider.createOrUpdateRemoteItem).toHaveBeenCalledTim…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[19/35]⎯
+
+ FAIL  src/services/work-item-sync.test.ts > GitHub Agent local ChangeSet execution > imports a reviewed remote issue with protection=false and records both identities
+ FAIL  src/services/work-item-sync.test.ts > GitHub Agent local ChangeSet execution > imports a reviewed remote issue with protection=true and records both identities
+ FAIL  src/services/work-item-sync.test.ts > imports mapped Agent labels as durable annotations while excluding status and default labels
+ FAIL  src/services/work-item-sync.test.ts > imports child-first Agent hierarchy and reuses the imported fallback activity
+ FAIL  src/application/sync/github-command-regressions.test.ts > imports Agent stories under an Activity parent with a shared Release, assignee and General step
+DomainError: Target entity not found.
+ ❯ requiredScope src/mcp/tools/project-scopes.ts:42:25
+     40|
+     41| function requiredScope(projectId: string | undefined): string {
+     42|   if (!projectId) throw new DomainError("not_found", "Target entity no…
+       |                         ^
+     43|   return projectId;
+     44| }
+ ❯ collectScopes src/mcp/tools/project-scopes.ts:151:18
+ ❯ Module.resolveToolProjectIds src/mcp/tools/project-scopes.ts:281:7
+ ❯ src/application/changeset/changeset-command.ts:15:20
+ ❯ ../../packages/db/src/unit-of-work.ts:67:87
+ ❯ ../../packages/db/src/unit-of-work.ts:67:31
+ ❯ ../../packages/db/src/database-handle.ts:129:92
+ ❯ ../../packages/db/src/database-handle.ts:139:26
+ ❯ sqliteTransaction ../../node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/transaction.js:65:24
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[20/35]⎯
+
+ FAIL  src/services/work-item-sync.test.ts > combines two Agent connections with divergent=true and one shared pending milestone
+DomainError: Entity already has a different GitHub reference.
+ ❯ StoryMapperRepository.createGitHubLink ../../packages/db/src/repositories/github-refs-repository.ts:28:55
+     26|   const existing = this.db.select().from(externalRefs).where(and(eq(ex…
+     27|   if (existing) {
+     28|     if (existing.externalId !== ref.externalId) throw new DomainError(…
+       |                                                       ^
+     29|     return this.getGitHubLink(existing.id)!;
+     30|   }
+ ❯ StoryMapperRepository.bindRemoteWorkItemLink ../../packages/db/src/repositories/work-item-repository.ts:207:20
+ ❯ src/services/work-item-sync.test.ts:641:16
+ ❯ ../../packages/db/src/unit-of-work.ts:67:87
+ ❯ ../../packages/db/src/unit-of-work.ts:67:31
+ ❯ ../../packages/db/src/database-handle.ts:129:92
+ ❯ ../../packages/db/src/database-handle.ts:139:26
+ ❯ sqliteTransaction ../../node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/methods/transaction.js:65:24
+ ❯ ../../packages/db/src/database-handle.ts:145:10
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[21/35]⎯
+
+⎯⎯⎯⎯⎯⎯ Unhandled Errors ⎯⎯⎯⎯⎯⎯
+
+Vitest caught 3 unhandled errors during the test run.
+This might cause false positive tests. Resolve unhandled errors to make sure your tests are not affected.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+DomainError: StoryMapper Issue links require a served loopback origin.
+ ❯ Module.buildGitHubIssueBody ../../packages/core/src/publishing/github-footer.ts:17:61
+
+ ❯ ../../packages/db/src/repositories/work-item-repository.ts:139:17
+ ❯ StoryMapperRepository.createWorkItemPushPlan ../../packages/db/src/repositories/work-item-repository.ts:132:8
+ ❯ src/services/work-item-sync.ts:124:60
+ ❯ ../../packages/db/src/unit-of-work.ts:67:87
+ ❯ AsyncLocalStorage.run node:internal/async_local_storage/async_context_frame:63:14
+ ❯ ../../packages/db/src/unit-of-work.ts:67:31
+ ❯ ../../packages/db/src/database-handle.ts:129:92
+ ❯ ../../packages/db/src/database-handle.ts:139:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'validation', details: undefined, conflicts: undefined }
+This error originated in "src/services/work-item-sync.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "preserves existing hierarchy overrides through push results". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+DomainError: StoryMapper Issue links require a served loopback origin.
+ ❯ Module.buildGitHubIssueBody ../../packages/core/src/publishing/github-footer.ts:17:61
+
+ ❯ ../../packages/db/src/repositories/work-item-repository.ts:139:17
+ ❯ StoryMapperRepository.createWorkItemPushPlan ../../packages/db/src/repositories/work-item-repository.ts:132:8
+ ❯ src/services/work-item-sync.ts:124:60
+ ❯ ../../packages/db/src/unit-of-work.ts:67:87
+ ❯ AsyncLocalStorage.run node:internal/async_local_storage/async_context_frame:63:14
+ ❯ ../../packages/db/src/unit-of-work.ts:67:31
+ ❯ ../../packages/db/src/database-handle.ts:129:92
+ ❯ ../../packages/db/src/database-handle.ts:139:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'validation', details: undefined, conflicts: undefined }
+This error originated in "src/services/work-item-sync.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "preserves during-provider hierarchy overrides through push results". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+
+⎯⎯⎯⎯ Unhandled Rejection ⎯⎯⎯⎯⎯
+DomainError: StoryMapper Issue links require a served loopback origin.
+ ❯ Module.buildGitHubIssueBody ../../packages/core/src/publishing/github-footer.ts:17:61
+
+ ❯ ../../packages/db/src/repositories/work-item-repository.ts:139:17
+ ❯ StoryMapperRepository.createWorkItemPushPlan ../../packages/db/src/repositories/work-item-repository.ts:132:8
+ ❯ src/services/work-item-sync.ts:124:60
+ ❯ ../../packages/db/src/unit-of-work.ts:67:87
+ ❯ AsyncLocalStorage.run node:internal/async_local_storage/async_context_frame:63:14
+ ❯ ../../packages/db/src/unit-of-work.ts:67:31
+ ❯ ../../packages/db/src/database-handle.ts:129:92
+ ❯ ../../packages/db/src/database-handle.ts:139:26
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'validation', details: undefined, conflicts: undefined }
+This error originated in "src/services/work-item-sync.test.ts" test file. It doesn't mean the error was thrown inside the file itself, but while it was running.
+The latest test that might've caused the error is "marks an earlier completed push result unsynced when it is edited during a later remote call". It might mean one of the following:
+- The error was thrown, while Vitest was running this test.
+- If the error occurred after the test had been completed, this was the last documented test before it was thrown.
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+
+ Test Files  3 failed (3)
+      Tests  35 failed | 79 passed (114)
+     Errors  3 errors
+   Start at  01:49:33
+   Duration  33.06s (transform 662ms, setup 0ms, collect 2.61s, tests 34.12s, environment 0ms, prepare 87ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/server:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/application/sync/github-command-regressions.test.ts src/services/work-item-sync.test.ts src/services/sync-review.test.ts

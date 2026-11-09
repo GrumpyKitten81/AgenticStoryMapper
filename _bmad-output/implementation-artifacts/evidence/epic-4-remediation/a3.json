@@ -1,0 +1,26 @@
+{
+  "action": "epic-4-retro-a3",
+  "checks": {
+    "scope_parity": 4,
+    "full_db": 414,
+    "db_typecheck": "passed"
+  },
+  "measurement": {
+    "foreign_cards": 2503,
+    "foreign_extra_chunks": 2500,
+    "target_before": {
+      "rows": 68,
+      "ms": 5.307333
+    },
+    "reference_after": {
+      "rows": 5113,
+      "ms": 20.065333
+    },
+    "scoped_after": {
+      "rows": 68,
+      "ms": 4.507042
+    }
+  },
+  "review": "Independent review caught link helper deleted-map visibility regression; restored original isStoryMapVisible guards and added actual helper regression. Final review has no actionable findings. Parent verified entire source diff and reference tests.",
+  "initial_failures": "First materialization check found4foreign rows through map-fingerprint link helpers; scoped those SQL queries. Full DB initially failed crashed-WAL test under sandbox; elevated run414/414 passed. All original logs retained."
+}

@@ -1,0 +1,102 @@
+[
+  {
+    "lens": "adversarial",
+    "location": "apps/web/src/features/story-map/graph/GraphCanvas.tsx:27",
+    "trigger_condition": "Canonical refresh replaces layout after pan/zoom.",
+    "guard_snippet": "Preserve viewport across ordinary refresh and reveal retained focused nodes.",
+    "potential_consequence": "Pan/zoom resets; a focused zoom-1 node can remain offscreen.",
+    "disposition": "defer",
+    "verified_evidence": "GraphView memoizes model/layout by snapshot; GraphCanvas resets on layout and reveals only on zoom changes.",
+    "action_item": "A5"
+  },
+  {
+    "lens": "adversarial",
+    "location": "apps/web/src/features/story-map/graph/GraphCanvas.tsx:36",
+    "trigger_condition": "External update arrives during pointer panning.",
+    "guard_snippet": "Coordinate pan lifecycle with the shared interaction hold.",
+    "potential_consequence": "A refresh can clear the active pointer gesture.",
+    "disposition": "defer",
+    "verified_evidence": "Plain canvas focus is outside liveUpdatesHeld selectors; GraphCanvas does not use useLiveDrag.",
+    "action_item": "A5"
+  },
+  {
+    "lens": "adversarial",
+    "location": "apps/web/src/features/story-map/graph/GraphTable.tsx:9",
+    "trigger_condition": "Keyboard traversal follows dependent/prerequisite edge rows.",
+    "guard_snippet": "Reviewer requested prerequisite-first table traversal.",
+    "potential_consequence": "Table traversal differs from canvas node order.",
+    "disposition": "accept-as-is",
+    "verified_evidence": "Declared prerequisite-first Tab order applies to the canvas. Table requires relationship/selection/filter parity, not the same edge-row focus order; GraphView.test.tsx:223 explicitly checks intended edge rows.",
+    "action_item": "none"
+  },
+  {
+    "lens": "adversarial",
+    "location": "apps/web/src/features/story-map/graph/GraphTable.tsx:14",
+    "trigger_condition": "Filter keeps a dependent but excludes its prerequisites.",
+    "guard_snippet": "Show canonical prerequisites with outside-filter annotation.",
+    "potential_consequence": "Depends-on cell can say None despite a real canonical edge.",
+    "disposition": "defer",
+    "verified_evidence": "Rows derive only model.edges; model.requires and the separate relationship/blocker panel retain canonical edges. The local cell defect is confirmed; source data is intact.",
+    "action_item": "A6"
+  },
+  {
+    "lens": "adversarial",
+    "location": "apps/web/src/features/story-map/components/PlanStateComparison.tsx:16",
+    "trigger_condition": "Capture response completes after Restore removes that capture.",
+    "guard_snippet": "Fence capture completion or revalidate returned identity.",
+    "potential_consequence": "Selection may reference an unavailable captured state.",
+    "disposition": "defer-unverified",
+    "verified_evidence": "onSuccess selects returned ID after invalidation without epoch/membership check. This exact delayed mutation race was not reproduced; existing delayed comparison-read Restore tests are a different case.",
+    "action_item": "A7"
+  },
+  {
+    "lens": "adversarial",
+    "location": "apps/web/src/features/story-map/components/PlanStateComparison.tsx:23",
+    "trigger_condition": "Captured-state list/comparison read fails transiently.",
+    "guard_snippet": "Reviewer requested a dedicated Retry action preserving selections.",
+    "potential_consequence": "Recovery needs refetch/navigation/selection rather than a dedicated button.",
+    "disposition": "accept-as-is",
+    "verified_evidence": "Errors are explicit and no stale comparison is rendered. Existing declared criteria require honest unavailable/error behavior, not this extra control; existing selection/refetch recovery remains available.",
+    "action_item": "none"
+  },
+  {
+    "lens": "adversarial",
+    "location": "apps/web/src/features/what-changed/WhatChangedDrawer.tsx:30",
+    "trigger_condition": "Focused Retry succeeds and is removed.",
+    "guard_snippet": "Recover focus to a surviving control if retry still owns it.",
+    "potential_consequence": "Focus can fall to body while drawer stays open.",
+    "disposition": "defer",
+    "verified_evidence": "Drawer open effect runs only on open; retry invokes provider refetch without focus ownership recovery.",
+    "action_item": "A8"
+  },
+  {
+    "lens": "adversarial",
+    "location": "apps/web/src/features/what-changed/WhatChangedDrawer.tsx:41",
+    "trigger_condition": "Epoch reconciliation removes focused group/link.",
+    "guard_snippet": "Recover focus when background reconciliation removes its owner.",
+    "potential_consequence": "Focus can fall to body on feed replacement.",
+    "disposition": "defer",
+    "verified_evidence": "Only acknowledgment markSeen schedules focus repair. Epoch reconciliation does not invoke it.",
+    "action_item": "A8"
+  },
+  {
+    "lens": "adversarial",
+    "location": "apps/web/src/features/what-changed/api.ts:8",
+    "trigger_condition": "Very large unseen history is drained and rendered.",
+    "guard_snippet": "Benchmark high-event-count histories and bound presentation if required.",
+    "potential_consequence": "Potential large-history CPU/memory/render delay.",
+    "disposition": "defer-unverified",
+    "verified_evidence": "All pages accumulate and ActorGroups remains mounted while hidden. No larger-history absolute budget failure was measured; current1000marked-Card acceptance passed.",
+    "action_item": "A9"
+  },
+  {
+    "lens": "adversarial",
+    "location": "packages/db/src/repositories/card-dependencies-repository.ts:37",
+    "trigger_condition": "Another human adds/removes an edge.",
+    "guard_snippet": "Capture readable endpoint identities in immutable Activity evidence.",
+    "potential_consequence": "What changed can label endpoints only by UUID.",
+    "disposition": "defer",
+    "verified_evidence": "Direct edge Activity contains IDs; activity-card-evidence.ts ownerCards emits IDs without titles; drawer falls back to identity. Markers and underlying edge identity remain correct.",
+    "action_item": "A10"
+  }
+]

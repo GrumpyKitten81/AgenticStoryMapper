@@ -1,0 +1,90 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  quality:
+    name: Release quality (Linux)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Validate immutable release candidate
+        run: node scripts/release.mjs validate
+      - name: Provision Corepack
+        run: npm install --global corepack@0.35.0
+      - name: Verify root runtime and pnpm pin
+        run: node --input-type=module -e "import { runtime } from './scripts/runtime.mjs'; await runtime();"
+      - name: Install frozen dependencies
+        run: corepack pnpm install --frozen-lockfile
+      - name: Build native SQLite for this runner
+        run: corepack pnpm --filter @storymapper/db rebuild better-sqlite3
+      - name: Construct native SQLite database
+        run: corepack pnpm --filter @storymapper/db exec node --input-type=module -e "import Database from 'better-sqlite3'; const db = new Database(':memory:'); db.prepare('SELECT 1').get(); db.close();"
+      - name: Run shared quality checks
+        run: corepack pnpm check:ci
+
+  audit:
+    name: Release dependency audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Validate immutable release candidate
+        run: node scripts/release.mjs validate
+      - name: Provision Corepack
+        run: npm install --global corepack@0.35.0
+      - name: Verify root runtime and pnpm pin
+        run: node --input-type=module -e "import { runtime } from './scripts/runtime.mjs'; await runtime();"
+      - name: Enforce dependency advisory policy
+        run: node scripts/release.mjs audit
+
+  publish:
+    name: Publish checked release
+    needs: [quality, audit]
+    if: ${{ needs.quality.result == 'success' && needs.audit.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Scan, verify and publish exact candidate notes
+        run: node scripts/release.mjs publish
+        env:
+          RELEASE_CHECKS: '{"quality":"${{ needs.quality.result }}","audit":"${{ needs.audit.result }}"}'
+          PUBLICATION_POLICY: ${{ secrets.PUBLICATION_POLICY }}
+          GH_TOKEN: ${{ github.token }}

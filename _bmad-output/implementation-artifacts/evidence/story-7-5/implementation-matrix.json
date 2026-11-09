@@ -1,0 +1,97 @@
+{
+  "baseline_revision": "ecf3ef5ba72f6c99300e2c9c580f5e3c4cdd2822",
+  "focused": {
+    "files": 8,
+    "tests_passed": 195,
+    "tests_failed": 0,
+    "log": "implementation-focused-tests.log.gz"
+  },
+  "server_typecheck": "passed",
+  "child_reported_tests": {
+    "contracts": 169,
+    "core": 406,
+    "db": 488,
+    "remote_push": 61
+  },
+  "matrix": [
+    {
+      "row": "Hierarchical import",
+      "tests": [
+        "github-command-regressions.test.ts: prepares one executable Unscheduled import for $actorType with explicit duplicate outcomes",
+        "work-item-sync.test.ts: imports child-first Agent hierarchy and reuses the imported fallback activity",
+        "github-command-sdk.test.ts: keeps protected %s incoming import separate from human approval and Apply"
+      ]
+    },
+    {
+      "row": "Duplicate import",
+      "tests": [
+        "github-command-regressions.test.ts: prepares one executable Unscheduled import for $actorType with explicit duplicate outcomes",
+        "github-command-sdk.test.ts: deduplicates one Issue across two connections and refuses another Card owner through HTTP and SDK",
+        "github-command-regressions.test.ts: does not parent Agent imports under a same-numbered Issue of another repository"
+      ]
+    },
+    {
+      "row": "First Release sync",
+      "tests": [
+        "github-command-regressions.test.ts: prepares one executable Unscheduled import for $actorType with explicit duplicate outcomes",
+        "github-command-regressions.test.ts: imports iteration sources Unscheduled and reviews their inbound-only Release assignment",
+        "canonical-github-identity.test.ts: persists distinct acknowledged and observed sync fields through executor, populated reopen and Restore, while redacting portable copies"
+      ]
+    },
+    {
+      "row": "Independent edits",
+      "tests": [
+        "work-item-sync.test.ts: merges incoming remote body while retaining a local title pending review",
+        "work-item-sync.test.ts: merges an independent remote body while leaving a divergent title conflict",
+        "github-command-regressions.test.ts: keeps explicit empty selection empty and retains open conflict evidence on repeat"
+      ]
+    },
+    {
+      "row": "Read-only divergence",
+      "tests": [
+        "github-command-regressions.test.ts: preserves local divergence and records conflicts with a read-only connection",
+        "work-item-sync.test.ts: retains edits arriving during fetch with readOnly=%s",
+        "github-command-regressions.test.ts: adds and removes only existing unambiguous Annotation assignments with a healthy repeated pull"
+      ]
+    },
+    {
+      "row": "Managed labels",
+      "tests": [
+        "github-command-regressions.test.ts: adds and removes only existing unambiguous Annotation assignments with a healthy repeated pull",
+        "work-item-sync.test.ts: imports mapped Agent labels as durable annotations while excluding status and default labels",
+        "sync-review.test.ts: merges local status with independent remote labels without removing them"
+      ]
+    },
+    {
+      "row": "Stale or failed preparation",
+      "tests": [
+        "github-command-regressions.test.ts: reports prepared, failed and not-attempted source rows without applying a partial incoming batch",
+        "github-command-regressions.test.ts: refuses an Agent pull when its %s changes while the provider is pending",
+        "sync-review.test.ts: reports %s invalidation of a prepared item during the later fetch as not applied",
+        "unit-of-work.test.ts: attributes incoming remote conflict resolution to github and rolls back Card/link/conflict together",
+        "work-item-sync.test.ts: refuses import after %s is disabled while the provider is pending"
+      ]
+    },
+    {
+      "row": "Review separation",
+      "tests": [
+        "github-command-sdk.test.ts: keeps protected %s incoming import separate from human approval and Apply",
+        "github-command-sdk.test.ts: routes SDK %s with protection=%s while retaining outgoing local fields for human confirmation",
+        "github-command-sdk.test.ts: keeps SDK push as a persisted Dry Run until the separate human HTTP confirmation mutates the provider",
+        "github-command-transports.test.ts: refuses ${surface} GitHub application when ${flag} changes during ${stage} (surface SDK StreamableHTTP and HTTP call endpoint)",
+        "remote-push-execution.test.ts: requires separate incoming review before preparing %s outgoing Sync",
+        "incoming-review.test.tsx: reviews local operations, approves and applies separately, then explicitly prepares outgoing without confirming it"
+      ]
+    }
+  ],
+  "unverified": [
+    "Native browser accessibility, screen reader and operating-system acceptance",
+    "Live GitHub account/provider/installed CLI journey"
+  ],
+  "notes": [
+    "No live providers or actual credentials accessed by these tests.",
+    "Initial broad server failure log retained; parent final workspace/release gates are authoritative after all implementation fixes.",
+    "New packages/db/src/fixtures/imported-card.ts must be staged for launcher fixtures that use git ls-files.",
+    "Focused SDK transport tests use StreamableHTTP, plus the HTTP call endpoint. They do not establish an actual stdio bridge import/pull journey; parent final MCP lifecycle gate may cover bridge transport separately."
+  ]
+}

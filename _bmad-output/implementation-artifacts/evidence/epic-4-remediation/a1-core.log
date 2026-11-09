@@ -1,0 +1,13 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+
+ ✓ src/changesets/reserved-operation-ids.test.ts (10 tests) 39ms
+ ✓ src/changesets/operation-selection-regressions.test.ts (45 tests) 94ms
+ ✓ src/changesets/remaining-operation-resolution.test.ts (73 tests) 145ms
+ ✓ src/changesets/operation-resolution.test.ts (69 tests) 180ms
+
+ Test Files  4 passed (4)
+      Tests  197 passed (197)
+   Start at  10:39:54
+   Duration  688ms (transform 302ms, setup 0ms, collect 1.30s, tests 457ms, environment 0ms, prepare 121ms)
+

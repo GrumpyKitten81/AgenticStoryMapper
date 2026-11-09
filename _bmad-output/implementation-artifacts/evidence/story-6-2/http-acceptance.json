@@ -1,0 +1,80 @@
+{
+  "runtime": "Node24.17.0",
+  "surface": "actual HTTP routes on isolated temporary built-in sample",
+  "createdRolesAndParents": [
+    {
+      "level": "activity",
+      "parentId": null,
+      "id": "c9e7e76e-2297-4756-8eea-8171809fd210",
+      "version": 1
+    },
+    {
+      "level": "step",
+      "parentId": null,
+      "id": "32192199-a802-49dd-941b-6873e2774f7a",
+      "version": 1
+    },
+    {
+      "level": "step",
+      "parentId": "b3c22d29-0cd6-4b61-8989-a269d2e50648",
+      "id": "2f77acd4-f2b4-4887-aa4e-d402d89dd451",
+      "version": 1
+    },
+    {
+      "level": "story",
+      "parentId": null,
+      "id": "f3e44e7c-0d36-4bb5-8c7b-e08a78ecda4d",
+      "version": 1
+    },
+    {
+      "level": "story",
+      "parentId": "4598f9d1-a89e-48f4-b9cb-001874328376",
+      "id": "8432776d-98e6-40ed-b567-8378257c2760",
+      "version": 1
+    },
+    {
+      "level": "note",
+      "parentId": null,
+      "id": "0d22be5b-36ab-4dd4-86c3-5c657830f363",
+      "version": 1
+    },
+    {
+      "level": "note",
+      "parentId": "b3c22d29-0cd6-4b61-8989-a269d2e50648",
+      "id": "58ceee48-0b35-4691-be17-508eff8594fa",
+      "version": 1
+    },
+    {
+      "level": "note",
+      "parentId": "4598f9d1-a89e-48f4-b9cb-001874328376",
+      "id": "7c2d36f6-6281-4747-b4a8-845f7a192135",
+      "version": 1
+    }
+  ],
+  "illegalHierarchy": {
+    "code": "validation",
+    "message": "story cannot be nested below activity."
+  },
+  "scalarSaveVersion": 2,
+  "supportedClearVersion": 3,
+  "zeroEstimate": 0,
+  "cardIds": [
+    "c9e7e76e-2297-4756-8eea-8171809fd210",
+    "32192199-a802-49dd-941b-6873e2774f7a",
+    "2f77acd4-f2b4-4887-aa4e-d402d89dd451",
+    "f3e44e7c-0d36-4bb5-8c7b-e08a78ecda4d",
+    "8432776d-98e6-40ed-b567-8378257c2760",
+    "0d22be5b-36ab-4dd4-86c3-5c657830f363",
+    "58ceee48-0b35-4691-be17-508eff8594fa",
+    "7c2d36f6-6281-4747-b4a8-845f7a192135"
+  ],
+  "databaseReopen": "Actual server stopped and restarted on same fixture SQLite; all8created IDs and saved zero/version3 persist.",
+  "browser": "Not exercised: Safari changed outside task during attempted new-tab navigation. No browser operation claimed.",
+  "cleanup": "Owned44362server stopped; fixture remains temporary outside repository; no user Project/GitHub mutation. Safari tab changed outside task; no loaded task tab remains to close.",
+  "priorityCssContrast": {
+    "foreground": "#202820",
+    "background": "#f5a623",
+    "ratio": 7.48,
+    "scope": "WCAG relative-luminance calculation of changed CSS pair, not browser computed-style or full accessibility acceptance"
+  }
+}

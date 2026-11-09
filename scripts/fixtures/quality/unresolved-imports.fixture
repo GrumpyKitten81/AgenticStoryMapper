@@ -1,0 +1,4 @@
+import(name);
+require(variable);
+import(`package-${name}`);
+require(`package-${name}`);

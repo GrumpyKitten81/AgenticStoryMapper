@@ -1,0 +1,144 @@
+{
+  "changedFiles": [
+    "apps/web/src/app/api.ts",
+    "apps/web/src/app/conflicts.test.ts",
+    "apps/web/src/app/conflicts.ts",
+    "apps/web/src/app/routes/story-map-shell.tsx",
+    "apps/web/src/app/routes/workspace-navigation.test.tsx",
+    "apps/web/src/features/conflicts/ConflictAlert.tsx",
+    "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+    "apps/web/src/features/github-sync/IncomingGitHubReview.tsx",
+    "apps/web/src/features/github-sync/RemotePushReview.tsx",
+    "apps/web/src/features/github-sync/github-selection.test.tsx",
+    "apps/web/src/features/github-sync/sync-status.ts",
+    "apps/web/src/features/releases/ReleaseDateFields.tsx",
+    "apps/web/src/features/releases/ReleaseEditor.tsx",
+    "apps/web/src/features/releases/ReleaseKanban.tsx",
+    "apps/web/src/features/releases/release-utils.ts",
+    "apps/web/src/features/story-map/components/BoardToolbar.tsx",
+    "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+    "apps/web/src/features/story-map/components/CardTile.tsx",
+    "apps/web/src/features/story-map/components/DescriptionEditor.tsx",
+    "apps/web/src/features/story-map/components/DiscoveryLanes.tsx",
+    "apps/web/src/features/story-map/components/LifecycleActions.tsx",
+    "apps/web/src/features/story-map/components/LifecycleDialog.tsx",
+    "apps/web/src/features/story-map/components/MoveAreaDialog.tsx",
+    "apps/web/src/features/story-map/components/StorySliceMove.tsx",
+    "apps/web/src/features/story-map/components/card-detail-test-fixture.ts",
+    "apps/web/src/ui-strings/remote-push.ts",
+    "apps/web/src/features/github-sync/GitHubSyncStatus.tsx",
+    "apps/web/src/features/github-sync/SyncConflictDiff.tsx",
+    "apps/web/src/features/github-sync/SyncConflictReview.tsx",
+    "apps/web/src/features/github-sync/SyncFieldLocks.tsx",
+    "apps/web/src/features/story-map/components/sync-field-locks.test.tsx",
+    "apps/web/src/ui-strings/sync-conflicts.ts"
+  ],
+  "node": "24.17.0",
+  "focusedSuite": {
+    "log": "story-7-6-web-focused-final.log.gz",
+    "files": 13,
+    "tests": 143,
+    "passed": true,
+    "cwd": "[REDACTED_HOME]/Projects/StoryMapper",
+    "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/web exec vitest run src/features/github-sync/github-selection.test.tsx src/features/github-sync/incoming-review.test.tsx src/features/story-map/components/card-detail-github.test.ts src/features/story-map/components/card-choices.test.tsx src/features/story-map/components/sync-field-locks.test.tsx src/features/story-map/components/move-position.test.tsx src/app/conflicts.test.ts src/app/routes/workspace-navigation.test.tsx src/features/releases/ReleaseDateFields.test.ts src/features/releases/ReleaseEditor.test.tsx src/features/releases/ReleaseKanban.test.tsx src/features/releases/ReleasePanel.test.tsx src/ui-strings/ui-strings.test.ts",
+    "testFiles": [
+      "src/features/github-sync/github-selection.test.tsx",
+      "src/features/github-sync/incoming-review.test.tsx",
+      "src/features/story-map/components/card-detail-github.test.ts",
+      "src/features/story-map/components/card-choices.test.tsx",
+      "src/features/story-map/components/sync-field-locks.test.tsx",
+      "src/features/story-map/components/move-position.test.tsx",
+      "src/app/conflicts.test.ts",
+      "src/app/routes/workspace-navigation.test.tsx",
+      "src/features/releases/ReleaseDateFields.test.ts",
+      "src/features/releases/ReleaseEditor.test.tsx",
+      "src/features/releases/ReleaseKanban.test.tsx",
+      "src/features/releases/ReleasePanel.test.tsx",
+      "src/ui-strings/ui-strings.test.ts"
+    ]
+  },
+  "postfixSuite": {
+    "log": "story-7-6-web-final-postfix.log.gz",
+    "files": 3,
+    "tests": 79,
+    "passed": true,
+    "includesNavigationTests": 26,
+    "cwd": "[REDACTED_HOME]/Projects/StoryMapper",
+    "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/web exec vitest run src/features/story-map/components/sync-field-locks.test.tsx src/features/story-map/components/card-detail-navigation.test.ts src/features/github-sync/github-selection.test.tsx",
+    "testFiles": [
+      "src/features/story-map/components/sync-field-locks.test.tsx",
+      "src/features/story-map/components/card-detail-navigation.test.ts",
+      "src/features/github-sync/github-selection.test.tsx"
+    ]
+  },
+  "typecheck": {
+    "log": "story-7-6-web-typecheck-final.log.gz",
+    "passed": true,
+    "cwd": "[REDACTED_HOME]/Projects/StoryMapper",
+    "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/web typecheck"
+  },
+  "whitespace": "git diff --check HEAD -- apps/web passed",
+  "nativeAcceptance": "Unexecuted: DOM tests verify focus and control behavior; native browser/reader/platform/live-provider acceptance remains unverified.",
+  "failedRuns": {
+    "story-7-6-web-typecheck.log.gz": "Fixture entity literal widened and incomplete persona fixture.",
+    "story-7-6-web-typecheck-2.log.gz": "Bulk filter setter was accidentally modified during targeted replacements; repaired.",
+    "story-7-6-web-focused-1.log.gz": "Persona fixture lacked required role.",
+    "story-7-6-web-locks-2.log.gz": "Release fixture lacked nullable dates; Bulk actions selector used incorrect literal label."
+  },
+  "panelAfterCancelGuard": {
+    "log": "story-7-6-web-panel-final.log.gz",
+    "tests": 47,
+    "passed": true,
+    "cwd": "[REDACTED_HOME]/Projects/StoryMapper",
+    "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/web exec vitest run src/features/github-sync/github-selection.test.tsx",
+    "testFiles": [
+      "src/features/github-sync/github-selection.test.tsx"
+    ]
+  },
+  "uniqueExecutedFocusedTests": 169,
+  "initialFailureRecovery": {
+    "log": "initial-64-test-output.log.gz",
+    "toolRecords": "initial-64-test-tool-records.json.gz",
+    "sourceSession": "rollout-2026-10-19T07-30-41-01a152a3-fddd-73d1-8976-2a31d77d76ec.jsonl",
+    "sourceRecordLines": [
+      200,
+      207
+    ],
+    "chunks": [
+      "4978b5",
+      "dbeb96"
+    ],
+    "sha256": "033fd5dd5b9e3dbd2fee2edb0e412066b65448d521de55ccbc2e0836e0b17f34",
+    "method": "Concatenated the unmodified decoded exec_command output strings from the original initial result and write_stdin completion. No reconstruction or rerun."
+  },
+  "postParentDiffRepair": {
+    "cwd": "[REDACTED_HOME]/Projects/StoryMapper",
+    "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/web exec vitest run src/features/story-map/components/sync-field-locks.test.tsx src/features/github-sync/github-selection.test.tsx src/features/releases/ReleaseEditor.test.tsx src/features/releases/ReleaseDateFields.test.ts src/app/routes/workspace-navigation.test.tsx",
+    "testFiles": [
+      "src/features/story-map/components/sync-field-locks.test.tsx",
+      "src/features/github-sync/github-selection.test.tsx",
+      "src/features/releases/ReleaseEditor.test.tsx",
+      "src/features/releases/ReleaseDateFields.test.ts",
+      "src/app/routes/workspace-navigation.test.tsx"
+    ],
+    "files": 5,
+    "tests": 93,
+    "passed": true,
+    "log": "story-7-6-web-repair-focused-1.log.gz",
+    "coverage": [
+      "Milestone name/goal/releaseDate/released locks and editable startDate",
+      "Iteration name/startDate/releaseDate locks and editable goal/released",
+      "Current Card Release and acknowledged-local Release targets for both sources",
+      "Canonical local and remote disputed Milestone Release targets",
+      "Unmanaged modal and bulk Annotation assignments remain usable using actual conflict connection and scoped core managedAnnotationDefinitions",
+      "Two-Card same-field conflict identity, accessible Card/Issue names and exact chosen conflict request"
+    ],
+    "typecheck": {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/web typecheck",
+      "passed": true,
+      "log": "story-7-6-web-repair-typecheck-final.log.gz"
+    },
+    "whitespace": "git diff --check HEAD -- apps/web passed",
+    "notes": "No root tests or builds run. Native browser/reader/live-provider acceptance remains unverified."
+  }
+}

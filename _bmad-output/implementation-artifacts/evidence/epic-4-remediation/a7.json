@@ -1,0 +1,10 @@
+{
+  "action": "epic-4-retro-a7",
+  "checks": {
+    "focused_db": 46,
+    "db_typecheck": "passed",
+    "foreign_key_check": []
+  },
+  "review": "Parent read complete3filediff: typed27entitytuple matches previous ENTITY_TABLES order, cardinality/uniqueness enforced, ranklookup preserves existing forwardinsert/update and reversedelete. Mixed actual persistence/state/history FK lifecycle plus existing copy tests pass. Final independent whole-range review stillpending.",
+  "initial_failures": "Newfixture required distinct operation/local aliases and explicit relationship entityIds; existing repository harness allocates inference origin so expected fallback provenance corrected. No productcodefailure."
+}

@@ -1,0 +1,19 @@
+{
+  "qualification": "Selected diagnostic fields only, not a full crash-stream reproduction. Temporal alignment does not establish originating JavaScript cause.",
+  "timestamp": "2026-10-20 21:11:17.00 +0200",
+  "exception": {
+    "type": "EXC_BREAKPOINT",
+    "signal": "SIGTRAP"
+  },
+  "allocatorMessage": "BUG IN CLIENT OF LIBMALLOC: memory corruption of free block",
+  "relevantSymbols": [
+    "_xzm_xzone_malloc_freelist_outlined",
+    "node::SyncProcessRunner::AddStdioPipe(unsigned int, bool, bool, uv_buf_t)",
+    "node::SyncProcessRunner::ParseStdioOption(int, v8::Local<v8::Object>)",
+    "node::SyncProcessRunner::ParseStdioOptions(v8::Local<v8::Value>)",
+    "node::SyncProcessRunner::ParseOptions(v8::Local<v8::Value>)",
+    "node::SyncProcessRunner::TryInitializeAndRunLoop(v8::Local<v8::Value>)",
+    "node::SyncProcessRunner::Run(v8::Local<v8::Value>)",
+    "node::SyncProcessRunner::Spawn(v8::FunctionCallbackInfo<v8::Value> const&)"
+  ]
+}

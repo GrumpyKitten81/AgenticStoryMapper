@@ -1,0 +1,54 @@
+{
+  "scope": "Review repairs only; no full workspace or release verification run by this subagent",
+  "node": "24.17.0",
+  "rows": [
+    {
+      "finding": "Cross-repository parent indexing; old-owner baseline; unchanged roots/history; direct and executor conflict retirement",
+      "command": "corepack pnpm --filter @storymapper/db exec vitest run src/repositories/canonical-github-identity.test.ts src/repositories/operation-executor-persistence.test.ts src/repositories/operation-resolution-parity.test.ts",
+      "tests": 43,
+      "result": "passed",
+      "log": "main-review-db-final.log"
+    },
+    {
+      "finding": "Canonical, source-link, writable collection and preflight regressions",
+      "command": "corepack pnpm --filter @storymapper/core exec vitest run src/changesets/operation-resolution.test.ts src/changesets/remaining-operation-resolution.test.ts src/changesets/resolver-write-collections.test.ts",
+      "tests": 214,
+      "result": "passed",
+      "log": "main-review-core-final.log"
+    },
+    {
+      "finding": "Actual HTTP removed-owner refusal and human/MCP Note provenance, plus incoming service regressions",
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/mcp/github-command-sdk.test.ts src/services/work-item-sync.test.ts src/application/sync/github-command-regressions.test.ts",
+      "tests": 82,
+      "result": "passed",
+      "log": "main-review-server-final.log"
+    },
+    {
+      "finding": "Final public admission cleanup after server focused pass",
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/mcp/github-command-sdk.test.ts",
+      "tests": 16,
+      "result": "passed",
+      "log": "main-review-sdk-final.log"
+    }
+  ],
+  "initial_failures": [
+    {
+      "log": "main-review-sdk-initial-failure.log",
+      "cause": "New actual-fetch test sent DELETE without a JSON body; fixture corrected to send an empty object before admission checks."
+    },
+    {
+      "raw_log_retained": false,
+      "observed": "Initial canonical focused run:10 passed/3 failed. Actual preflight still validated destination owner and blocked open-conflict retirement. Both product paths repaired; stale-baseline assertion aligned to preflight refusal. Final43 pass includes canonical13."
+    }
+  ],
+  "other_evidence": [
+    "storage-archive-review-repairs-summary.json",
+    "operations-review-footer.log",
+    "operations-review-provider.log",
+    "operations-review-card-detail.log"
+  ],
+  "limitations": [
+    "Focused tests use isolated fixtures and mocked provider; no real GitHub or native browser claim.",
+    "Parent owns full verification and typecheck."
+  ]
+}

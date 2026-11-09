@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-19",
+  "platform": "macOS Safari native CUA",
+  "status": "passed",
+  "final_built_web": true,
+  "actual_server_http_sqlite": true,
+  "authentication": "disposable local CLI probe and provider fixture; global external fetch forbidden",
+  "local_probes": 13,
+  "provider_read_checks": 2,
+  "observations": [
+    "Actual Connections route and safety header loaded",
+    "Shared Dialog initial heading focus",
+    "Native reverse Tab stayed in dialog",
+    "Keyboard opener returned focus after Escape",
+    "Local CLI Recheck did not perform Verify",
+    "Explicit Verify showed required off-switch notice, operational source and unavailable write evidence",
+    "Before Connect: persisted connection count0/GitHub false",
+    "Explicit Connect: count1/readOnly true/header On",
+    "Reconnect and browser reload: same id/count1/header On",
+    "Exactly one human local-user settings.safetyUpdated event",
+    "No credential file created",
+    "Owned tab closed and server listener4328 stopped"
+  ],
+  "before_connect": {
+    "phase": "after Verify before Connect",
+    "connections": 0,
+    "github": false,
+    "passed": true
+  },
+  "after_connect": {
+    "phase": "after explicit Connect",
+    "connections": 1,
+    "github": true,
+    "readOnly": true,
+    "id": "5ec3b6a7-bc07-42e6-b69c-876f547f5673",
+    "credential_file_created": false,
+    "passed": true
+  },
+  "after_reconnect": {
+    "id_retained": true,
+    "connections": 1,
+    "github": true,
+    "passed": true
+  },
+  "fixture_program": "/tmp/story-7-2-native-fixture.mts",
+  "fixture_program_sha256": "b0305084fe122ace9c32cf7d314492fd0c3f26e02cde990cc649b48304a18121",
+  "not_verified": [
+    "Real GitHub/CLI authentication",
+    "Windows/Firefox/NVDA and full VoiceOver/native release matrix",
+    "Native multiple-window lost-response/Restore recovery"
+  ]
+}

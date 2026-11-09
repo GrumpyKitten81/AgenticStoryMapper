@@ -1,0 +1,13 @@
+{
+  "command": [
+    "corepack",
+    "pnpm",
+    "audit",
+    "--audit-level",
+    "high"
+  ],
+  "started": "2026-10-19T23:58:32.061363+00:00",
+  "finished": "2026-10-19T23:58:32.702798+00:00",
+  "exitCode": 0,
+  "log": "parent-audit-high.log.gz"
+}

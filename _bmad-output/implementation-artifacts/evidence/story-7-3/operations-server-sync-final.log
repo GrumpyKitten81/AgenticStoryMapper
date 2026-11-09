@@ -1,0 +1,12 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/config/served-origin.test.ts (2 tests) 124ms
+ ✓ src/application/sync/github-command-regressions.test.ts (12 tests) 1060ms
+ ✓ src/services/sync-review.test.ts (48 tests) 2896ms
+ ✓ src/services/work-item-sync.test.ts (54 tests) 3022ms
+
+ Test Files  4 passed (4)
+      Tests  116 passed (116)
+   Start at  01:54:41
+   Duration  5.67s (transform 1.70s, setup 0ms, collect 8.61s, tests 7.10s, environment 0ms, prepare 343ms)

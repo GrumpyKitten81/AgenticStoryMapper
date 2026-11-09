@@ -1,0 +1,16 @@
+{
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "node": "24.17.0",
+  "corepack": "0.35.0",
+  "pnpm": "9.15.4",
+  "default_shell_node": "22.23.1 (detected before install; not used for install/check)",
+  "tmpdir": "new task-owned runtime-tmp directory selected before install and retained for check/children",
+  "tsx_disable_cache": "unset; normal caching",
+  "installation": "corepack pnpm install --offline --frozen-lockfile",
+  "install_exit": 0,
+  "install_reported_seconds": 5.8,
+  "dependency_source": "populated pnpm store; 424 reused, 0 downloaded; no copied node_modules",
+  "participant": "isolated author Agent; no previous conversation context",
+  "graph": "unavailable"
+}

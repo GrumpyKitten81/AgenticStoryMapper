@@ -1,0 +1,97 @@
+{
+  "original": [
+    {
+      "path": ".bmad-loop/claude-unattended.settings.json",
+      "working": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767",
+      "index": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767"
+    },
+    {
+      "path": ".bmad-loop/plugins/stop-on-story-failure/plugin.toml",
+      "working": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f",
+      "index": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f"
+    },
+    {
+      "path": ".bmad-loop/plugins/stop-on-story-failure/stop_on_failure.py",
+      "working": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6",
+      "index": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6"
+    },
+    {
+      "path": ".bmad-loop/policy.codex.toml",
+      "working": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d",
+      "index": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d"
+    },
+    {
+      "path": ".bmad-loop/policy.macci.bak",
+      "working": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a",
+      "index": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a"
+    },
+    {
+      "path": ".bmad-loop/policy.opencode.toml",
+      "working": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980",
+      "index": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/deferred-work.md",
+      "working": "dcc6358b8d42084e16d18de1feae9a898c8041f2a89d472956aa110890960244",
+      "index": "dcc6358b8d42084e16d18de1feae9a898c8041f2a89d472956aa110890960244"
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/sprint-status.yaml",
+      "working": "19f7582866405bd9cfea67c32f8222d65f12f66169d6e3630ffe6e1d2cd92d05",
+      "index": "19f7582866405bd9cfea67c32f8222d65f12f66169d6e3630ffe6e1d2cd92d05"
+    }
+  ],
+  "current": [
+    {
+      "path": ".bmad-loop/claude-unattended.settings.json",
+      "working": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767",
+      "index": "0547b97e75029f0971d2d9b6a640acf454d1c2c8bfd8efd5ab2d211561379767",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/plugins/stop-on-story-failure/plugin.toml",
+      "working": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f",
+      "index": "3613c113f0c66a552f43b15c1b5db916845d3d0a3b8f027898884b8e581e218f",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/plugins/stop-on-story-failure/stop_on_failure.py",
+      "working": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6",
+      "index": "455831632eca0fbcb784823ff2caeab90f0cb40af0631516c1c2ced075f5d3e6",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/policy.codex.toml",
+      "working": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d",
+      "index": "3860e896e8fe001b25075cffd96679c830618e13ec941cf29cdb07e29382730d",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/policy.macci.bak",
+      "working": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a",
+      "index": "7c3051e542525e8a2ce4e4989cd75cea2f010c6c222ead4cbb73b0e56b1b943a",
+      "unchanged": true
+    },
+    {
+      "path": ".bmad-loop/policy.opencode.toml",
+      "working": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980",
+      "index": "5e8a5940af380654ed91dfcd7017fb655c51af98fbcd8b0a3b781d7005ba6980",
+      "unchanged": true
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/deferred-work.md",
+      "working": "dcc6358b8d42084e16d18de1feae9a898c8041f2a89d472956aa110890960244",
+      "index": "dcc6358b8d42084e16d18de1feae9a898c8041f2a89d472956aa110890960244",
+      "unchanged": true
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/sprint-status.yaml",
+      "working": "19f7582866405bd9cfea67c32f8222d65f12f66169d6e3630ffe6e1d2cd92d05",
+      "index": "19f7582866405bd9cfea67c32f8222d65f12f66169d6e3630ffe6e1d2cd92d05",
+      "unchanged": true
+    }
+  ],
+  "allUnchanged": true,
+  "recordedAt": "2026-10-19T09:33:08.210213+00:00",
+  "noProtectedWritesOrIndexOperations": "No protected path was passed to a write/stage/unstage/revert command."
+}

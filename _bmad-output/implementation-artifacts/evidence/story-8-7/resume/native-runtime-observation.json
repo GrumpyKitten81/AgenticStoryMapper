@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-20",
+  "command": "node scripts/check-publication.mjs --policy /tmp/story-8-7-policy.json",
+  "firstAttempt": {
+    "exit": 133,
+    "output": "Tool reported empty output; no original stream was separately retained."
+  },
+  "diagnostic": {
+    "artifact": "native-node-diagnostic.json",
+    "selection": "Only process name/time/PID, exception, termination, allocator message and faulting-thread symbols retained; all other original diagnostic fields omitted. Local home prefix redacted.",
+    "originalDiagnosticSha256": "a91dc86c7361581a418b37d7ff04d9583f78e4854115db636c04d52dd6657833",
+    "selectedDiagnosticSha256": "c6c612062840c367bf1fb1988793d85169877fc97734075d360b2b9c8ed3bcea",
+    "correlation": "Recent Node diagnostic is temporally aligned with checker failure; native heap-corruption/SyncProcessRunner frames do not establish its originating cause."
+  },
+  "unchangedRecheck": {
+    "execution": "Reviewed local access; no code, flag, assertion, deadline or candidate change. Permission causation is not inferred.",
+    "exit": 1,
+    "stdout": "publication: blocked; 3757 unresolved findings; 3237 publication files.",
+    "meaning": "Expected blocking verdict; independently matched the then-current saved report. Candidate changes from recording this evidence require final regeneration and check.",
+    "artifact": "publication-check-recheck.log.gz",
+    "originalStreamSha256": "c3a6ca0ea4ca64801bea43a7ec4af2facb49045fdcd10f1afddbabb29cf33206",
+    "decodedSha256": "c3a6ca0ea4ca64801bea43a7ec4af2facb49045fdcd10f1afddbabb29cf33206",
+    "gzipSha256": "fe586dfae041804ef629333ebc369e85ca676c063435b126c7ae415b8f300f45"
+  },
+  "disposition": "Unresolved native runtime observation; retain failure and successful fresh verification separately, never claim a repair."
+}

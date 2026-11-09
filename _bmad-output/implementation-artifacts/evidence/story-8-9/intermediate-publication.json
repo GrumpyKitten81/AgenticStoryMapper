@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-21",
+  "scope": "Intermediate scan and independent recomputed check before final metadata/format/index writes; not final report freshness",
+  "commands": [
+    {
+      "command": "node scripts/check-publication.mjs --scan --policy <private transient policy file>",
+      "exit": 1,
+      "safe_output": "publication: blocked;3773 unresolved findings;3436 publication files"
+    },
+    {
+      "command": "node scripts/check-publication.mjs --policy <private transient policy file>",
+      "exit": 1,
+      "safe_output": "publication: blocked;3773 unresolved findings;3436 publication files"
+    }
+  ],
+  "report_sha256": "28a8fb005a270f61e82aa2181004b6245a0f9aa2ffc11d0facdcf9fe3d632b4f",
+  "candidate": {
+    "revision": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+    "refs": "3a9232ef28cf249319b977d380543bf7568268d054d8b3e25318c1e4618bf896",
+    "refCount": 38,
+    "workingTree": "12d12c6045ad46e1c73af0c78947ca40c808ba76d9a2f1f97f4b90d0b3841047",
+    "objects": "4a4d51c395e031810cb02300e81ddea1d7063d526807ae383cf7bd4c3ae9bc8d"
+  },
+  "coverage": {
+    "publicationFiles": 3436,
+    "trackedFiles": 3431,
+    "untrackedFiles": 5,
+    "reachableObjects": {
+      "blob": 8287,
+      "tree": 5086,
+      "commit": 365,
+      "tag": 0
+    },
+    "objectBytes": 251427562,
+    "gitComplete": true,
+    "contentComplete": false,
+    "privacyAndRightsCertified": false
+  },
+  "new_owned_binary_finding": "Raw NUL-delimited rehearsal-staged-manifest.txt.gz; four current/index privacy/rights rows. Replaced by transparently serialized exact JSON entries with validated original-byte roundtrip. No policy exemption or binary-data hiding.",
+  "remaining": "Existing declarations/history/privacy/rights/unsupported-content findings remain blocking; final scan/check follows all metadata and staging."
+}

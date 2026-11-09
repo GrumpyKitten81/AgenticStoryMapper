@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-17",
+  "counts": {
+    "total": 19,
+    "high": 0,
+    "medium": 12,
+    "low": 2,
+    "false": 3,
+    "maybe-false": 2
+  },
+  "rows": [
+    {
+      "id": "B1",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Refresh native disable loses focus during reachable fetch; same native disabled-control behavior observed in lifecycle actions."
+    },
+    {
+      "id": "B2",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Selection fetch error branch replaces operation checklist and removes focused checkbox without error destination."
+    },
+    {
+      "id": "B3",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Live revision mismatch is refused by select guard while checkbox disabled predicate omits revision; exposed state disagrees with operability."
+    },
+    {
+      "id": "B4",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Actual tool-pill CSS pair #6a746d/#f4f6f2 fails4.5:1 and new selected token cases omit it."
+    },
+    {
+      "id": "B5",
+      "verdict": "low",
+      "route": "patch",
+      "evidence": "GraphView keyboard pan/reveal/table assertions exist but dedicated script omits suite; direct gate path addition."
+    },
+    {
+      "id": "B6",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Axe surface audits never mount changed ChangeSet review lifecycle/checklist/status controls; direct actual-consumer semantic audit needed."
+    },
+    {
+      "id": "B7",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Index fixture populated only after updated bootstrap installed indexes, so opening existing populated tables without indexes is not asserted; shared withVG2."
+    },
+    {
+      "id": "B8",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Both finally writers produce success-shaped raw JSON even when assertions fail; outcome metadata missing."
+    },
+    {
+      "id": "B9",
+      "verdict": "low",
+      "route": "patch",
+      "evidence": "Timestamp/build mode lacks exact source-state provenance, preventing association of repeated captures with dirty measured implementation."
+    },
+    {
+      "id": "B10",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Novel focusable guarded lifecycle controls have only happy-path focus assertions; delayed Reject/refused/unknown Apply coverage will establish behavior."
+    },
+    {
+      "id": "VG1",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Pre-verified consumer gap: shell strips preview and unmounts focused heading after Apply; isolated passing test cannot establish settled focus."
+    },
+    {
+      "id": "VG2",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Pre-verified populated existing-database installation gap; same root asB7."
+    },
+    {
+      "id": "VG3",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Pre-verified identity/revision isolation gap: unconditional placeholder retention would pass current same-context focus/selection tests."
+    },
+    {
+      "id": "I1",
+      "verdict": "false",
+      "route": "reject",
+      "evidence": "Diagnostic boundaries are explicitly Fastify inject/real SQLite and complete React/jsdom commit; accepted plan permits jsdom plus separate manual checks, with no native timing gate."
+    },
+    {
+      "id": "I2",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "evidence": "Full rendered contrast/target/occlusion conformance remains unproved; actual desktop rendering matrix beyond bounded observations would settle medium-if-true risk."
+    },
+    {
+      "id": "I3",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "evidence": "Full UJ/platform/screen-reader conformance is unproved; recorded bounded native flows and explicit unavailable checks are truthful. Full journey, VoiceOver/Safari, NVDA/Firefox and preference matrix would settle medium-if-true risk. Shared manual boundary withI2."
+    },
+    {
+      "id": "I4",
+      "verdict": "false",
+      "route": "reject",
+      "evidence": "Descriptive evidence distinction: delayed hook/component tests plus separate native actual fetch/Approve/Apply observations exist; no contradictory pass claim."
+    },
+    {
+      "id": "I5",
+      "verdict": "false",
+      "route": "reject",
+      "evidence": "Bookkeeping is reporting only; actual commands/outputs, native observations and unchanged protected hashes independently support conclusions."
+    },
+    {
+      "id": "RepairCheck1",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Independent source check: refreshPending is set synchronously but decideAction/mutationFn omit it; render-captured fresh/revision can admit Refresh\u2192decision or live invalidation\u2192decision before render. Same-event regression and current-revision/refresh guard repair required."
+    }
+  ],
+  "reviewerLimits": "All4lenses launched before triage; thread cap queued intent after edge completion. Verification lens reused read-only DB investigator after fresh launch was denied; other3 context-free.",
+  "status": "complete; focused and full final gates passed; native final patch retest unavailable",
+  "patchedGroups": {
+    "high": 0,
+    "medium": 11,
+    "low": 2,
+    "total": 13
+  },
+  "deferredGroups": 1,
+  "rejected": 3,
+  "followupReviewRecommended": true
+}

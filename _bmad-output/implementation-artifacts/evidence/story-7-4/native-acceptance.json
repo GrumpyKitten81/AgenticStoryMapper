@@ -1,0 +1,12 @@
+{
+  "status": "unverified",
+  "observation": "CUA getState returned browsers:[] and no running browser app.",
+  "deferred": [
+    "Native keyboard/focus/link activation",
+    "Screen-reader and platform matrix",
+    "Live GitHub account and installed CLI acceptance",
+    "Abrupt OS process termination during remote call"
+  ],
+  "proven": "Controlled provider recovery tests, actual SQLite close/reopen/Restore and HTTP/MCP transports. No live-account acceptance run or modifying live-provider call was authorized.",
+  "initialSuiteIsolationGap": "Three pre-existing local-plan fixtures lacked auth/provider mocks after plan preparation became network-backed and failed400. Absence of local credential probes or provider reads in that initial run is not established. Explicit auth/provider isolation was added before subsequent server/full verification; no modifying live-provider call was observed."
+}

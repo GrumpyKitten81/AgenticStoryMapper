@@ -1,0 +1,41 @@
+{
+  "name": "@storymapper/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/main.js",
+  "scripts": {
+    "dev": "tsx watch src/main.ts --dev",
+    "build": "tsc -p tsconfig.json && node ../../scripts/copy-db-migrations.mjs server",
+    "start": "tsx src/main.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "corepack pnpm --filter @storymapper/web build && vitest run --exclude \"**/dist/**\" --passWithNoTests --exclude src/mcp/tools/tool-call-performance.test.ts --exclude src/mcp/tools/changeset-executor-performance.test.ts --exclude src/mcp/tools/delivery-status-performance.test.ts --exclude src/http/routes/changeset-preview-performance.test.ts --exclude src/http/routes/board-diagnostics.test.ts && corepack pnpm test:audit-performance",
+    "test:audit-performance": "vitest run --exclude \"**/dist/**\" src/mcp/tools/tool-call-performance.test.ts src/mcp/tools/changeset-executor-performance.test.ts src/http/routes/changeset-preview-performance.test.ts src/mcp/tools/delivery-status-performance.test.ts --maxWorkers=1",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test:diagnostics": "vitest run --exclude \"**/dist/**\" src/http/routes/board-diagnostics.test.ts --maxWorkers=1",
+    "test:coverage": "vitest run --exclude \"**/dist/**\" --exclude src/mcp/tools/tool-call-performance.test.ts --exclude src/mcp/tools/changeset-executor-performance.test.ts --exclude src/mcp/tools/delivery-status-performance.test.ts --exclude src/http/routes/changeset-preview-performance.test.ts --exclude src/http/routes/board-diagnostics.test.ts --coverage --maxWorkers=1"
+  },
+  "dependencies": {
+    "@fastify/cors": "^10.0.2",
+    "@fastify/multipart": "^9.4.0",
+    "@fastify/static": "^10.1.6",
+    "@modelcontextprotocol/node": "2.1.1",
+    "@modelcontextprotocol/server": "2.3.0",
+    "@storymapper/contracts": "workspace:*",
+    "@storymapper/core": "workspace:*",
+    "@storymapper/db": "workspace:*",
+    "@storymapper/github": "workspace:*",
+    "@storymapper/importers": "workspace:*",
+    "@storymapper/mcp": "workspace:*",
+    "fastify": "^5.12.7",
+    "jszip": "^3.10.1",
+    "tsx": "^4.19.2",
+    "zod": "^4.2.0"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.3.0",
+    "@modelcontextprotocol/fastify": "^2.0.1",
+    "vitest": "^4.1.12",
+    "@storymapper/web": "workspace:*"
+  }
+}

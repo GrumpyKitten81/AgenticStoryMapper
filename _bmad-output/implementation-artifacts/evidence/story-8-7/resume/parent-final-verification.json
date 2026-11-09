@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-20",
+  "timestamp": "2026-10-20T17:08:39.836287+00:00",
+  "runtime": {
+    "node": "24.17.0",
+    "pnpm": "9.15.4"
+  },
+  "postReviewAggregate": {
+    "command": "corepack pnpm check",
+    "exit": 0,
+    "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/story87-parent-final-check.sanitized.log.gz",
+    "originalStreamSha256": "41a79dbfe1449e484117834c7bde91e356b11afd2bc0c4c0f0b62c9b29dfbd0f",
+    "sanitizedDecodedSha256": "3219ba43002da9f84772e98c98b741cdba0558a0665efc07433e8571b52acf23",
+    "sanitizedGzipSha256": "fdefb87f8dfa729b61bff4665fd062ac8608bd95462ac5fdbae9461ce613bcfd",
+    "sanitization": "Only local-home prefix and transient employer terms replaced before retention."
+  },
+  "postReviewStandalone": {
+    "command": "node scripts/verify.mjs",
+    "exit": 0,
+    "artifact": "_bmad-output/implementation-artifacts/evidence/story-8-7/resume/story87-parent-final-verify.sanitized.log.gz",
+    "originalStreamSha256": "72128099dd35e77902705f0d276d4e7c856fbbd9e1c23a467182d38aee05f7f6",
+    "sanitizedDecodedSha256": "14a53a6f39e10be15130846a8d7625a6d74f3901614c59a7c7cd6094ff01361b",
+    "sanitizedGzipSha256": "c0a00ac598de0fad086ba1f56e1476b6ab8ac6ebc009123543c1225e669b3255",
+    "sanitization": "Only local-home prefix and transient employer terms replaced before retention."
+  },
+  "counts": {
+    "rootTotal": 177,
+    "rootPassed": 175,
+    "rootFailed": 0,
+    "rootSkipped": 2,
+    "coveragePassed": 3159,
+    "serialAuditPassed": 14,
+    "a11yPassed": 261
+  },
+  "coverageLinePercent": {
+    "contracts": 91.34,
+    "importers": 100.0,
+    "github": 91.19,
+    "core": 93.14,
+    "db": 93.7,
+    "mcp": 83.33,
+    "web": 87.8,
+    "server": 94.88
+  },
+  "review": {
+    "findings": 21,
+    "patchedRows": 15,
+    "patchedGroups": {
+      "high": 5,
+      "medium": 6,
+      "low": 1
+    },
+    "deferredRows": 4,
+    "deferredGroups": 3,
+    "rejectedRows": 2,
+    "followupReviewRecommended": true
+  },
+  "sourceHashes": {
+    "scripts/check-publication-git.mjs": "45e96041ec5596194ab9bcd6472b59fbb06043959dcd31e4e08a5153b1b45483",
+    "scripts/check-publication-content.mjs": "b155e7ca8389d68e0c0f15fa8e5b3f4957ea0ae827cf8552f2480d7a8129997a",
+    "scripts/check-publication-audit.mjs": "9c7f70f3005570066aa4d2df8c4c3c4be32a181c13ffb2c95f72402da363bcaf",
+    "scripts/check-publication.test.mjs": "9db560829a355e40919c55dad61fdb0c88bd77cda95c12a158de6e9232da8e8a"
+  },
+  "protectedBaseline": {
+    "head": "c74d36b86ed328965e168836fb5ac0d1d2289406",
+    "worktree": "266c57f998fc7d4b5f5d6ecf993087be919d21118c79d444639238d2d7458cd4",
+    "index": "266c57f998fc7d4b5f5d6ecf993087be919d21118c79d444639238d2d7458cd4",
+    "deferred": "23b53b078ca1b6b90bbf6fb964c6c973f425c92ced5337f6e9cc2940467969fa"
+  },
+  "headUnchanged": true,
+  "intentContractSha256": "eae9b496e70cf029a135c8fba97d9516fc08ec9776cefded37cfe20cada82b4e",
+  "statusHandoff": {
+    "beforeSha256": "c6bfdc892b5db3c373d6bfc93d06688dcad7e95cf5212d76599f50dd2ff514f6",
+    "afterSha256": "fb9dcad33d308047fb4bb01a0e41a3c55a8440db97cbb1a6cd159fd86cf1820c"
+  },
+  "matrix": "All five scenarios exercised by the full final publication suite; native input creation remains explicitly unavailable.",
+  "publication": "Blocked prerequisites remain; report generation and independent recomputation occur after final metadata/index writes. No final report digest is embedded here to avoid creating a self-referential candidate.",
+  "commitPolicy": "No separate explicit commit request; reviewed changes prepared for user/orchestrator, never staged protected ledgers.",
+  "sanitationContinuity": {
+    "records": 870,
+    "unchangedSinceSanitationStage": 867,
+    "subsequentDocumentedHandoffs": 3,
+    "gzipRawAndDecodedVerified": 378,
+    "allVerified": true,
+    "reason": "Three OpenWolf files reconcile through prior sanitation-to-handoff, user commit and current before/after handoff hashes; original manifests were never overwritten."
+  },
+  "publicationNativeRuntimeObservation": {
+    "artifact": "native-runtime-observation.json",
+    "firstExit": 133,
+    "unchangedRecheckExit": 1,
+    "unchangedRecheckMatchedBlockedReport": true,
+    "cause": "Unresolved native allocator observation; not a permissions or source repair claim.",
+    "finalCandidate": "Regenerate and independently check after retaining these new records."
+  }
+}

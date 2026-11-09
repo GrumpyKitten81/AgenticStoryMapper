@@ -1,0 +1,35 @@
+The diff implements a documented, locally checked Agent rehearsal. It provides narrower evidence than the strongest reading of “a contributor reproduces the workflow without maintainer help.”
+
+**1. Defensible readings of intent**
+
+1. **Reference-material delivery:** Explain the repository’s instruction files, planning artifacts, implementation, independent review, checks and contribution sequence in English.
+2. **Bounded local reproduction:** Demonstrate that an isolated participant can make a real small change and prepare a reviewed, checked local PR artifact. The detail plan explicitly permits Agent reproduction and simulated remote submission.
+3. **Unaided contributor reproducibility:** Demonstrate the epic’s stronger expectation that a contributor follows the documented workflow “from start to pull request” without maintainer help.
+4. **Execution and ownership constraints:** Perform the named story through build-auto while leaving orchestrator-owned sprint bookkeeping untouched and treating verification as separate evidence.
+
+**2. Which reading the diff implements**
+
+It implements reading 1 and a qualified version of reading 2:
+
+- Adds `docs/agentic-coding.md`, discovery links and corrections to existing workflow guidance.
+- Records a disposable Agent participant correcting a genuine stale README release-automation statement.
+- Retains the participant patch, review, local PR drafts, failed checks and successful continuation.
+- Preserves the distinction between configured release automation and unverified hosted execution.
+
+I decompressed the named patch, log and snapshot artifacts. The logs support two failed rehearsal aggregates followed by successful continuation and parent aggregates. Start/end snapshots match; the failed final rehearsal and successful continuation also have identical recorded source maps and semantic staged identities.
+
+**3. Where expectations and exercised surfaces diverge**
+
+| Expectation surface | What the changes and evidence exercise |
+|---|---|
+| **Contributor succeeds without maintainer help** | The initial participant stopped after two failures. Success followed separate diagnosis, parent-authorized environment provisioning and a task-owned `TMPDIR`. That prerequisite appears in evidence, but the walkthrough does not explain how to provision it. This establishes environment-qualified success, not unaided completion from the documented steps. |
+| **Planning precedes implementation** | The participant initially recorded its plan after editing. Reversing and reapplying the same README bytes demonstrates replay under a recorded plan; it does not demonstrate initial plan-led discovery. |
+| **Independent review with fresh context** | Review used a separate non-author Agent that had already investigated and suggested the correction. The retained repair patch changes “fresh” review into separate-session review with context disclosure. This supports non-author review, with reduced independence of perspective. |
+| **Reproduce the agentic engineering practice** | The exercised change is a README sentence correction. Runnable specs, substantial implementation and operational loop dispatch are described or inspected rather than reproduced end to end. Existing application tests establish regression health, not contributor comprehension. |
+| **Complete instruction compliance** | The rehearsal explicitly omits disposable OpenWolf bookkeeping. Complete standalone protocol compliance is therefore not demonstrated. |
+| **Start-to-PR delivery** | Actual artifacts stop at local title/body/diff preparation. Commit, push and remote PR creation remain simulated, consistent with the detail plan’s scope. Hosted submission and outside-human usability are untested. |
+| **Final publication audit** | The diff documents exact-candidate scan requirements and preserves blockers, but contains no final publication scan/check result for this material. Passing quality aggregates exercise a different surface. |
+| **Orchestrator ownership** | No sprint-status change appears in the supplied diff; retained working/index fingerprints report unchanged bytes. The revised guidance correctly rejects status rows as verification. Endpoint hashes cannot establish whether transient writes occurred. |
+| **Build-auto execution** | Evidence states that the parent invocation was consumed. The supplied diff does not independently demonstrate the render-once command or subsequent workflow execution. |
+
+The material generally discloses these limits accurately. The principal alignment gap is between a successfully checked, assisted rehearsal and the stronger expectation of reproduction without maintainer help.

@@ -1,0 +1,3 @@
+
+> storymapper@0.1.0 check-hygiene <home>/Projects/StoryMapper
+> node scripts/check-hygiene.mjs

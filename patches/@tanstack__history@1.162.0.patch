@@ -1,0 +1,69 @@
+diff --git a/dist/cjs/index.cjs b/dist/cjs/index.cjs
+--- a/dist/cjs/index.cjs
++++ b/dist/cjs/index.cjs
+@@ -207 +207,2 @@
+-	const onPushPopEvent = async () => {
++	const onPushPopEvent = async () => {
++		ignoreNextBeforeUnload = false;
+@@ -232,2 +233,5 @@
+-					ignoreNextPop = true;
+-					win.history.go(1);
++					const restoreDelta = currentLocation.state[stateIndexKey] - parseLocation().state[stateIndexKey];
++					if (restoreDelta) {
++						ignoreNextPop = true;
++						win.history.go(restoreDelta);
++					}
+@@ -239 +243,6 @@
+-		currentLocation = parseLocation();
++		const resumeDelta = nextLocation.state[stateIndexKey] - parseLocation().state[stateIndexKey];
++		if (resumeDelta) {
++			ignoreNextPop = true;
++			win.history.go(resumeDelta);
++		}
++		currentLocation = nextLocation;
+diff --git a/dist/esm/index.js b/dist/esm/index.js
+--- a/dist/esm/index.js
++++ b/dist/esm/index.js
+@@ -206 +206,2 @@
+-	const onPushPopEvent = async () => {
++	const onPushPopEvent = async () => {
++		ignoreNextBeforeUnload = false;
+@@ -231,2 +232,5 @@
+-					ignoreNextPop = true;
+-					win.history.go(1);
++					const restoreDelta = currentLocation.state[stateIndexKey] - parseLocation().state[stateIndexKey];
++					if (restoreDelta) {
++						ignoreNextPop = true;
++						win.history.go(restoreDelta);
++					}
+@@ -238 +242,6 @@
+-		currentLocation = parseLocation();
++		const resumeDelta = nextLocation.state[stateIndexKey] - parseLocation().state[stateIndexKey];
++		if (resumeDelta) {
++			ignoreNextPop = true;
++			win.history.go(resumeDelta);
++		}
++		currentLocation = nextLocation;
+diff --git a/src/index.ts b/src/index.ts
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -404 +404,2 @@
+-  const onPushPopEvent = async () => {
++  const onPushPopEvent = async () => {
++    ignoreNextBeforeUnload = false
+@@ -440,2 +441,5 @@
+-            ignoreNextPop = true
+-            win.history.go(1)
++            const restoreDelta = currentLocation.state[stateIndexKey] - parseLocation().state[stateIndexKey]
++            if (restoreDelta) {
++              ignoreNextPop = true
++              win.history.go(restoreDelta)
++            }
+@@ -449 +453,6 @@
+-    currentLocation = parseLocation()
++    const resumeDelta = nextLocation.state[stateIndexKey] - parseLocation().state[stateIndexKey]
++    if (resumeDelta) {
++      ignoreNextPop = true
++      win.history.go(resumeDelta)
++    }
++    currentLocation = nextLocation

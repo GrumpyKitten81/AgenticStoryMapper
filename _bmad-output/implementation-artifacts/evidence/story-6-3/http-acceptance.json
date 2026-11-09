@@ -1,0 +1,52 @@
+{
+  "runtime": "Node24.17.0",
+  "surface": "actual TCP HTTP; isolated temporary built-in sample",
+  "mapId": "d84de695-0581-4470-abfc-bad4350ba5b7",
+  "projectId": "c020e76e-6d82-450e-a301-cc80d87e10af",
+  "records": [
+    {
+      "case": "illegal story under activity",
+      "status": 400,
+      "message": "story cannot be nested below activity."
+    },
+    {
+      "case": "illegal step under step",
+      "status": 400,
+      "message": "step cannot be nested below step."
+    },
+    {
+      "case": "legal + stale second client + legal return",
+      "versions": [
+        3,
+        4,
+        5
+      ],
+      "staleStatus": 409
+    },
+    {
+      "case": "atomic overlap deletes explicit targets only",
+      "status": 200,
+      "deleted": [
+        "49955d77-3c66-40b7-a4ce-808fb04596f8",
+        "d9348bb8-9fde-4dd3-a9a7-87bf71b6de37"
+      ],
+      "survivorId": "663c4b95-612d-429d-9c30-0ffe9c3da4d6",
+      "survivorParent": null,
+      "survivorVersion": 2
+    }
+  ],
+  "restartExpected": {
+    "storyId": "9405ce23-d358-4b03-a44a-f3ca2eefa741",
+    "version": 5,
+    "parentId": "19861f5c-42ee-43c6-a701-e944bce2d77a",
+    "releaseId": "0ed3814e-76c5-4970-9564-645d5cdc4965",
+    "survivorId": "663c4b95-612d-429d-9c30-0ffe9c3da4d6",
+    "deletedIds": [
+      "49955d77-3c66-40b7-a4ce-808fb04596f8",
+      "d9348bb8-9fde-4dd3-a9a7-87bf71b6de37"
+    ]
+  },
+  "databaseReopen": "Passed after final repairs: actual server terminated and restarted on same temporary SQLite; move version5/parent/Release, child survival and both deletions persist. Runtime reclaimed dead owner; no graceful shutdown claim.",
+  "browser": "Unavailable: Safari cgWindowNotFound (-10005); iab unavailable. No native pointer/key/focus or screen-reader acceptance claimed.",
+  "procedure": "http-acceptance.py; run from repository only against independently started disposable runtime at127.0.0.1:44363 after health succeeds; uses built-in seed input."
+}

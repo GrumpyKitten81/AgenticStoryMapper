@@ -1,0 +1,52 @@
+---
+description: Write actionable planning Cards and public GitHub reports using the maintained templates.
+globs:
+alwaysApply: false
+---
+
+# Writing Cards and issues
+
+Date: 2026-11-08. Version: 5.
+
+Reproducing statement: Separate map-level, optional planning-type and GitHub Issue templates alongside public bug, improvement and task reports; preserve Card types, provenance, synchronization and human-controlled external effects.
+
+## Preserve independent concepts
+
+Activity → Step → Story is the map structure. Activities state user goals, Steps describe user actions, and Stories capture small deliverables. Use neutral `docs/templates/map-activity-template.md`, `map-step-template.md` and `map-story-template.md` for their descriptions. Apply map-level templates only to descriptions, with confirmation before replacing existing content.
+
+Optional Card planning types (Epic, Feature, User Story, Bug, Task, Spike, Theme) are independent of structural levels. Never infer a type from a level or reparent a Card when its type changes. Use independent Epic, Feature and User Story GitHub forms and matching Markdown issue templates when that type is intended. Preserve explicit user conventions without making them universal defaults.
+
+Optional Epic context frames one whole map through a title, goal and optional canonical GitHub Issue reference. It is local metadata, not a fourth row, parent Card or synchronization binding. Save through versioned map commands and ChangeSets for agent changes. See `docs/story-map-levels-and-issues.md`.
+
+## Choose the report shape
+
+- A defect uses `.github/ISSUE_TEMPLATE/bug.yml` or `docs/templates/bug-ticket-template.md`: Observed problem → Reproduce it → Expected behavior → Setup details (optional) → Extra evidence (optional).
+- A general improvement request uses `.github/ISSUE_TEMPLATE/feature-request.yml` or `docs/templates/improvement-template.md`: User goal → Proposed improvement → Alternatives and context (optional). Choose map placement separately from planning type.
+- Implementation, documentation or investigation work uses `.github/ISSUE_TEMPLATE/task.yml` or `docs/templates/task-template.md`: Intended change → Completion check → Constraints and links (optional).
+- Preserve requested Card types. For Spikes and Themes, adapt the task or Epic shape respectively. A research task's completion check states the question to settle and the investigation limit.
+- Public forms use their displayed section order. For Cards and manually written issues, omit optional sections without relevant content. Do not include template maintenance comments or empty prompts in the report.
+
+## Make the work actionable
+
+Use English unless the user requests another language. Explain the outcome in concrete terms and include an observable completion check. Ask for missing facts that affect the task; never invent observations, acceptance results or supporting evidence. Behavior examples can clarify a complex requirement, but no BDD block or separate acceptance-criteria ceremony is required for every report.
+
+Keep a Card focused on one independently reviewable outcome. Activities and Steps organize Stories rather than duplicate their work. Respect a user's chosen Card type; do not create unrelated planning content while processing a report.
+
+When creating an authorized Story Map, include its needed Activities and Steps as well as Stories; the hierarchy is part of the requested planning work. Use Tasks for implementation details. Additional Theme grouping needs explicit user authorization; use a Spike only for an unresolved question that blocks planned work.
+
+## Preserve links and authority
+
+- Public reports exclude credentials, private Project contents and unrelated personal information. Security reports follow `SECURITY.md` instead of public issue creation.
+- Link evidence where it is needed. When a Card is deliberately published, put the source map and local Card key in the final evidence/context section; keep local identifiers out of the GitHub title and main description. Use the linked GitHub issue when referring to a published Card.
+- A GitHub link in Markdown does not establish synchronization. The GitHub adapter owns the canonical `github` external reference and sync baseline; use the supported ChangeSet and connection workflow to create or update them.
+- A form name or title prefix does not set GitHub's native issue type. For agent-created issues, inspect the destination's available types and set the matching native type when supported. Do not assume that every repository offers every Card type.
+- Before updating a linked issue, check its current title/body and synchronization state. If local and remote content diverge, resolve the conflict through the supported flow rather than overwrite either side. Use GitHub state and configured status mappings; do not append a local `Status:` field to the issue body.
+- Agent-driven Card changes follow ChangeSet controls. GitHub mutations from Agentic Story Mapper require the reviewed Dry Run and human confirmation; an authoring rule grants no additional permission.
+
+## Changelog
+
+- 2026-11-08 v5: Remove automatic level/type equivalences and describe local map-wide Epic context.
+
+- 2026-11-08 v4: Give all three planning levels dedicated templates and clarify parent relationships, ordinary planning and explicitly requested methodology mappings.
+
+- 2026-11-08 v3: Replace the former ticket convention with three concise report shapes, retain planning Card types and document the required provenance and synchronization boundaries.

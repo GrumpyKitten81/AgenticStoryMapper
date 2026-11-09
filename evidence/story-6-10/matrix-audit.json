@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-17",
+  "rootLog": "parent-final-root-test.log",
+  "nonzeroSuiteAssertions": {
+    "indexes": true,
+    "serverDiagnostic": true,
+    "webDiagnostic": true,
+    "axe": true,
+    "contrast": true,
+    "nativeFocusRegression": true
+  },
+  "matrixRows": [
+    {
+      "row": "Current schema",
+      "executedCoverage": [
+        "card-indexes.test.ts:3 tests exact declarations/bootstrap, populated database missing both indexes/reopen/current-schema Restore/integrity and schema mismatch rejection; existing Restore/key persistence suites"
+      ],
+      "result": "passed"
+    },
+    {
+      "row": "Diagnostic performance",
+      "executedCoverage": [
+        "server-board-diagnostics:3reads/3committedmutations+durable reopen",
+        "web-board-diagnostics:21actual completeDOM interaction/search/filter samples"
+      ],
+      "result": "functional tests passed; timings diagnostic"
+    },
+    {
+      "row": "Integrated UI",
+      "executedCoverage": [
+        "229 dedicated accessibility tests across15files, including9board axe surfaces,21source contrast cases, ChangeSet open/closed axe,12focus/recovery/admission tests, connected shell, Graph keyboard and existing traversal/move/modal/live suites"
+      ],
+      "result": "automated checks passed"
+    },
+    {
+      "row": "Manual scope",
+      "executedCoverage": [
+        "native-acceptance.json actual UJ1/UJ3 keyboard/zoom/boundedrender checks and explicit unexecuted platform/SR statuses",
+        "parent evidence-schema assertions verified explicit unexecuted VoiceOver and truthful bounded UJ3 result",
+        "Final native patch retest unavailable: Safari cgWindowNotFound twice; no exposed browser surfaces; connected final focus and races covered by DOM regressions only."
+      ],
+      "result": "evidence distinction verified; full WCAG conformance remains unverified"
+    }
+  ],
+  "releaseLog": "parent-final-release-verify.log",
+  "finalDiagnosticCaptures": [
+    "server-board-diagnostics-1792269468339.json",
+    "web-board-diagnostics-1792269443807.json"
+  ],
+  "sourceSha256": "e5c6d5453a97b40f0daa101143da246fd3df5934a3e44983302fb60269b26f9c"
+}

@@ -1,0 +1,122 @@
+{
+  "range": "5b55d69^..98a92fc",
+  "scopeLimit": "Behavioral tracing focused on registry, preview, executor, source imports, provenance, Agent permission and human approval boundaries. Documentation and generated fixture payloads excluded from behavioral tracing. Graph MCP unavailable; source fallback used. Current source checked to distinguish retained risks from Epic5 changes. Proposed findings only; no autonomous fixes.",
+  "aggregateMetrics": {
+    "population": "Changed .ts/.tsx/.mjs files under apps, packages and scripts, excluding paths matching test|fixture|spec; changed-file population rather than whole repository",
+    "changedExecutableSourceFiles": 181,
+    "linesBefore": 16955,
+    "linesAfter": 21607,
+    "lineDelta": 4652,
+    "importDeclarationCounts": {
+      "apps/server->contracts": [37, 65],
+      "apps/server->core": [8, 15],
+      "apps/server->db": [10, 15],
+      "apps/server->github": [3, 6],
+      "apps/server->importers": [0, 1],
+      "apps/server->server": [165, 254],
+      "apps/web->contracts": [24, 26],
+      "apps/web->ui-strings": [21, 26],
+      "apps/web->web": [47, 72],
+      "packages/contracts->contracts": [22, 40],
+      "packages/core->contracts": [7, 28],
+      "packages/core->core": [5, 61],
+      "packages/db->contracts": [28, 37],
+      "packages/db->core": [8, 12],
+      "packages/db->db": [81, 106],
+      "packages/importers->contracts": [1, 0]
+    },
+    "interpretationLimit": "Static @storymapper import declarations, not graph edges or proof of cycles; no sampled production source exceeded 750 lines",
+    "fileGrowth": {
+      "packages/contracts/src/schemas/domain.ts": { "before": 713, "after": 734, "current": 744 },
+      "packages/core/src/changesets/operation-dependencies.ts": { "before": 0, "after": 451, "current": 494 }
+    }
+  },
+  "adversarial": [
+    {
+      "lens": "adversarial",
+      "location": "98a92fc:packages/db/src/repositories/operation-supply-repository.ts:9-18; current same anchors; packages/core/src/changesets/resolution-context.ts:30-34",
+      "trigger_condition": "A schema-valid operationId of '__proto__' is assigned into ordinary object dictionaries, so UUID allocation silently fails and allocatedId reads the inherited prototype object.",
+      "guard_snippet": "Use null-prototype dictionaries or Map for caller-controlled operation IDs, and validate allocated identities as own string values. Current change-operations.ts:15 accepts arbitrary nonblank IDs. A minimal Node reproduction confirmed own=false, typeof value='object', truthy=true.",
+      "potential_consequence": "A valid submitted creation operation reaches resolution with an object identity and can fail unpredictably downstream rather than receiving a controlled validation result. Present at the Epic4 tip and current source; no privilege bypass demonstrated."
+    },
+    {
+      "lens": "adversarial",
+      "location": "98a92fc:apps/server/src/application/changeset/prepare-operation-supply.ts:19-22; current same anchors",
+      "trigger_condition": "A reviewed local source still exists but becomes unreadable with EACCES or EPERM before preview or application.",
+      "guard_snippet": "Classify expected filesystem access failures alongside missing-source conflicts and add focused preview/apply coverage. The current catch recognizes ENOENT, ENOTDIR and EISDIR only; other filesystem errors escape unchanged.",
+      "potential_consequence": "A normal source-availability change produces an internal failure instead of actionable review conflict feedback. Source-verified in both revisions; this permission-change scenario was not executed."
+    },
+    {
+      "lens": "adversarial",
+      "location": "98a92fc:packages/db/src/repositories/operation-snapshot-repository.ts:14-47; current:14-47, especially sourceChunks:45",
+      "trigger_condition": "An operation targets a small Project while unrelated Projects contain many Cards, source chunks or relationships.",
+      "guard_snippet": "Apply Project/owner predicates in repository SQL before materializing rows. Current source repeatedly uses select().all().filter(...), including loading every source chunk before filtering by documentIds.",
+      "potential_consequence": "Preview, publication and apply work scale with unrelated database contents and allocate unrelated source text transiently. This is a demonstrated query-shape issue, not a demonstrated cross-Project response leak; Epic5 retained it."
+    },
+    {
+      "lens": "adversarial",
+      "location": "98a92fc:packages/core/src/changesets/operation-registry.ts:151,181-194; current:163,194-207",
+      "trigger_condition": "A publication contains many operations and its Project contains substantial source text or large non-Card collections.",
+      "guard_snippet": "Profile source-heavy publications, then limit before-state copies and comparisons to collections affected by each resolver. Current resolveNext clones every non-Card collection before every operation and entityChanges compares every registered collection.",
+      "potential_consequence": "Memory and CPU cost grows with operations multiplied by snapshot size. Epic5 optimized scalar Card copying, so this finding specifically concerns the remaining non-Card cloning and full collection diffing; no new timing failure is claimed."
+    },
+    {
+      "lens": "adversarial",
+      "location": "98a92fc:packages/core/src/changesets/operation-dependencies.ts:25-451; current:25-494; operation-registry.ts:73-89",
+      "trigger_condition": "A resolver gains another implicit effect involving child placement, shared evidence, relationship deletion or external bindings.",
+      "guard_snippet": "Make dependency effects share operation semantics with resolution, or add differential sequence tests that compare predicted dependencies with actual resolved writes across operation combinations. Current operationDependencies maintains its own mutable Card, relationship, GitHub and binding simulation.",
+      "potential_consequence": "The dependency engine can drift from the actual resolver, making preview selection or approval closure inconsistent with execution. Existing selector and parity regressions cover examples; this is a current architectural duplication risk, not a claim that those tests fail."
+    },
+    {
+      "lens": "adversarial",
+      "location": "98a92fc:packages/core/src/changesets/operation-dependencies.ts:249-259,285-321; current:270-280,306-343",
+      "trigger_condition": "A GitHub identity is created or updated while dependency tracking reconstructs owners and shared evidence effects.",
+      "guard_snippet": "Consolidate GitHub identity mutation within dependency tracking. registerOperation calls registerGithubIdentity and then registerRemainingEffects; both contain create/update reconstruction and mutation of state.snapshot.githubLinks.",
+      "potential_consequence": "A future owner-transfer or nullable-field correction can update one branch while leaving the other stale, complicating evidence and permission dependency reasoning. Both branches remain in current source; no present output mismatch was established."
+    },
+    {
+      "lens": "adversarial",
+      "location": "98a92fc:apps/server/src/application/changeset/preview-changeset.use-cases.ts:39-45; changeset-executor.ts:33-35; packages/db/src/repositories/changesets-repository.ts:144-154; current corresponding anchors:41-47,34-36,146-156",
+      "trigger_condition": "Selection closure rules change or a new dependency representation is introduced.",
+      "guard_snippet": "Expose one pure selection-normalization and dependency-closure function shared by preview, approval, executor preparation and resolveOperations. Current implementations independently handle duplicates, unknown IDs, dependency membership and retained order.",
+      "potential_consequence": "The same user selection can be accepted, displayed or reduced differently across the review-to-execution boundary. Current execution includes a valuable exact-selection refusal; duplication still increases future divergence risk."
+    },
+    {
+      "lens": "adversarial",
+      "location": "98a92fc:apps/server/src/application/changeset/preview-changeset.use-cases.ts:66; changeset-executor.ts:25,29; packages/db/src/repositories/changesets-repository.ts:142; current:69,25/29,144",
+      "trigger_condition": "Approval hashing, exact selection matching or operation canonicalization changes.",
+      "guard_snippet": "Share pure approval fingerprint and exact-selection comparison helpers while retaining authority checks at each boundary. Preview, application execution and repository execution currently recreate SHA256(JSON.stringify(operations)) and ordered JSON selection comparisons separately.",
+      "potential_consequence": "A later canonicalization change can make preview advertise applicability while execution requires fresh approval, or make one layer recognize different approval evidence. Epic5 added human acknowledgment checks at multiple layers but retained this repeated approval encoding."
+    },
+    {
+      "lens": "adversarial",
+      "location": "98a92fc:apps/server/src/application/changeset/prepare-operation-supply.ts:26-29; packages/db/src/repositories/sources-repository.ts:15-65; current same anchors",
+      "trigger_condition": "Chunk construction, document metadata defaults or content validation changes.",
+      "guard_snippet": "Share deterministic document/chunk construction between human repository imports and ChangeSet preparation, leaving identity allocation, filesystem reading and persistence in their respective layers. Both paths currently build chunk hashes and heading fields independently; default inline paths also differ.",
+      "potential_consequence": "Human and Agent imports can diverge in chunk or metadata behavior despite using the same splitters. Existing deduplication and parity tests provide useful examples but do not remove the duplicated construction logic."
+    },
+    {
+      "lens": "adversarial",
+      "location": "98a92fc:packages/core/src/changesets/source-resolution.ts:109-114; packages/db/src/repositories/source-evidence-repository.ts:67-77; current same anchors",
+      "trigger_condition": "Another evidence kind or provenance rule is introduced, or shared GitHub evidence semantics change.",
+      "guard_snippet": "Share the pure provenance decision and maintain explicit evidence-kind parity tests between repository mutations and ChangeSet resolution. Current source independently derives linked/manual/inference from normalized snapshot links versus several SQL evidence representations.",
+      "potential_consequence": "Human and Agent paths can disagree on a Card's provenance after the same evidence operation. Existing shared-evidence and last-unlink tests are protections; this finding concerns the surviving second implementation, not a proven current provenance defect."
+    },
+    {
+      "lens": "adversarial",
+      "location": "98a92fc:packages/db/src/repositories/operation-persistence-repository.ts:10-20,92; current:11-21,108",
+      "trigger_condition": "A new persisted entity is inserted into ENTITY_TABLES or an existing property's order is rearranged.",
+      "guard_snippet": "Represent persistence dependency order explicitly and verify it against foreign-key-sensitive mixed operations. Current entityOrder derives insertion/deletion ordering from Object.keys(ENTITY_TABLES).indexOf(entity), coupling table lookup declaration order to execution behavior.",
+      "potential_consequence": "An apparently harmless catalog reordering can change parent/child write order and cause transactional foreign-key failures. Existing executor tests protect covered combinations; the implicit ordering contract remains in current source."
+    },
+    {
+      "lens": "adversarial",
+      "location": "Exact range 5b55d69^..98a92fc, packages/core/package.json exports and packages/core/src/changesets/operation-dependencies.ts; current retains wildcard exports and 494-line dependency engine",
+      "trigger_condition": "The operation system continues growing while downstream code can import every internal core module through the unrestricted './*' package export.",
+      "guard_snippet": "Declare a bounded public operation API and monitor dependency-engine growth before adding further operation families. Across 181 changed executable source files excluding test/fixture/spec paths, lines grew 16,955→21,607; server-to-core imports grew 8→15, core-to-contracts 7→28, and core self-imports 5→61. These are import declarations, not graph edges or proof of cycles.",
+      "potential_consequence": "Implementation helpers become de facto public interfaces and the parallel dependency simulator accumulates more responsibilities. Epic4's new dependency file was 451 lines and is now 494. No sampled production file exceeded the 750-line rule; docs/generated payloads were excluded from behavioral tracing."
+    }
+  ],
+  "edgeCase": [],
+  "verificationGap": []
+}

@@ -1,0 +1,152 @@
+{
+  "version": 1,
+  "date": "2026-10-22",
+  "baselineRevision": "ec7348dc4524918c68d26b3d47e1035d012d6a46",
+  "rootFinal": {
+    "returncode": 0,
+    "tests": 235,
+    "passed": 233,
+    "failed": 0,
+    "skipped": 2,
+    "milliseconds": 197861.425583
+  },
+  "retention": [
+    {
+      "source": "baseline-tests.log",
+      "retained": "baseline-tests.log.gz",
+      "originalSha256": "8d14d96eb3bda34cedc71344ec859075e391f8ac9e1d50e718f007a9f722c798",
+      "sanitizedSha256": "89b7a868133708290eab395736ec8b665db29474100dd8095f8213f301b1df2f",
+      "compressedSha256": "829379a2e69bb07de24c155300122ac76385dff74953ab4d5f3a30007455aed8"
+    },
+    {
+      "source": "focused-tests.log",
+      "retained": "focused-tests.log.gz",
+      "originalSha256": "35bad4ce51bcc219a4cabce520250fac37724f9ef2b93d164d1c4be9db119c1d",
+      "sanitizedSha256": "35bad4ce51bcc219a4cabce520250fac37724f9ef2b93d164d1c4be9db119c1d",
+      "compressedSha256": "567659d2e41f231193a090fb98e80a2bbbcbfb8d0651d5ae94d26359dbfdcc79"
+    },
+    {
+      "source": "root-tests.log",
+      "retained": "root-tests.log.gz",
+      "originalSha256": "0ae480d833054636d44262c4edfd51300aa02c78867f2624d514edcfa3981dae",
+      "sanitizedSha256": "b92f29b90eaa5678115f98f075782c52d36fdbea3e6d7a86c324f4e0392468f8",
+      "compressedSha256": "666e073d613dfc56581474462a1ed9cb8dee37f3b00288bc580d9c766e7e6d1b"
+    },
+    {
+      "source": "focused-reviewed-tests.log",
+      "retained": "focused-reviewed-tests.log.gz",
+      "originalSha256": "d23c74822afa8a2eabb089f45b03a0950eaa4131f71b45968f36fbb87d9ac7ff",
+      "sanitizedSha256": "d23c74822afa8a2eabb089f45b03a0950eaa4131f71b45968f36fbb87d9ac7ff",
+      "compressedSha256": "54837193c2a65dea030dc23ec2cd164b2d34208b77a4beeb91bfee75896ad369"
+    },
+    {
+      "source": "root-tests-reviewed.log",
+      "retained": "root-tests-reviewed.log.gz",
+      "originalSha256": "493938c50b408819f53e3321e4154d4dd19686de29eab166fb03831c7fa6a1b4",
+      "sanitizedSha256": "493938c50b408819f53e3321e4154d4dd19686de29eab166fb03831c7fa6a1b4",
+      "compressedSha256": "7767bc75885a9cbcb2e4729efb1ba9322ed1778c0ccc2a85a0a52ff1a8b82dd1"
+    },
+    {
+      "source": "publication-final-tests.log",
+      "retained": "publication-final-tests.log.gz",
+      "originalSha256": "ac5a89b8f1ed13c1692b68a5343f1b3d0e41a6f2950a4f2521560de5e4ebe5fc",
+      "sanitizedSha256": "0a9ba3575a4e9caa60f9c80c066885f9e74f8ecea1ee37885c58d8a40b47a8be",
+      "compressedSha256": "035e6f2a27a8baa70aaba69b8470c565275e46f93e105d493cb01b69cf0ef731"
+    },
+    {
+      "source": "resource-regressions.log",
+      "retained": "resource-regressions.log.gz",
+      "originalSha256": "b2b2f8939a200766745f7b1ecf0101a3dd655f4d7445de9481ede0f558a27e73",
+      "sanitizedSha256": "b2b2f8939a200766745f7b1ecf0101a3dd655f4d7445de9481ede0f558a27e73",
+      "compressedSha256": "099e7c45d3d7f56d970a52f0431bee5de54e9143ee4c7bb6e6f559d1ce731003"
+    },
+    {
+      "source": "root-tests-final.log",
+      "retained": "root-tests-final.log.gz",
+      "originalSha256": "9b66422d7c297fe3281967dd679d489d7e792b7822be3e9f765262f14e57c22c",
+      "sanitizedSha256": "9b66422d7c297fe3281967dd679d489d7e792b7822be3e9f765262f14e57c22c",
+      "compressedSha256": "edae84b413741c15ea3b5873a4f86dfb5035c138acb0c6d7c7f6ee48661844c6"
+    },
+    {
+      "source": "actual-audit.stderr.log",
+      "retained": "actual-audit.stderr.log.gz",
+      "originalSha256": "b6a00285e08893a940887615a554b0f4ad859fa6b0c13d691af6931d8147161f",
+      "sanitizedSha256": "3ba7f1f7c1a23d85d2b53eec3b9a1edeafa3dacf2972e8fe2747c2ac494439e6",
+      "compressedSha256": "2a91e22cf11767e6bb2b7062303298dea96134ec11052539c7b364c7f32e885f"
+    },
+    {
+      "source": "check-boundaries.mjs.log",
+      "retained": "check-boundaries.mjs.log.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressedSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "check-size.mjs.log",
+      "retained": "check-size.mjs.log.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressedSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "check-hygiene.mjs.log",
+      "retained": "check-hygiene.mjs.log.gz",
+      "originalSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sanitizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "compressedSha256": "9ceffb7310338057cfe71a4ae1e2c98d2c485d81cdef906532a801f457a38d64"
+    },
+    {
+      "source": "check-licenses.mjs.log",
+      "retained": "check-licenses.mjs.log.gz",
+      "originalSha256": "bfcaec5af7095fee1ef38dbb9bcc97d5aaac281da69c8ebeb5ff6437b1b94897",
+      "sanitizedSha256": "bfcaec5af7095fee1ef38dbb9bcc97d5aaac281da69c8ebeb5ff6437b1b94897",
+      "compressedSha256": "dcd8c99a75184b06ea88fcb408f3697ab0b724caec48bd5376d9d98be795a841"
+    },
+    {
+      "source": "verify-final.log",
+      "retained": "verify-final.log.gz",
+      "originalSha256": "dbb2d0c991752d8f1eacc9131a3bbb0d8cf19e648c6d7a47d836f8a460d3b266",
+      "sanitizedSha256": "e2829d52a3c7be2dac5a5c4cfa471c888cbe7bcf6a9463eaf06573b0883f4fb5",
+      "compressedSha256": "23349ce779645624f9d650b4861ec7097ad823d3a7aa050429f9215484e1a522"
+    }
+  ],
+  "limitations": [
+    "Raw plus one JSON serialization layer; no arbitrary repeated serialization or privacy certification",
+    "Two native invalid-byte filename cases remain skipped",
+    "Intermediate reviewed root run overlapped final review edits and is not final-candidate verification",
+    "Earlier full publication test failed deep-path10s bound before individual path guard; no timeout raised",
+    "Real repository audit refused candidate-changed-during-scan while work artifacts changed; no completed exact final publication audit",
+    "Full workspace test/coverage aggregate and hosted/native acceptance not newly run",
+    "Initial durable raw-evidence destination failed the ignore assertion before any raw copy; used the verified ignored run-retrospective directory instead."
+  ],
+  "verifier": {
+    "command": [
+      "node",
+      "scripts/verify.mjs"
+    ],
+    "returncode": 0,
+    "sourceIdentityAfterGatesMatches": true,
+    "protectedWorkingIndexAndRunUnchanged": true
+  },
+  "sourceFiles": {
+    "scripts/check-publication-content.mjs": "cf5136f722e9bb8338a455e7cd4cac691e3f915154edb2f30f77655100012031",
+    "scripts/check-publication-git.mjs": "2eb1f821126dbfa68d63da6e14ce0fb8c086d8f0b86dd72779b207c1a075aaef",
+    "scripts/check-publication.test.mjs": "86a39fdcaa797d53e9c15585c3f13dab46d0b1aa0a39082dff13c1d6ea6bac2e",
+    "scripts/test-fixtures/publication-malformed-strings.mjs": "e90580788b273a6e27705073fa5eef1f33dbbb9997d4f22cd8ed5ec3a10a0bbb"
+  },
+  "rawPrivateEvidence": ".bmad-loop/runs/20261019-231402-3e0a/retrospectives/epic-8-a1-a2-20261022",
+  "files": [
+    {
+      "path": "review.json",
+      "sha256": "7a0d35c7f79ed81003f80f3631abe2841b61f7194508325b63e16a7a1cb58b08"
+    },
+    {
+      "path": "static-results.json",
+      "sha256": "f56069bc54ba77185bed70e08492f50f7413632a59be6137c289e61b210a017a"
+    },
+    {
+      "path": "final-candidate-before-gates.json",
+      "sha256": "cb632b506485bc0807159ec497429fb5ff728da2d85f384e6f1079c6716528fb"
+    }
+  ]
+}

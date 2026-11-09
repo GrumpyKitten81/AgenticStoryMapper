@@ -1,0 +1,44 @@
+{
+  "lens": "adversarial",
+  "range": "e8bd5873acb2be7ecb138667f7165fe36659f46d..b2f2e967cc45a0c948ad3c2bb7378efb35eaf3e3",
+  "findings": [
+    {
+      "lens": "adversarial",
+      "location": "packages/github/src/providers/github-provider.ts:63; packages/github/src/providers/github-provider.ts:203",
+      "trigger_condition": "Bulk import receives an Issue with more than 50 labels and a mapped status or opted-in Annotation label falls beyond the first page.",
+      "guard_snippet": "Hydrate imported Issues through the complete label reader already used by getRemoteItem; refuse incomplete label evidence before constructing import operations.",
+      "potential_consequence": "Import silently omits managed assignments or chooses the wrong status, stores an incomplete observed baseline, and reports successful import. The subsequent Pull can unexpectedly change the newly imported Card.",
+      "source_refs": ["apps/server/src/application/sync/github-import-command.ts:77", "apps/server/src/application/sync/github-import-command.ts:90", "apps/server/src/application/sync/github-import-command.ts:101", "packages/github/src/providers/github-push-transports.test.ts"],
+      "evidence": "Complete-detail regression covers getRemoteItem, while bulk import directly consumes search projections."
+    },
+    {
+      "lens": "adversarial",
+      "location": "packages/github/src/providers/github-provider.ts:275",
+      "trigger_condition": "An Issue belongs to two or more active Projects whose configured iteration fields contain different values, within the five-item completeness limit.",
+      "guard_snippet": "Collect distinct iteration tuples and reject ambiguity unless the connection explicitly identifies the intended Project; accept multiple observations only when their tuples agree.",
+      "potential_consequence": "The first matching iteration silently selects whichever Project arrives first. Reordering Project items can move the Card between Releases without a deliberate source-selection change.",
+      "source_refs": ["packages/github/src/providers/github-provider.ts:274", "packages/github/src/providers/github-provider.ts:275", "packages/github/src/providers/github-provider.ts:277"],
+      "evidence": "The completeness check protects against truncation, but does not establish a unique iteration source."
+    },
+    {
+      "lens": "adversarial",
+      "location": "apps/server/src/services/remote-push-execution.ts:242; packages/github/src/providers/github-remote-push.ts:55; packages/db/src/repositories/work-item-repository.ts:201",
+      "trigger_condition": "An imported Issue with known remoteParentNumber completes an ordinary Issue update through the real GitHub transport.",
+      "guard_snippet": "Obtain complete post-write parent evidence, or preserve the existing parent evidence when the reviewed effect cannot change the parent relationship.",
+      "potential_consequence": "fromRestIssue omits parentNumber; successful binding passes that undefined value to persistence, which converts it to null. A title/body/status update therefore erases known remote hierarchy evidence even though the remote relationship was untouched.",
+      "source_refs": ["apps/server/src/services/remote-push-execution.ts:242", "packages/github/src/providers/github-remote-push.ts:55", "packages/github/src/providers/github-remote-push.ts:56", "packages/db/src/repositories/work-item-repository.ts:201", "packages/github/src/providers/github-push-transports.test.ts"],
+      "evidence": "Detailed-reader tests verify parent projection, but the REST write projection follows a different path."
+    },
+    {
+      "lens": "adversarial",
+      "location": "packages/core/src/publishing/sync-fields.ts:41; packages/core/src/reports/sync-health.ts:36; apps/server/src/services/remote-push-plan.ts:143",
+      "trigger_condition": "A previously synchronized Milestone-backed Release changes only its goal or released state.",
+      "guard_snippet": "Include goal/description and released/open state in the shared acknowledged/observed Release representation, and use that representation for health and outgoing Sync admission.",
+      "potential_consequence": "Health continues to report synchronized and outgoing Sync excludes the Milestone because neither change appears in SyncReleaseMetadata. Explicit Push can transmit these fields, creating inconsistent behavior between Push, Sync, and health.",
+      "source_refs": ["packages/core/src/publishing/sync-fields.ts:41", "packages/core/src/reports/sync-health.ts:36", "apps/server/src/services/remote-push-plan.ts:143", "apps/server/src/services/remote-push-execution.test.ts:398", ".wolf/STATUS.md"],
+      "evidence": "Already acknowledged goal/released evidence omission in the Story7.6 handoff, rather than a newly discovered absence. The explicit-Push test changes name/date simultaneously and therefore does not exercise this trigger."
+    }
+  ],
+  "checked_scope": "Inspected outgoing plan/context/execution/evidence, incoming import/pull/preparation, merge/conflict resolution, canonical identity, provider transports, credentials isolation, archive redaction, shared health/field locks, and relevant provider/push/health tests.",
+  "limitations": "No live calls, credential reads, mutations, or test execution during the review. Four grounded findings; the remaining changed surfaces were not exhaustively inspected. This report file is the sole subsequently authorized write."
+}

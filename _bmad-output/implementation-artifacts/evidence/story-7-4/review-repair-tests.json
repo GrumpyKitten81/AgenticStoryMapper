@@ -1,0 +1,44 @@
+{
+  "scope": "Story 7.4 mandatory review repairs; focused checks only",
+  "server": [
+    {
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/services/remote-push-execution.test.ts src/services/work-item-sync.test.ts src/services/sync-review.test.ts src/http/routes/unit-of-work.test.ts src/mcp/github-command-sdk.test.ts src/config/served-origin.test.ts",
+      "filesPassed": 6,
+      "testsPassed": 177,
+      "note": "Executor had54 tests in this run; other suites unchanged afterward."
+    },
+    {
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/services/remote-push-execution.test.ts src/config/served-origin.test.ts",
+      "filesPassed": 2,
+      "testsPassed": 62,
+      "note": "Final executor60 plus actual-HTTP served-origin2, including new restart-origin refusal."
+    },
+    {
+      "command": "corepack pnpm --filter @storymapper/server exec vitest run src/services/remote-push-execution.test.ts",
+      "testsPassed": 61,
+      "note": "Final stale-absence race regression added after parent reproduction; reported by same implementation agent."
+    }
+  ],
+  "db": {
+    "command": "corepack pnpm --filter @storymapper/db exec vitest run src/remote-push.test.ts",
+    "testsPassed": 16,
+    "reportedBy": "intent_review reassigned DB implementation worker"
+  },
+  "web": {
+    "testsPassed": 39,
+    "suites": {
+      "github-selection": 33,
+      "card-detail-github": 6
+    },
+    "reportedBy": "investigate_ui_provider implementation worker"
+  },
+  "fullVerification": "Not run by repair workers; parent owns serial full verification.",
+  "finalFixtureTypeRepair": {
+    "file": "packages/db/src/remote-push.test.ts",
+    "change": "Use shared schema parse for valid discriminated successor fixture; assertions unchanged",
+    "focusedTestsPassed": 16,
+    "dbTypecheck": "passed",
+    "reportedBy": "same implementation agent",
+    "fullVerification": "Parent release check rerun serially afterward"
+  }
+}

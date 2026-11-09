@@ -1,0 +1,55 @@
+{
+  "story": "7.1",
+  "date": "2026-10-19",
+  "matrix": {
+    "Priority": [
+      "credentials.test.ts: selects CLI, then user file, then environment, irrespective of stored authMode",
+      "github-provider.test.ts: pins github.com and removes inherited credentials",
+      "credential-outputs.test.ts: keeps actual file-token and CLI HTTP validation outputs"
+    ],
+    "Absence": [
+      "credentials.test.ts: reports actionable absence and local availability"
+    ],
+    "Unusable source": [
+      "credentials.test.ts: recognizes only missing CLI executable or documented missing-token result",
+      "credentials.test.ts: refuses malformed, invalid and unreadable selected files"
+    ],
+    "Local status": [
+      "credentials.test.ts: reports actionable absence and local availability",
+      "credential-outputs.test.ts: keeps actual file-token and CLI HTTP validation outputs"
+    ],
+    "File lifecycle": [
+      "credentials.test.ts: creates and atomically replaces exact credentials",
+      "credentials.test.ts: preserves previous file and removes temporary data after rename/write failure"
+    ],
+    "Unsafe path": [
+      "credentials.test.ts: refuses symlink/directory/hardlink target",
+      "credentials.test.ts: refuses symlink and shared-writable parent"
+    ],
+    "Authority": [
+      "credentials.test.ts: refuses agent/github/system writer before filesystem mutation"
+    ],
+    "Output isolation": [
+      "credential-outputs.test.ts: keeps actual file-token and CLI HTTP validation outputs, logs, Activity, restore points and portable archives credential-free",
+      "github-provider.test.ts: sanitizes token-provider HTTP failures",
+      "github-provider.test.ts: sanitizes raw CLI errors"
+    ]
+  },
+  "suites": {
+    "credentials": 21,
+    "provider": 19,
+    "output_integration": 2
+  },
+  "coverage": "Every matrix row maps to executed passing tests; final parent workspace2520/0failures and release verification passed after all review patches.",
+  "native_windows": "APPDATA path simulated; native ACL/rename acceptance unverified.",
+  "additional_review_coverage": [
+    "Windows fixture APPDATA create/reopen isolation",
+    "POSIX exposed file refusal/0600 replacement",
+    "Foreign-owned inside-home ancestor refusal",
+    "Selected-source changes between probes",
+    "Captured CLI auth across configuration changes",
+    "Host/path input pre-call refusal in both modes",
+    "Nested401 sanitization",
+    "Unexpected milestone failure and permitted422 branch"
+  ]
+}

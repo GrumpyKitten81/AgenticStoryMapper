@@ -1,0 +1,201 @@
+{
+  "date": "2026-10-15",
+  "fixture": {
+    "cards": 1000,
+    "activities": 10,
+    "steps": 10,
+    "stories": 980,
+    "releases": 3,
+    "unscheduledExplicit": true
+  },
+  "browser": "Chrome extension controlled with CUA",
+  "measurement": "trusted input through matching visible DOM and two animation frames; failed sample retained",
+  "initialSamples": [
+    {
+      "label": "Card opening",
+      "elapsedMs": 94.30000007152557,
+      "budgetMs": 100,
+      "passed": true,
+      "isTrusted": true,
+      "recordedAt": "2026-10-15T06:33:33.263Z"
+    },
+    {
+      "label": "Filter to Story 979, Backspace then9",
+      "elapsedMs": 51.700000047683716,
+      "budgetMs": 300,
+      "passed": true,
+      "isTrusted": true,
+      "recordedAt": "2026-10-15T06:34:35.029Z"
+    },
+    {
+      "label": "Clear filter to980 Stories",
+      "elapsedMs": 441.7999999523163,
+      "budgetMs": 300,
+      "passed": false,
+      "isTrusted": true,
+      "recordedAt": "2026-10-15T06:34:50.298Z"
+    }
+  ],
+  "functionalObserved": [
+    "Own Slices URL/navigation",
+    "Captured identities/timestamps and exact Added B removed/C added/A moved comparison",
+    "Inverse and equal-state comparison",
+    "Form move shows named order violation",
+    "Enter keyboard move clears violation",
+    "Native pointer drag returns Story to first Slice and restores violation with focus on moved Story",
+    "Human Record plan state adds591146a8-bd17-4588-905d-564709d81872 at2026-10-15T06:32:18.935Z",
+    "Later Card title edit and Archive leave captured original values visible after page reload",
+    "Actual Planning URL shows Blocked order behind LSM-5 after restoring synthetic archived Story with explicit todo status",
+    "Injected unsupported schemaVersion2 on synthetic captured state produces visible Plan states unavailable error; injection reset to1"
+  ],
+  "limitations": [
+    "Safari window disappeared after successful preflight; Chrome became available",
+    "Scripted fill/paste did not initiate trusted measurement; trusted keyboard event did",
+    "Browser download event wait timed out; samples copied from visible probe output",
+    "Physical deletion durability exercised in DB/seed and rendered comparison, not a browser permanent-delete click"
+  ],
+  "initialSourceHashes": {},
+  "retainedMountedTrial": [
+    {
+      "label": "Clear filter to980 Stories",
+      "elapsedMs": 433,
+      "budgetMs": 300,
+      "passed": false,
+      "isTrusted": true,
+      "recordedAt": "2026-10-15T06:37:30.636Z"
+    }
+  ],
+  "layoutDiagnostic": {
+    "domReadyMs": 72.30000007152557,
+    "visibleReadyMs": 368.3000000715256,
+    "firstFrameMs": 394.3000000715256,
+    "elapsedMs": 475.90000009536743,
+    "budgetMs": 300,
+    "passed": false,
+    "recordedAt": "2026-10-15T06:39:13.100Z"
+  },
+  "repairedSamples": [
+    {
+      "label": "Clear filter to980 Stories",
+      "elapsedMs": 177.39999997615814,
+      "domReadyMs": 63,
+      "visibleReadyMs": 101.10000002384186,
+      "firstFrameMs": 107.29999995231628,
+      "budgetMs": 300,
+      "passed": true,
+      "isTrusted": true,
+      "recordedAt": "2026-10-15T06:40:00.850Z"
+    },
+    {
+      "label": "Card opening",
+      "elapsedMs": 91.20000004768372,
+      "budgetMs": 100,
+      "passed": true,
+      "isTrusted": true,
+      "recordedAt": "2026-10-15T06:40:18.801Z"
+    },
+    {
+      "label": "Filter97\u2192979 trusted9 key",
+      "elapsedMs": 25.100000023841858,
+      "budgetMs": 300,
+      "passed": true,
+      "isTrusted": true,
+      "recordedAt": "2026-10-15T06:40:25.370Z"
+    }
+  ],
+  "separateDiagnostics": {
+    "captureMs": 155,
+    "comparisonContinuousSelectionMs": 582.5,
+    "comparisonWithOperatorToolGapMs": 7961.299999952316,
+    "note": "Informational only. No capture/comparison acceptance budget exists; probe artificial1000000ms upper marker is not an NFR. First capture attempt had incompatible option-visibility probe and yields no claimed timing."
+  },
+  "finalSourceHashes": {
+    "apps/server/src/application/capability-manifest.json": "ff943e8ccca45e90b3a182e2ecb882d2264c898d1d49b822f0cc5f00e8b6c552",
+    "apps/server/src/application/descriptors.ts": "1a6a81fd251418e107c265e71caaecb0e36020d95018354add1b09ef6cdb71cd",
+    "apps/server/src/application/report/plan-state.test.ts": "987d1c6deb369ab89490f83d89e1c8f78f4d3152fc53424b84e79f7305f7e5ca",
+    "apps/server/src/application/report/plan-state.use-cases.ts": "d0e065f2cf9ee12675d8582f17908a5decd02a564cbb3c6cf0330f0112185296",
+    "apps/server/src/http/routes/report-routes.ts": "d9ebe9268e900ba52cb888d5eb672938bb58b4212f14bfb8a9801dfb734ec389",
+    "apps/server/src/mcp/tools/register-content-tools.ts": "32320e3a78c8a35d84fbf71b361491c5d8458247d7a8b98d8208bb1d9f4c51cb",
+    "apps/server/src/services/project-archive.test.ts": "3b206e1c9532bbafc8bfff52790f6976a41b765f60c89a48aadda7223469e2c9",
+    "apps/web/src/app/api.ts": "ee1852339e2f38470ea596c4b2f453504db87561510e254d530a14f5d67a4853",
+    "apps/web/src/app/live/live-query-invalidation.test.ts": "8dcdae67ca0d9276d9c6469622377ef2aaacac055059c2ab2d29e391601ddb1a",
+    "apps/web/src/app/live/live-query-invalidation.ts": "88455c518c8d6e8ae8b18307ba6dbabcdff52ddb06962a683198010c43dfcb78",
+    "apps/web/src/app/plan-state-api.ts": "25ba51823eddc259f4a4f8de7b518b9350046e2dfca078ee37ed8bb3511a246b",
+    "apps/web/src/app/router.tsx": "29b8c35305e6e92cb9c601e495028e0759853c8cf0176451412fae54c0372782",
+    "apps/web/src/app/routes/story-map-shell.tsx": "39a497f4d3506d4de5c659302d12c35f467084116a7b891fbdb0b083d65b65a2",
+    "apps/web/src/app/routes/story-map.slices.tsx": "3dd82fa7219106968bddb03e1edcd6bd72ec8ed439a1b39a80e50045831fc5ba",
+    "apps/web/src/features/changesets/shell.test.tsx": "b2dfe4c259617bc47224794e833f5555798e5a91066376a63856aaf7838017ab",
+    "apps/web/src/features/story-map/components/PlanStateComparison.test.tsx": "ee590b5ba4edb8bd1df912691b84f84e3fdb2670f15b31ad8b60e5b03e248bed",
+    "apps/web/src/features/story-map/components/PlanStateComparison.tsx": "d7a406d66046f63f24a8014f714ea8357368c4547d52b33f10f178c4ce669061",
+    "apps/web/src/features/story-map/components/SliceDependencyCues.tsx": "7db2ff2e638aeaaabab5c5b841e83d17f8db511a7eb393357ed4c9000cd239a6",
+    "apps/web/src/features/story-map/components/SliceLane.tsx": "9160b756e039093c9ca64650533c891a3c6f361b1f10e052cf2a51da4e8cbd94",
+    "apps/web/src/features/story-map/components/StorySliceMove.tsx": "1b27096ebb4bbba595f5deb7f90b9fe9ce8498ce64e38f0c2da63ea2f9ef82fb",
+    "apps/web/src/features/story-map/components/SwimlaneGrid.tsx": "d1a961a96d2ab83711ec2226d37db23e108cd5a4baab5a1abdd8b88a3aec90e3",
+    "apps/web/src/features/story-map/views/SlicesView.test.tsx": "eb8ad9b3744cb334fc43d6c8fe0e240734af35d689f7c4047a36fc37416f7630",
+    "apps/web/src/features/story-map/views/SlicesView.tsx": "4c0ef310791705763b1b57e1e9569b1bd6b2b7dd58a8466e12c53d204e9e3bf9",
+    "apps/web/src/styles/slices.css": "979f39e673bbb6f512945c44a72809125aa40f3f364354eeea82cfe0bc85b02d",
+    "apps/web/src/ui-strings/story-map.ts": "c924487dfcef96f7549db3d8e60fba6d612811324e3982f457d9802f910c08eb",
+    "packages/contracts/src/index.ts": "bf87c5f77574b230f0f2923b2997f99cb69d7fe0712e4d3ccaeda0e077012946",
+    "packages/contracts/src/mcp/tool-inputs.ts": "fc54bb007df1d07923b9be5ac52be61a05c5f392d0cde08ef1f410da5add7423",
+    "packages/contracts/src/mcp/tools.ts": "aa777389a712ddbaa45d3f4a60e7686e9530a0915267a524fbe2ffeba51bfe95",
+    "packages/contracts/src/schemas/plan-states.ts": "653756592764e10a962b6baa93279b6a4d7915d6e0494c23481e3d12c8d3a81a",
+    "packages/core/src/index.ts": "8de2320464db6925e76df32c280410e3989a4cb3c22810c1abe0939ec7e700dc",
+    "packages/core/src/reports/slices.test.ts": "b66b676014977a9835064178c9af3b2db6ffa11a98a4bd594602433bc0b1240d",
+    "packages/core/src/reports/slices.ts": "f07f412d843847b2386b54b3ad01672b381976e97aaaf22ce4a95807ea927398",
+    "packages/db/src/connection.ts": "b369f61fcadac3fdd61d419f31416aad8392cce98137a2d0c1ce4913ca02434c",
+    "packages/db/src/plan-state-validation.ts": "f32204701fc32106643e0d8032b39e7d1471d39e4a136d549c61e8b1b6eb1953",
+    "packages/db/src/repositories/plan-states-repository.ts": "1464c3041319efa06fa34a8baeaa066ec27433f167810099c7df8e8ecf1926a3",
+    "packages/db/src/repositories/plan-states.test.ts": "41b32e935575ecdc77fe17491c044dfaaf3bc9ce11ec690e06fa4e92bf4673cf",
+    "packages/db/src/repositories/storymapper-repository.ts": "156067f6c83d30b99b7863e1b4a649dae49633dec94f31edc9e376e046f45101",
+    "packages/db/src/restore-validation.ts": "a1dad3c686cf9409e0030b6179c77bdfbc5d306efc6276385f2651fe03a23749",
+    "packages/db/src/schema/classification.ts": "3f159302a5f2ff79287e1947b7c656c9c5724859e70e523c093364f53e6ee474",
+    "packages/db/src/schema/tables.ts": "4a14ef49f10a47f13041a3ceba4f55c1b7a8cdd39b4f41b037846edd5b81fcf6",
+    "packages/mcp/src/tool-definitions/capabilities.ts": "ecbdc2c9a2487c2d2d0434efd7dd735d8bcb726b47aa3761baceabef0b4ec7c0",
+    "scripts/capability-operation-coverage.mjs": "ad9b2e07028ff569912e247d3195bafdeeaef7e0cddcbac979f4748eeb68f3b6",
+    "scripts/mcp-tool-metadata.json": "8d3d35fe3c5e4de5f37b6039c0bc60d86222e433200d8a69dae3e6bfc5556b8c"
+  },
+  "sourceHashBoundary": "Application/package/script source under apps/, packages/ and scripts/ only; evidence and bookkeeping excluded. Final source hashes identify post-review tests and browser repeat; earlier timing trials predate review repairs and have no claimed exact source fingerprints.",
+  "postReviewSamples": [
+    {
+      "label": "Card opening",
+      "elapsedMs": 91.5,
+      "budgetMs": 100,
+      "passed": true,
+      "isTrusted": true,
+      "recordedAt": "2026-10-15T07:14:21.427Z"
+    },
+    {
+      "label": "Filter to Story 979",
+      "elapsedMs": 28.600000023841858,
+      "budgetMs": 300,
+      "passed": true,
+      "isTrusted": true,
+      "recordedAt": "2026-10-15T07:14:28.748Z"
+    },
+    {
+      "label": "Clear filter to 980 Stories",
+      "elapsedMs": 189.89999997615814,
+      "budgetMs": 300,
+      "passed": true,
+      "isTrusted": true,
+      "recordedAt": "2026-10-15T07:14:32.708Z"
+    }
+  ],
+  "postReviewFunctionalObserved": [
+    "Canonical lane header names LSM-3 and LSM-5 while filter C added hides dependent tile",
+    "Forward captured comparison has exactly one Added, Removed and Moved marker with original captured title",
+    "Reversed comparison inverts categories and First/Second release endpoints",
+    "Equal capture selection displays No membership changes"
+  ],
+  "verification": {
+    "testsPassed": 1758,
+    "commands": [
+      "corepack pnpm test",
+      "corepack pnpm typecheck",
+      "corepack pnpm lint",
+      "node scripts/verify.mjs"
+    ],
+    "allExitZero": true,
+    "logs": "/tmp/story-5-2-post-review-{test,typecheck,lint,verify}.log"
+  }
+}

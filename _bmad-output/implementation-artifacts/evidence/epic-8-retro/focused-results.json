@@ -1,0 +1,40 @@
+[
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "--filter",
+      "@storymapper/db",
+      "exec",
+      "vitest",
+      "run",
+      "src/migration-runner.test.ts",
+      "src/restore-project.test.ts",
+      "src/versioned-json.test.ts",
+      "--maxWorkers=1",
+      "--exclude",
+      "**/dist/**"
+    ],
+    "returncode": 0,
+    "seconds": 26.048,
+    "log": "focused-0.log"
+  },
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "--filter",
+      "@storymapper/server",
+      "exec",
+      "vitest",
+      "run",
+      "src/services/project-archive.test.ts",
+      "--maxWorkers=1",
+      "--exclude",
+      "**/dist/**"
+    ],
+    "returncode": 0,
+    "seconds": 7.423,
+    "log": "focused-1.log"
+  }
+]

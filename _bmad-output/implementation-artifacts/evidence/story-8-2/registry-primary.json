@@ -1,0 +1,352 @@
+{
+  "vitest": {
+    "dist-tags": {
+      "V3": "3.2.7",
+      "beta": "5.1.0-beta.1",
+      "rc": "5.0.0-rc.4",
+      "latest": "5.0.5",
+      "V4": "4.1.12"
+    },
+    "versions": {
+      "0.9.0": {
+        "version": "0.9.0",
+        "engines": {
+          "node": ">=v14.16.0"
+        },
+        "dependencies": {
+          "chai": "^4.3.6",
+          "vite": "^2.9.1",
+          "tinyspy": "^0.3.0",
+          "tinypool": "^0.1.2",
+          "local-pkg": "^0.4.1",
+          "@types/chai": "^4.3.0",
+          "@types/chai-subset": "^1.3.3"
+        },
+        "peerDependencies": {
+          "c8": "*",
+          "jsdom": "*",
+          "happy-dom": "*",
+          "@vitest/ui": "*"
+        },
+        "deprecated": null
+      },
+      "3.2.7": {
+        "version": "3.2.7",
+        "engines": {
+          "node": "^18.0.0 || ^20.0.0 || >=22.0.0"
+        },
+        "dependencies": {
+          "chai": "^5.2.0",
+          "vite": "^5.0.0 || ^6.0.0 || ^7.0.0-0",
+          "debug": "^4.4.1",
+          "pathe": "^2.0.3",
+          "std-env": "^3.9.0",
+          "tinyexec": "^0.3.2",
+          "tinypool": "^1.1.1",
+          "picomatch": "^4.0.2",
+          "tinybench": "^2.9.0",
+          "vite-node": "3.2.4",
+          "tinyglobby": "^0.2.14",
+          "@types/chai": "^5.2.2",
+          "@vitest/spy": "3.2.7",
+          "expect-type": "^1.2.1",
+          "tinyrainbow": "^2.0.0",
+          "magic-string": "^0.30.17",
+          "@vitest/utils": "3.2.7",
+          "@vitest/expect": "3.2.7",
+          "@vitest/mocker": "3.2.7",
+          "@vitest/runner": "3.2.7",
+          "@vitest/snapshot": "3.2.7",
+          "why-is-node-running": "^2.3.0",
+          "@vitest/pretty-format": "^3.2.7"
+        },
+        "peerDependencies": {
+          "jsdom": "*",
+          "happy-dom": "*",
+          "@vitest/ui": "3.2.7",
+          "@types/node": "^18.0.0 || ^20.0.0 || >=22.0.0",
+          "@types/debug": "^4.1.12",
+          "@vitest/browser": "3.2.7",
+          "@edge-runtime/vm": "*"
+        },
+        "deprecated": null
+      },
+      "4.1.12": {
+        "version": "4.1.12",
+        "engines": {
+          "node": "^20.0.0 || ^22.0.0 || >=24.0.0"
+        },
+        "dependencies": {
+          "obug": "^2.1.1",
+          "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
+          "pathe": "^2.0.3",
+          "std-env": "^4.0.0-rc.1",
+          "tinyexec": "^1.0.2",
+          "picomatch": "^4.0.3",
+          "tinybench": "^2.9.0",
+          "tinyglobby": "^0.2.15",
+          "@vitest/spy": "4.1.12",
+          "expect-type": "^1.3.0",
+          "tinyrainbow": "^3.1.0",
+          "magic-string": "^0.30.21",
+          "@vitest/utils": "4.1.12",
+          "@vitest/expect": "4.1.12",
+          "@vitest/mocker": "4.1.12",
+          "@vitest/runner": "4.1.12",
+          "es-module-lexer": "^2.0.0",
+          "@vitest/snapshot": "4.1.12",
+          "why-is-node-running": "^2.3.0",
+          "@vitest/pretty-format": "4.1.12"
+        },
+        "peerDependencies": {
+          "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
+          "jsdom": "*",
+          "happy-dom": "*",
+          "@vitest/ui": "4.1.12",
+          "@types/node": "^20.0.0 || ^22.0.0 || >=24.0.0",
+          "@edge-runtime/vm": "*",
+          "@opentelemetry/api": "^1.9.0",
+          "@vitest/coverage-v8": "4.1.12",
+          "@vitest/browser-preview": "4.1.12",
+          "@vitest/coverage-istanbul": "4.1.12",
+          "@vitest/browser-playwright": "4.1.12",
+          "@vitest/browser-webdriverio": "^4.1.11"
+        },
+        "deprecated": null
+      }
+    }
+  },
+  "vite": {
+    "dist-tags": {
+      "alpha": "6.0.0-alpha.24",
+      "beta": "8.3.0-beta.1",
+      "latest": "8.3.4",
+      "previous": "6.4.4"
+    },
+    "versions": {
+      "0.9.0": {
+        "version": "0.9.0",
+        "engines": {
+          "node": ">=10.0.0"
+        },
+        "dependencies": {
+          "ws": "^7.2.3",
+          "koa": "^2.11.0",
+          "vue": "^3.0.0-beta.7",
+          "chalk": "^4.0.0",
+          "debug": "^4.1.1",
+          "slash": "^3.0.0",
+          "rollup": "^2.7.2",
+          "cssnano": "^4.1.10",
+          "postcss": "^7.0.27",
+          "chokidar": "^3.3.1",
+          "hash-sum": "^2.0.0",
+          "koa-etag": "^3.0.0",
+          "koa-send": "^5.0.0",
+          "minimist": "^1.2.5",
+          "lru-cache": "^5.1.1",
+          "@types/koa": "^2.11.3",
+          "koa-static": "^5.0.0",
+          "magic-string": "^0.25.7",
+          "resolve-from": "^5.0.0",
+          "@babel/parser": "^7.9.4",
+          "es-module-lexer": "^0.3.18",
+          "@vue/compiler-sfc": "^3.0.0-beta.7",
+          "rollup-plugin-vue": "^6.0.0-alpha.7",
+          "@rollup/plugin-json": "^4.0.3",
+          "koa-conditional-get": "^2.0.0",
+          "@rollup/plugin-alias": "^3.1.0",
+          "rollup-plugin-terser": "^5.3.0",
+          "@rollup/plugin-replace": "^2.3.2",
+          "@rollup/plugin-node-resolve": "^7.1.3"
+        },
+        "peerDependencies": null,
+        "deprecated": null
+      },
+      "3.2.7": {
+        "version": "3.2.7",
+        "engines": {
+          "node": "^14.18.0 || >=16.0.0"
+        },
+        "dependencies": {
+          "rollup": "^2.79.1",
+          "esbuild": "^0.15.9",
+          "postcss": "^8.4.18",
+          "resolve": "^1.22.1",
+          "fsevents": "~2.3.2"
+        },
+        "peerDependencies": {
+          "less": "*",
+          "sass": "*",
+          "stylus": "*",
+          "terser": "^5.4.0",
+          "sugarss": "*",
+          "@types/node": ">= 14"
+        },
+        "deprecated": null
+      },
+      "5.2.0": {
+        "version": "5.2.0",
+        "engines": {
+          "node": "^18.0.0 || >=20.0.0"
+        },
+        "dependencies": {
+          "rollup": "^4.13.0",
+          "esbuild": "^0.20.1",
+          "postcss": "^8.4.36",
+          "fsevents": "~2.3.3"
+        },
+        "peerDependencies": {
+          "less": "*",
+          "sass": "*",
+          "stylus": "*",
+          "terser": "^5.4.0",
+          "sugarss": "*",
+          "@types/node": "^18.0.0 || >=20.0.0",
+          "lightningcss": "^1.21.0"
+        },
+        "deprecated": null
+      },
+      "7.3.7": {
+        "version": "7.3.7",
+        "engines": {
+          "node": "^20.19.0 || >=22.12.0"
+        },
+        "dependencies": {
+          "fdir": "^6.5.0",
+          "rollup": "^4.43.0",
+          "esbuild": "^0.27.0 || ^0.28.0",
+          "postcss": "^8.5.6",
+          "picomatch": "^4.0.3",
+          "tinyglobby": "^0.2.15"
+        },
+        "peerDependencies": {
+          "tsx": "^4.8.1",
+          "jiti": ">=1.21.0",
+          "less": "^4.0.0",
+          "sass": "^1.70.0",
+          "yaml": "^2.4.2",
+          "stylus": ">=0.54.8",
+          "terser": "^5.16.0",
+          "sugarss": "^5.0.0",
+          "@types/node": "^20.19.0 || >=22.12.0",
+          "lightningcss": "^1.21.0",
+          "sass-embedded": "^1.70.0"
+        },
+        "deprecated": null
+      },
+      "8.3.4": {
+        "version": "8.3.4",
+        "engines": {
+          "node": "^20.19.0 || >=22.12.0"
+        },
+        "dependencies": {
+          "postcss": "^8.5.29",
+          "rolldown": "~1.2.12",
+          "picomatch": "^4.0.7",
+          "tinyglobby": "^0.2.17",
+          "lightningcss": "^1.33.0"
+        },
+        "peerDependencies": {
+          "tsx": "^4.8.1",
+          "jiti": ">=1.21.0",
+          "less": "^4.0.0",
+          "sass": "^1.70.0",
+          "yaml": "^2.4.2",
+          "stylus": ">=0.54.8",
+          "terser": "^5.16.0",
+          "esbuild": "^0.27.0 || ^0.28.0",
+          "sugarss": "^5.0.0",
+          "@types/node": "^20.19.0 || >=22.12.0",
+          "sass-embedded": "^1.70.0",
+          "@vitejs/devtools": "^0.7.1"
+        },
+        "deprecated": null
+      }
+    }
+  },
+  "@vitejs/plugin-react": {
+    "dist-tags": {
+      "alpha": "3.0.0-alpha.2",
+      "beta": "6.0.0-beta.0",
+      "latest": "6.1.2"
+    },
+    "versions": {
+      "5.2.0": {
+        "version": "5.2.0",
+        "engines": {
+          "node": "^20.19.0 || >=22.12.0"
+        },
+        "dependencies": {
+          "@babel/core": "^7.29.0",
+          "react-refresh": "^0.18.0",
+          "@types/babel__core": "^7.20.5",
+          "@rolldown/pluginutils": "1.0.0-rc.3",
+          "@babel/plugin-transform-react-jsx-self": "^7.27.1",
+          "@babel/plugin-transform-react-jsx-source": "^7.27.1"
+        },
+        "peerDependencies": {
+          "vite": "^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0"
+        },
+        "deprecated": null
+      }
+    }
+  },
+  "@fastify/static": {
+    "dist-tags": {
+      "next": "8.0.0",
+      "latest": "10.1.6"
+    },
+    "versions": {}
+  },
+  "tiptap-markdown": {
+    "dist-tags": {
+      "latest": "0.9.0"
+    },
+    "versions": {
+      "0.9.0": {
+        "version": "0.9.0",
+        "engines": null,
+        "dependencies": {
+          "@types/markdown-it": "^13.0.7",
+          "markdown-it": "^14.1.0",
+          "markdown-it-task-lists": "^2.1.1",
+          "prosemirror-markdown": "^1.11.1"
+        },
+        "peerDependencies": {
+          "@tiptap/core": "^3.0.1"
+        },
+        "deprecated": null
+      }
+    }
+  },
+  "@tiptap/react": {
+    "dist-tags": {
+      "pre": "2.7.0-pre.0",
+      "next": "3.0.0-beta.14",
+      "beta": "3.0.2-beta.0",
+      "v2-latest": "2.27.3",
+      "latest": "3.32.0"
+    },
+    "versions": {
+      "3.32.0": {
+        "version": "3.32.0",
+        "engines": null,
+        "dependencies": {
+          "fast-equals": "^5.3.3",
+          "use-sync-external-store": "^1.4.0",
+          "@types/use-sync-external-store": "^0.0.6"
+        },
+        "peerDependencies": {
+          "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@tiptap/pm": "3.32.0",
+          "@tiptap/core": "3.32.0",
+          "@types/react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+          "@types/react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
+        },
+        "deprecated": null
+      }
+    }
+  }
+}

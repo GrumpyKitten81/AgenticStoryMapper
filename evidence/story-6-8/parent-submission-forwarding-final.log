@@ -1,0 +1,13 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/mcp/tools/submit-changeset.test.ts (44 tests) 4818ms
+   ✓ submits one 200-Card cut with real http actor and retained metadata 1053ms
+   ✓ submits one 200-Card cut with real sdk actor and retained metadata 889ms
+   ✓ defers protected and explicit proposal cuts on http with no domain writes or snapshots 517ms
+   ✓ defers protected and explicit proposal cuts on sdk with no domain writes or snapshots 492ms
+
+ Test Files  1 passed (1)
+      Tests  44 passed (44)
+   Start at  20:25:48
+   Duration  5.89s (transform 488ms, setup 0ms, collect 894ms, tests 4.82s, environment 0ms, prepare 30ms)

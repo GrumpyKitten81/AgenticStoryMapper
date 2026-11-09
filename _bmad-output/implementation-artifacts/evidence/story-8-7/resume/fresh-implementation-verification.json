@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-20",
+  "baselineRevision": "b4e27634b11dfda679d1fa3c40e5e0771f4c5d29",
+  "scope": "Fresh implementation handoff; binding context and existing implementation inspected. No source changes required.",
+  "runtime": {
+    "node": "24.17.0",
+    "pnpm": "9.15.4"
+  },
+  "publicationTests": {
+    "command": "node --test scripts/check-publication.test.mjs",
+    "exit": 0,
+    "total": 31,
+    "pass": 29,
+    "fail": 0,
+    "skip": 2,
+    "qualification": "Current native filename/ref fixtures skip because filesystem rejects invalid-byte filenames (EINVAL/EILSEQ branch). Raw malformed-buffer and historical-tree cases pass. No native Windows execution."
+  },
+  "offlineChecks": {
+    "synchronizedGitHubSkillPairs": 3,
+    "copiedSkillToml": "pass",
+    "hookJsonAndPluginToml": "pass",
+    "actualReaderParserExamples": "pass",
+    "installedHookPluginExecutablesAndArguments": "pass",
+    "whitespace": "pass",
+    "lifecycleCommandsExecuted": false,
+    "liveReaderExecuted": false
+  },
+  "sourceSha256": {
+    "scripts/check-publication-audit.mjs": "9c7f70f3005570066aa4d2df8c4c3c4be32a181c13ffb2c95f72402da363bcaf",
+    "scripts/check-publication-content.mjs": "b155e7ca8389d68e0c0f15fa8e5b3f4957ea0ae827cf8552f2480d7a8129997a",
+    "scripts/check-publication-errors.mjs": "7ed88de9490a830c08e7e1a7653be425db0195522866b356278c26006a02a583",
+    "scripts/check-publication-git.mjs": "45e96041ec5596194ab9bcd6472b59fbb06043959dcd31e4e08a5153b1b45483",
+    "scripts/check-publication.mjs": "1e80441ea3b90ae58d18d819e8f3cf4e8c5fed2c401254aec7177f3f9caadcb6",
+    "scripts/check-publication.test.mjs": "9db560829a355e40919c55dad61fdb0c88bd77cda95c12a158de6e9232da8e8a"
+  },
+  "remaining": "Parent independent full verification/review and final exact-candidate report. Existing publication prerequisites stay blocked: history disposition, private declarations, asset/copied-material privacy/rights. Historical failures and unknown native/runtime observations remain unaltered.",
+  "protectedLedgerSha256": {
+    "_bmad-output/implementation-artifacts/sprint-status.yaml": "266c57f998fc7d4b5f5d6ecf993087be919d21118c79d444639238d2d7458cd4",
+    "_bmad-output/implementation-artifacts/deferred-work.md": "23b53b078ca1b6b90bbf6fb964c6c973f425c92ced5337f6e9cc2940467969fa"
+  }
+}

@@ -1,0 +1,105 @@
+Browser tab: 3, Title: "StoryMapper", URL: "http://127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/story-maps/74810cba-fa66-467d-8fc4-576775cba671/discovery".
+0 AXWebArea StoryMapper, URL: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/story-maps/74810cba-fa66-467d-8fc4-576775cba671/discovery
+	1 container
+		2 image
+		3 text StoryMapper
+		4 container
+			5 link Description: Story Maps, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/story-maps/74810cba-fa66-467d-8fc4-576775cba671/discovery
+			6 link Description: Connections, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/github?storyMapId=74810cba-fa66-467d-8fc4-576775cba671
+			7 link Description: Customize, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/customize
+			8 link Description: Personas, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/personas
+			9 link Description: Onboarding, Value: 127.0.0.1:44357/onboarding
+			10 link Description: Activity, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/audit
+		11 container
+			23 link Description: ALL STORY MAPS, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/story-maps
+			12 heading Remediation fixture, Value: 1
+				13 text Remediation fixture
+			24 button Description: Rename story map Remediation fixture, Help: Rename story map
+				25 image
+			14 text An enabled agent may forward retrieved context to its own provider.
+			15 container Safety switches
+				16 button Agent access: On. Open switch settings
+				17 button GitHub: Off. Open switch settings
+				18 button Agent approval: Off. Open switch settings
+				19 button Agent protection: Off. Open switch settings
+			20 text Live updates connected
+			21 checkbox Hold updates, Value: 0
+			26 container Discovery zoom controls
+				27 button Zoom out
+					28 image
+				29 slider (settable, integer) Description: Discovery zoom, Value: 1
+				30 button Zoom in
+					31 image
+				32 button Reset zoom
+					33 image
+				34 text 100%
+				35 checkbox Collapse lanes, Help: Collapse all lanes, Value: 0
+					36 image
+					37 text Collapse lanes
+			22 text Synthetic remediation acceptance 1 cards 0 releases
+		38 container
+			39 button What changed (9)
+				40 image
+				41 text What changed (9)
+			42 link Description: Discovery, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/story-maps/74810cba-fa66-467d-8fc4-576775cba671/discovery
+			43 link Description: Tree, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/story-maps/74810cba-fa66-467d-8fc4-576775cba671/tree
+			44 link Description: Slices, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/story-maps/74810cba-fa66-467d-8fc4-576775cba671/slices
+			45 link Description: Graph, Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/story-maps/74810cba-fa66-467d-8fc4-576775cba671/graph
+			46 link Description: GitHub Sync, Help: Plan, push, import and sync work items for this story map., Value: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/story-maps/74810cba-fa66-467d-8fc4-576775cba671/github
+			47 button (disabled) Pull GitHub, Help: No cards are linked to GitHub issues yet. Import issues or create them from cards first.
+				48 image
+				49 text Pull GitHub
+			50 container Story map export actions
+				51 button HTML
+					52 image
+					53 text HTML
+				54 button PNG
+					55 image
+					56 text PNG
+				57 button PDF
+					58 image
+					59 text PDF
+			60 text field (settable) Search cards
+			61 text 1 matches / 1 cards
+			62 checkbox Filters, Value: 0
+				63 image
+				64 text Filters
+			65 button Clear
+			66 button Parked
+			67 button Archived
+			68 container Discovery story map
+				69 container
+					70 checkbox (settable, integer) Description: LSM-1, Value: 0
+					71 text LSM-1 ACTIVITY TODO
+					72 button Description: Park Accepted activity, Help: Park activity
+						73 image
+					74 button Delete Accepted activity
+						75 image
+					76 button Accepted activity
+						77 heading Accepted activity, Value: 3
+							78 text Accepted activity
+					79 text #
+					80 button Description: Choose color category, Help: Color category
+					81 button Description: Choose priority, Help: Priority
+					82 draggable Drag Accepted activity
+						83 image
+				84 button New activity
+					85 image
+				86 button New step for Accepted activity
+					87 image
+				88 checkbox (expanded) Description: Collapse lane, Value: 0, Secondary Actions: Collapse
+					89 image
+				90 checkbox Description: Pin lane, Value: 0
+					91 image
+				92 text Unscheduled cards
+				93 text 0 stories
+				94 checkbox Description: Pin lane, Value: 0
+					95 image
+				96 text Not assigned
+				97 text 0 cards
+				98 text Drag activities or steps here to unassign them.
+				99 button New release name
+					100 image
+					101 text New release lane
+
+The focused UI element is 0 AXWebArea StoryMapper, URL: 127.0.0.1:44357/projects/84ff5e48-7302-45f2-8994-f83ddebbc260/story-maps/74810cba-fa66-467d-8fc4-576775cba671/discovery

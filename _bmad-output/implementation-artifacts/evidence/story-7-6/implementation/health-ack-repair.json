@@ -1,0 +1,29 @@
+{
+  "finding": "Projection reset an unacknowledged non-stale link to synced merely because missing baseline hashes prevented comparison.",
+  "fix": "Require acknowledged baseline/evidence before projecting synced; baseline-less links explicitly pending remain unsynced. Conflict/stale/proven remote deletion precedence is preserved.",
+  "regressions": [
+    "baseline-less unsynced with no hashes",
+    "baseline-less explicitly unsynced with matching hashes",
+    "proven remote_deleted plus typed local_deleted inventory count/list consistency"
+  ],
+  "checks": [
+    {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/core exec vitest run src/reports/sync-health.test.ts",
+      "tests": 13,
+      "passed": true,
+      "log": "story-7-6-health-ack-repair.log.gz"
+    },
+    {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/core typecheck",
+      "passed": true,
+      "log": "story-7-6-health-ack-repair-typecheck.log.gz"
+    },
+    {
+      "command": "PATH=[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH corepack pnpm --filter @storymapper/server exec vitest run src/services/sync-review.test.ts",
+      "tests": 44,
+      "passed": true,
+      "log": "story-7-6-health-server-regression.log.gz"
+    }
+  ],
+  "failures": "No failing command in this repair; the parent source review identified the incorrect branch before final regression execution."
+}

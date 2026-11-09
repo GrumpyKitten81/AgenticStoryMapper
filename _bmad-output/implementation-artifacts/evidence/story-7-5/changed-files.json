@@ -1,0 +1,474 @@
+{
+  "baseline_revision": "ecf3ef5ba72f6c99300e2c9c580f5e3c4cdd2822",
+  "files": [
+    {
+      "path": ".wolf/STATUS.md",
+      "description": "Record final Story7.5 handoff while preserving all prior session handoffs."
+    },
+    {
+      "path": ".wolf/buglog.json",
+      "description": "Record encountered implementation, verification and review-repair failures and their corrections."
+    },
+    {
+      "path": ".wolf/cerebrum.md",
+      "description": "Retain learned baseline, provider, review and UI concurrency constraints."
+    },
+    {
+      "path": ".wolf/memory.md",
+      "description": "Append the required one-line session outcome."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/changed-files.json",
+      "description": "Record changed files evidence, scope and verification limits."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/implementation-focused-tests.log.gz",
+      "description": "Preserve implementation focused tests.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/implementation-initial-server-failures.log.gz",
+      "description": "Preserve implementation initial server failures.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/implementation-matrix.json",
+      "description": "Record implementation matrix evidence, scope and verification limits."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/implementation-server-typecheck.log.gz",
+      "description": "Preserve implementation server typecheck.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/native-acceptance.json",
+      "description": "Record native acceptance evidence, scope and verification limits."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-baseline-cleanup.log.gz",
+      "description": "Preserve parent baseline cleanup.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-final-release.log.gz",
+      "description": "Preserve parent final release.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-final-workspace.log.gz",
+      "description": "Preserve parent final workspace.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-matrix-audit.json",
+      "description": "Record parent matrix audit evidence, scope and verification limits."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-post-review-release.log.gz",
+      "description": "Preserve parent post review release.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-post-review-workspace.log.gz",
+      "description": "Preserve parent post review workspace.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-provider-workspace-before-cross-connection.log.gz",
+      "description": "Preserve parent provider workspace before cross connection.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-rederived-workspace.log.gz",
+      "description": "Preserve parent rederived workspace.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-release-initial-failure.log.gz",
+      "description": "Preserve parent release initial failure.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-release-parser-import-failure.log.gz",
+      "description": "Preserve parent release parser import failure.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-release.log.gz",
+      "description": "Preserve parent release.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-schema-split.log.gz",
+      "description": "Preserve parent schema split.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-stdio-final.log.gz",
+      "description": "Preserve parent stdio final.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-stdio-fixture-failure.log.gz",
+      "description": "Preserve parent stdio fixture failure.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-stdio.log.gz",
+      "description": "Preserve parent stdio.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-verification.json",
+      "description": "Record parent verification evidence, scope and verification limits."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/parent-workspace.log.gz",
+      "description": "Preserve parent workspace.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/pre-review-implementation.patch.gz",
+      "description": "Preserve pre review implementation.patch evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/protected-paths.json",
+      "description": "Record protected paths evidence, scope and verification limits."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-cross-connection-core.log.gz",
+      "description": "Preserve rederive cross connection core.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-cross-connection-focused.log.gz",
+      "description": "Preserve rederive cross connection focused.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-cross-connection-red.log.gz",
+      "description": "Preserve rederive cross connection red.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-cross-connection-server.log.gz",
+      "description": "Preserve rederive cross connection server.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-provider-server-regressions.log.gz",
+      "description": "Preserve rederive provider server regressions.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-provider-tests.log.gz",
+      "description": "Preserve rederive provider tests.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-provider-typecheck.log.gz",
+      "description": "Preserve rederive provider typecheck.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-review-admission-final.log.gz",
+      "description": "Preserve rederive review admission final.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-review-core.log.gz",
+      "description": "Preserve rederive review core.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-review-pipeline-final.log.gz",
+      "description": "Preserve rederive review pipeline final.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-review-provider.log.gz",
+      "description": "Preserve rederive review provider.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-review-repair-initial.log.gz",
+      "description": "Preserve rederive review repair initial.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-review-server.log.gz",
+      "description": "Preserve rederive review server.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/rederive-server-focused.log.gz",
+      "description": "Preserve rederive server focused.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/review-pass-1.json",
+      "description": "Record review pass 1 evidence, scope and verification limits."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/review-pass-2.json",
+      "description": "Record review pass 2 evidence, scope and verification limits."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/review-web-fixture-failure.log.gz",
+      "description": "Preserve review web fixture failure.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/review-web-typecheck.log.gz",
+      "description": "Preserve review web typecheck.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/review-web.log.gz",
+      "description": "Preserve review web.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/review2-web-initial-failure.log.gz",
+      "description": "Preserve review2 web initial failure.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/review2-web-typecheck-core-in-progress.log.gz",
+      "description": "Preserve review2 web typecheck core in progress.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/review2-web-typecheck-initial-failure.log.gz",
+      "description": "Preserve review2 web typecheck initial failure.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-5/review2-web.log.gz",
+      "description": "Preserve review2 web.log evidence verbatim in lossless gzip."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/spec-7-5-import-and-sync.md",
+      "description": "Record frozen intent, design, all review verdicts, verification and final outcome."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-command-regressions.test.ts",
+      "description": "Verify github command regressions behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-command.ts",
+      "description": "Capture and revalidate incoming scope, preserve initiating actor, execute attributed ChangeSets and return item outcomes."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-import-command.ts",
+      "description": "Prepare canonical hierarchical Unscheduled imports with managed assignments and indexed per-item results."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-pull-command.ts",
+      "description": "Prepare safe field merges, shared Release effects, conflict/baseline evidence and complete failure accounting."
+    },
+    {
+      "path": "apps/server/src/application/sync/sync-conflict.use-cases.ts",
+      "description": "Route incoming remote choices through the shared GitHub executor while keeping local choices separately confirmed."
+    },
+    {
+      "path": "apps/server/src/application/sync/sync.use-cases.ts",
+      "description": "Expose shared incoming application responses and sync-health data."
+    },
+    {
+      "path": "apps/server/src/fixtures/remote-push-execution.ts",
+      "description": "Share isolated provider/repository fixtures for real incoming and confirmed outgoing execution tests."
+    },
+    {
+      "path": "apps/server/src/http/routes/getting-started.test.ts",
+      "description": "Verify getting started behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/server/src/http/routes/unit-of-work.test.ts",
+      "description": "Verify unit of work behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/server/src/mcp/github-command-sdk.test.ts",
+      "description": "Verify github command sdk behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/server/src/mcp/github-command-transports.test.ts",
+      "description": "Verify github command transports behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/server/src/services/github-incoming-pipeline.test.ts",
+      "description": "Verify github incoming pipeline behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.test.ts",
+      "description": "Verify remote push execution behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "description": "Advance acknowledged evidence only after confirmed provider effects and preserve inbound iteration data."
+    },
+    {
+      "path": "apps/server/src/services/remote-push-merge.test.ts",
+      "description": "Verify remote push merge behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "description": "Block unresolved incoming drift and plan only explicit managed outgoing effects through the existing dry-run protocol."
+    },
+    {
+      "path": "apps/server/src/services/sync-conflict-resolution.ts",
+      "description": "Prepare exact reviewed conflict choices with shared field values and current ownership checks."
+    },
+    {
+      "path": "apps/server/src/services/sync-merge.ts",
+      "description": "Compare acknowledged local and observed remote fields, canonical assignments, managed labels and shared Release metadata."
+    },
+    {
+      "path": "apps/server/src/services/sync-review.test.ts",
+      "description": "Verify sync review behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.test.ts",
+      "description": "Verify work item sync behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.ts",
+      "description": "Remove direct human writers, share actor semantics and combine map-wide preparation atomically."
+    },
+    {
+      "path": "apps/web/src/app/api.ts",
+      "description": "Use shared incoming response schemas and preserve typed preparation errors."
+    },
+    {
+      "path": "apps/web/src/app/incoming-github-api.test.ts",
+      "description": "Verify incoming github api behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/web/src/app/incoming-github-error.ts",
+      "description": "Decode actionable failure rows and preserve validated conflict/error information."
+    },
+    {
+      "path": "apps/web/src/features/changesets/ChangeSetReview.tsx",
+      "description": "Reflect shared pending writes in review controls without changing executable selection semantics."
+    },
+    {
+      "path": "apps/web/src/features/changesets/useChangeSetReview.ts",
+      "description": "Admit scoped decisions synchronously and refresh affected health after applied or confirmed recovered results."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/GitHubSyncPanel.tsx",
+      "description": "Review incoming operations before separate outgoing Sync preparation with exact scope and released live holds."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/IncomingGitHubResults.tsx",
+      "description": "Render truthful per-item preparation results and error details."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/IncomingGitHubReview.tsx",
+      "description": "Reuse executable ChangeSet approval/apply while retaining results and a separate outgoing action."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/github-selection.test.tsx",
+      "description": "Verify github selection behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/web/src/features/github-sync/incoming-review.test.tsx",
+      "description": "Verify incoming review behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/CardDetailModal.tsx",
+      "description": "Review exact linked Card incoming changes, preserve dirty drafts and exclude overlapping owned writes."
+    },
+    {
+      "path": "apps/web/src/features/story-map/components/card-detail-github.test.ts",
+      "description": "Verify card detail github behavior through enabled isolated regressions."
+    },
+    {
+      "path": "apps/web/src/ui-strings/incoming-github.ts",
+      "description": "Centralize labels for incoming review and item outcomes."
+    },
+    {
+      "path": "packages/contracts/src/api/application-responses.ts",
+      "description": "Define shared incoming ChangeSet/item response contracts."
+    },
+    {
+      "path": "packages/contracts/src/api/http.ts",
+      "description": "Use one incoming response schema for import, sync and map-pull HTTP operations."
+    },
+    {
+      "path": "packages/contracts/src/mcp/tools.ts",
+      "description": "Align MCP incoming tool response contracts with HTTP and executor semantics."
+    },
+    {
+      "path": "packages/contracts/src/schemas/change-set-schemas.ts",
+      "description": "Version baseline/conflict operations and retain exact evidence in shared schemas."
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "description": "Consume the extracted shared baseline schema and extend synchronized conflict fields."
+    },
+    {
+      "path": "packages/contracts/src/schemas/sync-results.ts",
+      "description": "Define truthful incoming item outcomes shared by application, HTTP, MCP and UI."
+    },
+    {
+      "path": "packages/contracts/src/schemas/work-item-sync-baseline.ts",
+      "description": "Define distinct acknowledged-local and observed-remote evidence with explicit pending Release assignment."
+    },
+    {
+      "path": "packages/core/src/changesets/github-sync-resolution.ts",
+      "description": "Validate exact link/connection evidence and resolve canonical baseline dependencies atomically."
+    },
+    {
+      "path": "packages/core/src/changesets/operation-conflicts.ts",
+      "description": "Protect open synchronized fields and reject contradictory shared Card/Release proposals."
+    },
+    {
+      "path": "packages/core/src/changesets/operation-dependencies.ts",
+      "description": "Track baseline Release references and ordering through existing operation aliases."
+    },
+    {
+      "path": "packages/core/src/changesets/remaining-operation-resolution.test.ts",
+      "description": "Verify remaining operation resolution behavior through enabled isolated regressions."
+    },
+    {
+      "path": "packages/core/src/publishing/sync-fields.test.ts",
+      "description": "Verify sync fields behavior through enabled isolated regressions."
+    },
+    {
+      "path": "packages/core/src/publishing/sync-fields.ts",
+      "description": "Share pure status, managed Annotation and Release metadata normalization."
+    },
+    {
+      "path": "packages/core/src/reports/sync-health.test.ts",
+      "description": "Verify sync health behavior through enabled isolated regressions."
+    },
+    {
+      "path": "packages/core/src/reports/sync-health.ts",
+      "description": "Report local managed changes against acknowledged evidence, including shared Release metadata."
+    },
+    {
+      "path": "packages/db/src/connection.ts",
+      "description": "Bootstrap the current supported baseline_json persistence schema without prototype migration."
+    },
+    {
+      "path": "packages/db/src/fixtures/imported-card.ts",
+      "description": "Create imported test Cards through real core operations and repository persistence."
+    },
+    {
+      "path": "packages/db/src/repositories/canonical-github-identity.test.ts",
+      "description": "Verify canonical github identity behavior through enabled isolated regressions."
+    },
+    {
+      "path": "packages/db/src/repositories/getting-started.test.ts",
+      "description": "Verify getting started behavior through enabled isolated regressions."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-persistence-repository.ts",
+      "description": "Persist resolved baseline JSON and shared operation state consistently."
+    },
+    {
+      "path": "packages/db/src/repositories/repository-values.ts",
+      "description": "Encode baseline values through the contracts schema."
+    },
+    {
+      "path": "packages/db/src/repositories/row-mappers.ts",
+      "description": "Decode persisted incoming baselines into canonical remote-link projections."
+    },
+    {
+      "path": "packages/db/src/repositories/storymapper-repository.test.ts",
+      "description": "Verify storymapper repository behavior through enabled isolated regressions."
+    },
+    {
+      "path": "packages/db/src/repositories/storymapper-repository.ts",
+      "description": "Remove the obsolete direct import mutation entry point."
+    },
+    {
+      "path": "packages/db/src/repositories/work-item-repository.ts",
+      "description": "Persist shared baselines and remove duplicate direct-import mutation policy."
+    },
+    {
+      "path": "packages/db/src/schema/tables.ts",
+      "description": "Declare the current remote-link baseline JSON column."
+    },
+    {
+      "path": "packages/db/src/unit-of-work.test.ts",
+      "description": "Verify unit of work behavior through enabled isolated regressions."
+    },
+    {
+      "path": "packages/github/src/providers/github-provider.test.ts",
+      "description": "Verify github provider behavior through enabled isolated regressions."
+    },
+    {
+      "path": "packages/github/src/providers/github-provider.ts",
+      "description": "Read rich Issue projections consistently in both transports and refuse incomplete consumed iteration evidence."
+    },
+    {
+      "path": "packages/github/src/providers/github-push-transports.test.ts",
+      "description": "Verify github push transports behavior through enabled isolated regressions."
+    }
+  ],
+  "source_files": 64
+}

@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "date": "2026-10-22",
+  "epic": 8,
+  "epicStatus": "closed",
+  "verdict": "accepted-with-open-items",
+  "decision": "explicit operator override",
+  "decisionBaseRevision": "c41b9ce9754701b7fa8fc83f9b88af5bcb32ef3e",
+  "operatorDecision": "Operator performs cross-OS tests personally, closes Epic8, transfers remaining work to GitHub, merges the specified commit and requests private-repository push.",
+  "followUpIssue": "https://github.com/GrumpyKitten81/StoryMapper/issues/1",
+  "crossOSTestOwner": "operator",
+  "transferredActionIds": [
+    "epic-8-retro-a3",
+    "epic-8-retro-a4",
+    "epic-8-retro-a5",
+    "epic-8-retro-a6",
+    "epic-8-retro-a7",
+    "epic-8-retro-a8"
+  ],
+  "testResultsInferred": false,
+  "releaseReady": false,
+  "sprintTrackingWritten": false,
+  "previousDecision": "epic-8-retro-2026-10-21-v2.md",
+  "merge": {
+    "sourceCommit": "761809f57a2905310af5e5ea86d3d85008095ff4",
+    "integration": "Preserve main extraction; apply single-error reporting in live-update-session and suppress live banner on API health error.",
+    "focusedTests": {
+      "files": 2,
+      "passed": 31
+    },
+    "repositoryVerifier": "passed",
+    "otherWorktreeUncommittedChanges": "preserved"
+  }
+}

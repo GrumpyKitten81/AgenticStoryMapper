@@ -1,0 +1,79 @@
+
+> @storymapper/db@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/packages/db
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/external-refs-repository.test.ts (5 tests) 84ms
+ ✓ src/map-copy-resolution.test.ts (1 test) 339ms
+   ✓ matches the real complete SQLite copy graph and preserves prepared identity/input bytes 338ms
+ ✓ src/repositories/release-report-data.test.ts (2 tests) 415ms
+ ✓ src/repositories/card-visibility.test.ts (2 tests) 540ms
+   ✓ visible Card report boundaries > excludes hidden trees from every report while retaining complete snapshots and owned links 314ms
+ ✓ src/board-import-resolution.test.ts (5 tests) 667ms
+ ✓ src/ai-templates.test.ts (4 tests) 648ms
+ ✓ src/repositories/operation-selector-regressions.test.ts (6 tests) 797ms
+ ✓ src/operation-schema-transition.test.ts (7 tests) 1087ms
+ ✓ src/repositories/operation-catalog-executor.test.ts (2 tests) 1226ms
+   ✓ executes previously uncovered update, unset and delete catalog pairs with physical-state and immutable-input parity 936ms
+ ✓ src/repositories/plan-states.test.ts (8 tests) 1365ms
+(node:2499) Warning: Post-commit publication failed; database changes remain committed.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ src/live-events.test.ts (8 tests) 1427ms
+ ✓ src/card-dependencies.test.ts (8 tests) 1483ms
+   ✓ removes prerequisite incidents with one surviving owner history and rolls back all failures 348ms
+   ✓ restores exact owned edge rows and preserves only the scoped Project in portable snapshots 328ms
+ ✓ src/repositories/operation-resolution-parity.test.ts (8 tests) 1569ms
+   ✓ matches real SQLite mixed sibling positions, ties and parked Card moves 432ms
+ ✓ src/snapshot.test.ts (8 tests) 1567ms
+   ✓ scopes to one demo Project, keeps business links and deleted Card history, and removes secret free-page bytes 571ms
+ ✓ src/activity-changes.test.ts (10 tests) 1704ms
+   ✓ links only a genuine applied Agent snapshot (Agent proposal) and reports retention loss 412ms
+ ✓ src/repositories/persistence-entity-order.test.ts (1 test) 1ms
+stdout | src/repositories/operation-snapshot-scope.test.ts > materializes no additional target rows after a large foreign Project is added
+{"action":"A3","foreignCards":2503,"foreignExtraChunks":2500,"before":{"rows":67,"elapsedMs":6.2534999999998035},"referenceAfter":{"rows":5112,"elapsedMs":27.761665999999877},"scopedAfter":{"rows":67,"elapsedMs":5.777624999999716}}
+
+ ✓ src/repositories/operation-snapshot-scope.test.ts (4 tests) 1953ms
+   ✓ materializes no additional target rows after a large foreign Project is added 1277ms
+ ✓ src/repositories/source-document-import.test.ts (1 test) 147ms
+ ✓ src/source-document-migration.test.ts (2 tests) 267ms
+ ✓ src/repositories/card-provenance.test.ts (15 tests) 2259ms
+ ✓ src/repositories/changeset-warnings.test.ts (2 tests) 243ms
+ ✓ src/repositories/source-plan-audit.test.ts (4 tests) 2292ms
+   ✓ retains complete canonical baselines while audit evidence contains exactly the addressed entry delta 420ms
+   ✓ keeps initial publication audit entries and serialized bytes linear as the canonical baseline grows 1572ms
+ ✓ src/repositories/storymapper-repository.test.ts (18 tests) 2088ms
+ ✓ src/repositories/source-plan-baselines.test.ts (20 tests) 2446ms
+   ✓ retains selected Project evidence in archive snapshots and restores the exact point-in-time baseline 472ms
+ ✓ src/repositories/card-history.test.ts (13 tests) 778ms
+   ✓ bounded Card history > returns bounded pages through 200 real saved versions without omissions 576ms
+ ✓ src/restore-failures.test.ts (5 tests) 717ms
+ ✓ src/repositories/getting-started.test.ts (31 tests) 2663ms
+ ✓ src/repositories/changeset-executor.test.ts (22 tests) 2630ms
+   ✓ binds actual approval and keeps reviewed operations immutable across resolved application 340ms
+(node:2487) Warning: Post-commit publication failed; database changes remain committed.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ src/repositories/root-versions.test.ts (75 tests) 3576ms
+(node:2487) Warning: Post-commit publication failed; database changes remain committed.
+(node:2487) Warning: Post-commit publication failed; database changes remain committed.
+ ✓ src/unit-of-work.test.ts (60 tests) 3340ms
+   ✓ actor-aware atomic Card mutations > retains separate archive and explicit Restore history within the same actor's rapid-save window 359ms
+ ✓ src/restore-project.test.ts (18 tests) 3953ms
+   ✓ recoverable human project restore > retains runtime tool-call evidence across repeated actual restores without fictional Projects 411ms
+   ✓ recoverable human project restore > restores committed WAL map state, preserves later same-ID ChangeSets and historical Project ownership, and accepts holder writes 350ms
+   ✓ recoverable human project restore > preserves genuinely crashed uncheckpointed WAL commits when startup publication fails and can retry the prepared restore 1466ms
+ ✓ src/restore-points.test.ts (21 tests) 4544ms
+   ✓ complete persisted restore points > retains the latest manual publication with pre-change contents after clock rollback and reopen 495ms
+   ✓ complete persisted restore points > retains the latest pre-migration publication with pre-change contents after clock rollback and reopen 367ms
+   ✓ complete persisted restore points > isolates inventories and per-class retention for colocated databases 766ms
+   ✓ complete persisted restore points > finishes snapshot creation alone with 1,000 actual Cards within the 2-second tolerance 1800ms
+ ✓ src/repositories/operation-executor-persistence.test.ts (21 tests) 4674ms
+   ✓ persists complete local roots, relationship arrays, Roadmap seeds and physical evidence encodings 310ms
+   ✓ keeps Card keys monotonic after deletion and reopening 525ms
+   ✓ persists 200 selected operations on 1,000 Cards with snapshot, history and audit 2853ms
+
+ Test Files  33 passed (33)
+      Tests  417 passed (417)
+   Start at  12:49:19
+   Duration  6.79s (transform 4.06s, setup 0ms, collect 54.78s, tests 53.49s, environment 4ms, prepare 3.07s)

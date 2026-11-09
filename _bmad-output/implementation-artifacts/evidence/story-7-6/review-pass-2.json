@@ -1,0 +1,154 @@
+{
+  "sourceFingerprint": "f292fe9dff836a84fd7a4d5d21d8b2aa208c4640ed3c7ee6b3519c9d6aa4d131",
+  "reports": [
+    "intent_pass2",
+    "blind_pass2",
+    "gaps_pass2",
+    "edge_pass2"
+  ],
+  "counts": {
+    "total": 18,
+    "high": 0,
+    "medium": 10,
+    "low": 1,
+    "false": 5,
+    "maybe-false": 2
+  },
+  "findings": [
+    {
+      "id": "P2I1",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Workflow execution is outside the source diff",
+      "evidence": "carried I1: exact renderer invocation and parent logs/matrix establish execution; protected-path tool audit and working/index hashes establish ownership compliance. The source-only review input intentionally omits this narrative."
+    },
+    {
+      "id": "P2I2",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Native browser and assembled product acceptance",
+      "evidence": "carried I2: fixture/jsdom evidence cannot establish native connected keyboard/focus/provider acceptance. Observe a disposable-provider browser journey to settle the medium unverified risk; do not duplicate deferral."
+    },
+    {
+      "id": "P2I3",
+      "verdict": "maybe-false",
+      "route": "defer",
+      "summary": "Live provider persistence acceptance",
+      "evidence": "carried I2: mocked SDK/stdio provider observations establish local protocol behavior, not live GitHub persistence. Actual disposable-provider/native acceptance would settle the medium unverified limit; no duplicate deferral."
+    },
+    {
+      "id": "P2I4",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Full story scope is absent from reviewer prompt",
+      "evidence": "Parent loaded the complete prepared Story7.6 requirements and context and audited every frozen matrix row against executed tests; the source-only auditor input is intentionally narrower."
+    },
+    {
+      "id": "P2B1",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Old prototype table lacks canonical conflict column",
+      "evidence": "carried B1/I4: AD9 and frozen intent exclude prototype migration. Current-schema reopening and Restore remain tested."
+    },
+    {
+      "id": "P2B2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Raw provider URL casing rejects canonical identity",
+      "evidence": "Provider returns URLs unchanged while refs canonicalize owner/repository. Parsed canonical locator comparison fixes equivalent case while retaining foreign identity refusal."
+    },
+    {
+      "id": "P2B3",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Release reference agreement depends on repository order",
+      "evidence": "The helper selects first Release ref; localMilestoneLocator already scopes by Issue repository. Select matching canonical repository and test both ref orders."
+    },
+    {
+      "id": "P2B4",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "New conflict followed by disputed write bypasses initial collection",
+      "evidence": "Public SubmitChangeSet rejects syncConflict adapter operations; the only conflict-creation builder emits disputed-safe Card/Annotation effects before conflict creation, then preserves disputed baselines. No current application caller can construct the claimed overwrite sequence; arbitrary direct core construction is not a public bypass."
+    },
+    {
+      "id": "P2B5",
+      "verdict": "medium",
+      "route": "defer",
+      "summary": "Release goal/released divergence is absent from health evidence",
+      "evidence": "Pre-existing: before this story Release links retained persisted syncState and baseline metadata omitted goal/state; updateRelease does not update link state. Outgoing payload publishes both fields. New name/date projection does not introduce this missing evidence; defer with concrete baseline/payload locations."
+    },
+    {
+      "id": "P2B6",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Duplicate mapped status labels prevent agreement",
+      "evidence": "Accepted mapping permits duplicates; syncStatusLabels deduplicates canonical baselines but agreement only sorts. Reuse canonical normalization without mutation."
+    },
+    {
+      "id": "P2B7",
+      "verdict": "false",
+      "route": "reject",
+      "summary": "Color-only clearing serializes an empty patch",
+      "evidence": "There is no color-clearing action: Card Detail only assigns nonempty category values, including Standard #ffffff. makeDraft empty color is also the unchanged baseline; the reviewer did not show a UI path that makes it a dirty empty string. Do not add a new clearing feature."
+    },
+    {
+      "id": "P2B8",
+      "verdict": "low",
+      "route": "patch",
+      "summary": "All dirty fields locked leaves inert enabled Save",
+      "evidence": "Both buttons use isDirty while save returns for empty editable patch. Derive editable dirtiness for the existing controls; retained draft and visible lock explanations remain."
+    },
+    {
+      "id": "P2B9",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "New Dry Run Cancel loses keyboard position",
+      "evidence": "Cancel is new in this diff and removes the focused control; neither panel invalidateScope nor review restores its initiator. Restore connected initiator only when cancelling inside the review, without overriding outside scope focus."
+    },
+    {
+      "id": "P2B10",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Kanban disabled fields expose lock text only in title",
+      "evidence": "Disabled selects cannot receive ordinary keyboard focus and the row has no persistent field-lock explanation. Add existing visible text and aria-describedby relationships."
+    },
+    {
+      "id": "P2V1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Human Card Annotation admission endpoint regression gap",
+      "evidence": "Preverified: core and mocked UI tests cannot catch removal of human set/delete assertBaseVersions. Add real POST/DELETE refusal plus no-op/unmanaged success and persisted-state audit assertions."
+    },
+    {
+      "id": "P2V2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Human workflow admission endpoint regression gap",
+      "evidence": "Preverified: existing HTTP workflow cases lack open status disagreement; helper tests survive removing admission. Add reviewed rename/delete refusal and metadata success through actual routes."
+    },
+    {
+      "id": "P2E1",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Structured reviewed values reject reordered object keys",
+      "evidence": "Source and reviewer Node24/Vite probe show JSON.stringify makes equal status/Release values order-sensitive. Compare JSON objects independently of key order while preserving arrays and rejecting real drift."
+    },
+    {
+      "id": "P2E2",
+      "verdict": "medium",
+      "route": "patch",
+      "summary": "Duplicate status mapping blocks successful remote choice",
+      "evidence": "Same root cause as P2B6; actual module probe returns false for duplicate mapping and true for unique mapping. Canonical normalization and regression share one repair entry."
+    }
+  ],
+  "patchEntries": {
+    "medium": 8,
+    "low": 1
+  },
+  "patchStatus": "All nine repair entries applied, independently audited, and parent full test/release gates passed",
+  "newDeferredEntries": 1,
+  "carriedUnverifiedRows": 2,
+  "patchEvidence": "rederive-pass2/patch-summary.json",
+  "finalSourceFingerprint": "481e668ed764a675aa8bad9b223a095e67dc6b284db3376469b8fe2b9cdb7bc2"
+}

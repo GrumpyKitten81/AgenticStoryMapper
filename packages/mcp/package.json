@@ -1,0 +1,32 @@
+{
+  "name": "@storymapper/mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/mcp/src/index.js",
+  "types": "./dist/mcp/src/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --exclude \"**/dist/**\" --passWithNoTests",
+    "lint": "tsc -p tsconfig.json --noEmit",
+    "test:coverage": "vitest run --exclude \"**/dist/**\" --coverage --maxWorkers=1"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.3.0",
+    "@storymapper/contracts": "workspace:*"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.12"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/mcp/src/index.d.ts",
+      "import": "./dist/mcp/src/index.js"
+    },
+    "./*": {
+      "types": "./dist/mcp/src/*.d.ts",
+      "import": "./dist/mcp/src/*.js"
+    }
+  }
+}

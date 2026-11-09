@@ -1,0 +1,282 @@
+{
+  "date": "2026-10-19",
+  "pass": 1,
+  "rows": [
+    {
+      "id": "B1",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Alternate scopes were unconditionally lowercased. Preserve exact normalized alternate scope while retaining GitHub normalization."
+    },
+    {
+      "id": "B2",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "GitHub supplied remoteNumber bypassed consistency validation; old repository binding rejected this exact state. Restore shared number agreement."
+    },
+    {
+      "id": "B3",
+      "verdict": "low",
+      "route": "reject",
+      "evidence": "Enum-derived partial index would retain its initial predicate on pre-extension databases. Only GitHub ships and prepared pre-release databases are disposable; installed-provider expansion/migration is not an exercised current path. Adding schema-refresh compatibility is beyond a direct correction and prohibited by prototype migration constraints."
+    },
+    {
+      "id": "B4",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Plan/execution consume target/marker/Milestone reads before normalized scope validation; remotePushEvidence omits URL identity. Reuse current identity guard before reads authorize a write and assert exact requested/bound identity."
+    },
+    {
+      "id": "B5",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "New alternate owner-wide scope can contain colliding repository numbers, while import parent maps use only numbers. Scope parent keys by repository and number."
+    },
+    {
+      "id": "B6",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Reference no-op and retirement omit provider system, so equal serialized identity across registered systems can suppress/retain the wrong binding. Compare full provider identity."
+    },
+    {
+      "id": "B7",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Attached source provider is only assigned when after.provider exists; omitted GitHub provider retains alternate tag. Explicitly set or clear provider during transition."
+    },
+    {
+      "id": "B8",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Broadened getGitHubLink permits alternate refs into GitHub-only update and canonicalRef rewrites system github. Refuse alternate refs at the explicit GitHub update boundary."
+    },
+    {
+      "id": "B9",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Alternate copy and attached-source paths changed without execution coverage. Add actual reviewed copy/apply and absent outbound ownership assertions."
+    },
+    {
+      "id": "B10",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Portable table assertions do not inspect changed recursive Activity/ChangeSet/history redaction. Add nested payload evidence assertions."
+    },
+    {
+      "id": "E1",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "persistConflictResolution omits remote.identity when rebinding a confirmed alternate local choice. Forward identity and test actual confirmed local-wins closure."
+    },
+    {
+      "id": "E2",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "incomingRelease compares public binding.url with canonical JSON locator, preventing alternate Release baseline advancement. Match canonical externalRef identity."
+    },
+    {
+      "id": "E3",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Same demonstrated number-consistency defect as B2; keep separate row and shared repair."
+    },
+    {
+      "id": "I1",
+      "verdict": "false",
+      "route": "reject",
+      "evidence": "Process cannot be established by source diff alone, but tool history records exactly one renderer invocation, planning, implementation delegation, independent gates and reviews. Artifact limitations do not demonstrate a workflow defect."
+    },
+    {
+      "id": "I2",
+      "verdict": "false",
+      "route": "reject",
+      "evidence": "Prepared plan explicitly requires an isolated enum fixture with registry/credential injection. Test wraps real providerRegistration inputs; factory, credential dispatch, application, core and repositories execute without additional shared edits. This is the specified integration surface."
+    },
+    {
+      "id": "I3",
+      "verdict": "low",
+      "route": "reject",
+      "evidence": "Alternate tests use application/services rather than native UI/HTTP/MCP. The story ships no second connector or new UI/transport capability; relevant existing transport suites run in workspace gates. Native/platform/live acceptance is explicitly unexecuted. Adding fake public UI/transport surface would exceed the three-site exercise."
+    },
+    {
+      "id": "I4",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Changed copy/provenance/attached-source lifecycle lacks alternate execution. Same root as B9; preserve row and add actual copy/apply evidence."
+    },
+    {
+      "id": "I5",
+      "verdict": "false",
+      "route": "reject",
+      "evidence": "Implementation handoff correctly reports broad gates pending. Parent independently runs them before terminal completion; no completed verification was inferred from handoff or sprint rows."
+    },
+    {
+      "id": "I6",
+      "verdict": "false",
+      "route": "reject",
+      "evidence": "Hashes prove compared states, not transient history; tool trace contains no protected writes/staging/reverts. No sprint state supplied verification. The reviewer identifies a limit of diff-only evidence rather than a demonstrated prohibited action."
+    },
+    {
+      "id": "G1",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Preverified copy collector regression gap: restoring github-only filters survives old tests and extension suite never copies. Add real alternate reviewed copy."
+    },
+    {
+      "id": "G2",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Preverified archive-validator regression gap: old github-only rejection query survives tests. Validate and reject a portable DB with an alternate canonical reference."
+    },
+    {
+      "id": "G3",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Same existing-Milestone canonical locator/public URL mismatch as E2. Cover incoming metadata and subsequent healthy baseline."
+    },
+    {
+      "id": "P1",
+      "verdict": "medium",
+      "route": "patch",
+      "evidence": "Parent full workspace failed complete-surface old-resolver spies. A fake-provider test reached local CLI credentials; both credential fields in its untracked failure log were immediately redacted. Correct central resolver spies and retain no-effect assertions before rerun."
+    },
+    {
+      "id": "P2",
+      "verdict": "low",
+      "route": "patch",
+      "evidence": "Parent full workspace failed the prior scope-message assertion after earlier owner validation. Restore expected scope-and-connection wording without relaxing test."
+    }
+  ],
+  "counts": {
+    "medium": 17,
+    "low": 3,
+    "false": 4
+  },
+  "reviewExecution": "Agent thread limit prevented all lenses from launching context-free in parallel: blind ran in a fresh context; existing read-only investigator handled edge, test investigator handled verification-gap; blind context subsequently handled descriptive intent alignment. All reports collected before triage; reviewers made no edits.",
+  "patchGroups": [
+    {
+      "id": 1,
+      "findings": [
+        "B1"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 2,
+      "findings": [
+        "B2",
+        "E3"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 3,
+      "findings": [
+        "B4"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 4,
+      "findings": [
+        "B5"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 5,
+      "findings": [
+        "B6"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 6,
+      "findings": [
+        "B7"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 7,
+      "findings": [
+        "B8"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 8,
+      "findings": [
+        "B9",
+        "I4",
+        "G1"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 9,
+      "findings": [
+        "B10"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 10,
+      "findings": [
+        "E1"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 11,
+      "findings": [
+        "E2",
+        "G3"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 12,
+      "findings": [
+        "G2"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 13,
+      "findings": [
+        "P1"
+      ],
+      "verdict": "medium",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    },
+    {
+      "id": 14,
+      "findings": [
+        "P2"
+      ],
+      "verdict": "low",
+      "state": "implemented and independently verified; workspace3130/release gates pass"
+    }
+  ],
+  "rawReports": "Review messages retained in session; each finding preserved as separate triage row.",
+  "patchedEntryCounts": {
+    "high": 0,
+    "medium": 13,
+    "low": 1
+  },
+  "patchedFindingRows": 18,
+  "parentFinalEvidence": "parent-verification-final.json"
+}

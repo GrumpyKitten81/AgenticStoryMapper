@@ -1,0 +1,65 @@
+{
+  "browser": "151.0.7922.34",
+  "fixture": {
+    "url": "http://127.0.0.1:53718",
+    "projectId": "27433ae7-d1d4-4d97-8bc2-3822581f6b2e",
+    "total": 1000
+  },
+  "firstPages": [
+    {
+      "start": 101.5,
+      "dom": 128.29999999701977,
+      "painted": 138.20000000298023,
+      "duration": 36.70000000298023,
+      "rows": 20
+    },
+    {
+      "start": 100.79999999701977,
+      "dom": 127.70000000298023,
+      "painted": 137,
+      "duration": 36.20000000298023,
+      "rows": 20
+    },
+    {
+      "start": 101.09999999403954,
+      "dom": 128.59999999403954,
+      "painted": 138.20000000298023,
+      "duration": 37.1000000089407,
+      "rows": 20
+    },
+    {
+      "start": 100.40000000596046,
+      "dom": 127.40000000596046,
+      "painted": 137.29999999701977,
+      "duration": 36.8999999910593,
+      "rows": 20
+    },
+    {
+      "start": 100.5,
+      "dom": 128.29999999701977,
+      "painted": 138,
+      "duration": 37.5,
+      "rows": 20
+    }
+  ],
+  "filters": {
+    "actor": "agent",
+    "tool": "list_projects",
+    "rows": 20,
+    "combinedMatch": true,
+    "cursorReset": true,
+    "globalVisible": true,
+    "allMatchingEvents": 84,
+    "pages": 5,
+    "duplicates": 0,
+    "omissions": 0,
+    "repeatedTimestamp": true
+  },
+  "pagination": {
+    "firstRows": 20,
+    "secondRows": 20,
+    "uniqueIds": 40,
+    "previousRestored": true
+  },
+  "errors": []
+}

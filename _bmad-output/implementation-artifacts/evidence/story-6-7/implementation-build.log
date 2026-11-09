@@ -1,0 +1,11 @@
+
+> @storymapper/web@0.1.0 build [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> tsc -p tsconfig.json && vite build
+
+src/features/story-map/components/card-detail-root-focus.test.ts(13,43): error TS2379: Argument of type '{ component: RouteComponent | undefined; }' is not assignable to parameter of type 'UpdatableRouteOptions<any, string, "/", {}, undefined, undefined, {}, {}, AnyContext, AnyContext>' with 'exactOptionalPropertyTypes: true'. Consider adding 'undefined' to the types of the target's properties.
+  Types of property 'component' are incompatible.
+    Type 'RouteComponent | undefined' is not assignable to type 'RouteComponent'.
+      Type 'undefined' is not assignable to type 'RouteComponent'.
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/web@0.1.0 build: `tsc -p tsconfig.json && vite build`
+Exit status 2

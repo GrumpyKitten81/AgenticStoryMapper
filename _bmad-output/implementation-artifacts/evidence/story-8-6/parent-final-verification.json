@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-20",
+  "revision": "3e761f7deb60fc0c12639995ff801fdfcfc5a990",
+  "status": "verified locally with explicit native acceptance gaps",
+  "commands": "parent-final-checks.json",
+  "whitespaceRepair": {
+    "initialExit": 2,
+    "cause": "terminal blank lines in captured pnpm hygiene log",
+    "postNormalizationExit": 0,
+    "provenance": "parent-log-normalization.json"
+  },
+  "sourceSha256": {
+    "README.md": "e567b97fba8f0dd75a539a5fc45b42b0ec89b2c14b77a5dfa8dc780b0d9fde2f",
+    "docs/RUNBOOK.md": "b54dcfc461e6b76a7d9b2c56500175716c34d12e7cfe57e6a415b7559f2ff329",
+    "CONTRIBUTING.md": "4438c3f6afdb06675f007460891cadd2afb3e9381f7b6d0d7a755e2f06c7d1d4",
+    "docs/usability-report.md": "8d91652524086fead40529eb7a72ea13207c7e9d6800198fb06db830f7c28295",
+    "_bmad-output/implementation-artifacts/evidence/story-8-6/check_links.py": "7eac687b9505ba998ff89a4814595e635d272022f14f1e44a43ef6718d0d7af2",
+    "_bmad-output/implementation-artifacts/evidence/story-8-6/native-quickstart.py": "ca923a63272d07f4f0ab3ba25bc49f6b78524b9306447aeb3d2d7177a15e9d3e",
+    "_bmad-output/implementation-artifacts/evidence/story-8-6/helper-probes.py": "cf8ec498156f8c4aa1eb7152a897e53e5c55d5c3601fbff0d415df116d4f6126",
+    "_bmad-output/implementation-artifacts/evidence/story-8-6/helper-probe-child.py": "2596722477bfee77222c9ec7c5b969d6c770164b2aaecae3f2f11e0ac80cde8e"
+  },
+  "sourceFingerprint": "0138a690de19a67ca3d2f3a0fcf415265783c960b6bdb3e8b86ba7f208bff7dd",
+  "protectedEntry": {
+    "head": "3e761f7deb60fc0c12639995ff801fdfcfc5a990",
+    "sprintWorktreeSha256": "c65b481a31009654de303a4df8a8c3c923d3c1584b868565c83f022771624a26",
+    "sprintIndexSha256": "c65b481a31009654de303a4df8a8c3c923d3c1584b868565c83f022771624a26"
+  },
+  "protectedFinal": {
+    "head": "3e761f7deb60fc0c12639995ff801fdfcfc5a990",
+    "sprintWorktreeSha256": "c65b481a31009654de303a4df8a8c3c923d3c1584b868565c83f022771624a26",
+    "sprintIndexSha256": "c65b481a31009654de303a4df8a8c3c923d3c1584b868565c83f022771624a26"
+  },
+  "protectedMutation": "No write, stage, unstage or revert; comparisons report final bytes only.",
+  "nativeEvidence": "native-macos.json and native-browser.json",
+  "nativeSourceUnchanged": true,
+  "nativeHelperRerun": false,
+  "helperFailureProbesPassed": 9,
+  "linksReport": "links-parent-final.json",
+  "staticHelperChecks": "All four Python sources parse and their functions are within50lines.",
+  "remainingAcceptance": [
+    "Windows native fresh-checkout quickstart",
+    "Linux native fresh-checkout quickstart",
+    "macOS visible/rendered browser observation"
+  ],
+  "publicationPrerequisites": "Required private declarations, current-tree/history audit, final history disposition/exact-result rescan, hosted CI/protection and prior native/reader/credential/interrupted-push obligations remain open.",
+  "finalization": "Staged local work for orchestrator; no commit/push/tag/publication or next-story dispatch.",
+  "closingChecksAfterBookkeeping": [
+    {
+      "command": [
+        "corepack",
+        "pnpm",
+        "check-hygiene"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "python3",
+        "_bmad-output/implementation-artifacts/evidence/story-8-6/check_links.py",
+        "--output",
+        "_bmad-output/implementation-artifacts/evidence/story-8-6/links-parent-final.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "HEAD"
+      ],
+      "exitCode": 0
+    }
+  ]
+}

@@ -1,0 +1,469 @@
+{
+  "baseline": "aae10f89c96b4c1aa26d862b31119a636c22d486",
+  "files": [
+    {
+      "path": ".wolf/STATUS.md",
+      "description": "Record session handoff, observed failures and learned provider invariants."
+    },
+    {
+      "path": ".wolf/buglog.json",
+      "description": "Record session handoff, observed failures and learned provider invariants."
+    },
+    {
+      "path": ".wolf/cerebrum.md",
+      "description": "Record session handoff, observed failures and learned provider invariants."
+    },
+    {
+      "path": ".wolf/memory.md",
+      "description": "Record session handoff, observed failures and learned provider invariants."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/contracts-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/contracts-frozen.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/contracts-normalized.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/core-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/core-first.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/core-frozen.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/db-board-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/db-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/db-first.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/db-frozen.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/db-normalized.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/extension-freeze-after.json.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/extension-freeze-before.json.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/extension-tests-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/extension-typecheck-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/implementation-handoff.json",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/implementation-matrix.json",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/native-acceptance.json",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/parent-contracts-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/parent-exercise-after.json.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/parent-exercise-before.json.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/parent-extension-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/parent-matrix-audit.json",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/parent-release-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/parent-release-first-size-failed.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/parent-source-manifest.json.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/parent-verification-final.json",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/parent-workspace-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/parent-workspace-first-redacted.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/protected-paths-final.json",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/protected-paths-implementation.json",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/review-fixes.json",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/review-pass-1.json",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/server-focused-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/server-focused-first.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/server-focused-normalized.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-extension-freeze-review-after.json.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-extension-freeze-review-before.json.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-regressions-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-regressions-first.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-regressions-second.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-regressions-third.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-regressions-typecheck-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-regressions-typecheck-first.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-regressions-typecheck-second.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-regressions-typecheck-third.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-remote-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-targeted-contracts.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-targeted-core.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-targeted-db.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-targeted-server-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/story7-8-review-targeted-server.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/evidence/story-7-8/sync-regression-final.log.gz",
+      "description": "Retain auditable verification, review, failure, freeze or protected-path evidence."
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/spec-7-8-provider-extension-points.md",
+      "description": "Record immutable intent, runnable tasks, review triage, verification and terminal result."
+    },
+    {
+      "path": "_bmad-output/planning-artifacts/architecture/architecture-StoryMapper-2026-09-29/ARCHITECTURE-SPINE.md",
+      "description": "Record exact registration/identity seams and interface-only publishing in AD-15."
+    },
+    {
+      "path": "apps/server/src/application/connector/connector.use-cases.ts",
+      "description": "Consume normalized providers through reviewed, authorized application and credential boundaries."
+    },
+    {
+      "path": "apps/server/src/application/sync/extension-provider-fixture.ts",
+      "description": "Supply isolated own-host provider and explicit effects without network or credential access."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-conflict-command.ts",
+      "description": "Consume normalized providers through reviewed, authorized application and credential boundaries."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-import-command.ts",
+      "description": "Consume normalized providers through reviewed, authorized application and credential boundaries."
+    },
+    {
+      "path": "apps/server/src/application/sync/github-pull-command.ts",
+      "description": "Consume normalized providers through reviewed, authorized application and credential boundaries."
+    },
+    {
+      "path": "apps/server/src/application/sync/provider-extension.test.ts",
+      "description": "Verify provider registration, normalized identity, lifecycle or existing GitHub security behavior."
+    },
+    {
+      "path": "apps/server/src/application/sync/provider-registration.test.ts",
+      "description": "Verify provider registration, normalized identity, lifecycle or existing GitHub security behavior."
+    },
+    {
+      "path": "apps/server/src/mcp/tools/complete-surface.test.ts",
+      "description": "Verify provider registration, normalized identity, lifecycle or existing GitHub security behavior."
+    },
+    {
+      "path": "apps/server/src/services/credentials.ts",
+      "description": "Consume normalized providers through reviewed, authorized application and credential boundaries."
+    },
+    {
+      "path": "apps/server/src/services/remote-push-context.ts",
+      "description": "Consume normalized providers through reviewed, authorized application and credential boundaries."
+    },
+    {
+      "path": "apps/server/src/services/remote-push-execution.ts",
+      "description": "Consume normalized providers through reviewed, authorized application and credential boundaries."
+    },
+    {
+      "path": "apps/server/src/services/remote-push-plan.ts",
+      "description": "Consume normalized providers through reviewed, authorized application and credential boundaries."
+    },
+    {
+      "path": "apps/server/src/services/sync-conflict-resolution.ts",
+      "description": "Consume normalized providers through reviewed, authorized application and credential boundaries."
+    },
+    {
+      "path": "apps/server/src/services/sync-merge.ts",
+      "description": "Consume normalized providers through reviewed, authorized application and credential boundaries."
+    },
+    {
+      "path": "apps/server/src/services/sync-review.test.ts",
+      "description": "Verify provider registration, normalized identity, lifecycle or existing GitHub security behavior."
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.test.ts",
+      "description": "Verify provider registration, normalized identity, lifecycle or existing GitHub security behavior."
+    },
+    {
+      "path": "apps/server/src/services/work-item-sync.ts",
+      "description": "Consume normalized providers through reviewed, authorized application and credential boundaries."
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/change-set-schemas.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/domain.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/external-refs.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/operation-fields.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/remaining-operations.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/remote-push.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/restore-points.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/sync-health.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/work-item-identity.test.ts",
+      "description": "Verify provider registration, normalized identity, lifecycle or existing GitHub security behavior."
+    },
+    {
+      "path": "packages/contracts/src/schemas/work-item-identity.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/work-item-provider.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/contracts/src/schemas/work-item-sync-baseline.ts",
+      "description": "Define and validate the shared provider, canonical identity and operation/lifecycle contracts."
+    },
+    {
+      "path": "packages/core/src/changesets/copy-resolution.ts",
+      "description": "Resolve normalized identity, dependencies, provenance, field locks and health without side effects."
+    },
+    {
+      "path": "packages/core/src/changesets/github-evidence.ts",
+      "description": "Resolve normalized identity, dependencies, provenance, field locks and health without side effects."
+    },
+    {
+      "path": "packages/core/src/changesets/github-identity.ts",
+      "description": "Resolve normalized identity, dependencies, provenance, field locks and health without side effects."
+    },
+    {
+      "path": "packages/core/src/changesets/github-sync-resolution.ts",
+      "description": "Resolve normalized identity, dependencies, provenance, field locks and health without side effects."
+    },
+    {
+      "path": "packages/core/src/changesets/link-resolution.ts",
+      "description": "Resolve normalized identity, dependencies, provenance, field locks and health without side effects."
+    },
+    {
+      "path": "packages/core/src/changesets/operation-dependencies.ts",
+      "description": "Resolve normalized identity, dependencies, provenance, field locks and health without side effects."
+    },
+    {
+      "path": "packages/core/src/changesets/remaining-context.ts",
+      "description": "Resolve normalized identity, dependencies, provenance, field locks and health without side effects."
+    },
+    {
+      "path": "packages/core/src/changesets/sync-field-locks.ts",
+      "description": "Resolve normalized identity, dependencies, provenance, field locks and health without side effects."
+    },
+    {
+      "path": "packages/core/src/changesets/sync-resolution-agreement.ts",
+      "description": "Resolve normalized identity, dependencies, provenance, field locks and health without side effects."
+    },
+    {
+      "path": "packages/core/src/reports/sync-health.ts",
+      "description": "Resolve normalized identity, dependencies, provenance, field locks and health without side effects."
+    },
+    {
+      "path": "packages/db/src/archive-database.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/connection.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/github-archive-redaction.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/repositories/cards-repository.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/repositories/external-refs-repository.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/repositories/github-refs-repository.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/repositories/map-copy-repository.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/repositories/operation-persistence-repository.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/repositories/releases-repository.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/repositories/source-evidence-repository.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/repositories/work-item-repository.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/restore-history.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/schema/tables.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/db/src/snapshot.ts",
+      "description": "Persist/project normalized identity and retain scoped uniqueness, lifecycle, Restore and redaction."
+    },
+    {
+      "path": "packages/github/src/providers/index.ts",
+      "description": "Register providers and translate normalized identity at the adapter boundary."
+    },
+    {
+      "path": "packages/github/src/providers/normalized-identity.ts",
+      "description": "Register providers and translate normalized identity at the adapter boundary."
+    },
+    {
+      "path": "packages/github/src/providers/work-item-provider.ts",
+      "description": "Register providers and translate normalized identity at the adapter boundary."
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+
+> @storymapper/contracts@0.1.0 build [REDACTED_HOME]/Projects/StoryMapper/packages/contracts
+> tsc -p tsconfig.json

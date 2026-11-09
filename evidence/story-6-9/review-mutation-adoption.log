@@ -1,0 +1,174 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests "src/features/releases/release-mutation-adoption.test.tsx"
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ❯ src/features/releases/release-mutation-adoption.test.tsx (3 tests | 3 failed) 6ms
+   × adopts successful creation into the mounted list and closes the dialog and live hold 5ms
+     → [
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "releases",
+      0,
+      "startDate"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "releases",
+      0,
+      "releaseDate"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "cardDependencies"
+    ],
+    "message": "Invalid input: expected array, received undefined"
+  }
+]
+     → Cannot read properties of undefined (reading 'unmount')
+   × adopts a saved released flag into open lists and both summaries and shows persisted fields in history 0ms
+     → [
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "releases",
+      0,
+      "startDate"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "releases",
+      0,
+      "releaseDate"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "cardDependencies"
+    ],
+    "message": "Invalid input: expected array, received undefined"
+  }
+]
+     → Cannot read properties of undefined (reading 'unmount')
+   × consumes form, move and bulk assignment invalidations in both mounted summaries 0ms
+     → [
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "releases",
+      0,
+      "startDate"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "releases",
+      0,
+      "releaseDate"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "cardDependencies"
+    ],
+    "message": "Invalid input: expected array, received undefined"
+  }
+]
+     → Cannot read properties of undefined (reading 'unmount')
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/releases/release-mutation-adoption.test.tsx > adopts successful creation into the mounted list and closes the dialog and live hold
+ FAIL  src/features/releases/release-mutation-adoption.test.tsx > adopts a saved released flag into open lists and both summaries and shows persisted fields in history
+ FAIL  src/features/releases/release-mutation-adoption.test.tsx > consumes form, move and bulk assignment invalidations in both mounted summaries
+ZodError: [
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "releases",
+      0,
+      "startDate"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "string",
+    "code": "invalid_type",
+    "path": [
+      "releases",
+      0,
+      "releaseDate"
+    ],
+    "message": "Invalid input: expected string, received undefined"
+  },
+  {
+    "expected": "array",
+    "code": "invalid_type",
+    "path": [
+      "cardDependencies"
+    ],
+    "message": "Invalid input: expected array, received undefined"
+  }
+]
+ ❯ src/features/releases/release-mutation-adoption.test.tsx:103:37
+    101|   vi.stubGlobal("cancelAnimationFrame", clearTimeout);
+    102|   notifyManager.setScheduler(queueMicrotask);
+    103|   snapshot = storyMapSnapshotSchema.parse({ storyMap: { id: mapId, pro…
+       |                                     ^
+    104|     releases: [{ id: releaseId, storyMapId: mapId, name: "Current", go…
+    105|     cards: [0, 1].map((index) => ({ id: randomUUID(), storyMapId: mapI…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/6]⎯
+
+ FAIL  src/features/releases/release-mutation-adoption.test.tsx > adopts successful creation into the mounted list and closes the dialog and live hold
+ FAIL  src/features/releases/release-mutation-adoption.test.tsx > adopts a saved released flag into open lists and both summaries and shows persisted fields in history
+ FAIL  src/features/releases/release-mutation-adoption.test.tsx > consumes form, move and bulk assignment invalidations in both mounted summaries
+TypeError: Cannot read properties of undefined (reading 'unmount')
+ ❯ src/features/releases/release-mutation-adoption.test.tsx:114:30
+    112| });
+    113| afterEach(async () => {
+    114|   await act(async () => root.unmount()); client.clear(); host.remove()…
+       |                              ^
+    115|   notifyManager.setScheduler((callback) => setTimeout(callback, 0));
+    116| });
+ ❯ Proxy.process.env.NODE_ENV.exports.act ../../node_modules/.pnpm/react@19.2.7/node_modules/react/cjs/react.development.js:814:22
+ ❯ src/features/releases/release-mutation-adoption.test.tsx:114:9
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/6]⎯
+
+ Test Files  1 failed (1)
+      Tests  3 failed (3)
+   Start at  21:20:09
+   Duration  877ms (transform 284ms, setup 0ms, collect 498ms, tests 6ms, environment 182ms, prepare 33ms)
+
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/web@0.1.0 test: `vitest run --passWithNoTests "src/features/releases/release-mutation-adoption.test.tsx"`
+Exit status 1

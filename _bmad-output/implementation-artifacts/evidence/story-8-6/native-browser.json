@@ -1,0 +1,98 @@
+{
+  "date": "2026-10-20",
+  "reproducing_statement": "Retain real macOS launcher/browser opener outcome and exact unavailable native observation attempts; distinguish served UI HTTP from visual acceptance.",
+  "browser_attempts": [
+    {
+      "tool": "cua.getTab({url: actual_url}, {browser: chrome})",
+      "outcome": "Tab not found in browser 1"
+    },
+    {
+      "tool": "cua.getApp(com.apple.Safari)",
+      "outcome": "Computer Use server error -10005: cgWindowNotFound"
+    },
+    {
+      "tool": "cua.getState()",
+      "outcome": "Inventory exposes a Chrome extension browser without the new local app tab; no private inventory content retained"
+    },
+    {
+      "tool": "cua.getApp(com.google.Chrome)",
+      "outcome": "Computer Use server error -10005: cgWindowNotFound"
+    }
+  ],
+  "visual_acceptance": "Unverified: available CUA surfaces cannot observe the native browser window. No screenshot or visible UI pass claimed.",
+  "opener_evidence": {
+    "command": "open http://127.0.0.1:4317",
+    "selection": "Unmodified scripts/runtime.mjs browserCommand Darwin branch; invoked by scripts/start.mjs after ready/health.",
+    "observed": "Launcher remained alive without browser-opening failure; multiple UI bootstrap HTTP requests appeared immediately afterwards in native-start.log. OS opener completion and HTTP requests do not prove a visible/rendered native UI.",
+    "retained_log_limit": "Sanitized request entries omit URL/status objects, so the retained log alone cannot identify UI bootstrap endpoints. Explicit http_probes separately record served HTML/JS/CSS outcomes."
+  },
+  "http_probes": [
+    {
+      "url": "http://127.0.0.1:4317",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "title": "StoryMapper",
+      "bytes": 396
+    },
+    {
+      "url": "http://127.0.0.1:4317/assets/index-XxdS6kTZ.js",
+      "status": 200,
+      "content_type": "application/javascript; charset=utf-8",
+      "bytes": 2314966,
+      "sha256": "89f007de1659d399ccbeb2d86fcd14dfecdb3f2dd7fb4f5f2d58f63b0bf0c92f"
+    },
+    {
+      "url": "http://127.0.0.1:4317/assets/index-s_XX6DeK.css",
+      "status": 200,
+      "content_type": "text/css; charset=utf-8",
+      "bytes": 53198,
+      "sha256": "299eefd8153589e09a75e61ff299ab65584f47007d36286b28b72c1377773e42"
+    }
+  ],
+  "documentation_overlay_refresh": {
+    "README.md": {
+      "previous_sha256": "e567b97fba8f0dd75a539a5fc45b42b0ec89b2c14b77a5dfa8dc780b0d9fde2f",
+      "final_sha256": "e567b97fba8f0dd75a539a5fc45b42b0ec89b2c14b77a5dfa8dc780b0d9fde2f",
+      "copied_while_runtime_healthy": true
+    },
+    "docs/RUNBOOK.md": {
+      "previous_sha256": "e5ec5a2613445299c85cd76d7cf655685803c7720f2533baa123892405b4d12c",
+      "final_sha256": "2c00be1f59b4bc6ead10180eb56574de09d15e2510638e2b5309da8e5e36f556",
+      "copied_while_runtime_healthy": true
+    },
+    "CONTRIBUTING.md": {
+      "previous_sha256": "7213ee1973aeece30be11a8eaa0fceeebab2647d47a9bdf91db488827751a9ac",
+      "final_sha256": "4438c3f6afdb06675f007460891cadd2afb3e9381f7b6d0d7a755e2f06c7d1d4",
+      "copied_while_runtime_healthy": true
+    },
+    "docs/usability-report.md": {
+      "previous_sha256": "ca26bff91848cc8a83761459d53f6a9cfde69093c84890721f8d340a7560fbab",
+      "final_sha256": "8d91652524086fead40529eb7a72ea13207c7e9d6800198fb06db830f7c28295",
+      "copied_while_runtime_healthy": true
+    }
+  },
+  "sanitation_provenance": {
+    "retained_hash_scope": "Existing log_hashes match the retained sanitized files, not original command streams.",
+    "original_pre_sanitation_bytes": "Not retained in publishable evidence.",
+    "original_pre_sanitation_sha256": null,
+    "exact_original_reconstruction_available": false,
+    "transformations": [
+      "Source checkout, installed Node path and host home paths are replaced by symbolic labels.",
+      "native-start.log request/response detail objects are omitted; a runtime event message is replaced by Runtime event; private details omitted."
+    ],
+    "limits": "The exact post-capture sanitizer command and before/after hashes were not retained. Do not treat retained hashes as original-byte hashes or omitted request details as independently replayable evidence."
+  },
+  "later_documentation_candidate": {
+    "date": "2026-10-20",
+    "sha256": {
+      "README.md": "e567b97fba8f0dd75a539a5fc45b42b0ec89b2c14b77a5dfa8dc780b0d9fde2f",
+      "docs/RUNBOOK.md": "b54dcfc461e6b76a7d9b2c56500175716c34d12e7cfe57e6a415b7559f2ff329",
+      "CONTRIBUTING.md": "4438c3f6afdb06675f007460891cadd2afb3e9381f7b6d0d7a755e2f06c7d1d4",
+      "docs/usability-report.md": "8d91652524086fead40529eb7a72ea13207c7e9d6800198fb06db830f7c28295"
+    },
+    "kind": "Later documentation-only review candidate; no new native setup/start/browser execution.",
+    "copied_into_native_checkout": false,
+    "copy_while_healthy_proven": false
+  },
+  "documentation_overlay_provenance": "documentation_overlay_refresh preserves the original investigator-recorded previous/final hashes and copied_while_runtime_healthy observations. No per-copy command/timestamp log was retained. Those values are historical observations, not proof that a subsequent candidate was copied while healthy; the later_documentation_candidate was not copied or run."
+}

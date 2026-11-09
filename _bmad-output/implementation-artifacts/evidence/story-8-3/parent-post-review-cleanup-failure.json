@@ -1,0 +1,15 @@
+{
+  "command": "corepack pnpm check",
+  "exit_code": 1,
+  "log": "parent-post-review-cleanup-failure.log.gz",
+  "raw_bytes": 243967,
+  "raw_sha256": "a7f05955a42050a284f04ef3ebb49c60c1aaf718e187e484a3907b39ee476849",
+  "root_script_tests": 104,
+  "prior_workspaces": "seven passed",
+  "server_tests": {
+    "passed": 1025,
+    "failed": 1,
+    "total": 1026
+  },
+  "failure": "Existing bmad-round-trip SDK test afterEach cleanup hook exceeded10000ms; no publication assertion failure. Diagnosis and repair pending; not accepted as a passing run."
+}

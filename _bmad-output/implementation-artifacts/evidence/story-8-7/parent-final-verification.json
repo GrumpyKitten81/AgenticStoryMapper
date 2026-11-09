@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-20",
+  "status": "blocked",
+  "blockingCondition": "implementation verification failed; required protected edits incomplete",
+  "protectedUnchanged": true,
+  "protected": {
+    "head": "16add8e6909c13c14343a4a70d3507cb98ef6f52",
+    "sprintWorktree": "266c57f998fc7d4b5f5d6ecf993087be919d21118c79d444639238d2d7458cd4",
+    "sprintIndex": "266c57f998fc7d4b5f5d6ecf993087be919d21118c79d444639238d2d7458cd4"
+  },
+  "sources": {
+    "scripts/check-publication-content.mjs": "609cad3c170372cd96969d59811d7abe1f03a7247ccd03c221f9881b4e9e3051",
+    "scripts/check-publication-git.mjs": "5fe78eaaa69bc541d1e49c32db6acff82086e094b2a34f325ac82145339e92b4",
+    "scripts/check-publication-errors.mjs": "7ed88de9490a830c08e7e1a7653be425db0195522866b356278c26006a02a583",
+    "scripts/check-publication-audit.mjs": "163c899ad24ffcb87a6aa8f0e967cdc30bdeee8bc8aeb4274437c340d3a650c2",
+    "scripts/check-publication.test.mjs": "5c54697e94f92439171682f936bef8c0963a331c21fc357f3dd7872d680218d4",
+    "scripts/check-publication.mjs": "1e80441ea3b90ae58d18d819e8f3cf4e8c5fed2c401254aec7177f3f9caadcb6",
+    "scripts/test-fixtures/publication-hanging-git.mjs": "174c3e0045409140507b191ab7bcf7b915b3f386d486a190b349c8e8d4ec53a2"
+  },
+  "tests": {
+    "publication": {
+      "total": 23,
+      "pass": 21,
+      "skip": 2,
+      "fail": 0,
+      "nativeSkips": "Invalid-byte fixture creation EPERM; no native acceptance claim."
+    },
+    "dbOnboarding": {
+      "pass": 31
+    },
+    "scopedLinks": {
+      "checked": 33,
+      "missing": 0
+    }
+  },
+  "matrix": {
+    "auditedCandidate": "complete clean disposable candidate passes scan and independent check",
+    "changedCandidate": "old report refuses changed bytes, modes, paths, revision, refs and objects; new nonignored files invalidate prior reports",
+    "incompleteEvidence": "shallow/promisor/replace/missing/graft, malformed tree bytes and archive refusal tests",
+    "unresolvedFindings": "current findings/private declarations and binary/rights refusal tests",
+    "reportTampering": "extra/missing/malformed/flipped fields and safe report-path tests"
+  },
+  "checks": {
+    "size": "pass",
+    "whitespace": "pass",
+    "workspaceTypecheckAndBuild": "agent passed; parent source-only MJS and fixture repairs followed",
+    "aggregate": "failed hygiene on unstaged PDF deletion",
+    "releaseVerifier": "failed hygiene on unstaged PDF deletion",
+    "serverProposals": "agent could not start tests: ps EPERM"
+  },
+  "sanitation": {
+    "records": 870,
+    "allMatchedBeforeHandoff": true,
+    "postSanitationHandoffEdits": [
+      {
+        "path": ".wolf/STATUS.md",
+        "sanitationStageSha256": "8584a2b0efb368752c4f4af4ce31758dab738c8c4149c1715f7eaa4e0bbe0fca",
+        "handoffSha256": "c6bfdc892b5db3c373d6bfc93d06688dcad7e95cf5212d76599f50dd2ff514f6",
+        "reason": "Subsequent terminal workflow handoff/learning/verification bug records; prior sanitation hashes remain unchanged historical snapshots."
+      },
+      {
+        "path": ".wolf/buglog.json",
+        "sanitationStageSha256": "91920f639f0f63b470f9c8a19aa6bb683d242c253c3c77cde1c7b060d111643a",
+        "handoffSha256": "e65406d54f295b62652d94bd30a327427c9907d802a43012ed34cc1877b1174b",
+        "reason": "Subsequent terminal workflow handoff/learning/verification bug records; prior sanitation hashes remain unchanged historical snapshots."
+      },
+      {
+        "path": ".wolf/cerebrum.md",
+        "sanitationStageSha256": "24d58b8e292cecc8d3cd7568ef9d4f49e84b50185391691b4c4133157c89d72d",
+        "handoffSha256": "abb45404fe9fb0e35f398961a8d0c75f0cd7e0f1a548a19919eaaea5144bbed6",
+        "reason": "Subsequent terminal workflow handoff/learning/verification bug records; prior sanitation hashes remain unchanged historical snapshots."
+      }
+    ],
+    "originalHeadExceptions": [
+      ".wolf/STATUS.md",
+      ".wolf/cerebrum.md"
+    ],
+    "exceptionReason": "These contained this run initial planning notes before sanitation."
+  },
+  "review": "Parent verification/source review only. Workflow step04 independent review not executed because required implementation/verification is incomplete.",
+  "publication": "Final exact-candidate report regeneration/check follows final metadata writes. All findings remain blocking; no publication acceptance.",
+  "permissions": "Actual protected skill write denied. No original-index, protected ledger, history or remote write bypass."
+}

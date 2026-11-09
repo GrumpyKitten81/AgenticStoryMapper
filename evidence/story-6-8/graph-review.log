@@ -1,0 +1,12 @@
+Analyzed 86 changed file(s):
+  - 94 changed function(s)/class(es)
+  - 0 affected flow(s)
+  - 57 test gap(s)
+  - Overall risk score: 0.50
+  - Untested: domainRoot, getCustomization, createWorkflowStatus, updateWorkflowStatus, deleteWorkflowStatus
+┌──────────────────────── Token Savings ────────────────────────┐
+│ Full context would be:    657,307 tokens                      │
+│ Graph context used:        15,974 tokens                      │
+│ Saved:                    641,333 tokens (~98%)               │
+│ Breakdown: Functions 10k · Tests 4.5k · Risk 1.1k · Other 125 │
+└───────────────────────────────────────────────────────────────┘

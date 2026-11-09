@@ -1,0 +1,485 @@
+
+> @storymapper/web@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/apps/web
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/components/Dialog.test.ts (12 tests) 230ms
+ ✓ src/features/project-archive/project-archive-import.test.ts (3 tests) 42ms
+ ✓ src/features/releases/ReleasePanel.test.tsx (3 tests) 58ms
+ ✓ src/features/changesets/review-outcomes.test.tsx (13 tests) 111ms
+ ✓ src/features/personas/PersonaDetail.test.ts (8 tests) 117ms
+ ✓ src/features/ai-mcp/context-draft.test.ts (3 tests) 22ms
+ ✓ src/features/ai-mcp/TemplateEditor.test.tsx (6 tests) 125ms
+ ✓ src/features/story-map/views/TrackingView.test.tsx (6 tests) 136ms
+ ✓ src/features/ai-mcp/AiMcpPanel.test.tsx (4 tests) 130ms
+ ✓ src/features/changesets/boards.test.tsx (3 tests) 68ms
+ ✓ src/app/routes/audit.test.ts (9 tests) 513ms
+ ✓ src/app/live/live-updates.test.tsx (23 tests) 302ms
+ ✓ src/features/changesets/review.test.tsx (1 test) 78ms
+ ✓ src/features/releases/ReleaseDateFields.test.ts (2 tests) 32ms
+ ✓ src/features/ai-mcp/undone-changesets.test.ts (1 test) 53ms
+ ✓ src/app/routes/workspace-navigation.test.tsx (14 tests) 565ms
+stderr | src/features/changesets/shell.test.tsx > removes only applied preview search and retains selected Card, Tree navigation and Activity explanation
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15832:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+
+ ✓ src/features/github-sync/github-visibility.test.tsx (3 tests) 150ms
+ ✓ src/features/project-archive/project-archive-runtime.test.ts (3 tests) 279ms
+ ✓ src/features/roadmaps/RoadmapEditor.test.ts (3 tests) 86ms
+ ✓ src/features/changesets/selection-race.test.tsx (1 test) 35ms
+ ✓ src/features/releases/ReleaseKanban.test.tsx (2 tests) 53ms
+ ✓ src/features/ai-mcp/current-changeset-actions.test.ts (3 tests) 122ms
+ ✓ src/features/safety/SafetySwitchStrip.test.tsx (1 test) 146ms
+ ✓ src/features/story-map/views/DiscoveryView.test.tsx (4 tests) 631ms
+ ✓ src/features/ai-mcp/host-config-copy.test.tsx (1 test) 35ms
+ ✓ src/features/story-map/views/SlicesView.test.tsx (11 tests) 705ms
+ ✓ src/features/story-map/components/card-provenance.test.ts (10 tests) 724ms
+ ✓ src/app/live/live-stream-reader.test.ts (7 tests) 78ms
+ ✓ src/app/live/live-origin.test.ts (1 test) 5ms
+ ✓ src/features/what-changed/WhatChangedProvider.test.tsx (12 tests) 821ms
+ ✓ src/features/story-map/components/card-choices.test.tsx (3 tests) 214ms
+ ✓ src/features/story-map/views/GraphView.test.tsx (17 tests) 835ms
+ ✓ src/features/personas/PersonasPanel.test.tsx (1 test) 79ms
+ ✓ src/features/story-map/components/lifecycle.test.tsx (20 tests) 1243ms
+ ✓ src/features/story-map/components/card-creation.test.tsx (10 tests) 858ms
+ ✓ src/features/project-archive/project-archive-export.test.ts (4 tests) 7ms
+ ✓ src/app/live/live-announcements.test.ts (1 test) 5ms
+ ✓ src/features/onboarding/getting-started.test.ts (5 tests) 14ms
+ ✓ src/features/reports/PlanDriftDrawer.test.tsx (12 tests) 978ms
+   ✓ Plan drift drawer > bounds dense DOM creation and makes all 1,000 differences reachable through keyboard-accessible pages 723ms
+ ✓ src/features/what-changed/api.test.ts (3 tests) 9ms
+ ✓ src/app/live/live-query-invalidation.test.ts (2 tests) 5ms
+ ✓ src/features/story-map/export/story-map-view-export.test.ts (1 test) 13ms
+stderr | src/features/story-map/components/card-detail.test.ts > FR-15 Card detail > refetches ordinary archived-status Save and inventory Restore into the real board
+Not implemented: HTMLFormElement's requestSubmit() method
+
+ ✓ src/app/conflicts.test.ts (6 tests) 8ms
+ ✓ src/features/story-map/components/PlanStateComparison.test.tsx (1 test) 86ms
+ ✓ src/features/story-map/components/card-fields.test.ts (9 tests) 1059ms
+   ✓ saves scalar fields, custom priority/color and zero in the map unit, then reloads supported clears 517ms
+ ✓ src/features/what-changed/model.test.ts (3 tests) 3ms
+ ✓ src/features/story-map/components/card-dependencies.test.tsx (12 tests) 1088ms
+ ✓ src/features/story-map/export/export-with-progress.test.ts (2 tests) 2ms
+stderr | src/features/changesets/shell.test.tsx > removes only missing preview search and retains selected Card, Tree navigation and Activity explanation
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15832:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+
+ ✓ src/features/story-map/graph/graph-model.test.ts (9 tests) 9ms
+ ✓ src/app/routes/root-layout.test.ts (1 test) 21ms
+ ✓ src/features/restore-points/restore-points.test.ts (22 tests) 1279ms
+ ✓ src/ui-strings/ui-strings.test.ts (8 tests) 158ms
+ ✓ src/app/live/live-stream.test.ts (3 tests) 666ms
+   ✓ relays between independent tabs and relinquishes terminal leadership before later bootstrap and shutdown handoff 598ms
+ ✓ src/features/story-map/components/card-detail.test.ts (28 tests) 2019ms
+stderr | src/features/changesets/shell.test.tsx > invalidates review immediately through real transaction stream while preserving held dirty CardDetailModal and focus
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15832:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+
+stderr | src/features/changesets/shell.test.tsx > invalidates review immediately through real reset stream while preserving held dirty CardDetailModal and focus
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15832:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+
+stderr | src/features/changesets/shell.test.tsx > preserves the existing Planning Card search when a closed preview removes its own search parameter
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15832:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+
+stderr | src/features/changesets/shell.test.tsx > renders server projection in the actual tree route and updates it after deselection
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15832:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+
+stderr | src/features/changesets/shell.test.tsx > renders server projection in the actual planning route and updates it after deselection
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15832:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+
+stderr | src/features/changesets/shell.test.tsx > renders server projection in the actual slices route and updates it after deselection
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15832:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11)
+    at recursivelyTraverseReconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15784:9)
+    at reconnectPassiveEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15885:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+TypeError: __vite_ssr_import_6__.readSavedRestoreState is not a function
+    at [REDACTED_HOME]/Projects/StoryMapper/apps/web/src/features/restore-points/RestoreResultDialog.tsx:26:19
+    at Object.react_stack_bottom_frame ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:25989:20)
+    at runWithFiberInDEV ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:874:13)
+    at commitHookEffectListMount ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13249:29)
+    at commitHookPassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:13336:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15484:13)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11)
+    at recursivelyTraversePassiveMountEffects ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15439:11)
+    at commitPassiveMountOnFiber ([REDACTED_HOME]/Projects/StoryMapper/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/cjs/react-dom-client.development.js:15718:11) {
+  [stack]: [Getter/Setter],
+  [message]: '__vite_ssr_import_6__.readSavedRestoreState is not a function'
+}
+
+The above error occurred in the <RestoreResultDialog> component.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, CatchBoundaryImpl.
+
+Warning: The following error wasn't caught by any route! At the very least, consider setting an 'errorComponent' in your RootRoute!
+Warning: __vite_ssr_import_6__.readSavedRestoreState is not a function
+
+ ❯ src/features/changesets/shell.test.tsx (8 tests | 8 failed) 8377ms
+   × removes only applied preview search and retains selected Card, Tree navigation and Activity explanation 1096ms
+     → expected 'Something went wrong!Hide Error__vite…' to contain 'Create traceable story cards'
+   × removes only missing preview search and retains selected Card, Tree navigation and Activity explanation 1024ms
+     → expected 'Something went wrong!Hide Error__vite…' to contain 'Create traceable story cards'
+   × invalidates review immediately through real transaction stream while preserving held dirty CardDetailModal and focus 1026ms
+     → expected 'Something went wrong!Hide Error__vite…' to contain 'Shell proposal'
+   × invalidates review immediately through real reset stream while preserving held dirty CardDetailModal and focus 1047ms
+     → expected 'Something went wrong!Hide Error__vite…' to contain 'Shell proposal'
+   × preserves the existing Planning Card search when a closed preview removes its own search parameter 1046ms
+     → expected 'Something went wrong!Hide Error__vite…' to contain 'Create traceable story cards'
+   × renders server projection in the actual tree route and updates it after deselection 1045ms
+     → expected 'Something went wrong!Hide Error__vite…' to contain 'Shell proposal'
+   × renders server projection in the actual planning route and updates it after deselection 1044ms
+     → expected 'Something went wrong!Hide Error__vite…' to contain 'Shell proposal'
+   × renders server projection in the actual slices route and updates it after deselection 1047ms
+     → expected 'Something went wrong!Hide Error__vite…' to contain 'Shell proposal'
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 8 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/changesets/shell.test.tsx > removes only applied preview search and retains selected Card, Tree navigation and Activity explanation
+ FAIL  src/features/changesets/shell.test.tsx > removes only missing preview search and retains selected Card, Tree navigation and Activity explanation
+ FAIL  src/features/changesets/shell.test.tsx > preserves the existing Planning Card search when a closed preview removes its own search parameter
+AssertionError: expected 'Something went wrong!Hide Error__vite…' to contain 'Create traceable story cards'
+
+Expected: "Create traceable story cards"
+Received: "Something went wrong!Hide Error__vite_ssr_import_6__.readSavedRestoreState is not a function"
+
+ ❯ src/features/story-map/components/card-detail-test-fixture.ts:64:36
+     62|   await vi.waitFor(async () => {
+     63|     await act(async () => {});
+     64|     expect(state.host.textContent).toContain(ready);
+       |                                    ^
+     65|   });
+     66| }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/8]⎯
+
+ FAIL  src/features/changesets/shell.test.tsx > invalidates review immediately through real transaction stream while preserving held dirty CardDetailModal and focus
+ FAIL  src/features/changesets/shell.test.tsx > invalidates review immediately through real reset stream while preserving held dirty CardDetailModal and focus
+ FAIL  src/features/changesets/shell.test.tsx > renders server projection in the actual tree route and updates it after deselection
+ FAIL  src/features/changesets/shell.test.tsx > renders server projection in the actual planning route and updates it after deselection
+ FAIL  src/features/changesets/shell.test.tsx > renders server projection in the actual slices route and updates it after deselection
+AssertionError: expected 'Something went wrong!Hide Error__vite…' to contain 'Shell proposal'
+
+Expected: "Shell proposal"
+Received: "Something went wrong!Hide Error__vite_ssr_import_6__.readSavedRestoreState is not a function"
+
+ ❯ src/features/story-map/components/card-detail-test-fixture.ts:64:36
+     62|   await vi.waitFor(async () => {
+     63|     await act(async () => {});
+     64|     expect(state.host.textContent).toContain(ready);
+       |                                    ^
+     65|   });
+     66| }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/8]⎯
+
+ Test Files  1 failed | 54 passed (55)
+      Tests  8 failed | 356 passed (364)
+   Start at  12:41:09
+   Duration  10.84s (transform 4.09s, setup 0ms, collect 37.36s, tests 25.49s, environment 26.55s, prepare 2.74s)
+
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/web@0.1.0 test: `vitest run --passWithNoTests`
+Exit status 1

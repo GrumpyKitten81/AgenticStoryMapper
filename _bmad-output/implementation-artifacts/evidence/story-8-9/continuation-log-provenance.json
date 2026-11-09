@@ -1,0 +1,7 @@
+{
+  "file": "continuation-check.log.gz",
+  "originalSha256": "a6cf252411ca606ca51d9573f9978674e1ec5ae4326b834d530d592d51e95850",
+  "sanitizedDecodedSha256": "0a0a8a35ade76ff18f6044147368ec6ef8c491f4ee16e6f80370c754129ed14b",
+  "compressedSha256": "0615bb6c6ec17cf26b3fe5f17457317260d564f81a4d4486e602ba5e362f88ef",
+  "redaction": "Disposable checkout, task-owned TMPDIR and home absolute paths replaced. Original raw stream remains transient outside contribution; hashes do not reconstruct originals."
+}

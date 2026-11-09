@@ -1,0 +1,82 @@
+{
+  "status": "pass",
+  "log": "parent-workspace-final.log.gz",
+  "rows": [
+    {
+      "scenario": "Ticket forms",
+      "executedPassingCoverage": [
+        "contracts: github-ticket.test.ts (21)",
+        "server: github-ticket-command.test.ts selector/foreign ownership cases"
+      ]
+    },
+    {
+      "scenario": "Exact creation",
+      "executedPassingCoverage": [
+        "server: ticket command exact Activity/Step/Story and reopened baselines",
+        "web: ticket-creation exact placement/template request",
+        "server: audit trigger rollback"
+      ]
+    },
+    {
+      "scenario": "Lookup failures",
+      "executedPassingCoverage": [
+        "server: ticket command unavailable/mismatch/network readonly",
+        "github provider: error classification/redaction tests"
+      ]
+    },
+    {
+      "scenario": "Connection detour",
+      "executedPassingCoverage": [
+        "web: ticket-creation shared Connect Cancel retains placement",
+        "web: GitHubConnectDialog.test.tsx existing verify/connect lifecycle"
+      ]
+    },
+    {
+      "scenario": "Deliberate population",
+      "executedPassingCoverage": [
+        "web: ticket-creation deliberate replace/Cancel",
+        "web: card-creation.test.tsx manual/template/Note regressions"
+      ]
+    },
+    {
+      "scenario": "Duplicate ownership",
+      "executedPassingCoverage": [
+        "server: ticket command across connections/cross-map citation/race",
+        "web: ticket-creation duplicate lookup/confirmation",
+        "server: ticket-transports repeated import"
+      ]
+    },
+    {
+      "scenario": "Protection and surfaces",
+      "executedPassingCoverage": [
+        "server: ticket command protected human/Agent proposals/atomic selection",
+        "server: ticket-transports human HTTP/MCP HTTP/SDK/stdio actual proposal + human Apply",
+        "server: actual schema/ownership refusal"
+      ]
+    },
+    {
+      "scenario": "Stale intentions",
+      "executedPassingCoverage": [
+        "server: ticket command evidence drift/actual Restore/auth+provider await guard/parent+Release+Map late Apply",
+        "web: ticket-creation cancellation/late responses/Restore/same-event creation"
+      ]
+    }
+  ],
+  "limits": "No native browser, reader/platform or live GitHub acceptance claimed.",
+  "focusedSuites": {
+    "ticketContracts": 21,
+    "ticketCommand": 53,
+    "ticketTransports": 27,
+    "mountedTicketComposer": 20,
+    "multiIssueGroup": 1
+  },
+  "reviewRepairCoverage": [
+    "Exact reopened selected Release metadata and synced health",
+    "Selected Release/Unscheduled remains across unchanged Milestone/iteration pulls; bulk first assignment retained",
+    "Hidden ancestor delayed Apply refuses atomically",
+    "Retained footer and raw-prefixed title preserve bytes and avoid false sync effects",
+    "One Annotation definition read per batch and independent multi-Issue/generated-parent closure",
+    "Actual foreign placement owning-Project refusal on HTTP/SDK",
+    "Live status announcements, preserved Markdown whitespace and actual duplicate route/Card Detail"
+  ]
+}

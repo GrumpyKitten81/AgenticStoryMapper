@@ -1,0 +1,15 @@
+{
+  "publicationFiles": 3212,
+  "untrackedFiles": 1,
+  "candidateFingerprint": "aba266d60e40d4e95c85cc5632ef7165dc24ac874ee8fbe9b84e5a86e58bb730",
+  "currentFindingCounts": {
+    "copied-material-review": 452,
+    "email-review": 9,
+    "private-declaration": 3,
+    "personal-home-path": 7,
+    "binary-privacy-review": 13,
+    "redistribution-review": 13,
+    "unsupported-archive": 1
+  },
+  "scope": "Working indexed and nonignored new candidate files, including compressed content; history is scanned by the full publication gate separately."
+}

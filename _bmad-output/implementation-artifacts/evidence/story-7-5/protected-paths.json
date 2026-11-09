@@ -1,0 +1,29 @@
+{
+  "paths": {
+    "_bmad-output/implementation-artifacts/sprint-status.yaml": {
+      "baseline_sha256": "3855d02e51743dfe5b899f39470fa25a697ed8da545bdf03609c069eae16e743",
+      "working_sha256": "3855d02e51743dfe5b899f39470fa25a697ed8da545bdf03609c069eae16e743",
+      "index_sha256": "3855d02e51743dfe5b899f39470fa25a697ed8da545bdf03609c069eae16e743",
+      "unchanged": true
+    },
+    "_bmad-output/implementation-artifacts/deferred-work.md": {
+      "baseline_sha256": "7e3ad7565037e8f2b30ecf80e9adb71d0f532fb20350a25cb8a97da8e580cfc5",
+      "working_sha256": "7e3ad7565037e8f2b30ecf80e9adb71d0f532fb20350a25cb8a97da8e580cfc5",
+      "index_sha256": "7e3ad7565037e8f2b30ecf80e9adb71d0f532fb20350a25cb8a97da8e580cfc5",
+      "unchanged": true
+    },
+    "_bmad-output/implementation-artifacts/evidence/epic-4-5-orchestrator-reconciliation-20261016.json": {
+      "baseline_sha256": "bc0205a7c8e843364c43fed47f136fc76403d4df57915bada677a59d577f2607",
+      "working_sha256": "bc0205a7c8e843364c43fed47f136fc76403d4df57915bada677a59d577f2607",
+      "index_sha256": "bc0205a7c8e843364c43fed47f136fc76403d4df57915bada677a59d577f2607",
+      "unchanged": true
+    },
+    "_bmad-output/implementation-artifacts/spec-orchestrator-epic-4-5-completion-reconciliation.md": {
+      "baseline_sha256": "9a9df02fbe908a3edbbb8833b9ef0f278d5f5152a23e6e6cc9316a5b8b73dab5",
+      "working_sha256": "9a9df02fbe908a3edbbb8833b9ef0f278d5f5152a23e6e6cc9316a5b8b73dab5",
+      "index_sha256": "9a9df02fbe908a3edbbb8833b9ef0f278d5f5152a23e6e6cc9316a5b8b73dab5",
+      "unchanged": true
+    }
+  },
+  "action_policy": "Never write, stage, unstage or revert these paths; no tracking row is used as verification."
+}

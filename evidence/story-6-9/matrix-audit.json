@@ -1,0 +1,48 @@
+{
+  "status": "all5matrixrowscovered; parent exact root passed",
+  "rows": [
+    {
+      "row": "Complete Release",
+      "tests": [
+        "ReleaseEditor.test.tsx:creates every supported field once and keeps all fields on a refused submission",
+        "ReleaseEditor.test.tsx:visibly refuses an invalid name without clearing the draft",
+        "release-summary.test.ts:creates and edits complete Releases over HTTP and refuses stale and invalid edits atomically",
+        "release-summary-persistence.test.ts:reopens complete Releases and canonical Story summaries without changing assignments"
+      ]
+    },
+    {
+      "row": "Concurrent editing",
+      "tests": [
+        "ReleaseEditor.test.tsx:captures the root version across remote refresh, then requires Keep mine and chains acknowledged writes",
+        "ReleaseEditor.test.tsx:Reload accepts the conflicting root without applying the retained draft"
+      ]
+    },
+    {
+      "row": "Canonical delivery",
+      "tests": [
+        "reports.test.ts:selects open aggregate delivery after ancestry eligibility while explicit scopes remain exact",
+        "ReleasePanel.test.tsx:presents the authoritative status distribution and every unestimated Story with the map unit",
+        "ReleasePanel.test.tsx:shows explicit report pending/error without substituting numeric totals"
+      ]
+    },
+    {
+      "row": "Released display scope",
+      "tests": [
+        "ReleasePanel.test.tsx:defaults to open Releases and exposes show-all and Unscheduled without changing assignments",
+        "core-views.test.tsx:Planning retains released lane DOM, disables hidden drag controls and recovers a focused editor on live release",
+        "core-views.test.tsx:distributed legal1000-Card map projections",
+        "ReleaseKanban.test.tsx:retains removed parked/archived Story and ancestor/Release ghosts without counting them in delivery totals"
+      ]
+    },
+    {
+      "row": "Assignment refresh",
+      "tests": [
+        "release-summary.test.ts:refreshes canonical summaries after versioned form, move and atomic bulk assignments",
+        "ReleaseKanban.test.tsx",
+        "core-views.test.tsx"
+      ]
+    }
+  ],
+  "evidence": "parent-final-root-test.log",
+  "connectedConsumerEvidence": "release-mutation-adoption.test.tsx3passed; release-preview-route.test.tsx3passed; live-updates29passed"
+}

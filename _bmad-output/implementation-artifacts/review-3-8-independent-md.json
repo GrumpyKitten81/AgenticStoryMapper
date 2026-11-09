@@ -1,0 +1,61 @@
+{
+  "story": "3-8 record-every-tool-call",
+  "review_type": "independent performance + spec-conformance review (engine opencode, model openai/gpt-5.6-sol)",
+  "date": "2026-10-09",
+  "trigger": "CRITICAL escalation run 20261008-214640-6bef; relative <20% overhead acceptance gate",
+  "scope_constraint": "Analysis only - no source or test modifications.",
+  "sources_examined": [
+    "packages/db/src/unit-of-work.ts",
+    "packages/db/src/repositories/audit-repository.ts",
+    "apps/server/src/mcp/tools/tool-call-performance.test.ts (recovered in commit c2d72f1, per opencode)",
+    "packages/core/src/audit/events.ts",
+    ".wolf/OPENWOLF.md, .wolf/cerebrum.md, .wolf/STATUS.md",
+    "refs/attempt-preserve-dirty/20261008-214640-6bef-9fdda61e-0 (baseline 9fdda61e)"
+  ],
+  "findings": {
+    "insert_path": "recordToolCall opens a dedicated synchronous TransactionContext.execute per terminal call; prepared statement is cached but one commit + WAL write remains per tool_call (unit-of-work.ts:195-207; audit-repository.ts persistToolCall). Multiple indices updated per insert (activity_events, TEXT PRIMARY KEY + paging indexes activity_page_idx/activity_actor_page_idx/activity_tool_page_idx). Dominant cost is SQLite transaction/B-tree/WAL work, not JS.",
+    "cost_breakdown_100ops": {
+      "full_transaction_terminal_audit_ms": 5.267,
+      "empty_transaction_ms": 4.216,
+      "atomic_insert_ms": 3.894,
+      "actor_parse_freeze_event_meta_hash_ms": "~0.29",
+      "share_commit_overhead_ms": "~1.28"
+    },
+    "test_is_fair_as_e2e": true,
+    "test_not_robust_gate": {
+      "positive": [
+        "DB open/migrate/seed outside window",
+        "baseline and audit share same real GetStoryMapData handler",
+        "both warmed",
+        "pairwise alternating order",
+        "counting/queries outside window",
+        "audit value includes full feature overhead not only INSERT"
+      ],
+      "confounders": [
+        "baseline and audit start from different DB state (only audit grows table/index/WAL)",
+        "warmup + 5 audit bursts = 600 events; wal_autocheckpoint may fire mid-burst and its placement among only 5 samples makes the percentage unstable",
+        "relative ratio of two independently-measured medians, not median of paired ratios",
+        "5 pairs too few for a hard relative gate",
+        "sequential direct registry call: no HTTP/SDK transport, prevents natural batching"
+      ]
+    },
+    "is_20pct_realistic": "not stable structurally. Strongest structural simplification so far (atomic insert vs full UoW path) still 28.38%. UUIDv7 reduced raw insert time but failed repetition measurement. Typical of B-tree locality/WAL state and low absolute durations.",
+    "group_commit_note": "Group commit helps real concurrent HTTP/SDK bursts but not the sequential test, where each next call starts only after the previous audit commit is acknowledged; holding one transaction open across already-answered calls would violate terminal synchronous persistence."
+  },
+  "options_assessed": {
+    "a_better_implement": "Meaningful only for real concurrent HTTP/SDK load (batch terminal calls into one UoW transaction; each call keeps its own event, waits for shared commit). Does not resolve the unchanged sequential test. UUID/actor-parse/event-construction/hash micro-opts are too small / already disproven as unstable. Index redesign would need measurement against paging/filter requirements.",
+    "b_measurement_method": "If a relative metric is kept: relative ratio diagnostic only; baseline and audit start from identical DB snapshots per pair; explicit checkpoint before controlled pairs; more pairs in an isolated process; report paired ratios + spread/confidence interval; keep a separate steady-state test incl. natural WAL checkpoints; measure HTTP and SDK with realistic concurrent bursts; do not use an artificially-empty-transaction baseline as the product baseline (only makes the ratio look good).",
+    "c_spec_relaxation": "Recommended + already user-authorized (spec-3-8 v4 2026-10-09). Remove <20% pass/fail gate; keep logging overhead as diagnostic; hard gates: audit burst <1s, exactly one insert per call (assert 100 inserts for 100 calls), no other SQLite writes, durable commit before reply, persistence verifiable after close/reopen, HTTP and SDK covered separately. Corresponds to memory.md:258."
+  },
+  "recommendation_to_orchestrator": [
+    "Resolve the escalation with 'spec relaxation confirmed'; do NOT trigger another implementation retry.",
+    "Record the authorized removal of the relative <20% gate as a binding story decision.",
+    "Keep the unchanged relative measured value as diagnostic evidence only.",
+    "Use absolute gates (burst latency, insert count, no-extra-write, reopen durability) as acceptance criteria.",
+    "Then continue the independent full-story review."
+  ],
+  "recommendation": "Close the CRITICAL escalation with option (c) as binding requirement and relative <20% kept diagnostic only. Do not re-plan 3-8 for micro-optimization.",
+  "rationale": "The current deviation is not a residual JavaScript hotspot but predominantly the unavoidable price of 100 synchronously-acknowledged SQLite transactions versus a very cheap read baseline. Further micro-optimization would only move the gate via measurement state, not a robust architecture improvement.",
+  "concrete_next_step": "bmad-loop resolve + resume of run 20261008-214640-6bef to finalize; sprint-status.yaml untouched.",
+  "open_gate": "Spec line 337: independent review/finalization remains pending; this checkpoint is not a done claim."
+}

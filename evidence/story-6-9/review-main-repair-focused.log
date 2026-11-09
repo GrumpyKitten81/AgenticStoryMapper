@@ -1,0 +1,43 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/releases/ReleaseDateFields.test.ts (6 tests) 49ms
+ ✓ src/features/releases/ReleasePanel.test.tsx (12 tests) 107ms
+ ✓ src/app/live/live-updates.test.tsx (26 tests) 218ms
+ ❯ src/ui-strings/ui-strings.test.ts (8 tests | 1 failed) 203ms
+   × central English interface copy > has no raw JSX text or literal accessibility copy outside the string module 172ms
+     → expected [ …(2) ] to deeply equal []
+ ✓ src/features/releases/release-preview-route.test.tsx (3 tests) 258ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/ui-strings/ui-strings.test.ts > central English interface copy > has no raw JSX text or literal accessibility copy outside the string module
+AssertionError: expected [ …(2) ] to deeply equal []
+
+- Expected
++ Received
+
+- Array []
++ Array [
++   "features/releases/release-mutation-adoption.test.tsx:27",
++   "features/releases/release-mutation-adoption.test.tsx:28",
++ ]
+
+ ❯ src/ui-strings/ui-strings.test.ts:108:24
+    106|       visit(source);
+    107|     }
+    108|     expect(violations).toEqual([]);
+       |                        ^
+    109|   });
+    110|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  1 failed | 54 passed (55)
+   Start at  21:21:35
+   Duration  1.73s (transform 1.15s, setup 0ms, collect 3.21s, tests 835ms, environment 858ms, prepare 165ms)
+
+undefined
+[REDACTED_HOME]/Projects/StoryMapper/apps/web:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: vitest run src/features/releases/ReleasePanel.test.tsx src/features/releases/ReleaseDateFields.test.ts src/features/releases/release-preview-route.test.tsx src/app/live/live-updates.test.tsx src/ui-strings/ui-strings.test.ts

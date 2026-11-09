@@ -1,0 +1,177 @@
+{
+  "node": "24.17.0",
+  "pnpm": "9.15.4",
+  "baseline": "06a38494b979120e33240059a4e2f12a0dfb09da",
+  "sourceDiffSha256": "dae8c9a19ebde9ac5c850af1b13b423103fa7e86c11282b72042e535da3b896d",
+  "sourceFingerprintScope": [
+    "apps",
+    "packages",
+    "scripts",
+    "pnpm-lock.yaml",
+    "package.json",
+    "pnpm-workspace.yaml",
+    "patches"
+  ],
+  "finalUniqueTests": 3251,
+  "testBreakdown": {
+    "scripts": 83,
+    "contracts": 193,
+    "importers": 7,
+    "github": 66,
+    "core": 449,
+    "web": 852,
+    "db": 561,
+    "server": 1026,
+    "serialAuditPerformance": 14
+  },
+  "releaseVerifier": {
+    "capabilities": 138,
+    "serialAccessibility": 261,
+    "hygiene": "passed",
+    "typecheck": "passed",
+    "build": "passed"
+  },
+  "checks": {
+    "final-frozen-install": {
+      "start": "2026-10-19T23:32:51.807Z",
+      "end": "2026-10-19T23:32:52.243Z",
+      "command": [
+        "corepack",
+        "pnpm",
+        "install",
+        "--frozen-lockfile"
+      ],
+      "node": "v24.17.0",
+      "status": 0,
+      "lockSha256": "2b9b6c87c0fb3165f0a23cd4448ac42838a63898b8ed62bedf1fe3996d56f376"
+    },
+    "final-typecheck": {
+      "start": "2026-10-19T23:32:56.544Z",
+      "end": "2026-10-19T23:33:13.943Z",
+      "command": [
+        "corepack",
+        "pnpm",
+        "typecheck"
+      ],
+      "node": "v24.17.0",
+      "status": 0,
+      "lockSha256": "2b9b6c87c0fb3165f0a23cd4448ac42838a63898b8ed62bedf1fe3996d56f376"
+    },
+    "final-build": {
+      "start": "2026-10-19T23:33:39.952Z",
+      "end": "2026-10-19T23:33:59.830Z",
+      "command": [
+        "corepack",
+        "pnpm",
+        "build"
+      ],
+      "node": "v24.17.0",
+      "status": 0,
+      "lockSha256": "2b9b6c87c0fb3165f0a23cd4448ac42838a63898b8ed62bedf1fe3996d56f376"
+    },
+    "final-proxy-native": {
+      "start": "2026-10-19T23:33:07.217Z",
+      "end": "2026-10-19T23:33:12.122Z",
+      "command": [
+        "node",
+        "--import",
+        "./apps/server/node_modules/tsx/dist/loader.mjs",
+        "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+      ],
+      "node": "v24.17.0",
+      "status": 0,
+      "lockSha256": "2b9b6c87c0fb3165f0a23cd4448ac42838a63898b8ed62bedf1fe3996d56f376",
+      "replayPrerequisites": {
+        "workingDirectory": "repository root",
+        "requiredNode": "24.17.0",
+        "environment": {
+          "TSX_TSCONFIG_PATH": "apps/server/tsconfig.json",
+          "PATH_prefix": "[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin"
+        },
+        "environmentInstructions": "Prepend the installed Node24.17.0 bin directory to inherited PATH; set TSX_TSCONFIG_PATH before invoking node so tsx resolves server workspace aliases.",
+        "canonicalCommand": [
+          "node",
+          "--import",
+          "./apps/server/node_modules/tsx/dist/loader.mjs",
+          "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+        ],
+        "verifiedReplayEvidence": "parent-proxy-native-configured.json",
+        "scope": "Environment requirements verified on the final graph by the successful configured parent replay. Earlier historical attempts additionally require their recorded dependency snapshot and fixture revision."
+      }
+    },
+    "final-audit-high": {
+      "start": "2026-10-19T23:32:56.544Z",
+      "end": "2026-10-19T23:32:57.693Z",
+      "command": [
+        "corepack",
+        "pnpm",
+        "audit",
+        "--audit-level",
+        "high"
+      ],
+      "node": "v24.17.0",
+      "status": 0,
+      "lockSha256": "2b9b6c87c0fb3165f0a23cd4448ac42838a63898b8ed62bedf1fe3996d56f376"
+    },
+    "final-test-2": {
+      "start": "2026-10-19T23:43:05.750Z",
+      "end": "2026-10-19T23:48:43.048Z",
+      "command": [
+        "corepack",
+        "pnpm",
+        "test"
+      ],
+      "node": "v24.17.0",
+      "status": 0,
+      "lockSha256": "2b9b6c87c0fb3165f0a23cd4448ac42838a63898b8ed62bedf1fe3996d56f376"
+    },
+    "final-verify": {
+      "start": "2026-10-19T23:48:49.181Z",
+      "end": "2026-10-19T23:49:46.364Z",
+      "command": [
+        "node",
+        "scripts/verify.mjs"
+      ],
+      "node": "v24.17.0",
+      "status": 0,
+      "lockSha256": "2b9b6c87c0fb3165f0a23cd4448ac42838a63898b8ed62bedf1fe3996d56f376"
+    }
+  },
+  "fullAuditStatus": 1,
+  "highAuditStatus": 0,
+  "protectedWorkingAndIndexUnchanged": true,
+  "review": "Completed four fresh-context review lenses and16-row triage; two low evidence-only corrections; no production changes after independent full gates. No commit created.",
+  "proxyReplay": {
+    "prerequisites": {
+      "workingDirectory": "repository root",
+      "requiredNode": "24.17.0",
+      "environment": {
+        "TSX_TSCONFIG_PATH": "apps/server/tsconfig.json",
+        "PATH_prefix": "[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin"
+      },
+      "environmentInstructions": "Prepend the installed Node24.17.0 bin directory to inherited PATH; set TSX_TSCONFIG_PATH before invoking node so tsx resolves server workspace aliases.",
+      "canonicalCommand": [
+        "node",
+        "--import",
+        "./apps/server/node_modules/tsx/dist/loader.mjs",
+        "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+      ],
+      "verifiedReplayEvidence": "parent-proxy-native-configured.json",
+      "scope": "Environment requirements verified on the final graph by the successful configured parent replay. Earlier historical attempts additionally require their recorded dependency snapshot and fixture revision."
+    },
+    "historicalCommandMetadata": "The command arrays in original invocation records and command-index.json are historical argv-only capture, not a complete replay environment. Replay prerequisites were added after the parent found the missing inherited config.",
+    "parentUnconfiguredReplay": {
+      "metadata": "parent-proxy-native.json",
+      "exitCode": 1,
+      "raw": "parent-proxy-native.log.gz"
+    },
+    "parentConfiguredReplay": {
+      "metadata": "parent-proxy-native-configured.json",
+      "exitCode": 0,
+      "raw": "parent-proxy-native-configured.log.gz"
+    },
+    "shellExample": "PATH=\"[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin:$PATH\" TSX_TSCONFIG_PATH=apps/server/tsconfig.json node --import ./apps/server/node_modules/tsx/dist/loader.mjs _bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+  },
+  "parentVerification": "parent-verification.json",
+  "reviewRecord": "review-pass-1.json"
+}

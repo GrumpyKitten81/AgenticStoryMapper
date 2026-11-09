@@ -1,0 +1,9 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/core
+
+ ✓ src/publishing/github-footer.test.ts (12 tests) 3ms
+
+ Test Files  1 passed (1)
+      Tests  12 passed (12)
+   Start at  02:28:15
+   Duration  453ms (transform 189ms, setup 0ms, collect 286ms, tests 3ms, environment 0ms, prepare 32ms)

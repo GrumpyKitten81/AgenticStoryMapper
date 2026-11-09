@@ -1,0 +1,104 @@
+.activity-event-list {
+  display: grid;
+  gap: var(--space-12);
+  padding: 0;
+  list-style: none;
+}
+
+.activity-event,
+.changeset-history-entry {
+  display: grid;
+  gap: var(--space-8);
+  min-width: 0;
+  padding: var(--space-12);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+}
+
+.activity-event[data-outcome="error"],
+.activity-event[data-outcome="rejected"] {
+  border-left: 4px solid var(--color-danger);
+}
+
+.activity-event-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.activity-event-heading strong {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.activity-event-heading time,
+.activity-event-meta,
+.activity-undone {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-meta);
+}
+
+.activity-event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6) var(--space-12);
+}
+
+.activity-event p,
+.audit-technical-details p,
+.restore-point-details p {
+  margin: 0;
+}
+
+.audit-technical-details,
+.restore-point-details {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.audit-technical-details summary,
+.restore-point-details summary {
+  color: var(--color-primary);
+  cursor: pointer;
+  font-size: var(--font-size-compact);
+}
+
+.audit-technical-details[open],
+.restore-point-details[open] {
+  padding: var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-surface-subtle);
+}
+
+.audit-technical-details p,
+.restore-point-details dl {
+  margin-top: var(--space-8);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-meta);
+}
+
+.restore-point-summary {
+  display: grid;
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+
+.restore-point-list li {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.restore-point-list li > button {
+  justify-self: start;
+}
+
+@media (max-width: 600px) {
+  .restore-point-list dl {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+}

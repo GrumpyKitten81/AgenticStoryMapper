@@ -1,0 +1,45 @@
+{
+  "command": [
+    "git",
+    "ls-files",
+    "--stage",
+    "-z"
+  ],
+  "collected_after_gate": true,
+  "original_gate_retained_digest": "1bde369197d460b6f01d81e69dc168f57f4f898d878439102e3e849466586a7f",
+  "collected_manifest_digest_matches_original_gate": true,
+  "artifact": "rehearsal-staged-manifest.json.gz",
+  "format": "Transparent JSON record list with NUL separator/trailing-separator declaration; no entries removed or hidden.",
+  "decoded_sha256": "c5f1e5a6edef36a05411d54bff9260367805d3c2a8204bccd260535324529d23",
+  "compressed_sha256": "70c30b544ff17fd2e1a046452a4dfec73ccf2e5bae5fa007d837e5017d88faf1",
+  "working_correspondence_observed_after_gate": [
+    {
+      "path": "README.md",
+      "staged_equals_working": true
+    },
+    {
+      "path": "docs/agentic-coding.md",
+      "staged_equals_working": true
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "staged_equals_working": true
+    },
+    {
+      "path": "docs/bmad-loop.md",
+      "staged_equals_working": true
+    },
+    {
+      "path": "docs/bmad-epic-preparation.md",
+      "staged_equals_working": true
+    },
+    {
+      "path": "_bmad-output/implementation-artifacts/spec-8-9-agentic-coding-reference-material.md",
+      "staged_equals_working": true
+    }
+  ],
+  "scope": "Original source/start-end hashes bind gate-time content; this later manifest collection does not invent command-start manifest capture.",
+  "original_manifest_sha256": "1bde369197d460b6f01d81e69dc168f57f4f898d878439102e3e849466586a7f",
+  "raw_roundtrip_matches_original_gate_digest": true,
+  "publication_format_repair": "Interim content scan classified raw NUL-delimited bytes as unreviewed binary; JSON makes every same entry directly scannable and reconstructs exact original bytes. Historical command-start snapshots remain untouched."
+}

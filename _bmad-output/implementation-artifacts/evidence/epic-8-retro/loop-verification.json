@@ -1,0 +1,261 @@
+{
+  "run": "20261019-231402-3e0a",
+  "finished": true,
+  "pausedStage": null,
+  "stories": [
+    {
+      "story": "8-1-baseline-migration-and-upgrade-path",
+      "phase": "done",
+      "delivery": "06a38494b979120e33240059a4e2f12a0dfb09da",
+      "ancestorOfReviewedHead": true,
+      "reviewCycle": 1,
+      "reviewStatus": "done",
+      "lastVerification": [
+        {
+          "stage": "review",
+          "commandIndex": 0,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-1-baseline-migration-and-upgrade-path-review-1-2-0.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 1,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-1-baseline-migration-and-upgrade-path-review-1-2-1.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 2,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-1-baseline-migration-and-upgrade-path-review-1-2-2.stdout.log"
+        }
+      ]
+    },
+    {
+      "story": "8-2-dependency-upgrade-wave",
+      "phase": "done",
+      "delivery": "91d06bba8b3fe1060b4f0d8d2316aa98604a46cf",
+      "ancestorOfReviewedHead": true,
+      "reviewCycle": 1,
+      "reviewStatus": "done",
+      "lastVerification": [
+        {
+          "stage": "review",
+          "commandIndex": 0,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-2-dependency-upgrade-wave-review-1-2-0.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 1,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-2-dependency-upgrade-wave-review-1-2-1.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 2,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-2-dependency-upgrade-wave-review-1-2-2.stdout.log"
+        }
+      ]
+    },
+    {
+      "story": "8-3-quality-gate-scripts",
+      "phase": "done",
+      "delivery": "c5b76dfecb22d62c6d0abdea39c37200df2f8d2e",
+      "ancestorOfReviewedHead": true,
+      "reviewCycle": 1,
+      "reviewStatus": "done",
+      "lastVerification": [
+        {
+          "stage": "review",
+          "commandIndex": 0,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-3-quality-gate-scripts-review-2-3-0.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 1,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-3-quality-gate-scripts-review-2-3-1.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 2,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-3-quality-gate-scripts-review-2-3-2.stdout.log"
+        }
+      ]
+    },
+    {
+      "story": "8-4-continuous-integration-on-three-operating-systems",
+      "phase": "done",
+      "delivery": "f404c1b62ff8f1ed558ae7be1c273a26cb28597f",
+      "ancestorOfReviewedHead": true,
+      "reviewCycle": 1,
+      "reviewStatus": "done",
+      "lastVerification": [
+        {
+          "stage": "review",
+          "commandIndex": 0,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-4-continuous-integration-on-three-operating-systems-review-1-2-0.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 1,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-4-continuous-integration-on-three-operating-systems-review-1-2-1.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 2,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-4-continuous-integration-on-three-operating-systems-review-1-2-2.stdout.log"
+        }
+      ]
+    },
+    {
+      "story": "8-5-license-and-community-files",
+      "phase": "done",
+      "delivery": "3e761f7deb60fc0c12639995ff801fdfcfc5a990",
+      "ancestorOfReviewedHead": true,
+      "reviewCycle": 1,
+      "reviewStatus": "done",
+      "lastVerification": [
+        {
+          "stage": "review",
+          "commandIndex": 0,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-5-license-and-community-files-review-1-2-0.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 1,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-5-license-and-community-files-review-1-2-1.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 2,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-5-license-and-community-files-review-1-2-2.stdout.log"
+        }
+      ]
+    },
+    {
+      "story": "8-6-public-documentation-in-english",
+      "phase": "done",
+      "delivery": "16add8e6909c13c14343a4a70d3507cb98ef6f52",
+      "ancestorOfReviewedHead": true,
+      "reviewCycle": 1,
+      "reviewStatus": "done",
+      "lastVerification": [
+        {
+          "stage": "review",
+          "commandIndex": 0,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-6-public-documentation-in-english-review-1-2-0.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 1,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-6-public-documentation-in-english-review-1-2-1.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 2,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-6-public-documentation-in-english-review-1-2-2.stdout.log"
+        }
+      ]
+    },
+    {
+      "story": "8-7-audit-of-content-and-tooling",
+      "phase": "done",
+      "delivery": "8161081f43c794f3ddf77c516ccc2a64c8601b16",
+      "ancestorOfReviewedHead": true,
+      "reviewCycle": 1,
+      "reviewStatus": "done",
+      "lastVerification": [
+        {
+          "stage": "review",
+          "commandIndex": 0,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-7-audit-of-content-and-tooling-review-1-2-0.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 1,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-7-audit-of-content-and-tooling-review-1-2-1.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 2,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-7-audit-of-content-and-tooling-review-1-2-2.stdout.log"
+        }
+      ]
+    },
+    {
+      "story": "8-8-versioned-releases",
+      "phase": "done",
+      "delivery": "d93a298d8b27ffbffd19a60102a8a2e24fd674e6",
+      "ancestorOfReviewedHead": true,
+      "reviewCycle": 1,
+      "reviewStatus": "done",
+      "lastVerification": [
+        {
+          "stage": "review",
+          "commandIndex": 0,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-8-versioned-releases-review-1-2-0.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 1,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-8-versioned-releases-review-1-2-1.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 2,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-8-versioned-releases-review-1-2-2.stdout.log"
+        }
+      ]
+    },
+    {
+      "story": "8-9-agentic-coding-reference-material",
+      "phase": "done",
+      "delivery": "ec7348dc4524918c68d26b3d47e1035d012d6a46",
+      "ancestorOfReviewedHead": true,
+      "reviewCycle": 2,
+      "reviewStatus": "done",
+      "lastVerification": [
+        {
+          "stage": "review",
+          "commandIndex": 0,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-9-agentic-coding-reference-material-review-2-4-0.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 1,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-9-agentic-coding-reference-material-review-2-4-1.stdout.log"
+        },
+        {
+          "stage": "review",
+          "commandIndex": 2,
+          "returncode": 0,
+          "stdoutPath": "verify/verify-8-9-agentic-coding-reference-material-review-2-4-2.stdout.log"
+        }
+      ]
+    }
+  ],
+  "rawStateSha256": "7fc8332b2dbe93b49eb8080503e7d4adcfa7178790d9d92d08b8a94a18c508ec",
+  "rawJournalSha256": "fab6512f177fae2b7696e1e323afc36b22375fd3a2c22ee3a3804bb10c9916d8"
+}

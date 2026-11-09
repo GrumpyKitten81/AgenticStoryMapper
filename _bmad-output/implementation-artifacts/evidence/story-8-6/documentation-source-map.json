@@ -1,0 +1,310 @@
+{
+  "date": "2026-10-20",
+  "revision": "3e761f7deb60fc0c12639995ff801fdfcfc5a990",
+  "kind": "documentation-source-inspection",
+  "graph": "Code-review-graph tools unavailable in this session; inspected source and relevant test cases instead.",
+  "evidenceDistinction": {
+    "source": "Implementation was read to derive public claims. No product code or runtime behavior changed.",
+    "tests": "Referenced test source inspected; this report does not claim these product suites were rerun.",
+    "native": "See native-* evidence for clean checkout execution and actual browser limitations.",
+    "gates": "Final hygiene/quick verifier and link scan are retained separately by parent."
+  },
+  "groups": [
+    {
+      "claims": "setup/start/stop/discovery",
+      "implementation": [
+        {
+          "path": "scripts/setup.mjs",
+          "sha256": "60f3243850b460e68966a432ec5a6b8d75e1fd4ae0135fa41dd032dc8f43141e"
+        },
+        {
+          "path": "scripts/start.mjs",
+          "sha256": "e26bf940558b58cfb02a3d1af12d402eaf7adb7ca66620f649fa9a80b76b2b41"
+        },
+        {
+          "path": "scripts/runtime.mjs",
+          "sha256": "22b0b5865a396c21640b6b50c8697d0fe2e1dc5b4518a0ff400bb0dbe696c6cb"
+        },
+        {
+          "path": "scripts/launcher.mjs",
+          "sha256": "969202564ee6cb9b5b52e4398188ffd414f849df2dba68983a91152454165b9f"
+        },
+        {
+          "path": "scripts/processes.mjs",
+          "sha256": "b38135316a7c430a8719b1ec26b28f2a388949d6129d70e67e91f49ddd38a07d"
+        },
+        {
+          "path": "apps/server/src/main.ts",
+          "sha256": "0f501a975962495a47254d718f05a821f92285e3e697861c459ab135542aee38"
+        },
+        {
+          "path": "apps/server/src/config/runtime-port.ts",
+          "sha256": "982e1806fa6ee4e0dd80db3d5aeab116e7b61106978ed3aaed030248fcd05f30"
+        }
+      ],
+      "fixtureTestSources": [
+        {
+          "path": "scripts/commands.test.mjs",
+          "sha256": "212433561c2a6cf2cb09bd105ddfc8474701b4d3e964ddcf2674acea23a6939a"
+        },
+        {
+          "path": "scripts/runtime-port.test.mjs",
+          "sha256": "0bb417a1dbccd44cbde3e66a95d141cd93ac98aae9e1103fb34028d0e0c1347d"
+        }
+      ]
+    },
+    {
+      "claims": "doctor/debug/verification",
+      "implementation": [
+        {
+          "path": "scripts/doctor.mjs",
+          "sha256": "27060c57f622da162a6d524ba7d7229545746b15fea754a29d571d8ccc1047c4"
+        },
+        {
+          "path": "scripts/diagnostics.mjs",
+          "sha256": "7ebfb76aa4a0cf628863a399e814d21698216e4f41c848eb0ed6d6e97ae631ed"
+        },
+        {
+          "path": "scripts/verify.mjs",
+          "sha256": "4f2cdafce0b81170019a96ffab584d912b3143f77a230e325b21416f08bf7624"
+        }
+      ],
+      "fixtureTestSources": [
+        {
+          "path": "scripts/doctor.test.mjs",
+          "sha256": "6bea9d8cc3dbe9a4d92a81abcc3a36e0e15e35326c924ce05e31613fe8695cdf"
+        },
+        {
+          "path": "scripts/failures.test.mjs",
+          "sha256": "c2c7ef063b3922db9b12b9d246477f3046df6cadb7ca3751a528973af66c63d6"
+        }
+      ]
+    },
+    {
+      "claims": "credentials/Verify/Connect",
+      "implementation": [
+        {
+          "path": "apps/server/src/services/credentials.ts",
+          "sha256": "5196a8bc214b086093778e4357411a12b3f48709867ff535c2376b616338af6b"
+        },
+        {
+          "path": "apps/server/src/services/credential-file.ts",
+          "sha256": "8a3b8b68b07bc444c9a08ae140cdd5e027495e4c18866d69129a696b898fa7ae"
+        },
+        {
+          "path": "apps/server/src/application/connector/github-connect.use-cases.ts",
+          "sha256": "6a3bf819ae658f523b3756f3ad5012f09317ea15724a5e7ed776236ed53ee7ad"
+        },
+        {
+          "path": "apps/server/src/application/connector/connection-proof.ts",
+          "sha256": "3b4410961e709688a830f3f254ab969f55e4ce154d57c30f44ce34d4ff16407e"
+        }
+      ],
+      "fixtureTestSources": [
+        {
+          "path": "apps/server/src/services/credentials.test.ts",
+          "sha256": "f0cdafe6edce54857f1f598e16d3f553a12d028091684239a536c32ecd6b0990"
+        },
+        {
+          "path": "apps/server/src/application/connector/github-connect.test.ts",
+          "sha256": "0e5d4e949c559a800977dc4fa5b4a55ddde8bcd0a3baf87b4535111e908cafd2"
+        }
+      ]
+    },
+    {
+      "claims": "safety/ChangeSets",
+      "implementation": [
+        {
+          "path": "packages/contracts/src/schemas/domain.ts",
+          "sha256": "5cb7e4df60d9739f1e0005e7c1b7b2cbe08b0efcd125cd2d50f930a9eb116166"
+        },
+        {
+          "path": "packages/db/src/repositories/projects-repository.ts",
+          "sha256": "698767e5962f8afc3316e976adeca79802ce5e61f786df12ad7abe5b78190f74"
+        },
+        {
+          "path": "packages/db/src/repositories/changesets-repository.ts",
+          "sha256": "52eed3b7a547761802a91b38e3c14793314ee68d79997c6de7dc536eddecfb6f"
+        },
+        {
+          "path": "apps/server/src/application/changeset/changeset-command.ts",
+          "sha256": "fab889471215e9ec1a955b4c45caf966e73ee2befeff2e79c9a540798b4cb7ea"
+        },
+        {
+          "path": "apps/server/src/application/changeset/changeset-executor.ts",
+          "sha256": "236b3c854666dde0eca62f13996659e753e6a9e202d2f34a1d62095fef3a960b"
+        },
+        {
+          "path": "apps/server/src/application/sync/github-command.ts",
+          "sha256": "69fb3c966925dee57ffadae5946c5e25bbc722fcde9b0c23baf144e9c718de34"
+        }
+      ],
+      "fixtureTestSources": [
+        {
+          "path": "apps/server/src/application/mcp-http-parity.test.ts",
+          "sha256": "6ef7cc6d40a84114e1d5a6ccf4479392563a868d1f54b3c5b24f528a0a4522f1"
+        },
+        {
+          "path": "apps/server/src/application/sync/github-ticket-command.test.ts",
+          "sha256": "e9ccf492c5ba60381f639baeb0db140d125fae5ec13fe03b680f669c995608cf"
+        }
+      ]
+    },
+    {
+      "claims": "human-confirmed remote plans/resume",
+      "implementation": [
+        {
+          "path": "apps/server/src/application/sync/remote-push.use-cases.ts",
+          "sha256": "d2bbe4063c5a961581b25ec4212e95e020363de3a5b2432303fb8d4730e4e6b9"
+        },
+        {
+          "path": "apps/server/src/services/remote-push-execution.ts",
+          "sha256": "606a4e24a2ca236cc24d4454ad295ae8e646ab84688671371a4ff6d4b62995af"
+        }
+      ],
+      "fixtureTestSources": []
+    },
+    {
+      "claims": "migration/refusal/Restore",
+      "implementation": [
+        {
+          "path": "packages/db/src/migration-runner.ts",
+          "sha256": "080667e0731ef8992d076f5003c43ce4ac2c9b6a455951e50966f1908667753b"
+        },
+        {
+          "path": "packages/db/src/connection.ts",
+          "sha256": "959da6bab0cc6a882481ea1461c573bcf459dae407722e9aa54f46791c2eca1b"
+        },
+        {
+          "path": "packages/db/src/restore-project.ts",
+          "sha256": "c8deec3b08fd57b4cf38c8da743255ac95ebe0dd0d1b1ce9368bb7c6b706ce0c"
+        },
+        {
+          "path": "packages/db/src/restore-points.ts",
+          "sha256": "d503b696fd6b26dc8f09e25fd2bc009a1568d91ca01a104baddde1c43725be2f"
+        },
+        {
+          "path": "packages/db/src/restore-point-files.ts",
+          "sha256": "42f0560edb72193f87d2328f9f784fb097d24785a95761f49066a4a900b0adfc"
+        }
+      ],
+      "fixtureTestSources": [
+        {
+          "path": "packages/db/src/migration-runner.test.ts",
+          "sha256": "3a68786107edd783431031eb4ba6ddf215b886ad35beca32a53e5cf21c0f9041"
+        },
+        {
+          "path": "packages/db/src/restore-project.test.ts",
+          "sha256": "ed3bcd95600dba7da712f473ccb9a833d130f124a2702322a3cfdcfd6b96e478"
+        }
+      ]
+    },
+    {
+      "claims": "archives/redaction",
+      "implementation": [
+        {
+          "path": "apps/server/src/services/project-archive.ts",
+          "sha256": "b3247e60c9cf2bb66eda96acb0aaa4240d3ab130412420c909ccdb4532a11e50"
+        },
+        {
+          "path": "packages/db/src/schema/classification.ts",
+          "sha256": "964721faeb18f40afa15f90c67be22f4f7e2387fca8b3e5771b0ac43611406da"
+        }
+      ],
+      "fixtureTestSources": [
+        {
+          "path": "apps/server/src/services/project-archive.test.ts",
+          "sha256": "d8de07401d44120b471b8c42380f4868b395f158b2b5fe5160d509abb4a6859d"
+        }
+      ]
+    },
+    {
+      "claims": "MCP shared runtime",
+      "implementation": [
+        {
+          "path": "scripts/mcp-bridge.mjs",
+          "sha256": "b5b3cf17a5ae3bf80bff2b3e8f2e45ea7ed31d699096cf93feecca3516f101c2"
+        },
+        {
+          "path": "apps/server/src/mcp/http.ts",
+          "sha256": "018a1cf674616fc62174f9778a8356d0ff6cf098160af27241921b00b63906c9"
+        },
+        {
+          "path": "docs/mcp-tools.md",
+          "sha256": "0a1cac222e3911c368a318385ee9a2a54382db5ac47cf179dc0f45ff1c178d28"
+        }
+      ],
+      "fixtureTestSources": [
+        {
+          "path": "scripts/runtime-port.test.mjs",
+          "sha256": "0bb417a1dbccd44cbde3e66a95d141cd93ac98aae9e1103fb34028d0e0c1347d"
+        }
+      ]
+    },
+    {
+      "claims": "CI/community",
+      "implementation": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "sha256": "35417aaf5b530c4f4fcf80bde72a30dfc17630422acab22524d5a5a983f490c9"
+        },
+        {
+          "path": "CONTRIBUTING.md",
+          "sha256": "4438c3f6afdb06675f007460891cadd2afb3e9381f7b6d0d7a755e2f06c7d1d4"
+        },
+        {
+          "path": "SECURITY.md",
+          "sha256": "f2e3ffa3b0241d3e659fbb786d48a272e59d35fa898a759cdf76a72d5a7cf75a"
+        },
+        {
+          "path": "CODE_OF_CONDUCT.md",
+          "sha256": "2d581f09d69385861995f0598c4fe7f507cd2b4729b1e3a079dfe75df759b30d"
+        }
+      ],
+      "fixtureTestSources": []
+    }
+  ],
+  "clarifications": [
+    "New unprotected domain commands may immediately apply newly created ChangeSets; stored proposals need recorded approval. Customization proposals have stricter review requirements.",
+    "Agent-initiated incoming GitHub operations are held by Agent protection; human apply remains available.",
+    "Runtime discovery remains rooted in initial runtime directory after archive switch.",
+    "Configured PORT prevents automatic available-port fallback.",
+    "Archive ownership cleanup can fail after switch and report runtime unavailable."
+  ],
+  "priorObligationsRetained": [
+    "Windows/Linux native quickstart",
+    "native browser/clipboard/screen-reader/accessibility acceptance",
+    "credential and interrupted-push native acceptance",
+    "first hosted CI runs and protection activation",
+    "required private license/contact declarations",
+    "content/history audit, maintainer history disposition and exact-result rescan including future contributor material"
+  ],
+  "protectedEntry": {
+    "head": "3e761f7deb60fc0c12639995ff801fdfcfc5a990",
+    "sprintWorktreeSha256": "c65b481a31009654de303a4df8a8c3c923d3c1584b868565c83f022771624a26",
+    "sprintIndexSha256": "c65b481a31009654de303a4df8a8c3c923d3c1584b868565c83f022771624a26"
+  },
+  "documentationOverlay": [
+    {
+      "path": "README.md",
+      "sha256": "e567b97fba8f0dd75a539a5fc45b42b0ec89b2c14b77a5dfa8dc780b0d9fde2f"
+    },
+    {
+      "path": "docs/RUNBOOK.md",
+      "sha256": "b6843cf14a38ca325bc1a886b2258cddd92f71b47ce88c489d7fa0758b97b960"
+    }
+  ],
+  "ciSectionPreserved": true,
+  "laterDocumentationCandidate": {
+    "date": "2026-10-20",
+    "sha256": {
+      "README.md": "e567b97fba8f0dd75a539a5fc45b42b0ec89b2c14b77a5dfa8dc780b0d9fde2f",
+      "docs/RUNBOOK.md": "b54dcfc461e6b76a7d9b2c56500175716c34d12e7cfe57e6a415b7559f2ff329",
+      "CONTRIBUTING.md": "4438c3f6afdb06675f007460891cadd2afb3e9381f7b6d0d7a755e2f06c7d1d4",
+      "docs/usability-report.md": "8d91652524086fead40529eb7a72ea13207c7e9d6800198fb06db830f7c28295"
+    },
+    "kind": "Later documentation-only review candidate; no new native setup/start/browser execution.",
+    "copied_into_native_checkout": false,
+    "copy_while_healthy_proven": false
+  }
+}

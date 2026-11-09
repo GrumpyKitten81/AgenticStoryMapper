@@ -1,0 +1,9 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/story-map/components/card-provenance.test.ts (11 tests) 381ms
+
+ Test Files  1 passed (1)
+      Tests  11 passed (11)
+   Start at  02:28:16
+   Duration  1.59s (transform 522ms, setup 0ms, collect 859ms, tests 381ms, environment 172ms, prepare 32ms)

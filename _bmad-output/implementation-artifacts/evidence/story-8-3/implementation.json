@@ -1,0 +1,732 @@
+{
+  "story": "8-3-quality-gate-scripts",
+  "timestamp": "2026-10-20T02:05:08.356009+00:00",
+  "status": "implemented-reviewed-and-independently-verified",
+  "baseline_revision": "91d06bba8b3fe1060b4f0d8d2316aa98604a46cf",
+  "runtime": {
+    "node": "24.17.0",
+    "pnpm": "9.15.4",
+    "platform": "darwin",
+    "node_directory": "[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin"
+  },
+  "installation_commands": [
+    "corepack pnpm add -Dw @vitest/coverage-v8@4.1.12",
+    "corepack pnpm install --no-frozen-lockfile",
+    "corepack pnpm install --frozen-lockfile"
+  ],
+  "source_diff_sha256": "635f51d2f796adc9b249162d024f4bc7d9fa745dc22836ac83c3bbed58edfbf7",
+  "source_diff_scope": [
+    "apps",
+    "packages",
+    "scripts",
+    "package.json",
+    "pnpm-lock.yaml"
+  ],
+  "protected": {
+    "path": "_bmad-output/implementation-artifacts/sprint-status.yaml",
+    "worktree": "a276506882f729c8d2181f9049a0175916af9cbab7851d12ee73074965f44233",
+    "index": "a276506882f729c8d2181f9049a0175916af9cbab7851d12ee73074965f44233",
+    "matches_initial": true
+  },
+  "migration_assets_changed": false,
+  "coverage": [
+    {
+      "workspace": "packages/contracts",
+      "lines": 543,
+      "covered": 496,
+      "percent": "91.34"
+    },
+    {
+      "workspace": "packages/importers",
+      "lines": 39,
+      "covered": 39,
+      "percent": "100.00"
+    },
+    {
+      "workspace": "packages/github",
+      "lines": 193,
+      "covered": 176,
+      "percent": "91.19"
+    },
+    {
+      "workspace": "packages/core",
+      "lines": 2392,
+      "covered": 2228,
+      "percent": "93.14"
+    },
+    {
+      "workspace": "packages/db",
+      "lines": 3414,
+      "covered": 3199,
+      "percent": "93.70"
+    },
+    {
+      "workspace": "packages/mcp",
+      "lines": 36,
+      "covered": 30,
+      "percent": "83.33"
+    },
+    {
+      "workspace": "apps/web",
+      "lines": 5502,
+      "covered": 4831,
+      "percent": "87.80"
+    },
+    {
+      "workspace": "apps/server",
+      "lines": 3869,
+      "covered": 3671,
+      "percent": "94.88"
+    }
+  ],
+  "ordinary_workspace_tests": 3159,
+  "passed_checks": [
+    {
+      "command": "node --test scripts/quality-gates.test.mjs scripts/check-hygiene.test.mjs",
+      "tests": 19,
+      "log": "story-8-3-matrix-final-verified.log.gz"
+    },
+    {
+      "command": "node --test --test-name-pattern='public verify|test-only IPC interruption|interrupted preflight|interruption before server readiness' scripts/commands.test.mjs",
+      "tests": 10,
+      "log": "story-8-3-script-fixes.log.gz"
+    },
+    {
+      "command": "npm_config_offline=true node scripts/check-coverage.mjs",
+      "tests": 3159,
+      "log": "story-8-3-coverage-all-final.log.gz"
+    },
+    {
+      "command": "COREPACK_ENABLE_NETWORK=0 npm_config_offline=true node --test --test-name-pattern='setup performs a real frozen install' scripts/commands.test.mjs",
+      "tests": 1,
+      "log": "story-8-3-offline-setup-final.log.gz"
+    },
+    {
+      "command": "corepack pnpm --filter @storymapper/server test:audit-performance",
+      "tests": 14,
+      "log": "story-8-3-audit-performance-final.log.gz"
+    },
+    {
+      "command": "corepack pnpm --filter @storymapper/web test:a11y",
+      "tests": 261,
+      "log": "story-8-3-a11y-final.log.gz"
+    },
+    {
+      "command": "node scripts/check-size.mjs; node scripts/check-boundaries.mjs; node scripts/check-hygiene.mjs; node scripts/check-licenses.mjs; git diff --check HEAD",
+      "result": "all exit0"
+    },
+    {
+      "command": "COREPACK_ENABLE_NETWORK=0 npm_config_offline=true node --test --test-name-pattern='start serves actual app/API on its owned URL and only opens the browser after health' scripts/commands.test.mjs",
+      "tests": 1,
+      "duration_ms": 19715.708708,
+      "log": "story-8-3-browser-publication-fix.log.gz"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "log": "story-8-3-check-first.log.gz",
+      "result": "exit1 at CSS production build",
+      "resolution": "Moved complete comma-selector prefix across stylesheet boundary; subsequent full build and fresh offline setup/build pass."
+    },
+    {
+      "log": "story-8-3-check-second.log.gz",
+      "result": "exit1:85/95root-script tests passed,10failed; coverage phase was not reached",
+      "resolution": "Canonical realpath guards and preserved launcher cancellation defaults; all10unchanged affected fixtures pass. Later final gate regressions pass19/19."
+    },
+    {
+      "log": "story-8-3-db-coverage.log.gz",
+      "result": "559/560tests; unchanged5000ms crashed-WAL deadline exceeded under parallel V8 instrumentation",
+      "resolution": "Run coverage with one worker; full560tests pass without timeout/floor changes."
+    },
+    {
+      "log": "story-8-3-contracts-coverage.log.gz",
+      "result": "192/193tests; prepared source fixture lacked parsedChunks",
+      "resolution": "Prepare actual chunks, preserve existing content/hash and assertions; full193tests pass."
+    },
+    {
+      "log": "story-8-3-gate-tests.log.gz",
+      "result": "Initial signal fixtures retained their IPC channel",
+      "resolution": "Explicit fixture disconnect after command completion; SIGINT/SIGTERM failure and descendant drain tests pass."
+    },
+    {
+      "log": "story-8-3-parent-check.log.gz",
+      "command": "corepack pnpm check",
+      "result": "Independent parent aggregate exit1: 98 root-script tests, 97 pass, 1 fail; coverage phase not reached.",
+      "resolution": "Browser fixture created its URL marker before bytes were written, allowing an exists-based reader to observe empty content. Publish through a sibling temporary file and atomic rename; unchanged focused positive start test passes. Final independent exact-candidate aggregate remains pending."
+    },
+    {
+      "log": "story-8-3-review-gates.log.gz",
+      "result": "24/25 focused scripts tests passed; local folder package was reported by pnpm with null version.",
+      "resolution": "Pack the same local package offline and install its local tarball; actual CLI now reports and rejects exact package@1.0.0 license. No license production change or injection surface."
+    },
+    {
+      "log": "story-8-3-review-http-import.log.gz",
+      "result": "New nested HTTP import assertion initially assumed parser order, while repository details sort locators lexically.",
+      "resolution": "Assert exact persisted headings/locators/text in existing repository order; unchanged import response retains parser order."
+    },
+    {
+      "log": "story-8-3-review-http-import-fixed.log.gz",
+      "result": "Repeated import returns persisted locator order, unlike initial parser-order response; original single-chunk fixture concealed ordering distinction.",
+      "resolution": "Retain full original repeated-import chunk identities while sorting expected chunks by repository locator order; focused test passes. No production sorting or parser change."
+    }
+  ],
+  "semantic_audit_reported_by_test_delegate": {
+    "baseline_registrations": 1177,
+    "current_original_registrations": 1176,
+    "difference": "obsolete partial DB import/size gate removed as specified",
+    "baseline_expect_calls": 6603,
+    "current_original_expect_calls": 6603,
+    "caveat": "Static parity alone does not prove mutable async closure semantics; getter/setter corrections and full runtime regressions were required."
+  },
+  "independent_validation_pending": [],
+  "remaining_limits": [
+    "Windows/Linux native and actual screen-reader/browser/clipboard acceptance remain unexecuted.",
+    "Online advisory audit remains separate; no new advisory-clean claim.",
+    "Explicit server-to-DB production and DB-to-server development-test dependency creates a pnpm development-cycle warning; no global runtime-cycle-absence claim.",
+    "Full-history/provenance/private-contact/publication gates remain later-story work."
+  ],
+  "raw_logs": [
+    {
+      "file": "story-8-3-a11y-final.log.gz",
+      "uncompressed_sha256": "faba098c0d21fe697e310846da72088660deb501213e509f6db34411c6daa0f4",
+      "uncompressed_bytes": 1820
+    },
+    {
+      "file": "story-8-3-audit-performance-final.log.gz",
+      "uncompressed_sha256": "e9e03438c88049faa0ba9b89ff6ada5468b76529b3ad9bde5fdb77f421353ddc",
+      "uncompressed_bytes": 4379
+    },
+    {
+      "file": "story-8-3-bmad-cleanup-boundaries.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-bmad-cleanup-fixed-timings.log.gz",
+      "uncompressed_sha256": "03c7b2f90604019591ca334f06299544122152d337c8a90da0ac541c193bcae3",
+      "uncompressed_bytes": 18354
+    },
+    {
+      "file": "story-8-3-bmad-cleanup-mcp-stage-probe.log.gz",
+      "uncompressed_sha256": "13483fd882d298e64e2988e4cf0dec83af7a0b2514d455477807993bcb416914",
+      "uncompressed_bytes": 22410
+    },
+    {
+      "file": "story-8-3-bmad-cleanup-owned-response-probe.log.gz",
+      "uncompressed_sha256": "39b8de9062a524b0b1731dff97b4c0a2c3d04693e0dd450f58f1ab57c1d7fed6",
+      "uncompressed_bytes": 8738
+    },
+    {
+      "file": "story-8-3-bmad-cleanup-size.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-bmad-cleanup-socket-stage-probe.log.gz",
+      "uncompressed_sha256": "02c3f281abaccf72e88d77ec7509dba1699020c4683c047d4623a1996a5743ee",
+      "uncompressed_bytes": 14450
+    },
+    {
+      "file": "story-8-3-bmad-cleanup-stage-probe.log.gz",
+      "uncompressed_sha256": "92e105ab2905b02e11c0badaf0b4bb4d8fe6b63df133444f59dadd2675e400a1",
+      "uncompressed_bytes": 12015
+    },
+    {
+      "file": "story-8-3-boundaries-allsource.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-boundaries-final-candidate.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-boundaries-final.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-browser-publication-fix.log.gz",
+      "uncompressed_sha256": "311996ce2dd1ab68f7826cfe97b629aa1ac14ad7cd4906fb2947819e6d243771",
+      "uncompressed_bytes": 220
+    },
+    {
+      "file": "story-8-3-check-first.log.gz",
+      "uncompressed_sha256": "9b85432472bc4a49f18fab4488606c812abaed38b83f31fdf93684a3266f8c03",
+      "uncompressed_bytes": 5584
+    },
+    {
+      "file": "story-8-3-check-second.log.gz",
+      "uncompressed_sha256": "af02750edc5c32c04a9d46ccd7c6e1068095a0bb67796248b50da7e5b9c45c2a",
+      "uncompressed_bytes": 21743
+    },
+    {
+      "file": "story-8-3-contracts-coverage-final.log.gz",
+      "uncompressed_sha256": "6a72e93df6725c1cf6e4d1d3f63122ff13f90400e7ee2c3dd10080f3d451bc7c",
+      "uncompressed_bytes": 2550
+    },
+    {
+      "file": "story-8-3-contracts-coverage.log.gz",
+      "uncompressed_sha256": "e8aa8722d0583bd7d3f7c810e33b9d8a30ac26de2373c33b3bc7cb98150a3af5",
+      "uncompressed_bytes": 1671
+    },
+    {
+      "file": "story-8-3-core-coverage.log.gz",
+      "uncompressed_sha256": "b44767a624f44807008ab8aeda7d662d0e9373a1807cecf31e5d35419756eadd",
+      "uncompressed_bytes": 5608
+    },
+    {
+      "file": "story-8-3-coverage-all-final.log.gz",
+      "uncompressed_sha256": "636755e4ed6c3137dad673e519cd2eb64b94ed0749818294c54b855664d6fe6a",
+      "uncompressed_bytes": 238417
+    },
+    {
+      "file": "story-8-3-db-coverage-serial.log.gz",
+      "uncompressed_sha256": "a6cd7ecaa29a8d5e25e4544ec8992d3e9ed5df3f841400e8ef4565e4d1c5a9b2",
+      "uncompressed_bytes": 6197
+    },
+    {
+      "file": "story-8-3-db-coverage.log.gz",
+      "uncompressed_sha256": "0fe4cccb92f97c7d218f42f739929a4e31fbb90ea3c08f73ad4bfe46b25337ab",
+      "uncompressed_bytes": 1853
+    },
+    {
+      "file": "story-8-3-frozen-install-final.log.gz",
+      "uncompressed_sha256": "a77a3142f936829e327fc16c3a23d4ac50098805ebe8093a17c538c548719fbb",
+      "uncompressed_bytes": 571
+    },
+    {
+      "file": "story-8-3-gate-tests-aggregate.log.gz",
+      "uncompressed_sha256": "b9951c9fcb52584711aaf1ecbb8bc6f5fe8c37ba5a723b57ecdd5673a6f24303",
+      "uncompressed_bytes": 1590
+    },
+    {
+      "file": "story-8-3-gate-tests-final.log.gz",
+      "uncompressed_sha256": "dee93ed27b0871c31d0b8f9d041e544cda4fa41d56016d6c695887e133d60ce3",
+      "uncompressed_bytes": 1494
+    },
+    {
+      "file": "story-8-3-gate-tests.log.gz",
+      "uncompressed_sha256": "9cb9826a01112e536c9109ed4a50f23af580d98cd58c889718cae320fd90ff68",
+      "uncompressed_bytes": 2370
+    },
+    {
+      "file": "story-8-3-github-coverage.log.gz",
+      "uncompressed_sha256": "69ff4e86b429823c14334bbd5749502ba1ca3a238b7e93f17f18496d186daf2e",
+      "uncompressed_bytes": 2197
+    },
+    {
+      "file": "story-8-3-hygiene-current.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-hygiene-final.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-hygiene-pre-aggregate.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-importers-coverage.log.gz",
+      "uncompressed_sha256": "c069e48809194c3285be8b770b8f5c4a22824f6997bd552dec3a92fda2557f60",
+      "uncompressed_bytes": 1066
+    },
+    {
+      "file": "story-8-3-install.log.gz",
+      "uncompressed_sha256": "471d3433ccb0faa9fa27299e28a952c9f4ed99a1496871eb88939e3194926a00",
+      "uncompressed_bytes": 745
+    },
+    {
+      "file": "story-8-3-license-policy-final.log.gz",
+      "uncompressed_sha256": "7f99cfb306fe80d77a736df4a9296d7686cadae9ca62777fa3b6aa539d9e6cf6",
+      "uncompressed_bytes": 399
+    },
+    {
+      "file": "story-8-3-licenses-final.log.gz",
+      "uncompressed_sha256": "8fc9acdc321411fb25b9b6ecc0eb0a3c9833e1358807adc654f3dbc1eeb48397",
+      "uncompressed_bytes": 399
+    },
+    {
+      "file": "story-8-3-matrix-complete-final.log.gz",
+      "uncompressed_sha256": "80835a2729ab0d5ce698410a1ae951c58d19372bb7447c6c43eb2bba005b46bb",
+      "uncompressed_bytes": 2003
+    },
+    {
+      "file": "story-8-3-matrix-complete.log.gz",
+      "uncompressed_sha256": "4ba0ef8a26cd05bfc11088e7bd095214a1935dcd0ca192e6824acf9c837df9a4",
+      "uncompressed_bytes": 1679
+    },
+    {
+      "file": "story-8-3-matrix-final-candidate.log.gz",
+      "uncompressed_sha256": "8bf49478b20d83a92be3432e5a2caa29f78725ff0f5c0ef75d452bcc3da2f1ee",
+      "uncompressed_bytes": 1687
+    },
+    {
+      "file": "story-8-3-matrix-final-verified.log.gz",
+      "uncompressed_sha256": "aa64c79221c0db83ecf7ad15babf140b5030e7ab6601aa6db3e7cdda5e546ba4",
+      "uncompressed_bytes": 2000
+    },
+    {
+      "file": "story-8-3-matrix-final.log.gz",
+      "uncompressed_sha256": "ae03530aa0a05fa9d71262fff522964693230113e720141171360bda269782b9",
+      "uncompressed_bytes": 2000
+    },
+    {
+      "file": "story-8-3-matrix-parent-fixes.log.gz",
+      "uncompressed_sha256": "7cf1f68ff86348e71270470ff7676d1309c88fce371f5adeebd54744d86f524f",
+      "uncompressed_bytes": 1903
+    },
+    {
+      "file": "story-8-3-matrix-shared-verifier.log.gz",
+      "uncompressed_sha256": "1f2980bf165c757e49e12b8c7a24f777a7d90d7079a324e33dda6c1577915958",
+      "uncompressed_bytes": 1596
+    },
+    {
+      "file": "story-8-3-mcp-coverage.log.gz",
+      "uncompressed_sha256": "26bbfc2e067447f9f6b8b9c028184b6c5ec1c1e6b453c8e0aecda86bd008121d",
+      "uncompressed_bytes": 1286
+    },
+    {
+      "file": "story-8-3-offline-setup-final.log.gz",
+      "uncompressed_sha256": "c8119605c0844406d0ace5eecfa4af9ab3ac80f84d129269778cfe2553ddc102",
+      "uncompressed_bytes": 237
+    },
+    {
+      "file": "story-8-3-parent-check.log.gz",
+      "uncompressed_sha256": "6fb7987ddf40921b98de09824b8b889162cdeb7d5597a232c8db7e31f1172531",
+      "uncompressed_bytes": 13960
+    },
+    {
+      "file": "story-8-3-review-card-detail.log.gz",
+      "uncompressed_sha256": "ee276c024e17d8cafa9b8f3422bf52664e5506e07d840df51009c897731d9243",
+      "uncompressed_bytes": 235
+    },
+    {
+      "file": "story-8-3-review-gates-accepted.log.gz",
+      "uncompressed_sha256": "7cc97df4a1e20d7073d5762c28e764791c31c10e35ffb8240e5affb3aaf250df",
+      "uncompressed_bytes": 2648
+    },
+    {
+      "file": "story-8-3-review-gates-final.log.gz",
+      "uncompressed_sha256": "d1b71148f9768eacad5a7cc32ab2798889c223962f7bdf90e3e0b98f836cb650",
+      "uncompressed_bytes": 2649
+    },
+    {
+      "file": "story-8-3-review-gates.log.gz",
+      "uncompressed_sha256": "e6eca3698de89d0646b63ada32efce4e9133beb92b64110413bcb7cb81ec662f",
+      "uncompressed_bytes": 5204
+    },
+    {
+      "file": "story-8-3-review-http-import-final.log.gz",
+      "uncompressed_sha256": "f545cb5910832ff1e2578c2b58089fdd6d187c61e7622f75bd1b6484b6bd3317",
+      "uncompressed_bytes": 247
+    },
+    {
+      "file": "story-8-3-review-http-import-fixed.log.gz",
+      "uncompressed_sha256": "5fd415857d045e487c9b06cd6321329c0621cc75e6e9e33ed372b06a73cb9e80",
+      "uncompressed_bytes": 2391
+    },
+    {
+      "file": "story-8-3-review-http-import.log.gz",
+      "uncompressed_sha256": "68fc662536707c1a58e32250d4d6cf01bd610a6d55e44f06dc7b3c8c2b085daa",
+      "uncompressed_bytes": 2397
+    },
+    {
+      "file": "story-8-3-review-license-cli.log.gz",
+      "uncompressed_sha256": "3cc23a2a1faf4c23fe6b9f42c9cbd9baf416505ac88d0ce0e9d8dac9807489d1",
+      "uncompressed_bytes": 219
+    },
+    {
+      "file": "story-8-3-root-fastify-boundaries.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-root-fastify-frozen.log.gz",
+      "uncompressed_sha256": "858fcdce5ad93a53459ef34cbc0156021f08116960377c4956f924282e7ec598",
+      "uncompressed_bytes": 571
+    },
+    {
+      "file": "story-8-3-root-fastify-install.log.gz",
+      "uncompressed_sha256": "29e5d1af555bf63a1dff4623334e985bb076c88b32cbcfc1fbe1012cae93e423",
+      "uncompressed_bytes": 781
+    },
+    {
+      "file": "story-8-3-root-fastify-licenses.log.gz",
+      "uncompressed_sha256": "9a86a8ba6d1408e22a66ac6c334b06f230efcd5306b51dfce8eb997ce882ac1d",
+      "uncompressed_bytes": 399
+    },
+    {
+      "file": "story-8-3-script-fixes.log.gz",
+      "uncompressed_sha256": "5a48d7f8a53c0d468a6faee22087c62b41e6532919a4572583db00d7b8cc7cbc",
+      "uncompressed_bytes": 1078
+    },
+    {
+      "file": "story-8-3-server-typecheck.log.gz",
+      "uncompressed_sha256": "78454aa54457d0704f0a752ac357ec597406fcea370674c059cba8b0463f8b5c",
+      "uncompressed_bytes": 1901
+    },
+    {
+      "file": "story-8-3-size-allsource.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-size-final.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-size-near-final.log.gz",
+      "uncompressed_sha256": "d926c6cc1beb728c02b4e97c58ff93e622452c3c5ee4a604a2356dd2970a6380",
+      "uncompressed_bytes": 349
+    },
+    {
+      "file": "story-8-3-typecheck-complete.log.gz",
+      "uncompressed_sha256": "dabd25b8b6333985f2ed6561a5ad436a668365b5a3bd1c65aaee7063d1469251",
+      "uncompressed_bytes": 816
+    },
+    {
+      "file": "story-8-3-web-before-aggregate-typecheck.log.gz",
+      "uncompressed_sha256": "1286a4b4e35d0bfc717d05ee5740d9d797891226cce06f956ac0512b0ea62120",
+      "uncompressed_bytes": 116
+    },
+    {
+      "file": "story-8-3-whitespace-current.log.gz",
+      "uncompressed_sha256": "7cda0e2a9969a190e9c569519befadfb33fb50cc92603acab3d28d08d325b6fe",
+      "uncompressed_bytes": 269
+    },
+    {
+      "file": "story-8-3-whitespace-final.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-whitespace-midrun.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story-8-3-whitespace.log.gz",
+      "uncompressed_sha256": "8f644cdd0bf19589ac5298ff848a88ffcc7ef22033a268f8dc5aed5485e13d8d",
+      "uncompressed_bytes": 1295
+    },
+    {
+      "file": "story83-semantic-server-tests.log.gz",
+      "uncompressed_sha256": "a25dfbacfd5d2516f27f6e161d7fc82438420ce18b226cfbf50442fa282bede7",
+      "uncompressed_bytes": 238
+    },
+    {
+      "file": "story83-semantic-server-types-final.log.gz",
+      "uncompressed_sha256": "2e4585f3af5f785ab37d2e76545bf7049981c9e6d1a13fd4f7b1785d777eb5ab",
+      "uncompressed_bytes": 122
+    },
+    {
+      "file": "story83-semantic-server-types.log.gz",
+      "uncompressed_sha256": "0411c961c62c8ac863ef9fa05cd39a9844833afebada72fb3643170099732c44",
+      "uncompressed_bytes": 377
+    },
+    {
+      "file": "story83-server-focused-tests.log.gz",
+      "uncompressed_sha256": "7702e75facd45886fca693f0b815353de03e70219aeb168d31c90c7e646c1482",
+      "uncompressed_bytes": 1449
+    },
+    {
+      "file": "story83-size-final-readback.log.gz",
+      "uncompressed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "uncompressed_bytes": 0
+    },
+    {
+      "file": "story83-test-extraction-db-types.log.gz",
+      "uncompressed_sha256": "7204d9a06a5d2943bf53124273951e86e2c885973d71f85b979fa7f203b7e8c9",
+      "uncompressed_bytes": 1393
+    },
+    {
+      "file": "story83-test-extraction-db-types3.log.gz",
+      "uncompressed_sha256": "d238c59c3fa74113c1ecb2146a139c3a9fa7beda01c6e8984e33134c5a147ca1",
+      "uncompressed_bytes": 118
+    },
+    {
+      "file": "story83-test-extraction-db-types4.log.gz",
+      "uncompressed_sha256": "d238c59c3fa74113c1ecb2146a139c3a9fa7beda01c6e8984e33134c5a147ca1",
+      "uncompressed_bytes": 118
+    },
+    {
+      "file": "story83-test-extraction-server-types.log.gz",
+      "uncompressed_sha256": "8bf13df6b53ad7656b04c3e7500f85f9042af67c4a951b26219cff8828125dfe",
+      "uncompressed_bytes": 7440
+    },
+    {
+      "file": "story83-test-extraction-server-types2.log.gz",
+      "uncompressed_sha256": "78454aa54457d0704f0a752ac357ec597406fcea370674c059cba8b0463f8b5c",
+      "uncompressed_bytes": 1901
+    },
+    {
+      "file": "story83-test-extraction-server-types4.log.gz",
+      "uncompressed_sha256": "2e4585f3af5f785ab37d2e76545bf7049981c9e6d1a13fd4f7b1785d777eb5ab",
+      "uncompressed_bytes": 122
+    },
+    {
+      "file": "story83-test-extraction-typecheck.log.gz",
+      "uncompressed_sha256": "f1205b465710e699ad0766f70976e6d1107903c9cbdfbdd61abc51060c794f1e",
+      "uncompressed_bytes": 1267
+    },
+    {
+      "file": "story83-test-extraction-web-types.log.gz",
+      "uncompressed_sha256": "7c96a1ede79e885b73fd6e75c4bd307629ea0a6dc412bc95b0653df3d9f89e53",
+      "uncompressed_bytes": 1049
+    },
+    {
+      "file": "story83-test-extraction-web-types3.log.gz",
+      "uncompressed_sha256": "768dec854d874e865ad4e43e131452f0fee26498ae5866c0734c20d5d3d48ea3",
+      "uncompressed_bytes": 1464
+    },
+    {
+      "file": "story83-test-extraction-web-types4.log.gz",
+      "uncompressed_sha256": "748faf7efcd6fc7a2962bb43a710f145d7a6e9d9631f69678599f8476ae1e833",
+      "uncompressed_bytes": 1820
+    },
+    {
+      "file": "story83-web-focused-tests.log.gz",
+      "uncompressed_sha256": "c9e4d98dd08cfabbd7f81badc69252ca09ec03cfb5b06fd35bc95833dff54e4a",
+      "uncompressed_bytes": 241
+    }
+  ],
+  "review_repairs": {
+    "status": "implemented; full parent aggregate and standalone verifier passed",
+    "changes": [
+      "Normalize direct/property/computed/qualified global network/random/Date calls; reject nonliteral dependencies with locations.",
+      "Root script dependencies use root manifest; separate production from test/tool use; preserve evidenced runtime peers and launcher tsx.",
+      "Validate selected workspace root/subpath export values including null; enforce node:sqlite DB ownership.",
+      "Coverage report paths must belong to intended workspace authored sources; own executable statements need nonzero line evidence; empty/type-only/forwarding modules may report zero.",
+      "Scan tracked gzip outer bytes and decompressed content; malformed gzip reports safe category/path/line.",
+      "Spread the existing CardDetail model, retaining only locally used destructuring.",
+      "Human HTTP file import asserts persisted nested Markdown heading/locator/text and unchanged repeated-import identities.",
+      "Negative actual coverage CLI executes all eight workspaces then fails final floor; actual license CLI rejects installed versioned local incompatible package."
+    ],
+    "focused_checks": [
+      {
+        "command": "node --test scripts/quality-gates.test.mjs scripts/check-hygiene.test.mjs",
+        "tests": 25,
+        "passed": 25,
+        "log": "story-8-3-review-gates-accepted.log.gz"
+      },
+      {
+        "command": "corepack pnpm --filter @storymapper/web exec vitest run src/features/story-map/components/card-detail.test.ts src/features/story-map/components/card-detail-navigation.test.ts --maxWorkers=1",
+        "tests": 56,
+        "passed": 56,
+        "log": "story-8-3-review-card-detail.log.gz"
+      },
+      {
+        "command": "corepack pnpm --filter @storymapper/server exec vitest run src/http/routes/unit-of-work.test.ts -t 'reads an actual source file' --maxWorkers=1",
+        "tests": 1,
+        "passed": 1,
+        "skipped": 27,
+        "log": "story-8-3-review-http-import-final.log.gz"
+      }
+    ],
+    "tracked_gzip_scan": {
+      "archives": 426,
+      "supported_signature_findings": 0,
+      "existing_archive_bytes_changed": false
+    },
+    "edited_source_size_check": "pass: all seven edited JS/TS source/test files",
+    "full_aggregate_or_build_rerun": false,
+    "coverage_note": "Eight coverage numbers above were measured before review repairs; final exact-candidate measurements remain the parent verifier responsibility."
+  },
+  "root_fastify_declaration_repair": {
+    "reported_parent_failure": "scripts/runtime-port.test.mjs:40: undeclared-dependency fastify",
+    "cause": "Root test resolves server Fastify with createRequire, but its owning root manifest omitted the dependency.",
+    "change": "Declare the existing server range ^5.12.7 as a root devDependency; lockfile resolves existing Fastify5.12.7 without policy changes.",
+    "commands": [
+      {
+        "command": "COREPACK_ENABLE_NETWORK=0 npm_config_offline=true corepack pnpm install --offline --no-frozen-lockfile",
+        "exit_code": 0,
+        "log": "story-8-3-root-fastify-install.log.gz"
+      },
+      {
+        "command": "node scripts/check-boundaries.mjs",
+        "exit_code": 0,
+        "log": "story-8-3-root-fastify-boundaries.log.gz"
+      },
+      {
+        "command": "node scripts/check-licenses.mjs",
+        "exit_code": 0,
+        "log": "story-8-3-root-fastify-licenses.log.gz"
+      },
+      {
+        "command": "COREPACK_ENABLE_NETWORK=0 npm_config_offline=true corepack pnpm install --offline --frozen-lockfile",
+        "exit_code": 0,
+        "log": "story-8-3-root-fastify-frozen.log.gz"
+      }
+    ],
+    "full_verification": "Parent aggregate and standalone verifier passed; see parent-verification.json"
+  },
+  "bmad_cleanup_repair": {
+    "parent_failure": "Independent aggregate: root104pass and prior7workspacespass; server1025pass/1failure across68files. Sole failure afterEach hook10,000ms timeout at bmad-round-trip.test.ts:13; no publication assertion failure.",
+    "observed_cause_scope": "Instrumented full-file probe reproduced Fastify close pending after client.close completed in1ms. SDK close aborts and returns, leaving owned MCP GET active at Fastify preClose. Expanded probes show it can remain active after MCP preClose completes. Successful owned approve/apply bodies were unread, but that fact is not uniquely demonstrated as the stall cause.",
+    "repair": "Fixture consumes its own approve/apply response bodies and awaits its own transport.terminateSession before client.close/Fastify.close. No production shutdown, force cleanup, retries, assertion, test deadline, hook deadline or threshold change.",
+    "probe_commands": [
+      {
+        "command": "corepack pnpm --filter @storymapper/server exec vitest run src/mcp/tools/bmad-round-trip.test.ts -t 'publishes 6/34 on sdk' --coverage --maxWorkers=1",
+        "exit_code": 1,
+        "tests_passed": 1,
+        "tests_skipped": 13,
+        "reason": "Focused coverage26.41%below unchanged60%floor; console timing instrumentation suppressed.",
+        "log": "story-8-3-bmad-cleanup-stage-probe.log.gz"
+      },
+      {
+        "command": "corepack pnpm --filter @storymapper/server exec vitest run src/mcp/tools/bmad-round-trip.test.ts --coverage --maxWorkers=1",
+        "exit_code": 1,
+        "tests_passed": 13,
+        "tests_failed": 1,
+        "reason": "Reproduced same10,000ms afterEach timeout; direct stderr proves client completes then Fastify await stalls.",
+        "log": "story-8-3-bmad-cleanup-owned-response-probe.log.gz"
+      },
+      {
+        "command": "corepack pnpm --filter @storymapper/server exec vitest run src/mcp/tools/bmad-round-trip.test.ts -t 'publishes 6/34 on' --coverage --maxWorkers=1",
+        "exit_code": 1,
+        "tests_passed": 2,
+        "tests_skipped": 12,
+        "reason": "Focused coverage26.59%below unchanged60%floor; raw GET remains active after client/MCP preClose until response-close event.",
+        "log": "story-8-3-bmad-cleanup-socket-stage-probe.log.gz"
+      },
+      {
+        "command": "corepack pnpm --filter @storymapper/server exec vitest run src/mcp/tools/bmad-round-trip.test.ts --coverage --maxWorkers=1",
+        "exit_code": 1,
+        "tests_passed": 14,
+        "reason": "Expanded probes alter timing; all14casespass but focused coverage29.43%below unchanged60%floor.",
+        "log": "story-8-3-bmad-cleanup-mcp-stage-probe.log.gz"
+      },
+      {
+        "command": "corepack pnpm --filter @storymapper/server exec vitest run src/mcp/tools/bmad-round-trip.test.ts --coverage --maxWorkers=1",
+        "exit_code": 1,
+        "tests_passed": 14,
+        "reason": "Ownership repair plus temporary timing probes: all14casespass; focused coverage29.46%below unchanged60%floor.",
+        "log": "story-8-3-bmad-cleanup-fixed-timings.log.gz"
+      }
+    ],
+    "cleanup_timing_ms": {
+      "fixtures": 16,
+      "maximum_session_termination": 3,
+      "maximum_client_completion": 3,
+      "maximum_Fastify_completion": 4
+    },
+    "final_source": "All temporary timing/socket instrumentation removed. Final size/boundaries gates each exit0; parent exact-candidate aggregate and standalone verifier remain pending.",
+    "final_gate_logs": [
+      "story-8-3-bmad-cleanup-size.log.gz",
+      "story-8-3-bmad-cleanup-boundaries.log.gz"
+    ]
+  },
+  "independent_parent_final": {
+    "manifest": "parent-verification.json",
+    "source_diff_sha256": "635f51d2f796adc9b249162d024f4bc7d9fa745dc22836ac83c3bbed58edfbf7",
+    "status": "passed",
+    "implementation_raw_logs_verified": 82
+  }
+}

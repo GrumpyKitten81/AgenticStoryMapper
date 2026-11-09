@@ -1,0 +1,38 @@
+[
+  {
+    "command": [
+      "node",
+      "scripts/check-boundaries.mjs"
+    ],
+    "returncode": 0,
+    "seconds": 1.085,
+    "log": "check-boundaries.mjs.log"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/check-size.mjs"
+    ],
+    "returncode": 0,
+    "seconds": 0.642,
+    "log": "check-size.mjs.log"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/check-hygiene.mjs"
+    ],
+    "returncode": 0,
+    "seconds": 0.897,
+    "log": "check-hygiene.mjs.log"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/check-licenses.mjs"
+    ],
+    "returncode": 0,
+    "seconds": 0.649,
+    "log": "check-licenses.mjs.log"
+  }
+]

@@ -1,0 +1,4 @@
+const now = new Date();
+const instant = Date.now();
+const random = Math.random();
+const id = crypto.randomUUID();

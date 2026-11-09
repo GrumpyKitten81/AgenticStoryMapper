@@ -1,0 +1,41 @@
+{
+  "name": "storymapper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "corepack pnpm --parallel --filter @storymapper/server --filter @storymapper/web dev",
+    "dev:server": "corepack pnpm --filter @storymapper/server dev",
+    "dev:web": "corepack pnpm --filter @storymapper/web dev",
+    "build": "corepack pnpm generate-capabilities && corepack pnpm check-capabilities && corepack pnpm -r build",
+    "typecheck": "corepack pnpm -r typecheck",
+    "test": "node --test --test-concurrency=1 scripts/*.test.mjs && corepack pnpm --workspace-concurrency=1 -r test",
+    "test:bmad": "node --test --test-concurrency=1 scripts/bmad-tests/*.test.mjs",
+    "test:audit-performance": "corepack pnpm --filter @storymapper/server test:audit-performance",
+    "lint": "corepack pnpm -r lint",
+    "check-hygiene": "node scripts/check-hygiene.mjs",
+    "generate-capabilities": "node scripts/generate-capability-manifest.mjs",
+    "check-capabilities": "node scripts/check-capabilities.mjs",
+    "check": "node scripts/check.mjs",
+    "check:ci": "node scripts/check-ci.mjs",
+    "check-boundaries": "node scripts/check-boundaries.mjs",
+    "check-size": "node scripts/check-size.mjs",
+    "check-licenses": "node scripts/check-licenses.mjs",
+    "test:coverage": "node scripts/check-coverage.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@vitest/coverage-v8": "4.1.12",
+    "typescript": "^5.7.2",
+    "fastify": "^5.12.7"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@tanstack/history@1.162.0": "patches/@tanstack__history@1.162.0.patch"
+    }
+  }
+}

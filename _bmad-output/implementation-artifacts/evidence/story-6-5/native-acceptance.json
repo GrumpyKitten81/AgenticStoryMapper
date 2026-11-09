@@ -1,0 +1,21 @@
+{
+  "surface": "native Safari AX and screenshot via cua_repl",
+  "passed": [
+    "Activity collapse removes Step/Story/Activity-Note descendants from AX while retaining root Note",
+    "Activity collapse survives native page reload",
+    "Tree observes shared Activity collapse and expands through actual controls",
+    "Tree Step collapse removes Story and Step Note, retains Activity/root Notes",
+    "Prefix modal names field and shows current HTTP prefix",
+    "Native NATIVE draft preserved after concurrent HTTP map update; Save disabled with Reload/Keep mine",
+    "Explicit Keep mine saves; reopening modal shows NATIVE",
+    "Subsequent HTTP create uses NATIVE-8; highest key deleted for restart check",
+    "Final release-verified build reloaded in Safari; persisted Step collapse retained",
+    "Final two-Activity native pinned Unscheduled lane inspected before/after Activity collapse; surviving neighbor Story/lane stays visible and columns align in inspected screenshot",
+    "Owned acceptance tab closed; pre-existing browser tabs retained"
+  ],
+  "limits": [
+    "No full WCAG/screen-reader audit or exhaustive zoom/scroll/forced-color/keyboard pass claimed",
+    "Native pinned layout verified only in inspected two-Activity desktop state; combined Release-collapse geometry remains partial",
+    "Prefix pending/conflict keyboard focus not exhaustively checked"
+  ]
+}

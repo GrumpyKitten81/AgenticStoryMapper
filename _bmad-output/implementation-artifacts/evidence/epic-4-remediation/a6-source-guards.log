@@ -1,0 +1,10 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/server
+
+ ✓ src/mcp/tools/bmad-source-guard.test.ts (13 tests) 29ms
+
+ Test Files  1 passed (1)
+      Tests  13 passed (13)
+   Start at  11:09:19
+   Duration  300ms (transform 17ms, setup 0ms, collect 15ms, tests 29ms, environment 0ms, prepare 59ms)
+

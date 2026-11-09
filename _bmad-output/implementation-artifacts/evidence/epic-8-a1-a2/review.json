@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-22",
+  "layer": "blind-hunter",
+  "floor": {
+    "changedBytes": 145261,
+    "kilobytes": 141.86,
+    "N": 10
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "claim": "Malformed JSON token hides following private path",
+      "verdict": "high",
+      "routing": "patch",
+      "evidence": "Confirmed with three malformed-prefix examples; complete-span consumption fixes detection and new regressions pass."
+    },
+    {
+      "id": "R2",
+      "claim": "Escaped-quote extraction retries quadratically",
+      "verdict": "medium",
+      "routing": "patch",
+      "evidence": "Independent128KiB case decreased from6314ms to0.89ms; complete-span extraction and bounded child regression pass."
+    },
+    {
+      "id": "R3",
+      "claim": "Compact Git DAG expands exponentially",
+      "verdict": "medium",
+      "routing": "patch",
+      "evidence": "Authenticated18-tree1132-byte fixture demonstrates context expansion;100000-context and32MiB cumulative-key bounds fail closed with scope-incomplete."
+    },
+    {
+      "id": "R4",
+      "claim": "Empty sensitive directory tree no longer flagged as user data",
+      "verdict": "false",
+      "routing": "reject",
+      "evidence": "A directory-only tree has no user payload. A1 requires file-aware classification to permit the documented placeholder. Explicit empty-tree control passes; directory-name privacy is still checked. Actual nested user data remains blocked."
+    },
+    {
+      "id": "R5",
+      "claim": "Double-serialized JSON is decoded once",
+      "verdict": "low",
+      "routing": "reject",
+      "evidence": "Real bounded limitation, pre-existing beyond ordinary JSON string scope; no affected retained user artifact demonstrated. Arbitrary recursive serialization is an unrequested extension. Document raw plus one JSON string layer, preserve manual privacy prerequisite."
+    },
+    {
+      "id": "R6",
+      "claim": "Contextual traversal lacks SHA256 case",
+      "verdict": "low",
+      "routing": "patch",
+      "evidence": "Added deleted copied-skill cases for both skill roots in SHA1 and SHA256; existing canonical-object authentication cases remain."
+    },
+    {
+      "id": "R7",
+      "claim": "Decoded non-path categories lack assertions",
+      "verdict": "low",
+      "routing": "patch",
+      "evidence": "Added Unicode-escaped synthetic PEM signature and employer-boundary positive/negative assertions."
+    },
+    {
+      "id": "R8",
+      "claim": "Encoded path tests lack integration routing",
+      "verdict": "low",
+      "routing": "patch",
+      "evidence": "Added gzip index and UTF16BE deleted-history cases with exact object/path locations, sanitized reports and independent recomputation."
+    },
+    {
+      "id": "R9",
+      "claim": "Nested historical symlink/submodule coverage absent",
+      "verdict": "low",
+      "routing": "patch",
+      "evidence": "Added deleted nested mode120000/160000 history case proving findings and incomplete-content refusal."
+    },
+    {
+      "id": "R10",
+      "claim": "Deep individual prefixes evade cumulative budget until excessive work",
+      "verdict": "medium",
+      "routing": "patch",
+      "evidence": "Independent deep-chain case exceeded10000ms. Added4096-byte assembled-path guard before classifiers, retained context/cumulative bounds; independent resource rerun passes all3 cases without raising timeout."
+    }
+  ],
+  "followUp": {
+    "scope": "Revised malformed-string logic and three resource regressions",
+    "result": "No remaining demonstrated defect in the three resource fixes",
+    "independentObservedMs": {
+      "escapedStrings": 33,
+      "compactDAG": 2150,
+      "deepPathsIncludingFixtureConstruction": 4850
+    },
+    "limitation": "Deep-chain case exercises individual-path refusal, not the cumulative-byte threshold."
+  },
+  "deferredNewItems": 0,
+  "scopeLimit": "Only raw content and one JSON string serialization layer are inspected; no arbitrary recursive decoding or privacy certification."
+}

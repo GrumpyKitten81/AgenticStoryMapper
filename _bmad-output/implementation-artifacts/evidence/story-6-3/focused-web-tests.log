@@ -1,0 +1,13 @@
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/apps/web
+
+ ✓ src/features/story-map/views/DiscoveryView.test.tsx (4 tests) 428ms
+ ✓ src/features/story-map/components/discovery-navigation.test.tsx (7 tests) 429ms
+ ✓ src/features/story-map/views/SlicesView.test.tsx (11 tests) 441ms
+ ✓ src/features/story-map/components/lifecycle.test.tsx (27 tests) 917ms
+
+ Test Files  4 passed (4)
+      Tests  49 passed (49)
+   Start at  13:25:37
+   Duration  1.82s (transform 661ms, setup 0ms, collect 2.71s, tests 2.21s, environment 777ms, prepare 114ms)
+

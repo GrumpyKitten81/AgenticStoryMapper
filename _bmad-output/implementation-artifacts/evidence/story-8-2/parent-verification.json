@@ -1,0 +1,97 @@
+[
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "install",
+      "--frozen-lockfile"
+    ],
+    "started": "2026-10-19T23:51:18.311179+00:00",
+    "finished": "2026-10-19T23:51:18.763559+00:00",
+    "exitCode": 0,
+    "log": "parent-frozen-install.log.gz"
+  },
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "test"
+    ],
+    "started": "2026-10-19T23:51:18.763713+00:00",
+    "finished": "2026-10-19T23:56:58.025095+00:00",
+    "exitCode": 0,
+    "log": "parent-test.log.gz"
+  },
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "typecheck"
+    ],
+    "started": "2026-10-19T23:56:58.025320+00:00",
+    "finished": "2026-10-19T23:57:15.168661+00:00",
+    "exitCode": 0,
+    "log": "parent-typecheck.log.gz"
+  },
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "build"
+    ],
+    "started": "2026-10-19T23:57:15.168844+00:00",
+    "finished": "2026-10-19T23:57:34.861210+00:00",
+    "exitCode": 0,
+    "log": "parent-build.log.gz"
+  },
+  {
+    "command": [
+      "node",
+      "scripts/verify.mjs"
+    ],
+    "started": "2026-10-19T23:57:34.861385+00:00",
+    "finished": "2026-10-19T23:58:32.061184+00:00",
+    "exitCode": 0,
+    "log": "parent-verify.log.gz"
+  },
+  {
+    "command": [
+      "corepack",
+      "pnpm",
+      "audit",
+      "--audit-level",
+      "high"
+    ],
+    "started": "2026-10-19T23:58:32.061363+00:00",
+    "finished": "2026-10-19T23:58:32.702798+00:00",
+    "exitCode": 0,
+    "log": "parent-audit-high.log.gz"
+  },
+  {
+    "command": [
+      "node",
+      "--import",
+      "./apps/server/node_modules/tsx/dist/loader.mjs",
+      "[REDACTED_HOME]/Projects/StoryMapper/_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+    ],
+    "started": "2026-10-19T23:58:32.702979+00:00",
+    "finished": "2026-10-19T23:58:34.312612+00:00",
+    "exitCode": 1,
+    "log": "parent-proxy-native.log.gz"
+  },
+  {
+    "command": [
+      "node",
+      "--import",
+      "./apps/server/node_modules/tsx/dist/loader.mjs",
+      "_bmad-output/implementation-artifacts/evidence/story-8-2/proxy-smoke.mts"
+    ],
+    "environment": {
+      "TSX_TSCONFIG_PATH": "apps/server/tsconfig.json",
+      "PATH_prefix": "[REDACTED_HOME]/.nvm/versions/node/v24.17.0/bin"
+    },
+    "started": "2026-10-19T23:59:25.959169+00:00",
+    "finished": "2026-10-19T23:59:30.317759+00:00",
+    "exitCode": 0
+  }
+]

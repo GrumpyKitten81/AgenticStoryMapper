@@ -1,0 +1,45 @@
+{
+  "reports": [
+    "intent_audit_clean",
+    "blind_clean",
+    "gaps_clean",
+    "edge_clean"
+  ],
+  "findingIds": [
+    "I1",
+    "I2",
+    "I3",
+    "I4",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7",
+    "B8",
+    "B9",
+    "B10",
+    "V1",
+    "V2",
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5"
+  ],
+  "counts": {
+    "total": 21,
+    "high": 0,
+    "medium": 16,
+    "low": 0,
+    "false": 3,
+    "maybe-false": 2
+  },
+  "reviewedSourceDiff": "/tmp/story7-6-independent-review.diff",
+  "preservedImplementation": "pre-review-implementation.patch.gz",
+  "patchSha256": "a2c6e061747a44cd5dc5788e75e30cfb1294128f5c08cc671002c578853e141c",
+  "probe": "parent-edge-probe.log.gz",
+  "probeLimits": "Direct pure-core proof. Public SubmitChangeSet refuses adapter operations; closure finding is a shared resolver invariant, not a demonstrated public submission bypass. Generic Annotation changes are permitted operations and preflight failed to lock them.",
+  "triage": "Full per-finding verdict/evidence/route in spec Review Triage Log, pass1."
+}

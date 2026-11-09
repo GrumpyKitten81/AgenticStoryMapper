@@ -1,0 +1,132 @@
+
+> @storymapper/db@0.1.0 test [REDACTED_HOME]/Projects/StoryMapper/packages/db
+> vitest run --passWithNoTests
+
+
+ RUN  v2.1.9 [REDACTED_HOME]/Projects/StoryMapper/packages/db
+
+ ✓ src/repositories/external-refs-repository.test.ts (5 tests) 89ms
+ ✓ src/map-copy-resolution.test.ts (1 test) 110ms
+ ✓ src/board-import-resolution.test.ts (5 tests) 255ms
+ ✓ src/repositories/operation-selector-regressions.test.ts (6 tests) 282ms
+ ✓ src/repositories/release-report-data.test.ts (2 tests) 275ms
+ ✓ src/ai-templates.test.ts (4 tests) 530ms
+   ✓ attributes instruction, argument, example and guidance-only updates without private Activity payloads 307ms
+ ✓ src/repositories/card-visibility.test.ts (3 tests) 899ms
+   ✓ visible Card report boundaries > retains visible Notes but excludes them from both public push planning methods and delivery 393ms
+   ✓ visible Card report boundaries > keeps zero-visible reports valid and reveals a restored subtree only after an explicit status choice 336ms
+ ✓ src/repositories/source-document-import.test.ts (1 test) 317ms
+   ✓ source document import > deduplicates by Project, type and byte-exact hash while retaining stable identities 317ms
+ ✓ src/repositories/card-key-prefix-persistence.test.ts (1 test) 468ms
+   ✓ preserves linked keys and the monotonic allocator across prefix changes, highest-key deletion and reopen 467ms
+ ✓ src/repositories/persistence-entity-order.test.ts (1 test) 2ms
+ ✓ src/repositories/operation-catalog-executor.test.ts (2 tests) 1558ms
+   ✓ executes previously uncovered update, unset and delete catalog pairs with physical-state and immutable-input parity 807ms
+   ✓ persists create-then-bulk relationship aliases and Release upsert families with exact resolution parity 750ms
+ ✓ src/repositories/changeset-warnings.test.ts (2 tests) 664ms
+   ✓ warns when the true earlier pending operation deletes an existing external binding 381ms
+ ✓ src/operation-schema-transition.test.ts (7 tests) 1766ms
+   ✓ transitions old operations when publishing a restored current-DDL snapshot 398ms
+   ✓ refuses incompatible executable payloads before writes and requires approval of a fresh current proposal 383ms
+   ✓ rejects invalid stored operation data and exact DDL mismatches before import publication 319ms
+ ✓ src/source-document-migration.test.ts (2 tests) 956ms
+   ✓ source document migration > keeps the oldest duplicate and cascades its duplicate chunks and links before indexing 373ms
+   ✓ exports an upgraded database with the exact supported schema and retained chunk/note evidence 582ms
+ ✓ src/repositories/operation-resolution-parity.test.ts (8 tests) 2173ms
+   ✓ matches real SQLite multiple Card writes, create then edit, and deduplicated source evidence in one UnitOfWork 363ms
+   ✓ refuses stale persisted local selectors using the actual target before any ChangeSet writes 372ms
+stdout | src/repositories/operation-snapshot-scope.test.ts > materializes no additional target rows after a large foreign Project is added
+{"action":"A3","foreignCards":2503,"foreignExtraChunks":2500,"before":{"rows":67,"elapsedMs":7.995333000000301},"referenceAfter":{"rows":5112,"elapsedMs":21.810833000000002},"scopedAfter":{"rows":67,"elapsedMs":4.720249999999851}}
+
+ ✓ src/repositories/operation-snapshot-scope.test.ts (4 tests) 2235ms
+   ✓ materializes no additional target rows after a large foreign Project is added 1462ms
+(node:84516) Warning: Post-commit publication failed; database changes remain committed.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ src/live-events.test.ts (8 tests) 2265ms
+   ✓ durable committed live metadata > rolls back grouped metadata and sequence allocation when a later history write fails 313ms
+   ✓ durable committed live metadata > publishes already committed metadata even when the existing after-commit hook rejects 311ms
+   ✓ durable committed live metadata > assigns durable Activity sequences to isolated remote-link and conflict writes without duplicating caller audit 344ms
+   ✓ durable committed live metadata > resets only after successful actual restore, retains UUID history and allows durable replay/new writes in the new epoch 373ms
+ ✓ src/repositories/plan-states.test.ts (8 tests) 2278ms
+   ✓ rejects corrupt captured dependencies, duplicate Cards and foreign workflow statuses in reads and Restore validation 345ms
+   ✓ lists capture metadata without hydrating payload JSON while enforcing stored Project ownership 353ms
+   ✓ retains only the selected Project's captured states in portable archive snapshots 458ms
+   ✓ Restore returns the recorded point-in-time state set while retaining later capture audit as undone 341ms
+ ✓ src/card-dependencies.test.ts (8 tests) 2310ms
+   ✓ removes prerequisite incidents with one surviving owner history and rolls back all failures 355ms
+   ✓ copies internal endpoints, retains archived edges and validates coherent portable rows 323ms
+   ✓ refuses cross-map dependencies with valid foreign keys during Restore validation 340ms
+   ✓ refuses malformed dependency identity during Restore validation 329ms
+   ✓ restores exact owned edge rows and preserves only the scoped Project in portable snapshots 537ms
+ ✓ src/repositories/source-plan-audit.test.ts (4 tests) 2479ms
+   ✓ retains complete canonical baselines while audit evidence contains exactly the addressed entry delta 337ms
+   ✓ keeps initial publication audit entries and serialized bytes linear as the canonical baseline grows 1622ms
+   ✓ records exact changed Release evidence without rewriting excluded Cards' captured Slice names 350ms
+ ✓ src/snapshot.test.ts (8 tests) 2531ms
+   ✓ scopes to one demo Project, keeps business links and deleted Card history, and removes secret free-page bytes 684ms
+   ✓ redacts copied Map Activity identities without removing chunk/note evidence or business metadata 738ms
+   ✓ refuses an archive with inconsistent provenance 386ms
+   ✓ refuses an archive with GitHub sourceLink payload 315ms
+ ✓ src/repositories/card-history.test.ts (13 tests) 1975ms
+   ✓ bounded Card history > compares saved predecessors across pages, preserves attribution and keeps ascending internal reads 359ms
+   ✓ bounded Card history > returns bounded pages through 200 real saved versions without omissions 1348ms
+ ✓ src/activity-changes.test.ts (10 tests) 2671ms
+   ✓ uses the actual global Restore boundary for every Project, fresh browsers and stale paged reads 341ms
+   ✓ links only a genuine applied Agent snapshot (Agent proposal) and reports retention loss 467ms
+   ✓ links only a genuine applied Agent snapshot (Agent execution) and reports retention loss 503ms
+   ✓ links only a genuine applied Agent snapshot (Agent none) and reports retention loss 392ms
+   ✓ rejects impossible same-epoch snapshots and floors a persisted cursor from a previous epoch 366ms
+ ✓ src/restore-failures.test.ts (5 tests) 1959ms
+   ✓ restore publication failure boundaries > rolls back swap failure to the protected database and reopens a usable holder 712ms
+   ✓ restore publication failure boundaries > rolls back reopen failure to the protected database and reopens a usable holder 521ms
+   ✓ restore publication failure boundaries > rolls back marker failure to the protected database and reopens a usable holder 365ms
+ ✓ src/repositories/card-provenance.test.ts (15 tests) 2833ms
+   ✓ immutable creation origin and typed evidence > rejects missing/foreign evidence and blank notes without changing the Card or evidence 347ms
+   ✓ immutable creation origin and typed evidence > versions every canonical GitHub evidence owner on attach, edit, reassignment and deletion 405ms
+   ✓ immutable creation origin and typed evidence > rejects milestone-only identities and cross-Project reassignment, then versions evidence removal on Release deletion 306ms
+ ✓ src/repositories/storymapper-repository.test.ts (18 tests) 2744ms
+   ✓ StoryMapperRepository > imports source documents, links chunks to cards and updates coverage 318ms
+   ✓ StoryMapperRepository > calculates backlog health from card quality and source links 332ms
+ ✓ src/repositories/source-plan-baselines.test.ts (20 tests) 3001ms
+   ✓ retains selected Project evidence in archive snapshots and restores the exact point-in-time baseline 723ms
+   ✓ rejects unsupported or corrupt baseline evidence during reads and Restore validation 302ms
+   ✓ discovers systems from scoped identity metadata without hydrating unsupported payloads 316ms
+ ✓ src/repositories/getting-started.test.ts (31 tests) 3202ms
+   ✓ persisted getting-started checklist > tracks controlled human provenance and sticky completion independently for each Project 561ms
+   ✓ persisted getting-started checklist > keeps imported and applied proposal Cards pending even with a human proposal label 349ms
+ ✓ src/repositories/changeset-executor.test.ts (22 tests) 3192ms
+   ✓ binds actual approval and keeps reviewed operations immutable across resolved application 406ms
+   ✓ rolls domain effects back when the applied Activity fails and retains the preapply snapshot 428ms
+   ✓ only the new command creation flow can autoapply and caller receipt objects cannot bypass stored approval 410ms
+(node:84505) Warning: Post-commit publication failed; database changes remain committed.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:84505) Warning: Post-commit publication failed; database changes remain committed.
+(node:84505) Warning: Post-commit publication failed; database changes remain committed.
+ ✓ src/unit-of-work.test.ts (60 tests) 3840ms
+   ✓ actor-aware atomic Card mutations > skips archived and parked neighbors during park, retaining nested descendants 326ms
+   ✓ actor-aware atomic Card mutations > skips archived and parked neighbors during delete, retaining nested descendants 371ms
+   ✓ actor-aware atomic Card mutations > rejects unavailable active-neighbor child handling without silently unassigning 305ms
+ ✓ src/repositories/root-versions.test.ts (75 tests) 3977ms
+   ✓ editable root version ownership > increments only the owner once for 'Card archive' 344ms
+   ✓ editable root version ownership > increments only the owner once for 'Card park and unpark' 350ms
+ ✓ src/restore-project.test.ts (18 tests) 4479ms
+   ✓ recoverable human project restore > retains runtime tool-call evidence across repeated actual restores without fictional Projects 616ms
+   ✓ recoverable human project restore > restores committed WAL map state, preserves later same-ID ChangeSets and historical Project ownership, and accepts holder writes 747ms
+   ✓ recoverable human project restore > reports only newly created legacy and connector GitHub links and leaves attachment files intact 453ms
+   ✓ recoverable human project restore > preserves genuinely crashed uncheckpointed WAL commits when startup publication fails and can retry the prepared restore 1424ms
+ ✓ src/repositories/operation-executor-persistence.test.ts (22 tests) 4646ms
+   ✓ keeps Card keys monotonic after deletion and reopening 583ms
+   ✓ preserves approved copy operations and all owned copied identities 505ms
+   ✓ persists 200 selected operations on 1,000 Cards with snapshot, history and audit 2428ms
+ ✓ src/restore-points.test.ts (21 tests) 5067ms
+   ✓ complete persisted restore points > uniquely orders all four classes with the same clock and preserves metadata after reopen 337ms
+   ✓ complete persisted restore points > does not list finalized-looking files whose embedded size or timestamp contradicts the file 301ms
+   ✓ complete persisted restore points > retains the latest manual publication with pre-change contents after clock rollback and reopen 1176ms
+   ✓ complete persisted restore points > retains the latest pre-migration publication with pre-change contents after clock rollback and reopen 526ms
+   ✓ complete persisted restore points > isolates inventories and per-class retention for colocated databases 522ms
+   ✓ complete persisted restore points > finishes snapshot creation alone with 1,000 actual Cards within the 2-second tolerance 1728ms
+
+ Test Files  34 passed (34)
+      Tests  420 passed (420)
+   Start at  17:24:09
+   Duration  6.17s (transform 2.86s, setup 0ms, collect 27.13s, tests 68.03s, environment 3ms, prepare 1.97s)

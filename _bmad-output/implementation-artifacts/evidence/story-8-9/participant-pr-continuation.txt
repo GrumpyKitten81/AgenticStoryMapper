@@ -1,0 +1,21 @@
+Title: docs: correct configured release automation guidance
+
+# Pull request
+
+## Change and reason
+
+README described release/tag automation as future Story 8.8 work although the release workflow and maintainer procedure are configured. Replace that sentence with the current Runbook procedure and explicit hosted-verification limit; update README metadata/changelog and retain publication caveats. Scope: README only. Source: `.github/workflows/release.yml`, `CONTRIBUTING.md` release guidance and `docs/RUNBOOK.md#versioned-releases`. Source/baseline revision: `d93a298d8b27ffbffd19a60102a8a2e24fd674e6`; supplied draft overlays are preserved.
+
+## Validation
+
+`git diff --check`, `git diff --cached --check` and 17 README local-link/heading checks passed. Frozen install and later explicit `corepack pnpm install --offline --frozen-lockfile` passed; first installation omitted `--offline`, so no cache-only claim applies to that first command.
+
+Two original `corepack pnpm check` attempts failed at the unchanged 5000ms DB restore-test timeout. Their logs, participant report and validation-blocked PR draft remain preserved. A parent-authorized validation-environment continuation ran the complete aggregate once on the same source and staged candidate: exit 0 in 695.342s; root scripts 223 passed, 2 skipped; workspace coverage 3159 passed/all eight floors; serial audit 14 passed; accessibility 261 passed. Release verification, typecheck/build, hygiene and 138-capability check completed.
+
+Environment prerequisite: installed Node 24.17.0, Corepack 0.35.0/pnpm 9.15.4, `GIT_OPTIONAL_LOCKS=0`, and explicit task-owned `TMPDIR` read from the local diagnostic pointer. `TSX_DISABLE_CACHE` was absent. This isolated root was reused from the prior focused diagnostic; emptiness at aggregate start was not observed. This is a validation-environment correction; no source, test, deadline or floor changed and no shared cache was deleted. Source bytes, semantic staged entries, raw index and HEAD matched continuation start/end; source and staged candidate also matched the previous failed final gate. Continuation fingerprints and original→sanitized→gzip log hashes are retained separately.
+
+## Review context
+
+A separate non-author Agent found the README correction accurate with links, metadata and publication blockers preserved. The reviewer had prior read-only investigation context and suggested the same correction; no fresh-session or outside-human review is claimed. The original late-plan gap was retained and README-only replay was performed under the recorded plan with identical corrected bytes.
+
+Hosted release/CI/protection, native platform/reader behavior and publication clearance remain unverified. Commit title prepared above; no commit, push, remote PR, tag or release occurred. The original PR draft/report are preserved; this continuation draft adds the successful environment-qualified result.

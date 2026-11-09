@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-20",
+  "changes": [
+    {
+      "path": ".wolf/buglog.json",
+      "beforeSha256": "e65406d54f295b62652d94bd30a327427c9907d802a43012ed34cc1877b1174b",
+      "afterSha256": "981ea86318708c5e20b5e3b6e2f30c0c9080d675e8b37426d3dc8ad6389eb66f"
+    }
+  ],
+  "entries": [
+    "bug-083",
+    "bug-084",
+    "bug-085",
+    "bug-086",
+    "bug-087",
+    "bug-088",
+    "bug-089"
+  ],
+  "intermediateStages": [
+    {
+      "path": ".wolf/buglog.json",
+      "sha256": "e564572fd4dd4d404d7e20da5af73112b25993dd00374a79751ce5a465031482",
+      "reason": "Six resumed implementation/verification records before the additional native abort observation."
+    }
+  ]
+}

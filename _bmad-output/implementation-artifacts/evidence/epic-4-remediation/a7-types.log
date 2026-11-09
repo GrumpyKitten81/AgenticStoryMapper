@@ -1,0 +1,11 @@
+
+> @storymapper/db@0.1.0 typecheck [REDACTED_HOME]/Projects/StoryMapper/packages/db
+> tsc -p tsconfig.json --noEmit
+
+src/repositories/operation-executor-persistence.test.ts(351,5): error TS2322: Type '{ operationId: string; op: "set"; entity: "cardPersona"; after: { cardId: string; personaId: string; }; }' is not assignable to type '{ operationId: string; op: "create"; entity: "roadmap"; after: { name: string; projectId: string; type?: "simple" | "release" | "epic" | undefined; storyMapId?: string | null | undefined; }; ... 6 more ...; selector?: undefined; } | ... 58 more ... | { ...; }'.
+  Property 'entityId' is missing in type '{ operationId: string; op: "set"; entity: "cardPersona"; after: { cardId: string; personaId: string; }; }' but required in type '{ operationId: string; entityId: string; op: "set"; entity: "cardPersona"; after: { cardId: string; personaId: string; }; reason?: string | undefined; rationale?: string | undefined; baseVersion?: number | undefined; context?: { ...; } | undefined; sources?: ({ ...; } | ... 1 more ... | { ...; })[] | undefined; sele...'.
+src/repositories/operation-executor-persistence.test.ts(352,5): error TS2322: Type '{ operationId: string; op: "set"; entity: "cardAnnotation"; after: { cardId: string; annotationId: string; }; }' is not assignable to type '{ operationId: string; op: "create"; entity: "roadmap"; after: { name: string; projectId: string; type?: "simple" | "release" | "epic" | undefined; storyMapId?: string | null | undefined; }; ... 6 more ...; selector?: undefined; } | ... 58 more ... | { ...; }'.
+  Property 'entityId' is missing in type '{ operationId: string; op: "set"; entity: "cardAnnotation"; after: { cardId: string; annotationId: string; }; }' but required in type '{ operationId: string; entityId: string; op: "set"; entity: "cardAnnotation"; after: { cardId: string; annotationId: string; }; reason?: string | undefined; rationale?: string | undefined; baseVersion?: number | undefined; context?: { ...; } | undefined; sources?: ({ ...; } | ... 1 more ... | { ...; })[] | undefined...'.
+[REDACTED_HOME]/Projects/StoryMapper/packages/db:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @storymapper/db@0.1.0 typecheck: `tsc -p tsconfig.json --noEmit`
+Exit status 2
