@@ -14,7 +14,7 @@ function HistoryReview({ id }: { id: string }) {
   const state = useChangeSetReview(id);
   const preview = state.preview.data;
   return <>
-    {preview && !preview.closed ? preview.boards.map(({ snapshot }) => <Link key={snapshot.storyMap.id} className="button-link secondary" to="/projects/$projectId/story-maps/$storyMapId/tree" params={{ projectId: snapshot.storyMap.projectId, storyMapId: snapshot.storyMap.id }} search={{ preview: id }}>{changeSetStrings.board}</Link>) : null}
+    {preview && !preview.closed ? preview.boards.map(({ snapshot }) => <Link key={snapshot.storyMap.id} className="button-link secondary" to="/projects/$projectId/story-maps/$storyMapId/tree" params={{ projectId: snapshot.storyMap.projectId, storyMapId: snapshot.storyMap.id }} search={{ preview: id }}>{changeSetStrings.board(snapshot.storyMap.name)}</Link>) : null}
     <ChangeSetReview state={state} />
   </>;
 }

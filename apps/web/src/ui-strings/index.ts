@@ -447,7 +447,7 @@ export const changeSetStrings = {
   approve: "Approve selection", apply: "Apply selection", reject: "Reject ChangeSet", refresh: "Review current state", dependencies: "Requires operations",
   refreshRequired: "Incoming changes invalidate this review. Review current state and approve the selection again.",
   unarchive: "Implicitly unarchives this object.", sourcePlanEntries: "Only source plan entries changed by this operation are shown.", closed: "This board preview is closed. Review the result in Activity.", activity: "Activity", missing: "This ChangeSet is unavailable. Check Activity.",
-  board: "Preview on board", readOnly: "Read-only ChangeSet preview", close: "Close preview",
+  board: (storyMapName: string): string => `Preview on board: ${storyMapName}`, readOnly: "Read-only ChangeSet preview", close: "Close preview",
   applyFailed: (cause: string) => `Apply failed: ${cause}. Nothing was applied.`,
   applyUnknown: (cause: string) => `Apply outcome is unknown: ${cause}. Review current state before trying again.`,
   applyConfirmed: "The response was unavailable, but current ChangeSet history confirms it was applied.",

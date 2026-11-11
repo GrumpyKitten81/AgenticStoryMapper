@@ -1,4 +1,4 @@
-// @vitest-environment jsdom // REQ current executable proposals retain enabled review and apply actions
+// @vitest-environment jsdom // REQ current executable proposals retain enabled review and apply actions and name each preview board
 import { randomUUID } from "node:crypto";
 import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
@@ -22,7 +22,7 @@ it.each(["approve", "reject", "apply"] as const)("enables the current %s action 
   const changeSets = { changeSets: [changeSet] };
   client.setQueryData(["changesets", projectId], changeSets);
   client.setQueryData(["changeset-preview", changeSet.id, undefined, 0], {
-    changeSet, presentationStatus: changeSet.status, closed: false, selectedOperationIds: ["create-current-card"], conflicts: [], boards: [], canApprove: action !== "apply", canApply: action === "apply",
+    changeSet, presentationStatus: changeSet.status, closed: false, selectedOperationIds: ["create-current-card"], conflicts: [], boards: ["Map One", "Map Two"].map((name) => ({ snapshot: { storyMap: { id: randomUUID(), projectId, name } } })), canApprove: action !== "apply", canApply: action === "apply",
     operations: [{ operationId: "create-current-card", index: 0, label: "Create reviewed Story", kind: "create card", status: "changed", dependencies: [], owners: [], changes: [], operation: changeSet.operations[0] }]
   });
   const fetch = vi.fn(async (path: string, options?: RequestInit) => Response.json(options?.method === "POST" ? { changeSet } : path.startsWith("/api/changesets?") ? changeSets : path.includes("/preview") ? client.getQueryData(["changeset-preview", changeSet.id, undefined, 0]) : { tools: [] }));
@@ -33,6 +33,7 @@ it.each(["approve", "reject", "apply"] as const)("enables the current %s action 
   try {
     await act(async () => root.render(createElement(QueryClientProvider, { client }, createElement(ChangeSetHistoryReview, { id: changeSet.id, title: changeSet.title }))));
     await openAll(host);
+    expect([...host.querySelectorAll("a")].map((link) => link.textContent)).toEqual([changeSetStrings.board("Map One"), changeSetStrings.board("Map Two")]);
     const title = changeSetStrings[action];
     const button = [...host.querySelectorAll<HTMLButtonElement>(".changeset-actions button")].find((control) => control.textContent === title);
     expect(button).toBeDefined();
