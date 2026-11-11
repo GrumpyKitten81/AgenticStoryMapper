@@ -20,7 +20,7 @@ __pycache__/
 *.pyc
 CLAUDE.local.md
 AGENTS.local.md
-.claude/settings.local.json
+**/.claude/settings.local.json
 .bmad-loop/runs/
 .bmad-loop/cache/
 .bmad-loop/archive/

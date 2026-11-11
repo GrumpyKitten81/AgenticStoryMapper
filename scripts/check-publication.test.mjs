@@ -45,6 +45,23 @@ test('complete clean disposable candidate passes scan and independent check', as
   assert.equal(f.cli('--policy', f.policyPath).status, 0);
 });
 
+test('blocks Claude local settings in working tree, index and deleted history', async (t) => {
+  const f = fixture(t);
+  for (const path of ['.claude/settings.local.json', 'nested/.claude/settings.local.json']) f.write(path, JSON.stringify({ fixture: path }));
+  f.git('add', '--force', '.claude/settings.local.json', 'nested/.claude/settings.local.json');
+  const report = await f.run();
+  for (const path of ['.claude/settings.local.json', 'nested/.claude/settings.local.json']) {
+    for (const scope of ['current', 'index']) assert.ok(report.findings.some((row) => row.category === 'tracked-user-data' && row.scope === scope && row.location === digest(path)));
+  }
+  f.git('commit', '--quiet', '-m', 'Add synthetic local settings');
+  const trees = ['.claude', 'nested/.claude'].map((path) => f.git('rev-parse', `HEAD:${path}`));
+  f.git('rm', '-r', '.claude', 'nested');
+  f.git('commit', '--quiet', '-m', 'Remove synthetic local settings');
+  const historical = await f.run();
+  assert.equal(historical.verdict, 'blocked');
+  for (const tree of trees) assert.ok(historical.findings.some((row) => row.category === 'tracked-user-data' && row.scope === 'history' && row.location === tree));
+});
+
 test('policy is mandatory, strict and never echoed in sanitized failures', (t) => {
   const f = fixture(t);
   for (const value of [{ employerTerms: [] }, { employerTerms: [''] }, { employerTerms: ['value'], extra: true }, { employerTerms: ['x', 'X'] }]) assert.throws(() => parsePolicy(JSON.stringify(value)));

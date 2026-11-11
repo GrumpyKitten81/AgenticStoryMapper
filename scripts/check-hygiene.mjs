@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const englishDirectories = ['apps/web/src/', 'packages/db/src/seed/', 'packages/core/templates/'];
 const englishFiles = ['packages/db/src/repositories/storymapper-repository.ts', 'packages/core/src/default-ai-templates.ts', 'apps/server/src/http/routes/index.ts'];
-const secretSignatures = [/(?:gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{60,})/, /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/, /\bAKIA[0-9A-Z]{16}\b/, /\bxox[baprs]-[A-Za-z0-9-]{20,}\b/];
+const secretSignatures = [/(?:gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{60,})/, /-----BEGIN (?:RSA |DSA |EC |OPENSSH |ENCRYPTED )?PRIVATE KEY-----/, /\bAKIA[0-9A-Z]{16}\b/, /\bxox[baprs]-[A-Za-z0-9-]{20,}\b/];
 
 export function findViolations(source, stopWords) {
   const words = new Set(stopWords.map((word) => word.normalize('NFC').toLowerCase()));
@@ -21,7 +21,7 @@ export function findViolations(source, stopWords) {
 export function inspectTrackedFile(file, source, stopWords) {
   const diagnostics = [];
   const report = (line, category) => diagnostics.push({ file, line, category });
-  if ((/(^|\/)\.env($|\.)/.test(file) && !file.endsWith('.env.example')) || /^input\//.test(file) || /^local-projects\//.test(file) && file !== 'local-projects/.gitkeep' || /(?:\.sqlite[^/]*|\.lsm)(?:\/|$)/i.test(file)) report(1, 'tracked-user-data');
+  if (/(?:^|\/)\.claude\/settings\.local\.json$/.test(file) || (/(^|\/)\.env($|\.)/.test(file) && !file.endsWith('.env.example')) || /^input\//.test(file) || /^local-projects\//.test(file) && file !== 'local-projects/.gitkeep' || /(?:\.sqlite[^/]*|\.lsm)(?:\/|$)/i.test(file)) report(1, 'tracked-user-data');
   source.split(/\r?\n/).forEach((line, index) => { if (secretSignatures.some((pattern) => pattern.test(line))) report(index + 1, 'secret-signature'); });
   if (englishDirectories.some((directory) => file.startsWith(directory)) || englishFiles.includes(file)) {
     for (const { line } of findViolations(source, stopWords)) report(line, 'non-English-source');

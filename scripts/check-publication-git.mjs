@@ -21,7 +21,8 @@ export function decodeGitText(bytes) {
 }
 
 function sensitivePath(path) {
-  return /(?:^|\/)\.env(?:$|\.)/u.test(path) && !path.endsWith('.env.example')
+  return /(?:^|\/)\.claude\/settings\.local\.json$/u.test(path)
+    || /(?:^|\/)\.env(?:$|\.)/u.test(path) && !path.endsWith('.env.example')
     || /^(?:input|local-projects)(?:\/|$)/u.test(path) && path !== 'local-projects/.gitkeep'
     || /(?:\.sqlite[^/]*|\.lsm)(?:\/|$)/iu.test(path);
 }
