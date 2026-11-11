@@ -2,6 +2,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { panelStrings } from "@storymapper/ui-strings";
 import { api, useSourceCoverage, useSourceDocumentDetails, useSourceDocuments } from "@storymapper/web/app/api";
+import { useActiveStoryMapStore } from "@storymapper/web/app/stores/active-story-map-store";
+import { ProposeButton } from "@storymapper/web/features/proposals/ProposeButton";
+import { proposalStrings } from "@storymapper/web/ui-strings/proposals";
 
 interface SourceDocumentsPanelProps {
   projectId?: string | undefined;
@@ -46,11 +49,12 @@ function useSourceDocumentsPanelState({ projectId }: SourceDocumentsPanelProps) 
   }
 
   const documentList = documents.data?.documents ?? [];
-  return { coverage, title, setTitle, type, setType, content, setContent, submitImport, projectId, importDocument, documentList, selectedDocumentId, setSelectedDocumentId, selectedDocument };
+  const storyMapId = useActiveStoryMapStore((state) => state.lastActiveStoryMapId);
+  return { storyMapId, coverage, title, setTitle, type, setType, content, setContent, submitImport, projectId, importDocument, documentList, selectedDocumentId, setSelectedDocumentId, selectedDocument };
 }
 
 function renderSourceDocumentsPanel(model: ReturnType<typeof useSourceDocumentsPanelState>) {
-  const { coverage, title, setTitle, type, setType, content, setContent, submitImport, projectId, importDocument, documentList, selectedDocumentId, setSelectedDocumentId, selectedDocument } = model;
+  const { storyMapId, coverage, title, setTitle, type, setType, content, setContent, submitImport, projectId, importDocument, documentList, selectedDocumentId, setSelectedDocumentId, selectedDocument } = model;
   return (
     <section className="panel form-stack">
       <h2>{panelStrings.sourcesTitle}</h2>
@@ -89,6 +93,9 @@ function renderSourceDocumentsPanel(model: ReturnType<typeof useSourceDocumentsP
           </button>
         ))}
       </div>
+      {projectId && selectedDocumentId ? storyMapId
+        ? <ProposeButton projectId={projectId} label={proposalStrings.sourceMap} call={{ name: "ProposeMapFromSourceDocument", input: { projectId, storyMapId, sourceDocumentId: selectedDocumentId, mode: "gap-fill" } }} />
+        : <p>{proposalStrings.sourceMapNeedsMap}</p> : null}
       {selectedDocument.data ? (
         renderSourceDocumentDetails(model, selectedDocument.data)
       ) : null}

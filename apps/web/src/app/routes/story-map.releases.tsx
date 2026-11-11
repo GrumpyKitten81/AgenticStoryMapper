@@ -1,6 +1,8 @@
 import { FilterAncestors } from "@storymapper/web/features/story-map/components/FilterAncestors";
 import { BoardToolbar } from "@storymapper/web/features/story-map/components/BoardToolbar";
 import { useSearch } from "@tanstack/react-router";
+import { ProposeButton } from "@storymapper/web/features/proposals/ProposeButton";
+import { proposalStrings } from "@storymapper/web/ui-strings/proposals";
 import { ReleasePanel } from "@storymapper/web/features/releases/ReleasePanel";
 import { hasActiveBoardFilters } from "@storymapper/web/features/story-map/board-filters";
 import { useStoryMapBoardStateContext, usePreviewBoard, useStoryMapSnapshot } from "@storymapper/web/app/routes/story-map-shell";
@@ -14,6 +16,7 @@ export function ReleasesRoute() {
   return (
     <section className="route-panel">
       {!state.preview ? <BoardToolbar state={state} /> : null}<FilterAncestors />
+      {!state.preview ? <ProposeButton projectId={snapshot.storyMap.projectId} label={proposalStrings.releaseSlice} call={{ name: "ProposeReleaseSlice", input: { storyMapId: snapshot.storyMap.id, releaseTarget: { kind: "new" } } }} /> : null}
       <ReleasePanel releases={displayed.releases} canonicalReleases={snapshot.releases} cards={displayed.cards} matchingCardIds={hasActiveBoardFilters(state.filters) ? state.filtered.matchingCardIds : undefined} sourceLinkedCardIds={displayed.sourceLinks.map((link) => link.cardId)} githubLinkedCardIds={displayed.githubLinks.flatMap((link) => link.cardId ?? [])} storyMapId={snapshot.storyMap.id} externalRefs={displayed.externalRefs} estimationUnit={displayed.storyMap.estimationUnit} preview={Boolean(search.preview)} previewReady={Boolean(projection)} previewMarkers={projection?.markers} />
     </section>
   );
