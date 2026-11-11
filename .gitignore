@@ -28,3 +28,7 @@ AGENTS.local.md
 _bmad/render/
 # Added by code-review-graph
 .code-review-graph/
+.wolf/STATUS.md
+.wolf/buglog.json
+.wolf/cerebrum.md
+.wolf/memory.md
