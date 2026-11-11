@@ -2,12 +2,12 @@
 title: Agentic Story Mapper
 status: final
 created: 2026-09-29
-updated: 2026-11-08
+updated: 2026-11-11
 ---
 
 # PRD: Agentic Story Mapper
 
-Reproducing statement: Define Agentic Story Mapper independently of former organization-specific tooling and vendor comparisons; distinguish current product requirements from historical planning baselines while preserving requirement IDs, release scope and recorded decisions. Date: 2026-11-08. Version: 9.
+Reproducing statement: Define Agentic Story Mapper independently of former organization-specific tooling and vendor comparisons; distinguish current product requirements from historical planning baselines while preserving requirement IDs, release scope and recorded decisions. Date: 2026-11-11. Version: 10.
 *Product name: Agentic Story Mapper.*
 
 ## 0. Document Purpose
@@ -349,10 +349,11 @@ When a human and an Agent change the same object, the later save is rejected wit
 **Functional Requirements:**
 
 #### FR-17: Manage Personas, Annotations, Workflow and Templates
-The user can create, edit and delete Personas, Annotations, Workflow Statuses and Story Templates in the UI. Realizes UJ-1.
+The user can create, edit and delete Personas, Annotations and Workflow Statuses in the UI. Story Templates are authored by the user through an Agent (MCP ChangeSets, typically from Markdown template files); the UI lists them and assigns them per Story Map. Realizes UJ-1.
 
 **Consequences (testable):**
-- Every delete operation available in the API is reachable in the UI.
+- Every delete operation available in the API for Personas, Annotations and Workflow Statuses is reachable in the UI; Story Template create, update and delete are reachable through MCP as ChangeSets (ADR 0013).
+- In a Story Map's GitHub context the user assigns one Story Template per Card type; creating a Card of that type preselects the assigned template, and Agents read the assignment with the map.
 - Renaming a used Workflow Status updates the affected Cards in its effective project/map scope atomically, with Card base-version checks, history and audit. Deleting a used status requires a distinct valid replacement from that effective scope; null status is not allowed. Ambiguous same-name scope collisions are rejected before writes rather than guessed.
 - Deleting a used Persona or Annotation confirms unlinking and updates affected Card versions atomically. Deleting a Story Template never rewrites descriptions already copied into Cards.
 
@@ -537,11 +538,14 @@ The user can review a proposed ChangeSet on the board before applying it: added,
 **Functional Requirements:**
 
 #### FR-35: Product context and function templates
-The user can define a Product Context (type, purpose, key features, and optional users, platform, glossary, non-goals) and manage AI function templates (personas, goals, steps, stories, acceptance criteria, INVEST check, splitting, estimation, gap analysis) that are stored in the Project. Realizes UJ-3.
+The user can define a Product Context per Story Map (type, purpose, key features, and optional users, platform, glossary, non-goals) in the map's Agent context dialog, and AI function templates (personas, goals, steps, stories, acceptance criteria, INVEST check, splitting, estimation, gap analysis) stored in the Project are authored through an Agent. Realizes UJ-3.
 
 **Consequences (testable):**
 - Templates persist in the database and are exposed to Agents as MCP prompts.
 - Every template output appears as a ChangeSet, never as a direct write.
+- AI function template changes by an Agent are ChangeSets; the UI references the templates but does not edit them (ADR 0013).
+- The Story Map ID is visible and copyable in the map toolbar, and Setup → Agent produces a copyable Agent prompt for the chosen host.
+- Deterministic proposals (map from Source Document, backlog grooming, release slice) remain available without an Agent from Sources, Backlog and Releases.
 
 ### 4.11 Privacy, audit and export
 **Description:** The user controls outbound access, sees what happened and takes data out in useful formats. Realizes UJ-1, UJ-5.
@@ -776,6 +780,8 @@ The user sees what Agents, GitHub sync and other tabs changed since they last lo
 - Global (no inline tag) — single-user local operation, no built-in LLM provider, English UI, Windows/macOS/Linux support, non-Markdown imports outside v1.0.
 
 ## Changelog
+
+- 2026-11-11 v10: Replace the per-map AI/MCP tab with Setup → Agent; Product Context per map in the Agent context dialog; template authoring through Agents with per-map template assignment in the UI (ADR 0013). Amends FR-17 and FR-35.
 
 - 2026-11-08 v9: Remove vendor comparisons and obsolete connector descriptions from the active product definition; distinguish historical planning baselines from current operating guidance. Requirement IDs and acceptance criteria are retained.
 

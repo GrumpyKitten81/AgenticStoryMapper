@@ -15,7 +15,7 @@ companions: []
 
 # Architecture Spine — Agentic Story Mapper
 
-Reproducing statement: Record the exact frozen dependency versions after the sequential Story 8.2 upgrade wave, retaining existing architecture decisions. Date: 2026-10-20. Version: 8. Changelog: Updated the Stack to the installed and verified graph.
+Reproducing statement: Record the exact frozen dependency versions after the sequential Story 8.2 upgrade wave, retaining existing architecture decisions. Date: 2026-11-11. Version: 9. Changelog: v9 records agent-authored templates and per-map `templateAssignments` in AD-23 (ADR 0013); v8 updated the Stack to the installed and verified graph.
 
 ## Design Paradigm
 
@@ -184,7 +184,7 @@ Epic 7 target: remove `github_links` in 7.3, re-key sync/evidence to canonical r
 ### AD-23 — Proposals, templates and seed content
 - **Binds:** FR-6, FR-18, FR-35, FR-25
 - **Prevents:** proposal logic in routes, templates hard-coded in three places, a sample map built by special-case code
-- **Rule:** Deterministic proposal generators (map from source, grooming, slicing, release notes) live in `core`, moved from the server routes and `packages/ai`. Product Context and AI function templates persist in the database (`ai_function_templates` in the Customization aggregate, defaults seeded from `core`) and are exposed as MCP prompts by the MCP adapter. Story Map templates are JSON files under `packages/core/templates` in English, applied by a `createStoryMapFromTemplate` use case with a human actor; the sample map is one such template and deletes without side effects. Getting-started checklist state lives in `project_settings`.
+- **Rule:** Deterministic proposal generators (map from source, grooming, slicing, release notes) live in `core`, moved from the server routes and `packages/ai`. Product Context and AI function templates persist in the database (`ai_function_templates` in the Customization aggregate, defaults seeded from `core`) and are exposed as MCP prompts by the MCP adapter. Template authoring (Story Templates and AI function templates) happens through Agent ChangeSets, not UI forms; a Story Map carries `templateAssignments` (Card type → Story Template) set by the UI or an Agent through `set:map` (ADR 0013). Story Map templates are JSON files under `packages/core/templates` in English, applied by a `createStoryMapFromTemplate` use case with a human actor; the sample map is one such template and deletes without side effects. Getting-started checklist state lives in `project_settings`.
 
 ### AD-24 — Reports and exports
 - **Binds:** FR-37 to FR-39, FR-46

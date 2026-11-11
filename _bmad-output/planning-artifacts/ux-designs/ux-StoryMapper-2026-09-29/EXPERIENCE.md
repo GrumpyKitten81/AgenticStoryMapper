@@ -9,7 +9,7 @@ sources:
   - apps/web/src
 ---
 
-Reproducing statement: Align GitHub connection, Dry Run, import, conflict and ticket-composer behavior with accepted Epic 7 decisions D1–D6 and the current shared Dialog/scope/epoch patterns. Date: 2026-10-18. Version: 7. Changelog: Applied accepted Epic 7 decisions D1–D6 and current-code preparation boundaries; retained previous epic requirements and evidence.
+Reproducing statement: Align GitHub connection, Dry Run, import, conflict and ticket-composer behavior with accepted Epic 7 decisions D1–D6 and the current shared Dialog/scope/epoch patterns. Date: 2026-11-11. Version: 8. Changelog: v8 adds Setup → Agent, map identity and Agent context, relocated proposals and agent-authored templates (ADR 0013); v7 Applied accepted Epic 7 decisions D1–D6 and current-code preparation boundaries; retained previous epic requirements and evidence.
 
 # Agentic Story Mapper — Experience Spine
 
@@ -34,7 +34,7 @@ Navigation is a fixed left rail. Every page entry is a real link with its own UR
 | Work | Roadmaps *(Experimental)* | `/projects/:p/story-maps/:m/roadmaps` | Roadmap boards (Later tier, kept, labeled) |
 | Setup | Connections | `/projects/:p/github` | Connect GitHub, connections, Sync Health entry |
 | Setup | Personas | `/projects/:p/personas?persona=` | Personas list and detail |
-| Setup | Customize | `/projects/:p/customize` | Workflow statuses, Annotations, Templates |
+| Setup | Customize | `/projects/:p/customize` | Workflow statuses, Annotations; Templates listed read-only (authored via Agent, ADR 0013); prompt templates collapsed until Agent authoring exists |
 | Setup | Agent | `/agent` | Agent connection and instructions (host prompt, MCP checklist; global, not per map) |
 | Trust | Activity | `/projects/:p/audit` | Activity Log, ChangeSets, restore points, audit export |
 | Footer | Getting started | `/onboarding` | Checklist until dismissed, then a link only |
@@ -67,6 +67,8 @@ Tab order is Discovery, Tree, Planning, Backlog, Tracking, then a divider, Slice
 | Export | Existing View toolbars and Activity | Existing export actions; no dedicated Export route/rail entry. The export center (FR-38) stays Later (6B). |
 | Card modal | Any Card | Fields, description editor, dependencies, GitHub, sources, attachments, history |
 | Parked and Archived lists | Board toolbar | Restore parked Activities and archived Cards (Story 2.5); the baseline board area "Not assigned" holds Cards without a parent |
+| Map identity and Agent context | Map toolbar | Copyable Story Map ID and an **Agent context** dialog (Product Context: core fields visible, others collapsed) |
+| Proposals | Sources, Backlog, Releases | One button each (map from document, grooming, next release slice) producing a ChangeSet reviewed in Activity with **Preview on board** |
 
 ## Voice and Tone
 
