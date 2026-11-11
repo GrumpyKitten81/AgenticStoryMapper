@@ -4,9 +4,12 @@ import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { expect, it, vi } from "vitest";
-import { changeSetSchema, productContextSchema } from "@storymapper/contracts";
+import { changeSetSchema } from "@storymapper/contracts";
 import { changeSetStrings } from "@storymapper/ui-strings";
-import { AiMcpPanel } from "@storymapper/web/features/ai-mcp/AiMcpPanel";
+import { ChangeSetHistoryReview } from "@storymapper/web/features/changesets/ChangeSetHistoryReview";
+import { openAll } from "@storymapper/web/features/changesets/history-test-helpers";
+
+vi.mock("@tanstack/react-router", () => ({ Link: ({ children }: { children: unknown }) => createElement("a", null, children as string) }));
 
 it.each(["approve", "reject", "apply"] as const)("enables the current %s action and sends its HTTP request", async (action) => {
   vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
@@ -18,11 +21,6 @@ it.each(["approve", "reject", "apply"] as const)("enables the current %s action 
   const client = new QueryClient({ defaultOptions: { queries: { staleTime: Infinity, retry: false } } });
   const changeSets = { changeSets: [changeSet] };
   client.setQueryData(["changesets", projectId], changeSets);
-  client.setQueryData(["mcp-tools", projectId], { tools: [] });
-  client.setQueryData(["mcp-host-configs"], {});
-  client.setQueryData(["source-documents", projectId], { documents: [] });
-  client.setQueryData(["product-context", projectId, undefined], { context: productContextSchema.parse({ id: randomUUID(), projectId, storyMapId: null, createdAt: "2026-10-04T12:00:00.000Z", updatedAt: "2026-10-04T12:00:00.000Z" }) });
-  client.setQueryData(["ai-function-templates", projectId], { templates: [] });
   client.setQueryData(["changeset-preview", changeSet.id, undefined, 0], {
     changeSet, presentationStatus: changeSet.status, closed: false, selectedOperationIds: ["create-current-card"], conflicts: [], boards: [], canApprove: action !== "apply", canApply: action === "apply",
     operations: [{ operationId: "create-current-card", index: 0, label: "Create reviewed Story", kind: "create card", status: "changed", dependencies: [], owners: [], changes: [], operation: changeSet.operations[0] }]
@@ -33,7 +31,8 @@ it.each(["approve", "reject", "apply"] as const)("enables the current %s action 
   document.body.append(host);
   const root = createRoot(host);
   try {
-    await act(async () => root.render(createElement(QueryClientProvider, { client }, createElement(AiMcpPanel, { projectId, cards: [], releases: [] }))));
+    await act(async () => root.render(createElement(QueryClientProvider, { client }, createElement(ChangeSetHistoryReview, { id: changeSet.id, title: changeSet.title }))));
+    await openAll(host);
     const title = changeSetStrings[action];
     const button = [...host.querySelectorAll<HTMLButtonElement>(".changeset-actions button")].find((control) => control.textContent === title);
     expect(button).toBeDefined();

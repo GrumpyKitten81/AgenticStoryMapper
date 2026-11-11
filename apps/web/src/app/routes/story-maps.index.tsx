@@ -120,7 +120,7 @@ function ProjectDetails({ project, projectId }: StoryMapsIndexState) {
             <span className="project-panel-label">{strings.project}</span>
             <h2 id="active-project-heading">{project?.name ?? strings.loadingProject}</h2>
           </div>
-          <Link className="button-link secondary" to="/agent-setup">{strings.agentSetup}</Link>
+          <Link className="button-link secondary" to="/agent">{strings.agent}</Link>
         </div>
         <p>{strings.projectRole}</p>
         <details className="disclosure">

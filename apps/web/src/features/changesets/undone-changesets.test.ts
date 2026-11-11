@@ -4,9 +4,12 @@ import { act, createElement } from "react";
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { expect, it, vi } from "vitest";
-import { OPERATIONS_SCHEMA_VERSION, productContextSchema, type StoredChangeSet } from "@storymapper/contracts";
+import { OPERATIONS_SCHEMA_VERSION, type StoredChangeSet } from "@storymapper/contracts";
 import { changeSetStrings } from "@storymapper/ui-strings";
-import { AiMcpPanel } from "@storymapper/web/features/ai-mcp/AiMcpPanel";
+import { ChangeSetHistoryReview } from "@storymapper/web/features/changesets/ChangeSetHistoryReview";
+import { openAll } from "@storymapper/web/features/changesets/history-test-helpers";
+
+vi.mock("@tanstack/react-router", () => ({ Link: ({ children }: { children: unknown }) => createElement("a", null, children as string) }));
 
 it("renders raw historical and stale ChangeSets and disables incompatible and restore-undone mutation controls", async () => {
   vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
@@ -29,10 +32,10 @@ it("renders raw historical and stale ChangeSets and disables incompatible and re
   document.body.append(host);
   const root = createRoot(host);
   try {
-    await act(async () => root.render(createElement(QueryClientProvider, { client },
-      createElement(AiMcpPanel, { projectId, cards: [], releases: [] }))));
-    const items = [...host.querySelectorAll(".changeset-item")];
-    expect(items).toHaveLength(6);
+    await act(async () => root.render(createElement(QueryClientProvider, { client }, changeSets.map((changeSet) => createElement(ChangeSetHistoryReview, { key: changeSet.id, id: changeSet.id, title: changeSet.title })))));
+    await openAll(host);
+    const items = [...host.querySelectorAll(".changeset-history-entry")];
+    expect(items).toHaveLength(changeSets.length);
     expect(host.textContent).toContain(changeSetStrings.statuses.discarded);
     expect(host.textContent).toContain("Undone by restore");
     expect(host.querySelectorAll(".changeset-actions button")).toHaveLength(0);
@@ -52,15 +55,6 @@ it("renders raw historical and stale ChangeSets and disables incompatible and re
 
 function exerciseRendersRawHistoricalAndStaleChangeSetsAndDisablesIncompatible(client: QueryClient, projectId: string, changeSets: StoredChangeSet[]) {
   client.setQueryData(["changesets", projectId], { changeSets });
-  client.setQueryData(["mcp-tools", projectId], { tools: [] });
-  client.setQueryData(["mcp-host-configs"], {});
-  client.setQueryData(["source-documents", projectId], { documents: [] });
-  client.setQueryData(["product-context", projectId, undefined], {
-    context: productContextSchema.parse({
-      id: randomUUID(), projectId, storyMapId: null, createdAt: "2026-10-04T12:00:00.000Z", updatedAt: "2026-10-04T12:00:00.000Z"
-    })
-  });
-  client.setQueryData(["ai-function-templates", projectId], { templates: [] });
   for (const changeSet of changeSets) client.setQueryData(["changeset-preview", changeSet.id, undefined, 0], {
     changeSet, presentationStatus: changeSet.undoneByRestore ? "discarded" : changeSet.operationsSchemaVersion !== OPERATIONS_SCHEMA_VERSION && changeSet.status !== "applied" ? "stale" : changeSet.status,
     explanation: changeSet.undoneByRestore ? "Undone by restore" : changeSet.status === "stale" ? "Submit a new proposal" : undefined,

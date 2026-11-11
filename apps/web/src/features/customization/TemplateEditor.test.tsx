@@ -8,7 +8,7 @@ import { aiFunctionTemplateSchema, type AiFunctionTemplate } from "@storymapper/
 import { defaultAiFunctionTemplates } from "@storymapper/core";
 import { panelStrings } from "@storymapper/ui-strings";
 import { api, useAiFunctionTemplates } from "@storymapper/web/app/api";
-import { TemplateEditor } from "@storymapper/web/features/ai-mcp/TemplateEditor";
+import { TemplateEditor } from "@storymapper/web/features/customization/TemplateEditor";
 
 const features = vi.hoisted(() => ({ personas: true }));
 vi.mock("@storymapper/web/app/feature-flags", async (original) => ({

@@ -15,7 +15,7 @@ import { TrackingRoute } from "./routes/story-map.tracking";
 import { TimelineRoute } from "./routes/story-map.timeline";
 import { ReleasesRoute } from "./routes/story-map.releases";
 import { RoadmapsRoute } from "./routes/story-map.roadmaps";
-import { AiMcpRoute } from "./routes/story-map.ai-mcp";
+import { AgentRoute } from "@storymapper/web/app/routes/agent";
 import { GitHubRoute } from "./routes/story-map.github";
 import { GitHubConnectionsRoute } from "./routes/github";
 import { SourcesRoute } from "./routes/sources";
@@ -23,7 +23,6 @@ import { CustomizeRoute } from "./routes/customize";
 import { PersonasRoute } from "./routes/personas";
 import { AuditRoute } from "./routes/audit";
 import { OnboardingRoute } from "./routes/onboarding";
-import { AgentSetupRoute } from "@storymapper/web/app/routes/agent-setup";
 
 const rootRoute = createRootRoute({ component: RootLayout });
 
@@ -39,7 +38,9 @@ const onboardingRoute = createRoute({
   component: OnboardingRoute
 });
 
-const agentSetupRoute = createRoute({ getParentRoute: () => rootRoute, path: "/agent-setup", component: AgentSetupRoute });
+const redirectToAgent = () => { throw redirect({ to: "/agent", replace: true }); };
+const agentRoute = createRoute({ getParentRoute: () => rootRoute, path: "/agent", component: AgentRoute });
+const agentSetupRoute = createRoute({ getParentRoute: () => rootRoute, path: "/agent-setup", beforeLoad: redirectToAgent });
 
 const storyMapsIndexRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -91,7 +92,7 @@ function auxiliaryMapViewRoute(path: "releases" | "roadmaps", component: RouteCo
 
 const releasesRoute = auxiliaryMapViewRoute("releases", ReleasesRoute, () => isReleasesViewEnabled);
 const roadmapsRoute = auxiliaryMapViewRoute("roadmaps", RoadmapsRoute, () => isRoadmapsViewEnabled);
-const aiMcpRoute = createRoute({ getParentRoute: () => storyMapShellRoute, path: "ai-mcp", component: AiMcpRoute });
+const aiMcpRoute = createRoute({ getParentRoute: () => storyMapShellRoute, path: "ai-mcp", beforeLoad: redirectToAgent });
 const githubRoute = storyMapViewRoute("github", GitHubRoute);
 
 const sourcesRoute = createRoute({
@@ -134,6 +135,7 @@ const auditRoute = createRoute({
 const routeTree = rootRoute.addChildren([
   indexRoute,
   onboardingRoute,
+  agentRoute,
   agentSetupRoute,
   storyMapsIndexRoute,
   storyMapShellRoute.addChildren([

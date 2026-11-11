@@ -1,6 +1,6 @@
 import type { AiFunctionTemplate } from "@storymapper/contracts";
 import { panelStrings } from "@storymapper/ui-strings";
-import { useTemplateEditor } from "@storymapper/web/features/ai-mcp/useTemplateEditor";
+import { useTemplateEditor } from "@storymapper/web/features/customization/useTemplateEditor";
 import { isPersonasEnabled } from "@storymapper/web/app/feature-flags";
 
 export function TemplateEditor({ projectId, templates }: { projectId: string; templates: AiFunctionTemplate[] }) {

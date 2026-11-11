@@ -28,7 +28,7 @@ Run node scripts/setup.mjs for first setup, or node scripts/start.mjs if
 setup is already complete. Keep the launcher running in a persistent local
 terminal, wait for health, and give me the actual printed browser URL.
 Before planning or creating a map, get the generated MCP host configuration
-from the printed URL at /api/mcp/host-configs or Setup → Agent setup.
+from the printed URL at /api/mcp/host-configs or Setup → Agent.
 Register its exact command and args in this host as storymapper, preserving
 other servers and respecting host permissions. Reconnect if needed, then
 actually call ListProjects and ListStoryMaps through this host’s MCP tools.
@@ -63,7 +63,7 @@ Prerequisites: Git, installed Node 24 (`>=24 <25`), Corepack on `PATH`, and a de
 
 ### Your first map
 
-The overview shows your **Project**, the local container for its Story Maps and shared settings. For the guided route, first complete [Connect Codex or Claude Code](docs/RUNBOOK.md#connect-codex-or-claude-code): **Setup → Agent setup** works before a map exists. Once the host’s MCP queries succeed, tell the Agent what you want to map. It works through MCP and the existing ChangeSet/approval controls.
+The overview shows your **Project**, the local container for its Story Maps and shared settings. For the guided route, first complete [Connect Codex or Claude Code](docs/RUNBOOK.md#connect-codex-or-claude-code): **Setup → Agent** works before a map exists. Once the host’s MCP queries succeed, tell the Agent what you want to map. It works through MCP and the existing ChangeSet/approval controls.
 
 For browser-only use, enter a map name and choose **Create a Story Map**. Use **Story Map help** in its toolbar: start with an Activity, add a Step beneath it and a Story beneath that. Use your own planning content. Cards save automatically; return to the same Project and map next time. GitHub is optional and starts off.
 

@@ -32,7 +32,7 @@ vi.mock("@storymapper/web/app/api", async (importOriginal) => {
   const actual = await importOriginal<typeof import("@storymapper/web/app/api")>();
   return {
     api: actual.api, useCustomization: actual.useCustomization, useWorkItemSyncHealth: actual.useWorkItemSyncHealth, useConnectorConnections: actual.useConnectorConnections,
-    useStoryMaps: actual.useStoryMaps, useStoryMap: actual.useStoryMap, useMcpHostConfigs: actual.useMcpHostConfigs,
+    useStoryMaps: actual.useStoryMaps, useStoryMap: actual.useStoryMap, useMcpHostConfigs: actual.useMcpHostConfigs, useAiFunctionTemplates: actual.useAiFunctionTemplates, useProductContext: actual.useProductContext,
     useApiHealth: () => ({}),
     useProjects: () => ({ data: { projects: [{ id: "project", name: "Project" }, { id: "other", name: "Other" }] } }),
     useSafetySettings: () => ({ data: { settings: { agentMode: "apply", github: false } } })
@@ -124,7 +124,7 @@ afterEach(async () => { await act(async () => root?.unmount()); client?.clear();
 it("exposes real ordered navigation, active anchors, landmarks, titles and exports without flags", async () => {
   await mount(`${base}/discovery`);
   structure("Discovery"); expect(document.title).toBe("Discovery - Map One - Agentic Story Mapper");
-  expect(links("Main").map((link) => link.textContent)).toEqual(["Story Maps", "Sources", "Releases", "RoadmapsExperimental", "Agent setup", "Connections", "Personas", "Customize", "AI / MCP", "Activity", "Onboarding"]);
+  expect(links("Main").map((link) => link.textContent)).toEqual(["Story Maps", "Sources", "Releases", "RoadmapsExperimental", "Agent", "Connections", "Personas", "Customize", "Activity", "Onboarding"]);
   expect(links("Views").map((link) => link.textContent)).toEqual(["Discovery", "Tree", "Planning", "Backlog", "Tracking", "Slices", "Graph", "TimelineExperimental", "GitHub Sync"]);
   expect(links("Views")[0]!.className).toBe("active");
   expect([...document.querySelectorAll("button")].some((button) => button.textContent === "Export")).toBe(true);
@@ -139,7 +139,7 @@ it("exposes real ordered navigation, active anchors, landmarks, titles and expor
 
 it("loads every Main page and keeps Views available on map auxiliary pages", async () => {
   await mount(`${base}/discovery`);
-  for (const name of ["Releases", "RoadmapsExperimental", "AI / MCP", "Agent setup", "Connections", "Personas", "Customize", "Sources", "Activity", "Onboarding"]) {
+  for (const name of ["Releases", "RoadmapsExperimental", "Agent", "Connections", "Personas", "Customize", "Sources", "Activity", "Onboarding"]) {
     const link = links("Main").find((entry) => entry.textContent === name)!;
     expect(link.getAttribute("href")).toBeTruthy();
     await act(async () => link.click());
@@ -149,14 +149,13 @@ it("loads every Main page and keeps Views available on map auxiliary pages", asy
   }
 });
 
-it("opens working Agent setup with zero maps through its global route and Setup navigation", async () => {
+it("opens working Agent page with zero maps through its global route and Setup navigation", async () => {
   state.maps = [];
   useActiveStoryMapStore.getState().setActiveStoryMap({ projectId: "project", storyMapId: undefined });
-  await mount("/agent-setup");
-  structure("Agent setup");
-  expect(links("Main").find((link) => link.textContent === "Agent setup")?.getAttribute("href")).toBe("/agent-setup");
-  expect(document.querySelectorAll(".mcp-config-panel code")).toHaveLength(4);
-  expect(document.querySelector(".mcp-config-panel")?.textContent).toContain("connect your coding host through MCP before map work");
+  await mount("/agent");
+  structure("Agent");
+  expect(links("Main").find((link) => link.textContent === "Agent")?.getAttribute("href")).toBe("/agent");
+  expect(document.querySelector(".agent-guide-panel")?.textContent).toContain("connect your coding host through MCP before map work");
   expect(document.querySelector(".safety-switch-strip button")).not.toBeNull();
   expect(state.requests.some(({ path }) => path === "/api/mcp/host-configs")).toBe(true);
   expect(state.requests.some(({ path }) => path.startsWith("/api/story-maps/"))).toBe(false);

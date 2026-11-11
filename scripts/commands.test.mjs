@@ -37,7 +37,7 @@ test('setup installs, builds and launches the healthy app without config, and re
       const result = await closedWithin(owned);
       assert.equal(result.code, 0, result.output);
       assert.match(result.output, /Setup completed.*Ctrl\+C/);
-      assert.ok(result.output.includes(`Agent setup (required for guided planning): ${origin}/agent-setup`));
+      assert.ok(result.output.includes(`Agent (required for guided planning): ${origin}/agent`));
       await portClosed(origin);
       assert.ok(existsSync(join(f.root, 'apps/web/dist/index.html')));
       assert.ok(existsSync(join(f.root, 'local-projects/default.lsm')));
@@ -122,7 +122,7 @@ test('start serves actual app/API on its owned URL and only opens the browser af
       const result = await closedWithin(owned);
       assert.equal(result.code, 0, result.output);
       assert.match(result.output, new RegExp(`Agentic Story Mapper is ready at ${origin}`));
-      assert.ok(result.output.includes(`Agent setup (required for guided planning): ${origin}/agent-setup`));
+      assert.ok(result.output.includes(`Agent (required for guided planning): ${origin}/agent`));
       await portClosed(origin);
     });
   }

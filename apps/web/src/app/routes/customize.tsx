@@ -1,6 +1,7 @@
 import { appStrings as strings } from "@storymapper/ui-strings";
 import { useParams } from "@tanstack/react-router";
 import { CustomizationPanel } from "@storymapper/web/features/customization/CustomizationPanel";
+import { AgentPromptTemplates } from "@storymapper/web/features/customization/AgentPromptTemplates";
 import { useWorkspaceScope } from "@storymapper/web/app/routes/use-workspace-scope";
 
 export function CustomizeRoute() {
@@ -12,6 +13,7 @@ export function CustomizeRoute() {
     <section className="route-panel">
       {scope.error ? <p role="alert">{scope.error.message}</p> : null}
       <CustomizationPanel key={projectId} projectId={projectId} storyMapId={scope.storyMapId} />
+      <AgentPromptTemplates key={`prompts-${projectId}`} projectId={projectId} />
     </section>
   );
 }

@@ -35,7 +35,7 @@ Navigation is a fixed left rail. Every page entry is a real link with its own UR
 | Setup | Connections | `/projects/:p/github` | Connect GitHub, connections, Sync Health entry |
 | Setup | Personas | `/projects/:p/personas?persona=` | Personas list and detail |
 | Setup | Customize | `/projects/:p/customize` | Workflow statuses, Annotations, Templates |
-| Setup | AI / MCP | `/projects/:p/story-maps/:m/ai-mcp` | MCP host setup, Product Context, proposals from sources |
+| Setup | Agent | `/agent` | Agent connection and instructions (host prompt, MCP checklist; global, not per map) |
 | Trust | Activity | `/projects/:p/audit` | Activity Log, ChangeSets, restore points, audit export |
 | Footer | Getting started | `/onboarding` | Checklist until dismissed, then a link only |
 

@@ -119,7 +119,7 @@ export async function launch({ pnpm, env, debug = false }, signal) {
     await waitForHealth(url, owned, signal);
     signal.throwIfAborted();
     console.log(`Agentic Story Mapper is ready at ${url}`);
-    console.log(`Agent setup (required for guided planning): ${new URL('/agent-setup', url).href}`);
+    console.log(`Agent (required for guided planning): ${new URL('/agent', url).href}`);
     console.log('Keep this terminal open. Press Ctrl+C to stop Agentic Story Mapper.');
     const browser = new AbortController();
     owned.closed.then((result) => browser.abort(result.error ?? new Error(`Server stopped during browser opening with ${result.signal ?? `exit code ${result.code}`}.`)));

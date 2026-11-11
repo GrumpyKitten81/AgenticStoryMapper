@@ -72,7 +72,7 @@ it("presents the Project before its owned maps and keeps the checklist secondary
   const markup = render(createElement(StoryMapsIndexRoute), client);
   expect(markup.indexOf("Create a Story Map")).toBeLessThan(markup.indexOf("Getting started"));
   expect(markup.indexOf('id="active-project-heading"')).toBeLessThan(markup.indexOf('id="owned-story-maps-heading"'));
-  expect(markup).toContain('href="/agent-setup"');
+  expect(markup).toContain('href="/agent"');
   expect(markup).toContain('local container for its Story Maps');
   expect(markup).toContain('<summary>Project storage and archive</summary>');
   expect(markup.match(/aria-label="Delete sample Story Map"/g)).toHaveLength(1);

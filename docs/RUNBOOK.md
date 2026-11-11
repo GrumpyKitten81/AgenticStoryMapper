@@ -151,7 +151,7 @@ Remote writes and their local outcome records are separate effects. Local Restor
 
 The running app serves MCP (Model Context Protocol) at `/mcp` over Streamable HTTP with `Mcp-Session-Id` sessions. Start the app first. For a stdio host, use Node 24 and `scripts/mcp-bridge.mjs` with the **absolute initial runtime directory** as its only argument. The bridge reads that directory's `.port`, validates the owning runtime and forwards to the app; it opens no SQLite database.
 
-MCP is the Agent’s interface to Agentic Story Mapper’s application data and shared database runtime. Establish it before agent-guided planning; browser-only use needs no MCP. Open **Setup → Agent setup**, the Project overview's **Agent setup** link, or `/agent-setup` at the launcher's printed actual URL. This entry works before any map exists. The launcher prints its direct URL after health succeeds.
+MCP is the Agent’s interface to Agentic Story Mapper’s application data and shared database runtime. Establish it before agent-guided planning; browser-only use needs no MCP. Open **Setup → Agent**, the Project overview's **Agent** link, or `/agent` at the launcher's printed actual URL. This entry works before any map exists. The launcher prints its direct URL after health succeeds.
 
 1. Install your own MCP-compatible host, such as Codex, Claude Code, Claude Desktop, Cursor or VS Code, and complete that host's provider configuration or sign-in. Agentic Story Mapper requires no provider account for local planning, installs no host and performs no host login.
 2. Keep Agentic Story Mapper running and copy the generated configuration matching your host into its MCP settings. The values include the actual absolute Node executable, bridge path and stable initial runtime directory; preserve that directory even after switching Projects through an archive.
@@ -166,9 +166,9 @@ After a hard stop, discovery may remain. Confirm there is **no live Agentic Stor
 
 ### Connect Codex or Claude Code
 
-Keep Agentic Story Mapper running. The Agent can read the bootstrap configuration at the actual printed URL’s `/api/mcp/host-configs`, or you can open **Setup → Agent setup** and copy **Development command**. Use its generated `command` (the installed Node executable) and `args` (the bridge path followed by the initial runtime directory) intact. This bootstrap HTTP read prepares MCP; domain reads and changes then go through MCP, not direct database or HTTP access.
+Keep Agentic Story Mapper running. The Agent can read the bootstrap configuration at the actual printed URL’s `/api/mcp/host-configs`, or you can open **Setup → Agent**, choose your host, and copy the **Agent prompt** or one-line MCP registration. Use its generated `command` (the installed Node executable) and `args` (the bridge path followed by the initial runtime directory) intact. This bootstrap HTTP read prepares MCP; domain reads and changes then go through MCP, not direct database or HTTP access.
 
-In your coding Agent, paste that JSON with this request:
+The copied **Agent prompt** already contains the registration and checks. To do it manually, paste the registration with this request:
 
 ```text
 Connect this running Agentic Story Mapper to my host as an MCP server named storymapper.
@@ -185,7 +185,7 @@ For CLI setup, [Codex MCP](https://developers.openai.com/codex/mcp/) uses `codex
 
 Reconnect or restart the host as it requires. If new tools are unavailable in the current session, resume in the reconnected host before continuing. Saved settings, successful copying and direct HTTP registry calls do not establish a host connection: successful `ListProjects` and `ListStoryMaps` calls through that host do. Repeat these read-only checks after restarting Agentic Story Mapper or reconnecting the host.
 
-Once connected, the Agent asks what you want to map. With the user’s request and an allowed Agent mode, it can create the empty map through the existing audited `CreateStoryMap` command, then propose Activity → Step → Story content with `apply=false`. Review content proposals in that map’s **AI / MCP** view before approval and Apply. If protection requires a human to create the empty map, use **Create a Story Map** in the browser, then have the Agent read it through MCP before continuing. `CreateProject` and safety changes remain human-only; never bypass a refusal. Browser-only editing remains available throughout.
+Once connected, the Agent asks what you want to map. With the user’s request and an allowed Agent mode, it can create the empty map through the existing audited `CreateStoryMap` command, then propose Activity → Step → Story content with `apply=false`. Review content proposals in **Trust → Activity** (with **Preview on board**) before approval and Apply. Maintain a map's **Agent context** (Product Context) and copy its **Story Map ID** from the map toolbar; deterministic proposals are also available as buttons in Sources, Backlog and Releases. If protection requires a human to create the empty map, use **Create a Story Map** in the browser, then have the Agent read it through MCP before continuing. `CreateProject` and safety changes remain human-only; never bypass a refusal. Browser-only editing remains available throughout.
 
 ## Portable Project archives
 

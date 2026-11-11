@@ -2,7 +2,7 @@ import { visibleCards } from "@storymapper/core";
 import { Link, Outlet, useLocation, useSearch } from "@tanstack/react-router";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useRef, useState } from "react";
-import { Activity, AlertTriangle, ArrowLeft, Bot, Compass, FileText, GitBranch, LayoutDashboard, Map, MapPinned, Info, PanelTop, Pause, Pencil, ShieldCheck, SlidersHorizontal, Users } from "lucide-react";
+import { AlertTriangle, ArrowLeft, Bot, Compass, FileText, GitBranch, LayoutDashboard, Map, MapPinned, Info, PanelTop, Pause, Pencil, ShieldCheck, SlidersHorizontal, Users } from "lucide-react";
 import { appStrings as strings, liveUpdateStrings } from "@storymapper/ui-strings";
 import { useLiveUpdates } from "@storymapper/web/app/live/useLiveUpdates";
 import { useLiveInteractionStore } from "@storymapper/web/app/live/live-interaction-store";
@@ -146,7 +146,7 @@ function renderWorkspaceNavigation(model: ReturnType<typeof useRootLayoutState>)
       {isRoadmapsViewEnabled && storyMapParams ? <Link to="/projects/$projectId/story-maps/$storyMapId/roadmaps" params={storyMapParams} activeProps={{ className: "active" }}>
         <MapPinned size={18} />{strings.roadmaps}<span className="experimental-label">{strings.experimental}</span></Link> : null}
       <h2 className="navigation-group">{strings.setup}</h2>
-      <Link to="/agent-setup" activeProps={{ className: "active" }}><Bot size={18} />{strings.agentSetup}</Link>
+      <Link to="/agent" activeProps={{ className: "active" }}><Bot size={18} />{strings.agent}</Link>
       {projectParams ? isActiveStoryMapRoute && storyMapParams ? (
         <Link to="/projects/$projectId/github" params={projectParams} search={{ storyMapId: storyMapParams.storyMapId }} activeProps={{ className: "active" }}>
           <GitBranch size={18} />{strings.connections}</Link>
@@ -158,8 +158,6 @@ function renderWorkspaceNavigation(model: ReturnType<typeof useRootLayoutState>)
         <Users size={18} />{strings.personas}</Link> : null}
       {projectParams ? <Link to="/projects/$projectId/customize" params={projectParams} activeProps={{ className: "active" }}>
         <SlidersHorizontal size={18} />{strings.customize}</Link> : null}
-      {storyMapParams ? <Link to="/projects/$projectId/story-maps/$storyMapId/ai-mcp" params={storyMapParams} activeProps={{ className: "active" }}>
-        <Activity size={18} />{strings.aiMcp}</Link> : null}
       <h2 className="navigation-group">{strings.trust}</h2>
       {projectParams ? <Link to="/projects/$projectId/audit" params={projectParams} activeProps={{ className: "active" }}>
         <ShieldCheck size={18} />{strings.activity}</Link> : null}
