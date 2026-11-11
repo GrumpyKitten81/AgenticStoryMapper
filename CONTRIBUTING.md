@@ -1,12 +1,12 @@
 # Contributing to Agentic Story Mapper
 
-Date: 2026-11-08. Version: 10.
+Date: 2026-11-11. Version: 11.
 
 Reproducing statement: Give outside contributors accurate local setup, validation, scope, review and licensing guidance using the repository's actual commands and architecture, including maintainer-controlled versioned releases and protected Project upgrades, without requiring AI tooling or claiming publication clearance.
 
 ## Before changing code
 
-Read [AGENTS.md](AGENTS.md) and the applicable `.cursor/rules/*.mdc` files, then the [Architecture spine](_bmad-output/planning-artifacts/architecture/architecture-StoryMapper-2026-09-29/ARCHITECTURE-SPINE.md). Follow the [Conduct](CODE_OF_CONDUCT.md) policy. Send security concerns through the [Security](SECURITY.md) process; public issues must contain only sanitized, non-sensitive information.
+Read [AGENTS.md](AGENTS.md) and the applicable `.cursor/rules/*.mdc` files, then the [Architecture spine](_bmad-output/planning-artifacts/architecture/architecture-StoryMapper-2026-09-29/ARCHITECTURE-SPINE.md). Follow the [Conduct](CODE_OF_CONDUCT.md) policy. Send security concerns through the [Security](SECURITY.md) process; issues must contain only sanitized, non-sensitive information.
 
 Check existing issues before proposing work. Describe the problem, intended outcome, bounded acceptance criteria and scope before a substantial implementation. Discuss architecture changes, dependencies and changes to data or external effects with maintainers first. Keep each pull request focused and explain any remaining uncertainty.
 
@@ -16,7 +16,7 @@ Manual contributions are welcome. No AI subscription, agent installation or paid
 
 ## Report a problem or request work
 
-Use the [issue chooser](https://github.com/GrumpyKitten81/StoryMapper/issues/new/choose): report a bug, suggest an improvement, or plan a task. A bug needs the observed problem, steps to reproduce it and expected behavior. An improvement needs your goal and the change that would help. A task needs the intended change and a completion check. Other context is optional; you do not need to know our internal planning process.
+Use the [issue chooser](https://github.com/GrumpyKitten81/AgenticStoryMapper/issues/new/choose): report a bug, suggest an improvement, or plan a task. A bug needs the observed problem, steps to reproduce it and expected behavior. An improvement needs your goal and the change that would help. A task needs the intended change and a completion check. Other context is optional; you do not need to know our internal planning process.
 
 For a manually written report, use the matching [bug](docs/templates/bug-ticket-template.md), [improvement](docs/templates/improvement-template.md) or [task](docs/templates/task-template.md) structure. Review logs and screenshots before sharing; vulnerability details belong in the [Security](SECURITY.md) process.
 
@@ -96,9 +96,11 @@ Project upgrades use the existing protected forward-migration boundary. Preserve
 
 Agentic Story Mapper uses the [MIT license](LICENSE). Contributions must be yours to submit and compatible with that license. Preserve third-party copyright, license text, attribution, notices and any applicable source or modification-disclosure conditions; the root MIT license does not replace upstream licenses. `corepack pnpm check-licenses` checks resolved installed dependency metadata against the existing [Policy](scripts/license-policy.mjs); passing it does not remove those obligations.
 
-Publication remains blocked until `[COPYRIGHT_HOLDER]` in `LICENSE`, `[PRIVATE_SECURITY_CONTACT]` in `SECURITY.md` and `[CONDUCT_CONTACT]` in `CODE_OF_CONDUCT.md` are supplied and the private channels verified. The existing content/history and exact-candidate checks remain required. Native/platform coverage follows the accepted limits above. This contribution guide does not certify them as complete.
+Repository use does not require a version tag, GitHub release, private reporting contact or Actions secret. Security and conduct concerns use sanitized GitHub Issues under the linked policies. Changing repository visibility requires a separate maintainer decision and review of the actual contents and rights. Optional tagged releases retain the existing content/history, exact-candidate and dependency-audit safeguards; their `PUBLICATION_POLICY` Actions secret is not application configuration. Native/platform coverage follows the accepted limits above.
 
 ## Changelog
+
+- 2026-11-11 v11: Update repository links, adopt GitHub reporting and separate repository readiness from optional tagged releases.
 
 - 2026-11-08 v10: Remove obsolete three-OS check names and blanket native-acceptance prerequisites; align release guidance with the accepted Linux CI policy.
 

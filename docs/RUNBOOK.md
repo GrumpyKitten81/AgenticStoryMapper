@@ -1,6 +1,6 @@
 # Agentic Story Mapper Runbook
 
-Date: 2026-11-08. Document version: 0.4.12.
+Date: 2026-11-11. Document version: 0.4.13.
 
 Reproducing statement: Provide English, source-verified installation, Codex/Claude Code guided startup with verified MCP before planning, browser-only startup, configuration, diagnostics, credentials, Agent controls, GitHub operations, archive/Restore and migration recovery, with a bounded Linux CI gate, local verification and honest platform coverage limits.
 
@@ -271,7 +271,7 @@ The verifier checks Git hygiene, `.env` ignore/history, tracked sensitive paths,
 
 Record native setup/start/health/browser/stop separately per OS. [Story 8.6 evidence](../_bmad-output/implementation-artifacts/evidence/story-8-6/) distinguishes inspected source, fixture tests and native observations. Missing Windows/Linux environments remain unverified; macOS PowerShell and an unavailable Docker daemon do not establish those OSes. Hosted checks alone do not prove native quickstart, OS browser opening or reader acceptance.
 
-Before publication, supply and verify `[COPYRIGHT_HOLDER]`, `[PRIVATE_SECURITY_CONTACT]` and `[CONDUCT_CONTACT]` in the [License](../LICENSE), [Security](../SECURITY.md) and [Conduct](../CODE_OF_CONDUCT.md) declarations. Contacts remain inactive meanwhile. Preserve upstream notices and license obligations. Complete the current-tree/full-history audit, maintainer history disposition and exact-final-result rescan, including future contributor material. Record native quickstart, browser/clipboard, screen-reader/accessibility, credential and interrupted-push acceptance for available platforms, with unavailable environments explicitly unverified. Hosted CI and protection activation remain separate evidence. Passing local gates does not establish those observations. The tagged-release workflow below does not certify these unexecuted acceptance checks.
+Repository use needs no tag, GitHub release, private contact or `PUBLICATION_POLICY` Actions secret. The [MIT license](../LICENSE) names the copyright holder; the [Security](../SECURITY.md) and [Conduct](../CODE_OF_CONDUCT.md) policies use sanitized GitHub Issues and promise no confidential channel. Before changing repository visibility, separately review the actual contents, provenance and upstream rights. Optional tagged releases retain the content/history audit and exact-candidate rescan below. Record available native/platform acceptance and explicit limits; unavailable environments alone do not block repository readiness. Hosted CI and protection activation remain separate evidence.
 
 ## Pull request continuous integration
 
@@ -279,7 +279,7 @@ The `CI` workflow in `.github/workflows/ci.yml` runs exactly one Linux job named
 
 `check:ci` runs boundaries, size, hygiene, licenses, capability consistency, the normal typed build, contracts/core unit suites and fixed server ChangeSet-preview and web first-map/filtered-report smoke files with one worker. It needs no BMAD, models or Python environment. Any failed child fails the gate. When a successful Git diff of `HEAD^1..HEAD` shows a changed `pnpm-lock.yaml`, the same job runs `node scripts/ci-audit.mjs`. It reports only validated advisory counts and a fixed status; advisories or unknown scan results remain informational. The release audit remains blocking.
 
-Configure the single required status check `CI`, replacing obsolete matrix names. A maintainer must activate the repository ruleset or branch protection separately, require pull requests and this check from GitHub Actions, and require branches to be up to date. Confirm a new pull request reports `CI` and that a missing or failing check prevents merging. Workflow tests do not activate protection or prove a hosted run. This workflow does not handle `merge_group`; configure that separately before enabling a merge queue.
+For enforced pull-request checks when supported by the repository plan, configure the single required status check `CI`, replacing obsolete matrix names. A maintainer must activate the repository ruleset or branch protection separately, require pull requests and this check from GitHub Actions, and require branches to be up to date. Confirm a new pull request reports `CI` and that a missing or failing check prevents merging. Workflow tests do not activate protection or prove a hosted run. This workflow does not handle `merge_group`; configure that separately before enabling a merge queue.
 
 If GitHub rejects protection/rulesets for a private repository with an upgrade-required HTTP 403, automatic merge enforcement is unavailable in that plan. The maintainer must check the successful `CI` result before merging and record that enforcement limit. This policy does not authorize changing repository visibility or purchasing a plan.
 
@@ -306,6 +306,8 @@ Observe browser opening, health and Ctrl+C shutdown in the actual desktop sessio
 ## Versioned releases
 
 The root [package.json](../package.json) is the authoritative application SemVer, currently `0.1.0`. The server reads validated root metadata for `/api/health`, Project archive manifests and MCP initialization, including the stdio bridge. `/health` remains the launcher/runtime liveness endpoint. Workspace package versions, database release schema identity, archive `formatVersion`, JSON payload versions and operation versions are independent. Missing, malformed or invalid root metadata refuses startup; repair the root metadata rather than substituting a version.
+
+Tagged releases are optional and are not required to clone, run or contribute to the repository. The `PUBLICATION_POLICY` secret below belongs only to that workflow, not to the local app or its `.env`.
 
 A release starts with a deliberate maintainer tag, strictly `v<SemVer>` and exactly matching the root version at that revision (`v0.1.0` for the current metadata). Choose the release candidate, update root metadata as appropriate and review it before tagging. Creating this automation does not authorize a tag, push or public release. It publishes release notes; it does not package installers, publish npm packages or add automatic updates.
 
@@ -366,6 +368,8 @@ Immediately before the release write, `verifyRemoteTag` uses authenticated `gh a
 Local fixture and workflow checks do not establish a hosted release run. Record the actual tag, immutable revision, job URLs, policy digest and accepted exact-candidate result only when those actions have been separately authorized and executed. Do not manually bypass a failed gate or reuse a report from another revision.
 
 ## Changelog
+
+- 2026-11-11 v0.4.13: Separate repository readiness from optional releases and align GitHub reporting with the current declarations.
 
 - 2026-11-08 v0.4.12: Link the optional MCP planning recipe separately from repository development automation.
 

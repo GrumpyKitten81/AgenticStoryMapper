@@ -1,9 +1,9 @@
-<!-- Date: 2026-11-08; Version: 5.
+<!-- Date: 2026-11-11; Version: 6.
 Reproducing statement: Provide the independent Feature planning-type form as Markdown without assigning structural map levels or native GitHub types.
-Changelog: 2026-11-08 — Separate planning types from map-level templates.
+Changelog: 2026-11-11 — Align sanitized security reporting with SECURITY.md.
 -->
 
-Keep secrets, personal information and private Project data out of this report. Follow SECURITY.md for vulnerability reports; do not include them in public issues.
+Keep secrets, personal information and private Project data out of this report. Follow SECURITY.md for security concerns; share only a sanitized summary without confidential exploit details.
 
 Planning type does not assign a Story Map level or a native GitHub Issue type.
 

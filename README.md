@@ -1,12 +1,12 @@
 # Agentic Story Mapper
 
-Date: 2026-11-08. Document version: 0.4.9.
+Date: 2026-11-11. Document version: 0.4.10.
 
 Reproducing statement: Provide a simple first start, optionally guided by Codex or Claude Code, with MCP connected before guided planning, alongside the direct browser/terminal path and first-map guidance; describe implemented capabilities, local data and current operating links in English.
 
 Agentic Story Mapper is a local-first story mapping and GitHub planning tool. A local Fastify server serves a React web app and stores Projects in SQLite. Plan visually, connect stories to source material, review proposed changes and choose when to interact with GitHub.
 
-The product name is **Agentic Story Mapper**. Technical identifiers remain `storymapper`, including workspace packages (`@storymapper/*`), MCP configuration, environment variables and local storage names. Repository URLs and historical artifact paths retain their existing names; the new publication repository has not been created yet.
+The product name is **Agentic Story Mapper**. Technical identifiers remain `storymapper`, including workspace packages (`@storymapper/*`), MCP configuration, environment variables and local storage names. The current repository is [GrumpyKitten81/AgenticStoryMapper](https://github.com/GrumpyKitten81/AgenticStoryMapper). Historical source links and artifact paths retain their original names.
 
 Read the English [map levels, planning types and GitHub Issues guide](docs/story-map-levels-and-issues.md). It is also available offline from the Story Map Help dialog.
 
@@ -20,7 +20,7 @@ Use an installed, signed-in coding Agent with local terminal access. Open a loca
 
 ```text
 Help me get Agentic Story Mapper running locally. If this folder is not already an
-Agentic Story Mapper checkout, clone https://github.com/GrumpyKitten81/StoryMapper.git
+Agentic Story Mapper checkout, clone https://github.com/GrumpyKitten81/AgenticStoryMapper.git
 into a new agentic-story-mapper subfolder and work there. Read AGENTS.md and README.md.
 Check Git, Node 24 and Corepack; help me install any missing prerequisites
 for my operating system. Use the same Node 24 for installation and startup.
@@ -49,7 +49,7 @@ Prerequisites: Git, installed Node 24 (`>=24 <25`), Corepack on `PATH`, and a de
 1. Clone the repository and enter its folder:
 
    ```sh
-   git clone https://github.com/GrumpyKitten81/StoryMapper.git agentic-story-mapper
+   git clone https://github.com/GrumpyKitten81/AgenticStoryMapper.git agentic-story-mapper
    cd agentic-story-mapper
    ```
 
@@ -108,6 +108,8 @@ Outgoing GitHub effects require review of a persisted Dry Run and explicit human
 
 ## Validation and accessibility
 
+The repository can be cloned and used without a GitHub release or tag. Tagged releases are optional maintainer work; their `PUBLICATION_POLICY` Actions secret is not application configuration. Local use needs neither that secret nor a `.env` file.
+
 For contributor setup and checks, read [Contributing](CONTRIBUTING.md). The offline blocking aggregate is `corepack pnpm check`; `node scripts/verify.mjs` provides release verification, with `--check-health` for the running runtime. The quick verifier `node scripts/verify.mjs --skip-typecheck --skip-build` still checks hygiene, size, capabilities and accessibility.
 
 Desktop accessibility scope is WCAG 2.1 AA at widths of at least 768 CSS pixels, excluding 1.4.10 Reflow. Automated checks cover views, dialogs, keyboard movement, focus and live holds. jsdom cannot establish native layout or color contrast; stylesheet-pair tests supplement its excluded Axe `color-contrast` rule. Automated success does not certify native browser or screen-reader behavior.
@@ -143,6 +145,8 @@ The BMad/loop guides describe optional development automation. `_bmad-output/` c
 Read [Security](SECURITY.md), [Code of conduct](CODE_OF_CONDUCT.md) and the [MIT license](LICENSE) when contributing.
 
 ## Changelog
+
+- 2026-11-11 v0.4.10: Point startup at the new repository and distinguish repository use from optional tagged releases.
 
 - 2026-11-08 v0.4.9: Rename the product to Agentic Story Mapper; retain working technical identifiers and existing repository URLs.
 

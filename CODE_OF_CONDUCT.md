@@ -1,8 +1,8 @@
 # Code of conduct
 
-Date: 2026-10-20. Version: 1.
+Date: 2026-11-11. Version: 2.
 
-Reproducing statement: Set respectful participation, scope, reporting and proportionate enforcement expectations for Agentic Story Mapper, with the permitted missing conduct contact visibly inactive.
+Reproducing statement: Set respectful participation, scope, reporting and proportionate enforcement expectations for Agentic Story Mapper, using sanitized GitHub Issues for reporting.
 
 ## Participation
 
@@ -14,16 +14,16 @@ This policy applies in project issues, pull requests, reviews, discussions and o
 
 ## Reporting
 
-Private conduct contact: `[CONDUCT_CONTACT]` — inactive placeholder, not a working address or reporting channel. Publication is blocked until an authorized repository maintainer supplies and verifies a private contact. Until then, keep sensitive reports private and do not post personal details or allegations in public issues.
-
-Once the private contact is verified, report the behavior, where and when it happened, relevant context and any immediate safety concern. Share only necessary evidence and redact unrelated personal information. Security vulnerabilities follow the [Security](SECURITY.md) policy.
+Report a concern through the [GitHub issue chooser](https://github.com/GrumpyKitten81/AgenticStoryMapper/issues/new/choose). Describe the relevant project context and requested action using only information safe to share publicly. Do not post personal information, private correspondence, identifying allegations or other sensitive evidence. If details cannot be shared safely, state that limitation without posting them. No private reporting channel or confidential handling is promised. Security vulnerabilities follow the [Security](SECURITY.md) policy.
 
 ## Maintainer responsibility and enforcement
 
-Authorized repository maintainers must assess reports fairly, limit access to sensitive information, protect reporters from retaliation, and communicate decisions privately where possible. A maintainer involved in a report should step back from handling it; another uninvolved authorized maintainer should handle it. If none is available, communicate that limitation privately without promising independent review.
+Authorized repository maintainers must assess reports fairly, avoid requesting sensitive information in public, protect reporters from retaliation, and communicate decisions using information safe to share in the issue. A maintainer involved in a report should step back from handling it; another uninvolved authorized maintainer should handle it. If none is available, state that limitation without promising independent review.
 
-Maintainers may remove or edit harmful content, request a correction or apology, issue a warning, temporarily restrict participation or permanently exclude a participant. The response should reflect severity, impact and repeated behavior. Immediate restrictions may be appropriate for threats or serious harassment. Explain the reason and scope to the affected participant when safe. A participant may request reconsideration through the verified private contact with relevant new context; no response deadline is guaranteed.
+Maintainers may remove or edit harmful content, request a correction or apology, issue a warning, temporarily restrict participation or permanently exclude a participant. The response should reflect severity, impact and repeated behavior. Immediate restrictions may be appropriate for threats or serious harassment. Explain the reason and scope to the affected participant when safe. A participant may request reconsideration in the issue with relevant new context safe to share publicly; no response deadline is guaranteed.
 
 ## Changelog
+
+- 2026-11-11 v2: Replace the inactive private contact with sanitized GitHub Issue reporting and reconsideration.
 
 - 2026-10-20 v1: Add respectful conduct, private reporting and proportionate enforcement with an inactive-contact publication prerequisite.

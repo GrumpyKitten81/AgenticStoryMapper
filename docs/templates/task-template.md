@@ -1,9 +1,9 @@
-<!-- Date: 2026-11-08; Version: 3.
+<!-- Date: 2026-11-11; Version: 4.
 Reproducing statement: Provide the Markdown counterpart of the matching public issue form for a concise, actionable report; omit optional sections without useful content.
-Changelog: 2026-11-08 — Replace the previous ticket layout with the public reporting structure.
+Changelog: 2026-11-11 — Align sanitized security reporting with SECURITY.md.
 -->
 
-Keep secrets, personal information and private Project data out of this report. Follow SECURITY.md for vulnerability reports; do not include them in public issues.
+Keep secrets, personal information and private Project data out of this report. Follow SECURITY.md for security concerns; share only a sanitized summary without confidential exploit details.
 
 ## Intended change
 

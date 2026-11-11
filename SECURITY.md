@@ -1,23 +1,22 @@
 # Security policy
 
-Date: 2026-10-20. Version: 1.
+Date: 2026-11-11. Version: 2.
 
-Reproducing statement: Explain private vulnerability reporting for Agentic Story Mapper, with the explicitly permitted missing contact visibly inactive and publication blocked until it is supplied.
+Reproducing statement: Use the repository's GitHub Issues for sanitized security reports without promising a private reporting channel.
 
 ## Reporting a vulnerability
 
-Private reporting contact: `[PRIVATE_SECURITY_CONTACT]` — inactive placeholder, not a working address or reporting channel. Publication is blocked until an authorized repository maintainer supplies and verifies a private contact. GitHub private vulnerability reporting is not claimed to be enabled.
+Start with a sanitized report through the [GitHub issue chooser](https://github.com/GrumpyKitten81/AgenticStoryMapper/issues/new/choose). Include the affected version or revision, operating system, affected component and a high-level description of the impact. Add reproduction steps only when they use disposable data and reveal no confidential exploit details.
 
-Do not put vulnerability details, exploits, credentials, personal information or user Project data in public issues, discussions, pull requests or attachments. While the private contact is inactive, keep the report private; do not substitute a public report or send sensitive details to an unverified address.
-
-Once a verified private contact is published, send a minimal report there: affected version or revision, operating system, affected component, impact, and reproduction steps using disposable, sanitized data. Include a proposed mitigation if known. Do not send tokens, `.env` files, databases, `local-projects/*.lsm/` folders or private source material. Agree on a safe transfer method with the maintainer if further evidence is needed.
+Treat the issue and its attachments as public information, including while repository access is restricted. Do not include credentials, tokens, personal information, confidential exploit details, `.env` files, databases, `local-projects/*.lsm/` folders or private source material. If a useful report requires sensitive details, state that limitation without posting them. This project does not provide or promise a private reporting channel or confidential handling.
 
 ## Scope and response
 
-Reports may cover Agentic Story Mapper's local application, HTTP and Model Context Protocol (MCP) interfaces, import/export handling, GitHub integration and repository tooling. Report a dependency vulnerability privately when it affects Agentic Story Mapper; its upstream project may also have its own reporting process. Ordinary bugs without security implications belong in the public bug form with sanitized reproduction steps.
+Reports may cover Agentic Story Mapper's local application, HTTP and Model Context Protocol (MCP) interfaces, import/export handling, GitHub integration and repository tooling. Report an affected dependency through the same sanitized process; its upstream project may also have its own reporting process.
 
-There is no published supported-version matrix or guaranteed response or fix deadline. Include the exact affected revision so maintainers can assess it. Authorized repository maintainers are responsible for privately assessing the report, requesting only necessary evidence, preparing and verifying a fix, and coordinating disclosure with the reporter. Access to report details should be limited to people needed to investigate and fix the issue. Disclosure should avoid exposing credentials or user data and describe affected versions and mitigations when established.
+There is no published supported-version matrix or guaranteed response or fix deadline. Authorized repository maintainers assess reports, request only information safe to share in the issue, prepare and verify fixes, and document affected versions and mitigations when established. Ordinary bugs use the same issue chooser with sanitized reproduction steps.
 
 ## Changelog
 
-- 2026-10-20 v1: Add private reporting procedure, maintainer responsibilities and inactive-contact publication prerequisite.
+- 2026-11-11 v2: Adopt GitHub Issues as the reporting route and remove the inactive private-contact prerequisite.
+- 2026-10-20 v1: Add the initial reporting policy.

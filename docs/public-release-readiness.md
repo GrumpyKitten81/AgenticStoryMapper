@@ -1,28 +1,30 @@
-# Agentic Story Mapper: Release-Abschluss
+# Agentic Story Mapper: Repository-Bereitschaft
 
-Datum: 2026-11-08. Version: 7.
+Datum: 2026-11-11. Version: 8.
 
-Reproducing statement: Release-Reports gegen den gelieferten Stand und die akzeptierten Maintainer-Entscheidungen bereinigen; nur notwendige Abschlussarbeiten und belegte Probleme behalten.
+Reproducing statement: Den Abschluss des Repository-Umzugs von optionalen Tag-Releases und einer späteren öffentlichen Freigabe trennen.
 
-Basis: `bf35489ad5c9f17707fbdcf4f7ec2c02156ba783`. Die bisherigen Reports liefern keinen aktuell bestätigten funktionalen Release-Blocker. Die noch offenen Abschlussarbeiten sind:
+## Abschluss von Issue 1
 
-1. **Release-Kandidat festlegen und prüfen.** Version und Commit wählen; am finalen Kandidaten `corepack pnpm check` und `node scripts/verify.mjs` mit Node24/pnpm9.15.4 ausführen. Das blockierende Dependency-Audit des Release-Workflows muss erfolgreich sein. Ein früherer erfolgreicher Lauf ersetzt diesen Kandidaten-Nachweis nicht.
-2. **Die gewählte Version veröffentlichen.** Nach gesonderter Freigabe dem [Release-Verfahren](RUNBOOK.md#versioned-releases) folgen. Tag und Root-Version müssen zusammenpassen. Bei einem neuen Zielrepository auch die Einstiegslinks anpassen. Bestehende Qualitäts-, Audit- und Publikationsprüfungen bleiben unverändert verbindlich; dieser Report behauptet keinen bestandenen Publikationsscan.
+Das neue Repository ist [GrumpyKitten81/AgenticStoryMapper](https://github.com/GrumpyKitten81/AgenticStoryMapper). Für seine Bereitschaft zählen korrekte Clone-/Beitragslinks, die bestehende MIT-Lizenz mit GrumpyKitten81 als Copyright-Halter, konsistente Meldewege über bereinigte GitHub Issues und eine erfolgreiche lokale Prüfung der Dokumentationskorrekturen. Die [Security](../SECURITY.md)- und [Conduct](../CODE_OF_CONDUCT.md)-Regeln versprechen keinen privaten Meldekanal.
 
-## Bereits nachgewiesen
+Tags, GitHub Releases, eine neue Release-Version, zusätzliche Hosted-CI-Nachweise, Branch-/Tag-Schutz und ein Actions-Secret sind dafür nicht erforderlich. Die [schlanke Linux-CI](adr/0012-minimal-hosted-ci-and-local-verification.md) bleibt auf Pull Requests begrenzt; umfassende Produktprüfungen bleiben lokal. Fehlende Actions-Läufe nach direkten Pushes sind kein nachgewiesener CI-Fehler.
 
-Setup, Start und der MCP-Ablauf im echten Codex-Host wurden auf einem frischen isolierten Checkout mit dem später gelieferten Patch geprüft: erfolgreiche Projekt-/Map-Abfragen vor Änderungen, eine leere Test-Map, ein nicht angewendeter Vorschlag und Wiederverbindung nach Neustart auf einem anderen Port. Die [Umsetzungsnotiz](../_bmad-output/implementation-artifacts/spec-gh-1-guided-mcp-onboarding.md) dokumentiert40 gezielte Tests, Web-Typecheck und die Grenzen dieses Nachweises. Aktuelle Bedienung: [README](../README.md#quickstart) und [Runbook](RUNBOOK.md).
+## Optionale spätere Veröffentlichung
 
-Die Agent-Regeln und die Paketgrenzenprüfung wurden ebenfalls bereinigt. Frühere Installations-, Größen- oder CI-Findings werden nicht erneut als offene Fehler geführt. Es bleibt bei der beschlossenen schlanken Linux-CI; weitere Betriebssystem-Jobs sind keine Release-Pflicht.
+Eine Änderung der Repository-Sichtbarkeit benötigt eine separate Maintainer-Entscheidung und eine Prüfung der tatsächlich zu veröffentlichenden Inhalte, Herkunft und Rechte. Der vorhandene `publication-audit.json` betrifft einen alten Kandidaten und ist blockiert; er belegt weder aktuelle Befunde noch eine Freigabe für das neue Repository.
 
-## Bekannte Prüfgrenzen
+Falls später ein Tag-Release gewünscht ist, gilt das [Release-Verfahren](RUNBOOK.md#versioned-releases): Version und exakten Kandidaten wählen, vollständige lokale Produktprüfung und Verifier unter Node 24/pnpm 9.15.4 ausführen und die bestehenden Dependency-/Publikationsgates erfüllen. `PUBLICATION_POLICY` wird nur von diesem optionalen Release-Workflow benötigt, nicht von der lokalen App. Eine `.env` ersetzt dessen Actions-Secret nicht.
 
-Der sichtbare Erstnutzer-Durchlauf, persönliche dauerhafte Host-Registrierung und nicht verfügbare Plattform-/Reader-Prüfungen sind nicht vollständig beobachtet. Das ist eine dokumentierte Prüfgrenze, kein nachgewiesener Defekt und keine zusätzliche pauschale Release-Sperre. Zusätzliche Restore-, Export- oder UI-Prüfungen werden bei einem konkreten Fehler oder einer relevanten Änderung gezielt nötig.
+## Vorhandene Nachweise und Grenzen
 
-Der mögliche Windows-Installationsfehler aus [Issue8](https://github.com/GrumpyKitten81/StoryMapper/issues/8) ist hier nicht reproduziert. Seine Forderung nach verpflichtender Windows-CI ist durch die akzeptierte Linux-CI-Entscheidung überholt. Ein bestätigter Fehler bei der normalen Installation wäre dagegen zu beheben.
+Setup, Start und der MCP-Ablauf im echten Codex-Host wurden zuvor auf einem isolierten Checkout geprüft. Die [Umsetzungsnotiz](../_bmad-output/implementation-artifacts/spec-gh-1-guided-mcp-onboarding.md) dokumentiert gezielte Tests und ihre Grenzen. Aktuelle Bedienung: [README](../README.md#quickstart) und [Runbook](RUNBOOK.md). Frühere Ergebnisse sind kein Nachweis eines neuen Release-Kandidaten.
 
-Historische Story-Berichte und der [gekürzte Usability-Nachweis](usability-report.md) sind keine aktuelle Aufgabenliste. Es werden weder pauschale Neuschreibungen aufgrund von Herkunftsquoten noch weitere Rechte-/Kontaktkampagnen aus alten Reports gestartet. Die bestehenden Publikationsgates werden dadurch nicht aufgehoben.
+Nicht vollständig beobachtete Erstnutzer-, Browser-, Plattform- und Reader-Szenarien bleiben explizite Prüfgrenzen. Sie sind kein bestätigter Defekt und keine zusätzliche pauschale Sperre für den Repository-Abschluss. Ein konkreter Fehler erfordert gezielte Prüfung und Korrektur.
+
+Die Windows-Setup-Untersuchung [Issue 3](https://github.com/GrumpyKitten81/AgenticStoryMapper/issues/3) und die BMAD-Loop-Recovery [Issue 4](https://github.com/GrumpyKitten81/AgenticStoryMapper/issues/4) bleiben getrennte Aufgaben. Historische Story-Berichte und der [Usability-Nachweis](usability-report.md) sind keine aktuelle Pflichtaufgabenliste.
 
 ## Changelog
 
-- 2026-11-08 v7: Erledigte und überholte Aufgaben entfernt; Release-Abschluss auf Kandidatenprüfung und bewusste Veröffentlichung begrenzt; Prüfgrenzen von belegten Fehlern getrennt.
+- 2026-11-11 v8: Repository-Abschluss auf die freigegebenen Kriterien begrenzen; optionale Releases, öffentliche Sichtbarkeit und bestehende Prüfgrenzen getrennt dokumentieren.
+- 2026-11-08 v7: Release-Abschluss auf Kandidatenprüfung und bewusste Veröffentlichung begrenzen.

@@ -5,7 +5,7 @@ body:
     attributes:
       value: |
         Keep secrets, personal information and private Project data out of public issues.
-        For security concerns, read SECURITY.md in the repository root; do not submit vulnerability details here.
+        For security concerns, read SECURITY.md in the repository root; share only a sanitized summary without confidential exploit details.
         Planning type does not assign a Story Map level or a native GitHub Issue type.
   - id: capability
     type: textarea
