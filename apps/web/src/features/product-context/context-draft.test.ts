@@ -6,24 +6,19 @@ import { notifyManager, QueryClient, QueryClientProvider } from "@tanstack/react
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { productContextSchema, type ProductContext } from "@storymapper/contracts";
 import { api } from "@storymapper/web/app/api";
-import { useAiMcpPanelState, type AiMcpPanelState } from "@storymapper/web/features/ai-mcp/useAiMcpPanelState";
+import { useProductContextEditor } from "@storymapper/web/features/product-context/useProductContextEditor";
 
 let context: ProductContext;
-let state: AiMcpPanelState;
+let state: ReturnType<typeof useProductContextEditor>;
 let root: Root;
 let host: HTMLDivElement;
 let client: QueryClient;
 const projectId = randomUUID();
 let storyMapId = randomUUID();
 
-vi.mock("@storymapper/web/app/api", () => ({
-  api: { upsertProductContext: vi.fn(), approveChangeSet: vi.fn(), rejectChangeSet: vi.fn(), applyChangeSet: vi.fn(), callMcpTool: vi.fn(), createAiProposal: vi.fn() },
-  useMcpTools: () => ({ data: { tools: [] } }), useMcpHostConfigs: () => ({ data: undefined }),
-  useChangeSets: () => ({ data: { changeSets: [] } }), useSourceDocuments: () => ({ data: { documents: [] } }),
-  useProductContext: () => ({ data: { context } }), useAiFunctionTemplates: () => ({ data: { templates: [] } })
-}));
+vi.mock("@storymapper/web/app/api", () => ({ api: { upsertProductContext: vi.fn() }, useProductContext: () => ({ data: { context } }) }));
 
-function Harness() { state = useAiMcpPanelState({ projectId, storyMapId, cards: [], releases: [] }); return null; }
+function Harness() { state = useProductContextEditor(projectId, storyMapId); return null; }
 async function render() { await act(async () => root.render(createElement(QueryClientProvider, { client }, createElement(Harness)))); }
 
 beforeEach(() => {

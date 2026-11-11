@@ -1,4 +1,5 @@
 import { EpicContextPanel } from "@storymapper/web/features/story-map/components/EpicContextPanel";
+import { ProductContextPanel } from "@storymapper/web/features/product-context/ProductContextPanel";
 import { CardReviewProvider } from "@storymapper/web/features/card-review";
 import { FilterMatchesContext } from "@storymapper/web/features/story-map/filter-context";
 import { FirstMapGuidance } from "@storymapper/web/features/story-map/components/FirstMapGuidance";
@@ -155,6 +156,7 @@ function renderStoryMapShellContent({ searchVisible, setSearchOpen, projectId, s
               </div>
             </div>
             <EpicContextPanel key={storyMap.storyMap.id} map={boardPreview?.snapshot.storyMap ?? storyMap.storyMap} disabled={Boolean(boardPreview)} />
+            <ProductContextPanel key={`context-${storyMap.storyMap.id}`} projectId={projectId} storyMapId={storyMap.storyMap.id} disabled={Boolean(boardPreview)} />
             {isDiscovery && !boardPreview ? <DiscoveryBoardToolbar state={boardState} searchVisible={searchVisible} /> : null}
           </div>
           {!isDiscovery ? <p role="status" className="lifecycle-notice">{boardState.lifecycleNotice}</p> : null}
