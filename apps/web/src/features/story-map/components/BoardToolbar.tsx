@@ -1,4 +1,3 @@
-import { CardReviewMenu } from "@storymapper/web/features/card-review";
 import { BulkCardTypeField } from "@storymapper/web/features/card-review";
 import { githubStatusStrings as statusStrings } from "@storymapper/web/ui-strings/github-status";
 import { statusFilterOptions } from "@storymapper/web/features/story-map/status-filters";
@@ -77,8 +76,6 @@ function renderBoardToolbar(model: ReturnType<typeof useBoardToolbarState>) {
   return (
     <div ref={toolbar} className="board-toolbar board-toolbar-expanded">
       {model.searchVisible ? renderBoardFilterControls(model) : null}
-      <CardReviewMenu cards={snapshot.cards} selectedIds={selectedIds} />
-      <p role="status" className="lifecycle-notice">{state.lifecycleNotice}</p>
       {inventory ? <LifecycleInventory kind={inventory} snapshot={snapshot} onClose={() => setInventory(null)} onNotice={state.setLifecycleNotice} /> : null}
       {model.searchVisible && filtersOpen ? (
         renderBoardFilters(model)

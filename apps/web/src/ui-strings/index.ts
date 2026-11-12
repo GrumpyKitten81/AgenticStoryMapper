@@ -1,6 +1,8 @@
 import type { ChangeOperation } from "@storymapper/contracts";
 
 export const liveUpdateStrings = {
+  statusHint: "Recent feedback. Open What changed or Activity for details about changes. Dismiss this message when finished.",
+  dismissStatus: "Dismiss status message",
   holdUpdates: "Hold updates",
   connection: { connecting: "Connecting live updates", connected: "Live updates connected", reconnecting: "Reconnecting live updates", failed: "Live updates unavailable" },
   unavailable: "Live updates are unavailable. Check that the local server is running and this browser supports BroadcastChannel and Web Locks.",

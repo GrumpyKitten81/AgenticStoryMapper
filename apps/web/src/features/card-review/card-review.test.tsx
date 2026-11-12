@@ -46,6 +46,23 @@ it("keeps review requests and settings read-only in preview", async () => {
   expect(api.commandCardReview).not.toHaveBeenCalled();
 });
 
+it("describes the compact menu, keeps selected Cards and restores focus after closing", async () => {
+  await render();
+  const menu = [...host!.querySelectorAll<HTMLButtonElement>("button")].find((button) => button.textContent === "Card reviews")!;
+  expect(menu.title).toContain("Definition of Ready");
+  expect(menu.getAttribute("aria-description")).toContain("selected Cards");
+  await act(async () => { menu.focus(); menu.click(); });
+  const dialog = document.querySelector('[role="dialog"]')!;
+  expect(dialog.contains(document.activeElement)).toBe(true);
+  const requestSelected = [...dialog.querySelectorAll<HTMLButtonElement>("button")].find((button) => button.textContent === "Request selected reviews")!;
+  expect(requestSelected.disabled).toBe(false);
+  await act(async () => requestSelected.click());
+  expect(api.commandCardReview).toHaveBeenCalledWith(projectId, { action: "request", cardIds: [cardId] });
+  await act(async () => dialog.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })));
+  expect(document.querySelector('[role="dialog"]')).toBeNull();
+  expect(document.activeElement).toBe(menu);
+});
+
 it("refetches a cached empty review list after a local Card mutation", async () => {
   const cache = new QueryClient({ defaultOptions: { queries: { retry: false, staleTime: Infinity } } });
   let current: CardReviewsResponse = { ...response, requests: [], summaries: [] };

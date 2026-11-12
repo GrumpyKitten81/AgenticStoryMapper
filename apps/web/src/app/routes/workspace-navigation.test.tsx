@@ -47,7 +47,7 @@ vi.mock("@storymapper/web/features/changesets/ChangeSetReview", () => ({ ChangeS
 vi.mock("@storymapper/web/features/story-map/useStoryMapBoardState", async () => {
   const { defaultBoardFilters } = await import("@storymapper/web/features/story-map/board-filters");
   return { useStoryMapBoardState: (snapshot: { cards: Array<{ id: string }> }, _projectId: string, preview: unknown) => ({
-    snapshot, preview, createCard: { isPending: false }, lifecycleNotice: "", moveCard: { error: null }, filters: defaultBoardFilters,
+    snapshot, preview, selectedIds: new Set<string>(), createCard: { isPending: false }, lifecycleNotice: "", moveCard: { error: null }, filters: defaultBoardFilters,
     filtered: { cards: snapshot.cards, visibleCardIds: new Set(snapshot.cards.map((card) => card.id)), matchingCardIds: new Set(snapshot.cards.map((card) => card.id)) }
   }) };
 });
@@ -173,6 +173,18 @@ it("keeps optional toolbar help read-only in a preview", async () => {
   expect(document.querySelectorAll('[role="dialog"]')).toHaveLength(1);
   await act(async () => dialog.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })));
   expect(document.activeElement).toBe(trigger);
+});
+
+it("places one Card reviews action in the shared toolbar and excludes previews", async () => {
+  await mount(`${base}/discovery`);
+  for (const view of ["discovery", "tree", "planning", "backlog", "tracking", "slices", "graph", "timeline", "github"]) {
+    await go(`${base}/${view}`);
+    const review = getByRole(document.body, "button", { name: "Card reviews" });
+    expect(review.closest(".view-toolbar-actions")).not.toBeNull();
+    expect(document.querySelectorAll('[title^="Open Definition of Ready review"]')).toHaveLength(1);
+  }
+  await go(`${base}/tree?preview=preview-one`);
+  expect(document.querySelector('[title^="Open Definition of Ready review"]')).toBeNull();
 });
 
 it.each(["slices", "graph", "github"])("keeps help available on enabled %s routes without export support", async (view) => {

@@ -1,5 +1,5 @@
 import { EpicContextPanel } from "@storymapper/web/features/story-map/components/EpicContextPanel";
-import { CardReviewProvider } from "@storymapper/web/features/card-review";
+import { CardReviewMenu, CardReviewProvider } from "@storymapper/web/features/card-review";
 import { FilterMatchesContext } from "@storymapper/web/features/story-map/filter-context";
 import { FirstMapGuidance } from "@storymapper/web/features/story-map/components/FirstMapGuidance";
 import { WhatChangedProvider, WhatChangedButton, WhatChangedMissingCard } from "@storymapper/web/features/what-changed/WhatChangedProvider";
@@ -144,6 +144,7 @@ function renderStoryMapShellContent({ searchVisible, setSearchOpen, projectId, s
             <div className="view-tabs story-map-view-toolbar">
               <WhatChangedButton /><StoryMapViews params={baseParams} search={search} />
               <div className="view-toolbar-actions">
+                  {!previewId ? <CardReviewMenu cards={storyMap.cards} selectedIds={boardState.selectedIds} /> : null}
                   <FirstMapGuidance key={storyMap.storyMap.id} state={boardState} onSelectCard={(cardId) => { void (navigate as (options: unknown) => Promise<void>)({ search: { ...search, card: cardId } }); }} />
                   {activeViewKind ? <>
                   {isDiscovery ? <DiscoveryViewControls snapshot={storyMap} /> : null}
@@ -157,7 +158,6 @@ function renderStoryMapShellContent({ searchVisible, setSearchOpen, projectId, s
             <EpicContextPanel key={storyMap.storyMap.id} map={boardPreview?.snapshot.storyMap ?? storyMap.storyMap} disabled={Boolean(boardPreview)} />
             {isDiscovery && !boardPreview ? <DiscoveryBoardToolbar state={boardState} searchVisible={searchVisible} /> : null}
           </div>
-          {!isDiscovery ? <p role="status" className="lifecycle-notice">{boardState.lifecycleNotice}</p> : null}
           {boardState.moveCard.error ? <p role="alert">{boardState.moveCard.error.message} <button type="button" onClick={() => { boardState.moveCard.reset(); void queryClient.invalidateQueries({ queryKey: ["story-map", storyMap.storyMap.id] }); }}>{conflictStrings.reload}</button></p> : null}
           {closedNotice ? <p ref={closedNoticeRef} tabIndex={-1} role="status">{closedNotice} <Link to="/projects/$projectId/audit" params={{ projectId }}>{changeSetStrings.activity}</Link></p> : null}
           {previewId ? <><p>{changeSetStrings.readOnly}</p><button type="button" className="secondary" onClick={() => { const { preview: _, ...remaining } = search; void (navigate as (options: unknown) => Promise<void>)({ search: remaining }); }}>{changeSetStrings.close}</button><ChangeSetReview state={review} /></> : null}
