@@ -10,7 +10,7 @@ import { GitHubSyncPanel } from "@storymapper/web/features/github-sync";
 import { DeleteCardsDialog } from "@storymapper/web/features/story-map/components/DeleteCardsDialog";
 import { isConflictError } from "@storymapper/web/app/conflicts";
 import { encodeFilterValue } from "@storymapper/web/features/story-map/useStoryMapBoardState";
-import { CARD_COLORS, CARD_PRIORITY_OPTIONS } from "@storymapper/web/features/story-map/card-visual-options";
+import { cardColors, CARD_PRIORITY_OPTIONS } from "@storymapper/web/features/story-map/card-visual-options";
 import { visibleCards } from "@storymapper/core";
 import { LifecycleInventory } from "@storymapper/web/features/story-map/components/LifecycleInventory";
 import { SlidersHorizontal } from "lucide-react";
@@ -65,14 +65,15 @@ function useBoardToolbarState({ state, displayedCardIds = state.filtered.visible
   useEffect(() => { setDeleteIds(null); setGithubIds(null); }, [snapshot.storyMap.id, preview]);
   const pending = state.bulkUpdateCards.isPending || state.deleteCards.isPending;
   const selectedCards = snapshot.cards.filter((card) => selectedIds.has(card.id));
-  const colors = [...new Set([...CARD_COLORS.map((category) => category.value), ...snapshot.cards.map((card) => card.color).filter((color): color is string => Boolean(color))])];
+  const palette = cardColors((state.preview?.snapshot ?? snapshot).storyMap.colorCategoryNames);
+  const colors = [...new Set([...palette.map((category) => category.value), ...snapshot.cards.map((card) => card.color).filter((color): color is string => Boolean(color))])];
   const [inventory, setInventory] = useState<"parked" | "archived" | null>(null);
   const [filtersOpen, setFiltersOpen] = useState(false);
-  return { searchVisible, toolbar, filters, setFilters, filtered, snapshot, filtersOpen, setFiltersOpen, clearFilters, setInventory, state, inventory, statusOptions, colors, selectedIds, pending, selectedVisibleCount, selectedCards, syncLocks, fieldLockHint, bulkPatch, setBulkPatch, annotationLocks, lockedPatch, submittedControl, runBulkUpdate, setDeleteIds, setGithubIds, setBulkSelectedIds, deleteIds, githubIds };
+  return { searchVisible, toolbar, filters, setFilters, filtered, snapshot, filtersOpen, setFiltersOpen, clearFilters, setInventory, state, inventory, statusOptions, palette, colors, selectedIds, pending, selectedVisibleCount, selectedCards, syncLocks, fieldLockHint, bulkPatch, setBulkPatch, annotationLocks, lockedPatch, submittedControl, runBulkUpdate, setDeleteIds, setGithubIds, setBulkSelectedIds, deleteIds, githubIds };
 }
 
 function renderBoardToolbar(model: ReturnType<typeof useBoardToolbarState>) {
-  const { toolbar, filters, setFilters, filtered, snapshot, filtersOpen, setFiltersOpen, clearFilters, setInventory, state, inventory, statusOptions, colors, selectedIds, pending, selectedVisibleCount, selectedCards, syncLocks, bulkPatch, setBulkPatch, annotationLocks, lockedPatch, submittedControl, runBulkUpdate, setDeleteIds, setGithubIds, setBulkSelectedIds, deleteIds, githubIds } = model;
+  const { toolbar, filters, setFilters, filtered, snapshot, filtersOpen, setFiltersOpen, clearFilters, setInventory, state, inventory, statusOptions, palette, colors, selectedIds, pending, selectedVisibleCount, selectedCards, syncLocks, bulkPatch, setBulkPatch, annotationLocks, lockedPatch, submittedControl, runBulkUpdate, setDeleteIds, setGithubIds, setBulkSelectedIds, deleteIds, githubIds } = model;
   return (
     <div ref={toolbar} className="board-toolbar board-toolbar-expanded">
       {model.searchVisible ? renderBoardFilterControls(model) : null}
@@ -148,7 +149,7 @@ function renderReleaseFilter(model: ReturnType<typeof useBoardToolbarState>) {
 }
 
 function renderBoardFilters(model: ReturnType<typeof useBoardToolbarState>) {
-  const { state, filters, setFilters, statusOptions, snapshot, colors } = model;
+  const { state, filters, setFilters, statusOptions, snapshot, colors, palette } = model;
   return <div className="form-stack">
     {renderStatusFilters(model)}
     <div className="board-filter-row">
@@ -181,7 +182,7 @@ function renderBoardFilters(model: ReturnType<typeof useBoardToolbarState>) {
     </select>
     <select aria-label={strings.colorCategory} value={filters.color} onChange={(event) => setFilters((value) => ({ ...value, color: event.target.value }))}>
       <option value="all">{strings.allColors}</option>
-      {colors.map((color) => <option key={color} value={encodeFilterValue(color)}>{CARD_COLORS.find((category) => category.value === color)?.label ?? color}</option>)}
+      {colors.map((color) => <option key={color} value={encodeFilterValue(color)}>{palette.find((category) => category.value === color)?.label ?? color}</option>)}
     </select>
     </div>
   </div>;
@@ -202,7 +203,7 @@ function renderStatusFilters({ filters, setFilters, snapshot }: ReturnType<typeo
 }
 
 function renderBulkPatchFields(model: ReturnType<typeof useBoardToolbarState>) {
-  const { pending, selectedIds, selectedVisibleCount, selectedCards, syncLocks, bulkPatch, setBulkPatch, statusOptions, snapshot, colors, annotationLocks, lockedPatch, submittedControl, runBulkUpdate, setDeleteIds, setGithubIds, setBulkSelectedIds } = model;
+  const { pending, selectedIds, selectedVisibleCount, selectedCards, syncLocks, bulkPatch, setBulkPatch, statusOptions, snapshot, colors, palette, annotationLocks, lockedPatch, submittedControl, runBulkUpdate, setDeleteIds, setGithubIds, setBulkSelectedIds } = model;
   return <fieldset disabled={pending} style={{ display: "contents" }}>
     <strong role="status">{strings.selectionSummary(selectedIds.size, selectedVisibleCount, selectedIds.size - selectedVisibleCount)}</strong>
     <details><summary>{strings.selectedTargets}</summary><ul>{selectedCards.map((card) => <li key={card.id}>{card.key} {card.title}</li>)}</ul></details>
@@ -218,7 +219,7 @@ function renderBulkPatchFields(model: ReturnType<typeof useBoardToolbarState>) {
     <input inputMode="decimal" aria-label={strings.estimateLabel(snapshot.storyMap.estimationUnit)} placeholder={strings.estimateLabel(snapshot.storyMap.estimationUnit)} value={bulkPatch.estimate} onChange={(event) => setBulkPatch((value) => ({ ...value, estimate: event.target.value }))} />
     <select aria-label={strings.colorCategory} value={bulkPatch.color} onChange={(event) => setBulkPatch((value) => ({ ...value, color: event.target.value }))}>
       <option value="">{strings.colorCategory}</option>
-      {colors.map((color) => <option key={color} value={color}>{CARD_COLORS.find((category) => category.value === color)?.label ?? color}</option>)}
+      {colors.map((color) => <option key={color} value={color}>{palette.find((category) => category.value === color)?.label ?? color}</option>)}
     </select>
     {isPersonasEnabled ? <select aria-label={strings.addPersona} value={bulkPatch.addPersonaId} onChange={(event) => setBulkPatch((value) => ({ ...value, addPersonaId: event.target.value }))}>
       <option value="">{strings.addPersona}</option>

@@ -310,3 +310,35 @@ it("keeps Epic context local through versioned HTTP saves and separately applied
   expect(snapshot.remoteWorkItemLinks).toEqual([]);
   expect(remote).not.toHaveBeenCalled();
 });
+
+it("versions local category names and requires approval for MCP map metadata changes", async () => {
+  const f = await fixture();
+  const remote = vi.spyOn(globalThis, "fetch");
+  const names = { "#f5a623": "Risk" };
+  const patch = (colorCategoryNames: unknown, baseVersion: number) => f.server.inject({ method: "PATCH", url: `/api/story-maps/${f.map.id}`, payload: { colorCategoryNames, baseVersion } });
+  for (const invalid of [{ "#000000": "Risk" }, { "#f5a623": " " }, { "#f5a623": "x".repeat(61) }]) expect((await patch(invalid, f.map.version)).statusCode).toBe(400);
+  expect((await patch(names, f.map.version)).json()).toMatchObject({ storyMap: { colorCategoryNames: names, version: f.map.version + 1 } });
+  expect((await patch({}, f.map.version)).statusCode).toBe(409);
+  f.unitOfWork.run(human, ({ repository }) => repository.updateSafetySettings(f.project.id, { agentMode: "off" }));
+  await expect(f.registry.call("UpdateStoryMap", { storyMapId: f.map.id, baseVersion: f.map.version + 1, patch: { colorCategoryNames: {} } })).rejects.toMatchObject({ code: "disabled" });
+  f.unitOfWork.run(human, ({ repository }) => repository.updateSafetySettings(f.project.id, { agentMode: "propose" }));
+  for (const [index, nextNames] of [{}, names].entries()) {
+    const proposed = await f.registry.call("UpdateStoryMap", { storyMapId: f.map.id, baseVersion: f.map.version + index + 1, patch: { colorCategoryNames: nextNames }, apply: false }) as ChangeSetCommandResponse;
+    expect(proposed).toMatchObject({ outcome: "proposed", changeSet: { operations: [expect.objectContaining({ entity: "storyMap", after: { colorCategoryNames: nextNames } })] } });
+    expect(f.repository.getStoryMapSnapshot(f.map.id)!.storyMap.colorCategoryNames).toEqual(index === 0 ? names : undefined);
+    expect((await f.server.inject({ method: "POST", url: `/api/changesets/${proposed.changeSet.id}/apply`, payload: {} })).statusCode).toBe(409);
+    expect((await f.server.inject({ method: "POST", url: `/api/changesets/${proposed.changeSet.id}/approve`, payload: {} })).statusCode).toBe(200);
+    expect((await f.server.inject({ method: "POST", url: `/api/changesets/${proposed.changeSet.id}/apply`, payload: {} })).statusCode).toBe(200);
+    expect(f.repository.getStoryMapSnapshot(f.map.id)!.storyMap.colorCategoryNames).toEqual(index === 0 ? undefined : names);
+  }
+  const proposed = await f.registry.call("UpdateStoryMap", { storyMapId: f.map.id, baseVersion: f.map.version + 3, patch: { colorCategoryNames: {} }, apply: false }) as ChangeSetCommandResponse;
+  expect((await patch({ "#f5a623": "Spike" }, f.map.version + 3)).statusCode).toBe(200);
+  expect((await f.server.inject({ method: "POST", url: `/api/changesets/${proposed.changeSet.id}/approve`, payload: {} })).statusCode).toBe(200);
+  expect((await f.server.inject({ method: "POST", url: `/api/changesets/${proposed.changeSet.id}/apply`, payload: {} })).statusCode).toBe(409);
+  const snapshot = f.repository.getStoryMapSnapshot(f.map.id)!;
+  expect(snapshot.storyMap.colorCategoryNames).toEqual({ "#f5a623": "Spike" });
+  expect(snapshot.cards).toEqual([f.card]);
+  expect(snapshot.externalRefs).toEqual([]);
+  expect(snapshot.remoteWorkItemLinks).toEqual([]);
+  expect(remote).not.toHaveBeenCalled();
+});

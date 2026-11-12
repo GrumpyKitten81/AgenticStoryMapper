@@ -29,7 +29,7 @@ export const PERSISTENCE_ENTITY_ORDER = [
 const ENTITY_ORDER_RANKS = new Map<ResolvedEntityChange["entity"], number>(PERSISTENCE_ENTITY_ORDER.map((entity, index) => [entity, index]));
 if (ENTITY_ORDER_RANKS.size !== PERSISTENCE_ENTITY_ORDER.length || ENTITY_ORDER_RANKS.size !== Object.keys(ENTITY_TABLES).length) throw new Error("Persistence order must contain every entity exactly once.");
 export const OPERATION_ROOTS = { storyMap: "storyMaps", card: "cards", release: "releases", persona: "personas", roadmap: "roadmaps" } as const;
-const JSON_FIELDS: Record<string, readonly string[]> = { storyMap: ["epicContext"], sourcePlanBaseline: ["entries", "releases"], syncConflict: ["localValue", "remoteValue"], persona: ["goals", "pains"], productContext: ["keyFeatures"], roadmapCard: ["labels"], connection: ["statusSource", "statusCatalogs", "statusMapping", "typeMapping", "issueTypeMapping"], remoteWorkItemLink: ["statusEvidence", "labels", "managedLabels", "baseline"] };
+const JSON_FIELDS: Record<string, readonly string[]> = { storyMap: ["epicContext", "colorCategoryNames"], sourcePlanBaseline: ["entries", "releases"], syncConflict: ["localValue", "remoteValue"], persona: ["goals", "pains"], productContext: ["keyFeatures"], roadmapCard: ["labels"], connection: ["statusSource", "statusCatalogs", "statusMapping", "typeMapping", "issueTypeMapping"], remoteWorkItemLink: ["statusEvidence", "labels", "managedLabels", "baseline"] };
 
 export function persistOperationResolution(this: StoryMapperRepository<"transaction">, resolution: ChangeSetResolution, projectId: string, changeSetId?: string): void {
   this.assertWritable();
@@ -166,6 +166,7 @@ function persistEntity(repository: StoryMapperRepository<"transaction">, change:
 function encodeRow(change: ResolvedEntityChange): Record<string, unknown> & { id: string } {
   const row: Record<string, unknown> = { ...change.after };
   for (const field of JSON_FIELDS[change.entity] ?? []) {
+    if (field === "colorCategoryNames" && row[field] && !Object.keys(row[field] as object).length) delete row[field];
     row[`${field}Json`] = JSON.stringify(field === "managedLabels" ? row[field] ?? [] : field === "epicContext" ? row[field] ?? undefined : row[field]) ?? null;
     if (change.entity !== "sourcePlanBaseline") row[`${field}SchemaVersion`] = row[`${field}Json`] === null ? null : 1;
     delete row[field];

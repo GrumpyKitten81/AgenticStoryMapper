@@ -181,8 +181,9 @@ export function createStoryMap(this: StoryMapperRepository<"transaction">, input
         storyMap.description = input.description;
       }
 
+      if (input.colorCategoryNames && Object.keys(input.colorCategoryNames).length) storyMap.colorCategoryNames = input.colorCategoryNames;
       if (input.epicContext !== undefined) storyMap.epicContext = input.epicContext;
-      this.db.insert(storyMaps).values({ ...storyMap, epicContextJson: storyMap.epicContext ? JSON.stringify(storyMap.epicContext) : null, epicContextSchemaVersion: storyMap.epicContext ? 1 : null }).run();
+      this.db.insert(storyMaps).values({ ...storyMap, colorCategoryNamesJson: storyMap.colorCategoryNames ? JSON.stringify(storyMap.colorCategoryNames) : null, colorCategoryNamesSchemaVersion: storyMap.colorCategoryNames ? 1 : null, epicContextJson: storyMap.epicContext ? JSON.stringify(storyMap.epicContext) : null, epicContextSchemaVersion: storyMap.epicContext ? 1 : null }).run();
       this.createRootVersion("storyMaps", storyMap.id);
       if (!isSample) this.gettingStarted.complete(storyMap.projectId, "createStoryMap");
       this.logActivity(storyMap.projectId, "storyMap.created", "storyMap", storyMap.id, undefined, storyMap);
@@ -197,6 +198,11 @@ export function updateStoryMap(this: StoryMapperRepository<"transaction">, story
     }
     const before = toStoryMap(existing);
     const patch: Partial<typeof storyMaps.$inferInsert> = { updatedAt: new Date().toISOString() };
+    if (input.colorCategoryNames !== undefined) {
+      const names = Object.keys(input.colorCategoryNames).length ? input.colorCategoryNames : undefined;
+      patch.colorCategoryNamesJson = names ? JSON.stringify(names) : null;
+      patch.colorCategoryNamesSchemaVersion = names ? 1 : null;
+    }
     if (input.epicContext !== undefined) {
       patch.epicContextJson = input.epicContext ? JSON.stringify(input.epicContext) : null;
       patch.epicContextSchemaVersion = input.epicContext ? 1 : null;

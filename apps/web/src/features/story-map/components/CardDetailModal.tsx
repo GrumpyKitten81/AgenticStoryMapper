@@ -1,3 +1,4 @@
+import { useCardColors } from "@storymapper/web/features/story-map/color-names-context";
 import { mapConceptStrings } from "@storymapper/web/ui-strings/map-concepts";
 import { CardReviewPanel } from "@storymapper/web/features/card-review";
 import { CardTypeField } from "@storymapper/web/features/card-review";
@@ -29,7 +30,7 @@ import { ConflictAlert } from "@storymapper/web/features/conflicts";
 import { mergeSavedDraft } from "@storymapper/web/features/conflicts";
 import { githubSyncStateHint } from "@storymapper/web/features/github-sync";
 import { cardLevelMeta } from "@storymapper/web/features/story-map/card-taxonomy";
-import { CARD_COLORS, CARD_PRIORITY_OPTIONS } from "@storymapper/web/features/story-map/card-visual-options";
+import { CARD_PRIORITY_OPTIONS } from "@storymapper/web/features/story-map/card-visual-options";
 import { DescriptionEditor } from "@storymapper/web/features/story-map/components/DescriptionEditor";
 import { CardHistoryPanel } from "@storymapper/web/features/story-map/components/CardHistoryPanel";
 import { LifecycleActions } from "@storymapper/web/features/story-map/components/LifecycleActions";
@@ -110,6 +111,7 @@ function renderCardDetailModal(model: Exclude<ReturnType<typeof useCardDetailMod
 }
 
 function useCardDetailDraft({ cardId, snapshot, projectId, onNotice, suspended = false }: CardDetailModalProps) {
+  const colors = useCardColors(snapshot.storyMap.colorCategoryNames);
   const suspendedRef = useRef(suspended);
   suspendedRef.current = suspended;
   const queryClient = useQueryClient();
@@ -143,7 +145,7 @@ function useCardDetailDraft({ cardId, snapshot, projectId, onNotice, suspended =
   const [keptRemote, setKeptRemote] = useState("");
   const isDirty = JSON.stringify(draft) !== JSON.stringify(baseline.current);
   const editableDirty = Object.entries(draft).some(([field, value]) => value !== baseline.current[field as keyof typeof draft] && !syncLocks.has((field === "releaseId" ? "milestone" : field) as "title" | "description" | "status" | "milestone"));
-  return { cardId, snapshot, projectId, onNotice, suspended, suspendedRef, queryClient, navigate, router, search, card, syncLocks, annotationLocks, fieldLockHint, statusOptions, selectedDocumentId, setSelectedDocumentId, attachmentDraft, setAttachmentDraft, documents, projectIssues, selectedDocument, attachments, draft, setDraft, baseline, baseVersion, draftRef, closeConfirm, setCloseConfirm, validationError, setValidationError, dependencyPending, setDependencyPending, remoteVersion, keptRemote, setKeptRemote, isDirty, editableDirty };
+  return { colors, cardId, snapshot, projectId, onNotice, suspended, suspendedRef, queryClient, navigate, router, search, card, syncLocks, annotationLocks, fieldLockHint, statusOptions, selectedDocumentId, setSelectedDocumentId, attachmentDraft, setAttachmentDraft, documents, projectIssues, selectedDocument, attachments, draft, setDraft, baseline, baseVersion, draftRef, closeConfirm, setCloseConfirm, validationError, setValidationError, dependencyPending, setDependencyPending, remoteVersion, keptRemote, setKeptRemote, isDirty, editableDirty };
 }
 
 function useCardDetailGitHubScope(props: CardDetailModalProps) {
@@ -673,12 +675,12 @@ function renderCardGitHubLinks(model: Exclude<ReturnType<typeof useCardDetailMod
 }
 
 function renderCardColorField(model: Exclude<ReturnType<typeof useCardDetailModalState>, import("react").ReactElement | null>) {
-  const { draft, setDraft } = model;
+  const { draft, setDraft, colors } = model;
   return <div className="detail-color-field">
-    {draft.color && !CARD_COLORS.some((category) => category.value === draft.color) ? <span>{draft.color}</span> : null}
+    {draft.color && !colors.some((category) => category.value === draft.color) ? <span>{draft.color}</span> : null}
     <span>{strings.color}</span>
     <div className="detail-color-row">
-      {CARD_COLORS.map((category) => (
+      {colors.map((category) => (
         <button
           type="button"
           key={category.value}

@@ -1,12 +1,12 @@
 import {
-  epicContextSchema, cardReviewRecordPayloadSchema, aiFunctionTemplateSchema, cardHistorySnapshotSchema, changeSetSchema, connectorConnectionSchema, DomainError,
+  colorCategoryNamesSchema, epicContextSchema, cardReviewRecordPayloadSchema, aiFunctionTemplateSchema, cardHistorySnapshotSchema, changeSetSchema, connectorConnectionSchema, DomainError,
   liveTransactionSchema, OPERATIONS_SCHEMA_VERSION, personaSchema, planStateProjectionSchema, productContextSchema,
   remotePushExecutionSchema, remotePushPlanSchema, remoteWorkItemSyncStateSchema, roadmapCardSchema,
   sourcePlanBaselineSchema, storedChangeSetSchema, syncConflictSchema
 } from "@storymapper/contracts";
 
 export const JSON_PAYLOADS = {
-  story_maps: { epic_context_json: epicContextSchema },
+  story_maps: { color_category_names_json: colorCategoryNamesSchema, epic_context_json: epicContextSchema },
   card_review_records: { payload_json: cardReviewRecordPayloadSchema },
   ai_function_templates: { arguments_json: aiFunctionTemplateSchema.shape.arguments, examples_json: aiFunctionTemplateSchema.shape.examples },
   product_contexts: { key_features_json: productContextSchema.shape.keyFeatures },
@@ -25,6 +25,7 @@ export const JSON_PAYLOADS = {
 } as const;
 
 export const NULLABLE_JSON_PAYLOADS = new Set([
+  "story_maps.color_category_names_json",
   "story_maps.epic_context_json",
   "remote_work_item_links.status_evidence_json",
   "remote_work_item_links.baseline_json", "change_sets.proposed_by_json", "change_sets.approval_json",

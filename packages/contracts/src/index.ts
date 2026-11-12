@@ -42,3 +42,5 @@ export * from "./schemas/work-item-identity";
 export * from "./schemas/card-review";
 
 export * from "./schemas/epic-context";
+
+export * from "./schemas/card-colors";
