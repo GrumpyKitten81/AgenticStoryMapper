@@ -163,7 +163,7 @@
 
 .discovery-matrix {
   display: grid;
-  min-width: max-content;
+  width: max-content;
   zoom: var(--discovery-zoom, 1);
   transform-origin: top left;
 }
@@ -215,9 +215,20 @@
 }
 
 .discovery-matrix .card-tile {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
   min-height: auto;
   gap: var(--space-4);
   padding: var(--space-8) var(--space-10);
+}
+
+.discovery-matrix .story-stack {
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.discovery-matrix .story-stack > div {
+  min-width: 0;
 }
 
 .discovery-matrix .card-tile.activity,
