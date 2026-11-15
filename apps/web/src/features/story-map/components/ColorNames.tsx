@@ -2,6 +2,7 @@ import { useId, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { StoryMap } from "@storymapper/contracts";
 import { ColorNamesEditor } from "@storymapper/web/features/story-map/components/ColorNamesEditor";
+import { CARD_COLORS } from "@storymapper/web/features/story-map/card-visual-options";
 import { colorNameStrings as strings } from "@storymapper/web/ui-strings/color-names";
 
 export function ColorNames({ map }: { map: StoryMap }) {
@@ -12,7 +13,9 @@ export function ColorNames({ map }: { map: StoryMap }) {
   useColorNamesPosition(open, trigger, popup);
   function close() { popup.current?.hidePopover(); trigger.current?.focus(); }
   return <>
-    <button ref={trigger} type="button" className="secondary" popoverTarget={id} aria-haspopup="dialog" aria-expanded={open} aria-controls={id}>{strings.title}</button>
+    <button ref={trigger} type="button" className="secondary icon-button" title={`${strings.title} — ${strings.hint}`} aria-label={strings.title} aria-description={strings.hint} popoverTarget={id} aria-haspopup="dialog" aria-expanded={open} aria-controls={id}>
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><circle cx="6" cy="6" r="4" fill={CARD_COLORS[1]!.value} /><circle cx="12" cy="6" r="4" fill={CARD_COLORS[3]!.value} /><circle cx="9" cy="12" r="4" fill={CARD_COLORS[5]!.value} /></svg>
+    </button>
     {createPortal(<div ref={popup} id={id} popover="auto" role={open ? "dialog" : undefined} aria-labelledby={`${id}-title`} className="color-names-popover" data-live-popover={open || undefined}
       onToggle={(event) => setOpen(event.newState === "open")}>
       {open ? <ColorNamesEditor map={map} titleId={`${id}-title`} onClose={close} /> : null}

@@ -92,6 +92,9 @@ it("only exposes a dialog and suspends live updates while the native popover is 
   await act(async () => root.render(<QueryClientProvider client={client}><ColorNames map={initial} /></QueryClientProvider>));
   const popup = document.querySelector<HTMLElement>("[popover]")!;
   const trigger = button("Color names");
+  expect(trigger.classList.contains("icon-button")).toBe(true);
+  expect(trigger.textContent).toBe("");
+  expect(trigger.title).toContain("Rename color categories");
   expect(popup.hasAttribute("role")).toBe(false); expect(popup.hasAttribute("data-live-popover")).toBe(false);
   expect(liveUpdatesHeld(document)).toBe(false);
   async function toggle(newState: string) {
