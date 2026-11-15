@@ -188,20 +188,20 @@ it("places one Card reviews action in the shared toolbar and excludes previews",
   expect(document.querySelector('[title^="Open Definition of Ready review"]')).toBeNull();
 });
 
-it("places map ID copy and Agent context beside the map name without a separate row", async () => {
+it("copies the map name with its ID beside the map name without a separate row", async () => {
   await mount(`${base}/discovery`);
-  const copy = getByRole(document.body, "button", { name: "Copy ID — Story Map ID" });
+  const copy = getByRole(document.body, "button", { name: "Copy Story Map name and ID" });
   const context = getByRole(document.body, "button", { name: "Agent context" }) as HTMLButtonElement;
   const identity = document.querySelector(".topbar-map-identity")!;
   expect(identity.textContent).toContain("Map One");
   expect(identity.contains(copy)).toBe(true);
   expect(identity.contains(context)).toBe(true);
-  expect(copy.title).toContain("Story Map ID: map");
+  expect(copy.title).toContain("Map One (map)");
   expect(document.querySelector(".story-map-view-header")?.textContent).not.toContain("Story Map ID");
   const writeText = vi.fn().mockResolvedValue(undefined);
   vi.stubGlobal("navigator", Object.assign(Object.create(navigator), { clipboard: { writeText } }));
   await act(async () => copy.click());
-  expect(writeText).toHaveBeenCalledWith("map");
+  expect(writeText).toHaveBeenCalledWith("Map One (map)");
   expect(document.querySelector(".topbar-map-identity [role='status']")?.className).toBe("visually-hidden");
   await act(async () => { context.focus(); context.click(); });
   const dialog = getByRole(document.body, "dialog", { name: "Agent context for this map" });

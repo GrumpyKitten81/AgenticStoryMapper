@@ -9,10 +9,11 @@ const primaryFields = ["purpose", "keyFeatures", "targetUsers", "nonGoals"] as c
 const moreFields = ["productType", "platform", "pricing", "complianceConstraints", "glossary", "notes"] as const;
 const multiline = new Set<keyof ProductContextDraft>(["keyFeatures", "nonGoals", "glossary", "notes"]);
 
-export function ProductContextPanel({ projectId, storyMapId, disabled }: { projectId: string; storyMapId: string; disabled: boolean }): ReactElement {
+export function ProductContextPanel({ projectId, storyMapId, storyMapName, disabled }: { projectId: string; storyMapId: string; storyMapName: string; disabled: boolean }): ReactElement {
   const [open, setOpen] = useState(false);
+  const copyText = `${storyMapName} (${storyMapId})`;
   return <>
-    <CopyButton text={storyMapId} className="secondary icon-button topbar-title-edit" title={`${strings.mapId}: ${storyMapId} · ${strings.copyMapId}`} ariaLabel={`${strings.copyMapId} — ${strings.mapId}`} statusClassName="visually-hidden"><Copy size={16} aria-hidden="true" /></CopyButton>
+    <CopyButton text={copyText} className="secondary icon-button topbar-title-edit" title={`${strings.copyMap}: ${copyText}`} ariaLabel={strings.copyMap} statusClassName="visually-hidden"><Copy size={16} aria-hidden="true" /></CopyButton>
     <button type="button" className="secondary icon-button topbar-title-edit" title={strings.title} aria-label={strings.open} disabled={disabled} onClick={() => setOpen(true)}><BookOpenText size={16} aria-hidden="true" /></button>
     {open ? <ProductContextDialog projectId={projectId} storyMapId={storyMapId} onClose={() => setOpen(false)} /> : null}
   </>;

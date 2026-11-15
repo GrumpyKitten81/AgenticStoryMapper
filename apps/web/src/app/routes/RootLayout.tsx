@@ -198,7 +198,7 @@ function renderWorkspaceHeader(model: ReturnType<typeof useRootLayoutState>) {
       ) : (
         <>
           {storyMapParams && storyMapName ? <span className="topbar-map-identity"><span className="topbar-map-name">{storyMapName}</span>
-            <ProductContextPanel key={storyMapParams.storyMapId} projectId={storyMapParams.projectId} storyMapId={storyMapParams.storyMapId} disabled={Boolean(search.preview)} />
+            <ProductContextPanel key={storyMapParams.storyMapId} projectId={storyMapParams.projectId} storyMapId={storyMapParams.storyMapId} storyMapName={storyMapName} disabled={Boolean(search.preview)} />
             <button type="button" className="secondary icon-button topbar-title-edit" title={strings.renameStoryMap} aria-label={strings.renameStoryMapLabel(storyMapName)} onClick={startTitleEdit}>
               <Pencil size={16} />
             </button>
