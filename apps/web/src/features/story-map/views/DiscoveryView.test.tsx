@@ -4,10 +4,12 @@ import { randomUUID } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { act } from "react";
-import { expect, it } from "vitest";
+import { afterEach, expect, it, vi } from "vitest";
+import { useDiscoveryZoomStore } from "@storymapper/web/app/stores/discovery-zoom-store";
 import { button, cardId, mount, openBoardSearch, state, storyMapId, viewUrl } from "@storymapper/web/test-fixtures/card-detail";
 
 const url = viewUrl.replace(/tree$/, "discovery");
+afterEach(async () => { await act(async () => useDiscoveryZoomStore.getState().resetZoom()); });
 async function search(value: string) {
   await openBoardSearch();
   const input = document.querySelector<HTMLInputElement>('[aria-label="Search cards"]')!;
@@ -26,6 +28,49 @@ it("gives the empty board a card-width track and preserves populated column widt
   state.snapshot = populated;
   await act(async () => state.client.setQueryData(["story-map", storyMapId], state.snapshot));
   expect(matrix.style.gridTemplateColumns).toBe("232px 42px 42px");
+});
+
+it("keeps zoomed sticky offsets in layout pixels and remeasures after zoom changes", async () => {
+  let orphanHeight = 180;
+  vi.spyOn(HTMLElement.prototype, "offsetHeight", "get").mockImplementation(function (this: HTMLElement) {
+    return this.matches(".discovery-pinned-block") ? orphanHeight : this.matches(".discovery-unscheduled-cell") ? 240 : 96;
+  });
+  vi.spyOn(Element.prototype, "getBoundingClientRect").mockImplementation(function (this: Element) {
+    const height = (this as HTMLElement).offsetHeight * useDiscoveryZoomStore.getState().zoom;
+    return { x: 0, y: 0, width: 232, height, top: 0, left: 0, right: 232, bottom: height, toJSON() { return {}; } };
+  });
+  useDiscoveryZoomStore.getState().setZoom(0.66);
+  await mount(url);
+  await act(async () => {
+    document.querySelector<HTMLButtonElement>('.not-assigned-header .lane-pin')!.click();
+    document.querySelector<HTMLButtonElement>('.release-band-header:not(.not-assigned-header) .lane-pin')!.click();
+  });
+  const matrix = document.querySelector<HTMLElement>(".discovery-matrix")!;
+  expect(matrix.style.getPropertyValue("--pinned-na-h")).toBe("180px");
+  expect(matrix.style.getPropertyValue("--pinned-unscheduled-h")).toBe("240px");
+  expect(matrix.style.getPropertyValue("--discovery-activity-h")).toBe("96px");
+  orphanHeight = 200;
+  await act(async () => useDiscoveryZoomStore.getState().setZoom(0.5));
+  expect(matrix.style.getPropertyValue("--pinned-na-h")).toBe("200px");
+  expect(matrix.style.getPropertyValue("--pinned-unscheduled-h")).toBe("240px");
+});
+
+it("bounds Discovery matrix and nested card tracks with the actual stylesheet", async () => {
+  const style = document.createElement("style");
+  style.textContent = readStylesheet(join(process.cwd(), "src/styles/global.css"));
+  document.head.append(style);
+  try {
+    await mount(url);
+    const matrix = document.querySelector<HTMLElement>(".discovery-matrix")!;
+    const stack = matrix.querySelector<HTMLElement>(".story-stack")!;
+    const wrapper = stack.firstElementChild!;
+    const card = wrapper.querySelector<HTMLElement>(".card-tile")!;
+    expect(getComputedStyle(matrix).width).toBe("max-content");
+    expect(getComputedStyle(stack).gridTemplateColumns).toBe("minmax(0, 1fr)");
+    expect(getComputedStyle(wrapper).minWidth).toBe("0");
+    expect(getComputedStyle(card).minWidth).toBe("0");
+    expect(getComputedStyle(card).gridTemplateColumns).toBe("minmax(0, 1fr)");
+  } finally { style.remove(); }
 });
 
 function extraLane() {

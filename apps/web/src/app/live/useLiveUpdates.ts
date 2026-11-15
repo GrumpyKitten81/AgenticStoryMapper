@@ -6,7 +6,7 @@ import { useAnnouncementStore } from "@storymapper/web/app/stores/announcement-s
 
 export function useLiveUpdates(projectId?: string): { connection: LiveConnectionState; failed: boolean } {
   const client = useQueryClient();
-  const announce = useAnnouncementStore((state) => state.announce);
+  const announce = useAnnouncementStore((state) => state.announceFeedback);
   const [connection, setConnection] = useState<LiveConnectionState>("connecting");
   const [failed, setFailed] = useState(false);
   useEffect(() => startLiveUpdateSession({ client, announce, projectId, setFailed, setConnection }), [announce, client, projectId]);

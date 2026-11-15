@@ -417,7 +417,7 @@ h1 {
   font-weight: 700;
 }
 
-.story-map-view-header .board-toolbar:has(> :not(.lifecycle-notice:empty)) {
+.story-map-view-header .board-toolbar:not(:empty) {
   padding: var(--space-6) var(--space-10);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-control);
@@ -425,8 +425,8 @@ h1 {
   --focus-ring: var(--focus-ring-light);
 }
 
-.story-map-view-header .board-toolbar .lifecycle-notice:empty {
-  margin: 0;
+.board-toolbar:empty {
+  display: none;
 }
 
 .story-map-list,

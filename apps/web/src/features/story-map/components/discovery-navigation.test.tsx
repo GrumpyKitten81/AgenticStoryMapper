@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
 import { api } from "@storymapper/web/app/api";
 import { act } from "react";
-import { expect, it, vi } from "vitest";
+import { afterEach, expect, it, vi } from "vitest";
+import { useDiscoveryZoomStore } from "@storymapper/web/app/stores/discovery-zoom-store";
 import { discoveryDestination } from "@storymapper/web/features/story-map/components/discovery-navigation";
 import { mount, state, cardId, storyMapId, viewUrl } from "@storymapper/web/test-fixtures/card-detail";
 
@@ -10,6 +11,7 @@ const locations = [
   { id: "c", lane: 1, column: 0, stack: 0 }, { id: "d", lane: 1, column: 0, stack: 1 }, { id: "e", lane: 1, column: 1, stack: 0 },
   { id: "f", lane: 3, column: 0, stack: 0 }
 ];
+afterEach(async () => { await act(async () => useDiscoveryZoomStore.getState().resetZoom()); });
 it("traverses columns, stacks, rows, grid ends and skips absent lanes", () => {
   for (const [id, key, control, expected] of [
     ["a", "ArrowRight", false, "b"], ["b", "ArrowLeft", false, "a"],
@@ -199,12 +201,14 @@ it("traverses Not assigned tiles as columns in their visible order", async () =>
   await key(primary(note.id), "ArrowLeft"); expect(document.activeElement).toBe(primary(cardId));
 });
 
-it("captures inactive pointer-drag baseline before a remote snapshot and restores moved primary focus", async () => {
+it.each([1, 0.66])("captures pointer-drag baseline and restores moved focus at zoom %s", async (zoom) => {
+  useDiscoveryZoomStore.getState().setZoom(zoom);
   class TestPointerEvent extends MouseEvent { readonly pointerId = 1; readonly isPrimary = true; readonly pointerType = "mouse"; }
   vi.stubGlobal("PointerEvent", TestPointerEvent);
   vi.spyOn(Element.prototype, "getBoundingClientRect").mockImplementation(function (this: Element) {
-    const x = this.closest(".discovery-notassigned") ? 400 : 0;
-    return { x, y: 0, left: x, right: x + 300, top: 0, bottom: 500, width: 300, height: 500, toJSON() { return {}; } };
+    const source = this.matches("div") && this.firstElementChild?.matches(`article[data-live-card-id="${cardId}"]`);
+    const x = (this.closest(".discovery-notassigned") ? 400 : source ? 0 : -1000) * zoom;
+    return { x, y: 0, left: x, right: x + 300 * zoom, top: 0, bottom: 500 * zoom, width: 300 * zoom, height: 500 * zoom, toJSON() { return {}; } };
   });
   const original = vi.mocked(fetch).getMockImplementation()!;
   let command: Record<string, unknown> | undefined;
@@ -219,11 +223,13 @@ it("captures inactive pointer-drag baseline before a remote snapshot and restore
   await mount(viewUrl.replace(/tree$/, "discovery"));
   await act(async () => primary(state.snapshot.cards[0]!.id).focus());
   const drag = primary(cardId).closest('article')!.querySelector<HTMLButtonElement>('.drag-handle')!;
-  await act(async () => drag.dispatchEvent(new TestPointerEvent("pointerdown", { bubbles: true, button: 0, buttons: 1, clientX: 50, clientY: 50 })));
+  await act(async () => drag.dispatchEvent(new TestPointerEvent("pointerdown", { bubbles: true, button: 0, buttons: 1, clientX: 50 * zoom, clientY: 50 * zoom })));
   state.snapshot = { ...state.snapshot, cards: state.snapshot.cards.map((card) => card.id === cardId ? { ...card, version: 7 } : card) };
   await act(async () => state.client.setQueryData(["story-map", storyMapId], state.snapshot));
-  await act(async () => document.dispatchEvent(new TestPointerEvent("pointermove", { bubbles: true, buttons: 1, clientX: 450, clientY: 50 })));
-  await act(async () => document.dispatchEvent(new TestPointerEvent("pointerup", { bubbles: true, button: 0, clientX: 450, clientY: 50 })));
+  await act(async () => document.dispatchEvent(new TestPointerEvent("pointermove", { bubbles: true, buttons: 1, clientX: 250 * zoom, clientY: 50 * zoom })));
+  await vi.waitFor(() => expect(drag.closest("article")!.parentElement!.style.transform).toContain("translate3d(200px, 0px, 0)"));
+  await act(async () => document.dispatchEvent(new TestPointerEvent("pointermove", { bubbles: true, buttons: 1, clientX: 450 * zoom, clientY: 50 * zoom })));
+  await act(async () => document.dispatchEvent(new TestPointerEvent("pointerup", { bubbles: true, button: 0, clientX: 450 * zoom, clientY: 50 * zoom })));
   await vi.waitFor(() => expect(command).toMatchObject({ baseVersion: 1, parentId: null }));
   expect(primary(cardId).closest('.discovery-notassigned')).not.toBeNull(); await vi.waitFor(() => expect(document.activeElement).toBe(primary(cardId)));
   await act(async () => { await new Promise((resolve) => setTimeout(resolve, 50)); });

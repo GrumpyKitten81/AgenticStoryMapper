@@ -31,6 +31,7 @@ export function toStoryMap(row: typeof storyMaps.$inferSelect): StoryMap {
     createdAt: row.createdAt,
     updatedAt: row.updatedAt
   };
+  if (row.colorCategoryNamesJson !== null) storyMap.colorCategoryNames = parseStoredJson("story_maps", "color_category_names_json", row.colorCategoryNamesJson, row.colorCategoryNamesSchemaVersion);
   if (row.epicContextJson !== null) storyMap.epicContext = parseStoredJson("story_maps", "epic_context_json", row.epicContextJson, row.epicContextSchemaVersion);
   if (row.description !== null) storyMap.description = row.description;
   if (row.defaultConnectionId !== null) storyMap.defaultConnectionId = row.defaultConnectionId;

@@ -1,4 +1,5 @@
 export const cardReviewStrings = {
+  menuHint: "Open Definition of Ready review requests and summaries for selected Cards.",
   details: (...parts: Array<string | number | undefined>): string => parts.filter((part) => part !== undefined && part !== "").join(" · "),
   reviewStatus: (state: string, count: number): string => `${state} · ${count} findings`,
   outgoingStatus: (key: string, state: string, count: number): string => `${key}: ${state} · ${count} findings`,

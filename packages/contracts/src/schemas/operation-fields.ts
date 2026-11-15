@@ -49,7 +49,7 @@ export function operationPayloadSchemas(schemas: { card: typeof cardSchema; map:
   const cardPublication = cardPatch.extend({ storyMapId: uuidSchema, level: schemas.card.shape.level, title: schemas.card.shape.title,
     parentId: referenceSchema.nullable().optional(), position: schemas.card.shape.position.optional() }).strict();
   const cardCreate = cardPublication.omit({ priority: true, businessValue: true, effort: true, color: true }).extend({ assignee: z.string().min(1).optional() }).strict();
-  const mapPatch = schemas.map.pick({ epicContext: true, name: true, description: true, cardKeyPrefix: true, defaultConnectionId: true }).extend({ cardKeyPrefix: schemas.map.shape.cardKeyPrefix.removeDefault() }).partial().strict();
+  const mapPatch = schemas.map.pick({ colorCategoryNames: true, epicContext: true, name: true, description: true, cardKeyPrefix: true, defaultConnectionId: true }).extend({ cardKeyPrefix: schemas.map.shape.cardKeyPrefix.removeDefault() }).partial().strict();
   const mapCreate = mapPatch.omit({ defaultConnectionId: true, cardKeyPrefix: true }).extend({ projectId: uuidSchema, name: schemas.map.shape.name }).strict();
   const releasePatch = schemas.release.pick({ name: true, position: true, startDate: true, releaseDate: true })
     .extend({ goal: schemas.release.shape.goal.removeDefault(), released: schemas.release.shape.released.removeDefault() }).partial().strict();

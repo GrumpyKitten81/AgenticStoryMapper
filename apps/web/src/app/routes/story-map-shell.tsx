@@ -1,6 +1,8 @@
+import { ColorNamesContext } from "@storymapper/web/features/story-map/color-names-context";
+import { ColorNames } from "@storymapper/web/features/story-map/components/ColorNames";
 import { EpicContextPanel } from "@storymapper/web/features/story-map/components/EpicContextPanel";
 import { ProductContextPanel } from "@storymapper/web/features/product-context/ProductContextPanel";
-import { CardReviewProvider } from "@storymapper/web/features/card-review";
+import { CardReviewMenu, CardReviewProvider } from "@storymapper/web/features/card-review";
 import { FilterMatchesContext } from "@storymapper/web/features/story-map/filter-context";
 import { FirstMapGuidance } from "@storymapper/web/features/story-map/components/FirstMapGuidance";
 import { WhatChangedProvider, WhatChangedButton, WhatChangedMissingCard } from "@storymapper/web/features/what-changed/WhatChangedProvider";
@@ -138,13 +140,15 @@ function useStoryMapShellContentState({ storyMap, projectId, previewId, selected
 
 function renderStoryMapShellContent({ searchVisible, setSearchOpen, projectId, storyMap, boardState, projection, isDiscovery, baseParams, search, activeViewKind, linkedCount, outOfSyncCount, pullGitHubLinks, boardPreview, queryClient, closedNotice, closedNoticeRef, previewId, navigate, review, selectedCardId }: ReturnType<typeof useStoryMapShellContentState>) {
   return (
-    <SyncFieldLocksProvider snapshot={storyMap}><StoryMapSnapshotContext.Provider value={storyMap}>
+    <ColorNamesContext.Provider value={(boardPreview?.snapshot ?? storyMap).storyMap.colorCategoryNames}><SyncFieldLocksProvider snapshot={storyMap}><StoryMapSnapshotContext.Provider value={storyMap}>
       <FilterMatchesContext.Provider value={boardState.filtered.matchingCardIds}><StoryMapBoardStateContext.Provider value={boardState}><PreviewBoardContext.Provider value={projection}>
         <div data-story-map-board tabIndex={-1} className={`story-map-shell${isDiscovery ? " story-map-shell-fill" : ""}`}>
           <div className="story-map-view-header">
             <div className="view-tabs story-map-view-toolbar">
               <WhatChangedButton /><StoryMapViews params={baseParams} search={search} />
               <div className="view-toolbar-actions">
+                  {!previewId ? <ColorNames key={storyMap.storyMap.id} map={storyMap.storyMap} /> : null}
+                  {!previewId ? <CardReviewMenu cards={storyMap.cards} selectedIds={boardState.selectedIds} /> : null}
                   <FirstMapGuidance key={storyMap.storyMap.id} state={boardState} onSelectCard={(cardId) => { void (navigate as (options: unknown) => Promise<void>)({ search: { ...search, card: cardId } }); }} />
                   {activeViewKind ? <>
                   {isDiscovery ? <DiscoveryViewControls snapshot={storyMap} /> : null}
@@ -159,7 +163,6 @@ function renderStoryMapShellContent({ searchVisible, setSearchOpen, projectId, s
             <ProductContextPanel key={`context-${storyMap.storyMap.id}`} projectId={projectId} storyMapId={storyMap.storyMap.id} disabled={Boolean(boardPreview)} />
             {isDiscovery && !boardPreview ? <DiscoveryBoardToolbar state={boardState} searchVisible={searchVisible} /> : null}
           </div>
-          {!isDiscovery ? <p role="status" className="lifecycle-notice">{boardState.lifecycleNotice}</p> : null}
           {boardState.moveCard.error ? <p role="alert">{boardState.moveCard.error.message} <button type="button" onClick={() => { boardState.moveCard.reset(); void queryClient.invalidateQueries({ queryKey: ["story-map", storyMap.storyMap.id] }); }}>{conflictStrings.reload}</button></p> : null}
           {closedNotice ? <p ref={closedNoticeRef} tabIndex={-1} role="status">{closedNotice} <Link to="/projects/$projectId/audit" params={{ projectId }}>{changeSetStrings.activity}</Link></p> : null}
           {previewId ? <><p>{changeSetStrings.readOnly}</p><button type="button" className="secondary" onClick={() => { const { preview: _, ...remaining } = search; void (navigate as (options: unknown) => Promise<void>)({ search: remaining }); }}>{changeSetStrings.close}</button><ChangeSetReview state={review} /></> : null}
@@ -167,7 +170,7 @@ function renderStoryMapShellContent({ searchVisible, setSearchOpen, projectId, s
         </div>
         <CardDetailModal suspended={Boolean(previewId)} cardId={selectedCardId} snapshot={storyMap} projectId={projectId} onNotice={boardState.setLifecycleNotice} />
       </PreviewBoardContext.Provider></StoryMapBoardStateContext.Provider></FilterMatchesContext.Provider>
-    </StoryMapSnapshotContext.Provider></SyncFieldLocksProvider>
+    </StoryMapSnapshotContext.Provider></SyncFieldLocksProvider></ColorNamesContext.Provider>
   );
 }
 

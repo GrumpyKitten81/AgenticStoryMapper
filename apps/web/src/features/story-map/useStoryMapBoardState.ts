@@ -7,6 +7,7 @@ import type { ChangeSetPreviewBoard, BulkUpdateCardsRequest, Card, CardLevel, De
 import { getStoryMapColumns, visibleCards } from "@storymapper/core";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useAnnouncementStore } from "@storymapper/web/app/stores/announcement-store";
 import { api } from "@storymapper/web/app/api";
 import { useLiveInteractionStore } from "@storymapper/web/app/live/live-interaction-store";
 import { conflictStrings } from "@storymapper/ui-strings";
@@ -21,7 +22,7 @@ export interface MutationEpoch { epoch?: string | undefined }
 
 export function useStoryMapBoardState(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
   const model = useBoardBulkActions(snapshot, projectId, preview);
-  const { setBulkSelectedIds, bulkValidationError, lifecycleNotice, setLifecycleNotice, planningShowAllReleases, setPlanningShowAllReleases, filters, setFilters, bulkPatch, setBulkPatch, statusOptions, personaNamesByCardId, releaseNameById, dependencyKeys, sourceCounts, githubIssueByCardId, githubStatusByCardId, workItemProviderByCardId, externalRefsByCardId, externalRefsByReleaseId, boardCards, filtered, activities, selectedIds, selectedVisibleIds, invalidate, invalidatePlanningReports, cardVersion, createCard, updateCard, archiveCard, moveCard, createRelease, updateRelease, deleteRelease, deleteCard, deleteCards, parkCard, unparkCard, bulkUpdateCards, bulkError, toggleBulkSelection, clearFilters, runBulkUpdate } = model;
+  const { setBulkSelectedIds, bulkValidationError, setLifecycleNotice, planningShowAllReleases, setPlanningShowAllReleases, filters, setFilters, bulkPatch, setBulkPatch, statusOptions, personaNamesByCardId, releaseNameById, dependencyKeys, sourceCounts, githubIssueByCardId, githubStatusByCardId, workItemProviderByCardId, externalRefsByCardId, externalRefsByReleaseId, boardCards, filtered, activities, selectedIds, selectedVisibleIds, invalidate, invalidatePlanningReports, cardVersion, createCard, updateCard, archiveCard, moveCard, createRelease, updateRelease, deleteRelease, deleteCard, deleteCards, parkCard, unparkCard, bulkUpdateCards, bulkError, toggleBulkSelection, clearFilters, runBulkUpdate } = model;
 
   return {
     ...boardSelectionPresentation(model, snapshot, preview),
@@ -182,7 +183,7 @@ function useBoardPresentationState(snapshot: StoryMapSnapshot, projectId?: strin
   const [bulkSelectedIds, setBulkSelectedIds] = useState<Set<string>>(new Set());
   const selectionMap = useRef(snapshot.storyMap.id);
   const [bulkValidationError, setBulkValidationError] = useState("");
-  const [lifecycleNotice, setLifecycleNotice] = useState("");
+  const setLifecycleNotice = useAnnouncementStore((state) => state.announceFeedback);
   const [planningShowAllReleases, setPlanningShowAllReleases] = useState(false);
   const [filters, setFilters] = useState<BoardFilters>(defaultBoardFilters);
   const [bulkPatch, setBulkPatch] = useState({
@@ -210,7 +211,7 @@ function useBoardPresentationState(snapshot: StoryMapSnapshot, projectId?: strin
       return counts;
     }, {});
   }, [snapshot.sourceLinks]);
-  return { queryClient, bulkSelectedIds, setBulkSelectedIds, selectionMap, bulkValidationError, setBulkValidationError, lifecycleNotice, setLifecycleNotice, planningShowAllReleases, setPlanningShowAllReleases, filters, setFilters, bulkPatch, setBulkPatch, statusOptions, personaById, annotationById, personaLinksByCardId, personaNamesByCardId, annotationLinksByCardId, releaseNameById, dependencyKeys, sourceCounts };
+  return { queryClient, bulkSelectedIds, setBulkSelectedIds, selectionMap, bulkValidationError, setBulkValidationError, setLifecycleNotice, planningShowAllReleases, setPlanningShowAllReleases, filters, setFilters, bulkPatch, setBulkPatch, statusOptions, personaById, annotationById, personaLinksByCardId, personaNamesByCardId, annotationLinksByCardId, releaseNameById, dependencyKeys, sourceCounts };
 }
 
 function useBoardLinkIndexes(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
@@ -525,14 +526,13 @@ interface StoryMapFilterInput {
 }
 
 function boardSelectionPresentation(model: ReturnType<typeof useBoardBulkActions>, snapshot: StoryMapSnapshot, preview: ChangeSetPreviewBoard | undefined) {
-  const { planningShowAllReleases, setPlanningShowAllReleases, personaNamesByCardId, lifecycleNotice, setLifecycleNotice, filtered, boardCards, activities, filters, setFilters, clearFilters, statusOptions, bulkPatch, setBulkPatch, selectedVisibleIds, selectedIds, bulkUpdateCards, bulkValidationError, bulkError, setBulkSelectedIds, toggleBulkSelection, runBulkUpdate } = model;
+  const { planningShowAllReleases, setPlanningShowAllReleases, personaNamesByCardId, setLifecycleNotice, filtered, boardCards, activities, filters, setFilters, clearFilters, statusOptions, bulkPatch, setBulkPatch, selectedVisibleIds, selectedIds, bulkUpdateCards, bulkValidationError, bulkError, setBulkSelectedIds, toggleBulkSelection, runBulkUpdate } = model;
   return {
     planningShowAllReleases,
     setPlanningShowAllReleases,
     personaNamesByCardId,
     preview,
     snapshot,
-    lifecycleNotice,
     setLifecycleNotice,
     filtered,
     boardCards,

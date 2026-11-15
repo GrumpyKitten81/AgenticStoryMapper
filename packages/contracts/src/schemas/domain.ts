@@ -1,3 +1,4 @@
+import { colorCategoryNamesSchema } from "@storymapper/contracts/schemas/card-colors";
 import { epicContextSchema } from "@storymapper/contracts/schemas/epic-context";
 import { workItemIdentitySchema, workItemUrlSchema } from "@storymapper/contracts/schemas/work-item-identity";
 import { workItemProviderSchema } from "@storymapper/contracts/schemas/work-item-provider";
@@ -43,6 +44,7 @@ export const projectSchema = z.object({
 export type Project = z.infer<typeof projectSchema>;
 export const cardKeyPrefixSchema = z.string().trim().min(1);
 export const storyMapSchema = z.object({
+  colorCategoryNames: colorCategoryNamesSchema.optional(),
   epicContext: epicContextSchema.nullable().optional(),
   version: z.number().refine(Number.isInteger).positive(),
   id: uuidSchema,
@@ -119,7 +121,6 @@ export const releaseSchema = z.object({
   released: z.boolean().default(false)
 });
 export type Release = z.infer<typeof releaseSchema>;
-
 export const personaSchema = z.object({
   version: z.number().refine(Number.isInteger).positive(),
   id: uuidSchema,
@@ -144,7 +145,6 @@ export const personaSchema = z.object({
   pains: z.array(z.string()).default([])
 });
 export type Persona = z.infer<typeof personaSchema>;
-
 export const workflowStatusSchema = z.object({
   id: uuidSchema,
   projectId: uuidSchema,

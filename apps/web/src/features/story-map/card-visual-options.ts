@@ -1,8 +1,9 @@
 import { storyMapStrings as strings } from "@storymapper/ui-strings";
+import type { ColorCategoryNames, CardColorValue } from "@storymapper/contracts";
 
 export interface CardColor {
   label: string;
-  value: string;
+  value: CardColorValue;
 }
 
 export const CARD_COLORS: CardColor[] = [
@@ -21,3 +22,7 @@ export const CARD_COLORS: CardColor[] = [
 export const DEFAULT_CARD_COLOR = "#ffffff";
 
 export const CARD_PRIORITY_OPTIONS = ["1", "2", "3", "4", "5"] as const;
+
+export function cardColors(names?: ColorCategoryNames): CardColor[] {
+  return CARD_COLORS.map((color) => ({ ...color, label: names?.[color.value] ?? color.label }));
+}

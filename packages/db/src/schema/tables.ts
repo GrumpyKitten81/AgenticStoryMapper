@@ -35,6 +35,8 @@ export const projectSettings = sqliteTable("project_settings", {
 });
 
 export const storyMaps = sqliteTable("story_maps", {
+  colorCategoryNamesJson: text("color_category_names_json"),
+  colorCategoryNamesSchemaVersion: integer("color_category_names_schema_version"),
   epicContextJson: text("epic_context_json"),
   epicContextSchemaVersion: integer("epic_context_schema_version"),
   nextCardNumber: integer("next_card_number").notNull().default(1),

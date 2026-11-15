@@ -1,3 +1,4 @@
+import { useCardColors } from "@storymapper/web/features/story-map/color-names-context";
 import { CardReviewBadge } from "@storymapper/web/features/card-review";
 import { useIsFilterContext } from "@storymapper/web/features/story-map/filter-context";
 import { useSyncFieldLockHint, useSyncFieldLocks } from "@storymapper/web/features/github-sync";
@@ -14,7 +15,7 @@ import { ArrowDown, ChevronLeft, ChevronRight, Circle, Github, GripVertical, His
 import { cardLevelMeta } from "@storymapper/web/features/story-map/card-taxonomy";
 import { cardTooltip } from "@storymapper/web/features/story-map/card-tooltip";
 import { githubSyncStateHint } from "@storymapper/web/features/github-sync";
-import { CARD_COLORS, CARD_PRIORITY_OPTIONS, DEFAULT_CARD_COLOR } from "@storymapper/web/features/story-map/card-visual-options";
+import { CARD_PRIORITY_OPTIONS, DEFAULT_CARD_COLOR } from "@storymapper/web/features/story-map/card-visual-options";
 import { panelStrings, storyMapStrings as strings } from "@storymapper/ui-strings";
 import { isPersonasEnabled } from "@storymapper/web/app/feature-flags";
 
@@ -173,9 +174,10 @@ function useCardTilePresentation({
       if (control.getAttribute("role") !== "option") control.tabIndex = active ? 0 : -1;
     }
   });
-  const cardColor = CARD_COLORS.find((entry) => entry.value === (card.color ?? DEFAULT_CARD_COLOR));
+  const colors = useCardColors();
+  const cardColor = colors.find((entry) => entry.value === (card.color ?? DEFAULT_CARD_COLOR));
   const descriptionPreview = card.description.length > 120 ? `${card.description.slice(0, 120)}...` : card.description;
-  return { card, personaNames, estimationUnit, previewMarker, updatePending, tone, variant, selected, bulkSelected, sourceLinkCount, githubIssue, githubSyncState, workItemProvider, releaseName, externalRefs, dependencies, onSelect, onBulkToggle, onUpdateCard, onDelete, onAddNote, onMove, onMoveToArea, onMoveLeft, onMoveRight, dragHandleProps, navigation, lockHints, readOnly, stateDescription, article, active, cardColor, descriptionPreview };
+  return { card, personaNames, estimationUnit, previewMarker, updatePending, tone, variant, selected, bulkSelected, sourceLinkCount, githubIssue, githubSyncState, workItemProvider, releaseName, externalRefs, dependencies, onSelect, onBulkToggle, onUpdateCard, onDelete, onAddNote, onMove, onMoveToArea, onMoveLeft, onMoveRight, dragHandleProps, navigation, lockHints, readOnly, stateDescription, article, active, colors, cardColor, descriptionPreview };
 }
 
 function renderCardActions(model: ReturnType<typeof useCardTileState>) {
@@ -223,14 +225,14 @@ function renderCardActions(model: ReturnType<typeof useCardTileState>) {
 }
 
 function renderCardVisualControls(model: ReturnType<typeof useCardTileState>) {
-  const { workItemProvider, githubIssue, githubSyncState, card, cardColor, readOnly, onUpdateCard, dragHandleProps } = model;
+  const { workItemProvider, githubIssue, githubSyncState, card, colors, cardColor, readOnly, onUpdateCard, dragHandleProps } = model;
   return <div className="card-visual-row">
     <div className="card-visual-left">
       <span className="card-provider-icon" title={workItemProvider === "github" ? strings.githubHint(githubIssue, githubSyncStateHint(githubSyncState)) : strings.notLinked}>
         {workItemProvider === "github" ? <Github size={12} /> : <Circle size={12} />}
       </span>
       <span className="card-ticket-number" title={githubIssue ? strings.ticketHint(githubIssue) : strings.noTicketLinked}>{githubIssue ? strings.ticketNumber(githubIssue) : strings.issueMark}</span>
-      <CardChoice name={strings.colorControl(cardColor?.label ?? card.color ?? DEFAULT_CARD_COLOR)} value={card.color ?? DEFAULT_CARD_COLOR} options={CARD_COLORS.map(({ label, value }) => ({ label, value, swatch: value }))} disabled={readOnly || !onUpdateCard} className="card-color-choice" onChange={(color) => onUpdateCard?.(card.id, { color })} />
+      <CardChoice name={strings.colorControl(cardColor?.label ?? card.color ?? DEFAULT_CARD_COLOR)} value={card.color ?? DEFAULT_CARD_COLOR} options={colors.map(({ label, value }) => ({ label, value, swatch: value }))} disabled={readOnly || !onUpdateCard} className="card-color-choice" onChange={(color) => onUpdateCard?.(card.id, { color })} />
       <CardChoice name={strings.priorityControl(card.priority || strings.emptyValue)} value={card.priority ?? ""} options={[{ value: "", label: strings.emptyValue }, ...CARD_PRIORITY_OPTIONS.map((value) => ({ value, label: value }))]} disabled={readOnly || !onUpdateCard} className={card.priority ? "card-priority-badge has-priority" : "card-priority-badge"} onChange={(priority) => onUpdateCard?.(card.id, { priority })} />
     </div>
     {dragHandleProps ? (

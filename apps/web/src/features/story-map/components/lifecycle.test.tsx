@@ -15,6 +15,8 @@ import { FirstMapGuidance } from "@storymapper/web/features/story-map/components
 import { visibleCards } from "@storymapper/core";
 import { ConflictError } from "@storymapper/web/app/conflicts";
 import { api, useStoryMap } from "@storymapper/web/app/api";
+import { Announcements } from "@storymapper/web/app/components/Announcements";
+import { useAnnouncementStore } from "@storymapper/web/app/stores/announcement-store";
 import { type StoryMapBoardState, useStoryMapBoardState } from "@storymapper/web/features/story-map/useStoryMapBoardState";
 
 let host: HTMLDivElement;
@@ -32,22 +34,19 @@ function Fixture() {
   const current = useStoryMap(mapId).data;
   return current ? <BoardFixture current={current} /> : null;
 }
-
 function BoardFixture({ current }: { current: StoryMapSnapshot }) {
   const state = useStoryMapBoardState(current, current.storyMap.projectId);
   currentBoard = state;
   const card = current.cards.find((item) => item.id === activityId);
-  return <div data-story-map-board tabIndex={-1}><BoardToolbar state={state} /><FirstMapGuidance state={state} onSelectCard={() => {}} /><DiscoveryMatrix state={state} zoom={1} onSelectCard={() => {}} />{card ? <LifecycleActions card={card} snapshot={current} onNotice={state.setLifecycleNotice} /> : null}</div>;
+  return <div data-story-map-board tabIndex={-1}><Announcements /><BoardToolbar state={state} /><FirstMapGuidance state={state} onSelectCard={() => {}} /><DiscoveryMatrix state={state} zoom={1} onSelectCard={() => {}} />{card ? <LifecycleActions card={card} snapshot={current} onNotice={state.setLifecycleNotice} /> : null}</div>;
 }
-
 function ListViewsFixture() {
   const current = useStoryMap(mapId).data;
   return current ? <ListViews current={current} /> : null;
 }
-
 function ListViews({ current }: { current: StoryMapSnapshot }) {
   const state = useStoryMapBoardState(current, current.storyMap.projectId);
-  return <><BoardToolbar state={state} /><SwimlaneGrid state={state} onSelectCard={() => {}} /><BacklogList state={state} onSelectCard={() => {}} /></>;
+  return <><Announcements /><BoardToolbar state={state} /><SwimlaneGrid state={state} onSelectCard={() => {}} /><BacklogList state={state} onSelectCard={() => {}} /></>;
 }
 
 async function refreshServer(next: StoryMapSnapshot) {
@@ -66,6 +65,7 @@ async function click(button: HTMLElement) {
 }
 
 beforeEach(async () => {
+  useAnnouncementStore.setState({ status: "", alert: "", revision: 0, statusRevision: 0, alertRevision: 0 });
   notifyManager.setScheduler(queueMicrotask);
   vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
   vi.stubGlobal("ResizeObserver", class { observe() {} disconnect() {} });
@@ -266,7 +266,7 @@ it("permanent deletion names consequences, cancellation writes nothing and faile
   failAction = false;
   await click(button("Delete permanently", dialog));
   await vi.waitFor(() => expect(snapshot.cards).toHaveLength(3));
-  expect(host.querySelector('.lifecycle-notice')?.textContent).toContain("Container");
+  expect(host.querySelector('.announcement-status [role="status"]')?.textContent).toContain("Container");
 });
 
 it("release confirmation counts hidden and non-Story snapshot Cards even with no filter matches", async () => {
@@ -401,7 +401,7 @@ it("moves through parent, position and Release controls and preserves a failed i
     [`/api/cards/${storyId}/move`, { parentId: null, position: 1, releaseId: null, baseVersion: 1 }],
     [`/api/cards/${storyId}/move`, { parentId: null, position: 1, releaseId: null, baseVersion: 1 }]
   ]);
-  expect(host.querySelector('.lifecycle-notice')?.textContent).toContain("Moved LSM-3 to No parent, Unscheduled, position 2.");
+  expect(host.querySelector('.announcement-status [role="status"]')?.textContent).toContain("Moved LSM-3 to No parent, Unscheduled, position 2.");
 });
 
 it("offers the first-Activity action in Story Map help when no visible Activity remains", async () => {
@@ -604,7 +604,7 @@ it("keeps destination labels captured before sending when a delayed move respons
   await refreshServer({ ...snapshot, releases: [], cards: snapshot.cards.filter((card) => card.id !== stepId).map((card) => card.id === storyId ? { ...card, parentId: null, releaseId: null } : card) });
   await act(async () => complete());
   await vi.waitFor(() => expect(document.querySelector('[role="dialog"]')).toBeNull());
-  expect(host.querySelector('.lifecycle-notice')?.textContent).toBe("Moved LSM-3 to Retained step, Delivery, position 1.");
+  expect(host.querySelector('.announcement-status [role="status"]')?.textContent).toBe("Moved LSM-3 to Retained step, Delivery, position 1.");
 });
 
 it("lists every typed Delete conflict and retains the complete frozen retry intent", async () => {
@@ -674,11 +674,11 @@ it("clears the previous result before a second equal-count Delete succeeds", asy
     await click(button("Delete permanently", document.querySelector('[role="alertdialog"]')!));
   };
   await remove(storyId);
-  await vi.waitFor(() => expect(host.querySelector('.lifecycle-notice')?.textContent).toBe("Deleted 1 Card"));
+  await vi.waitFor(() => expect(host.querySelector('.announcement-status [role="status"]')?.textContent).toBe("Deleted 1 Card"));
   await remove(neighborId);
-  expect(host.querySelector('.lifecycle-notice')?.textContent).toBe("");
+  expect(host.querySelector('.announcement-status [role="status"]')?.textContent).toBe("");
   await act(async () => complete());
-  await vi.waitFor(() => expect(host.querySelector('.lifecycle-notice')?.textContent).toBe("Deleted 1 Card"));
+  await vi.waitFor(() => expect(host.querySelector('.announcement-status [role="status"]')?.textContent).toBe("Deleted 1 Card"));
 });
 
 it("retains typed version conflicts when the Move API refuses a stale baseline", async () => {

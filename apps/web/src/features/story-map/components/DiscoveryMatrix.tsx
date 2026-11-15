@@ -220,12 +220,12 @@ function useDiscoveryMeasurements(props: DiscoveryMatrixProps) {
   useLayoutEffect(() => {
     const element = notAssignedRef.current;
     if (!element) return;
-    const update = () => setNotAssignedHeight(element.getBoundingClientRect().height);
+    const update = () => setNotAssignedHeight(element.offsetHeight);
     update();
     const observer = new ResizeObserver(update);
     observer.observe(element);
     return () => observer.disconnect();
-  }, [pinnedNotAssigned, notAssignedCards.length]);
+  }, [pinnedNotAssigned, notAssignedCards.length, zoom]);
   useLayoutEffect(() => {
     if (!pinnedUnscheduled) {
       setUnscheduledCellHeight(0);
@@ -236,7 +236,7 @@ function useDiscoveryMeasurements(props: DiscoveryMatrixProps) {
       setUnscheduledCellHeight(0);
       return;
     }
-    const update = () => setUnscheduledCellHeight(cell.getBoundingClientRect().height);
+    const update = () => setUnscheduledCellHeight(cell.offsetHeight);
     update();
     const observer = new ResizeObserver(update);
     observer.observe(cell);
