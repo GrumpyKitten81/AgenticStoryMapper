@@ -1,6 +1,6 @@
 # Contributing to Agentic Story Mapper
 
-Date: 2026-11-11. Version: 11.
+Date: 2026-11-15. Version: 12.
 
 Reproducing statement: Give outside contributors accurate local setup, validation, scope, review and licensing guidance using the repository's actual commands and architecture, including maintainer-controlled versioned releases and protected Project upgrades, without requiring AI tooling or claiming publication clearance.
 
@@ -82,7 +82,9 @@ Hygiene scans tracked inputs only. Before final checks, stage intended new files
 
 Explain what changed, why, validation performed and what reviewers should inspect. Link the relevant issue/spec and disclose unverified platform or behavior checks. Use the supplied pull request template.
 
-Use Conventional Commits: `<type>[optional scope]: <short description>`, for example `docs: clarify contributor setup`.
+Use [Conventional Commits](https://www.conventionalcommits.org/): `<type>[optional scope]: <short description>`, for example `docs: clarify contributor setup`. Global format details live in your `~/.claude/CLAUDE.md` **Commit policy** unless this repository defines a stricter override.
+
+When a change implements, fixes, or fulfills a GitHub issue—or the work was scoped to a known issue—the commit message **must** reference that issue (minimum: `Refs #<number>` in the footer; use `Closes #<number>` when the commit resolves it). Do not invent issue numbers. Standalone refactors or chores with no issue may omit a reference.
 
 The pull request workflow has one Linux quality job named `CI`. Maintainers require its successful result before merging; workflow files alone do not establish enforced branch protection. Comprehensive product verification remains local, as described above. See [ADR 0012](docs/adr/0012-minimal-hosted-ci-and-local-verification.md) for the accepted CI/platform policy.
 
@@ -99,6 +101,8 @@ Agentic Story Mapper uses the [MIT license](LICENSE). Contributions must be your
 Repository use does not require a version tag, GitHub release, private reporting contact or Actions secret. Security and conduct concerns use sanitized GitHub Issues under the linked policies. Changing repository visibility requires a separate maintainer decision and review of the actual contents and rights. Optional tagged releases retain the existing content/history, exact-candidate and dependency-audit safeguards; their `PUBLICATION_POLICY` Actions secret is not application configuration. Native/platform coverage follows the accepted limits above.
 
 ## Changelog
+
+- 2026-11-15 v12: Require GitHub issue references in commits when work relates to a tracked issue.
 
 - 2026-11-11 v11: Update repository links, adopt GitHub reporting and separate repository readiness from optional tagged releases.
 
