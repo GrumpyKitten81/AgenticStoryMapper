@@ -11,7 +11,7 @@ const locations = [
   { id: "c", lane: 1, column: 0, stack: 0 }, { id: "d", lane: 1, column: 0, stack: 1 }, { id: "e", lane: 1, column: 1, stack: 0 },
   { id: "f", lane: 3, column: 0, stack: 0 }
 ];
-afterEach(async () => { await act(async () => useDiscoveryZoomStore.getState().resetZoom()); });
+afterEach(async () => { await act(async () => useDiscoveryZoomStore.getState().resetZoom(storyMapId)); });
 it("traverses columns, stacks, rows, grid ends and skips absent lanes", () => {
   for (const [id, key, control, expected] of [
     ["a", "ArrowRight", false, "b"], ["b", "ArrowLeft", false, "a"],
@@ -202,7 +202,7 @@ it("traverses Not assigned tiles as columns in their visible order", async () =>
 });
 
 it.each([1, 0.66])("captures pointer-drag baseline and restores moved focus at zoom %s", async (zoom) => {
-  useDiscoveryZoomStore.getState().setZoom(zoom);
+  useDiscoveryZoomStore.getState().setZoom(storyMapId, zoom);
   class TestPointerEvent extends MouseEvent { readonly pointerId = 1; readonly isPrimary = true; readonly pointerType = "mouse"; }
   vi.stubGlobal("PointerEvent", TestPointerEvent);
   vi.spyOn(Element.prototype, "getBoundingClientRect").mockImplementation(function (this: Element) {

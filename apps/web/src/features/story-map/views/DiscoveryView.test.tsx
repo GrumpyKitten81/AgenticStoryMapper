@@ -9,7 +9,7 @@ import { useDiscoveryZoomStore } from "@storymapper/web/app/stores/discovery-zoo
 import { button, cardId, mount, openBoardSearch, state, storyMapId, viewUrl } from "@storymapper/web/test-fixtures/card-detail";
 
 const url = viewUrl.replace(/tree$/, "discovery");
-afterEach(async () => { await act(async () => useDiscoveryZoomStore.getState().resetZoom()); });
+afterEach(async () => { await act(async () => useDiscoveryZoomStore.getState().resetZoom(storyMapId)); });
 async function search(value: string) {
   await openBoardSearch();
   const input = document.querySelector<HTMLInputElement>('[aria-label="Search cards"]')!;
@@ -36,10 +36,10 @@ it("keeps zoomed sticky offsets in layout pixels and remeasures after zoom chang
     return this.matches(".discovery-pinned-block") ? orphanHeight : this.matches(".discovery-unscheduled-cell") ? 240 : 96;
   });
   vi.spyOn(Element.prototype, "getBoundingClientRect").mockImplementation(function (this: Element) {
-    const height = (this as HTMLElement).offsetHeight * useDiscoveryZoomStore.getState().zoom;
+    const height = (this as HTMLElement).offsetHeight * (useDiscoveryZoomStore.getState().zoomByMap[storyMapId] ?? 1);
     return { x: 0, y: 0, width: 232, height, top: 0, left: 0, right: 232, bottom: height, toJSON() { return {}; } };
   });
-  useDiscoveryZoomStore.getState().setZoom(0.66);
+  useDiscoveryZoomStore.getState().setZoom(storyMapId, 0.66);
   await mount(url);
   await act(async () => {
     document.querySelector<HTMLButtonElement>('.not-assigned-header .lane-pin')!.click();
@@ -50,9 +50,21 @@ it("keeps zoomed sticky offsets in layout pixels and remeasures after zoom chang
   expect(matrix.style.getPropertyValue("--pinned-unscheduled-h")).toBe("240px");
   expect(matrix.style.getPropertyValue("--discovery-activity-h")).toBe("96px");
   orphanHeight = 200;
-  await act(async () => useDiscoveryZoomStore.getState().setZoom(0.5));
+  await act(async () => useDiscoveryZoomStore.getState().setZoom(storyMapId, 0.5));
   expect(matrix.style.getPropertyValue("--pinned-na-h")).toBe("200px");
   expect(matrix.style.getPropertyValue("--pinned-unscheduled-h")).toBe("240px");
+});
+
+it("displays the restored map zoom in the controls and Discovery matrix", async () => {
+  useDiscoveryZoomStore.getState().setZoom(storyMapId, 0.73);
+  const saved = localStorage.getItem("storymapper-discovery-zoom")!;
+  useDiscoveryZoomStore.setState({ zoomByMap: {} });
+  localStorage.setItem("storymapper-discovery-zoom", saved);
+  await useDiscoveryZoomStore.persist.rehydrate();
+  await mount(url);
+  expect(document.querySelector<HTMLInputElement>('input[aria-label="Discovery zoom"]')!.value).toBe("0.73");
+  expect(document.querySelector(".topbar-zoom-controls")!.textContent).toContain("73%");
+  expect(document.querySelector<HTMLElement>(".discovery-matrix")!.style.getPropertyValue("--discovery-zoom")).toBe("0.73");
 });
 
 it("bounds Discovery matrix and nested card tracks with the actual stylesheet", async () => {
