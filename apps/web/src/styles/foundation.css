@@ -111,6 +111,21 @@ a {
   flex: none;
 }
 
+.topbar-map-identity {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.topbar-map-identity .topbar-map-name {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .topbar-title-input {
   min-width: 220px;
   padding: var(--space-4) var(--space-8);

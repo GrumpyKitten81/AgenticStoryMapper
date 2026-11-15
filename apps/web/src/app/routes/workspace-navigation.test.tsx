@@ -110,6 +110,7 @@ beforeEach(() => {
     }
     if (path.startsWith("/api/story-maps/") && state.snapshotError) return Response.json({ message: "Map snapshot unavailable" }, { status: 503 });
     if (path.startsWith("/api/story-maps/")) return Response.json({ storyMap: { id: path.split("/").at(-1), projectId: state.owner, name: "Map One" }, cards: [], releases: [], remoteWorkItemLinks: [] });
+    if (path.startsWith("/api/product-context?")) return Response.json({ context: null });
     if (path.startsWith("/api/customization?")) return Response.json({ workflowStatuses: [], annotations: [], storyTemplates: [], personas: [], cardPersonas: [], cardAnnotations: [], usageCards: [] });
     if (path === "/api/mcp/host-configs") return Response.json({ development: { command: "/node", args: ["/bridge.mjs", "/runtime.lsm"] }, claudeDesktop: { mcpServers: {} }, cursor: { mcpServers: {} }, vsCode: { servers: {} } });
     if (path === "/api/workflow-statuses" && init?.method === "POST") return Response.json({ id: "created-status", ...JSON.parse(String(init.body)) });
@@ -180,10 +181,35 @@ it("places one Card reviews action in the shared toolbar and excludes previews",
     await go(`${base}/${view}`);
     const review = getByRole(document.body, "button", { name: "Card reviews" });
     expect(review.closest(".view-toolbar-actions")).not.toBeNull();
+    expect(review.classList.contains("icon-button")).toBe(true);
     expect(document.querySelectorAll('[title^="Open Definition of Ready review"]')).toHaveLength(1);
   }
   await go(`${base}/tree?preview=preview-one`);
   expect(document.querySelector('[title^="Open Definition of Ready review"]')).toBeNull();
+});
+
+it("places map ID copy and Agent context beside the map name without a separate row", async () => {
+  await mount(`${base}/discovery`);
+  const copy = getByRole(document.body, "button", { name: "Copy ID — Story Map ID" });
+  const context = getByRole(document.body, "button", { name: "Agent context" }) as HTMLButtonElement;
+  const identity = document.querySelector(".topbar-map-identity")!;
+  expect(identity.textContent).toContain("Map One");
+  expect(identity.contains(copy)).toBe(true);
+  expect(identity.contains(context)).toBe(true);
+  expect(copy.title).toContain("Story Map ID: map");
+  expect(document.querySelector(".story-map-view-header")?.textContent).not.toContain("Story Map ID");
+  const writeText = vi.fn().mockResolvedValue(undefined);
+  vi.stubGlobal("navigator", Object.assign(Object.create(navigator), { clipboard: { writeText } }));
+  await act(async () => copy.click());
+  expect(writeText).toHaveBeenCalledWith("map");
+  expect(document.querySelector(".topbar-map-identity [role='status']")?.className).toBe("visually-hidden");
+  await act(async () => { context.focus(); context.click(); });
+  const dialog = getByRole(document.body, "dialog", { name: "Agent context for this map" });
+  expect(dialog).toBeTruthy();
+  await act(async () => dialog.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })));
+  expect(document.activeElement).toBe(context);
+  await go(`${base}/tree?preview=preview-one`);
+  expect((getByRole(document.body, "button", { name: "Agent context" }) as HTMLButtonElement).disabled).toBe(true);
 });
 
 it.each(["slices", "graph", "github"])("keeps help available on enabled %s routes without export support", async (view) => {

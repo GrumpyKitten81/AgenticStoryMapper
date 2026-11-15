@@ -1,7 +1,7 @@
 import { useState, type ReactElement, type ReactNode } from "react";
 import { copyStrings as strings } from "@storymapper/web/ui-strings/copy";
 
-export function CopyButton({ text, children, className = "secondary" }: { text: string; children: ReactNode; className?: string }): ReactElement {
+export function CopyButton({ text, children, className = "secondary", title, ariaLabel, statusClassName }: { text: string; children: ReactNode; className?: string; title?: string; ariaLabel?: string; statusClassName?: string }): ReactElement {
   const [status, setStatus] = useState("");
   async function copy(): Promise<void> {
     try {
@@ -13,7 +13,7 @@ export function CopyButton({ text, children, className = "secondary" }: { text: 
     }
   }
   return <span className="button-row">
-    <button type="button" className={className} onClick={() => { void copy(); }}>{children}</button>
-    <span role="status">{status}</span>
+    <button type="button" className={className} title={title} aria-label={ariaLabel} onClick={() => { void copy(); }}>{children}</button>
+    <span role="status" className={statusClassName}>{status}</span>
   </span>;
 }

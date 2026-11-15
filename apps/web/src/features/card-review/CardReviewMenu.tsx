@@ -10,7 +10,7 @@ export function CardReviewMenu({ cards, selectedIds }: { cards: Card[]; selected
   const context = useCardReviewContext();
   const [open, setOpen] = useState(false);
   if (!context) return null;
-  return <><button type="button" className="secondary button-compact" title={strings.menuHint} aria-description={strings.menuHint} onClick={() => setOpen(true)}><ListChecks size={16} aria-hidden="true" />{strings.menu}</button>{open ? <Dialog title={strings.menu} onClose={() => setOpen(false)}><ReviewMenuContents cards={cards} selectedIds={selectedIds} /></Dialog> : null}</>;
+  return <><button type="button" className="secondary icon-button" aria-label={strings.menu} title={strings.menuHint} aria-description={strings.menuHint} onClick={() => setOpen(true)}><ListChecks size={16} aria-hidden="true" /></button>{open ? <Dialog title={strings.menu} onClose={() => setOpen(false)}><ReviewMenuContents cards={cards} selectedIds={selectedIds} /></Dialog> : null}</>;
 }
 function ReviewMenuContents({ cards, selectedIds }: { cards: Card[]; selectedIds: ReadonlySet<string> }) {
   const context = useCardReviewContext()!;

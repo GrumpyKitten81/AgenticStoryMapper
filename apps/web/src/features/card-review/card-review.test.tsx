@@ -40,7 +40,7 @@ it("bulk-fetches once for multiple badges and opens a keyboard-accessible review
 });
 it("keeps review requests and settings read-only in preview", async () => {
   await render(true);
-  await act(async () => [...host!.querySelectorAll<HTMLButtonElement>("button")].find((button) => button.textContent === "Card reviews")!.click());
+  await act(async () => host!.querySelector<HTMLButtonElement>('button[aria-label="Card reviews"]')!.click());
   expect([...document.querySelectorAll<HTMLButtonElement>("button")].find((button) => button.textContent === "Request selected reviews")?.disabled).toBe(true);
   expect([...document.querySelectorAll<HTMLButtonElement>("button")].find((button) => button.textContent === "Save review settings")?.disabled).toBe(true);
   expect(api.commandCardReview).not.toHaveBeenCalled();
@@ -48,7 +48,9 @@ it("keeps review requests and settings read-only in preview", async () => {
 
 it("describes the compact menu, keeps selected Cards and restores focus after closing", async () => {
   await render();
-  const menu = [...host!.querySelectorAll<HTMLButtonElement>("button")].find((button) => button.textContent === "Card reviews")!;
+  const menu = host!.querySelector<HTMLButtonElement>('button[aria-label="Card reviews"]')!;
+  expect(menu.classList.contains("icon-button")).toBe(true);
+  expect(menu.textContent).toBe("");
   expect(menu.title).toContain("Definition of Ready");
   expect(menu.getAttribute("aria-description")).toContain("selected Cards");
   await act(async () => { menu.focus(); menu.click(); });

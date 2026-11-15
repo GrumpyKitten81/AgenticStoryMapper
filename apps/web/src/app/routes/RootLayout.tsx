@@ -15,6 +15,7 @@ import { useWorkspaceScope } from "@storymapper/web/app/routes/use-workspace-sco
 import { StoryMapViews } from "@storymapper/web/app/routes/story-map-views";
 import { routeHeading } from "@storymapper/web/app/routes/route-heading";
 import { CardKeyPrefixEditor } from "@storymapper/web/app/routes/CardKeyPrefixEditor";
+import { ProductContextPanel } from "@storymapper/web/features/product-context/ProductContextPanel";
 import { RestoreProgressDialog } from "@storymapper/web/features/restore-points/RestoreProgressDialog";
 import { isPersonasEnabled, isReleasesViewEnabled, isRoadmapsViewEnabled, isSourcesViewEnabled } from "@storymapper/web/app/feature-flags";
 
@@ -196,12 +197,12 @@ function renderWorkspaceHeader(model: ReturnType<typeof useRootLayoutState>) {
         />
       ) : (
         <>
-          {storyMapName ? <span className="topbar-map-name">{storyMapName}</span> : null}
-          {storyMapParams && storyMapName ? (
+          {storyMapParams && storyMapName ? <span className="topbar-map-identity"><span className="topbar-map-name">{storyMapName}</span>
+            <ProductContextPanel key={storyMapParams.storyMapId} projectId={storyMapParams.projectId} storyMapId={storyMapParams.storyMapId} disabled={Boolean(search.preview)} />
             <button type="button" className="secondary icon-button topbar-title-edit" title={strings.renameStoryMap} aria-label={strings.renameStoryMapLabel(storyMapName)} onClick={startTitleEdit}>
               <Pencil size={16} />
             </button>
-          ) : null}
+          </span> : null}
           <CardKeyPrefixEditor storyMap={snapshot?.storyMap} readOnly={Boolean(search.preview)} />
         </>
       )}

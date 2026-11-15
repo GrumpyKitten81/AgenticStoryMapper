@@ -1,4 +1,5 @@
 import { useState, type ReactElement } from "react";
+import { BookOpenText, Copy } from "lucide-react";
 import { Dialog } from "@storymapper/web/components/Dialog";
 import { CopyButton } from "@storymapper/web/components/CopyButton";
 import { productContextStrings as strings } from "@storymapper/web/ui-strings/product-context";
@@ -10,12 +11,11 @@ const multiline = new Set<keyof ProductContextDraft>(["keyFeatures", "nonGoals",
 
 export function ProductContextPanel({ projectId, storyMapId, disabled }: { projectId: string; storyMapId: string; disabled: boolean }): ReactElement {
   const [open, setOpen] = useState(false);
-  return <div className="button-row">
-    <span>{strings.mapId} <code>{storyMapId}</code></span>
-    <CopyButton text={storyMapId}>{strings.copyMapId}</CopyButton>
-    <button type="button" className="secondary" disabled={disabled} onClick={() => setOpen(true)}>{strings.open}</button>
+  return <>
+    <CopyButton text={storyMapId} className="secondary icon-button topbar-title-edit" title={`${strings.mapId}: ${storyMapId} · ${strings.copyMapId}`} ariaLabel={`${strings.copyMapId} — ${strings.mapId}`} statusClassName="visually-hidden"><Copy size={16} aria-hidden="true" /></CopyButton>
+    <button type="button" className="secondary icon-button topbar-title-edit" title={strings.title} aria-label={strings.open} disabled={disabled} onClick={() => setOpen(true)}><BookOpenText size={16} aria-hidden="true" /></button>
     {open ? <ProductContextDialog projectId={projectId} storyMapId={storyMapId} onClose={() => setOpen(false)} /> : null}
-  </div>;
+  </>;
 }
 
 function ProductContextDialog({ projectId, storyMapId, onClose }: { projectId: string; storyMapId: string; onClose: () => void }): ReactElement {
