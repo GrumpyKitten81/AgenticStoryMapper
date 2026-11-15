@@ -26,6 +26,7 @@ export const storyMapStrings = {
   position: "Position",
   creatingCard: "Creating Card…",
   colorControl: (value: string): string => `Color: ${value}. Change color`,
+  colorCategoryName: (value: string): string => `Color category: ${value}`,
   priorityControl: (value: string): string => `Priority ${value}. Change priority`,
   estimateWithUnit: (value: number, unit: string): string => `${value} ${unit}`,
   unknownRelease: "Unknown release",

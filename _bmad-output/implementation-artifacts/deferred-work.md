@@ -1148,3 +1148,7 @@ status: open
 - source_spec: `_bmad-output/implementation-artifacts/spec-gh-15-map-working-rules.md`
   summary: Detect or reconcile concurrent Product Context edits from separate clients.
   evidence: The editor submits every field without a revision guard, so a stale dialog can overwrite a newer field value. This existing behavior applies to all Product Context fields.
+
+- source_spec: `_bmad-output/implementation-artifacts/spec-gh-12-tree-color-indicator.md`
+  summary: Verify the tree category label visually under native forced-colors rendering.
+  evidence: The connected browser exposes viewport overrides but no forced-colors emulation. CSS explicitly shows the category text and CanvasText border in that mode; native layout and long custom names remain unverified.

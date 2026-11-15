@@ -238,6 +238,44 @@ it("renders one canonical Issue link in Tree when sync state joins the same refe
   expect(row.querySelector(`a[href="${url}"]`)?.textContent).toContain("#17");
 });
 
+it("shows stored Card colors and map-specific category names in Tree, then refreshes the open tree", async () => {
+  const [activity, step, story] = state.snapshot.cards;
+  const uncolored = { ...story!, id: randomUUID(), key: "LSM-4", title: "A long uncolored Card title ".repeat(12), position: 1, color: undefined };
+  state.snapshot = { ...state.snapshot, storyMap: { ...state.snapshot.storyMap, colorCategoryNames: { "#f5a623": "Risk" } }, cards: [{ ...activity!, color: "#e5484d" }, { ...step!, color: "#ffffff" }, { ...story!, color: "#f5a623" }, uncolored] };
+  await mount(viewUrl);
+  const color = (id: string) => primary(id).querySelector<HTMLElement>(".tree-color-indicator");
+  expect(color(activity!.id)?.style.backgroundColor).toBe("rgb(229, 72, 77)");
+  expect(color(step!.id)?.style.backgroundColor).toBe("rgb(255, 255, 255)");
+  expect(color(cardId)?.style.backgroundColor).toBe("rgb(245, 166, 35)");
+  expect(color(uncolored.id)).toBeNull();
+  expect(primary(cardId).getAttribute("aria-label")).toBe("Create traceable story cards. Color category: Risk");
+  expect(primary(cardId).title).toContain("Color category: Risk");
+  expect(primary(uncolored.id).getAttribute("aria-label")).toBeNull();
+  await act(async () => primary(cardId).focus());
+  state.snapshot = { ...state.snapshot, cards: state.snapshot.cards.map((card) => card.id === cardId ? { ...card, color: "#4a90e2", version: 2 } : card) };
+  await act(async () => state.client.setQueryData(["story-map", storyMapId], state.snapshot));
+  expect(color(cardId)?.style.backgroundColor).toBe("rgb(74, 144, 226)");
+  expect(primary(cardId).getAttribute("aria-label")).toContain("Color category: Blue");
+  expect(document.activeElement).toBe(primary(cardId));
+  state.snapshot = { ...state.snapshot, storyMap: { ...state.snapshot.storyMap, colorCategoryNames: { "#4a90e2": "Urgent" } } };
+  await act(async () => state.client.setQueryData(["story-map", storyMapId], state.snapshot));
+  expect(primary(cardId).getAttribute("aria-label")).toContain("Color category: Urgent");
+  expect(primary(cardId).title).toContain("Color category: Urgent");
+});
+
+it("uses projected Card colors and category names in Tree previews", async () => {
+  const previewId = randomUUID(), original = fetch;
+  state.snapshot = { ...state.snapshot, storyMap: { ...state.snapshot.storyMap, colorCategoryNames: { "#f5a623": "Risk" } }, cards: state.snapshot.cards.map((card) => card.id === cardId ? { ...card, color: "#f5a623" } : card) };
+  const projected = { ...state.snapshot, storyMap: { ...state.snapshot.storyMap, colorCategoryNames: { "#4a90e2": "Blocker" } }, cards: state.snapshot.cards.map((card) => card.id === cardId ? { ...card, color: "#4a90e2" } : card) };
+  vi.stubGlobal("fetch", vi.fn(async (path: string, init?: RequestInit) => path === `/api/changesets/${previewId}/preview`
+    ? Response.json({ changeSet: { id: previewId, title: "Color preview", status: "proposed" }, selectedOperationIds: [], conflicts: [], operations: [], boards: [{ snapshot: projected, markers: [] }], presentationStatus: "proposed", closed: false, canApply: false, canApprove: false }) : original(path, init)));
+  await mount(`${viewUrl}?preview=${previewId}`);
+  expect(primary(cardId).getAttribute("aria-label")).toContain("Color category: Blocker");
+  expect(primary(cardId).querySelector<HTMLElement>(".tree-color-indicator")?.style.backgroundColor).toBe("rgb(74, 144, 226)");
+  expect(state.snapshot.cards.find((card) => card.id === cardId)?.color).toBe("#f5a623");
+  expect(state.snapshot.storyMap.colorCategoryNames).toEqual({ "#f5a623": "Risk" });
+});
+
 it("uses canonical source-only and synced GitHub refs once in Tracking risks while excluding other providers", async () => {
   const { githubLinkSchema, remoteWorkItemLinkSchema } = await import("@storymapper/contracts");
   const template = { ...state.snapshot.cards[2]!, description: "Delivery evidence" };

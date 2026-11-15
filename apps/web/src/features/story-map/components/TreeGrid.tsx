@@ -6,6 +6,7 @@ import type { ChangeSetPreviewMarker, Card, StoryMapSnapshot } from "@storymappe
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useLayoutEffect, useMemo, useRef } from "react";
 import { cardLevelMeta } from "@storymapper/web/features/story-map/card-taxonomy";
+import { cardColors } from "@storymapper/web/features/story-map/card-visual-options";
 import { cardTooltip } from "@storymapper/web/features/story-map/card-tooltip";
 import { useTreeCollapseStore } from "@storymapper/web/app/stores/tree-collapse-store";
 import { useTreeColumnsStore } from "@storymapper/web/app/stores/tree-columns-store";
@@ -88,6 +89,7 @@ function useTreeGridState({ state, onSelectCard }: TreeGridProps) {
 }
 
 function renderTreeGrid({ treeRef, focusedId, state, rows, collapsedSet, workItemRefs, toggleNode, storyMapId, onSelectCard, columns, showChanged }: Exclude<ReturnType<typeof useTreeGridState>, import("react").ReactElement | null>) {
+  const colorNames = new Map<string, string>(cardColors(state.snapshot.storyMap.colorCategoryNames).map(({ value, label }) => [value, label]));
   return (
     <div className="tree-view" data-story-map-export-target="tree" ref={treeRef} tabIndex={-1} onFocusCapture={(event) => {
       focusedId.current = (event.target as HTMLElement).closest<HTMLElement>("[data-live-card-id]")?.dataset.liveCardId ?? null;
@@ -108,6 +110,7 @@ function renderTreeGrid({ treeRef, focusedId, state, rows, collapsedSet, workIte
             collapsed={collapsedSet.has(row.card.id)}
             releaseName={row.card.releaseId ? state.releaseNameById.get(row.card.releaseId) : undefined}
             workItem={workItemRefs.get(row.card.id)}
+            colorName={row.card.color ? colorNames.get(row.card.color) ?? row.card.color : undefined}
             onToggle={() => toggleNode(storyMapId, row.card.id)}
             marker={state.preview?.markers.find((marker) => marker.entity === "card" && marker.entityId === row.card.id)}
             onSelect={() => { if (!state.preview) onSelectCard(row.card.id); }}
@@ -134,6 +137,7 @@ function TreeRowItem(props: {
   collapsed: boolean;
   releaseName: string | undefined;
   workItem: WorkItemRef | undefined;
+  colorName: string | undefined;
   onToggle: () => void;
   onSelect: () => void;
 }) {
@@ -150,6 +154,7 @@ function useTreeRowItemState({
   collapsed,
   releaseName,
   workItem,
+  colorName,
   onToggle,
   onSelect
 }: {
@@ -162,14 +167,16 @@ function useTreeRowItemState({
   collapsed: boolean;
   releaseName: string | undefined;
   workItem: WorkItemRef | undefined;
+  colorName: string | undefined;
   onToggle: () => void;
   onSelect: () => void;
 }) {
   const { card, depth, hasChildren } = row;
-  return { contextOnly: useIsFilterContext(card.id), card, marker, depth, hasChildren, collapsed, onToggle, onSelect, dependencies, columns, showChanged, cellContext: { card, estimationUnit, releaseName, workItem } };
+  return { contextOnly: useIsFilterContext(card.id), card, marker, depth, hasChildren, collapsed, onToggle, onSelect, dependencies, columns, showChanged, colorName, cellContext: { card, estimationUnit, releaseName, workItem } };
 }
 
-function renderTreeRowItem({ contextOnly, card, marker, depth, hasChildren, collapsed, onToggle, onSelect, dependencies, columns, showChanged, cellContext }: ReturnType<typeof useTreeRowItemState>) {
+function renderTreeRowItem({ contextOnly, card, marker, depth, hasChildren, collapsed, onToggle, onSelect, dependencies, columns, showChanged, colorName, cellContext }: ReturnType<typeof useTreeRowItemState>) {
+  const colorDescription = colorName ? strings.colorCategoryName(colorName) : undefined;
   return (
     <div className={`tree-row ${contextOnly ? "filter-context" : ""} tree-row-${card.level} ${marker?.kind === "removed" ? "preview-removed" : ""}`} data-live-card-id={card.id}>
       <span className="tree-cell-title" style={{ paddingLeft: `${depth * 20}px` }}>
@@ -181,7 +188,10 @@ function renderTreeRowItem({ contextOnly, card, marker, depth, hasChildren, coll
           <span className="tree-toggle-spacer" />
         )}
         <span className={`tree-level-badge tree-level-${card.level}`}>{cardLevelMeta[card.level].label}</span>
-        <button type="button" className="tree-title-button" data-card-id={card.id} onClick={onSelect} title={cardTooltip(card)}>{card.title}</button><CardReviewBadge cardId={card.id} /><PreviewMarker marker={marker} />{showChanged ? <ChangedMarker cardId={card.id} /> : null}<CardDependencyBadges dependencies={dependencies} />
+        <button type="button" className="tree-title-button" data-card-id={card.id} onClick={onSelect} title={colorDescription ? `${cardTooltip(card)}\n${colorDescription}` : cardTooltip(card)} aria-label={colorDescription ? `${card.title}. ${colorDescription}` : undefined}>
+          {colorDescription ? <><span className="tree-color-indicator" style={{ backgroundColor: card.color }} aria-hidden="true" /><span className="tree-color-label" aria-hidden="true">{colorName}</span></> : null}
+          <span className="tree-title-text">{card.title}</span>
+        </button><CardReviewBadge cardId={card.id} /><PreviewMarker marker={marker} />{showChanged ? <ChangedMarker cardId={card.id} /> : null}<CardDependencyBadges dependencies={dependencies} />
       </span>
       {columns.map((column) => <span key={column.id} className={`tree-cell tree-cell-${column.id}`} title={column.title?.(cellContext)}>{column.cell(cellContext)}</span>)}
     </div>

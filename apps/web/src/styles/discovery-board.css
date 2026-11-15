@@ -136,6 +136,22 @@
   cursor: pointer;
 }
 
+.tree-color-indicator {
+  flex: none;
+  width: var(--space-12);
+  height: var(--space-12);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+}
+
+.tree-color-label { display: none; }
+.tree-title-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+@media (forced-colors: active) {
+  .tree-color-indicator { background: Canvas !important; border-color: CanvasText; }
+  .tree-color-label { display: inline; flex: none; font-size: var(--font-size-meta); }
+}
+
 .tree-title-button:hover {
   text-decoration: underline;
 }
