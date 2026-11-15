@@ -107,6 +107,7 @@ export const productContexts = sqliteTable("product_contexts", {
   storyMapId: text("story_map_id").references(() => storyMaps.id),
   productType: text("product_type").notNull().default(""),
   purpose: text("purpose").notNull().default(""),
+  workingRules: text("working_rules").notNull().default(""),
   keyFeaturesJson: text("key_features_json").notNull().default("[]"),
   keyFeaturesSchemaVersion: integer("key_features_schema_version").notNull().default(1),
   targetUsers: text("target_users").notNull().default(""),

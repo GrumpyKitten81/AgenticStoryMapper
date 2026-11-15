@@ -55,6 +55,22 @@ function jsonMigrationAssets(): MigrationMeta[] {
 }
 
 describe("authenticated generated release migrations", () => {
+  it("defaults working rules when upgrading an existing Product Context row", () => {
+    const directory = mkdtempSync(join(tmpdir(), "working-rules-upgrade-")), path = join(directory, "storymapper.sqlite");
+    cleanup.push(() => rmSync(directory, { recursive: true, force: true }));
+    const legacy = new Database(path);
+    const projectId = randomUUID(), mapId = randomUUID(), contextId = randomUUID(), time = "2026-11-15T00:00:00Z";
+    runMigrations(legacy, path, loadMigrationAssets().slice(0, -1));
+    legacy.prepare("INSERT INTO projects (id,name,local_path,created_at) VALUES (?,?,?,?)").run(projectId, "Existing project", directory, time);
+    legacy.prepare("INSERT INTO project_settings (project_id,epoch,updated_at) VALUES (?,?,?)").run(projectId, randomUUID(), time);
+    legacy.prepare("INSERT INTO story_maps (id,project_id,name,created_at,updated_at) VALUES (?,?,?,?,?)").run(mapId, projectId, "Existing map", time, time);
+    legacy.prepare("INSERT INTO product_contexts (id,project_id,story_map_id,purpose,updated_at) VALUES (?,?,?,?,?)").run(contextId, projectId, mapId, "Retained purpose", time);
+    legacy.close();
+    const upgraded = openStoryMapperDb(path);
+    try {
+      expect(upgraded.$client.prepare("SELECT purpose,working_rules FROM product_contexts WHERE id = ?").get(contextId)).toEqual({ purpose: "Retained purpose", working_rules: "" });
+    } finally { upgraded.$client.close(); }
+  });
   registerPublishesAPriorStateRestorePointForEveryPending();
 
   it("migrates supported older JSON column layouts before current validation", testMigratesSupportedOlderJSONColumnLayoutsBeforeCurrentValidation);

@@ -1,0 +1,1 @@
+ALTER TABLE `product_contexts` ADD `working_rules` text DEFAULT '' NOT NULL;

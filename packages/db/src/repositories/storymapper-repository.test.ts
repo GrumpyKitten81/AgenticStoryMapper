@@ -583,17 +583,27 @@ function testStoresProductContextAndExposesItInStoryMapSnapshots() {
   const repository = new StoryMapperRepository(new DatabaseHandle(openStoryMapperDb(join(directory, "storymapper.sqlite"))));
   const project = new UnitOfWork(repository.handle).run(TEST_ACTOR, ({ repository: txRepository }) => txRepository.createProject({ name: "Product Context Test" }));
   const storyMap = new UnitOfWork(repository.handle).run(TEST_ACTOR, ({ repository: txRepository }) => txRepository.createStoryMap({ projectId: project.id, name: "Map" }));
+  const otherMap = new UnitOfWork(repository.handle).run(TEST_ACTOR, ({ repository: txRepository }) => txRepository.createStoryMap({ projectId: project.id, name: "Other map" }));
+  expect(repository.getProductContext(project.id, storyMap.id).workingRules).toBe("");
+  expect(() => new UnitOfWork(repository.handle).run(TEST_ACTOR, ({ repository: txRepository }) => txRepository.upsertProductContext({ projectId: project.id, workingRules: "Map guidance" }))).toThrow("Working rules require a Story Map.");
 
   const context = new UnitOfWork(repository.handle).run(TEST_ACTOR, ({ repository: txRepository }) => txRepository.upsertProductContext({
     projectId: project.id,
     storyMapId: storyMap.id,
     productType: "Developer tool",
     purpose: "Plan local delivery",
+    workingRules: "Link decisions to evidence",
     keyFeatures: ["Story mapping", "GitHub sync"]
   }));
 
   expect(context.keyFeatures).toEqual(["Story mapping", "GitHub sync"]);
   expect(repository.getProductContext(project.id, storyMap.id).purpose).toBe("Plan local delivery");
+  expect(repository.getProductContext(project.id, storyMap.id).workingRules).toBe("Link decisions to evidence");
+  expect(repository.getProductContext(project.id, otherMap.id).workingRules).toBe("");
+  new UnitOfWork(repository.handle).run(TEST_ACTOR, ({ repository: txRepository }) => txRepository.upsertProductContext({ projectId: project.id, storyMapId: storyMap.id, purpose: "Updated purpose" }));
+  expect(repository.getProductContext(project.id, storyMap.id).workingRules).toBe("Link decisions to evidence");
+  new UnitOfWork(repository.handle).run(TEST_ACTOR, ({ repository: txRepository }) => txRepository.upsertProductContext({ projectId: project.id, storyMapId: storyMap.id, workingRules: "" }));
+  expect(repository.getProductContext(project.id, storyMap.id).workingRules).toBe("");
   expect(repository.getStoryMapSnapshot(storyMap.id)?.productContext?.productType).toBe("Developer tool");
 }
 

@@ -104,6 +104,7 @@ it("normalizes explicit undefined bulk and Product Context patch fields", () => 
   expect(changeOperationSchema.parse({ ...bulk, after: { ...bulk.after, patch: { status: "done", color: undefined } } }).after).toEqual({ ...bulk.after, patch: { status: "done" } });
   expect(changeOperationSchema.parse({ ...envelope, op: "set", entity: "productContext", after: { projectId, purpose: undefined } }).after).toEqual({ projectId });
   expect(changeOperationSchema.parse({ ...envelope, op: "set", entity: "productContext", after: { projectId, purpose: "Keep", notes: undefined } }).after).toEqual({ projectId, purpose: "Keep" });
+  expect(changeOperationSchema.parse({ ...envelope, op: "set", entity: "productContext", after: { projectId, workingRules: "Use evidence" } }).after).toEqual({ projectId, workingRules: "Use evidence" });
 });
 
 it("accepts adapter refs and sync-state references while refusing removed or duplicate identity fields", () => {

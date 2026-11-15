@@ -276,9 +276,14 @@ async function testKeepsFailedServerExportsPendingAndPersistsSuccessfulStoryMapA
   expect((await server.inject(`/api/exports/story-map?storyMapId=${sampleId}&format=json`)).statusCode).toBe(500);
   expect(repository.getGettingStartedChecklist(project.id).completed.export).toBe(false);
   db.$client.exec("DROP TRIGGER reject_export_event");
+  unitOfWork.run({ actorType: "human", actorId: "fixture" }, ({ repository }) => repository.upsertProductContext({ projectId: project.id, storyMapId: sampleId, workingRules: "Do not modify existing Epics" }));
   const success = await server.inject(`/api/exports/story-map?storyMapId=${sampleId}&format=json`);
   expect(success.statusCode).toBe(200);
   expect(success.json().snapshot.cards).toHaveLength(3);
+  expect(success.json().snapshot.productContext.workingRules).toBe("Do not modify existing Epics");
+  const markdown = await server.inject(`/api/exports/story-map?storyMapId=${sampleId}&format=markdown`);
+  expect(markdown.statusCode).toBe(200);
+  expect(markdown.body).toContain("## Working rules (advisory)\n\n```\nDo not modify existing Epics\n```");
   expect(repository.getGettingStartedChecklist(project.id).completed.export).toBe(true);
   const other = unitOfWork.run({ actorType: "human", actorId: "fixture" }, ({ repository }) => repository.createProject({ name: "Audit HTTP" }));
   const audit = await server.inject(`/api/exports/audit?projectId=${other.id}&format=json`);

@@ -20,6 +20,32 @@
   box-shadow: var(--shadow-dialog);
 }
 
+.product-context-dialog {
+  width: min(700px, 100%);
+  min-width: 0;
+}
+
+.product-context-dialog .product-context-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.product-context-sections [role="tab"] {
+  color: var(--color-primary);
+  background: var(--color-surface);
+  --focus-ring: var(--focus-ring-light);
+}
+
+.product-context-sections [aria-selected="true"] {
+  color: var(--color-surface);
+  background: var(--color-primary);
+  --focus-ring: var(--focus-ring-dark);
+}
+
+.product-context-fields { min-width: 0; }
+.product-context-fields label { min-width: 0; overflow-wrap: anywhere; }
+
 .discovery-dialog h3 {
   margin: 0;
 }

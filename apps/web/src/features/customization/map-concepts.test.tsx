@@ -62,5 +62,6 @@ it("renders the bundled guide offline with its four concepts and primary source 
   await act(async () => root.render(<MapConceptGuide />));
   await click("Map levels, planning types and GitHub Issues");
   expect(getByRole(document.body, "table").querySelectorAll("tbody tr")).toHaveLength(4);
+  expect(document.body.textContent).toContain("Working rules");
   expect(getByRole(document.body, "link", { name: "Jeff Patton: User Story Mapping" }).getAttribute("href")).toBe("https://jpattonassociates.com/wp-content/uploads/2015/03/story_mapping.pdf");
 });

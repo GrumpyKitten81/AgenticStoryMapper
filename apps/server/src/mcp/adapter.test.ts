@@ -94,6 +94,17 @@ it("runs MCP read, protected proposal, validation and attributed application rou
   expect(f.repository.listCardHistory(f.card.id).at(-1)).toMatchObject({ actor: "migration-host", actorType: "agent", mcpSessionId: "migration-session" });
 });
 
+it("proposes map working rules through MCP and applies them only after human approval", async () => {
+  const f = await fixture();
+  f.unitOfWork.run(actor, ({ repository }) => repository.updateSafetySettings(f.project.id, { agentMode: "propose" }));
+  const proposed = await f.call("UpsertProductContext", { projectId: f.project.id, storyMapId: f.storyMap.id, workingRules: "Do not modify existing Epics" });
+  expect(proposed.body).toMatchObject({ outcome: "proposed", changeSet: { status: "proposed", operations: [expect.objectContaining({ entity: "productContext", after: expect.objectContaining({ workingRules: "Do not modify existing Epics" }) })] } });
+  expect(f.repository.getProductContext(f.project.id, f.storyMap.id).workingRules).toBe("");
+  expect((await f.request(`/api/changesets/${proposed.body.changeSetId}/approve`, {})).status).toBe(200);
+  expect((await f.request(`/api/changesets/${proposed.body.changeSetId}/apply`, {})).status).toBe(200);
+  expect(f.repository.getProductContext(f.project.id, f.storyMap.id).workingRules).toBe("Do not modify existing Epics");
+});
+
 it("preserves persisted unrelated Card, Release and Persona fields through empty and sparse MCP patches", async () => {
   const f = await fixture();
   f.enableWrites();
@@ -145,6 +156,7 @@ it("keeps HTTP root and customization patches sparse and honors explicit supplie
     }
   }
   const contextInput = { projectId: f.project.id, storyMapId: f.storyMap.id };
+  expect((await f.request("/api/product-context", { projectId: f.project.id, workingRules: "Map guidance" }, "PATCH")).status).toBe(400);
   for (const patch of [{}, { notes: "Changed notes" }]) {
     const response = await f.request("/api/product-context", { ...contextInput, ...patch }, "PATCH");
     expect(response.status).toBe(200);

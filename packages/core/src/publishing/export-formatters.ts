@@ -47,7 +47,11 @@ export function buildStoryMapMarkdown(snapshot: StoryMapSnapshot, exportedAt: st
     lines.push("");
   }
 
-  return lines.join("\n").replace(/\n{3,}/g, "\n\n");
+  const markdown = lines.join("\n").replace(/\n{3,}/g, "\n\n");
+  const workingRules = snapshot.productContext?.workingRules;
+  if (!workingRules) return markdown;
+  const fence = "`".repeat(Math.max(3, ...(workingRules.match(/`+/g) ?? []).map((run) => run.length + 1)));
+  return `${markdown}\n\n## Working rules (advisory)\n\n${fence}\n${workingRules}${workingRules.endsWith("\n") ? "" : "\n"}${fence}\n`;
 }
 
 export function appendCardMeta(lines: string[], card: Card, releaseById: Map<string, Release>): void {

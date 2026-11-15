@@ -111,6 +111,7 @@ export const upsertProductContextRequestSchema = productContextSchema
     storyMapId: true,
     productType: true,
     purpose: true,
+    workingRules: true,
     keyFeatures: true,
     targetUsers: true,
     platform: true,
@@ -123,6 +124,7 @@ export const upsertProductContextRequestSchema = productContextSchema
   .extend({
     productType: productContextSchema.shape.productType.removeDefault(),
     purpose: productContextSchema.shape.purpose.removeDefault(),
+    workingRules: productContextSchema.shape.workingRules.removeDefault(),
     keyFeatures: productContextSchema.shape.keyFeatures.removeDefault(),
     targetUsers: productContextSchema.shape.targetUsers.removeDefault(),
     platform: productContextSchema.shape.platform.removeDefault(),
@@ -136,6 +138,7 @@ export const upsertProductContextRequestSchema = productContextSchema
     storyMapId: true,
     productType: true,
     purpose: true,
+    workingRules: true,
     keyFeatures: true,
     targetUsers: true,
     platform: true,
@@ -144,7 +147,8 @@ export const upsertProductContextRequestSchema = productContextSchema
     glossary: true,
     nonGoals: true,
     complianceConstraints: true
-  }).extend({ apply: z.boolean().optional() });
+  }).extend({ apply: z.boolean().optional() })
+  .refine((input) => !input.workingRules || Boolean(input.storyMapId), { path: ["workingRules"], message: "Working rules require a Story Map." });
 
 export const listAiTemplatesRequestSchema = z.object({ projectId: uuidSchema });
 export const createAiTemplateRequestSchema = aiFunctionTemplateSchema;

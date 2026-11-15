@@ -321,6 +321,8 @@ it("populates persisted Project prompts with exact context and rechecks access a
     expect(texts[0]).toContain(JSON.stringify(template.outputSchemaName));
     expect(JSON.parse(texts[1]!.split("Supplied arguments:\n")[1]!.split("\nProduct Context")[0]!)).toEqual({ evidence, storyMapId: map.id });
     expect(texts[1]).toContain('"purpose": "Map purpose"');
+    expect(texts[1]).toContain('"workingRules": "Keep stories small"');
+    expect(toolResult(await client.callTool({ name: "GetProductContext", arguments: { projectId: project.id, storyMapId: map.id } }))).toMatchObject({ data: { context: { workingRules: "Keep stories small" } } });
     expect(JSON.parse(texts[1]!.split("Product Context (Story Map scope):\n")[1]!)).toMatchObject({ ...values, purpose: "Map purpose" });
     const emptyMap = await http("/api/story-maps", "POST", { projectId: project.id, name: "Independent empty context" }) as StoryMap;
     const emptyScope = await client.getPrompt({ name, arguments: { evidence: "Evidence", storyMapId: emptyMap.id } });
@@ -398,7 +400,7 @@ async function exercisePopulatesPersistedProjectPromptsWithExactContextAndRechec
   const foreignMap = await http("/api/story-maps", "POST", { projectId: other.id, name: "Foreign scope" }) as StoryMap;
   const values = { productType: "Developer tool", purpose: "Project purpose", keyFeatures: ["Traceability"], targetUsers: "Developers", platform: "Desktop", pricing: "Local", notes: "Notes", glossary: "Terms", nonGoals: "Cloud", complianceConstraints: "Local storage" };
   await http("/api/product-context", "PATCH", { projectId: project.id, ...values });
-  await http("/api/product-context", "PATCH", { projectId: project.id, storyMapId: map.id, ...values, purpose: "Map purpose" });
+  await http("/api/product-context", "PATCH", { projectId: project.id, storyMapId: map.id, ...values, purpose: "Map purpose", workingRules: "Keep stories small" });
   const template = { projectId: project.id, id: "custom-prompt", name: "Custom prompt", instructions: "Inspect evidence for proposed stories.", arguments: [{ name: "evidence", description: "Source evidence", required: true }], examples: ["Example \"quoted\"\nline"], outputSchemaName: "ChangeSet" };
   await http("/api/ai/templates", "POST", template);
   await http("/api/ai/templates", "POST", { ...template, projectId: other.id, instructions: "Other instructions" });

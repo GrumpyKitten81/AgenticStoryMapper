@@ -8,7 +8,7 @@ export type ProductContextDraft = ReturnType<typeof contextFields>;
 
 function contextFields(context?: ProductContext) {
   return {
-    productType: context?.productType ?? "", purpose: context?.purpose ?? "", keyFeatures: context?.keyFeatures.join("\n") ?? "",
+    productType: context?.productType ?? "", purpose: context?.purpose ?? "", workingRules: context?.workingRules ?? "", keyFeatures: context?.keyFeatures.join("\n") ?? "",
     targetUsers: context?.targetUsers ?? "", platform: context?.platform ?? "", pricing: context?.pricing ?? "", notes: context?.notes ?? "",
     glossary: context?.glossary ?? "", nonGoals: context?.nonGoals ?? "", complianceConstraints: context?.complianceConstraints ?? ""
   };

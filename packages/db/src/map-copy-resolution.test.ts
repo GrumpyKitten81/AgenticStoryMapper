@@ -1,6 +1,6 @@
 import { expect, it, vi } from "vitest";
 import type { ChangeOperation, OperationSnapshot } from "@storymapper/contracts";
-import { resolveOperation, resolveOperations } from "@storymapper/core";
+import { buildStoryMapMarkdown, resolveOperation, resolveOperations } from "@storymapper/core";
 import { DatabaseHandle, openStoryMapperDb, StoryMapperRepository, UnitOfWork } from "@storymapper/db";
 import { storyMapCopyRows } from "@storymapper/db/repositories/map-copy-repository";
 
@@ -28,7 +28,7 @@ function seed(uow: UnitOfWork) {
     const annotation = repository.createAnnotation({ projectId: project.id, storyMapId: map.id, name: "Risk" });
     repository.createWorkflowStatus({ projectId: project.id, storyMapId: map.id, name: "Review", group: "active" });
     repository.createStoryTemplate({ projectId: project.id, storyMapId: map.id, name: "Owned template", descriptionTemplate: "Reviewed template" });
-    repository.upsertProductContext({ projectId: project.id, storyMapId: map.id, purpose: "Owned vision" });
+    repository.upsertProductContext({ projectId: project.id, storyMapId: map.id, purpose: "Owned vision", workingRules: "Keep stories small" });
     repository.setCardPersona(story.id, persona.id);
     repository.setCardAnnotation(story.id, annotation.id);
     repository.createCardAttachment(story.id, { label: "Evidence", filePath: "attachments/evidence.txt" });
@@ -68,6 +68,8 @@ it("matches the real complete SQLite copy graph and preserves prepared identity/
 
     expect({ before, operation, supply }).toEqual(original);
     const actual = snapshot(repository, project.id, operation.entityId!);
+    expect(actual.productContexts[0]?.workingRules).toBe("Keep stories small");
+    expect(buildStoryMapMarkdown(repository.getStoryMapSnapshot(operation.entityId!)!, TIME)).toContain("## Working rules (advisory)\n\n```\nKeep stories small\n```");
     const copied = new Set(Object.values(identities));
     for (const [name, value] of Object.entries(actual)) if (Array.isArray(value)) {
       const expectedRows = value.filter((row: { id: string }) => copied.has(row.id)).sort((a, b) => a.id.localeCompare(b.id));

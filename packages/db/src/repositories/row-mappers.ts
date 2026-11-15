@@ -169,6 +169,7 @@ export function toProductContext(row: typeof productContexts.$inferSelect): Prod
     storyMapId: row.storyMapId,
     productType: row.productType,
     purpose: row.purpose,
+    workingRules: row.workingRules,
     keyFeatures: parseStoredJson("product_contexts", "key_features_json", row.keyFeaturesJson, row.keyFeaturesSchemaVersion) as string[],
     targetUsers: row.targetUsers,
     platform: row.platform,

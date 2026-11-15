@@ -34,6 +34,17 @@ afterEach(async () => { await act(async () => root.unmount()); client.clear(); h
 describe("Product Context live draft retention", () => {
   it("refreshes clean fields but retains dirty text across changed/transient Context IDs and resets only for another scope", testRefreshesCleanFieldsButRetainsDirtyTextAcrossChangedTransientContext);
 
+  it("submits and clears map working rules without dropping other draft fields", async () => {
+    vi.mocked(api.upsertProductContext).mockImplementation(async (input) => ({ context: productContextSchema.parse({ ...context, ...input }) }));
+    await render();
+    await act(async () => state.setContextDraft((draft) => ({ ...draft, workingRules: "Link evidence" })));
+    await act(async () => state.saveContext.mutate());
+    expect(api.upsertProductContext).toHaveBeenLastCalledWith(expect.objectContaining({ projectId, storyMapId, purpose: "Initial purpose", workingRules: "Link evidence" }));
+    await act(async () => state.setContextDraft((draft) => ({ ...draft, workingRules: "" })));
+    await act(async () => state.saveContext.mutate());
+    expect(api.upsertProductContext).toHaveBeenLastCalledWith(expect.objectContaining({ projectId, storyMapId, purpose: "Initial purpose", workingRules: "" }));
+  });
+
   it("preserves text typed during a save and retains failed-save drafts", async () => {
     let resolve!: (value: { context: ProductContext }) => void;
     vi.mocked(api.upsertProductContext).mockImplementation(() => new Promise((done) => { resolve = done; }));

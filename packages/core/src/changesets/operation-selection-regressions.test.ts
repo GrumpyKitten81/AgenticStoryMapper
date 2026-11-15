@@ -295,7 +295,7 @@ it.each([id(1), id(71), id(72), "b".repeat(64), id(73)])("rejects Roadmap seed c
 
 it("ignores undefined fields when applying a direct-object Product Context patch", () => {
   const snapshot = placementSnapshot();
-  snapshot.productContexts.push({ id: id(70), projectId: id(1), storyMapId: null, productType: "Type", purpose: "Old", keyFeatures: ["Feature"], targetUsers: "User", platform: "Local", pricing: "Free", notes: "Keep", glossary: "Terms", nonGoals: "Outside", complianceConstraints: "Constraint", updatedAt: createdAt });
+  snapshot.productContexts.push({ id: id(70), projectId: id(1), storyMapId: null, productType: "Type", purpose: "Old", workingRules: "", keyFeatures: ["Feature"], targetUsers: "User", platform: "Local", pricing: "Free", notes: "Keep", glossary: "Terms", nonGoals: "Outside", complianceConstraints: "Constraint", updatedAt: createdAt });
   const operation: ChangeOperation = { operationId: "context", op: "set", entity: "productContext", entityId: id(70), after: { projectId: id(1), purpose: "New", notes: undefined } };
   const result = resolveOperations(snapshot, [operation], { createdAt, creationOrigin: "manual", ids: {}, externalRefIds: {} });
   expect(result.state.productContexts[0]).toEqual({ ...snapshot.productContexts[0], purpose: "New" });
@@ -363,7 +363,7 @@ it("reports the Project owner of a deduplicated prepared source import without c
 
 it("reports the Project owner of a repeated scope-only Product Context set", () => {
   const snapshot = placementSnapshot();
-  snapshot.productContexts.push({ id: id(70), projectId: id(1), storyMapId: null, productType: "Type", purpose: "Purpose", keyFeatures: [], targetUsers: "Users", platform: "Local", pricing: "Free", notes: "Notes", glossary: "Terms", nonGoals: "Outside", complianceConstraints: "Constraints", updatedAt: createdAt });
+  snapshot.productContexts.push({ id: id(70), projectId: id(1), storyMapId: null, productType: "Type", purpose: "Purpose", workingRules: "", keyFeatures: [], targetUsers: "Users", platform: "Local", pricing: "Free", notes: "Notes", glossary: "Terms", nonGoals: "Outside", complianceConstraints: "Constraints", updatedAt: createdAt });
   const operation: ChangeOperation = { operationId: "context", op: "set", entity: "productContext", entityId: id(70), after: { projectId: id(1) } };
   const result = resolveOperations(snapshot, [operation], { createdAt, creationOrigin: "manual", ids: {}, externalRefIds: {} });
   expect(result.operations[0]).toMatchObject({ status: "unchanged", changes: [], owners: [{ entity: "project", entityId: id(1), projectId: id(1) }] });

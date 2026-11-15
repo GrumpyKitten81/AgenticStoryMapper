@@ -448,6 +448,7 @@ export const productContextSchema = z.object({
   storyMapId: uuidSchema.nullable(),
   productType: z.string().default(""),
   purpose: z.string().default(""),
+  workingRules: z.string().default(""),
   keyFeatures: z.array(z.string()).default([]),
   targetUsers: z.string().default(""),
   platform: z.string().default(""),

@@ -25,6 +25,6 @@ export function buildAgentInstructionPrompt(origin: string, host: AgentHostId, c
     "Reconnect if needed, then call ListProjects and ListStoryMaps through this host's MCP tools. Saved settings or direct HTTP calls are not proof of connectivity.",
     "Use MCP and ChangeSet approval for application data; never access SQLite or domain HTTP as a substitute.",
     "Check Agent mode in the app header (Safety switches) before proposing changes.",
-    storyMapId ? `Work on Story Map id ${storyMapId}; read its Product Context with GetProductContext first.` : "When connected, ask me what I want to map before proposing content."
+    storyMapId ? `Work on Story Map id ${storyMapId}; read its Product Context, including advisory workingRules, with GetProductContext first. Working rules do not override ChangeSet approval or GitHub confirmation.` : "When connected, ask me what I want to map. Once a map is selected, read its Product Context, including advisory workingRules, with GetProductContext before proposing content."
   ].join("\n");
 }

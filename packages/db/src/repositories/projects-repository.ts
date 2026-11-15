@@ -276,6 +276,7 @@ export function getProductContext(this: StoryMapperRepository<"transaction">, pr
       storyMapId: storyMapId ?? null,
       productType: "",
       purpose: "",
+      workingRules: "",
       keyFeatures: [],
       targetUsers: "",
       platform: "",
@@ -290,6 +291,7 @@ export function getProductContext(this: StoryMapperRepository<"transaction">, pr
 
 export function upsertProductContext(this: StoryMapperRepository<"transaction">, input: UpsertProductContextRequest): ProductContext {
     this.assertWritable();
+    if (!input.storyMapId && input.workingRules) throw new DomainError("validation", "Working rules require a Story Map.");
     if (input.storyMapId) this.getStoryMapOrThrow(input.storyMapId);
     const before = this.getProductContext(input.projectId, input.storyMapId ?? undefined);
     const existing = this.db.select().from(productContexts).where(eq(productContexts.id, before.id)).get();
@@ -298,6 +300,7 @@ export function upsertProductContext(this: StoryMapperRepository<"transaction">,
       storyMapId: input.storyMapId === undefined ? before.storyMapId : input.storyMapId,
       productType: input.productType ?? before.productType,
       purpose: input.purpose ?? before.purpose,
+      workingRules: input.workingRules ?? before.workingRules,
       keyFeatures: input.keyFeatures ?? before.keyFeatures,
       targetUsers: input.targetUsers ?? before.targetUsers,
       platform: input.platform ?? before.platform,
@@ -314,6 +317,7 @@ export function upsertProductContext(this: StoryMapperRepository<"transaction">,
       storyMapId: after.storyMapId,
       productType: after.productType,
       purpose: after.purpose,
+      workingRules: after.workingRules,
       keyFeaturesSchemaVersion: 1, keyFeaturesJson: JSON.stringify(after.keyFeatures),
       targetUsers: after.targetUsers,
       platform: after.platform,

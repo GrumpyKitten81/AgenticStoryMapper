@@ -64,6 +64,8 @@ describe("Zod migration contract behavior", () => {
   it("keeps nested MCP patches and Product Context sparse", () => {
     expect(updateCardRequestSchema.parse({ title: "Renamed" })).toEqual({ title: "Renamed" });
     expect(upsertProductContextRequestSchema.parse({ projectId: id })).toEqual({ projectId: id });
+    expect(upsertProductContextRequestSchema.parse({ projectId: id, workingRules: "" })).toEqual({ projectId: id, workingRules: "" });
+    expect(upsertProductContextRequestSchema.safeParse({ projectId: id, workingRules: "Map guidance" }).success).toBe(false);
     expect(updateStoryMapCardToolInputSchema.parse({ cardId: id, baseVersion: 1, patch: {} })).toEqual({ cardId: id, baseVersion: 1, patch: {} });
     expect(updateStoryMapReleaseToolInputSchema.parse({ storyMapId: id, releaseId: id, baseVersion: 1, patch: {} }).patch).toEqual({});
     expect(updateStoryMapPersonaToolInputSchema.parse({ projectId: id, personaId: id, baseVersion: 1, patch: {} }).patch).toEqual({});

@@ -1140,3 +1140,11 @@ status: open
 - source_spec: `_bmad-output/implementation-artifacts/spec-agentic-story-mapper-branding.md`
   summary: Verify the Agentic Story Mapper brand and affected welcome/Agent setup text in a browser at desktop and narrow widths.
   evidence: CUA returned no in-app browser and an empty browser inventory on 2026-11-08; build, typecheck and focused UI tests passed, but actual wrapping/overflow cannot be established from these checks.
+
+- source_spec: `_bmad-output/implementation-artifacts/spec-gh-15-map-working-rules.md`
+  summary: Prevent Product Context edits made before the initial query resolves from overwriting existing fields.
+  evidence: `useContextDraft` treats a locally edited empty draft as final and the existing full-field save can overwrite server values, including working rules. This synchronization race predates Issue #15.
+
+- source_spec: `_bmad-output/implementation-artifacts/spec-gh-15-map-working-rules.md`
+  summary: Detect or reconcile concurrent Product Context edits from separate clients.
+  evidence: The editor submits every field without a revision guard, so a stale dialog can overwrite a newer field value. This existing behavior applies to all Product Context fields.

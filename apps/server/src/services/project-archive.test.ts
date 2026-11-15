@@ -73,6 +73,19 @@ function upload(content: Buffer) {
   ]) };
 }
 
+it("retains map working rules through archive import and runtime reopen", async () => {
+  const source = fixture();
+  const map = source.repository.listStoryMaps(source.project.id)[0]!;
+  source.work.run(actor, ({ repository }) => repository.upsertProductContext({ projectId: source.project.id, storyMapId: map.id, workingRules: "Do not modify existing Epics" }));
+  const archive = await exportProjectArchive(source.handle, source.project.id);
+  const target = fixture("Previous archive");
+  const imported = await importProjectArchive(archive.content, target.handle, actor);
+  expect(target.repository.getProductContext(source.project.id, map.id).workingRules).toBe("Do not modify existing Epics");
+  target.handle.current.$client.close();
+  target.handle.current = openStoryMapperDb(join(imported.localPath, "storymapper.sqlite"));
+  expect(target.repository.getProductContext(source.project.id, map.id).workingRules).toBe("Do not modify existing Epics");
+});
+
 it("exports package-derived versions, portable files and one Project; hot-switches the API and routes further exports to that folder", async () => {
   const source = fixture();
   for (const folder of ["documents", "attachments", "exports", "snapshots", "logs"]) { mkdirSync(join(source.directory, folder)); writeFileSync(join(source.directory, folder, "demo.txt"), `${folder} demo`); }
