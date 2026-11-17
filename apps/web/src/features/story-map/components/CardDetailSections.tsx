@@ -1,5 +1,8 @@
 import { useState } from "react";
+import { Copy } from "lucide-react";
 import type { Card, CardSourceLink, CreateCardSourceLinkRequest, StoryMapSnapshot } from "@storymapper/contracts";
+import { CopyButton } from "@storymapper/web/components/CopyButton";
+import { copyStrings } from "@storymapper/web/ui-strings/copy";
 import { storyMapStrings as strings } from "@storymapper/ui-strings";
 
 export function ChipSection<T extends { id: string; name: string; color?: string }>({ title, items, linkedIds, onToggle, disabled, disabledIds }: { disabled?: boolean; disabledIds?: ReadonlySet<string>; title: string; items: T[]; linkedIds: Set<string>; onToggle: (id: string, linked: boolean) => void }) {
@@ -71,7 +74,7 @@ function renderDetailSourceSections({ provenanceLabel, card, linkedSourceLinks, 
         const document = chunk ? documents.find((item) => item.id === chunk.documentId) : undefined;
         const label = link.kind === "chunk" ? chunk ? `${document?.title ?? ""} ${strings.chunkPreview(chunk.locator, chunk.text)}`.trim() : strings.sourceChunk(link.chunkId) : link.kind === "github" ? strings.legacyIssueLabel(link.repoFullName, link.issueNumber) : link.note;
         const removesIdentity = link.kind === "github" && link.id === link.externalRefId;
-        return <div className="source-link-row" key={link.id}><span>{label}</span>{link.kind === "github" ? <a href={link.url} target="_blank" rel="noreferrer">{strings.open}</a> : null}<button type="button" className={removesIdentity ? "danger" : "secondary"} disabled={pending} aria-label={removesIdentity ? strings.removeIssueIdentityLabel(label) : strings.unlinkOrigin(label)} onClick={() => deleteSourceLink({ kind: link.kind, id: link.id })}>{removesIdentity ? strings.removeIssueIdentity : strings.unlink}</button>{removesIdentity ? <small>{strings.removeIssueIdentityExplanation}</small> : null}</div>;
+        return <div className="source-link-row" key={link.id}><span>{label}</span>{link.kind === "github" ? <span className="button-row compact"><a href={link.url} target="_blank" rel="noreferrer">{strings.open}</a><CopyButton text={link.url} className="secondary icon-button" title={copyStrings.githubIssueLink(label)} ariaLabel={copyStrings.githubIssueLink(label)} statusClassName="visually-hidden"><Copy size={16} aria-hidden="true" /></CopyButton></span> : null}<button type="button" className={removesIdentity ? "danger" : "secondary"} disabled={pending} aria-label={removesIdentity ? strings.removeIssueIdentityLabel(label) : strings.unlinkOrigin(label)} onClick={() => deleteSourceLink({ kind: link.kind, id: link.id })}>{removesIdentity ? strings.removeIssueIdentity : strings.unlink}</button>{removesIdentity ? <small>{strings.removeIssueIdentityExplanation}</small> : null}</div>;
       })}
       <label>{strings.sourceDocument}<select value={selectedDocumentId} onChange={(event) => setSelectedDocumentId(event.target.value)}><option value="">{strings.selectDocument}</option>{documents.map((document) => <option key={document.id} value={document.id}>{document.title}</option>)}</select></label>
       {selectedChunks.length > 0 ? (

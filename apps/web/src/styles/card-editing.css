@@ -461,6 +461,17 @@
   min-width: 0;
 }
 
+.detail-title-copy-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-8);
+}
+
+.detail-title-copy-row label {
+  min-width: 0;
+}
+
 .card-detail-side {
   padding-left: var(--space-12);
   border-left: 1px solid var(--color-divider);

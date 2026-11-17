@@ -19,12 +19,14 @@ import { CardDependenciesSection } from "@storymapper/web/features/story-map/com
 import { cardSchema, type Card, type CardSourceLink, type CreateCardSourceLinkRequest, type StoryMapSnapshot, type RemotePushPlan, type RemotePushPlanResponse, type IncomingGitHubCommandResponse, type UpdateCardRequest } from "@storymapper/contracts";
 import { useIsMutating, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link, useBlocker, useNavigate, useRouter, useSearch } from "@tanstack/react-router";
-import { RefreshCcw, X } from "lucide-react";
+import { Copy, RefreshCcw, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { api, useCardAttachments, useConnectorConnections, useProjectGitHubIssues, useSourceDocumentDetails, useSourceDocuments } from "@storymapper/web/app/api";
 import { isConflictError } from "@storymapper/web/app/conflicts";
 import { useLiveInteractionStore } from "@storymapper/web/app/live/live-interaction-store";
 import { Dialog } from "@storymapper/web/components/Dialog";
+import { CopyButton } from "@storymapper/web/components/CopyButton";
+import { copyStrings } from "@storymapper/web/ui-strings/copy";
 import { ChangeAlert } from "@storymapper/web/features/conflicts";
 import { ConflictAlert } from "@storymapper/web/features/conflicts";
 import { mergeSavedDraft } from "@storymapper/web/features/conflicts";
@@ -613,8 +615,10 @@ function renderCardMainFields(model: Exclude<ReturnType<typeof useCardDetailModa
   const { breadcrumb, syncLocks, fieldLockHint, draft, setDraft, card, snapshot, isDirty, writesPending, documents, selectedDocumentId, setSelectedDocumentId, linkedSourceLinks, selectedChunks, selectedChunkById, projectIssues, createSourceLink, deleteSourceLink } = model;
   return <div className="card-detail-main">
     <p className="detail-breadcrumb">{breadcrumb}</p>
-    <label>{strings.title}<input disabled={syncLocks.has("title")} title={fieldLockHint("title")} value={draft.title} onChange={(event) => setDraft((value) => ({ ...value, title: event.target.value }))} />
-    </label>
+    <div className="detail-title-copy-row">
+      <label>{strings.title}<input disabled={syncLocks.has("title")} title={fieldLockHint("title")} value={draft.title} onChange={(event) => setDraft((value) => ({ ...value, title: event.target.value }))} /></label>
+      <CopyButton text={draft.title} className="secondary icon-button" title={copyStrings.cardTitle} ariaLabel={copyStrings.cardTitle} statusClassName="visually-hidden"><Copy size={16} aria-hidden="true" /></CopyButton>
+    </div>
     {[...syncLocks].map((field) => <p key={field} className="section-hint">{fieldLockHint(field)}</p>)}
     <div className="detail-description-field"><span>{strings.description}</span><DescriptionEditor disabled={syncLocks.has("description")} value={draft.description} onChange={(description) => setDraft((value) => ({ ...value, description }))} />
     </div>
@@ -670,7 +674,11 @@ function renderCardGitHubLinks(model: Exclude<ReturnType<typeof useCardDetailMod
     {linkedRemoteWorkItemLinks.map((link) => <p key={link.id}>{mapConceptStrings.observedDetails(link.issueType ?? mapConceptStrings.unknownType, link.syncState)}</p>)}
     {card.level !== "note" ? <GitHubCardBinding card={card} connections={githubConnections} links={linkedRemoteWorkItemLinks} disabled={writesPending || model.isDirty} /> : null}
     {linkedRemoteWorkItemLinks.length > 0 ? <button type="button" className="secondary" title={hasWritableLink ? strings.syncCardGitHubHint : strings.pullCardGitHubHint} onClick={() => { if (pushPending.current || hasPendingWrites() || suspendedRef.current || useLiveInteractionStore.getState().restorePending) return; pushPending.current = true; setIncomingFailure(undefined); pullCardGitHubLinks.mutate(pushIdentity); }} disabled={writesPending}><RefreshCcw size={16} /> {hasWritableLink ? strings.syncWithGitHub : strings.pullFromGitHub}</button> : null}
-    {linkedGitHubLinks.map((link) => <div className="source-link-row" key={link.id}><span title={githubSyncStateHint(link.syncState)}>{link.issueNumber ? strings.legacyIssueLabel(link.repo, link.issueNumber) : link.repo}{" "}{strings.separator}{" "}{link.syncState}</span><a href={link.url} target="_blank" rel="noreferrer">{strings.open}</a></div>)}
+    {linkedGitHubLinks.map((link) => {
+      const issue = link.issueNumber ? strings.legacyIssueLabel(link.repo, link.issueNumber) : link.repo;
+      const copyLabel = copyStrings.githubIssueLink(issue);
+      return <div className="source-link-row" key={link.id}><span title={githubSyncStateHint(link.syncState)}>{issue}{" "}{strings.separator}{" "}{link.syncState}</span><span className="button-row compact"><a href={link.url} target="_blank" rel="noreferrer">{strings.open}</a><CopyButton text={link.url} className="secondary icon-button" title={copyLabel} ariaLabel={copyLabel} statusClassName="visually-hidden"><Copy size={16} aria-hidden="true" /></CopyButton></span></div>;
+    })}
   </section>;
 }
 
