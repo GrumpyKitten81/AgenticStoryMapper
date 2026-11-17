@@ -7,11 +7,11 @@ import { ChangedMarker, useCardChangeDescription } from "@storymapper/web/featur
 import { CardDependencyBadges, type CardDependencyKeys } from "@storymapper/web/components/CardDependencyBadges";
 import type { ChangeSetPreviewMarker, Card, CardLevel, ExternalRef, UpdateCardRequest, WorkItemProvider } from "@storymapper/contracts";
 import type React from "react";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useDiscoveryNavigation } from "@storymapper/web/features/story-map/components/discovery-navigation";
 import { CardChoice } from "@storymapper/web/features/story-map/components/CardChoice";
 import { useSortable } from "@dnd-kit/sortable";
-import { ArrowDown, ChevronLeft, ChevronRight, Circle, Github, GripVertical, History, StickyNote, Trash2 } from "lucide-react";
+import { ArrowDown, ChevronLeft, ChevronRight, Circle, Github, GripVertical, History, Info, StickyNote, Trash2 } from "lucide-react";
 import { cardLevelMeta } from "@storymapper/web/features/story-map/card-taxonomy";
 import { cardTooltip } from "@storymapper/web/features/story-map/card-tooltip";
 import { githubSyncStateHint } from "@storymapper/web/features/github-sync";
@@ -20,6 +20,7 @@ import { panelStrings, storyMapStrings as strings } from "@storymapper/ui-string
 import { isPersonasEnabled } from "@storymapper/web/app/feature-flags";
 
 import { PreviewMarker } from "@storymapper/web/components/PreviewMarker";
+import { Dialog } from "@storymapper/web/components/Dialog";
 
 interface CardTileProps {
   estimationUnit: string;
@@ -83,7 +84,7 @@ function renderCardTile(model: ReturnType<typeof useCardTileState>) {
       data-export-card-key={card.key}
       data-export-card-title={card.title}
     >
-      <button type="button" className="card-content-button" disabled={readOnly && !navigation} aria-disabled={readOnly || undefined} data-card-id={card.id} aria-label={`${card.key} ${cardLevelMeta[card.level].label} ${card.title}`} aria-description={stateDescription} aria-pressed={navigation ? bulkSelected : undefined} tabIndex={navigation ? (active ? 0 : -1) : undefined} onFocus={() => navigation?.activate(card.id)} onBlur={(event) => { if (!event.relatedTarget && event.currentTarget.isConnected) navigation?.release(card.id); }} onKeyDown={(event) => navigation?.keyDown(card.id, event)} onClick={() => { if (!readOnly) onSelect(card.id); }}>
+      <button type="button" className="card-content-button" disabled={readOnly && !navigation} aria-disabled={readOnly || undefined} data-card-id={card.id} aria-label={`${card.key} ${cardLevelMeta[card.level].label} ${card.title}`} aria-description={variant === "discovery" && card.description.trim() ? `${stateDescription} ${strings.descriptionAvailable}` : stateDescription} aria-pressed={navigation ? bulkSelected : undefined} tabIndex={navigation ? (active ? 0 : -1) : undefined} onFocus={() => navigation?.activate(card.id)} onBlur={(event) => { if (!event.relatedTarget && event.currentTarget.isConnected) navigation?.release(card.id); }} onKeyDown={(event) => navigation?.keyDown(card.id, event)} onClick={() => { if (!readOnly) onSelect(card.id); }}>
         <strong className="card-title" title={cardTooltip(card)}>{card.title}</strong>
         {descriptionPreview && variant === "backlog" ? <p>{descriptionPreview}</p> : null}
         <div className="card-badges">
@@ -193,6 +194,7 @@ function renderCardActions(model: ReturnType<typeof useCardTileState>) {
     </div>
     <div className="card-level-status">
       {variant === "discovery" ? null : <><span className="card-level-badge">{cardLevelMeta[card.level].label}</span><span>{card.status}</span></>}
+      {variant === "discovery" && card.description.trim() ? <CardDescriptionButton card={card} /> : null}
       {onMove ? <button type="button" className="card-move" aria-label={strings.moveStoryNamed(card.key)} disabled={readOnly} onClick={onMove}><ChevronRight size={14} /></button> : null}
       {onMoveLeft ? (
         <button type="button" className="card-move" disabled={readOnly} aria-label={strings.moveLeft(card.title)} onClick={onMoveLeft}>
@@ -222,6 +224,17 @@ function renderCardActions(model: ReturnType<typeof useCardTileState>) {
       ) : null}
     </div>
   </div>;
+}
+
+function CardDescriptionButton({ card }: { card: Card }) {
+  const [open, setOpen] = useState(false);
+  const label = strings.showDescription(card.key);
+  return <>
+    <button type="button" className="card-move" aria-label={label} title={label} onClick={() => setOpen(true)}><Info size={14} aria-hidden="true" /></button>
+    {open ? <Dialog title={label} description={card.description} cardId={card.id} className="discovery-dialog card-description-dialog" onClose={() => setOpen(false)}>
+      <button type="button" onClick={() => setOpen(false)}>{strings.close}</button>
+    </Dialog> : null}
+  </>;
 }
 
 function renderCardVisualControls(model: ReturnType<typeof useCardTileState>) {

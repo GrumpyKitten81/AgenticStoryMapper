@@ -49,6 +49,15 @@ it("audits the open Card and active dirty-close alertdialog including portal con
   expect(editor.storage.markdown.getMarkdown()).toBe("Accessibility draft");
 });
 
+it("audits the keyboard-accessible description dialog on Discovery", async () => {
+  state.snapshot.cards[2]!.description = "Full description for keyboard users";
+  await mount(viewUrl.replace(/tree$/u, "discovery"));
+  await act(async () => fireEvent.click(getByRole(document.body, "button", { name: "Show description for LSM-3" })));
+  const dialog = getByRole(document.body, "dialog", { name: "Show description for LSM-3" });
+  expect(dialog.textContent).toContain("Full description for keyboard users");
+  await audit();
+});
+
 it("audits the equivalent Move controls and selected-set Delete confirmation", async () => {
   await mount(viewUrl.replace(/tree$/u, "discovery"));
   await act(async () => fireEvent.keyDown(document.querySelector<HTMLButtonElement>('button[data-card-id][aria-label^="LSM-3 "]')!, { key: "m" }));

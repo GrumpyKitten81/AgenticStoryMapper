@@ -143,7 +143,7 @@ it.each(["discovery", "planning", "tracking", "backlog"])("actual %s preview ref
   if (view === "discovery") state.snapshot.releases = state.snapshot.releases.map((release) => ({ ...release, released: false }));
   const previewId = randomUUID(), original = fetch;
   const projected = structuredClone(state.snapshot);
-  projected.cards[2] = { ...projected.cards[2]!, title: "Projected Story", estimate: 0 };
+  projected.cards[2] = { ...projected.cards[2]!, title: "Projected Story", estimate: 0, description: view === "discovery" ? "Projected description" : projected.cards[2]!.description };
   vi.stubGlobal("fetch", vi.fn(async (path: string, init?: RequestInit) => path === `/api/changesets/${previewId}/preview`
     ? Response.json({ changeSet: { id: previewId, title: "Core preview", status: "proposed" }, selectedOperationIds: [], conflicts: [], operations: [], boards: [{ snapshot: projected, markers: [{ entity: "card", entityId: cardId, kind: "changed", operationIds: [] }] }], presentationStatus: "proposed", closed: false, canApply: false, canApprove: false }) : original(path, init)));
   const update = vi.spyOn(api, "updateCard");
@@ -162,6 +162,10 @@ it.each(["discovery", "planning", "tracking", "backlog"])("actual %s preview ref
   if (view === "planning") expect(projection.querySelector(".swimlane-row[hidden]")).toBeNull();
   if (view === "tracking") expect(projection.textContent).toContain("Shipped story");
   if (view === "discovery") {
+    const descriptionButton = projection.querySelector<HTMLButtonElement>('[aria-label="Show description for LSM-3"]')!;
+    await act(async () => descriptionButton.click());
+    expect(document.querySelector('[role="dialog"]')?.textContent).toContain("Projected description");
+    await act(async () => document.querySelector<HTMLButtonElement>('[role="dialog"] button')!.click());
     const releaseHeaders = [...projection.querySelectorAll(".release-band-header")].filter((header) => /Open delivery|Shipped delivery/.test(header.textContent ?? ""));
     expect(releaseHeaders).toHaveLength(2);
     for (const header of releaseHeaders) expect(header.querySelector(".lane-edit, .lane-delete")).toBeNull();

@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { api } from "@storymapper/web/app/api";
 import { act } from "react";
+import { getByRole, within } from "@testing-library/dom";
 import { afterEach, expect, it, vi } from "vitest";
 import { useDiscoveryZoomStore } from "@storymapper/web/app/stores/discovery-zoom-store";
 import { discoveryDestination } from "@storymapper/web/features/story-map/components/discovery-navigation";
@@ -47,6 +48,29 @@ it("roves primary focus, scopes keys, orders secondary controls and opens comple
   await key(primary(cardId), "m", { ctrlKey: true }); expect(document.querySelector('[role="dialog"]')).toBeNull();
   await key(primary(cardId), "m"); expect(document.querySelector('[role="dialog"]')).not.toBeNull();
   expect(document.querySelector('[role="dialog"] select')).not.toBeNull();
+});
+it("opens the full description from a compact keyboard action and restores focus", async () => {
+  const description = "First line\n<script>not markup</script>\n" + "Long description ".repeat(30);
+  state.snapshot.cards[2] = { ...state.snapshot.cards[2]!, description };
+  await mount(viewUrl.replace(/tree$/, "discovery"));
+  const tile = primary(cardId).closest("article")!;
+  const trigger = within(tile).getByRole("button", { name: "Show description for LSM-3" });
+  expect(trigger.getAttribute("title")).toBe("Show description for LSM-3");
+  expect(primary(cardId).getAttribute("aria-description")).toContain("Description available");
+  expect(primary(cardId).compareDocumentPosition(trigger) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  expect(within(primary(state.snapshot.cards[0]!.id).closest("article")!).queryByRole("button", { name: /Show description/ })).toBeNull();
+  await act(async () => { primary(cardId).focus(); trigger.focus(); trigger.click(); });
+  const dialog = getByRole(document.body, "dialog", { name: "Show description for LSM-3" });
+  expect(dialog.querySelector("p")?.textContent).toBe(description);
+  expect(dialog.querySelector("script")).toBeNull();
+  expect(document.activeElement).toBe(dialog.querySelector("h2"));
+  expect(document.querySelector('[role="dialog"] input[name="title"]')).toBeNull();
+  await key(document.activeElement as HTMLElement, "Escape");
+  expect(getByRole(document.body, "button", { name: "Show description for LSM-3" })).toBe(document.activeElement);
+  expect(document.querySelector('[role="dialog"]')).toBeNull();
+  state.snapshot = { ...state.snapshot, cards: state.snapshot.cards.map((card) => card.id === cardId ? { ...card, description: "" } : card) };
+  await act(async () => state.client.setQueryData(["story-map", storyMapId], state.snapshot));
+  expect(within(primary(cardId).closest("article")!).queryByRole("button", { name: /Show description/ })).toBeNull();
 });
 it("repairs removed focused identity to the next previous-order survivor and then grid", async () => {
   await mount(viewUrl.replace(/tree$/, "discovery"));
@@ -171,6 +195,7 @@ it("uses spanning Activity columns for vertical navigation across multi-Step gro
   expect(document.activeElement).toBe(primary(activity!.id));
 });
 it("blocks modified native activation keys and preview-query Move/Delete/drag mutations", async () => {
+  state.snapshot.cards[2] = { ...state.snapshot.cards[2]!, description: "Preview description" };
   const original = vi.mocked(fetch).getMockImplementation()!;
   const writes: string[] = [];
   vi.mocked(fetch).mockImplementation(async (path, init) => {
@@ -181,8 +206,13 @@ it("blocks modified native activation keys and preview-query Move/Delete/drag mu
   await mount(`${viewUrl.replace(/tree$/, "discovery")}?preview=${crypto.randomUUID()}`);
   const tile = primary(cardId).closest('article')!;
   for (const control of tile.querySelectorAll<HTMLButtonElement>('button')) {
-    expect(control.disabled).toBe(!control.hasAttribute("data-card-id")); await act(async () => control.click());
+    expect(control.disabled).toBe(!control.hasAttribute("data-card-id") && control.getAttribute("aria-label") !== "Show description for LSM-3");
+    if (control.disabled) await act(async () => control.click());
   }
+  const descriptionButton = within(tile).getByRole("button", { name: "Show description for LSM-3" });
+  await act(async () => descriptionButton.click());
+  expect(getByRole(document.body, "dialog").textContent).toContain("Preview description");
+  await key(document.activeElement as HTMLElement, "Escape");
   await act(async () => primary(state.snapshot.cards[0]!.id).focus());
   await key(primary(state.snapshot.cards[0]!.id), "ArrowDown"); expect(document.activeElement).toBe(primary(state.snapshot.cards[1]!.id));
   for (const value of ["Enter", "m", "Delete", " "]) await key(primary(cardId), value);

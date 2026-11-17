@@ -121,6 +121,7 @@ export const storyMapStrings = {
   exportTargetNotFound: (view: string): string => `Export target for ${view} view was not found.`,
   imageExportFailedFor: (url: string): string => `Image export failed for ${url}.`,
   showDescription: (key: string): string => `Show description for ${key}`,
+  descriptionAvailable: "Description available in card actions.",
   exportStamp: (date: string): string => `Exported: ${date}`,
   exportTitle: (name: string, view: "discovery" | "tree" | "planning" | "backlog" | "tracking" | "timeline"): string => `${name} - ${appStrings[view]}`,
   structuredCardTemplate: (title: string): string => [
