@@ -54,6 +54,7 @@ interface CardTileProps {
 
 interface SortableCardTileProps extends CardTileProps {
   hidden?: boolean;
+  dragDisabled?: boolean;
   dragScale?: number;
 }
 
@@ -115,8 +116,8 @@ function renderCardTile(model: ReturnType<typeof useCardTileState>) {
   );
 }
 
-export function SortableCardTile({ dragScale = 1, hidden = false, ...props }: SortableCardTileProps) {
-  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: props.card.id, disabled: hidden });
+export function SortableCardTile({ dragScale = 1, hidden = false, dragDisabled = false, ...props }: SortableCardTileProps) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: props.card.id, disabled: hidden || dragDisabled });
   const style: React.CSSProperties = {
     transform: transform ? `translate3d(${transform.x / dragScale}px, ${transform.y / dragScale}px, 0) scaleX(${transform.scaleX}) scaleY(${transform.scaleY})` : undefined,
     transition,

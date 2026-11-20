@@ -208,7 +208,7 @@ function renderReleaseSection(model: ReturnType<typeof useReleaseSectionState>) 
   const { rowIndex, colCount, pinned, onToggleCollapse, collapsed, onTogglePin, editing, onRenameRelease, syncLocked, nameDraft, setNameDraft, submitEdit, setEditing, release, preview, storyCount, canMoveReleaseUp, onMoveReleaseUp, canMoveReleaseDown, onMoveReleaseDown, startEdit, onDeleteRelease, columns, visibleCardIds, columnIndices, cards, personaNamesByCardId, onOpenComposer, onDeleteStory, onMoveStory, selectedVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, estimationUnit, zoom, onSelectCard, onBulkToggle, onUpdateCard } = model;
   return (
     <>
-      {renderReleaseHeader(model)}<div role="row" aria-rowindex={rowIndex + 1} hidden={collapsed} style={{ display: collapsed ? "none" : "contents" }}>
+      {renderReleaseHeader(model)}<div role="row" className="discovery-lane-body" aria-rowindex={rowIndex + 1} hidden={collapsed} style={{ display: collapsed ? "none" : "contents" }}>
         {columns.map((column, index) => renderReleaseColumn(model, column, index))}</div>
     </>
   );
@@ -226,6 +226,7 @@ function useDiscoveryCellState({
   stories,
   visibleCardIds,
   hidden,
+  collapsed,
   onOpenAdd,
   onDeleteStory,
   onMoveStory,
@@ -243,19 +244,20 @@ function useDiscoveryCellState({
   onUpdateCard
 }: DiscoveryCellProps) {
   const droppableId = `cell:${step.id}:${release.releaseId ?? "none"}`;
-  const { setNodeRef, isOver } = useDroppable({ id: droppableId, disabled: hidden });
-  return { stories, hidden, visibleCardIds, colIndex, selectedVisibleIds, className, isOver, setNodeRef, estimationUnit, personaNamesByCardId, preview, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, zoom, onSelectCard, onBulkToggle, onUpdateCard, onDeleteStory, onMoveStory, step, release, onOpenAdd };
+  const { setNodeRef, isOver } = useDroppable({ id: droppableId, disabled: hidden || collapsed });
+  return { stories, hidden, collapsed, visibleCardIds, colIndex, selectedVisibleIds, className, isOver, setNodeRef, estimationUnit, personaNamesByCardId, preview, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, zoom, onSelectCard, onBulkToggle, onUpdateCard, onDeleteStory, onMoveStory, step, release, onOpenAdd };
 }
 
-function renderDiscoveryCell({ stories, hidden, visibleCardIds, colIndex, selectedVisibleIds, className, isOver, setNodeRef, estimationUnit, personaNamesByCardId, preview, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, zoom, onSelectCard, onBulkToggle, onUpdateCard, onDeleteStory, onMoveStory, step, release, onOpenAdd }: ReturnType<typeof useDiscoveryCellState>) {
+function renderDiscoveryCell({ stories, hidden, collapsed, visibleCardIds, colIndex, selectedVisibleIds, className, isOver, setNodeRef, estimationUnit, personaNamesByCardId, preview, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, zoom, onSelectCard, onBulkToggle, onUpdateCard, onDeleteStory, onMoveStory, step, release, onOpenAdd }: ReturnType<typeof useDiscoveryCellState>) {
   return (
-    <SortableContext items={stories.filter((story) => !hidden && visibleCardIds.has(story.id)).map((story) => story.id)} strategy={verticalListSortingStrategy}>
+    <SortableContext items={stories.filter((story) => !hidden && !collapsed && visibleCardIds.has(story.id)).map((story) => story.id)} strategy={verticalListSortingStrategy}>
       <div role="gridcell" aria-colindex={colIndex} aria-selected={stories.some((card) => visibleCardIds.has(card.id) && selectedVisibleIds.has(card.id))} aria-description={strings.selectedCellCards(stories.filter((card) => visibleCardIds.has(card.id) && selectedVisibleIds.has(card.id)).map((card) => card.key))} className={isOver ? `${className} droppable-over` : className} ref={setNodeRef} hidden={hidden}>
         <div className="story-stack">
           {stories.map((story) => (
             <SortableCardTile
               key={story.id}
               hidden={hidden || !visibleCardIds.has(story.id)}
+              dragDisabled={collapsed}
               estimationUnit={estimationUnit}
               personaNames={personaNamesByCardId[story.id]}
               previewMarker={preview?.markers.find((marker) => marker.entity === "card" && marker.entityId === story.id)}
@@ -430,14 +432,13 @@ function renderReleaseColumn(model: ReturnType<typeof useReleaseSectionState>, c
   const { pinned, collapsed, visibleCardIds, release, columnIndices, cards, preview, personaNamesByCardId, onOpenComposer, onDeleteStory, onMoveStory, selectedVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, estimationUnit, zoom, onSelectCard, onBulkToggle, onUpdateCard } = model;
 
   const pinnedClass = pinned ? " discovery-lane-pinned" : "";
-  const collapsedClass = collapsed ? " discovery-lane-collapsed" : "";
   if (column.kind === "add-step") {
-    return <div hidden={!visibleCardIds.has(column.activity.id)} className={`discovery-cell discovery-add-step-cell${column.groupIndex % 2 === 1 ? " epic-lane-alt" : ""}${pinnedClass}${collapsedClass}`} key={`${release.id}:add-step:${column.activity.id}`} role="gridcell" aria-colindex={columnIndices[index]} />;
+    return <div hidden={!visibleCardIds.has(column.activity.id)} className={`discovery-cell discovery-add-step-cell${column.groupIndex % 2 === 1 ? " epic-lane-alt" : ""}${pinnedClass}`} key={`${release.id}:add-step:${column.activity.id}`} role="gridcell" aria-colindex={columnIndices[index]} />;
   }
   if (column.kind === "add-activity") {
-    return <div className={`discovery-cell discovery-add-activity-cell${pinnedClass}${collapsedClass}`} key={`${release.id}:add-activity`} role="gridcell" aria-colindex={columnIndices[index]} />;
+    return <div className={`discovery-cell discovery-add-activity-cell${pinnedClass}`} key={`${release.id}:add-activity`} role="gridcell" aria-colindex={columnIndices[index]} />;
   }
-  const laneClass = `discovery-cell${column.groupIndex % 2 === 1 ? " epic-lane-alt" : ""}${column.groupStart ? " epic-lane-start" : ""}${pinned ? " discovery-lane-pinned pinned" : ""}${release.releaseId === null ? " discovery-unscheduled-cell" : ""}${collapsedClass}`;
+  const laneClass = `discovery-cell${column.groupIndex % 2 === 1 ? " epic-lane-alt" : ""}${column.groupStart ? " epic-lane-start" : ""}${pinned ? " discovery-lane-pinned pinned" : ""}${release.releaseId === null ? " discovery-unscheduled-cell" : ""}`;
   const stories = sortStories(getChildren(cards, column.step.id).filter((card) => (card.level === "story" || card.level === "note") && (card.releaseId ?? null) === release.releaseId), STORY_SORT_MODE);
   return (
     <DiscoveryCell
@@ -450,7 +451,8 @@ function renderReleaseColumn(model: ReturnType<typeof useReleaseSectionState>, c
       release={release}
       stories={stories}
       visibleCardIds={visibleCardIds}
-      hidden={!visibleCardIds.has(column.step.id) || collapsed}
+      hidden={!visibleCardIds.has(column.step.id)}
+      collapsed={collapsed}
       onOpenAdd={() => onOpenComposer(column.step.id, release.releaseId)}
       onDeleteStory={onDeleteStory}
       onMoveStory={onMoveStory}
@@ -481,6 +483,7 @@ interface DiscoveryCellProps {
   stories: Card[];
   visibleCardIds: Set<string>;
   hidden: boolean;
+  collapsed: boolean;
   onOpenAdd: () => void;
   onDeleteStory: (cardId: string) => void;
   onMoveStory: (card: Card) => void;

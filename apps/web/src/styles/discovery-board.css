@@ -416,10 +416,6 @@
   border-color: var(--color-accent);
 }
 
-.discovery-cell.discovery-lane-collapsed {
-  display: none;
-}
-
 .lane-header-left {
   display: inline-flex;
   align-items: center;

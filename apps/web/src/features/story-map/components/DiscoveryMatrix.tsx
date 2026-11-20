@@ -231,7 +231,7 @@ function useDiscoveryMeasurements(props: DiscoveryMatrixProps) {
       setUnscheduledCellHeight(0);
       return;
     }
-    const cell = scrollRef.current?.querySelector<HTMLElement>(".discovery-unscheduled-cell:not([hidden])");
+    const cell = scrollRef.current?.querySelector<HTMLElement>(".discovery-lane-body:not([hidden]) .discovery-unscheduled-cell:not([hidden])");
     if (!cell) {
       setUnscheduledCellHeight(0);
       return;

@@ -51,6 +51,7 @@ function getExportTarget(viewKind: StoryMapViewKind): HTMLElement {
 async function buildStandaloneHtml(target: HTMLElement, storyMapName: string, viewKind: StoryMapViewKind): Promise<string> {
   const clone = target.cloneNode(true) as HTMLElement;
   preserveFormControlValues(target, clone);
+  expandClonedDiscoveryLanes(clone);
   addDescriptionInteractions(clone);
   appendExportDateStamp(clone);
   await inlineImages(target, clone);
@@ -192,26 +193,26 @@ async function renderTargetToCanvas(target: HTMLElement): Promise<HTMLCanvasElem
 function createCanvasCaptureTarget(target: HTMLElement): { element: HTMLElement; width: number; height: number; remove: () => void } {
   const content = target.querySelector<HTMLElement>(".discovery-matrix");
   const containerWidth = Math.max(target.scrollWidth, target.clientWidth);
-  const containerHeight = Math.max(target.scrollHeight, target.clientHeight);
   const baseWidth = content ? Math.min(containerWidth, Math.max(content.scrollWidth, 1)) : containerWidth;
-  const baseHeight = content ? Math.min(containerHeight, Math.max(content.scrollHeight, 1)) : containerHeight;
-  const zoom = readDiscoveryMatrixZoom(target);
-  const width = Math.ceil(baseWidth / zoom);
-  const height = Math.ceil(baseHeight / zoom);
+  const width = Math.ceil(baseWidth / readDiscoveryMatrixZoom(target));
   const viewKind = target.getAttribute(EXPORT_TARGET_ATTRIBUTE);
   if (!viewKind) {
     throw new Error(strings.missingExportViewMarker);
   }
   const clonedTarget = target.cloneNode(true) as HTMLElement;
   preserveFormControlValues(target, clonedTarget);
-  prepareCanvasCaptureTarget(clonedTarget, width, height);
+  prepareCanvasCaptureTarget(clonedTarget, width);
   const stage = document.createElement("div");
   stage.className = "export-capture-stage";
   stage.style.top = `${document.documentElement.scrollHeight + 100}px`;
   stage.style.width = `${width}px`;
-  stage.style.minHeight = `${height}px`;
   stage.append(clonedTarget);
   document.body.append(stage);
+  // DESIGN: measure after lane expansion; the on-screen target height omits collapsed lanes (#16)
+  const clonedContent = clonedTarget.querySelector<HTMLElement>(".discovery-matrix");
+  const height = clonedContent ? Math.max(clonedContent.scrollHeight, 1) : Math.max(target.scrollHeight, target.clientHeight);
+  clonedTarget.style.minHeight = `${height}px`;
+  stage.style.minHeight = `${height}px`;
   return {
     element: clonedTarget,
     width,
@@ -220,13 +221,13 @@ function createCanvasCaptureTarget(target: HTMLElement): { element: HTMLElement;
   };
 }
 
-function prepareCanvasCaptureTarget(clonedTarget: HTMLElement, width: number, height: number): void {
+function prepareCanvasCaptureTarget(clonedTarget: HTMLElement, width: number): void {
   clonedTarget.style.width = `${width}px`;
-  clonedTarget.style.minHeight = `${height}px`;
   clonedTarget.style.maxHeight = "none";
   clonedTarget.style.overflow = "visible";
   clonedTarget.classList.add("export-capture-target");
   normalizeClonedDiscoveryMatrix(clonedTarget);
+  expandClonedDiscoveryLanes(clonedTarget);
   normalizeClonedStickyCells(clonedTarget);
   normalizeClonedCanvasEffects(clonedTarget);
   resetClonedDragArtifacts(clonedTarget);
@@ -265,7 +266,17 @@ function normalizeClonedDiscoveryMatrix(clonedTarget: HTMLElement): void {
   discoveryMatrix.style.transform = "none";
 }
 
-const STICKY_SELECTOR = ".discovery-activity-cell, .discovery-step-cell, .discovery-add-activity-cell, .discovery-lane-pinned, .discovery-pinned-block, .tree-header";
+function expandClonedDiscoveryLanes(clone: HTMLElement): void {
+  clone.querySelectorAll<HTMLElement>(".discovery-lane-body[hidden]").forEach((laneBody) => {
+    laneBody.removeAttribute("hidden");
+    laneBody.style.display = "contents";
+  });
+  clone.querySelectorAll<HTMLElement>(".discovery-lane-pinned, .discovery-pinned-block.pinned").forEach((pinned) => {
+    pinned.classList.remove("discovery-lane-pinned", "pinned");
+  });
+}
+
+const STICKY_SELECTOR = ".discovery-activity-cell, .discovery-step-cell, .discovery-add-activity-cell, .tree-header";
 
 function normalizeClonedStickyCells(clonedTarget: HTMLElement): void {
   const stickyCells = clonedTarget.querySelectorAll<HTMLElement>(STICKY_SELECTOR);
