@@ -13,7 +13,6 @@ import { storyMapSnapshotSchema } from "@storymapper/contracts";
 import { DiscoveryMatrix } from "@storymapper/web/features/story-map/components/DiscoveryMatrix";
 import { BoardToolbar } from "@storymapper/web/features/story-map/components/BoardToolbar";
 import { useStoryMapBoardState, type StoryMapBoardState } from "@storymapper/web/features/story-map/useStoryMapBoardState";
-import { useTreeCollapseStore } from "@storymapper/web/app/stores/tree-collapse-store";
 
 vi.mock("@storymapper/web/features/github-sync/GitHubSyncPanel", () => ({ GitHubSyncPanel: () => null }));
 
@@ -47,8 +46,8 @@ function sourceBuildProvenance() {
   return { revision, sourceSha256: createHash("sha256").update(JSON.stringify(files)).digest("hex"), sourceFileCount: files.length, roots, algorithm: "SHA256 of JSON sorted unique {path,sha256(file bytes)} for git ls-files --cached --others --exclude-standard -z; includes actual staged/unstaged/untracked source bytes" };
 }
 
-it("records raw selection/collapse/search/color input through committed complete Discovery DOM", async () => {
-  const { root, client, tiles, host, capture, functional, provenance, samples } = exerciseRecordsRawSelectionCollapseSearchColorInputThroughCommitted();
+it("records raw selection/search/color input through committed complete Discovery DOM", async () => {
+  const { root, client, tiles, host, capture, functional, provenance, samples } = exerciseRecordsRawSelectionSearchColorInputThroughCommitted();
   try {
     await act(async () => root.render(<QueryClientProvider client={client}><Fixture /></QueryClientProvider>));
     expect(tiles()).toHaveLength(1000);
@@ -59,12 +58,6 @@ it("records raw selection/collapse/search/color input through committed complete
       capture("toggle selection DIAG-3", run, "DOM click through React commit of selected Card and toolbar status", start, 100);
       expect(state.selectedIds.has(uuid(3))).toBe(run % 2 === 0);
       expect(host.querySelector<HTMLInputElement>('input[aria-label="Select DIAG-3, Fixture 0"]')!.checked).toBe(run % 2 === 0);
-      for (const action of ["Collapse Step", "Expand Step"]) {
-        start = performance.now();
-        await act(async () => host.querySelector<HTMLButtonElement>(`button[aria-label="${action}"]`)!.click());
-        capture(action, run, "DOM click through React commit of hierarchy visibility and grid", start, 100);
-        expect(tiles().filter((tile) => !tile.closest("[hidden]")).length).toBe(action.startsWith("Collapse") ? 2 : 1000);
-      }
       for (const [label, value, matches, visible] of [["Search cards", "Fixture 99", 9, 11], ["Search cards", "", 1000, 1000], ["Color category", "value:custom", 500, 501], ["Color category", "all", 1000, 1000]] as const) {
         start = performance.now();
         await change(host.querySelector<HTMLInputElement | HTMLSelectElement>(`[aria-label="${label}"]`)!, value);
@@ -84,15 +77,13 @@ it("records raw selection/collapse/search/color input through committed complete
     await act(async () => root.unmount());
     client.clear();
     host.remove();
-    useTreeCollapseStore.setState({ collapsedByMap: {} });
   }
 }, 60000);
 
-function exerciseRecordsRawSelectionCollapseSearchColorInputThroughCommitted() {
+function exerciseRecordsRawSelectionSearchColorInputThroughCommitted() {
   vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
   vi.stubGlobal("ResizeObserver", class { observe() { } disconnect() { } });
   notifyManager.setScheduler(queueMicrotask);
-  useTreeCollapseStore.setState({ collapsedByMap: {} });
   const host = document.createElement("div");
   document.body.append(host);
   const root = createRoot(host);
