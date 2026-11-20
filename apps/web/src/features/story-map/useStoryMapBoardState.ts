@@ -20,8 +20,8 @@ import { defaultBoardFilters, type BoardFilters, type GitHubFilter } from "@stor
 
 export interface MutationEpoch { epoch?: string | undefined }
 
-export function useStoryMapBoardState(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
-  const model = useBoardBulkActions(snapshot, projectId, preview);
+export function useStoryMapBoardState(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard, hideCompletedByDefault = true) {
+  const model = useBoardBulkActions(snapshot, projectId, preview, hideCompletedByDefault);
   const { setBulkSelectedIds, bulkValidationError, setLifecycleNotice, planningShowAllReleases, setPlanningShowAllReleases, filters, setFilters, bulkPatch, setBulkPatch, statusOptions, personaNamesByCardId, releaseNameById, dependencyKeys, sourceCounts, githubIssueByCardId, githubStatusByCardId, workItemProviderByCardId, externalRefsByCardId, externalRefsByReleaseId, boardCards, filtered, activities, selectedIds, selectedVisibleIds, invalidate, invalidatePlanningReports, cardVersion, createCard, updateCard, archiveCard, moveCard, createRelease, updateRelease, deleteRelease, deleteCard, deleteCards, parkCard, unparkCard, bulkUpdateCards, bulkError, toggleBulkSelection, clearFilters, runBulkUpdate } = model;
 
   return {
@@ -118,7 +118,8 @@ function cardMatchesFilters(input: {
 }): boolean {
   const { card, filters } = input;
   const statusKey = cardStatusIdentity(card, input.remoteLinks, input.workflowStatuses ?? []);
-  if (filters.hideCompleted && cardIsCompleted(card, input.remoteLinks, input.workflowStatuses ?? [])) return false;
+  const explicitlyIncluded = filters.statusMode === "include" && filters.statuses.includes(statusKey);
+  if (filters.hideCompleted && !explicitlyIncluded && cardIsCompleted(card, input.remoteLinks, input.workflowStatuses ?? [])) return false;
   if (filters.statuses?.length && (filters.statusMode === "exclude" ? filters.statuses.includes(statusKey) : !filters.statuses.includes(statusKey))) return false;
   if (filters.cardTypes.length && !filters.cardTypes.includes(card.cardType ?? "none")) return false;
   const search = filters.search.trim().toLowerCase();
@@ -179,14 +180,16 @@ function groupLinksByCard<T extends { cardId: string } & Record<string, unknown>
   }, {});
 }
 
-function useBoardPresentationState(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
+function useBoardPresentationState(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard, hideCompletedByDefault = true) {
   const queryClient = useQueryClient();
   const [bulkSelectedIds, setBulkSelectedIds] = useState<Set<string>>(new Set());
   const selectionMap = useRef(snapshot.storyMap.id);
   const [bulkValidationError, setBulkValidationError] = useState("");
   const setLifecycleNotice = useAnnouncementStore((state) => state.announceFeedback);
   const [planningShowAllReleases, setPlanningShowAllReleases] = useState(false);
-  const [filters, setFilters] = useState<BoardFilters>(defaultBoardFilters);
+  const viewFilterDefaults = useMemo(() => ({ ...defaultBoardFilters, hideCompleted: hideCompletedByDefault }), [hideCompletedByDefault]);
+  const [filters, setFilters] = useState<BoardFilters>(viewFilterDefaults);
+  useEffect(() => setFilters((value) => ({ ...value, hideCompleted: hideCompletedByDefault })), [hideCompletedByDefault]);
   const [bulkPatch, setBulkPatch] = useState({
     cardType: "" as CardType | "" | "__none",
     status: "",
@@ -212,11 +215,11 @@ function useBoardPresentationState(snapshot: StoryMapSnapshot, projectId?: strin
       return counts;
     }, {});
   }, [snapshot.sourceLinks]);
-  return { queryClient, bulkSelectedIds, setBulkSelectedIds, selectionMap, bulkValidationError, setBulkValidationError, setLifecycleNotice, planningShowAllReleases, setPlanningShowAllReleases, filters, setFilters, bulkPatch, setBulkPatch, statusOptions, personaById, annotationById, personaLinksByCardId, personaNamesByCardId, annotationLinksByCardId, releaseNameById, dependencyKeys, sourceCounts };
+  return { queryClient, bulkSelectedIds, setBulkSelectedIds, selectionMap, bulkValidationError, setBulkValidationError, setLifecycleNotice, planningShowAllReleases, setPlanningShowAllReleases, filters, setFilters, bulkPatch, setBulkPatch, statusOptions, personaById, annotationById, personaLinksByCardId, personaNamesByCardId, annotationLinksByCardId, releaseNameById, dependencyKeys, sourceCounts, viewFilterDefaults };
 }
 
-function useBoardLinkIndexes(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
-  const context = useBoardPresentationState(snapshot, projectId, preview);
+function useBoardLinkIndexes(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard, hideCompletedByDefault = true) {
+  const context = useBoardPresentationState(snapshot, projectId, preview, hideCompletedByDefault);
   const githubIssueByCardId = useMemo(() => {
     return snapshot.githubLinks.reduce<Record<string, number>>((issues, link) => {
       if (link.cardId && link.issueNumber) issues[link.cardId] = link.issueNumber;
@@ -259,8 +262,8 @@ function useBoardLinkIndexes(snapshot: StoryMapSnapshot, projectId?: string, pre
   return { ...context, githubIssueByCardId, githubStatusByCardId, workItemProviderByCardId, githubLinksByCardId, externalRefsByCardId, externalRefsByReleaseId, sourceSearchTextByCardId, boardCards };
 }
 
-function useBoardFilteredCards(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
-  const context = useBoardLinkIndexes(snapshot, projectId, preview);
+function useBoardFilteredCards(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard, hideCompletedByDefault = true) {
+  const context = useBoardLinkIndexes(snapshot, projectId, preview, hideCompletedByDefault);
   const { queryClient, bulkSelectedIds, selectionMap, filters, personaById, annotationById, personaLinksByCardId, annotationLinksByCardId, githubLinksByCardId, externalRefsByCardId, sourceSearchTextByCardId, boardCards } = context;
   const filtered = useMemo(() => filterStoryMap({
     workflowStatuses: snapshot.workflowStatuses,
@@ -303,8 +306,8 @@ function useBoardFilteredCards(snapshot: StoryMapSnapshot, projectId?: string, p
   return { ...context, filtered, activities, selectedIds, selectedVisibleIds, invalidate, invalidatePlanningReports, afterCardChange, moveFocusFrame, snapshotRef, boardScope, latest, cardVersion, releaseVersion };
 }
 
-function useBoardCardMutations(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
-  const context = useBoardFilteredCards(snapshot, projectId, preview);
+function useBoardCardMutations(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard, hideCompletedByDefault = true) {
+  const context = useBoardFilteredCards(snapshot, projectId, preview, hideCompletedByDefault);
   const { queryClient, afterCardChange, snapshotRef, boardScope, latest, cardVersion } = context;
   const createCard = useMutation({
     mutationFn: api.createCard,
@@ -339,8 +342,8 @@ function useBoardCardMutations(snapshot: StoryMapSnapshot, projectId?: string, p
   return { ...context, createCard, captureEpoch, requireCurrentEpoch, updateCard, archiveCard };
 }
 
-function useBoardMoveReleaseMutations(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
-  const context = useBoardCardMutations(snapshot, projectId, preview);
+function useBoardMoveReleaseMutations(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard, hideCompletedByDefault = true) {
+  const context = useBoardCardMutations(snapshot, projectId, preview, hideCompletedByDefault);
   const { setLifecycleNotice, afterCardChange, moveFocusFrame, snapshotRef, boardScope, latest, cardVersion, releaseVersion, captureEpoch, requireCurrentEpoch } = context;
   const moveCard = useMutation({
     scope: boardScope,
@@ -381,8 +384,8 @@ function useBoardMoveReleaseMutations(snapshot: StoryMapSnapshot, projectId?: st
   return { ...context, moveCard, createRelease, updateRelease, deleteRelease };
 }
 
-function useBoardLifecycleMutations(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
-  const context = useBoardMoveReleaseMutations(snapshot, projectId, preview);
+function useBoardLifecycleMutations(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard, hideCompletedByDefault = true) {
+  const context = useBoardMoveReleaseMutations(snapshot, projectId, preview, hideCompletedByDefault);
   const { setBulkSelectedIds, afterCardChange, boardScope, latest, cardVersion, captureEpoch, requireCurrentEpoch } = context;
   const deleteCard = useMutation({
     scope: boardScope, onMutate: captureEpoch,
@@ -412,8 +415,8 @@ function useBoardLifecycleMutations(snapshot: StoryMapSnapshot, projectId?: stri
   return { ...context, deleteCard, deleteCards, parkCard, unparkCard, bulkBusy };
 }
 
-function useBoardBulkMutation(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
-  const context = useBoardLifecycleMutations(snapshot, projectId, preview);
+function useBoardBulkMutation(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard, hideCompletedByDefault = true) {
+  const context = useBoardLifecycleMutations(snapshot, projectId, preview, hideCompletedByDefault);
   const { setBulkSelectedIds, setBulkValidationError, selectedIds, afterCardChange, boardScope, latest, cardVersion, captureEpoch, requireCurrentEpoch, bulkBusy } = context;
   const bulkUpdateCards = useMutation({
     onMutate: captureEpoch,
@@ -441,9 +444,9 @@ function useBoardBulkMutation(snapshot: StoryMapSnapshot, projectId?: string, pr
   return { ...context, bulkUpdateCards, bulkError };
 }
 
-function useBoardSelectionEffects(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
-  const context = useBoardBulkMutation(snapshot, projectId, preview);
-  const { setBulkSelectedIds, selectionMap, setBulkValidationError, setPlanningShowAllReleases, setFilters, boardCards } = context;
+function useBoardSelectionEffects(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard, hideCompletedByDefault = true) {
+  const context = useBoardBulkMutation(snapshot, projectId, preview, hideCompletedByDefault);
+  const { setBulkSelectedIds, selectionMap, setBulkValidationError, setPlanningShowAllReleases, setFilters, viewFilterDefaults, boardCards } = context;
 
   useEffect(() => {
     if (selectionMap.current !== snapshot.storyMap.id) {
@@ -471,13 +474,13 @@ function useBoardSelectionEffects(snapshot: StoryMapSnapshot, projectId?: string
   }
 
   function clearFilters() {
-    setFilters(defaultBoardFilters);
+    setFilters(viewFilterDefaults);
   }
   return { ...context, toggleBulkSelection, clearFilters };
 }
 
-function useBoardBulkActions(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard) {
-  const context = useBoardSelectionEffects(snapshot, projectId, preview);
+function useBoardBulkActions(snapshot: StoryMapSnapshot, projectId?: string, preview?: ChangeSetPreviewBoard, hideCompletedByDefault = true) {
+  const context = useBoardSelectionEffects(snapshot, projectId, preview, hideCompletedByDefault);
   const { setBulkValidationError, bulkPatch, selectedIds, bulkBusy, bulkUpdateCards } = context;
 
   function runBulkUpdate(mode: "patch" | "archive") {

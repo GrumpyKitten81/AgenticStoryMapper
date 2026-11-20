@@ -13,7 +13,7 @@ import type { LiveMessage } from "@storymapper/web/app/live/live-stream-reader";
 import { TrackingView } from "@storymapper/web/features/story-map/views/TrackingView";
 
 const fixture = vi.hoisted(() => ({ mapId: "94f161b6-6e68-44db-9de8-2a509c841bea", navigate: vi.fn(), receive: undefined as ((message: LiveMessage) => void) | undefined }));
-vi.mock("@storymapper/web/app/routes/story-map-shell", () => ({ useStoryMapBoardStateContext: () => useStoryMapBoardState(useContext(SnapshotContext)!), usePreviewBoard: () => undefined, useStoryMapSnapshot: () => useContext(SnapshotContext)! }));
+vi.mock("@storymapper/web/app/routes/story-map-shell", () => ({ useStoryMapBoardStateContext: () => useStoryMapBoardState(useContext(SnapshotContext)!, undefined, undefined, false), usePreviewBoard: () => undefined, useStoryMapSnapshot: () => useContext(SnapshotContext)! }));
 vi.mock("@tanstack/react-router", () => ({ useNavigate: () => fixture.navigate, useSearch: () => ({}) }));
 vi.mock("@storymapper/web/app/live/live-stream", () => ({ startLiveStream: (callbacks: { receive: (message: LiveMessage) => void; state: (state: string) => void }) => {
   fixture.receive = callbacks.receive;

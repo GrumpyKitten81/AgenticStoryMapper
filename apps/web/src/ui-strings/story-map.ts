@@ -137,6 +137,12 @@ export const storyMapStrings = {
   emptyFilteredStories: "No stories match the current filters.",
   searchCards: "Search cards",
   toggleSearch: "Search and filters",
+  filteredIndicator: (names: string[]): string => `Some cards are hidden by filters: ${names.join(", ")}`,
+  filterNames: {
+    search: "Search", level: "Level", priority: "Priority", statuses: "Status", cardTypes: "Planning type", statusMode: "Status mode",
+    hideCompleted: "Hide completed / closed", release: "Release", source: "Source", github: "GitHub", estimate: "Estimate",
+    persona: "Persona", annotation: "Annotation", color: "Color category"
+  },
   searchPlaceholder: "Search cards, sources, GitHub",
   filters: "Filters",
   clear: "Clear",

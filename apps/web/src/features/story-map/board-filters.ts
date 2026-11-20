@@ -27,7 +27,7 @@ export const defaultBoardFilters: BoardFilters = {
   statuses: [],
   cardTypes: [],
   statusMode: "include",
-  hideCompleted: false,
+  hideCompleted: true,
   release: "all",
   source: "all",
   github: "all",
@@ -37,4 +37,8 @@ export const defaultBoardFilters: BoardFilters = {
   annotation: "all"
 };
 
-export const hasActiveBoardFilters = (filters: BoardFilters) => (Object.keys(defaultBoardFilters) as (keyof BoardFilters)[]).some((key) => (key !== "persona" || isPersonasEnabled) && JSON.stringify(filters[key]) !== JSON.stringify(defaultBoardFilters[key]));
+const changedBoardFilterKeys = (filters: BoardFilters, reference: BoardFilters) => (Object.keys(reference) as (keyof BoardFilters)[]).filter((key) => (key !== "persona" || isPersonasEnabled) && JSON.stringify(filters[key]) !== JSON.stringify(reference[key]));
+
+export const hasActiveBoardFilters = (filters: BoardFilters) => changedBoardFilterKeys(filters, defaultBoardFilters).length > 0;
+
+export const activeBoardFilterKeys = (filters: BoardFilters) => changedBoardFilterKeys(filters, { ...defaultBoardFilters, hideCompleted: false });

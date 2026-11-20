@@ -393,3 +393,10 @@ fieldset.form-stack {
   border-radius: var(--radius-sm);
   font-size: var(--font-size-meta);
 }
+
+.filter-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+}

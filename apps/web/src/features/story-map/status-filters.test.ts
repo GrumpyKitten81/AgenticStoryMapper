@@ -13,7 +13,7 @@ function fixture() {
   const link = (index: number, owner: string): RemoteWorkItemLink => ({ id: randomUUID(), connectionId: owner, externalRefId: randomUUID(), provider: "github", cardId: cards[index]!.id, remoteId: String(index + 1), remoteNumber: index + 1, url: `https://github.com/owner/repo/issues/${index + 1}`, labels: [], parentOverrideLocal: false, syncState: "synced", statusEvidence: { source, issueState: "open", membership: "present", optionId: index === 0 ? "closed" : "review", name: cards[index]!.status } });
   const links = [link(0, connectionId), link(1, connectionId)];
   const snapshot = storyMapSnapshotSchema.parse({ storyMap: { id: mapId, projectId, version: 1, name: "Map", createdAt: now, updatedAt: now }, cards, releases: [], cardDependencies: [], remoteWorkItemLinks: links, githubStatusCatalogs: [{ connectionId, connectionName: "GitHub", catalog: { source, options: [{ id: "closed", name: "Closed", position: 0 }, { id: "review", name: "In Review", position: 1 }, { id: "removed", name: "Removed", position: 2, retired: true }] } }] });
-  const input = { cards: snapshot.cards, releases: snapshot.releases, remoteWorkItemLinks: snapshot.remoteWorkItemLinks, workflowStatuses: snapshot.workflowStatuses, personaById: new Map(), annotationById: new Map(), personaLinksByCardId: {}, annotationLinksByCardId: {}, sourceSearchTextByCardId: {}, githubLinksByCardId: {}, externalRefsByCardId: {}, filters: { ...defaultBoardFilters } };
+  const input = { cards: snapshot.cards, releases: snapshot.releases, remoteWorkItemLinks: snapshot.remoteWorkItemLinks, workflowStatuses: snapshot.workflowStatuses, personaById: new Map(), annotationById: new Map(), personaLinksByCardId: {}, annotationLinksByCardId: {}, sourceSearchTextByCardId: {}, githubLinksByCardId: {}, externalRefsByCardId: {}, filters: { ...defaultBoardFilters, hideCompleted: false } };
   return { snapshot, input, cards, links };
 }
 
@@ -21,7 +21,7 @@ describe("shared dynamic status filters", () => {
   it("starts unrestricted and retains excluded ancestors only as uncounted context", () => {
     const f = fixture();
     expect(filterStoryMap(f.input).matchingCardIds.size).toBe(2);
-    f.input.filters = { ...defaultBoardFilters, statuses: [cardStatusIdentity(f.cards[1]!, f.links, [])] };
+    f.input.filters = { ...f.input.filters, statuses: [cardStatusIdentity(f.cards[1]!, f.links, [])] };
     const filtered = filterStoryMap(f.input);
     expect([...filtered.matchingCardIds]).toEqual([f.cards[1]!.id]);
     expect(filtered.visibleCardIds).toEqual(new Set(f.cards.map((card) => card.id)));
@@ -29,9 +29,9 @@ describe("shared dynamic status filters", () => {
 
   it("ORs selected identities, ANDs other filters, and supports exclusion", () => {
     const f = fixture();
-    f.input.filters = { ...defaultBoardFilters, statuses: f.cards.map((card) => cardStatusIdentity(card, f.links, [])), search: "Child" };
+    f.input.filters = { ...f.input.filters, statuses: f.cards.map((card) => cardStatusIdentity(card, f.links, [])), search: "Child" };
     expect([...filterStoryMap(f.input).matchingCardIds]).toEqual([f.cards[1]!.id]);
-    f.input.filters = { ...defaultBoardFilters, statuses: [cardStatusIdentity(f.cards[0]!, f.links, [])], statusMode: "exclude" };
+    f.input.filters = { ...f.input.filters, statuses: [cardStatusIdentity(f.cards[0]!, f.links, [])], statusMode: "exclude" };
     expect([...filterStoryMap(f.input).matchingCardIds]).toEqual([f.cards[1]!.id]);
   });
 
@@ -55,5 +55,18 @@ describe("shared dynamic status filters", () => {
     const local = { id: randomUUID(), projectId: f.snapshot.storyMap.projectId, storyMapId: null, name: "In Review", group: "done" as const, position: 0 };
     expect(cardIsCompleted(f.cards[1]!, f.links, [local])).toBe(false);
     expect(cardIsCompleted(f.cards[1]!, [], [local])).toBe(true);
+  });
+
+  it("hides completed Cards by default unless the toggle is off or their status is explicitly included", () => {
+    const f = fixture();
+    const completed = f.cards[0]!, doneKey = cardStatusIdentity(completed, f.links, []);
+    const matches = (filters: Partial<typeof defaultBoardFilters>) => filterStoryMap({ ...f.input, filters: { ...defaultBoardFilters, ...filters } }).matchingCardIds.has(completed.id);
+    expect(cardIsCompleted(completed, f.links, [])).toBe(true);
+    expect(matches({})).toBe(false);
+    expect(matches({ hideCompleted: false })).toBe(true);
+    expect(matches({ statuses: [doneKey] })).toBe(true);
+    expect(matches({ hideCompleted: false, statuses: [doneKey] })).toBe(true);
+    expect(matches({ statuses: [doneKey], statusMode: "exclude", hideCompleted: false })).toBe(false);
+    expect(matches({ statuses: [cardStatusIdentity(f.cards[1]!, f.links, [])] })).toBe(false);
   });
 });

@@ -23,6 +23,7 @@ import { useWorkspaceScope } from "@storymapper/web/app/routes/use-workspace-sco
 import { DiscoveryBoardToolbar } from "@storymapper/web/features/story-map/components/BoardToolbar";
 import { DiscoveryViewControls } from "@storymapper/web/app/routes/DiscoveryViewControls";
 import { hasActiveBoardFilters } from "@storymapper/web/features/story-map/board-filters";
+import { BoardFilterIndicator } from "@storymapper/web/features/story-map/components/BoardFilterIndicator";
 import { CardDetailModal } from "@storymapper/web/features/story-map/components/CardDetailModal";
 import { StoryMapExportActions } from "@storymapper/web/features/story-map/components/StoryMapExportActions";
 import type { StoryMapViewKind } from "@storymapper/web/features/story-map/export/story-map-view-export";
@@ -117,7 +118,7 @@ function useStoryMapShellContentState({ storyMap, projectId, previewId, selected
   const activeViewKind = getStoryMapViewKind(location.pathname);
   const isDiscovery = activeViewKind === "discovery";
   const boardPreview = previewId ? projection ?? { snapshot: storyMap, markers: [] } : undefined;
-  const boardState = useStoryMapBoardState(boardPreview?.snapshot ?? storyMap, projectId, boardPreview);
+  const boardState = useStoryMapBoardState(boardPreview?.snapshot ?? storyMap, projectId, boardPreview, activeViewKind !== "tracking");
   const pullGitHubLinks = useMutation({
     mutationFn: () => api.pullStoryMapWorkItems({ storyMapId: storyMap.storyMap.id, confirm: true }),
     onSuccess: () => {
@@ -152,6 +153,7 @@ function renderStoryMapShellContent({ searchVisible, setSearchOpen, projectId, s
                   {activeViewKind ? <>
                   {isDiscovery ? <DiscoveryViewControls snapshot={storyMap} /> : null}
                   {isDiscovery && !boardPreview ? <button type="button" className="secondary icon-button" aria-pressed={searchVisible} aria-label={storyMapStrings.toggleSearch} title={storyMapStrings.toggleSearch} onClick={() => setSearchOpen(!searchVisible)}><Search size={16} /></button> : null}
+                  {isDiscovery && !boardPreview ? <BoardFilterIndicator state={boardState} /> : null}
                   <StoryMapExportActions projectId={projectId} storyMapName={storyMap.storyMap.name} viewKind={activeViewKind} />
                   {linkedCount > 0 ? <button type="button" className="secondary icon-button" aria-label={strings.pullGithub} title={`${strings.githubLinksHint(linkedCount, outOfSyncCount)} ${strings.pullGithubHint(linkedCount)}`} onClick={() => pullGitHubLinks.mutate()} disabled={Boolean(boardPreview) || pullGitHubLinks.isPending}>
                     <RefreshCcw size={16} /></button> : null}

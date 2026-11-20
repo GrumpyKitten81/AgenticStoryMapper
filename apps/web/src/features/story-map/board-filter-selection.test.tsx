@@ -11,6 +11,7 @@ import { personaSchema, storyMapSnapshotSchema, type StoryMapSnapshot, type Chan
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { DiscoveryMatrix } from "@storymapper/web/features/story-map/components/DiscoveryMatrix";
 import { BoardToolbar } from "@storymapper/web/features/story-map/components/BoardToolbar";
+import { BoardFilterIndicator } from "@storymapper/web/features/story-map/components/BoardFilterIndicator";
 import { defaultBoardFilters, hasActiveBoardFilters } from "@storymapper/web/features/story-map/board-filters";
 import { encodeFilterValue, useStoryMapBoardState, type StoryMapBoardState } from "@storymapper/web/features/story-map/useStoryMapBoardState";
 import { ConflictError } from "@storymapper/web/app/conflicts";
@@ -31,7 +32,7 @@ let state: StoryMapBoardState;
 let snapshot: StoryMapSnapshot;
 let preview: ChangeSetPreviewBoard | undefined;
 let showBoard = false;
-function Fixture() { state = useStoryMapBoardState(snapshot, undefined, preview); return <div data-story-map-board tabIndex={-1}><BoardToolbar state={state} />{showBoard ? <DiscoveryMatrix state={state} zoom={1} onSelectCard={() => {}} /> : null}</div>; }
+function Fixture() { state = useStoryMapBoardState(snapshot, undefined, preview); return <div data-story-map-board tabIndex={-1}><BoardFilterIndicator state={state} /><BoardToolbar state={state} />{showBoard ? <DiscoveryMatrix state={state} zoom={1} onSelectCard={() => {}} /> : null}</div>; }
 async function render() { await act(async () => root.render(<QueryClientProvider client={client}><Fixture /></QueryClientProvider>)); }
 async function change(control: HTMLInputElement | HTMLSelectElement, value: string) {
   await act(async () => {
@@ -418,4 +419,21 @@ it("ignores stale Persona filters and bulk intent while hiding Persona controls 
   await act(async () => state.runBulkUpdate("patch"));
   expect(update.mock.calls[0]![0].patch).toEqual({ status: "done", addAnnotationId: "annotation" });
   expect(JSON.stringify(snapshot)).toBe(preserved);
+});
+
+it("hides done Cards by default, flags the filtered board and restores the default on Clear", async () => {
+  const done = snapshot.cards[2]!;
+  snapshot = { ...snapshot, cards: snapshot.cards.map((card) => card.id === done.id ? { ...card, status: "done" } : card) };
+  await render();
+  const indicator = () => host.querySelector<HTMLElement>(".filter-indicator");
+  expect(state.filtered.matchingCardIds.has(done.id)).toBe(false);
+  expect(indicator()?.getAttribute("aria-label")).toBe("Some cards are hidden by filters: Hide completed / closed");
+  expect(indicator()?.title).toBe(indicator()?.getAttribute("aria-label"));
+  expect(hasActiveBoardFilters(state.filters)).toBe(false);
+  await act(async () => state.setFilters((filters) => ({ ...filters, hideCompleted: false })));
+  expect(state.filtered.matchingCardIds.has(done.id)).toBe(true);
+  expect(indicator()).toBeNull();
+  await act(async () => state.clearFilters());
+  expect(state.filters.hideCompleted).toBe(true);
+  expect(indicator()).not.toBeNull();
 });
