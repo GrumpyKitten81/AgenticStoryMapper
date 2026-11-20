@@ -78,7 +78,7 @@ it("records raw selection/collapse/search/color input through committed complete
     functional.completed = true;
     functional.success = true;
   } finally {
-    const evidence = fileURLToPath(new URL("../../../../../evidence/story-6-10", import.meta.url));
+    const evidence = resolve(fileURLToPath(import.meta.url), "../../../../../../evidence/story-6-10");
     mkdirSync(evidence, { recursive: true });
     writeFileSync(`${evidence}/web-board-diagnostics-${Date.now()}.json`, `${JSON.stringify({ measuredAt: new Date().toISOString(), fixture: "fixed deterministic IDs/timestamps/values; 1000 Cards:1 Activity+1 Step+998 Stories; real state/BoardToolbar/DiscoveryMatrix/CardTiles/DndContext", environment: { node: process.version, platform: process.platform, architecture: process.arch, osRelease: release(), cpu: cpus()[0]?.model, runner: "Vitest source transform / React development / jsdom", build: "unbundled TypeScript source", nativePaint: false }, coldWarm: "cold is first action of each kind on fresh mounted fixture; warm is repeated operation; no OS cache eviction", timingAcceptanceGate: false, functional, provenance, samples }, null, 2)}\n`);
     await act(async () => root.unmount());

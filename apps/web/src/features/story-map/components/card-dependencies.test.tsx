@@ -236,7 +236,7 @@ async function testDisablesPendingControlsAndDisplaysRefusalWithoutReplacingDirt
   await act(async () => button("Add dependency").click());
   expect(button("Add dependency").disabled).toBe(true);
   expect(select.disabled).toBe(true);
-  expect(document.querySelector('[role="dialog"] [role="status"]')!.textContent).toBe("Saving dependency…");
+  expect(select.closest("section")!.querySelector('[role="status"]')!.textContent).toBe("Saving dependency…");
   await act(async () => finish!(Response.json({ code: "validation", message: "Dependency cycle: LSM-3 -> LSM-1 -> LSM-3" }, { status: 400 })));
   await vi.waitFor(() => expect(document.querySelector('[role="dialog"] [role="alert"]')).not.toBeNull());
   expect(document.querySelector('[role="dialog"] [role="alert"]')!.textContent).toBe("Dependency cycle: LSM-3 -> LSM-1 -> LSM-3");
