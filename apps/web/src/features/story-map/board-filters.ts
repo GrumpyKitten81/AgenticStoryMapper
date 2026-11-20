@@ -1,4 +1,4 @@
-import type { CardLevel, GitHubLink } from "@storymapper/contracts";
+import type { CardLevel, CardType, GitHubLink } from "@storymapper/contracts";
 import { isPersonasEnabled } from "@storymapper/web/app/feature-flags";
 
 export type GitHubFilter = "all" | "linked" | "unlinked" | GitHubLink["syncState"];
@@ -8,6 +8,7 @@ export interface BoardFilters {
   level: "all" | CardLevel;
   priority: "all" | "1" | "2" | "3" | "4" | "5";
   statuses: string[];
+  cardTypes: (CardType | "none")[];
   statusMode: "include" | "exclude";
   hideCompleted: boolean;
   release: string;
@@ -24,6 +25,7 @@ export const defaultBoardFilters: BoardFilters = {
   level: "all",
   priority: "all",
   statuses: [],
+  cardTypes: [],
   statusMode: "include",
   hideCompleted: false,
   release: "all",

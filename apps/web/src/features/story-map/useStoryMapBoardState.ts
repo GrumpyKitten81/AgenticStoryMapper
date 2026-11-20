@@ -120,6 +120,7 @@ function cardMatchesFilters(input: {
   const statusKey = cardStatusIdentity(card, input.remoteLinks, input.workflowStatuses ?? []);
   if (filters.hideCompleted && cardIsCompleted(card, input.remoteLinks, input.workflowStatuses ?? [])) return false;
   if (filters.statuses?.length && (filters.statusMode === "exclude" ? filters.statuses.includes(statusKey) : !filters.statuses.includes(statusKey))) return false;
+  if (filters.cardTypes.length && !filters.cardTypes.includes(card.cardType ?? "none")) return false;
   const search = filters.search.trim().toLowerCase();
   const sourceText = input.sourceSearchText.join(" ");
   const remoteText = input.remoteLinks.map((link) => `${link.provider} ${link.remoteId} ${link.remoteNumber ?? ""} ${link.url} ${link.syncState}`).join(" ");

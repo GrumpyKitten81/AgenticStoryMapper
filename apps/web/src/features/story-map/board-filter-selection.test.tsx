@@ -74,6 +74,34 @@ it("combines literal status, custom color, zero estimate and remote identity whi
   expect(state.filtered.cards).toHaveLength(0);
 });
 
+it("filters by local planning type regardless of level, combines with search and status, and resets", async () => {
+  const [activity, story, note] = snapshot.cards;
+  snapshot = { ...snapshot, cards: [activity!, { ...story!, cardType: "bug" }, { ...note!, cardType: "epic" }] };
+  await render();
+  await act(async () => host.querySelector<HTMLButtonElement>('[aria-pressed]')!.click());
+  const types = host.querySelector<HTMLSelectElement>('[aria-label="All planning types"]')!;
+  const select = async (values: string[]) => act(async () => { for (const option of types.options) option.selected = values.includes(option.value); types.dispatchEvent(new Event("change", { bubbles: true })); });
+  await select(["bug"]);
+  expect([...state.filtered.matchingCardIds]).toEqual([story!.id]);
+  expect([...state.filtered.visibleCardIds].sort()).toEqual([activity!.id, story!.id].sort());
+  expect(hasActiveBoardFilters(state.filters)).toBe(true);
+  await select(["bug", "epic"]);
+  expect([...state.filtered.matchingCardIds].sort()).toEqual([story!.id, note!.id].sort());
+  await select(["none"]);
+  expect([...state.filtered.matchingCardIds]).toEqual([activity!.id]);
+  await select(["bug", "epic"]);
+  await change(host.querySelector<HTMLInputElement>('[aria-label="Search cards"]')!, "Other");
+  expect([...state.filtered.matchingCardIds]).toEqual([note!.id]);
+  await act(async () => state.setFilters((filters) => ({ ...filters, statuses: [JSON.stringify(["local", "all"])] })));
+  expect(state.filtered.cards).toHaveLength(0);
+  await change(host.querySelector<HTMLInputElement>('[aria-label="Search cards"]')!, "");
+  await act(async () => state.setFilters((filters) => ({ ...filters, statuses: [] })));
+  await act(async () => [...host.querySelectorAll("button")].find((button) => button.textContent === "Clear planning type selection")!.click());
+  expect(state.filters.cardTypes).toEqual([]);
+  expect(state.filtered.matchingCardIds.size).toBe(3);
+  expect(snapshot.cards.map((card) => card.cardType)).toEqual([undefined, "bug", "epic"]);
+});
+
 it("matches Standard for absent and explicit default colors and combines it with search", async () => {
   const [absent, custom, explicit] = snapshot.cards;
   snapshot = { ...snapshot, cards: [absent!, custom!, { ...explicit!, color: "#ffffff" }] };

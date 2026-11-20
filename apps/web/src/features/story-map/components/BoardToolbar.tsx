@@ -4,7 +4,8 @@ import { statusFilterOptions } from "@storymapper/web/features/story-map/status-
 import { SyncConflictNotice } from "@storymapper/web/features/github-sync";
 import { useManagedAnnotationSyncLocks, useSyncFieldLockHint, useSyncFieldLocksForCards } from "@storymapper/web/features/github-sync";
 import { syncConflictStrings } from "@storymapper/web/ui-strings/sync-conflicts";
-import type { Card, SyncConflict } from "@storymapper/contracts";
+import { cardTypeSchema, type Card, type SyncConflict } from "@storymapper/contracts";
+import { mapConceptStrings } from "@storymapper/web/ui-strings/map-concepts";
 import { Dialog } from "@storymapper/web/components/Dialog";
 import { GitHubSyncPanel } from "@storymapper/web/features/github-sync";
 import { DeleteCardsDialog } from "@storymapper/web/features/story-map/components/DeleteCardsDialog";
@@ -152,6 +153,7 @@ function renderBoardFilters(model: ReturnType<typeof useBoardToolbarState>) {
   const { state, filters, setFilters, statusOptions, snapshot, colors, palette } = model;
   return <div className="form-stack">
     {renderStatusFilters(model)}
+    {renderCardTypeFilters(model)}
     <div className="board-filter-row">
     {renderLevelFilter(model)}
     <select aria-label={strings.allPriorities} value={filters.priority} onChange={(event) => setFilters((value) => ({ ...value, priority: event.target.value as BoardFilters["priority"] }))}>
@@ -186,6 +188,17 @@ function renderBoardFilters(model: ReturnType<typeof useBoardToolbarState>) {
     </select>
     </div>
   </div>;
+}
+
+function renderCardTypeFilters({ filters, setFilters }: ReturnType<typeof useBoardToolbarState>) {
+  return <fieldset className="form-stack"><legend>{strings.allPlanningTypes}</legend>
+    <div className="button-row"><button type="button" className="secondary" onClick={() => setFilters((value) => ({ ...value, cardTypes: [] }))}>{strings.clearPlanningTypes}</button></div>
+    <p>{strings.planningTypeHint}</p>
+    <select multiple aria-label={strings.allPlanningTypes} value={filters.cardTypes} onChange={(event) => { const cardTypes = Array.from(event.target.selectedOptions, (option) => option.value as BoardFilters["cardTypes"][number]); setFilters((value) => ({ ...value, cardTypes })); }}>
+      <option value="none">{strings.noPlanningType}</option>
+      {cardTypeSchema.options.map((type) => <option key={type} value={type}>{mapConceptStrings.planningTypes[type]}</option>)}
+    </select>
+  </fieldset>;
 }
 
 function renderStatusFilters({ filters, setFilters, snapshot }: ReturnType<typeof useBoardToolbarState>) {
