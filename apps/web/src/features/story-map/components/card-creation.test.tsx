@@ -136,6 +136,14 @@ it("renders Activity child Note integration metadata and opens its lifecycle del
   expect(noteTile.textContent).not.toContain("bmad:6.2-note"); expect(noteTile.textContent).toContain(`Depends on (1): ${story.key}`);
   expect(noteTile.querySelector('.card-provider-icon')!.getAttribute("title")).toContain("GitHub #42");
   expect(noteTile.querySelector('.card-provider-icon')!.getAttribute("title")).toContain("conflict");
+  const ticket = noteTile.querySelector<HTMLElement>('.card-ticket-number')!;
+  expect(ticket.textContent).toBe("#42");
+  expect(ticket.getAttribute("title")).toBe("Ticket #42");
+  await act(async () => ticket.click());
+  expect(document.querySelector('[role="dialog"]')).toBeNull();
+  const placeholder = document.querySelector(`[data-live-card-id="${story.id}"]`)!.querySelector('.card-ticket-number')!;
+  expect(placeholder.textContent).toBe("#");
+  expect(placeholder.getAttribute("title")).toBe("No ticket linked");
   await act(async () => noteTile.querySelector<HTMLButtonElement>('[aria-label="Delete Activity evidence"]')!.click());
   expect(document.querySelector('[role="alertdialog"]')!.textContent).toContain("Delete 1 Card");
 });
