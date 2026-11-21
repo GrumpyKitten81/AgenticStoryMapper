@@ -507,14 +507,14 @@
 
 .discovery-lane-pinned {
   position: sticky;
-  bottom: var(--pinned-na-h, 0px);
+  bottom: var(--lane-pin-bottom, 0px);
   z-index: 5;
   background: var(--color-surface-subtle);
   --focus-ring: var(--focus-ring-light);
 }
 
 .release-band-header.discovery-lane-pinned {
-  bottom: calc(var(--pinned-na-h, 0px) + var(--pinned-unscheduled-h, 0px));
+  bottom: calc(var(--lane-pin-bottom, 0px) + var(--lane-pin-body-h, 0px));
   z-index: 6;
   box-shadow: 0 -1px 0 var(--color-border);
 }

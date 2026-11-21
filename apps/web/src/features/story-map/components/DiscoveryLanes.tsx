@@ -172,6 +172,7 @@ function useReleaseSectionState({
   zoom,
   pinned = false,
   onTogglePin,
+  pinStyle,
   collapsed = false,
   onToggleCollapse,
   canMoveReleaseUp,
@@ -201,14 +202,14 @@ function useReleaseSectionState({
     setEditing(false);
     if (onRenameRelease && next && next !== release.label) onRenameRelease(next).catch(() => setEditing(true));
   }
-  return { rowIndex, colCount, pinned, onToggleCollapse, collapsed, onTogglePin, editing, onRenameRelease, syncLocked, nameDraft, setNameDraft, submitEdit, setEditing, release, preview, storyCount, canMoveReleaseUp, onMoveReleaseUp, canMoveReleaseDown, onMoveReleaseDown, startEdit, onDeleteRelease, columns, visibleCardIds, columnIndices, cards, personaNamesByCardId, onOpenComposer, onDeleteStory, onMoveStory, selectedVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, estimationUnit, zoom, onSelectCard, onBulkToggle, onUpdateCard };
+  return { rowIndex, colCount, pinned, onToggleCollapse, collapsed, onTogglePin, pinStyle, editing, onRenameRelease, syncLocked, nameDraft, setNameDraft, submitEdit, setEditing, release, preview, storyCount, canMoveReleaseUp, onMoveReleaseUp, canMoveReleaseDown, onMoveReleaseDown, startEdit, onDeleteRelease, columns, visibleCardIds, columnIndices, cards, personaNamesByCardId, onOpenComposer, onDeleteStory, onMoveStory, selectedVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, estimationUnit, zoom, onSelectCard, onBulkToggle, onUpdateCard };
 }
 
 function renderReleaseSection(model: ReturnType<typeof useReleaseSectionState>) {
-  const { rowIndex, colCount, pinned, onToggleCollapse, collapsed, onTogglePin, editing, onRenameRelease, syncLocked, nameDraft, setNameDraft, submitEdit, setEditing, release, preview, storyCount, canMoveReleaseUp, onMoveReleaseUp, canMoveReleaseDown, onMoveReleaseDown, startEdit, onDeleteRelease, columns, visibleCardIds, columnIndices, cards, personaNamesByCardId, onOpenComposer, onDeleteStory, onMoveStory, selectedVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, estimationUnit, zoom, onSelectCard, onBulkToggle, onUpdateCard } = model;
+  const { rowIndex, colCount, pinned, pinStyle, onToggleCollapse, collapsed, onTogglePin, editing, onRenameRelease, syncLocked, nameDraft, setNameDraft, submitEdit, setEditing, release, preview, storyCount, canMoveReleaseUp, onMoveReleaseUp, canMoveReleaseDown, onMoveReleaseDown, startEdit, onDeleteRelease, columns, visibleCardIds, columnIndices, cards, personaNamesByCardId, onOpenComposer, onDeleteStory, onMoveStory, selectedVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, estimationUnit, zoom, onSelectCard, onBulkToggle, onUpdateCard } = model;
   return (
     <>
-      {renderReleaseHeader(model)}<div role="row" className="discovery-lane-body" aria-rowindex={rowIndex + 1} hidden={collapsed} style={{ display: collapsed ? "none" : "contents" }}>
+      {renderReleaseHeader(model)}<div role="row" className="discovery-lane-body" data-lane-id={release.id} aria-rowindex={rowIndex + 1} hidden={collapsed} style={{ ...pinStyle, display: collapsed ? "none" : "contents" }}>
         {columns.map((column, index) => renderReleaseColumn(model, column, index))}</div>
     </>
   );
@@ -340,6 +341,7 @@ interface ReleaseSectionProps {
   zoom: number;
   pinned?: boolean;
   onTogglePin?: (() => void) | undefined;
+  pinStyle?: React.CSSProperties | undefined;
   collapsed?: boolean;
   onToggleCollapse?: (() => void) | undefined;
   canMoveReleaseUp?: boolean;
@@ -365,7 +367,7 @@ function renderReleaseHeading(model: ReturnType<typeof useReleaseSectionState>) 
       </button>
     ) : null}
     {onTogglePin ? (
-      <button type="button" className={pinned ? "lane-pin pinned" : "lane-pin"} aria-pressed={pinned} title={pinned ? strings.unpinLane : strings.pinLane} onClick={onTogglePin}>
+      <button type="button" className={pinned ? "lane-pin pinned" : "lane-pin"} aria-pressed={pinned} aria-label={pinned ? strings.unpinLaneNamed(release.label) : strings.pinLaneNamed(release.label)} title={pinned ? strings.unpinLane : strings.pinLane} onClick={onTogglePin}>
         <Pin size={14} />
       </button>
     ) : null}
@@ -398,8 +400,8 @@ function renderReleaseHeading(model: ReturnType<typeof useReleaseSectionState>) 
 }
 
 function renderReleaseHeader(model: ReturnType<typeof useReleaseSectionState>) {
-  const { rowIndex, colCount, pinned, storyCount, onRenameRelease, release, canMoveReleaseUp, onMoveReleaseUp, canMoveReleaseDown, onMoveReleaseDown, editing, syncLocked, startEdit, onDeleteRelease } = model;
-  return <div role="row" aria-rowindex={rowIndex} style={{ display: "contents" }}><div role="rowheader" aria-colindex={1} aria-colspan={colCount} className={`release-band-header${pinned ? " discovery-lane-pinned" : ""}`}>
+  const { rowIndex, colCount, pinned, pinStyle, storyCount, onRenameRelease, release, canMoveReleaseUp, onMoveReleaseUp, canMoveReleaseDown, onMoveReleaseDown, editing, syncLocked, startEdit, onDeleteRelease } = model;
+  return <div role="row" aria-rowindex={rowIndex} style={{ display: "contents" }}><div role="rowheader" aria-colindex={1} aria-colspan={colCount} data-lane-id={release.id} style={pinStyle} className={`release-band-header${pinned ? " discovery-lane-pinned" : ""}`}>
     {renderReleaseHeading(model)}
     <div className="lane-header-right">
       <span>{strings.countStories(storyCount)}</span>

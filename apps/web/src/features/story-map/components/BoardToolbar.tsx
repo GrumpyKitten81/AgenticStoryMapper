@@ -20,7 +20,7 @@ import { cardLevelMeta } from "@storymapper/web/features/story-map/card-taxonomy
 import type { StoryMapBoardState } from "@storymapper/web/features/story-map/useStoryMapBoardState";
 import type { BoardFilters } from "@storymapper/web/features/story-map/board-filters";
 import { storyMapStrings as strings } from "@storymapper/ui-strings";
-import { useDiscoveryLaneCollapseStore } from "@storymapper/web/app/stores/discovery-lane-collapse-store";
+import { useDiscoveryLaneCollapseStore } from "@storymapper/web/app/stores/map-id-set-store";
 import { discoveryDisplayedCardIds } from "@storymapper/web/features/story-map/components/discovery-visibility";
 import { isPersonasEnabled } from "@storymapper/web/app/feature-flags";
 
@@ -31,7 +31,7 @@ interface BoardToolbarProps {
 }
 
 export function DiscoveryBoardToolbar({ state, searchVisible }: { state: StoryMapBoardState; searchVisible: boolean }) {
-  const collapsedLaneIds = useDiscoveryLaneCollapseStore((store) => store.collapsedByMap[state.snapshot.storyMap.id]);
+  const collapsedLaneIds = useDiscoveryLaneCollapseStore((store) => store.idsByMap[state.snapshot.storyMap.id]);
   const displayedCardIds = discoveryDisplayedCardIds(state.boardCards, state.filtered.visibleCardIds, collapsedLaneIds ?? []);
   return <BoardToolbar state={state} displayedCardIds={displayedCardIds} searchVisible={searchVisible} />;
 }

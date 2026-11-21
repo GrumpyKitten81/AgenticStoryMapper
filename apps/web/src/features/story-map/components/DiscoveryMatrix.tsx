@@ -10,7 +10,7 @@ import type React from "react";
 import { useLayoutEffect, useRef, useState } from "react";
 import { AddControl, DraggableCardTile, DroppableCell, NotAssignedLane, ReleaseSection, type DiscoveryColumn, type ReleaseBand } from "@storymapper/web/features/story-map/components/DiscoveryLanes";
 import { resolveStoryCellDropTarget, storyBoardCollisionDetection } from "@storymapper/web/features/story-map/drop-targets";
-import { useDiscoveryLaneCollapseStore } from "@storymapper/web/app/stores/discovery-lane-collapse-store";
+import { NOT_ASSIGNED_LANE_ID, useDiscoveryLaneCollapseStore, useDiscoveryLanePinStore } from "@storymapper/web/app/stores/map-id-set-store";
 import type { StoryMapBoardState } from "@storymapper/web/features/story-map/useStoryMapBoardState";
 import { ReleaseDeleteDialog } from "@storymapper/web/features/story-map/components/ReleaseDeleteDialog";
 import { LifecycleDialog } from "@storymapper/web/features/story-map/components/LifecycleDialog";
@@ -58,7 +58,7 @@ function useDiscoveryMatrixState(props: DiscoveryMatrixProps) {
 }
 
 function renderDiscoveryMatrix(model: ReturnType<typeof useDiscoveryMatrixState>) {
-  const { navigation, sensors, state, dragVersion, liveDrag, handleDragEnd, activities, createCard, setComposer, composer, onSelectCard, scrollRef, gridRef, visibleColumns, notAssignedRow, gridTemplateColumns, activityRowHeight, zoom, pinnedNotAssigned, notAssignedHeight, pinnedUnscheduled, unscheduledCellHeight, activityStepGroups, hierarchyVisibleIds, boardCards, selectedVisibleIds, snapshot, prepareFocusRecovery, storyMapId, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, toggleBulkSelection, updateCard, handleDeleteStory, setParkTarget, moveActivity, columns, columnIndices, releases, filtered, orderedReleases, releaseRows, setPinnedUnscheduled, collapsedLaneSet, toggleLane, setMoveAreaTarget, updateRelease, setReleaseTarget, notAssignedRef, setPinnedNotAssigned, notAssignedCards, retainedNotAssignedCards, openAddKey, newReleaseName, setOpenAddKey, setNewReleaseName, submitRelease, deleteTarget, setDeleteTarget, parkTarget, moveAreaTarget, releaseTarget } = model;
+  const { navigation, sensors, state, dragVersion, liveDrag, handleDragEnd, activities, createCard, setComposer, composer, onSelectCard, scrollRef, gridRef, visibleColumns, notAssignedRow, gridTemplateColumns, activityRowHeight, zoom, pinnedNotAssigned, notAssignedHeight, activityStepGroups, hierarchyVisibleIds, boardCards, selectedVisibleIds, snapshot, prepareFocusRecovery, storyMapId, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, toggleBulkSelection, updateCard, handleDeleteStory, setParkTarget, moveActivity, columns, columnIndices, releases, filtered, orderedReleases, releaseRows, collapsedLaneSet, toggleLane, setMoveAreaTarget, updateRelease, setReleaseTarget, notAssignedRef, notAssignedCards, retainedNotAssignedCards, openAddKey, newReleaseName, setOpenAddKey, setNewReleaseName, submitRelease, deleteTarget, setDeleteTarget, parkTarget, moveAreaTarget, releaseTarget } = model;
   return (
     <DiscoveryNavigationContext.Provider value={navigation}><DndContext sensors={state.preview ? [] : sensors} collisionDetection={storyBoardCollisionDetection} onDragStart={(event) => { dragVersion.current = state.captureMoveVersion(String(event.active.id)); navigation.activate(String(event.active.id)); liveDrag.start(); }} onDragCancel={liveDrag.end} onDragEnd={(event) => { liveDrag.end(); handleDragEnd(event); }}>
       {composer && !state.preview ? <CardComposer state={state} level={composer.level} initialParentId={composer.parentId ?? null} initialReleaseId={composer.releaseId ?? null} onClose={() => setComposer(null)} onSelectCard={onSelectCard} /> : null}
@@ -72,7 +72,7 @@ function renderDiscoveryMatrix(model: ReturnType<typeof useDiscoveryMatrixState>
           aria-multiselectable="true"
           aria-colcount={visibleColumns.length}
           aria-rowcount={notAssignedRow + 2}
-          style={{ gridTemplateColumns, "--discovery-activity-h": activityRowHeight ? `${activityRowHeight}px` : "auto", "--discovery-zoom": zoom, "--pinned-na-h": pinnedNotAssigned ? `${notAssignedHeight}px` : "0px", "--pinned-unscheduled-h": pinnedUnscheduled ? `${unscheduledCellHeight}px` : "0px" } as React.CSSProperties}
+          style={{ gridTemplateColumns, "--discovery-activity-h": activityRowHeight ? `${activityRowHeight}px` : "auto", "--discovery-zoom": zoom, "--pinned-na-h": pinnedNotAssigned ? `${notAssignedHeight}px` : "0px" } as React.CSSProperties}
         >
           <div role="row" aria-rowindex={1} style={{ display: "contents" }}>{activityStepGroups.map((group, groupIndex) => renderDiscoveryActivity(model, group, groupIndex))}
             <div role="columnheader" aria-colindex={visibleColumns.length} className="discovery-activity-cell discovery-add-activity-cell">
@@ -135,22 +135,23 @@ function useDiscoverySelection({ state, zoom, onSelectCard }: DiscoveryMatrixPro
   const [parkTarget, setParkTarget] = useState<Card | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activityRowHeight, setActivityRowHeight] = useState(0);
-  const [pinnedUnscheduled, setPinnedUnscheduled] = useState(false);
-  const [pinnedNotAssigned, setPinnedNotAssigned] = useState(false);
   const notAssignedRef = useRef<HTMLDivElement>(null);
-  return { state, zoom, onSelectCard, liveDrag, sensors, dragVersion, composer, setComposer, snapshot, filtered, boardCards, activities, selectedVisibleIds, toggleBulkSelection, createCard, createRelease, updateRelease, updateCard, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, externalRefsByReleaseId, workItemProviderByCardId, releaseNameById, moveCard, openAddKey, setOpenAddKey, newReleaseName, setNewReleaseName, deleteTarget, setDeleteTarget, moveAreaTarget, setMoveAreaTarget, releaseTarget, setReleaseTarget, parkTarget, setParkTarget, scrollRef, activityRowHeight, setActivityRowHeight, pinnedUnscheduled, setPinnedUnscheduled, pinnedNotAssigned, setPinnedNotAssigned, notAssignedRef };
+  return { state, zoom, onSelectCard, liveDrag, sensors, dragVersion, composer, setComposer, snapshot, filtered, boardCards, activities, selectedVisibleIds, toggleBulkSelection, createCard, createRelease, updateRelease, updateCard, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, externalRefsByReleaseId, workItemProviderByCardId, releaseNameById, moveCard, openAddKey, setOpenAddKey, newReleaseName, setNewReleaseName, deleteTarget, setDeleteTarget, moveAreaTarget, setMoveAreaTarget, releaseTarget, setReleaseTarget, parkTarget, setParkTarget, scrollRef, activityRowHeight, setActivityRowHeight, notAssignedRef };
 }
 
 function useDiscoveryColumns(props: DiscoveryMatrixProps) {
   const context = useDiscoverySelection(props);
   const { snapshot, filtered, boardCards } = context;
   const [notAssignedHeight, setNotAssignedHeight] = useState(0);
-  const [unscheduledCellHeight, setUnscheduledCellHeight] = useState(0);
+  const [laneHeights, setLaneHeights] = useState<Record<string, { header: number; body: number }>>({});
   const storyMapId = snapshot.storyMap.id;
   const hierarchyVisibleIds = filtered.visibleCardIds;
-  const collapsedLaneIds = useDiscoveryLaneCollapseStore((store) => store.collapsedByMap[storyMapId]);
-  const toggleLane = useDiscoveryLaneCollapseStore((store) => store.toggleLane);
+  const collapsedLaneIds = useDiscoveryLaneCollapseStore((store) => store.idsByMap[storyMapId]);
+  const toggleLane = useDiscoveryLaneCollapseStore((store) => store.toggle);
   const collapsedLaneSet = new Set(collapsedLaneIds ?? []);
+  const pinnedLaneSet = new Set(useDiscoveryLanePinStore((store) => store.idsByMap[storyMapId]) ?? []);
+  const togglePin = useDiscoveryLanePinStore((store) => store.toggle);
+  const pinnedNotAssigned = pinnedLaneSet.has(NOT_ASSIGNED_LANE_ID);
   const retainedActivities = getChildren(boardCards, null).filter((card) => card.level === "activity");
   const activityStepGroups = retainedActivities.map((activity) => ({
     activity,
@@ -168,7 +169,7 @@ function useDiscoveryColumns(props: DiscoveryMatrixProps) {
   ]);
   columns.push({ kind: "add-activity" });
   const orderedReleases = snapshot.releases.slice().sort((left, right) => left.position - right.position);
-  return { ...context, notAssignedHeight, setNotAssignedHeight, unscheduledCellHeight, setUnscheduledCellHeight, storyMapId, hierarchyVisibleIds, collapsedLaneIds, toggleLane, collapsedLaneSet, activityStepGroups, columns, orderedReleases };
+  return { ...context, notAssignedHeight, setNotAssignedHeight, laneHeights, setLaneHeights, pinnedLaneSet, togglePin, pinnedNotAssigned, storyMapId, hierarchyVisibleIds, collapsedLaneIds, toggleLane, collapsedLaneSet, activityStepGroups, columns, orderedReleases };
 }
 
 function useDiscoveryLocations(props: DiscoveryMatrixProps) {
@@ -208,7 +209,7 @@ function useDiscoveryLocations(props: DiscoveryMatrixProps) {
 
 function useDiscoveryMeasurements(props: DiscoveryMatrixProps) {
   const context = useDiscoveryLocations(props);
-  const { state, zoom, snapshot, filtered, boardCards, toggleBulkSelection, setMoveAreaTarget, scrollRef, pinnedUnscheduled, pinnedNotAssigned, notAssignedRef, setNotAssignedHeight, setUnscheduledCellHeight, hierarchyVisibleIds, collapsedLaneIds, collapsedLaneSet, columns, releases, retainedNotAssignedCards, notAssignedCards, handleDeleteStory, locations, append, steps, stepColumn } = context;
+  const { state, zoom, snapshot, filtered, boardCards, toggleBulkSelection, setMoveAreaTarget, scrollRef, pinnedNotAssigned, notAssignedHeight, notAssignedRef, setNotAssignedHeight, setLaneHeights, laneHeights, pinnedLaneSet, hierarchyVisibleIds, collapsedLaneIds, collapsedLaneSet, columns, releases, retainedNotAssignedCards, notAssignedCards, handleDeleteStory, locations, append, steps, stepColumn } = context;
   releases.forEach((release, index) => {
     if (collapsedLaneSet.has(release.id)) return;
     steps.forEach((step) => {
@@ -226,24 +227,19 @@ function useDiscoveryMeasurements(props: DiscoveryMatrixProps) {
     observer.observe(element);
     return () => observer.disconnect();
   }, [pinnedNotAssigned, notAssignedCards.length, zoom]);
+  const pinnedReleaseKey = releases.filter((release) => pinnedLaneSet.has(release.id)).map((release) => release.id).join(" ");
   useLayoutEffect(() => {
-    if (!pinnedUnscheduled) {
-      setUnscheduledCellHeight(0);
-      return;
-    }
-    const cell = scrollRef.current?.querySelector<HTMLElement>(".discovery-lane-body:not([hidden]) .discovery-unscheduled-cell:not([hidden])");
-    if (!cell) {
-      setUnscheduledCellHeight(0);
-      return;
-    }
-    const update = () => setUnscheduledCellHeight(cell.offsetHeight);
+    const laneIds = pinnedReleaseKey ? pinnedReleaseKey.split(" ") : [];
+    const elements = laneIds.map((laneId) => pinnedLaneElements(scrollRef.current, laneId));
+    const update = () => setLaneHeights(Object.fromEntries(laneIds.map((laneId, index) => [laneId, { header: elements[index]!.header?.offsetHeight ?? 0, body: elements[index]!.cell?.offsetHeight ?? 0 }])));
     update();
     const observer = new ResizeObserver(update);
-    observer.observe(cell);
+    elements.forEach(({ header, cell }) => [header, cell].forEach((element) => { if (element) observer.observe(element); }));
     return () => observer.disconnect();
-  }, [pinnedUnscheduled, filtered.cards, zoom, collapsedLaneIds]);
+  }, [pinnedReleaseKey, filtered.cards, zoom, collapsedLaneIds]);
+  const pinOffsets = pinnedLaneOffsets(releases, pinnedLaneSet, laneHeights, pinnedNotAssigned ? notAssignedHeight : 0);
   const visibleColumns = columns.filter((column) => column.kind === "add-activity" || hierarchyVisibleIds.has(column.kind === "step" ? column.step.id : column.activity.id));
-  return { ...context, gridRef, navigation, prepareFocusRecovery, visibleColumns };
+  return { ...context, gridRef, navigation, prepareFocusRecovery, visibleColumns, pinOffsets };
 }
 
 function dropDiscoveryActivity(active: Card, overId: string, { filtered, activities, moveCard, dragVersion }: ReturnType<typeof useDiscoveryMeasurements>) {
@@ -294,7 +290,7 @@ function dropDiscoveryStep(active: Card, overId: string, { filtered, activities,
 
 function useDiscoveryDrag(props: DiscoveryMatrixProps) {
   const model = useDiscoveryMeasurements(props);
-  const { state, zoom, onSelectCard, liveDrag, sensors, dragVersion, composer, setComposer, snapshot, filtered, boardCards, activities, selectedVisibleIds, toggleBulkSelection, createCard, createRelease, updateRelease, updateCard, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, moveCard, openAddKey, setOpenAddKey, newReleaseName, setNewReleaseName, deleteTarget, setDeleteTarget, moveAreaTarget, setMoveAreaTarget, releaseTarget, setReleaseTarget, parkTarget, setParkTarget, scrollRef, activityRowHeight, setActivityRowHeight, pinnedUnscheduled, setPinnedUnscheduled, pinnedNotAssigned, setPinnedNotAssigned, notAssignedRef, notAssignedHeight, unscheduledCellHeight, storyMapId, hierarchyVisibleIds, toggleLane, collapsedLaneSet, activityStepGroups, columns, orderedReleases, releases, notAssignedRoots, retainedNotAssignedCards, notAssignedCards, handleDeleteStory, gridRef, navigation, prepareFocusRecovery, visibleColumns } = model;
+  const { state, zoom, onSelectCard, liveDrag, sensors, dragVersion, composer, setComposer, snapshot, filtered, boardCards, activities, selectedVisibleIds, toggleBulkSelection, createCard, createRelease, updateRelease, updateCard, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, moveCard, openAddKey, setOpenAddKey, newReleaseName, setNewReleaseName, deleteTarget, setDeleteTarget, moveAreaTarget, setMoveAreaTarget, releaseTarget, setReleaseTarget, parkTarget, setParkTarget, scrollRef, activityRowHeight, setActivityRowHeight, notAssignedRef, notAssignedHeight, pinnedLaneSet, togglePin, pinnedNotAssigned, pinOffsets, storyMapId, hierarchyVisibleIds, toggleLane, collapsedLaneSet, activityStepGroups, columns, orderedReleases, releases, notAssignedRoots, retainedNotAssignedCards, notAssignedCards, handleDeleteStory, gridRef, navigation, prepareFocusRecovery, visibleColumns } = model;
   const columnIndices = columns.map((column) => visibleColumns.indexOf(column) + 1);
   const releaseRows = releases.map((release, index) => 3 + releases.slice(0, index).reduce((count, item) => count + (collapsedLaneSet.has(item.id) ? 1 : 2), 0));
   const notAssignedRow = 3 + releases.reduce((count, release) => count + (collapsedLaneSet.has(release.id) ? 1 : 2), 0);
@@ -326,15 +322,15 @@ function useDiscoveryDrag(props: DiscoveryMatrixProps) {
     if (!target) return;
     moveCard.mutate({ cardId: active.id, baseVersion: dragVersion.current!, patch: { parentId: target.parentId, position: target.position, releaseId: target.releaseId } });
   }
-  return { state, zoom, onSelectCard, liveDrag, sensors, dragVersion, composer, setComposer, snapshot, filtered, boardCards, activities, selectedVisibleIds, toggleBulkSelection, createCard, createRelease, updateRelease, updateCard, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, moveCard, openAddKey, setOpenAddKey, newReleaseName, setNewReleaseName, deleteTarget, setDeleteTarget, moveAreaTarget, setMoveAreaTarget, releaseTarget, setReleaseTarget, parkTarget, setParkTarget, scrollRef, activityRowHeight, pinnedUnscheduled, setPinnedUnscheduled, pinnedNotAssigned, setPinnedNotAssigned, notAssignedRef, notAssignedHeight, unscheduledCellHeight, storyMapId, hierarchyVisibleIds, toggleLane, collapsedLaneSet, activityStepGroups, columns, orderedReleases, releases, retainedNotAssignedCards, notAssignedCards, handleDeleteStory, gridRef, navigation, prepareFocusRecovery, visibleColumns, columnIndices, releaseRows, notAssignedRow, gridTemplateColumns, handleDragEnd };
+  return { state, zoom, onSelectCard, liveDrag, sensors, dragVersion, composer, setComposer, snapshot, filtered, boardCards, activities, selectedVisibleIds, toggleBulkSelection, createCard, createRelease, updateRelease, updateCard, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, moveCard, openAddKey, setOpenAddKey, newReleaseName, setNewReleaseName, deleteTarget, setDeleteTarget, moveAreaTarget, setMoveAreaTarget, releaseTarget, setReleaseTarget, parkTarget, setParkTarget, scrollRef, activityRowHeight, notAssignedRef, notAssignedHeight, pinnedLaneSet, togglePin, pinnedNotAssigned, pinOffsets, storyMapId, hierarchyVisibleIds, toggleLane, collapsedLaneSet, activityStepGroups, columns, orderedReleases, releases, retainedNotAssignedCards, notAssignedCards, handleDeleteStory, gridRef, navigation, prepareFocusRecovery, visibleColumns, columnIndices, releaseRows, notAssignedRow, gridTemplateColumns, handleDragEnd };
 }
 
 function renderDiscoveryNotAssignedLane(model: ReturnType<typeof useDiscoveryMatrixState>) {
-  const { notAssignedRef, pinnedNotAssigned, notAssignedRow, visibleColumns, setPinnedNotAssigned, notAssignedCards, selectedVisibleIds, state, snapshot, retainedNotAssignedCards, prepareFocusRecovery, storyMapId, hierarchyVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, zoom, onSelectCard, toggleBulkSelection, updateCard, handleDeleteStory } = model;
+  const { notAssignedRef, pinnedNotAssigned, notAssignedRow, visibleColumns, togglePin, notAssignedCards, selectedVisibleIds, state, snapshot, retainedNotAssignedCards, prepareFocusRecovery, storyMapId, hierarchyVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, zoom, onSelectCard, toggleBulkSelection, updateCard, handleDeleteStory } = model;
   return <div ref={notAssignedRef} className={`discovery-pinned-block${pinnedNotAssigned ? " pinned" : ""}`}>
     <div role="row" aria-rowindex={notAssignedRow}><div role="rowheader" aria-colindex={1} aria-colspan={visibleColumns.length} className="release-band-header not-assigned-header">
       <div className="lane-header-left">
-        <button type="button" className={pinnedNotAssigned ? "lane-pin pinned" : "lane-pin"} aria-pressed={pinnedNotAssigned} title={pinnedNotAssigned ? strings.unpinLane : strings.pinLane} onClick={() => setPinnedNotAssigned((value) => !value)}>
+        <button type="button" className={pinnedNotAssigned ? "lane-pin pinned" : "lane-pin"} aria-pressed={pinnedNotAssigned} aria-label={pinnedNotAssigned ? strings.unpinLaneNamed(strings.notAssigned) : strings.pinLaneNamed(strings.notAssigned)} title={pinnedNotAssigned ? strings.unpinLane : strings.pinLane} onClick={() => togglePin(storyMapId, NOT_ASSIGNED_LANE_ID)}>
           <Pin size={14} />
         </button>
         <strong>{strings.notAssigned}</strong>
@@ -462,7 +458,7 @@ function renderDiscoveryStepColumn(model: ReturnType<typeof useDiscoveryMatrixSt
 }
 
 function renderDiscoveryReleaseBand(model: ReturnType<typeof useDiscoveryMatrixState>, release: ReleaseBand, index: number) {
-  const { filtered, orderedReleases, state, releaseRows, visibleColumns, columnIndices, columns, boardCards, hierarchyVisibleIds, selectedVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, snapshot, zoom, pinnedUnscheduled, setPinnedUnscheduled, collapsedLaneSet, prepareFocusRecovery, toggleLane, storyMapId, createCard, setComposer, handleDeleteStory, setMoveAreaTarget, updateRelease, setReleaseTarget, onSelectCard, toggleBulkSelection, updateCard } = model;
+  const { filtered, orderedReleases, state, releaseRows, visibleColumns, columnIndices, columns, boardCards, hierarchyVisibleIds, selectedVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, snapshot, zoom, collapsedLaneSet, pinnedLaneSet, togglePin, pinOffsets, prepareFocusRecovery, toggleLane, storyMapId, createCard, setComposer, handleDeleteStory, setMoveAreaTarget, updateRelease, setReleaseTarget, onSelectCard, toggleBulkSelection, updateCard } = model;
 
   const count = filtered.cards.filter((card) => card.level === "story" && (card.releaseId ?? null) === release.releaseId).length;
   const releaseId = release.releaseId;
@@ -470,8 +466,9 @@ function renderDiscoveryReleaseBand(model: ReturnType<typeof useDiscoveryMatrixS
   return (
     <ReleaseSection key={release.id}
       {...discoveryReleaseContent(model, release, index, count)}
-      pinned={release.releaseId === null ? pinnedUnscheduled : false}
-      onTogglePin={release.releaseId === null ? () => setPinnedUnscheduled((value) => !value) : undefined}
+      pinned={pinnedLaneSet.has(release.id)}
+      pinStyle={pinOffsets[release.id]}
+      onTogglePin={() => togglePin(storyMapId, release.id)}
       collapsed={collapsedLaneSet.has(release.id)}
       onToggleCollapse={() => { prepareFocusRecovery(); toggleLane(storyMapId, release.id); }}
       onOpenComposer={(parentId, releaseId) => { createCard.reset(); setComposer({ level: "story", parentId, releaseId }); }}
@@ -496,7 +493,7 @@ function renderDiscoveryReleaseBand(model: ReturnType<typeof useDiscoveryMatrixS
 }
 
 function discoveryReleaseContent(model: ReturnType<typeof useDiscoveryMatrixState>, release: ReleaseBand, index: number, count: number) {
-  const { filtered, orderedReleases, state, releaseRows, visibleColumns, columnIndices, columns, boardCards, hierarchyVisibleIds, selectedVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, snapshot, zoom, pinnedUnscheduled, setPinnedUnscheduled, collapsedLaneSet, prepareFocusRecovery, toggleLane, storyMapId, createCard, setComposer, handleDeleteStory, setMoveAreaTarget, updateRelease, setReleaseTarget, onSelectCard, toggleBulkSelection, updateCard } = model;
+  const { filtered, orderedReleases, state, releaseRows, visibleColumns, columnIndices, columns, boardCards, hierarchyVisibleIds, selectedVisibleIds, sourceCounts, githubIssueByCardId, githubStatusByCardId, externalRefsByCardId, dependencyKeys, workItemProviderByCardId, releaseNameById, snapshot, zoom, collapsedLaneSet, prepareFocusRecovery, toggleLane, storyMapId, createCard, setComposer, handleDeleteStory, setMoveAreaTarget, updateRelease, setReleaseTarget, onSelectCard, toggleBulkSelection, updateCard } = model;
   return {
     preview: state.preview,
     rowIndex: releaseRows[index]!,
@@ -519,4 +516,23 @@ function discoveryReleaseContent(model: ReturnType<typeof useDiscoveryMatrixStat
     estimationUnit: snapshot.storyMap.estimationUnit,
     zoom: zoom,
   };
+}
+
+function pinnedLaneElements(root: HTMLElement | null, laneId: string) {
+  return {
+    header: root?.querySelector<HTMLElement>(`.release-band-header[data-lane-id="${laneId}"]`) ?? null,
+    cell: root?.querySelector<HTMLElement>(`.discovery-lane-body[data-lane-id="${laneId}"]:not([hidden]) > .discovery-cell:not([hidden])`) ?? null
+  };
+}
+
+function pinnedLaneOffsets(releases: ReleaseBand[], pinnedLaneSet: Set<string>, laneHeights: Record<string, { header: number; body: number }>, baseOffset: number) {
+  const offsets: Record<string, React.CSSProperties> = {};
+  let bottom = baseOffset;
+  for (const release of releases.slice().reverse()) {
+    if (!pinnedLaneSet.has(release.id)) continue;
+    const { header, body } = laneHeights[release.id] ?? { header: 0, body: 0 };
+    offsets[release.id] = { "--lane-pin-bottom": `${bottom}px`, "--lane-pin-body-h": `${body}px` } as React.CSSProperties;
+    bottom += header + body;
+  }
+  return offsets;
 }

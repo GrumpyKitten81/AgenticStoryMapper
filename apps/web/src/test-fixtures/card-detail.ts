@@ -7,8 +7,7 @@ import { createMemoryHistory, Outlet, RouterProvider } from "@tanstack/react-rou
 import { cardReviewSettingsSchema, storyMapSnapshotSchema, type CardSourceLink, type CreateCardSourceLinkRequest, type CardHistoryResponse, type StoryMapSnapshot, type UpdateCardRequest, type SyncConflict, type ConnectorConnection } from "@storymapper/contracts";
 import { afterEach, beforeEach, expect, vi } from "vitest";
 import { useLiveInteractionStore } from "@storymapper/web/app/live/live-interaction-store";
-import { useTreeCollapseStore } from "@storymapper/web/app/stores/tree-collapse-store";
-import { useDiscoveryLaneCollapseStore } from "@storymapper/web/app/stores/discovery-lane-collapse-store";
+import { useDiscoveryLaneCollapseStore, useDiscoveryLanePinStore, useTreeCollapseStore } from "@storymapper/web/app/stores/map-id-set-store";
 import { router } from "@storymapper/web/app/router";
 
 vi.mock("@storymapper/web/app/routes/RootLayout", () => ({ RootLayout: () => createElement(Outlet) }));
@@ -105,8 +104,9 @@ afterEach(async () => {
 
 
 function resetCardDetailFixtureState() {
-  useTreeCollapseStore.setState({ collapsedByMap: {} });
-  useDiscoveryLaneCollapseStore.setState({ collapsedByMap: {} });
+  useTreeCollapseStore.setState({ idsByMap: {} });
+  useDiscoveryLaneCollapseStore.setState({ idsByMap: {} });
+  useDiscoveryLanePinStore.setState({ idsByMap: {} });
   localStorage.clear();
   notifyManager.setScheduler(queueMicrotask);
   vi.spyOn(window, "scrollTo").mockImplementation(() => { });

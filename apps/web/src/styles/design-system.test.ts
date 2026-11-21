@@ -20,7 +20,7 @@ it("defines every stylesheet token reference and prevents reference cycles", () 
   const definitions = new Map([...stylesheet.matchAll(/(--[\w-]+)\s*:\s*([^;}]+)/gu)].map((match) => [match[1]!, match[2]!]));
   const references = (value: string): string[] => [...value.matchAll(/var\(\s*(--[\w-]+)/gu)].map((match) => match[1]!);
   const check = (token: string, ancestors: string[]): void => {
-    if (["--discovery-zoom", "--discovery-activity-h", "--pinned-na-h", "--pinned-unscheduled-h"].includes(token)) {
+    if (["--discovery-zoom", "--discovery-activity-h", "--pinned-na-h", "--lane-pin-bottom", "--lane-pin-body-h"].includes(token)) {
       expect(readFileSync(new URL("../features/story-map/components/DiscoveryMatrix.tsx", import.meta.url), "utf8")).toContain(`"${token}":`);
       return;
     }

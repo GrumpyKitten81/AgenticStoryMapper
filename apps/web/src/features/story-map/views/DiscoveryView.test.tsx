@@ -6,6 +6,8 @@ import { join } from "node:path";
 import { act } from "react";
 import { afterEach, expect, it, vi } from "vitest";
 import { useDiscoveryZoomStore } from "@storymapper/web/app/stores/discovery-zoom-store";
+import { useDiscoveryLanePinStore } from "@storymapper/web/app/stores/map-id-set-store";
+import { releaseSchema } from "@storymapper/contracts";
 import { button, cardId, mount, openBoardSearch, state, storyMapId, viewUrl } from "@storymapper/web/test-fixtures/card-detail";
 
 const url = viewUrl.replace(/tree$/, "discovery");
@@ -16,6 +18,7 @@ async function search(value: string) {
   const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!.set!;
   await act(async () => { setter.call(input, value); input.dispatchEvent(new Event("input", { bubbles: true })); });
 }
+const laneHeader = (laneId: string) => document.querySelector<HTMLElement>(`.release-band-header[data-lane-id="${laneId}"]`)!;
 const tile = (id: string) => document.querySelector<HTMLElement>(`.discovery-workspace [data-live-card-id="${id}"]`)!;
 
 it("gives the empty board a card-width track and preserves populated column widths", async () => {
@@ -46,13 +49,41 @@ it("keeps zoomed sticky offsets in layout pixels and remeasures after zoom chang
     document.querySelector<HTMLButtonElement>('.release-band-header:not(.not-assigned-header) .lane-pin')!.click();
   });
   const matrix = document.querySelector<HTMLElement>(".discovery-matrix")!;
+  const unscheduled = laneHeader("release:unscheduled");
   expect(matrix.style.getPropertyValue("--pinned-na-h")).toBe("180px");
-  expect(matrix.style.getPropertyValue("--pinned-unscheduled-h")).toBe("240px");
+  expect(unscheduled.style.getPropertyValue("--lane-pin-bottom")).toBe("180px");
+  expect(unscheduled.style.getPropertyValue("--lane-pin-body-h")).toBe("240px");
   expect(matrix.style.getPropertyValue("--discovery-activity-h")).toBe("96px");
   orphanHeight = 200;
   await act(async () => useDiscoveryZoomStore.getState().setZoom(storyMapId, 0.5));
   expect(matrix.style.getPropertyValue("--pinned-na-h")).toBe("200px");
-  expect(matrix.style.getPropertyValue("--pinned-unscheduled-h")).toBe("240px");
+  expect(unscheduled.style.getPropertyValue("--lane-pin-bottom")).toBe("200px");
+  expect(unscheduled.style.getPropertyValue("--lane-pin-body-h")).toBe("240px");
+});
+
+it("pins any release lane, stacks pinned offsets and remembers pins per Story Map", async () => {
+  const release = releaseSchema.parse({ id: randomUUID(), storyMapId, name: "MVP", version: 1, startDate: null, releaseDate: null, released: false, position: 0 });
+  state.snapshot = { ...state.snapshot, releases: [release] };
+  vi.spyOn(HTMLElement.prototype, "offsetHeight", "get").mockImplementation(function (this: HTMLElement) {
+    return this.matches(".release-band-header") ? 30 : this.matches(".discovery-cell") ? 120 : 96;
+  });
+  await mount(url);
+  const pin = (lane: string) => document.querySelector<HTMLButtonElement>(`button[aria-label="Pin lane ${lane}"], button[aria-label="Unpin lane ${lane}"]`)!;
+  await act(async () => { pin("MVP").click(); pin("Unscheduled cards").click(); });
+  expect(pin("MVP").getAttribute("aria-pressed")).toBe("true");
+  expect(laneHeader("release:unscheduled").style.getPropertyValue("--lane-pin-bottom")).toBe("0px");
+  expect(laneHeader(`release:${release.id}`).style.getPropertyValue("--lane-pin-bottom")).toBe("150px");
+  expect(laneHeader(`release:${release.id}`).style.getPropertyValue("--lane-pin-body-h")).toBe("120px");
+  useDiscoveryLanePinStore.getState().setIds("other-map", []);
+  const persisted = localStorage.getItem("storymapper-discovery-lane-pin")!;
+  await act(async () => state.root.unmount()); state.client.clear();
+  useDiscoveryLanePinStore.setState({ idsByMap: {} });
+  localStorage.setItem("storymapper-discovery-lane-pin", persisted);
+  await useDiscoveryLanePinStore.persist.rehydrate();
+  await mount(url);
+  expect(pin("MVP").getAttribute("aria-pressed")).toBe("true");
+  expect(laneHeader(`release:${release.id}`).classList.contains("discovery-lane-pinned")).toBe(true);
+  expect(useDiscoveryLanePinStore.getState().idsByMap["other-map"]).toEqual([]);
 });
 
 it("displays the restored map zoom in the controls and Discovery matrix", async () => {

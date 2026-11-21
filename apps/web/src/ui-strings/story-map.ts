@@ -56,6 +56,8 @@ export const storyMapStrings = {
   unscheduledCards: "Unscheduled cards",
   pinLane: "Pin lane",
   unpinLane: "Unpin lane",
+  pinLaneNamed: (lane: string): string => `Pin lane ${lane}`,
+  unpinLaneNamed: (lane: string): string => `Unpin lane ${lane}`,
   expandLane: "Expand lane",
   collapseLane: "Collapse lane",
   exportFailed: "Story map export failed.",

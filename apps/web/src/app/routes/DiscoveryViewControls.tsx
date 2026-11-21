@@ -2,15 +2,15 @@ import { ChevronDown, ChevronRight, RotateCcw, ZoomIn, ZoomOut } from "lucide-re
 import type { StoryMapSnapshot } from "@storymapper/contracts";
 import { appStrings as strings } from "@storymapper/ui-strings";
 import { DISCOVERY_ZOOM_MAX, DISCOVERY_ZOOM_MIN, DISCOVERY_ZOOM_STEP, discoveryZoomForMap, useDiscoveryZoomStore } from "@storymapper/web/app/stores/discovery-zoom-store";
-import { useDiscoveryLaneCollapseStore } from "@storymapper/web/app/stores/discovery-lane-collapse-store";
+import { useDiscoveryLaneCollapseStore } from "@storymapper/web/app/stores/map-id-set-store";
 
 export function DiscoveryViewControls({ snapshot }: { snapshot: StoryMapSnapshot }) {
   const storyMapId = snapshot.storyMap.id;
   const zoom = useDiscoveryZoomStore((state) => discoveryZoomForMap(state, storyMapId));
   const setZoom = useDiscoveryZoomStore((state) => state.setZoom);
   const resetZoom = useDiscoveryZoomStore((state) => state.resetZoom);
-  const collapsedLaneIds = useDiscoveryLaneCollapseStore((state) => state.collapsedByMap[storyMapId]) ?? [];
-  const setLaneCollapsed = useDiscoveryLaneCollapseStore((state) => state.setCollapsed);
+  const collapsedLaneIds = useDiscoveryLaneCollapseStore((state) => state.idsByMap[storyMapId]) ?? [];
+  const setLaneCollapsed = useDiscoveryLaneCollapseStore((state) => state.setIds);
   const laneIds = [...snapshot.releases.map((release) => `release:${release.id}`), "release:unscheduled"];
   const allCollapsed = laneIds.every((id) => collapsedLaneIds.includes(id));
   return <div className="topbar-zoom-controls" aria-label={strings.discoveryZoomControls}>
