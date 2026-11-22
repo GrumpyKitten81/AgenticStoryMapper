@@ -1,5 +1,6 @@
 import { mapConceptStrings } from "@storymapper/web/ui-strings/map-concepts";
 import { GitHubStatusSourceFields } from "@storymapper/web/features/github-sync/GitHubStatusSourceFields";
+import { GitHubStatusMappingEditor } from "@storymapper/web/features/github-sync/GitHubStatusMappingEditor";
 import type { CardLevel, ConnectorConnection } from "@storymapper/contracts";
 import type { Dispatch, SetStateAction } from "react";
 import { githubConnectStrings as strings, panelStrings } from "@storymapper/ui-strings";
@@ -26,6 +27,7 @@ export function GitHubConnectionFields({ projectId, draft, setDraft }: { project
         <label className="checkbox-row"><input type="checkbox" checked={draft.labelsAsAnnotations} onChange={(event) => setDraft((draft) => ({ ...draft, labelsAsAnnotations: event.target.checked }))} />{panelStrings.importLabelsAsAnnotations}</label>
         <fieldset className="form-stack"><legend>{mapConceptStrings.outbound}</legend><p>{mapConceptStrings.outboundHint}</p>{(["story", "task", "bug", "spike", "feature", "epic", "theme"] as const).map((cardType) => <label key={cardType}>{mapConceptStrings.planningTypes[cardType]}<input disabled={draft.readOnly} value={draft.issueTypeMapping.find((entry) => entry.cardType === cardType)?.issueType ?? ""} onChange={(event) => setDraft((current) => ({ ...current, issueTypeMapping: [...current.issueTypeMapping.filter((entry) => entry.cardType !== cardType), { cardType, issueType: event.target.value }] }))} /></label>)}</fieldset>
         <GitHubTypeMappingEditor draft={draft} setDraft={setDraft} />
+        <GitHubStatusMappingEditor projectId={projectId} draft={draft} setDraft={setDraft} />
         <GitHubStatusSourceFields projectId={projectId} draft={draft} setDraft={setDraft} />
   </>;
 }

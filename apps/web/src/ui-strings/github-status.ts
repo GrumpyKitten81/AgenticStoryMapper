@@ -8,5 +8,10 @@ export const githubStatusStrings = {
   bind: "Link an existing GitHub Issue", selector: "GitHub Issue URL or number", connection: "GitHub connection", previewBinding: "Preview GitHub link",
   adoptionPending: "Status adoption is pending. Apply an incoming GitHub sync to adopt the selected source status.",
   ancestorContext: "Ancestor Card context",
-  detach: "Detach GitHub sync", detached: "GitHub sync detached. The last status is retained."
+  detach: "Detach GitHub sync", detached: "GitHub sync detached. The last status is retained.",
+  mappingHeading: "Status mapping", mappingHint: "Choose the GitHub state and labels each local status produces on push and matches on import. Separate labels with commas.",
+  localStatus: "Local status", remoteState: "GitHub state", labels: "Labels",
+  remoteStateFor: (status: string) => `GitHub state for ${status}`, labelsFor: (status: string) => `Labels for ${status}`,
+  notMapped: "Default", open: "Open", closed: "Closed",
+  unmapped: (statuses: string[]) => `Not mapped: ${statuses.join(", ")}. The default applies: done is closed, all others are open.`
 };

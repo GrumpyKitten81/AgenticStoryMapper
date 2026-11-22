@@ -66,6 +66,7 @@ beforeEach(() => {
     if (path.startsWith("/api/settings/safety")) { if (safetyReadFails) throw new TypeError("fixture settings unavailable"); return json({ settings: path.endsWith(projectId) ? savedSettings : { ...settings, projectId: new URL(path, "http://127.0.0.1").searchParams.get("projectId") } }); }
     if (path.startsWith("/api/connectors/connections?")) return json({ connections: path.endsWith(projectId) ? savedConnections : [] });
     if (path === "/api/credentials/status") return json({ credentials: [{ source: "github-cli", message: "CLI fixture available." }] });
+    if (path === `/api/customization?projectId=${projectId}`) return json({ usageCards: [], workflowStatuses: (["done", "todo", "active"] as const).map((name, position) => ({ id: randomUUID(), projectId, storyMapId: null, name, group: name, position: (position + 2) % 3 })), personas: [], cardPersonas: [], annotations: [], cardAnnotations: [], storyTemplates: [] });
     throw new Error(`Unexpected test request: ${path}`);
   }));
   host = document.createElement("div"); document.body.append(host); root = createRoot(host);
@@ -320,6 +321,32 @@ it("retains keyboard focus while editing existing type and status mappings", asy
   input.focus();
   await act(async () => { fireEvent.change(input, { target: { value: "epics" } }); });
   expect(document.activeElement).toBe(input);
+  const [state, labels] = statusMappingControls("todo");
+  await act(async () => { fireEvent.change(state, { target: { value: "open" } }); });
+  labels.focus();
+  await act(async () => { fireEvent.change(labels, { target: { value: "status:todo" } }); });
+  expect(document.activeElement).toBe(labels);
+});
+
+function statusMappingControls(localStatus: string) {
+  const dialog = getByRole(document.body, "dialog");
+  return [getByLabelText(dialog, githubStatusStrings.remoteStateFor(localStatus)) as HTMLSelectElement, getByLabelText(dialog, githubStatusStrings.labelsFor(localStatus)) as HTMLInputElement] as const;
+}
+
+it("maps each project status to a GitHub state and labels and reports unmapped statuses", async () => {
+  await openToken();
+  await vi.waitFor(() => expect([...document.querySelectorAll<HTMLInputElement>(".status-mapping-row input[readonly]")].map((input) => input.value)).toEqual(["todo", "active", "done"]));
+  expect(getByRole(document.body, "status").textContent).toBe(githubStatusStrings.unmapped(["todo", "active", "done"]));
+  const [state, labels] = statusMappingControls("done");
+  expect(labels.disabled).toBe(true);
+  await act(async () => { fireEvent.change(state, { target: { value: "closed" } }); });
+  await act(async () => { fireEvent.change(labels, { target: { value: " status:done , released " } }); });
+  const [activeState] = statusMappingControls("active");
+  await act(async () => { fireEvent.change(activeState, { target: { value: "open" } }); });
+  await act(async () => { fireEvent.change(activeState, { target: { value: "" } }); });
+  expect(getByRole(document.body, "status").textContent).toBe(githubStatusStrings.unmapped(["todo", "active"]));
+  await verify();
+  expect((posts[0]!.body.candidate as { configuration: Record<string, unknown> }).configuration.statusMapping).toEqual([{ localStatus: "done", remoteState: "closed", labels: ["status:done", "released"] }]);
 });
 
 it.each(["owner", "repository", "token"])("rejects malformed nonblank %s locally with actionable guidance and no secret cache", async (kind) => {
@@ -350,9 +377,12 @@ it("reloads the dialog draft from the saved connection after the panel updates i
   const existing = connectResponse().connection;
   client.setQueryData(["connector-connections", projectId], { connections: [existing] });
   await mount();
-  await act(async () => client.setQueryData(["connector-connections", projectId], { connections: [{ ...existing, owner: "renamed-owner", updatedAt: "2026-10-19T11:00:00.000Z" }] }));
+  await act(async () => client.setQueryData(["connector-connections", projectId], { connections: [{ ...existing, owner: "renamed-owner", statusMapping: [{ localStatus: "legacy", remoteState: "closed", labels: ["status:legacy"] }], updatedAt: "2026-10-19T11:00:00.000Z" }] }));
   await click(strings.open);
   expect((getByLabelText(getByRole(document.body, "dialog"), panelStrings.owner) as HTMLInputElement).value).toBe("renamed-owner");
+  await vi.waitFor(() => expect(getByRole(document.body, "dialog").querySelectorAll(".status-mapping-row")).toHaveLength(4));
+  const [state, labels] = statusMappingControls("legacy");
+  expect([state.value, labels.value]).toEqual(["closed", "status:legacy"]);
 });
 
 it("reconnects the selected saved connection by stable id and preserves deliberate New selection", async () => {

@@ -477,4 +477,12 @@
   .modal-heading span {
     overflow-wrap: anywhere;
   }
+
+  .status-mapping-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .status-mapping-row label:last-child {
+    grid-column: 1 / -1;
+  }
 }
