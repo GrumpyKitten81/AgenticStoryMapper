@@ -2,9 +2,9 @@ import { z } from "zod";
 import { cardSchema, cardTypeSchema, uuidSchema, actorContextSchema, productContextSchema, cardSourceLinkSchema, sourceChunkSchema } from "@storymapper/contracts/schemas/domain";
 
 // DESIGN stored requests and reports keep every released version readable; only the current version is accepted for new reviews (ADR 0011).
-export const CARD_REVIEW_VERSIONS = ["1", "2", "3"] as const;
-export const CARD_REVIEW_CRITERIA_VERSION = "3";
-export const CARD_REVIEW_SKILL_VERSION = "3";
+export const CARD_REVIEW_VERSIONS = ["1", "2", "3", "4"] as const;
+export const CARD_REVIEW_CRITERIA_VERSION = "4";
+export const CARD_REVIEW_SKILL_VERSION = "4";
 const storedReviewVersionSchema = z.enum(CARD_REVIEW_VERSIONS);
 const all = cardTypeSchema.options;
 export const CARD_REVIEW_CRITERIA = [
@@ -16,7 +16,7 @@ export const CARD_REVIEW_CRITERIA = [
   { id: "DOR-06", since: "1", severity: "blocker", types: all, instruction: "No known unresolved prerequisite or dependency prevents work." },
   { id: "DOR-07", since: "1", severity: "blocker", types: all, instruction: "Goal, criteria and authorized context do not contradict one another." },
   { id: "DOR-08", since: "1", severity: "blocker", types: ["bug"], instruction: "Observation, expectation, reproduction or reliable evidence." },
-  { id: "DOR-09", since: "1", severity: "blocker", types: ["spike"], instruction: "Question, deliverable and stop condition; completed results are unnecessary." },
+  { id: "DOR-09", since: "1", severity: "blocker", types: ["spike"], instruction: "At most three investigation questions, deliverable and stop condition; completed results are unnecessary." },
   { id: "DOR-10", since: "1", severity: "warning", types: all, instruction: "Concise readable authorship, meaningful structure/references and no template debris or redundancy." },
   { id: "DOR-11", since: "2", severity: "warning", types: ["story", "feature", "task"], instruction: "Contributes to the goal of its parent Epic or Feature; a missing or unrelated parent goal is a finding." },
   { id: "DOR-12", since: "2", severity: "warning", types: ["story", "bug", "feature", "epic", "task"], instruction: "Every acceptance, success or completion criterion is necessary for the outcome; no busywork or unrequested extras." },

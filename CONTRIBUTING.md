@@ -22,7 +22,7 @@ For a manually written report, use the matching [bug](docs/templates/bug-ticket-
 
 Story-map structure and planning types are independent. Use neutral [Activity](docs/templates/map-activity-template.md), [Step](docs/templates/map-step-template.md) and [Story](docs/templates/map-story-template.md) descriptions for structural levels. Keep parent relationships explicit through supported Card operations.
 
-Use the independent [Epic](docs/templates/epic-template.md), [Feature](docs/templates/feature-template.md) and [User Story](docs/templates/story-template.md) issue forms when that planning type is intended. Forms do not assign a map level or native GitHub Issue type. The [concept guide](docs/story-map-levels-and-issues.md) explains all four concepts and local map-wide Epic context.
+Use the independent [Epic](docs/templates/epic-template.md), [Feature](docs/templates/feature-template.md), [User Story](docs/templates/story-template.md), [Spike](docs/templates/spike-template.md) and [Theme](docs/templates/theme-template.md) issue forms when that planning type is intended. Forms do not assign a map level or native GitHub Issue type. The [concept guide](docs/story-map-levels-and-issues.md) explains all four concepts and local map-wide Epic context.
 
 ## Local environment
 

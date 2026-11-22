@@ -1,0 +1,46 @@
+name: Plan a Spike
+description: Investigate at most three concrete uncertainties that block planned work and end in a decision.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep secrets, personal information and private Project data out of public issues.
+        For security concerns, read SECURITY.md in the repository root; share only a sanitized summary without confidential exploit details.
+        Planning type does not assign a Story Map level or a native GitHub Issue type.
+  - id: description
+    type: textarea
+    attributes:
+      label: Description
+      description: Which planned work is blocked, and which decision should this Spike enable?
+    validations:
+      required: true
+  - id: questions
+    type: textarea
+    attributes:
+      label: Investigation questions
+      description: List at most three concrete questions to settle. Split further questions into another Spike.
+      value: |
+        1.
+    validations:
+      required: true
+  - id: result
+    type: textarea
+    attributes:
+      label: Result
+      description: State the expected result and the stop condition. Add the findings and recommendation when the investigation ends.
+      value: |
+        Expected result:
+        Stop condition:
+        Findings and recommendation:
+    validations:
+      required: true
+  - id: context
+    type: textarea
+    attributes:
+      label: Context (optional)
+      description: Record assumptions, constraints and related planning items.
+  - id: references
+    type: textarea
+    attributes:
+      label: References (optional)
+      description: Link reachable sources, related issues and evidence.

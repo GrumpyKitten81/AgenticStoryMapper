@@ -1,0 +1,28 @@
+name: Plan a Theme
+description: Group related work under a shared focus, independently of map placement.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep secrets, personal information and private Project data out of public issues.
+        For security concerns, read SECURITY.md in the repository root; share only a sanitized summary without confidential exploit details.
+        Planning type does not assign a Story Map level or a native GitHub Issue type.
+  - id: focus
+    type: textarea
+    attributes:
+      label: Theme focus
+      description: Which shared concern or outcome connects the grouped work, and why does it matter?
+    validations:
+      required: true
+  - id: grouped
+    type: textarea
+    attributes:
+      label: Grouped work
+      description: Which Epics, Features or Stories belong to this Theme, and what is out of scope?
+    validations:
+      required: true
+  - id: references
+    type: textarea
+    attributes:
+      label: References (optional)
+      description: Record dependencies, related planning items and source links.

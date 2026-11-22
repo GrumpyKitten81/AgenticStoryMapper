@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Writing Cards and issues
 
-Date: 2026-11-22. Version: 6.
+Date: 2026-11-22. Version: 7.
 
 Reproducing statement: Separate map-level, optional planning-type and GitHub Issue templates alongside public bug, improvement and task reports; preserve Card types, provenance, synchronization and human-controlled external effects.
 
@@ -23,7 +23,9 @@ Optional Epic context frames one whole map through a title, goal and optional ca
 - A defect uses `.github/ISSUE_TEMPLATE/bug.yml` or `docs/templates/bug-ticket-template.md`: Observed problem → Reproduce it → Expected behavior → Setup details (optional) → Extra evidence (optional).
 - A general improvement request uses `.github/ISSUE_TEMPLATE/feature-request.yml` or `docs/templates/improvement-template.md`: User goal → Proposed improvement → Alternatives and context (optional). Choose map placement separately from planning type.
 - Implementation, documentation or investigation work uses `.github/ISSUE_TEMPLATE/task.yml` or `docs/templates/task-template.md`: Intended change → Completion check → Constraints and links (optional).
-- Preserve requested Card types. For Spikes and Themes, adapt the task or Epic shape respectively. A research task's completion check states the question to settle and the investigation limit.
+- A Spike uses `.github/ISSUE_TEMPLATE/spike.yml` or `docs/templates/spike-template.md`: Description → Investigation questions (at most three; split further questions into another Spike) → Result (expected result, stop condition, findings and recommendation) → Context (optional) → References (optional).
+- A Theme uses `.github/ISSUE_TEMPLATE/theme.yml` or `docs/templates/theme-template.md`: Theme focus → Grouped work → References (optional).
+- Preserve requested Card types.
 - Public forms use their displayed section order. For Cards and manually written issues, omit optional sections without relevant content. Do not include template maintenance comments or empty prompts in the report.
 
 ## Make the work actionable
@@ -45,6 +47,8 @@ When creating an authorized Story Map, include its needed Activities and Steps a
 - Agent-driven Card changes follow ChangeSet controls. GitHub mutations from Agentic Story Mapper require the reviewed Dry Run and human confirmation; an authoring rule grants no additional permission.
 
 ## Changelog
+
+- 2026-11-22 v7: Add Spike and Theme forms and templates; limit Spikes to three investigation questions.
 
 - 2026-11-22 v6: Require published reports to be understandable without local Story Map context (review rule DOR-15).
 

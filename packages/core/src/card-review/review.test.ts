@@ -38,6 +38,15 @@ describe("authoritative review criteria", () => {
     Object.assign(story.find((result) => result.ruleId === "DOR-15")!, { outcome: "finding", evidence: ["MCP is not explained at first use."], advice: "Write the long form at first use or mark it TODO." });
     expect(() => validateReviewResults(input("story"), { criteriaVersion: "3", status: "success", results: story })).not.toThrow();
   });
+  it("limits Spikes to three questions in version 4 without changing the rule set", () => {
+    expect(CARD_REVIEW_CRITERIA.find((rule) => rule.id === "DOR-09")).toMatchObject({ since: "1", severity: "blocker", types: ["spike"], instruction: expect.stringContaining("At most three investigation questions") });
+    expect(cardReviewCriteriaFor("4").map((rule) => rule.id)).toEqual(cardReviewCriteriaFor("3").map((rule) => rule.id));
+    const results = (version: "3" | "4") => cardReviewCriteriaFor(version).map((rule) => ({ id, ruleId: rule.id, severity: rule.severity, outcome: (rule.types as readonly string[]).includes("spike") ? "pass" as const : "not_applicable" as const, evidence: [], advice: "" }));
+    const spike = results("4");
+    Object.assign(spike.find((result) => result.ruleId === "DOR-09")!, { outcome: "finding", evidence: ["Four investigation questions are listed."], advice: "Narrow to three questions or split the rest into another Spike." });
+    expect(() => validateReviewResults(input("spike"), { criteriaVersion: "4", status: "success", results: spike })).not.toThrow();
+    expect(() => validateReviewResults(input("spike"), { criteriaVersion: "3", status: "success", results: results("3") })).not.toThrow();
+  });
   it("never passes a missing explicit type and only escalates DOR-03 when work cannot start", () => {
     const results: CardReviewReport["results"] = CARD_REVIEW_CRITERIA.map((rule) => ({ id, ruleId: rule.id, severity: rule.severity, outcome: "pass", evidence: [], advice: "" }));
     expect(() => validateReviewResults(input(null), { criteriaVersion: CARD_REVIEW_CRITERIA_VERSION, status: "success", results })).toThrow("Missing Card type");
