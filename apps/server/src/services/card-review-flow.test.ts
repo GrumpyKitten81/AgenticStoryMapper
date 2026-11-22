@@ -1,5 +1,5 @@
 import { expect, it, vi } from "vitest";
-import { CARD_REVIEW_CRITERIA, cardReviewReportSubmissionSchema, type CardReviewRequest } from "@storymapper/contracts";
+import { CARD_REVIEW_CRITERIA, CARD_REVIEW_CRITERIA_VERSION, CARD_REVIEW_SKILL_VERSION, cardReviewReportSubmissionSchema, type CardReviewRequest } from "@storymapper/contracts";
 import { actor, remotePushFixture } from "@storymapper/server/fixtures/remote-push-execution";
 import { prepareRemotePush } from "@storymapper/server/services/remote-push-plan";
 import { commandCardReview } from "@storymapper/server/application/card/card-review.use-cases";
@@ -9,7 +9,7 @@ vi.mock("@storymapper/github", async (original) => ({ ...await original<typeof i
 vi.mock("@storymapper/server/services/credentials", () => ({ resolveProviderAuth: vi.fn(async (connection) => ({ connection, auth: {} })) }));
 const agent = { actorType: "agent", actorId: "dor-agent", mcpSessionId: "dor-session" } as const;
 function output(request: CardReviewRequest, blocker = false) {
-  return cardReviewReportSubmissionSchema.parse({ requestId: request.id, inputFingerprint: request.inputFingerprint, criteriaVersion: "1", skillVersion: "1", status: "success", results: CARD_REVIEW_CRITERIA.map((rule) => ({ ruleId: rule.id, outcome: !(rule.types as readonly string[]).includes(request.input.card.cardType!) ? "not_applicable" : blocker && rule.id === "DOR-04" ? "finding" : "pass", severity: rule.severity, evidence: blocker && rule.id === "DOR-04" ? ["No observable completion criterion."] : [], advice: blocker && rule.id === "DOR-04" ? "State completion criteria." : "" })) });
+  return cardReviewReportSubmissionSchema.parse({ requestId: request.id, inputFingerprint: request.inputFingerprint, criteriaVersion: CARD_REVIEW_CRITERIA_VERSION, skillVersion: CARD_REVIEW_SKILL_VERSION, status: "success", results: CARD_REVIEW_CRITERIA.map((rule) => ({ ruleId: rule.id, outcome: !(rule.types as readonly string[]).includes(request.input.card.cardType!) ? "not_applicable" : blocker && rule.id === "DOR-04" ? "finding" : "pass", severity: rule.severity, evidence: blocker && rule.id === "DOR-04" ? ["No observable completion criterion."] : [], advice: blocker && rule.id === "DOR-04" ? "State completion criteria." : "" })) });
 }
 it("persists the first agent Dry Run before review, blocks human confirmation and permits reviewed exact writes", async () => {
   const f = remotePushFixture(2);
@@ -126,7 +126,7 @@ it.each(["todo", "done"] as const)("keeps reviewed child and prerequisite inputs
   });
   const { plan } = await prepareRemotePush(f.repository, f.unitOfWork, agent, { storyMapId: f.map.id, connectionId: f.connection.id, mode: "push", localOrigin: "http://127.0.0.1:4317" });
   const requests = f.repository.getCardReviews(f.project.id).requests;
-  expect(requests.find((request) => request.cardId === child.id)?.input.parents).toHaveLength(2);
+  expect(requests.find((request) => request.cardId === child.id)?.input.parents.map((parent) => parent.title)).toEqual(["Intermediate outcome", f.cards[0]!.title]);
   expect(requests.find((request) => request.cardId === child.id)?.input.prerequisites).toHaveLength(1);
   for (const request of requests) f.unitOfWork.run(agent, ({ repository }) => repository.submitCardReview(f.project.id, output(request)));
   const result = await f.execute(plan.id);

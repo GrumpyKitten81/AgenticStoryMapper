@@ -1,6 +1,6 @@
 # Immutable Card Definition of Ready reviews
 
-Date: 2026-11-04. Version: 1.
+Date: 2026-11-22. Version: 2.
 Reproducing statement: Record the approved narrow ChangeSet-policy exception for structured Card readiness reports and the trusted agent-origin push gate.
 
 - Status: accepted
@@ -16,6 +16,8 @@ Persist immutable review requests, reports, separate human decisions and correct
 
 Bind reports to server-captured semantic input fingerprints, criteria/skill versions and the database epoch. Review the immutable Dry Run's actual outgoing Issue title/body/type. Gate unfinished agent-origin Issue effects immediately before writes and across confirmation/resume; warnings do not block. An enabled explicit human override records its reason against the exact plan and inputs and preserves existing safety/conflict checks.
 
+Stored requests and reports of every released criteria/skill version stay readable. Only the current versions are accepted for new requests and reports; a review captured under an older version is historical (stale) and requires a new request.
+
 Card type is nullable and independent of hierarchy. Clear legacy hierarchy-based outbound mappings during migration; operators explicitly remap Card types. Redacted portable archives omit the review ledger and its sensitive evidence payloads. Restore changes the epoch, making prior reports historical. Copies preserve Card type and start without another Card's reviews or exceptions.
 
 ## Consequences
@@ -26,4 +28,5 @@ Card type is nullable and independent of hierarchy. Clear legacy hierarchy-based
 
 ## Changelog
 
+- 2026-11-22 v2: Keep stored reviews of earlier criteria versions readable and treat them as stale.
 - 2026-11-04 v1: Record the approved review persistence and outgoing enforcement boundaries.

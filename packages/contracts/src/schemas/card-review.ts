@@ -1,21 +1,32 @@
 import { z } from "zod";
 import { cardSchema, cardTypeSchema, uuidSchema, actorContextSchema, productContextSchema, cardSourceLinkSchema, sourceChunkSchema } from "@storymapper/contracts/schemas/domain";
 
-export const CARD_REVIEW_CRITERIA_VERSION = "1";
-export const CARD_REVIEW_SKILL_VERSION = "1";
+// DESIGN stored requests and reports keep every released version readable; only the current version is accepted for new reviews (ADR 0011).
+export const CARD_REVIEW_VERSIONS = ["1", "2"] as const;
+export const CARD_REVIEW_CRITERIA_VERSION = "2";
+export const CARD_REVIEW_SKILL_VERSION = "2";
+const storedReviewVersionSchema = z.enum(CARD_REVIEW_VERSIONS);
 const all = cardTypeSchema.options;
 export const CARD_REVIEW_CRITERIA = [
-  { id: "DOR-01", severity: "blocker", types: all, instruction: "Explicit type is present and matches the work." },
-  { id: "DOR-02", severity: "blocker", types: ["story", "feature", "epic", "task", "theme"], instruction: "Concrete value (story/feature/epic), task outcome or theme focus." },
-  { id: "DOR-03", severity: "warning", types: all, instruction: "Scope is bounded; blocker only when the scope prevents starting work." },
-  { id: "DOR-04", severity: "blocker", types: ["story", "bug", "feature", "epic", "task"], instruction: "Observable acceptance (story/bug), success (feature/epic) or completion (task) criteria." },
-  { id: "DOR-05", severity: "warning", types: ["story", "bug"], instruction: "Concrete behavior-driven scenarios." },
-  { id: "DOR-06", severity: "blocker", types: all, instruction: "No known unresolved prerequisite or dependency prevents work." },
-  { id: "DOR-07", severity: "blocker", types: all, instruction: "Goal, criteria and authorized context do not contradict one another." },
-  { id: "DOR-08", severity: "blocker", types: ["bug"], instruction: "Observation, expectation, reproduction or reliable evidence." },
-  { id: "DOR-09", severity: "blocker", types: ["spike"], instruction: "Question, deliverable and stop condition; completed results are unnecessary." },
-  { id: "DOR-10", severity: "warning", types: all, instruction: "Concise readable authorship, meaningful structure/references and no template debris or redundancy." }
+  { id: "DOR-01", since: "1", severity: "blocker", types: all, instruction: "Explicit type is present and matches the work." },
+  { id: "DOR-02", since: "1", severity: "blocker", types: ["story", "feature", "epic", "task", "theme"], instruction: "Concrete value (story/feature/epic), task outcome or theme focus." },
+  { id: "DOR-03", since: "1", severity: "warning", types: all, instruction: "Scope is bounded; blocker only when the scope prevents starting work." },
+  { id: "DOR-04", since: "1", severity: "blocker", types: ["story", "bug", "feature", "epic", "task"], instruction: "Observable acceptance (story/bug), success (feature/epic) or completion (task) criteria." },
+  { id: "DOR-05", since: "1", severity: "warning", types: ["story", "bug"], instruction: "Concrete behavior-driven scenarios." },
+  { id: "DOR-06", since: "1", severity: "blocker", types: all, instruction: "No known unresolved prerequisite or dependency prevents work." },
+  { id: "DOR-07", since: "1", severity: "blocker", types: all, instruction: "Goal, criteria and authorized context do not contradict one another." },
+  { id: "DOR-08", since: "1", severity: "blocker", types: ["bug"], instruction: "Observation, expectation, reproduction or reliable evidence." },
+  { id: "DOR-09", since: "1", severity: "blocker", types: ["spike"], instruction: "Question, deliverable and stop condition; completed results are unnecessary." },
+  { id: "DOR-10", since: "1", severity: "warning", types: all, instruction: "Concise readable authorship, meaningful structure/references and no template debris or redundancy." },
+  { id: "DOR-11", since: "2", severity: "warning", types: ["story", "feature", "task"], instruction: "Contributes to the goal of its parent Epic or Feature; a missing or unrelated parent goal is a finding." },
+  { id: "DOR-12", since: "2", severity: "warning", types: ["story", "bug", "feature", "epic", "task"], instruction: "Every acceptance, success or completion criterion is necessary for the outcome; no busywork or unrequested extras." },
+  { id: "DOR-13", since: "2", severity: "warning", types: all, instruction: "Every requirement is traceable to the parent goal, Product Context, a linked source or an explicit reference." },
+  { id: "DOR-14", since: "2", severity: "warning", types: ["story"], instruction: "Describes behavior, not implementation steps; implementation work belongs in derived Tasks." }
 ] as const;
+export type CardReviewVersion = typeof CARD_REVIEW_VERSIONS[number];
+export function cardReviewCriteriaFor(version: CardReviewVersion) {
+  return CARD_REVIEW_CRITERIA.filter((rule) => CARD_REVIEW_VERSIONS.indexOf(rule.since) <= CARD_REVIEW_VERSIONS.indexOf(version));
+}
 export const cardReviewRuleIdSchema = z.enum(CARD_REVIEW_CRITERIA.map((rule) => rule.id));
 export const cardReviewSettingsSchema = z.object({
   reviewBeforeAgentPush: z.boolean().default(true), reviewAfterAgentCreate: z.boolean().default(false),
@@ -45,13 +56,13 @@ export const cardReviewReportSubmissionSchema = z.object({
 export const cardReviewRequestSchema = z.object({
   id: uuidSchema, projectId: uuidSchema, cardId: uuidSchema, purpose: z.enum(["manual", "save", "push"]),
   planId: uuidSchema.optional(), changeSetId: uuidSchema.optional(), initiatedBy: actorContextSchema.optional(), input: cardReviewInputSchema, inputFingerprint: z.string().regex(/^[a-f0-9]{64}$/u), epoch: z.string(),
-  criteriaVersion: z.literal(CARD_REVIEW_CRITERIA_VERSION), skillVersion: z.literal(CARD_REVIEW_SKILL_VERSION),
+  criteriaVersion: storedReviewVersionSchema, skillVersion: storedReviewVersionSchema,
   actor: actorContextSchema, createdAt: z.iso.datetime()
 }).strict();
 export type CardReviewRequest = z.infer<typeof cardReviewRequestSchema>;
 export const cardReviewRequestHeaderRecordSchema = z.object({ kind: z.literal("request"), value: cardReviewRequestSchema.omit({ input: true }) }).strict();
 export const cardReviewReportSchema = cardReviewReportSubmissionSchema.extend({
-  id: uuidSchema, projectId: uuidSchema, cardId: uuidSchema, actor: actorContextSchema, createdAt: z.iso.datetime(),
+  criteriaVersion: storedReviewVersionSchema, skillVersion: storedReviewVersionSchema, id: uuidSchema, projectId: uuidSchema, cardId: uuidSchema, actor: actorContextSchema, createdAt: z.iso.datetime(),
   results: z.array(cardReviewRuleResultSchema.extend({ id: uuidSchema }))
 }).strict();
 export type CardReviewReport = z.infer<typeof cardReviewReportSchema>;

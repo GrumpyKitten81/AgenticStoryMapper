@@ -2,8 +2,9 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, expect, it, vi } from "vitest";
-import { CARD_REVIEW_CRITERIA, cardReviewReportSubmissionSchema, type CardReviewRequest, type LiveTransaction } from "@storymapper/contracts";
+import { CARD_REVIEW_CRITERIA, CARD_REVIEW_CRITERIA_VERSION, cardReviewCriteriaFor, CARD_REVIEW_SKILL_VERSION, cardReviewReportSubmissionSchema, type CardReviewRequest, type LiveTransaction } from "@storymapper/contracts";
 import { DatabaseHandle, openStoryMapperDb, StoryMapperRepository, UnitOfWork } from "@storymapper/db";
+import { validateCardReviewRows } from "@storymapper/db/card-review-validation";
 
 const human = { actorType: "human", actorId: "review-human" } as const;
 const agent = { actorType: "agent", actorId: "review-agent", mcpSessionId: "review-session" } as const;
@@ -25,7 +26,7 @@ function fixture() {
   return { ...roots, handle, unitOfWork, repository, request };
 }
 function submission(request: CardReviewRequest, finding = false) {
-  return cardReviewReportSubmissionSchema.parse({ requestId: request.id, inputFingerprint: request.inputFingerprint, criteriaVersion: "1", skillVersion: "1", status: "success", results: CARD_REVIEW_CRITERIA.map((rule) => ({ ruleId: rule.id, severity: rule.severity, outcome: !(rule.types as readonly string[]).includes(request.input.card.cardType!) ? "not_applicable" : finding && rule.id === "DOR-04" ? "finding" : "pass", evidence: finding && rule.id === "DOR-04" ? ["Completion criteria are missing."] : [], advice: finding && rule.id === "DOR-04" ? "State an observable completion criterion." : "" })) });
+  return cardReviewReportSubmissionSchema.parse({ requestId: request.id, inputFingerprint: request.inputFingerprint, criteriaVersion: CARD_REVIEW_CRITERIA_VERSION, skillVersion: CARD_REVIEW_SKILL_VERSION, status: "success", results: CARD_REVIEW_CRITERIA.map((rule) => ({ ruleId: rule.id, severity: rule.severity, outcome: !(rule.types as readonly string[]).includes(request.input.card.cardType!) ? "not_applicable" : finding && rule.id === "DOR-04" ? "finding" : "pass", evidence: finding && rule.id === "DOR-04" ? ["Completion criteria are missing."] : [], advice: finding && rule.id === "DOR-04" ? "State an observable completion criterion." : "" })) });
 }
 it("persists immutable idempotent reports without changing Card versions and distinguishes cosmetic/content drift", () => {
   const f = fixture(), request = f.request(), output = submission(request);
@@ -118,4 +119,21 @@ it("retains GitHub evidence fingerprints through schema normalization and databa
   f.handle.current.$client.close();
   f.handle.current = openStoryMapperDb(databasePath);
   expect(f.repository.getCardReviews(f.project.id).summaries[0]?.state).toBe("reviewed");
+});
+
+it("keeps stored version 1 reviews readable and restorable but stale until a current review is requested", () => {
+  const f = fixture(), request = f.request();
+  const legacy = cardReviewCriteriaFor("1");
+  f.unitOfWork.run(agent, ({ repository }) => repository.submitCardReview(f.project.id, submission(request)));
+  f.handle.current.$client.prepare("UPDATE card_review_records SET payload_json = json_set(payload_json, '$.value.criteriaVersion', '1', '$.value.skillVersion', '1') WHERE json_extract(payload_json, '$.kind') = 'request'").run();
+  f.handle.current.$client.prepare("UPDATE card_review_records SET payload_json = json_set(payload_json, '$.value.criteriaVersion', '1', '$.value.skillVersion', '1', '$.value.results', json(?)) WHERE json_extract(payload_json, '$.kind') = 'report'").run(JSON.stringify(f.repository.getCardReviews(f.project.id).reports[0]!.results.filter((result) => legacy.some((rule) => rule.id === result.ruleId))));
+  const reviews = f.repository.getCardReviews(f.project.id);
+  expect(reviews.reports[0]).toMatchObject({ criteriaVersion: "1", skillVersion: "1" });
+  expect(reviews.reports[0]!.results).toHaveLength(10);
+  expect(reviews.summaries[0]?.state).toBe("stale");
+  expect(() => validateCardReviewRows(f.handle.current.$client)).not.toThrow();
+  const current = f.request();
+  expect(current.id).not.toBe(request.id);
+  expect(current.criteriaVersion).toBe(CARD_REVIEW_CRITERIA_VERSION);
+  expect(f.repository.getCardReviews(f.project.id).summaries[0]?.state).toBe("pending");
 });

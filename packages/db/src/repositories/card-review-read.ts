@@ -1,5 +1,5 @@
 import { and, asc, eq, inArray, sql } from "drizzle-orm";
-import { DomainError, cardReviewInputSchema, cardReviewRequestHeaderRecordSchema, cardReviewSettingsSchema, type CardReviewQuery, type CardReviewInput, type CardReviewRequest, type CardReviewsResponse, type CardReviewRecordPayload, type CardReviewSummary, type ConnectorConnection, type RemotePushPlan, type StoryMapSnapshot } from "@storymapper/contracts";
+import { CARD_REVIEW_CRITERIA_VERSION, CARD_REVIEW_SKILL_VERSION, DomainError, cardReviewInputSchema, cardReviewRequestHeaderRecordSchema, cardReviewSettingsSchema, type CardReviewQuery, type CardReviewInput, type CardReviewRequest, type CardReviewsResponse, type CardReviewRecordPayload, type CardReviewSummary, type ConnectorConnection, type RemotePushPlan, type StoryMapSnapshot } from "@storymapper/contracts";
 import { canonicalReviewInput, effectiveReviewFindings } from "@storymapper/core";
 import { cardReviewRecords, changeSets } from "@storymapper/db/schema";
 import { parseStoredJson } from "@storymapper/db/versioned-json";
@@ -51,6 +51,7 @@ export function reviewInput(repository: Repository, cardId: string, plan?: Remot
 export function reviewFingerprint(input: CardReviewInput): string { return hashText(JSON.stringify(canonicalReviewInput(cardReviewInputSchema.parse(input)))); }
 
 export function isReviewCurrent(repository: Repository, request: RequestHeader, snapshot?: StoryMapSnapshot, cached?: { epoch: string | undefined; plan: RemotePushPlan | undefined; exportMapping: ConnectorConnection["issueTypeMapping"] | undefined; capture?: ReviewCapture }): boolean {
+  if (request.criteriaVersion !== CARD_REVIEW_CRITERIA_VERSION || request.skillVersion !== CARD_REVIEW_SKILL_VERSION) return false;
   if ((cached ? cached.epoch : repository.getSafetySettings(request.projectId).epoch) !== request.epoch) return false;
   const card = snapshot?.cards.find((row) => row.id === request.cardId) ?? repository.getCardDetails(request.cardId);
   if (!card || card.level === "note") return false;

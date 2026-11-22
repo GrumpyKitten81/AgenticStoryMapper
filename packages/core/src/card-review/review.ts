@@ -1,4 +1,4 @@
-import { CARD_REVIEW_CRITERIA, DomainError, type CardReviewInput, type CardReviewReport, type CardReviewDecision } from "@storymapper/contracts";
+import { cardReviewCriteriaFor, DomainError, type CardReviewInput, type CardReviewReport, type CardReviewDecision } from "@storymapper/contracts";
 
 export function canonicalReviewInput(input: CardReviewInput): unknown {
   const content = (card: CardReviewInput["card"]) => ({ id: card.id, level: card.level, cardType: card.cardType ?? null, title: card.title, description: card.description, parentId: card.parentId });
@@ -7,13 +7,14 @@ export function canonicalReviewInput(input: CardReviewInput): unknown {
     prerequisiteCompletion: input.prerequisiteCompletion, githubSources: input.githubSources, productContext, sourceLinks: input.sourceLinks, sourceChunks: input.sourceChunks, outgoing: input.outgoing, exportFingerprint: input.exportFingerprint };
 }
 
-export function validateReviewResults(input: CardReviewInput, report: Pick<CardReviewReport, "status" | "results" | "error">): void {
+export function validateReviewResults(input: CardReviewInput, report: Pick<CardReviewReport, "status" | "results" | "error" | "criteriaVersion">): void {
   if (report.status === "error") {
     if (!report.error) throw new DomainError("validation", "Failed reviews require an error.");
     return;
   }
-  if (report.error || report.results.length !== CARD_REVIEW_CRITERIA.length || new Set(report.results.map((result) => result.ruleId)).size !== CARD_REVIEW_CRITERIA.length) throw new DomainError("validation", "A successful review must contain every rule exactly once.");
-  for (const rule of CARD_REVIEW_CRITERIA) {
+  const criteria = cardReviewCriteriaFor(report.criteriaVersion);
+  if (report.error || report.results.length !== criteria.length || new Set(report.results.map((result) => result.ruleId)).size !== criteria.length || report.results.some((result) => !criteria.some((rule) => rule.id === result.ruleId))) throw new DomainError("validation", "A successful review must contain every rule exactly once.");
+  for (const rule of criteria) {
     const result = report.results.find((entry) => entry.ruleId === rule.id)!;
     const applicable = rule.id === "DOR-01" || !input.card.cardType || (rule.types as readonly string[]).includes(input.card.cardType);
     if (applicable === (result.outcome === "not_applicable")) throw new DomainError("validation", `${rule.id} has incorrect applicability.`);
