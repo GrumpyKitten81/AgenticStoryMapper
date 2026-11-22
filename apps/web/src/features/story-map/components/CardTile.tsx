@@ -13,7 +13,7 @@ import { CardChoice } from "@storymapper/web/features/story-map/components/CardC
 import { useSortable } from "@dnd-kit/sortable";
 import { ArrowDown, ChevronLeft, ChevronRight, Circle, Github, GripVertical, History, Info, StickyNote, Trash2 } from "lucide-react";
 import { cardLevelMeta } from "@storymapper/web/features/story-map/card-taxonomy";
-import { cardTooltip } from "@storymapper/web/features/story-map/card-tooltip";
+import { cardDescriptionExcerpt, cardTooltip } from "@storymapper/web/features/story-map/card-tooltip";
 import { githubSyncStateHint } from "@storymapper/web/features/github-sync";
 import { CARD_PRIORITY_OPTIONS, DEFAULT_CARD_COLOR } from "@storymapper/web/features/story-map/card-visual-options";
 import { panelStrings, storyMapStrings as strings } from "@storymapper/ui-strings";
@@ -68,7 +68,7 @@ function useCardTileState(props: CardTileProps) {
 }
 
 function renderCardTile(model: ReturnType<typeof useCardTileState>) {
-  const { article, navigation, tone, selected, bulkSelected, previewMarker, card, readOnly, stateDescription, active, onSelect, descriptionPreview, variant, personaNames, dependencies, estimationUnit, releaseName, sourceLinkCount, externalRefs, githubIssue, githubSyncState, lockHints, onBulkToggle, onMove, onMoveLeft, onMoveRight, onMoveToArea, onDelete, dragHandleProps, workItemProvider, cardColor, onUpdateCard, updatePending } = model;
+  const { article, navigation, tone, selected, bulkSelected, previewMarker, card, readOnly, stateDescription, active, onSelect, descriptionExcerpt, variant, personaNames, dependencies, estimationUnit, releaseName, sourceLinkCount, externalRefs, githubIssue, githubSyncState, lockHints, onBulkToggle, onMove, onMoveLeft, onMoveRight, onMoveToArea, onDelete, dragHandleProps, workItemProvider, cardColor, onUpdateCard, updatePending } = model;
   return (
     <article
       ref={article}
@@ -87,7 +87,7 @@ function renderCardTile(model: ReturnType<typeof useCardTileState>) {
     >
       <button type="button" className="card-content-button" disabled={readOnly && !navigation} aria-disabled={readOnly || undefined} data-card-id={card.id} aria-label={`${card.key} ${cardLevelMeta[card.level].label} ${card.title}`} aria-description={variant === "discovery" && card.description.trim() ? `${stateDescription} ${strings.descriptionAvailable}` : stateDescription} aria-pressed={navigation ? bulkSelected : undefined} tabIndex={navigation ? (active ? 0 : -1) : undefined} onFocus={() => navigation?.activate(card.id)} onBlur={(event) => { if (!event.relatedTarget && event.currentTarget.isConnected) navigation?.release(card.id); }} onKeyDown={(event) => navigation?.keyDown(card.id, event)} onClick={() => { if (!readOnly) onSelect(card.id); }}>
         <strong className="card-title" title={cardTooltip(card)}>{card.title}</strong>
-        {descriptionPreview && variant === "backlog" ? <p>{descriptionPreview}</p> : null}
+        {descriptionExcerpt && variant !== "planning" ? <p className="card-description-excerpt">{descriptionExcerpt}</p> : null}
         <div className="card-badges">
           {personaNames.length ? <span>{strings.assignedPersonas(personaNames)}</span> : null}
           <CardDependencyBadges dependencies={dependencies} />
@@ -178,8 +178,8 @@ function useCardTilePresentation({
   });
   const colors = useCardColors();
   const cardColor = colors.find((entry) => entry.value === (card.color ?? DEFAULT_CARD_COLOR));
-  const descriptionPreview = card.description.length > 120 ? `${card.description.slice(0, 120)}...` : card.description;
-  return { card, personaNames, estimationUnit, previewMarker, updatePending, tone, variant, selected, bulkSelected, sourceLinkCount, githubIssue, githubSyncState, workItemProvider, releaseName, externalRefs, dependencies, onSelect, onBulkToggle, onUpdateCard, onDelete, onAddNote, onMove, onMoveToArea, onMoveLeft, onMoveRight, dragHandleProps, navigation, lockHints, readOnly, stateDescription, article, active, colors, cardColor, descriptionPreview };
+  const descriptionExcerpt = cardDescriptionExcerpt(card.description);
+  return { card, personaNames, estimationUnit, previewMarker, updatePending, tone, variant, selected, bulkSelected, sourceLinkCount, githubIssue, githubSyncState, workItemProvider, releaseName, externalRefs, dependencies, onSelect, onBulkToggle, onUpdateCard, onDelete, onAddNote, onMove, onMoveToArea, onMoveLeft, onMoveRight, dragHandleProps, navigation, lockHints, readOnly, stateDescription, article, active, colors, cardColor, descriptionExcerpt };
 }
 
 function renderCardActions(model: ReturnType<typeof useCardTileState>) {

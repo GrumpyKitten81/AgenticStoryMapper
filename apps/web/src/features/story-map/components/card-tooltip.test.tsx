@@ -12,3 +12,12 @@ it.each(["discovery", "tree"])("shows a bounded description in %s Card title too
   expect(title.textContent).toBe(card.title);
   expect(state.host.textContent).not.toContain(card.description);
 });
+
+it.each(["discovery", "backlog"])("shows a normalized description excerpt only on %s Cards with a description", async (view) => {
+  const card = state.snapshot.cards.find((candidate) => candidate.id === cardId)!;
+  card.description = "  First line\n\n second line  ";
+  for (const other of state.snapshot.cards) if (other.id !== cardId) other.description = " \n ";
+  await mount(viewUrl.replace(/tree$/, view));
+  const excerpts = [...state.host.querySelectorAll(".card-description-excerpt")];
+  expect(excerpts.map((excerpt) => [excerpt.closest("[data-live-card-id]")!.getAttribute("data-live-card-id"), excerpt.textContent])).toEqual([[cardId, "First line second line"]]);
+});

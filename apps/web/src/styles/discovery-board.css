@@ -268,6 +268,14 @@
   line-clamp: 2;
 }
 
+.discovery-matrix .card-tile .card-description-excerpt {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-meta);
+  line-height: 1.3;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
 .discovery-matrix .card-badges:empty {
   display: none;
 }
