@@ -29,6 +29,20 @@ export function inspectTrackedFile(file, source, stopWords) {
   return diagnostics;
 }
 
+const scriptDirectories = /^(?:scripts|tools)\//;
+const scriptExemptions = /(?:^|\/)(?:fixtures|test-fixtures)\/|\.test\.mjs$|(?:^|\/)test_[^/]*\.py$/;
+const nonReferencingPaths = /^(?:\.wolf|_bmad-output)\//;
+
+// DESIGN persistent scripts must be referenced; one-off scripts belong in the ignored tmp/ folder (.cursor/rules/scripts.mdc).
+export function findUnreferencedScripts(sources) {
+  const references = [...sources].filter(([file]) => !nonReferencingPaths.test(file));
+  return [...sources.keys()].filter((file) => scriptDirectories.test(file) && !scriptExemptions.test(file)).filter((file) => {
+    const name = file.split('/').pop();
+    const token = name.endsWith('.py') ? name.slice(0, -3) : name;
+    return !references.some(([other, source]) => other !== file && source.includes(token));
+  }).map((file) => ({ file, line: 1, category: 'unreferenced-script' }));
+}
+
 export async function checkHygiene(root = repositoryRoot) {
   const stopWords = (await readFile(join(root, 'scripts/german-stop-words.txt'), 'utf8')).split(/\r?\n/).map((word) => word.trim()).filter(Boolean);
   const files = execFileSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }).split('\0').filter(Boolean).sort();
@@ -36,11 +50,13 @@ export async function checkHygiene(root = repositoryRoot) {
   const untracked = [...englishFiles.filter((file) => !files.includes(file)), ...englishDirectories.filter((directory) => !files.some((file) => file.startsWith(directory)))];
   if (untracked.length) throw new Error(`hygiene: English scan scope has no tracked files: ${untracked.join(', ')}.`);
   const violations = [];
+  const sources = new Map();
   for (const file of files) {
     const path = join(root, file);
     if (!(await lstat(path)).isFile()) throw new Error(`${file}:1: hygiene: tracked input is not a regular file.`);
     const content = await readFile(path);
-    violations.push(...inspectTrackedFile(file, content.toString('utf8'), stopWords));
+    sources.set(file, content.toString('utf8'));
+    violations.push(...inspectTrackedFile(file, sources.get(file), stopWords));
     if (file.endsWith('.gz')) {
       let expanded;
       try { expanded = gunzipSync(content); }
@@ -52,7 +68,7 @@ export async function checkHygiene(root = repositoryRoot) {
       violations.push(...inspectTrackedFile(file, expanded.toString('utf8'), []).filter(({ category }) => category === 'secret-signature'));
     }
   }
-  return violations;
+  return [...violations, ...findUnreferencedScripts(sources)];
 }
 
 if (process.argv[1] && realpathSync(process.argv[1]) === fileURLToPath(import.meta.url)) {

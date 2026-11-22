@@ -1,0 +1,27 @@
+---
+description: Separate persistent repository scripts from temporary one-off scripts by folder
+globs: "scripts/**,tools/**,tmp/**"
+alwaysApply: false
+---
+
+# Scripts
+
+Apply `AGENTS.md` and `code.mdc`.
+
+## Folders
+
+- `scripts/`: persistent Node 24 ESM tooling (`.mjs`) for setup, start, checks, release and the BMAD loop. Fully tracked.
+- `tools/`: persistent Python tools that reach the application only over HTTP. Fully tracked.
+- `tmp/<topic>/`: everything temporary, such as one-off migrations, data fixes, probes, evidence generators and their output. The whole folder is ignored by Git.
+
+## Creating a script
+
+- Start every script in `tmp/<topic>/` unless it is needed repeatedly by people, agents, CI or other scripts.
+- A persistent script lives in `scripts/` or `tools/`, is referenced by name from `package.json`, documentation, a skill or another tracked file outside `_bmad-output/` and `.wolf/`, and has tests where it carries behavior (`scripts/*.test.mjs`, `scripts/bmad-tests/`, `tools/test_*.py`). Test data goes to `scripts/fixtures/`, `scripts/test-fixtures/` or `tools/fixtures/`.
+- `node scripts/check-hygiene.mjs` (part of `verify.mjs` and `check.mjs`) fails on an unreferenced persistent script.
+
+## Using temporary scripts
+
+- Tracked code never references `tmp/`. Temporary scripts never contain tokens and only operate on disposable copies of user data.
+- Promote a temporary script by moving it into `scripts/` or `tools/`, adding the reference and tests, and committing it in the same change.
+- Delete `tmp/<topic>/` when the task is done. Keep only results that must be retained, as evidence under `_bmad-output/implementation-artifacts/evidence/`.

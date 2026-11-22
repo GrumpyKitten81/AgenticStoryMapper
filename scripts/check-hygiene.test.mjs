@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { test } from 'node:test';
 import { textCategories } from './check-publication-content.mjs';
-import { checkHygiene, findViolations, inspectTrackedFile } from './check-hygiene.mjs';
+import { checkHygiene, findUnreferencedScripts, findViolations, inspectTrackedFile } from './check-hygiene.mjs';
 
 test('normalizes German tokens and preserves precise CRLF diagnostics', () => {
   assert.deepEqual(findViolations(`English\r\n${'Übersicht'.normalize('NFD')} und under_score`, ['und']), [{ line: 2, text: 'Übersicht' }, { line: 2, text: 'und' }]);
@@ -82,6 +82,7 @@ function trackedFixture() {
   execFileSync('git', ['init', '--quiet', root]);
   write('scripts/german-stop-words.txt', 'und\noder\n');
   write('scripts/check-hygiene.mjs', readFileSync(new URL('./check-hygiene.mjs', import.meta.url)));
+  write('package.json', '{"scripts":{"check-hygiene":"node scripts/check-hygiene.mjs"}}');
   write('apps/web/src/panel.tsx', 'English\nund');
   write('packages/core/templates/sample.json', '{"name":"Übersicht"}');
   write('packages/db/src/seed/seed.ts', 'English');
@@ -149,4 +150,27 @@ test('scans tracked gzip content and rejects malformed archives with safe CLI di
     assert.ok(!cli.stderr.includes(value));
     assert.ok(!cli.stderr.includes('ignored.log.gz'));
   } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('reports persistent scripts without a reference outside evidence, the index and themselves', () => {
+  const sources = new Map([
+    ['package.json', '"verify": "node scripts/verify.mjs"'],
+    ['scripts/verify.mjs', "import './one-off.mjs';"],
+    ['scripts/one-off.mjs', 'export {};'],
+    ['scripts/orphan.mjs', "// orphan.mjs"],
+    ['scripts/evidence-only.mjs', ''],
+    ['_bmad-output/evidence/log.txt', 'scripts/evidence-only.mjs'],
+    ['.wolf/anatomy.md', 'scripts/evidence-only.mjs scripts/orphan.mjs'],
+    ['tools/storymapper_http.py', ''],
+    ['tools/github_board_import.py', 'from storymapper_http import get'],
+    ['docs/RUNBOOK.md', 'tools/github_board_import.py'],
+    ['scripts/orphan.test.mjs', ''],
+    ['tools/test_orphan.py', ''],
+    ['scripts/fixtures/orphan.mjs', ''],
+    ['scripts/test-fixtures/orphan.mjs', '']
+  ]);
+  assert.deepEqual(findUnreferencedScripts(sources), [
+    { file: 'scripts/orphan.mjs', line: 1, category: 'unreferenced-script' },
+    { file: 'scripts/evidence-only.mjs', line: 1, category: 'unreferenced-script' }
+  ]);
 });
