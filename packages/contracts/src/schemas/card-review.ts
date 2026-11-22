@@ -2,9 +2,9 @@ import { z } from "zod";
 import { cardSchema, cardTypeSchema, uuidSchema, actorContextSchema, productContextSchema, cardSourceLinkSchema, sourceChunkSchema } from "@storymapper/contracts/schemas/domain";
 
 // DESIGN stored requests and reports keep every released version readable; only the current version is accepted for new reviews (ADR 0011).
-export const CARD_REVIEW_VERSIONS = ["1", "2"] as const;
-export const CARD_REVIEW_CRITERIA_VERSION = "2";
-export const CARD_REVIEW_SKILL_VERSION = "2";
+export const CARD_REVIEW_VERSIONS = ["1", "2", "3"] as const;
+export const CARD_REVIEW_CRITERIA_VERSION = "3";
+export const CARD_REVIEW_SKILL_VERSION = "3";
 const storedReviewVersionSchema = z.enum(CARD_REVIEW_VERSIONS);
 const all = cardTypeSchema.options;
 export const CARD_REVIEW_CRITERIA = [
@@ -21,7 +21,8 @@ export const CARD_REVIEW_CRITERIA = [
   { id: "DOR-11", since: "2", severity: "warning", types: ["story", "feature", "task"], instruction: "Contributes to the goal of its parent Epic or Feature; a missing or unrelated parent goal is a finding." },
   { id: "DOR-12", since: "2", severity: "warning", types: ["story", "bug", "feature", "epic", "task"], instruction: "Every acceptance, success or completion criterion is necessary for the outcome; no busywork or unrequested extras." },
   { id: "DOR-13", since: "2", severity: "warning", types: all, instruction: "Every requirement is traceable to the parent goal, Product Context, a linked source or an explicit reference." },
-  { id: "DOR-14", since: "2", severity: "warning", types: ["story"], instruction: "Describes behavior, not implementation steps; implementation work belongs in derived Tasks." }
+  { id: "DOR-14", since: "2", severity: "warning", types: ["story"], instruction: "Describes behavior, not implementation steps; implementation work belongs in derived Tasks." },
+  { id: "DOR-15", since: "3", severity: "warning", types: all, instruction: "Understandable without local Story Map context: no internal keys outside references, explained abbreviations, no local paths as references, consistent naming within the Epic and no internal admin or provenance notes." }
 ] as const;
 export type CardReviewVersion = typeof CARD_REVIEW_VERSIONS[number];
 export function cardReviewCriteriaFor(version: CardReviewVersion) {

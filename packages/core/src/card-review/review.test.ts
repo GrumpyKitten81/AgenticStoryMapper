@@ -29,6 +29,15 @@ describe("authoritative review criteria", () => {
     Object.assign(story.find((result) => result.ruleId === "DOR-14")!, { outcome: "finding", evidence: ["Step 1: add a database column."], advice: "Move implementation steps into a derived Task." });
     expect(() => validateReviewResults(input("story"), { criteriaVersion: "2", status: "success", results: story })).not.toThrow();
   });
+  it("adds the standalone understandability warning in version 3 and keeps version 2 reports valid", () => {
+    expect(CARD_REVIEW_CRITERIA.filter((rule) => rule.since === "3").map(({ id, severity, types }) => ({ id, severity, types }))).toEqual([{ id: "DOR-15", severity: "warning", types: cardTypeSchema.options }]);
+    const results = (version: "2" | "3") => cardReviewCriteriaFor(version).map((rule) => ({ id, ruleId: rule.id, severity: rule.severity, outcome: (rule.types as readonly string[]).includes("story") ? "pass" as const : "not_applicable" as const, evidence: [], advice: "" }));
+    expect(() => validateReviewResults(input("story"), { criteriaVersion: "2", status: "success", results: results("2") })).not.toThrow();
+    expect(() => validateReviewResults(input("story"), { criteriaVersion: "3", status: "success", results: results("2") })).toThrow("every rule");
+    const story = results("3");
+    Object.assign(story.find((result) => result.ruleId === "DOR-15")!, { outcome: "finding", evidence: ["MCP is not explained at first use."], advice: "Write the long form at first use or mark it TODO." });
+    expect(() => validateReviewResults(input("story"), { criteriaVersion: "3", status: "success", results: story })).not.toThrow();
+  });
   it("never passes a missing explicit type and only escalates DOR-03 when work cannot start", () => {
     const results: CardReviewReport["results"] = CARD_REVIEW_CRITERIA.map((rule) => ({ id, ruleId: rule.id, severity: rule.severity, outcome: "pass", evidence: [], advice: "" }));
     expect(() => validateReviewResults(input(null), { criteriaVersion: CARD_REVIEW_CRITERIA_VERSION, status: "success", results })).toThrow("Missing Card type");

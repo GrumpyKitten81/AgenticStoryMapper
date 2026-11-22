@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Writing Cards and issues
 
-Date: 2026-11-08. Version: 5.
+Date: 2026-11-22. Version: 6.
 
 Reproducing statement: Separate map-level, optional planning-type and GitHub Issue templates alongside public bug, improvement and task reports; preserve Card types, provenance, synchronization and human-controlled external effects.
 
@@ -38,12 +38,15 @@ When creating an authorized Story Map, include its needed Activities and Steps a
 
 - Public reports exclude credentials, private Project contents and unrelated personal information. Security reports follow `SECURITY.md` instead of public issue creation.
 - Link evidence where it is needed. When a Card is deliberately published, put the source map and local Card key in the final evidence/context section; keep local identifiers out of the GitHub title and main description. Use the linked GitHub issue when referring to a published Card.
+- Write published reports for readers without the Story Map: keep internal keys and analysis codes in the references section only, explain each abbreviation at first use (mark an unknown long form `TODO`), reference reachable sources instead of local paths or file names, name each concept consistently within an Epic and leave out internal admin or provenance notes.
 - A GitHub link in Markdown does not establish synchronization. The GitHub adapter owns the canonical `github` external reference and sync baseline; use the supported ChangeSet and connection workflow to create or update them.
 - A form name or title prefix does not set GitHub's native issue type. For agent-created issues, inspect the destination's available types and set the matching native type when supported. Do not assume that every repository offers every Card type.
 - Before updating a linked issue, check its current title/body and synchronization state. If local and remote content diverge, resolve the conflict through the supported flow rather than overwrite either side. Use GitHub state and configured status mappings; do not append a local `Status:` field to the issue body.
 - Agent-driven Card changes follow ChangeSet controls. GitHub mutations from Agentic Story Mapper require the reviewed Dry Run and human confirmation; an authoring rule grants no additional permission.
 
 ## Changelog
+
+- 2026-11-22 v6: Require published reports to be understandable without local Story Map context (review rule DOR-15).
 
 - 2026-11-08 v5: Remove automatic level/type equivalences and describe local map-wide Epic context.
 
