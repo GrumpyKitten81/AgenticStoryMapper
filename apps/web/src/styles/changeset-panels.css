@@ -541,3 +541,13 @@
   font-size: var(--font-size-meta);
   line-height: 1.45;
 }
+
+.onboarding-projects {
+  display: grid;
+  gap: var(--space-16);
+}
+
+.onboarding-projects h3 {
+  margin: 0 0 var(--space-8);
+  font-size: var(--font-size-body);
+}

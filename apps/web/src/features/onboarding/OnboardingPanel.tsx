@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { CheckCircle2, GitBranch, HardDrive, ShieldCheck, Upload } from "lucide-react";
 import { appStrings as strings } from "@storymapper/ui-strings";
+import { renderProjectArchiveImportButton, renderProjectArchiveImportOutcome, useProjectArchiveImport } from "@storymapper/web/features/project-archive/ProjectArchiveImport";
+import { ProjectPicker } from "@storymapper/web/features/onboarding/ProjectPicker";
 import { useProjects, useSafetySettings } from "@storymapper/web/app/api";
 import { useActiveStoryMapStore } from "@storymapper/web/app/stores/active-story-map-store";
 import { useOnboardingStore } from "@storymapper/web/app/stores/onboarding-store";
@@ -17,6 +19,7 @@ function useOnboardingPanelState() {
   const completeOnboarding = useOnboardingStore((state) => state.completeOnboarding);
   const projectParams = activeProjectId ? { projectId: activeProjectId } : undefined;
   const settings = safety.data?.settings;
+  const archiveImport = useProjectArchiveImport();
 
   const finish = () => {
     completeOnboarding();
@@ -26,7 +29,7 @@ function useOnboardingPanelState() {
       void navigate({ to: "/" });
     }
   };
-  return { settings, finish, projectParams };
+  return { settings, finish, projectParams, projects: projects.data?.projects ?? [], archiveImport };
 }
 
 function renderOnboardingPanel(model: ReturnType<typeof useOnboardingPanelState>) {
@@ -51,7 +54,9 @@ function renderOnboardingPanel(model: ReturnType<typeof useOnboardingPanelState>
           <span>{strings.agentForwardingNotice}</span>
         </div>
 
-        {renderOnboardingFacts(model)}
+        {renderOnboardingFacts()}
+
+        {renderProjectChoice(model)}
 
         <div className="onboarding-actions">
           <button type="button" onClick={finish}>
@@ -66,8 +71,22 @@ function renderOnboardingPanel(model: ReturnType<typeof useOnboardingPanelState>
   );
 }
 
-function renderOnboardingFacts(model: ReturnType<typeof useOnboardingPanelState>) {
-  const { } = model;
+function renderProjectChoice({ projects, archiveImport }: ReturnType<typeof useOnboardingPanelState>) {
+  return <div className="onboarding-projects">
+    {projects.length > 0 ? <section aria-labelledby="onboarding-open-project">
+      <h3 id="onboarding-open-project">{strings.openExistingProject}</h3>
+      <ProjectPicker projects={projects} />
+    </section> : null}
+    <section aria-labelledby="onboarding-import-project" className="project-archive-panel">
+      <h3 id="onboarding-import-project">{strings.importProjectArchive}</h3>
+      <p className="project-archive-hint">{strings.importProjectArchiveHint}</p>
+      <div className="project-archive-actions">{renderProjectArchiveImportButton(archiveImport, strings.importProjectArchive)}</div>
+      {renderProjectArchiveImportOutcome(archiveImport)}
+    </section>
+  </div>;
+}
+
+function renderOnboardingFacts() {
   return <div className="onboarding-facts">
     <div className="onboarding-fact">
       <HardDrive size={18} />

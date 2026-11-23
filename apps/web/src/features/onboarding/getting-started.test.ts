@@ -6,6 +6,7 @@ import { afterEach, expect, it, vi } from "vitest";
 import { GettingStartedChecklist } from "./GettingStartedChecklist";
 import { RootIndexRoute } from "../../app/routes";
 import { StoryMapsIndexRoute } from "../../app/routes/story-maps.index";
+import { OnboardingPanel } from "./OnboardingPanel";
 
 vi.mock("@tanstack/react-router", () => ({
   useParams: () => ({ projectId: "project" }),
@@ -47,6 +48,25 @@ it("first visit goes to Story Maps regardless of browser onboarding state", () =
   const client = new QueryClient();
   client.setQueryData(["projects"], { projects: [{ id: "project" }] });
   expect(render(createElement(RootIndexRoute), client)).toBe("<span>/projects/$projectId/story-maps</span>");
+});
+
+it("shows a project picker instead of redirecting when several projects exist", () => {
+  const client = new QueryClient();
+  client.setQueryData(["projects"], { projects: [{ id: "first", name: "First" }, { id: "second", name: "Second" }] });
+  const markup = render(createElement(RootIndexRoute), client);
+  expect(markup).toContain("Choose a project");
+  expect(markup).toContain('<option value="second">Second</option>');
+  expect(markup).toContain("Open project</button>");
+});
+
+it("offers opening an existing project and importing a project archive from onboarding", () => {
+  const client = new QueryClient();
+  client.setQueryData(["projects"], { projects: [{ id: "first", name: "First" }] });
+  const markup = render(createElement(OnboardingPanel), client);
+  expect(markup).toContain("Open existing project");
+  expect(markup).toContain('<option value="first" selected="">First</option>');
+  expect(markup).toContain("Import project archive</button>");
+  expect(markup).toContain('accept=".zip"');
 });
 
 it("waits for initialization before enabling the map list", () => {
