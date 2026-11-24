@@ -33,6 +33,7 @@ export interface RemoteWorkItem {
   assignee?: string | undefined;
   issueType?: string | undefined;
   parentNumber?: number | undefined;
+  parentEvidence?: { number: number; url: string; repository: string } | null | undefined;
   iteration?: RemoteIteration | undefined;
 }
 
@@ -51,6 +52,8 @@ export interface ValidateConnectionResult {
 }
 
 export interface WorkItemProvider {
+  resolveIssueDatabaseId?(connection: ConnectorConnection, auth: ProviderAuth, number: number, reviewedUrl: string): Promise<number>;
+  writeSubIssue?(connection: ConnectorConnection, auth: ProviderAuth, operation: "add" | "remove", parentNumber: number, childDatabaseId: number): Promise<unknown>;
   listStatusProjects?(connection: ConnectorConnection, auth: ProviderAuth): Promise<Array<{ id: string; name: string; fieldId: string }>>;
   readPushInputs(connection: ConnectorConnection, auth: ProviderAuth): Promise<RemotePushEvidence>;
   findRemoteItemsByMarker(connection: ConnectorConnection, auth: ProviderAuth, kind: "issue" | "milestone", marker: string): Promise<{ complete: true; matches: Array<RemoteWorkItem | RemoteMilestone> }>;

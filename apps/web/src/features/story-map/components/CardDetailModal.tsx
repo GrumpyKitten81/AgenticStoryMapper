@@ -127,7 +127,7 @@ function useCardDetailDraft({ cardId, snapshot, projectId, onNotice, suspended =
   const syncLocks = useSyncFieldLocks(card?.id);
   const annotationLocks = useManagedAnnotationSyncLocks(new Set(card ? [card.id] : []));
   const lockHint = useSyncFieldLockHint();
-  const fieldLockHint = (field: "title" | "description" | "status" | "labels" | "milestone") => lockHint(card?.id, field);
+  const fieldLockHint = (field: "title" | "description" | "status" | "labels" | "milestone" | "parent") => lockHint(card?.id, field);
   const statusOptions = useMemo(() => localStatusOptions(snapshot), [snapshot.workflowStatuses, snapshot.cards]);
   const [selectedDocumentId, setSelectedDocumentId] = useState<string>("");
   const [attachmentDraft, setAttachmentDraft] = useState({ label: "", filePath: "", mimeType: "" });

@@ -46,9 +46,22 @@ function providerFixture(issues: RemoteWorkItem[], milestones: RemoteMilestone[]
       return item ? { status: "found" as const, item: structuredClone(item) } : { status: "unavailable" as const };
     }),
     findRemoteItemsByMarker: vi.fn(async (_connection, _auth, kind: "issue" | "milestone", marker: string): ReturnType<WorkItemProvider["findRemoteItemsByMarker"]> => ({ complete: true as const, matches: structuredClone(kind === "issue" ? issues.filter((row) => row.body.includes(marker)) : milestones.filter((row) => row.description.includes(marker))) })),
+    resolveIssueDatabaseId: vi.fn(async (_connection, _auth, number, url) => {
+      if (!issues.some((issue) => issue.remoteNumber === number && issue.url === url)) throw new Error("Issue identity mismatch");
+      return number + 1000;
+    }),
+    writeSubIssue: vi.fn(async (_connection, _auth, operation, parentNumber, childDatabaseId) => {
+      const child = issues.find((issue) => issue.remoteNumber === childDatabaseId - 1000);
+      const parent = issues.find((issue) => issue.remoteNumber === parentNumber);
+      if (!child || !parent) throw new Error("Issue identity mismatch");
+      child.parentEvidence = operation === "add" ? { number: parentNumber, url: parent.url, repository: "reviewed/fixture" } : null;
+      child.parentNumber = operation === "add" ? parentNumber : undefined;
+      return { ok: true };
+    }),
     writeRemoteIssue: vi.fn(async (_connection, _auth, payload: RemoteIssuePayload) => {
       const number = payload.remoteId ? Number(payload.remoteId) : issues.length + 1;
-      const item: RemoteWorkItem = { remoteId: String(number), remoteNumber: number, url: `https://github.com/reviewed/fixture/issues/${number}`, title: payload.title, body: payload.body, labels: [...payload.labels], issueType: payload.issueType, state: payload.remoteState, ...(payload.milestoneNumber ? { milestoneNumber: payload.milestoneNumber, milestone: milestones.find((row) => row.remoteNumber === payload.milestoneNumber)?.title, milestoneDueOn: milestones.find((row) => row.remoteNumber === payload.milestoneNumber)?.dueOn ?? undefined, milestoneDescription: milestones.find((row) => row.remoteNumber === payload.milestoneNumber)?.description, milestoneState: milestones.find((row) => row.remoteNumber === payload.milestoneNumber)?.state } : {}) };
+      const previous = issues.find((row) => row.remoteId === String(number));
+      const item: RemoteWorkItem = { remoteId: String(number), remoteNumber: number, url: `https://github.com/reviewed/fixture/issues/${number}`, title: payload.title, body: payload.body, parentEvidence: previous?.parentEvidence ?? null, parentNumber: previous?.parentNumber, labels: [...payload.labels], issueType: payload.issueType, state: payload.remoteState, ...(payload.milestoneNumber ? { milestoneNumber: payload.milestoneNumber, milestone: milestones.find((row) => row.remoteNumber === payload.milestoneNumber)?.title, milestoneDueOn: milestones.find((row) => row.remoteNumber === payload.milestoneNumber)?.dueOn ?? undefined, milestoneDescription: milestones.find((row) => row.remoteNumber === payload.milestoneNumber)?.description, milestoneState: milestones.find((row) => row.remoteNumber === payload.milestoneNumber)?.state } : {}) };
       const index = issues.findIndex((row) => row.remoteId === item.remoteId);
       if (index < 0) issues.push(item); else issues[index] = item;
       return structuredClone(item);

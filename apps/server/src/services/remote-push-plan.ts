@@ -7,6 +7,8 @@ import { resolveProviderAuth } from "@storymapper/server/services/credentials";
 import { assertPushContext, assertRemotePushTarget, assertRemotePushMilestones, assertReviewedInputs, committedWrite, fingerprint, localPushFingerprint, pushContext, type RemotePushContext } from "@storymapper/server/services/remote-push-context";
 import { changedFieldsForRemote, conflictFields, mergedPayload, remoteMilestoneMetadata } from "@storymapper/server/services/sync-merge";
 import { assertReviewedConflict, conflictWritePayload, prepareConflictResolution, type ConflictResolutionContext } from "@storymapper/server/services/sync-conflict-resolution";
+import { prepareHierarchy } from "@storymapper/server/services/remote-push-hierarchy";
+import type { RemoteWorkItem } from "@storymapper/github";
 
 export async function prepareRemotePush(repository: StoryMapperRepository, unitOfWork: UnitOfWork, actor: ActorContext, input: PlanWorkItemSyncRequest & { localOrigin?: string | undefined }): Promise<RemotePushPlanResponse> {
   actor = Object.freeze({ ...actor });
@@ -32,11 +34,10 @@ export async function prepareRemotePush(repository: StoryMapperRepository, unitO
   const items: RemotePushEffect[] = [];
   const blockers: string[] = [];
   if (!remoteEvidence.writable) blockers.push("Repository permission does not allow Issue, type, label and Milestone writes. Grant write permission and prepare a new Dry Run.");
-  if (input.parentIssueNumber !== undefined) blockers.push("Parent Issue assignment is unsupported by the reviewed GitHub write protocol. Remove the parent override and prepare a new Dry Run.");
   const milestoneEffects = new Map<string, RemotePushEffect>();
   const conflict = input.conflictId ? prepareConflictResolution(repository, unitOfWork, input.conflictId, { storyMapId: input.storyMapId, resolution: "local" }) : undefined;
   if (conflict && (selection.cardIds?.length !== 1 || selection.cardIds[0] !== conflict.card.id || conflict.connection.id !== connection.id)) throw new DomainError("validation", "Conflict review must select its exact Card and connection.");
-  const planning: Planning = { context, input, selection, snapshot, source, provider, auth, remoteEvidence, items, blockers, milestoneEffects, conflict, check, syncMilestoneCards: new Set(), milestoneNumbers: new Map() };
+  const planning: Planning = { context, input, selection, snapshot, source, provider, auth, remoteEvidence, items, blockers, milestoneEffects, conflict, check, syncMilestoneCards: new Set(), milestoneNumbers: new Map(), remoteIssues: new Map() };
   await prepareIssues(planning);
   const issues = items.splice(0);
   await prepareMilestones(planning);
@@ -47,6 +48,7 @@ export async function prepareRemotePush(repository: StoryMapperRepository, unitO
     else if (issue.kind === "issue" && releaseId && planning.milestoneNumbers.has(releaseId)) issue.payload.milestoneNumber = planning.milestoneNumbers.get(releaseId)!;
   }
   items.push(...issues);
+  if (connection.provider === "github") await prepareHierarchy(planning);
   check();
   const selected = snapshot.cards.filter((card) => (!selection.cardIds || selection.cardIds.includes(card.id)) && (selection.releaseId === undefined || card.releaseId === selection.releaseId));
   const plan: RemotePushPlan = { id: randomUUID(), actor, projectId: connection.projectId, storyMapId: input.storyMapId, connectionId: connection.id, epoch: safety.epoch!, createdAt: new Date().toISOString(), selection, localFingerprint, connectionFingerprint: fingerprint(connection), safetyFingerprint: fingerprint(safety), remoteFingerprint: fingerprint(remoteEvidence), remoteEvidence, items, exclusions: selected.filter((card) => !source.items.some((item) => item.cardId === card.id)).map((card) => ({ entityId: card.id, reason: card.level === "note" ? "Notes are not exported as Issues." : "Card is hidden, archived or parked." })), blockers: [...new Set(blockers)] };
@@ -54,7 +56,7 @@ export async function prepareRemotePush(repository: StoryMapperRepository, unitO
   return committedWrite(context, ({ repository }) => repository.saveRemotePushPlan(plan));
 }
 
-interface Planning {
+export interface Planning {
   context: RemotePushContext;
   input: PlanWorkItemSyncRequest & { localOrigin?: string | undefined };
   selection: RemotePushPlan["selection"];
@@ -70,6 +72,7 @@ interface Planning {
   check: () => void;
   syncMilestoneCards: Set<string>;
   milestoneNumbers: Map<string, number>;
+  remoteIssues: Map<string, RemoteWorkItem | undefined>;
 }
 
 async function prepareMilestones(planning: Planning): Promise<void> {
@@ -118,8 +121,10 @@ async function prepareIssues(planning: Planning): Promise<void> {
     const marker = gitHubIssueMarker(card, connection.projectId);
     const sync = snapshot.remoteWorkItemLinks.find((row) => row.cardId === card.id && row.connectionId === connection.id);
     const remote = await findPreparedIssue(planning, item, marker);
+    planning.remoteIssues.set(card.id, remote);
     check();
     if (remote) assertRemotePushTarget(planning.context, "issue", remote, item.remoteId, sync?.externalRefId);
+    if (conflict?.conflict.field === "parent") { assertReviewedConflict(planning.context.repository, conflict, input.reviewed!, remote!); continue; }
     if (conflict) assertReviewedConflict(planning.context.repository, conflict, input.reviewed!, remote!);
     let sent = conflict ? conflictWritePayload(conflict, remote!, input.localOrigin) : item;
     const issueType = connection.issueTypeMapping.find((entry) => entry.cardType === card.cardType)?.issueType;

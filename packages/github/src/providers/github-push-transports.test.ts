@@ -56,6 +56,22 @@ it.each(["token", "github-cli"] as const)("reports %s uncertain response failure
 
 const repositoryPath = "repos/fixture-owner/fixture-repo";
 
+it.each(["token", "github-cli"] as const)("resolves the child database ID and sends a %s DELETE body", async (authMode) => {
+  const configured = { ...connection, authMode };
+  const auth = authMode === "token" ? { token } : { cliToken: token };
+  fetch.mockResolvedValueOnce(Response.json({ ...issue, id: 12345 })).mockResolvedValueOnce(new Response(null, { status: 204 }));
+  fixture.exec.mockResolvedValueOnce({ stdout: JSON.stringify({ ...issue, id: 12345 }) }).mockResolvedValueOnce({ stdout: "" });
+  const provider = new GitHubProvider();
+  const id = await provider.resolveIssueDatabaseId(configured, auth, 7, issue.html_url);
+  await provider.writeSubIssue(configured, auth, "remove", 2, id);
+  expect(id).toBe(12345);
+  if (authMode === "token") {
+    expect(fetch.mock.calls[1]?.[0]).toBe(`https://api.github.com/${repositoryPath}/issues/2/sub_issue`);
+    expect(fetch.mock.calls[1]?.[1].method).toBe("DELETE");
+    expect(JSON.parse(fetch.mock.calls[1]?.[1].body)).toEqual({ sub_issue_id: 12345 });
+  } else expect(fixture.exec.mock.calls[1]?.[1]).toEqual(["api", "--method", "DELETE", `${repositoryPath}/issues/2/sub_issue`, "-F", "sub_issue_id=12345"]);
+});
+
 it("reads capability evidence and complete marker lookups through the token transport with explicit pagination", async () => {
   const milestone = { number: 3, html_url: "https://github.com/fixture-owner/fixture-repo/milestone/3", title: "Release", description: "<!-- marker -->", due_on: null, state: "open" };
   const labels = Array.from({ length: 100 }, (_, index) => ({ name: `label-${String(index).padStart(3, "0")}` }));
@@ -87,6 +103,16 @@ it("replaces the capped GraphQL label read with the complete REST label listing"
   fetch.mockImplementation(async (url: string) => new URL(url).pathname.endsWith("/graphql") ? Response.json({ data: { repository: { issue: detail } } }) : Response.json([{ name: "first" }, { name: "second" }]));
   const read = await new GitHubProvider().getRemoteItem(connection, { token }, "7");
   expect(read).toMatchObject({ status: "found", item: { labels: ["first", "second"] } });
+});
+
+it("distinguishes an explicit root from incomplete and fully identified parent evidence", async () => {
+  const detail = { number: 7, title: "Title", body: "Body", state: "OPEN", url: issue.html_url, labels: { nodes: [] } };
+  const provider = new GitHubProvider();
+  for (const [parent, expected] of [[null, null], [{ number: 2 }, undefined], [{ number: 2, url: "https://github.com/fixture-owner/fixture-repo/issues/2", repository: { nameWithOwner: "fixture-owner/fixture-repo" } }, { number: 2, url: "https://github.com/fixture-owner/fixture-repo/issues/2", repository: "fixture-owner/fixture-repo" }]] as const) {
+    fetch.mockImplementation(async (url: string) => Response.json(url.endsWith("/graphql") ? { data: { repository: { issue: { ...detail, parent } } } } : []));
+    const result = await provider.getRemoteItem(connection, { token }, "7");
+    expect(result.status === "found" && result.item.parentEvidence).toEqual(expected);
+  }
 });
 
 it.each(["token", "github-cli"] as const)("reads complete %s Issue details with iteration, Milestone dates and paginated labels", async (authMode) => {

@@ -292,7 +292,7 @@ it("imports mapped Agent labels as durable annotations while excluding status an
     repository.createAnnotation({ projectId: data.project.id, storyMapId: data.map.id, name: "customer" });
     repository.updateConnectorConnection(data.connection.id, { labelsAsAnnotations: true, defaultLabel: "managed", statusMapping: [{ localStatus: "active", remoteState: "open", labels: ["working"] }] });
   });
-  data.provider.listRemoteItems.mockResolvedValue([{ remoteId: "42", remoteNumber: 42, title: "Mapped labels", body: "Imported body", state: "open", labels: ["working", "managed", "story-map:Map", "risk", "customer"], url: "https://github.com/owner/repo/issues/42" }]);
+  data.provider.listRemoteItems.mockResolvedValue([{ remoteId: "42", remoteNumber: 42, title: "Mapped labels", parentEvidence: null, body: "Imported body", state: "open", labels: ["working", "managed", "story-map:Map", "risk", "customer"], url: "https://github.com/owner/repo/issues/42" }]);
   const result = await importWorkItems(data.repository, data.unitOfWork, agent, { storyMapId: data.map.id, connectionId: data.connection.id });
   expect(result).toMatchObject({ outcome: "applied" });
   const command = changeSetCommandResponseSchema.parse(result);
@@ -403,7 +403,7 @@ it("imports child-first Agent hierarchy and reuses the imported fallback activit
   const data = await fixture();
   const agent = { actorType: "agent", actorId: "hierarchy-host", mcpSessionId: "hierarchy-session" } as const;
   data.unitOfWork.run(ACTOR, ({ repository }) => repository.updateSafetySettings(data.project.id, { agentMode: "apply" }));
-  const remote = (number: number, title: string, labels: string[], parentNumber?: number): RemoteWorkItem => ({ remoteId: String(number), remoteNumber: number, title, labels, parentNumber, body: "Reviewed hierarchy", state: "open", url: `https://github.com/owner/repo/issues/${number}` });
+  const remote = (number: number, title: string, labels: string[], parentNumber?: number): RemoteWorkItem => ({ remoteId: String(number), remoteNumber: number, title, labels, parentNumber, parentEvidence: parentNumber ? { number: parentNumber, url: `https://github.com/owner/repo/issues/${parentNumber}`, repository: "owner/repo" } : null, body: "Reviewed hierarchy", state: "open", url: `https://github.com/owner/repo/issues/${number}` });
   data.provider.listRemoteItems.mockResolvedValue([remote(3, "Imported story", [], 2), remote(2, "Imported step", ["feature"], 1), remote(4, "Fallback story", []), remote(1, "Imported backlog", ["epic"])]);
   const result = await importWorkItems(data.repository, data.unitOfWork, agent, { storyMapId: data.map.id, connectionId: data.connection.id });
   expect(result).toMatchObject({ outcome: "applied" });
@@ -486,7 +486,7 @@ function registerImportsAReviewedRemoteIssueWithProtectionSAnd(agent: { readonly
   it.each([false, true])("imports a reviewed remote issue with protection=%s and records both identities", async (protectedProject) => {
     const data = await fixture();
     data.unitOfWork.run(ACTOR, ({ repository }) => repository.updateSafetySettings(data.project.id, { agentMode: protectedProject ? "propose" : "apply" }));
-    data.provider.listRemoteItems.mockResolvedValue([{ remoteId: "17", remoteNumber: 17, title: "Imported issue", body: "Reviewed body", state: "open", labels: [], url: "https://github.com/owner/repo/issues/17", milestoneDescription: "", milestoneState: "open", milestone: "Imported milestone", milestoneNumber: 4 }]);
+    data.provider.listRemoteItems.mockResolvedValue([{ remoteId: "17", remoteNumber: 17, title: "Imported issue", parentEvidence: null, body: "Reviewed body", state: "open", labels: [], url: "https://github.com/owner/repo/issues/17", milestoneDescription: "", milestoneState: "open", milestone: "Imported milestone", milestoneNumber: 4 }]);
     const result = await importWorkItems(data.repository, data.unitOfWork, agent, { storyMapId: data.map.id, connectionId: data.connection.id });
     expect(result).toMatchObject({ outcome: protectedProject ? "proposed" : "applied", changeSet: { source: "github", proposedBy: agent } });
     if (!('changeSet' in result)) throw new Error("Expected canonical command response.");

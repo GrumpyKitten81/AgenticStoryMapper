@@ -9,7 +9,7 @@ import type { GitHubPreparation } from "@storymapper/server/application/sync/git
 import { githubIncomingCommand, revalidateGitHubPreparation, syncRunOperation } from "@storymapper/server/application/sync/github-command";
 import { asDomainError } from "@storymapper/server/application/errors";
 import { resolveProviderAuth } from "@storymapper/server/services/credentials";
-import { importSyncBaseline } from "@storymapper/server/services/sync-merge";
+import { importSyncBaseline, observedParentNumber } from "@storymapper/server/services/sync-merge";
 import { hashText, localStatusForRemote } from "@storymapper/server/services/sync-values";
 
 export async function importGitHubCommand(context: GitHubPreparation, input: ImportWorkItemsRequest): Promise<IncomingGitHubCommandResponse> {
@@ -94,6 +94,7 @@ export function singleIssueOperations(context: GitHubPreparation, item: RemoteWo
   const cardId = randomUUID(), externalRefId = randomUUID();
   const annotations = managedAnnotations.filter((entry) => item.labels.includes(entry.name));
   const baseline = importSyncBaseline(connection, item, card.status ?? "todo", annotations.map((entry) => entry.name));
+  if (connection.provider === "github") { observedParentNumber(connection, item); baseline.parentKnown = true; }
   baseline.acknowledgedLocal.titleHash = hashText(card.title);
   baseline.acknowledgedLocal.bodyHash = hashText(stripGitHubIssueFooter(card.description ?? ""));
   baseline.acknowledgedLocal.releaseId = card.releaseId ?? null;
@@ -102,7 +103,7 @@ export function singleIssueOperations(context: GitHubPreparation, item: RemoteWo
     changeOperationSchema.parse({ operationId: randomUUID(), entityId: cardId, op: "create", entity: "card", after: card }),
     changeOperationSchema.parse({ operationId: randomUUID(), entityId: externalRefId, op: "create", entity: "githubExternalRef", after: { entityType: "card", entityId: cardId, provider: connection.provider, externalId: canonicalWorkItemId(connection.provider, remoteWorkItemIdentity(connection, item)), scopeId: storyMapId } })
   ];
-  if (card.level !== "note") operations.push(changeOperationSchema.parse({ operationId: randomUUID(), op: "set", entity: "remoteWorkItemLink", before: null, connectionBefore: connection, statusCatalog: status.statusCatalog, statusCardsBefore: githubStatusCardsBefore(context.deps.repository, connection, status, context.preparedStatusCatalogs), after: { statusEvidence: status.statusEvidence, externalRefId, connectionId: connection.id, titleHash: hashText(card.title), bodyHash: baseline.acknowledgedLocal.bodyHash, remoteState: item.state, issueType: item.issueType, labels: item.labels, milestone: item.milestone, remoteParentNumber: item.parentNumber, baseline, syncState: "synced", parentOverrideLocal: false } }));
+  if (card.level !== "note") operations.push(changeOperationSchema.parse({ operationId: randomUUID(), op: "set", entity: "remoteWorkItemLink", before: null, connectionBefore: connection, statusCatalog: status.statusCatalog, statusCardsBefore: githubStatusCardsBefore(context.deps.repository, connection, status, context.preparedStatusCatalogs), after: { statusEvidence: status.statusEvidence, externalRefId, connectionId: connection.id, titleHash: hashText(card.title), bodyHash: baseline.acknowledgedLocal.bodyHash, remoteState: item.state, issueType: item.issueType, labels: item.labels, milestone: item.milestone, ...(connection.provider === "github" ? { remoteParentNumber: observedParentNumber(connection, item) } : item.parentNumber === undefined ? {} : { remoteParentNumber: item.parentNumber }), baseline, syncState: "synced", parentOverrideLocal: false } }));
   for (const annotation of annotations) operations.push(changeOperationSchema.parse({ operationId: randomUUID(), entityId: randomUUID(), op: "set", entity: "cardAnnotation", after: { cardId, annotationId: annotation.id } }));
   return { cardId, operations };
 }

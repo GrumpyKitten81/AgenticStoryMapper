@@ -28,7 +28,7 @@ const cleanup: Array<() => Promise<void>> = [];
 const actor = { actorType: "system", actorId: "fixture" } as const;
 const remote: RemoteWorkItem = {
   remoteId: "19", remoteNumber: 19, title: "Remote story", body: "Remote description",
-  state: "open", labels: ["status:todo"], url: "https://github.com/fixture/repo/issues/19"
+  state: "open", labels: ["status:todo"], url: "https://github.com/fixture/repo/issues/19", parentEvidence: null
 };
 
 async function fixture() {

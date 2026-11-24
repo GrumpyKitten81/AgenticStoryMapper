@@ -633,7 +633,7 @@ it("routes real HTTP GitHub import sync pull and Dry Run commands through durabl
     return repository.createConnectorConnection({ projectId: f.project.id, provider: "github", authMode: "token", name: "Transport connection", owner: "fixture", repository: "fixture", readOnly: false });
   });
   vi.spyOn(credentials, "resolveProviderAuth").mockResolvedValue({ connection, auth: {} });
-  let remote: RemoteWorkItem = { remoteId: "19", remoteNumber: 19, title: "Transport remote story", body: "Transport source", state: "open", labels: [], url: "https://github.com/fixture/fixture/issues/19" };
+  let remote: RemoteWorkItem = { remoteId: "19", remoteNumber: 19, title: "Transport remote story", body: "Transport source", state: "open", labels: [], url: "https://github.com/fixture/fixture/issues/19", parentEvidence: null };
   const provider = { ...reviewedPushProviderFixture(), readPushInputs: vi.fn(async () => ({ issueTypes: ["Task"], labels: ["local-story-map", "story-map:LSM", "level:activity", "level:story", "status:todo"], milestones: [], writable: true })), validateConnection: vi.fn(), listRemoteItems: vi.fn(async () => [remote]), getRemoteItem: vi.fn(async () => remoteReadFixture(remote)), createOrUpdateRemoteItem: vi.fn() };
   vi.mocked(createWorkItemProvider).mockReturnValue(provider);
   const ticketInput = { storyMapId: f.map.id, connectionId: connection.id, selector: "19", placement: { level: "activity", parentId: null, releaseId: null, position: 0 } };

@@ -23,7 +23,8 @@ describe("explicit GitHub effects", () => {
   it("rejects unsupported compound effects before the first modifying call", async () => {
     const request = vi.fn();
     await expect(writeGitHubIssue(request as GitHubApiRequest, "repos/owner/repo", { ...exact, remoteState: "closed" })).rejects.toThrow("separately reviewed state");
-    await expect(writeGitHubIssue(request as GitHubApiRequest, "repos/owner/repo", { ...exact, parentIssueNumber: 1 })).rejects.toThrow("separately reviewed relationship");
+    const compound = { ...exact, parentIssueNumber: 1 };
+    await expect(writeGitHubIssue(request as GitHubApiRequest, "repos/owner/repo", compound)).rejects.toThrow("separately reviewed relationship");
     expect(request).not.toHaveBeenCalled();
   });
 

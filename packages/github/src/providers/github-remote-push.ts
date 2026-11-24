@@ -1,7 +1,7 @@
 import { DomainError, type RemoteIssuePayload, type RemoteMilestone, type RemoteMilestonePayload, type RemotePushEvidence } from "@storymapper/contracts";
 import type { RemoteWorkItem } from "@storymapper/github";
 
-export type GitHubApiRequest = <T>(method: "GET" | "POST" | "PATCH", path: string, payload?: Record<string, unknown>) => Promise<T>;
+export type GitHubApiRequest = <T>(method: "GET" | "POST" | "PATCH" | "DELETE", path: string, payload?: Record<string, unknown>) => Promise<T>;
 interface MilestoneResponse { number: number; html_url: string; title: string; description: string | null; due_on: string | null; state: "open" | "closed" }
 interface IssueResponse { number: number; html_url: string; title: string; body: string | null; state: string; labels: Array<string | { name?: string }>; type?: { name: string } | null; milestone?: { number: number; title: string; due_on: string | null; description?: string | null; state?: string } | null; pull_request?: unknown }
 
@@ -39,7 +39,7 @@ export async function findGitHubMarkerMatches(request: GitHubApiRequest, reposit
 }
 
 export async function writeGitHubIssue(request: GitHubApiRequest, repositoryPath: string, payload: RemoteIssuePayload): Promise<RemoteWorkItem> {
-  if (payload.parentIssueNumber) throw new DomainError("validation", "Parent Issue changes require a separately reviewed relationship effect.");
+  if ("parentIssueNumber" in payload) throw new DomainError("validation", "Parent Issue changes require a separately reviewed relationship effect.");
   if (!payload.remoteId && payload.remoteState !== "open") throw new DomainError("validation", "Create an open Issue before a separately reviewed state update.");
   const values = { title: payload.title, body: payload.body, labels: payload.labels, type: payload.issueType, milestone: payload.milestoneNumber, ...(payload.remoteId ? { state: payload.remoteState } : {}) };
   const issue = await request<IssueResponse>(payload.remoteId ? "PATCH" : "POST", `${repositoryPath}/issues${payload.remoteId ? `/${positiveNumber(payload.remoteId)}` : ""}`, values);

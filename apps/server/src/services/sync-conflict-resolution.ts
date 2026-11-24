@@ -27,7 +27,7 @@ export function prepareConflictResolution(repository: StoryMapperRepository, uni
   if (!conflict.cardId || !conflict.remoteId) throw new DomainError("validation", "Conflict is not linked to a card and remote issue.");
   const card = requireEntity(repository.getCardDetails(conflict.cardId), "Card");
   if (card.storyMapId !== input.storyMapId || conflict.status !== "open") throw new DomainError("conflict", "Sync conflict is not open in this Story map.");
-  if (!["title", "description", "status", "labels", "milestone"].includes(conflict.field)) throw new DomainError("validation", "Unsupported sync conflict field.");
+  if (!["title", "description", "status", "labels", "milestone", "parent"].includes(conflict.field)) throw new DomainError("validation", "Unsupported sync conflict field.");
   const link = requireEntity(repository.listRemoteWorkItemLinksForStoryMap(input.storyMapId).find((candidate) => candidate.externalRefId === conflict.externalRefId && candidate.connectionId === connection.id && candidate.remoteId === conflict.remoteId && candidate.cardId === card.id), "Remote work item link");
   const ref = repository.listExternalRefsForStoryMap(input.storyMapId).find((row) => row.id === link.externalRefId);
   const locator = ref && parseWorkItemLocator(ref.system, ref.externalId);
@@ -44,6 +44,17 @@ export function assertReviewedConflict(repository: StoryMapperRepository, contex
   }
   const linkedRef = repository.listExternalRefsForStoryMap(context.card.storyMapId).find((row) => row.id === context.link.externalRefId);
   if (!linkedRef || canonicalWorkItemId(context.connection.provider, remoteLocator) !== linkedRef.externalId || remote.remoteId !== context.link.remoteId) throw new DomainError("conflict", "Remote conflict identity changed during preparation.");
+  if (context.conflict.field === "parent") {
+    const localValue = parentConflictLocalValue(repository, context);
+    if (remote.parentEvidence === undefined) throw new DomainError("conflict", "Remote parent observation is incomplete.");
+    if (remote.parentEvidence) {
+      const parentLocator = parseWorkItemLocator(context.connection.provider, remote.parentEvidence.url);
+      if (!parentLocator || parentLocator.resource !== "issues" || parentLocator.number !== remote.parentEvidence.number || parentLocator.repo !== remoteLocator.repo || remote.parentEvidence.repository.toLowerCase() !== remoteLocator.repo.toLowerCase()) throw new DomainError("conflict", "Remote parent identity is invalid or belongs to another repository.");
+    }
+    const remoteValue = remote.parentEvidence?.number ?? null;
+    if (sameJsonValue(localValue, reviewed.localValue) && sameJsonValue(remoteValue, reviewed.remoteValue)) return;
+    throw new DomainError("conflict", "Sync conflict values changed. Review the current values and submit a new choice.");
+  }
   const current = changedFieldsForRemote(repository, context.connection, context.card, context.link, remote)[context.conflict.field];
   if (sameJsonValue(current.localValue, reviewed.localValue) && sameJsonValue(current.remoteValue, reviewed.remoteValue)) return;
   throw new DomainError("conflict", "Sync conflict values changed. Review the current values and submit a new choice.", undefined, [{ entity: "card", id: context.card.id, reason: "fingerprint", operationId: context.conflict.id, index: 0, current: { ...context.conflict, localValue: current.localValue, remoteValue: current.remoteValue }, message: "Review current local and remote values before choosing again." }]);
@@ -78,6 +89,7 @@ export function persistConflictResolution(repository: StoryMapperRepository<"tra
   const { conflict, connection, card, link } = context;
   if (input.resolution !== "local") throw new DomainError("validation", "Incoming conflict resolution requires a reviewed ChangeSet.");
   const updated = requireEntity(repository.getCardDetails(card.id), "Card");
+  if (conflict.field === "parent") throw new DomainError("validation", "Parent conflicts require a reviewed relationship plan.");
   const reviewedFields = changedFieldsForRemote(repository, connection, updated, link, remote);
   const chosenField = reviewedFields[conflict.field];
   if (!sameJsonValue(chosenField.localValue, chosenField.remoteValue)) throw new DomainError("conflict", "GitHub did not persist the chosen conflict field; the conflict remains open.");
@@ -88,8 +100,17 @@ export function persistConflictResolution(repository: StoryMapperRepository<"tra
   const baseline = remoteBaseline(withLiveRelease(repository, link), remote, reviewedFields, syncBaseline(repository, connection, updated, remote));
   const open = repository.listOpenSyncConflicts(card.storyMapId).some((candidate) => candidate.id !== conflict.id && candidate.externalRefId === conflict.externalRefId);
   const fields = changedFieldsForRemote(repository, connection, updated, { ...baseline, parentOverrideLocal: link.parentOverrideLocal }, remote);
-  const syncState = open ? "conflict" : Object.values(fields).some((field) => field.local) ? "unsynced" : Object.values(fields).some((field) => field.remote) ? "stale" : "synced";
+  const syncState = open ? "conflict" : link.parentOverrideLocal || Object.values(fields).some((field) => field.local) ? "unsynced" : Object.values(fields).some((field) => field.remote) ? "stale" : "synced";
   repository.bindRemoteWorkItemLink({ ...baseline, identity: remote.identity, remoteParentNumber: link.remoteParentNumber, syncState });
   const resolved = requireEntity(repository.resolveSyncConflict(conflict.id, input.resolution), "Sync conflict");
   return { conflict: resolved };
+}
+
+export function parentConflictLocalValue(repository: StoryMapperRepository, context: ConflictResolutionContext): number | null {
+  if (!context.card.parentId) return null;
+  const parent = repository.listRemoteWorkItemLinksForStoryMap(context.card.storyMapId).find((link) => link.cardId === context.card.parentId && link.connectionId === context.connection.id);
+  const ref = parent && repository.listExternalRefsForStoryMap(context.card.storyMapId).find((row) => row.id === parent.externalRefId);
+  const locator = ref && parseWorkItemLocator(ref.system, ref.externalId);
+  if (!parent || !locator || locator.resource !== "issues" || !workItemScopeMatches(locator, context.connection)) throw new DomainError("conflict", "Local parent has no valid Issue binding in this connection.");
+  return locator.number;
 }

@@ -15,6 +15,11 @@ vi.mock("@storymapper/server/services/credentials", () => ({ resolveProviderAuth
 
 type Fixture = ReturnType<typeof fixture>;
 
+function payloadOf(effect: import("@storymapper/contracts").RemotePushEffect) {
+  if (effect.kind === "relationship") throw new Error("Expected content effect");
+  return effect.payload;
+}
+
 function persistedIntent(data: Fixture, planId: string, payload: RemoteIssuePayload | RemoteMilestonePayload): void {
   expect(data.handle.current.$client.inTransaction).toBe(false);
   const items = data.repository.getRemotePushPlan(planId)!.execution.items;
@@ -53,7 +58,7 @@ it("reopens twelve reviewed Issues after the sixth remote effect loses its local
   expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)).toHaveLength(12);
   for (const effect of reviewed.plan.items) {
     expect(data.issues.filter((row) => row.body.includes(effect.marker))).toHaveLength(1);
-    expect(data.provider.writeRemoteIssue.mock.calls.find((call) => call[2].title === effect.payload.title)?.[2]).toEqual(effect.payload);
+    expect(data.provider.writeRemoteIssue.mock.calls.find((call) => call[2].title === payloadOf(effect).title)?.[2]).toEqual(payloadOf(effect));
   }
 });
 
@@ -157,7 +162,7 @@ it("reviews one shared Milestone and materializes its identity in each durable I
   const completed = await data.execute(reviewed.plan.id);
   expect(completed.execution.status).toBe("completed");
   expect(data.provider.writeMilestone).toHaveBeenCalledTimes(1);
-  expect(data.provider.writeMilestone.mock.calls[0]?.[2]).toEqual(reviewed.plan.items[0]!.payload);
+  expect(data.provider.writeMilestone.mock.calls[0]?.[2]).toEqual(payloadOf(reviewed.plan.items[0]!));
   expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id).filter((row) => row.releaseId === release.id)).toHaveLength(1);
 });
 
@@ -247,7 +252,7 @@ it("refuses a changed reviewed remote target and preserves an unrelated remote l
   data.issues[0]!.labels.push("status:todo", "unrelated-label");
   data.inputs.labels.push("unrelated-label");
   const reviewed = await data.prepare();
-  expect(reviewed.plan.items[0]!.payload).toMatchObject({ labels: expect.arrayContaining(["unrelated-label"]) });
+  expect(payloadOf(reviewed.plan.items[0]!)).toMatchObject({ labels: expect.arrayContaining(["unrelated-label"]) });
   expect(reviewed.plan.items[0]!.labelRemovals).not.toContain("unrelated-label");
   data.issues[0]!.title = "Changed remotely after review";
   const interrupted = await data.execute(reviewed.plan.id);
@@ -355,7 +360,7 @@ it("maps the explicit Card type when imported native type evidence differs", asy
   });
   const reviewed = await data.prepare();
   expect(reviewed.plan.blockers).toEqual([]);
-  expect(reviewed.plan.items[0]!.payload).toMatchObject({ issueType: "Task" });
+  expect(payloadOf(reviewed.plan.items[0]!)).toMatchObject({ issueType: "Task" });
   expect((await data.execute(reviewed.plan.id)).execution.status).toBe("completed");
   expect(data.provider.writeRemoteIssue.mock.calls.at(-1)?.[2].issueType).toBe("Task");
 });
@@ -371,8 +376,8 @@ it("reviews a closed new Issue as separate exact open-create and dependent close
   ]);
   expect((await data.execute(reviewed.plan.id)).execution.status).toBe("completed");
   expect(data.provider.writeRemoteIssue.mock.calls.map((call) => call[2])).toEqual([
-    reviewed.plan.items[0]!.payload,
-    { ...reviewed.plan.items[1]!.payload, remoteId: "1" }
+    payloadOf(reviewed.plan.items[0]!),
+    { ...payloadOf(reviewed.plan.items[1]!), remoteId: "1" }
   ]);
   expect(data.issues).toHaveLength(1);
   expect(data.issues[0]?.state).toBe("closed");
@@ -403,10 +408,10 @@ it("reviews Milestone rename, clearing, due date and closed state as an explicit
   data.unitOfWork.run(actor, ({ repository }) => repository.updateRelease(release.id, { name: "Renamed", goal: "", releaseDate: null, released: true }));
   const reviewed = await data.prepare([], release.id);
   expect(reviewed.plan.items).toMatchObject([{ kind: "milestone", action: "update", payload: { title: "Renamed", remoteId: "1", dueOn: null, state: "closed" } }]);
-  expect(reviewed.plan.items[0]!.payload).toHaveProperty("description", `<!-- ${reviewed.plan.items[0]!.marker} -->`);
+  expect(payloadOf(reviewed.plan.items[0]!)).toHaveProperty("description", `<!-- ${reviewed.plan.items[0]!.marker} -->`);
   expect((await data.execute(reviewed.plan.id)).execution.status).toBe("completed");
   expect(data.provider.writeMilestone).toHaveBeenCalledTimes(2);
-  expect(data.provider.writeMilestone.mock.calls[1]?.[2]).toEqual(reviewed.plan.items[0]!.payload);
+  expect(data.provider.writeMilestone.mock.calls[1]?.[2]).toEqual(payloadOf(reviewed.plan.items[0]!));
   expect(data.milestones).toHaveLength(1);
   expect(data.provider.writeRemoteIssue).not.toHaveBeenCalled();
 });
@@ -422,8 +427,8 @@ it("preserves labels outside the current mappings after configuration changes", 
   }));
   const reviewed = await data.prepare();
   expect(reviewed.plan.items[0]).toMatchObject({ labelAdditions: ["new-export-label"], labelRemovals: [] });
-  expect(reviewed.plan.items[0]!.payload).toMatchObject({ labels: expect.arrayContaining(["unrelated-label", "status:todo"]) });
-  expect(reviewed.plan.items[0]!.payload).not.toMatchObject({ labels: expect.arrayContaining(["new-status-label"]) });
+  expect(payloadOf(reviewed.plan.items[0]!)).toMatchObject({ labels: expect.arrayContaining(["unrelated-label", "status:todo"]) });
+  expect(payloadOf(reviewed.plan.items[0]!)).not.toMatchObject({ labels: expect.arrayContaining(["new-status-label"]) });
   expect((await data.execute(reviewed.plan.id)).execution.status).toBe("completed");
   expect(data.issues[0]!.labels).toContain("local-story-map");
   expect(data.issues[0]!.labels).toContain("status:todo");
@@ -535,7 +540,7 @@ it("preserves unmapped status-prefixed labels without claiming unrelated remote 
   data.inputs.labels.push("status:active", "customer-owned");
   const reviewed = await data.prepare();
   expect(reviewed.plan.items[0]).toMatchObject({ labelRemovals: [], labelAdditions: [] });
-  expect(reviewed.plan.items[0]!.payload).toMatchObject({ title: "Independent local title", labels: expect.arrayContaining(["status:todo", "customer-owned"]) });
+  expect(payloadOf(reviewed.plan.items[0]!)).toMatchObject({ title: "Independent local title", labels: expect.arrayContaining(["status:todo", "customer-owned"]) });
 });
 
 it.each([true, false])("updates only the chosen conflict baseline with another open conflict=%s", async (anotherConflict) => {

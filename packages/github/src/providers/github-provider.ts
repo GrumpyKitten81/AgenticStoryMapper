@@ -6,6 +6,7 @@ import { githubCliEnvironment } from "../auth/github-cli-environment";
 import type { CreatedRemoteWorkItem, ProviderAuth, RemoteItemRead, RemoteWorkItem, ValidateConnectionResult, WorkItemProvider } from "./work-item-provider";
 import { repositoryCapabilities, verificationFailure } from "./github-verification";
 import { completeGitHubList, findGitHubMarkerMatches, readGitHubPushInputs, writeGitHubIssue, writeGitHubMilestone, type GitHubApiRequest } from "./github-remote-push";
+import { resolveGitHubIssueDatabaseId, writeGitHubSubIssue } from "@storymapper/github/providers/github-sub-issues";
 
 import { readGitHubStatus, readGitHubStatusCatalog, discoverGitHubStatusProjects, type StatusGraphQL } from "@storymapper/github/providers/github-status";
 
@@ -14,6 +15,15 @@ const GITHUB_REPOSITORY = connectorConnectionSchema.pick({ owner: true, reposito
 const SANITIZED_PROVIDER_ERRORS = new WeakSet<DomainError>();
 
 export class GitHubProvider implements WorkItemProvider {
+  async resolveIssueDatabaseId(connection: ConnectorConnection, auth: ProviderAuth, number: number, reviewedUrl: string): Promise<number> {
+    assertGitHubRepository(connection);
+    return sanitizedRequest(() => resolveGitHubIssueDatabaseId(this.apiRequest(connection, auth), `repos/${repoSlug(connection)}`, number, reviewedUrl));
+  }
+
+  async writeSubIssue(connection: ConnectorConnection, auth: ProviderAuth, operation: "add" | "remove", parentNumber: number, childDatabaseId: number): Promise<unknown> {
+    assertGitHubRepository(connection);
+    return sanitizedRequest(() => writeGitHubSubIssue(this.apiRequest(connection, auth), `repos/${repoSlug(connection)}`, operation, parentNumber, childDatabaseId));
+  }
   async validateConnection(connection: ConnectorConnection, auth: ProviderAuth): Promise<ValidateConnectionResult> {
     assertGitHubRepository(connection);
     return this.validateConnectionRequest(connection, auth);
@@ -129,7 +139,7 @@ export class GitHubProvider implements WorkItemProvider {
   }
 
   private apiRequest(connection: ConnectorConnection, auth: ProviderAuth): GitHubApiRequest {
-    return async <T>(method: "GET" | "POST" | "PATCH", path: string, payload?: Record<string, unknown>): Promise<T> => {
+    return async <T>(method: "GET" | "POST" | "PATCH" | "DELETE", path: string, payload?: Record<string, unknown>): Promise<T> => {
       if (connection.authMode !== "github-cli") return (await createOctokit(auth).request(`${method} /${path}`, payload)).data as T;
       const args = ["api", "--method", method, path];
       for (const [key, value] of Object.entries(payload ?? {})) {
@@ -139,7 +149,8 @@ export class GitHubProvider implements WorkItemProvider {
         } else if (value === null || typeof value === "number" || typeof value === "boolean") args.push("-F", `${key}=${String(value)}`);
         else args.push("-f", `${key}=${String(value)}`);
       }
-      return JSON.parse((await runGh(args, auth)).stdout) as T;
+      const output = (await runGh(args, auth)).stdout;
+      return (output.trim() ? JSON.parse(output) : undefined) as T;
     };
   }
 
@@ -233,7 +244,7 @@ query($searchQuery: String!, $cursor: String, $iterationField: String!) {
         labels(first: 50) { pageInfo { hasNextPage } nodes { name } }
         milestone { number title dueOn description state }
         assignees(first: 5) { nodes { login } }
-        parent { number }
+        parent { number url repository { nameWithOwner } }
         projectItems(first: 5, includeArchived: false) {
           pageInfo { hasNextPage }
           nodes {
@@ -260,7 +271,7 @@ query($owner: String!, $repo: String!, $number: Int!, $iterationField: String!) 
       labels(first: 50) { pageInfo { hasNextPage } nodes { name } }
       milestone { number title dueOn description state }
       assignees(first: 5) { nodes { login } }
-      parent { number }
+      parent { number url repository { nameWithOwner } }
       projectItems(first: 5, includeArchived: false) {
         pageInfo { hasNextPage }
         nodes {
@@ -283,7 +294,7 @@ interface GraphQlIssue {
   labels?: { pageInfo?: { hasNextPage: boolean }; nodes: Array<{ name: string } | null> } | null;
   milestone?: { number?: number; title: string; dueOn: string | null; description?: string | null; state?: string } | null;
   assignees?: { nodes: Array<{ login: string } | null> } | null;
-  parent?: { number: number } | null;
+  parent?: { number: number; url?: string; repository?: { nameWithOwner?: string } } | null;
   projectItems?: { pageInfo?: { hasNextPage: boolean }; nodes: Array<{ fieldValueByName?: { title?: string; startDate?: string; duration?: number } | null } | null> } | null;
 }
 
@@ -322,6 +333,8 @@ function fromGraphQlIssue(issue: GraphQlIssue, requireCompleteIteration: boolean
     assignee: issue.assignees?.nodes?.find((node) => node?.login)?.login,
     issueType: issue.issueType?.name,
     parentNumber: issue.parent?.number,
+    parentEvidence: issue.parent === null ? null : issue.parent?.url && issue.parent.repository?.nameWithOwner
+      ? { number: issue.parent.number, url: issue.parent.url, repository: issue.parent.repository.nameWithOwner } : undefined,
     iteration: iterationValue?.title
       ? { title: iterationValue.title, startDate: iterationValue.startDate, duration: iterationValue.duration }
       : undefined

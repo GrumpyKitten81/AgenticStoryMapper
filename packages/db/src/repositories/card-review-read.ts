@@ -42,8 +42,9 @@ export function reviewInput(repository: Repository, cardId: string, plan?: Remot
   if (plan) {
     if (plan.projectId !== data.storyMap.projectId || plan.storyMapId !== card.storyMapId) throw new DomainError("validation", "Dry Run belongs to another Card scope.");
     input.outgoing = plan.items.flatMap((item) => item.kind === "issue" && item.entityId === cardId ? [{ title: item.payload.title, body: item.payload.body, issueType: item.payload.issueType }] : []);
-    if (!input.outgoing.length) throw new DomainError("validation", "Card has no outgoing Issue in this Dry Run.");
-    input.exportFingerprint = hashText(JSON.stringify({ mapping: (exportMapping ?? repository.getConnectorConnection(plan.connectionId)?.issueTypeMapping ?? []).filter((entry) => entry.cardType === card.cardType), mapName: data.storyMap.name, prefix: data.storyMap.cardKeyPrefix }));
+    const relationships = plan.items.filter((item) => item.kind === "relationship" && item.entityId === cardId);
+    if (!input.outgoing.length && !relationships.length) throw new DomainError("validation", "Card has no outgoing Issue or relationship in this Dry Run.");
+    input.exportFingerprint = hashText(JSON.stringify({ mapping: (exportMapping ?? repository.getConnectorConnection(plan.connectionId)?.issueTypeMapping ?? []).filter((entry) => entry.cardType === card.cardType), mapName: data.storyMap.name, prefix: data.storyMap.cardKeyPrefix, ...(relationships.length ? { relationships } : {}) }));
   }
   return input;
 }

@@ -18,7 +18,7 @@ vi.mock("@storymapper/server/services/credentials", () => ({ resolveProviderAuth
 let server: FastifyInstance;
 let directory: string;
 afterEach(async () => { await server?.close(); vi.clearAllMocks(); vi.unstubAllEnvs(); if (directory) rmSync(directory, { recursive: true, force: true }); });
-const remote = { remoteId: "17", remoteNumber: 17, url: "https://github.com/owner/repo/issues/17", title: "Transport ticket", body: "Reviewed Markdown", labels: [], state: "open", issueType: "Bug" };
+const remote = { remoteId: "17", remoteNumber: 17, url: "https://github.com/owner/repo/issues/17", title: "Transport ticket", parentEvidence: null, body: "Reviewed Markdown", labels: [], state: "open", issueType: "Bug" };
 
 async function fixture() {
   directory = mkdtempSync(join(tmpdir(), "github-ticket-transports-"));

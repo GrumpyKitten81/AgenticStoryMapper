@@ -63,7 +63,7 @@ async function inspectPersisted(databasePath: string, inspect: (repository: Stor
   try { inspect(new StoryMapperRepository(handle)); } finally { handle.current.$client.close(); }
 }
 
-const remote: RemoteWorkItem = { remoteId: "17", remoteNumber: 17, title: "SDK imported issue", body: "Reviewed remote description", state: "open", labels: [], url: "https://github.com/owner/repo/issues/17", milestoneDescription: "", milestoneState: "open", milestone: "SDK milestone", milestoneNumber: 3 };
+const remote: RemoteWorkItem = { remoteId: "17", remoteNumber: 17, title: "SDK imported issue", body: "Reviewed remote description", state: "open", labels: [], url: "https://github.com/owner/repo/issues/17", parentEvidence: null, milestoneDescription: "", milestoneState: "open", milestone: "SDK milestone", milestoneNumber: 3 };
 
 it("retains combined field/version disputes through human HTTP and actual SDK while unrelated fields remain editable", async () => {
   const f = await fixture();

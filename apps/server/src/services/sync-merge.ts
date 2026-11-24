@@ -129,7 +129,7 @@ export function remoteBaseline(link: RemoteWorkItemLink, remote: RemoteWorkItem,
     const keys = { title: ["titleHash"], description: ["bodyHash"], status: ["remoteState", "statusLabels"], labels: ["annotationLabels"], milestone: ["milestone", "iteration", "releaseMetadata"] } as const;
     for (const field of Object.keys(keys) as Array<keyof SyncFields>) if (fields[field].local && !fields[field].remote) for (const key of keys[field]) Object.assign(observed, { [key]: previous[key] });
   }
-  return { ...values, ...(baseline && acknowledged && observed ? { baseline: { pendingReleaseAssignment: fields.milestone.local ? link.baseline?.pendingReleaseAssignment ?? false : false, acknowledgedLocal: acknowledged, observedRemote: observed } } : {}), titleHash: !fields.title.local ? hashText(fields.title.remoteValue) : link.titleHash, bodyHash: !fields.description.local ? hashText(fields.description.remoteValue) : link.bodyHash, remoteState: !fields.status.local ? remote.state : link.remoteState, labels: !fields.status.local ? remote.labels : link.labels, milestone: !fields.milestone.local ? remote.milestone ?? null : link.milestone, remoteParentNumber: remote.parentNumber ?? null };
+  return { ...values, ...(baseline && acknowledged && observed ? { baseline: { pendingReleaseAssignment: fields.milestone.local ? link.baseline?.pendingReleaseAssignment ?? false : false, ...(link.baseline?.parentKnown === undefined ? {} : { parentKnown: link.baseline.parentKnown }), acknowledgedLocal: acknowledged, observedRemote: observed } } : {}), titleHash: !fields.title.local ? hashText(fields.title.remoteValue) : link.titleHash, bodyHash: !fields.description.local ? hashText(fields.description.remoteValue) : link.bodyHash, remoteState: !fields.status.local ? remote.state : link.remoteState, labels: !fields.status.local ? remote.labels : link.labels, milestone: !fields.milestone.local ? remote.milestone ?? null : link.milestone };
 }
 
 export function sameLabels(left: string[], right: string[]): boolean {
@@ -167,4 +167,13 @@ export function releaseSyncBaseline(releaseId: string, metadata: SyncReleaseMeta
 
 export function remoteMilestoneMetadata(remote: RemoteMilestone): SyncReleaseMetadata {
   return { name: remote.title, goal: stripGitHubMilestoneMarker(remote.description), released: remote.state === "closed", startDate: null, releaseDate: remote.dueOn?.slice(0, 10) ?? null };
+}
+
+export function observedParentNumber(connection: ConnectorConnection, remote: RemoteWorkItem): number | null {
+  if (remote.parentEvidence === undefined) throw new DomainError("conflict", "Remote parent observation is incomplete.");
+  if (remote.parentEvidence === null) return null;
+  const identity = remoteWorkItemIdentity(connection, remote);
+  const parent = parseWorkItemLocator(connection.provider, remote.parentEvidence.url);
+  if (!parent || parent.resource !== "issues" || parent.repo !== identity.repo || parent.number !== remote.parentEvidence.number || remote.parentEvidence.repository.toLowerCase() !== identity.repo.toLowerCase()) throw new DomainError("conflict", "Remote parent identity is invalid or belongs to another repository.");
+  return parent.number;
 }

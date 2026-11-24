@@ -22,7 +22,7 @@ function fixture() {
   vi.mocked(resolveProviderAuth).mockImplementation(async (connection) => ({ connection, auth: {} }));
   const f = remotePushFixture(2);
   f.unitOfWork.run(actor, ({ repository }) => repository.updateConnectorConnection(f.connection.id, { statusSource: source }));
-  for (const [index, card] of f.cards.entries()) f.issues.push({ remoteId: String(index + 1), remoteNumber: index + 1, url: `https://github.com/reviewed/fixture/issues/${index + 1}`, title: card.title, body: card.description, state: "open", labels: ["status:review"], issueType: "Task", statusCatalog: { source, options: [{ id: "review", name: "In Review", position: 0, color: "BLUE" }] }, statusEvidence: { source, issueState: "open", membership: "present", optionId: "review", name: "In Review" } });
+  for (const [index, card] of f.cards.entries()) f.issues.push({ remoteId: String(index + 1), remoteNumber: index + 1, url: `https://github.com/reviewed/fixture/issues/${index + 1}`, title: card.title, body: card.description, parentEvidence: null, state: "open", labels: ["status:review"], issueType: "Task", statusCatalog: { source, options: [{ id: "review", name: "In Review", position: 0, color: "BLUE" }] }, statusEvidence: { source, issueState: "open", membership: "present", optionId: "review", name: "In Review" } });
   const bind = (index: number, apply = true) => bindGitHubCard(f, actor, { cardId: f.cards[index]!.id, connectionId: f.connection.id, repo: "reviewed/fixture", url: f.issues[index]!.url, issueNumber: index + 1, apply });
   const sync = (apply = true) => syncWorkItems(f.repository, f.unitOfWork, actor, { storyMapId: f.map.id, connectionId: f.connection.id, cardIds: [f.cards[0]!.id], apply });
   return { ...f, bind, sync };

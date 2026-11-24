@@ -15,6 +15,11 @@ vi.mock("@storymapper/github", async (original) => ({ ...await original<typeof i
 vi.mock("@storymapper/server/services/credentials", () => ({ resolveProviderAuth: vi.fn(async (connection) => ({ connection, auth: {} })) }));
 
 type Fixture = ReturnType<typeof fixture>;
+
+function payloadOf(effect: import("@storymapper/contracts").RemotePushEffect) {
+  if (effect.kind === "relationship") throw new Error("Expected content effect");
+  return effect.payload;
+}
 const origin = "http://127.0.0.1:4317";
 const health = (data: Fixture) => data.unitOfWork.run(actor, ({ repository }) => buildWorkItemSyncHealthReport(repository.getWorkItemSyncHealthData(data.map.id), hashText));
 const stableSnapshot = (data: Fixture) => { const { productContext: _context, ...snapshot } = data.repository.getStoryMapSnapshot(data.map.id)!; return snapshot; };
@@ -48,7 +53,7 @@ it.each(["goal", "released", "clearing"] as const)("reviews and acknowledges a %
     const reviewed = await prepareRemotePush(data.repository, data.unitOfWork, actor, input);
     expect(reviewed.plan.blockers).toEqual([]);
     expect(reviewed.plan.items.map((row) => row.kind)).toEqual(releaseOnly ? ["milestone"] : ["milestone", "issue"]);
-    const payload = reviewed.plan.items[0]!.payload;
+    const payload = payloadOf(reviewed.plan.items[0]!);
     expect("description" in payload && stripGitHubMilestoneMarker(payload.description)).toBe(field === "released" ? "Initial goal" : patch.goal);
     expect("state" in payload && payload.state).toBe(field === "released" ? "closed" : "open");
     expect((await data.execute(reviewed.plan.id)).execution.status).toBe("completed");
@@ -102,7 +107,7 @@ it("blocks explicit Release-only Sync on changed remote metadata", async () => {
   expect(data.provider.writeMilestone).toHaveBeenCalledTimes(1);
 });
 
-it("preserves parent evidence when a partial successful write needs durable result adoption", async () => {
+it("preserves the acknowledged parent when a partial successful write needs durable result adoption", async () => {
   const data = fixture(1);
   await data.execute((await data.prepare()).plan.id);
   data.issues[0]!.parentNumber = 42;
@@ -122,7 +127,7 @@ it("preserves parent evidence when a partial successful write needs durable resu
   data.handle.current.$client.close();
   data.handle.current = openStoryMapperDb(data.path);
   expect((await data.execute(reviewed.plan.id, true)).execution.status).toBe("completed");
-  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.remoteParentNumber).toBe(42);
+  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.remoteParentNumber).toBeNull();
 });
 
 it("persists managed status and Annotation labels beyond the original bulk projection", async () => {
@@ -132,7 +137,7 @@ it("persists managed status and Annotation labels beyond the original bulk proje
     return repository.createAnnotation({ projectId: data.project.id, storyMapId: data.map.id, name: "managed-annotation" });
   });
   const labels = [...Array.from({ length: 100 }, (_, index) => `unmanaged-${index}`), "finished", "managed-annotation"];
-  data.issues.push({ remoteId: "42", remoteNumber: 42, title: "Imported", body: "Authored", state: "open", url: "https://github.com/reviewed/fixture/issues/42", labels });
+  data.issues.push({ remoteId: "42", remoteNumber: 42, title: "Imported", body: "Authored", parentEvidence: null, state: "open", url: "https://github.com/reviewed/fixture/issues/42", labels });
   await importWorkItems(data.repository, data.unitOfWork, actor, scope(data));
   const link = data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!;
   expect(data.repository.getCard(link.cardId!)!.status).toBe("Open");
@@ -232,7 +237,7 @@ it("refuses parent-only remote drift after review before the Issue write", async
   data.issues[0]!.parentNumber = 43;
   expect((await data.execute(reviewed.plan.id)).execution).toMatchObject({ status: "interrupted", items: [{ state: "failed", error: expect.stringContaining("Remote target changed after review") }] });
   expect(data.provider.writeRemoteIssue).toHaveBeenCalledTimes(1);
-  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.remoteParentNumber).toBe(42);
+  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.remoteParentNumber).toBeNull();
 });
 
 it.each(["description", "state"] as const)("refuses consumed Milestone evidence missing %s and accepts explicit empty/open metadata", async (field) => {
@@ -256,7 +261,7 @@ it("imports actual adapter label output atomically and refuses a later ambiguous
     return repository.createAnnotation({ projectId: data.project.id, storyMapId: data.map.id, name: "managed-annotation" });
   });
   const labels = [...Array.from({ length: 100 }, (_, index) => `unmanaged-${index}`), "finished", "managed-annotation"];
-  const remote = { number: 42, title: "Imported", body: "Authored", state: "OPEN", url: "https://github.com/reviewed/fixture/issues/42", labels: { pageInfo: { hasNextPage: true }, nodes: labels.slice(0, 50).map((name) => ({ name })) }, projectItems: { pageInfo: { hasNextPage: false }, nodes: [] } };
+  const remote = { number: 42, title: "Imported", body: "Authored", parent: null, state: "OPEN", url: "https://github.com/reviewed/fixture/issues/42", labels: { pageInfo: { hasNextPage: true }, nodes: labels.slice(0, 50).map((name) => ({ name })) }, projectItems: { pageInfo: { hasNextPage: false }, nodes: [] } };
   let nodes: object[] = [remote];
   const fetch = vi.fn(async (url: string) => {
     if (url === "https://api.github.com/graphql") return Response.json({ data: { search: { nodes, pageInfo: { hasNextPage: false, endCursor: null } } } });

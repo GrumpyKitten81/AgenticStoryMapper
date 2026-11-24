@@ -36,7 +36,7 @@ function fixture() {
     const map = repository.createStoryMap({ projectId: project.id, name: "Map" });
     const card = repository.createCard({ storyMapId: map.id, level: "activity", title: "Original title", description: "Original body" }, "human");
     const connection = repository.createConnectorConnection({ projectId: project.id, provider: "github", name: "GitHub", owner: "org", repository: "repo", authMode: "token", readOnly: false, statusMapping: [{ localStatus: "todo", remoteState: "open", labels: ["todo"] }, { localStatus: "active", remoteState: "open", labels: ["active"] }] });
-    const remote: RemoteWorkItem = { remoteId: "1", remoteNumber: 1, title: card.title, body: buildGitHubIssueBody(card, map.name, { origin: "http://127.0.0.1:4317", projectId: project.id }), labels: issueLabelsForCard(connection, card), state: "open", url: "https://github.com/org/repo/issues/1" };
+    const remote: RemoteWorkItem = { remoteId: "1", remoteNumber: 1, parentEvidence: null, title: card.title, body: buildGitHubIssueBody(card, map.name, { origin: "http://127.0.0.1:4317", projectId: project.id }), labels: issueLabelsForCard(connection, card), state: "open", url: "https://github.com/org/repo/issues/1" };
     const link = repository.bindRemoteWorkItemLink({ connectionId: connection.id, cardId: card.id, provider: "github", remoteId: remote.remoteId, url: remote.url, labels: remote.labels, remoteState: remote.state, titleHash: hashText(remote.title), bodyHash: hashText(stripGitHubIssueFooter(remote.body)), syncState: "synced" });
     return { project, map, card, connection, remote, link };
   });
@@ -184,7 +184,7 @@ it("applies an empty Agent Story Map pull when no Card is linked to the selected
 
 it("imports Agent stories Unscheduled under an Activity parent with assignee and General step", async () => {
   const data = fixture();
-  const remote = (number: number, title: string, labels: string[], extra: Partial<RemoteWorkItem> = {}): RemoteWorkItem => ({ remoteId: String(number), remoteNumber: number, title, labels, body: "Reviewed body", state: "open", url: `https://github.com/org/repo/issues/${number}`, ...extra });
+  const remote = (number: number, title: string, labels: string[], extra: Partial<RemoteWorkItem> = {}): RemoteWorkItem => ({ remoteId: String(number), remoteNumber: number, title, labels, body: "Reviewed body", state: "open", url: `https://github.com/org/repo/issues/${number}`, ...extra, parentEvidence: extra.parentNumber ? { number: extra.parentNumber, url: `https://github.com/org/repo/issues/${extra.parentNumber}`, repository: "org/repo" } : null });
   data.provider.listRemoteItems.mockResolvedValue([remote(10, "Epic", ["epic"]), remote(11, "First story", [], { parentNumber: 10, milestoneDescription: "", milestoneState: "open", milestone: "Shared milestone", milestoneNumber: 9, assignee: "octocat" }), remote(12, "Second story", [], { parentNumber: 10, milestoneDescription: "", milestoneState: "open", milestone: "Shared milestone", milestoneNumber: 9 })]);
   const result = changeSetCommandResponseSchema.parse(await importWorkItems(data.repository, data.unitOfWork, agent, { storyMapId: data.map.id, connectionId: data.connection.id }));
   expect(result.outcome).toBe("applied");
@@ -202,7 +202,7 @@ it("imports Agent stories Unscheduled under an Activity parent with assignee and
 it("does not parent Agent imports under a same-numbered Issue of another repository", async () => {
   const data = fixture();
   const other = data.unitOfWork.run(human, ({ repository }) => repository.createConnectorConnection({ projectId: data.project.id, provider: "github", name: "Other", owner: "org", repository: "other", authMode: "token", readOnly: false, statusMapping: [{ localStatus: "todo", remoteState: "open", labels: ["todo"] }] }));
-  data.provider.listRemoteItems.mockResolvedValue([{ remoteId: "50", remoteNumber: 50, title: "Foreign story", labels: [], body: "Reviewed body", state: "open", url: "https://github.com/org/other/issues/50", parentNumber: 1 }]);
+  data.provider.listRemoteItems.mockResolvedValue([{ remoteId: "50", remoteNumber: 50, title: "Foreign story", labels: [], body: "Reviewed body", state: "open", url: "https://github.com/org/other/issues/50", parentNumber: 1, parentEvidence: { number: 1, url: "https://github.com/org/other/issues/1", repository: "org/other" } }]);
   const result = changeSetCommandResponseSchema.parse(await importWorkItems(data.repository, data.unitOfWork, agent, { storyMapId: data.map.id, connectionId: other.id }));
   expect(result.outcome).toBe("applied");
   const imported = data.repository.listCards(data.map.id).find((card) => card.title === "Foreign story")!;

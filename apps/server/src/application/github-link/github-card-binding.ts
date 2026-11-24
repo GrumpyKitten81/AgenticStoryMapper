@@ -6,7 +6,7 @@ import { beginGitHubPreparation, githubIncomingCommand, revalidateGitHubPreparat
 import { resolveProviderAuth } from "@storymapper/server/services/credentials";
 import { githubStatusCardsBefore, incomingGitHubStatus } from "@storymapper/server/services/github-status";
 import { hashText } from "@storymapper/server/services/sync-values";
-import { syncBaseline } from "@storymapper/server/services/sync-merge";
+import { observedParentNumber, syncBaseline } from "@storymapper/server/services/sync-merge";
 
 export async function bindGitHubCard(deps: ApplicationDeps, actor: ActorContext, input: CreateGitHubLinkRequest & { connectionId: string }): Promise<IncomingGitHubCommandResponse> {
   const card = input.cardId ? deps.repository.getCard(input.cardId) : undefined;
@@ -28,7 +28,7 @@ export async function bindGitHubCard(deps: ApplicationDeps, actor: ActorContext,
   if (ref && ref.externalId !== locator.url) throw new DomainError("conflict", "Card already references a different GitHub Issue.");
   const externalRefId = ref?.id ?? randomUUID();
   const operations = ref ? [] : [changeOperationSchema.parse({ operationId: randomUUID(), entityId: externalRefId, baseVersion: card.version, op: "create", entity: "githubExternalRef", after: { entityType: "card", entityId: card.id, provider: "github", externalId: locator.url, scopeId: card.storyMapId } })];
-  operations.push(changeOperationSchema.parse({ operationId: randomUUID(), op: "set", entity: "remoteWorkItemLink", before: null, connectionBefore: context.connection, statusCatalog: status.statusCatalog, statusCardsBefore: githubStatusCardsBefore(deps.repository, context.connection, status, context.preparedStatusCatalogs, card), baseVersion: card.version, after: { externalRefId, connectionId: input.connectionId, titleHash: hashText(remote.title), bodyHash: hashText(remote.body), remoteState: remote.state, statusEvidence: status.statusEvidence, labels: remote.labels, issueType: remote.issueType, baseline: syncBaseline(deps.repository, context.connection, { ...card, status: status.status }, remote), syncState: "synced", parentOverrideLocal: false } }));
+  operations.push(changeOperationSchema.parse({ operationId: randomUUID(), op: "set", entity: "remoteWorkItemLink", before: null, connectionBefore: context.connection, statusCatalog: status.statusCatalog, statusCardsBefore: githubStatusCardsBefore(deps.repository, context.connection, status, context.preparedStatusCatalogs, card), baseVersion: card.version, after: { externalRefId, connectionId: input.connectionId, titleHash: hashText(remote.title), bodyHash: hashText(remote.body), remoteState: remote.state, statusEvidence: status.statusEvidence, labels: remote.labels, issueType: remote.issueType, ...(context.connection.provider === "github" ? { remoteParentNumber: observedParentNumber(context.connection, remote) } : remote.parentNumber === undefined ? {} : { remoteParentNumber: remote.parentNumber }), baseline: { ...syncBaseline(deps.repository, context.connection, { ...card, status: status.status }, remote), ...(context.connection.provider === "github" ? { parentKnown: true } : {}) }, syncState: "synced", parentOverrideLocal: false } }));
   operations.push(syncRunOperation(context, "import"));
   return githubIncomingCommand(context, operations, "Bind an existing Card to GitHub and adopt its status.", input.apply, (outcome) => [{ status: outcome === "applied" ? "succeeded" : "proposed", cardId: card.id, remoteId: remote.remoteId, url: locator.url }]);
 }

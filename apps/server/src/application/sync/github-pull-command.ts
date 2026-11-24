@@ -2,16 +2,33 @@ import { githubStatusCardsBefore, incomingGitHubStatus } from "@storymapper/serv
 import { remoteWorkItemSyncStateSchema } from "@storymapper/contracts";
 import { stripGitHubIssueFooter } from "@storymapper/core";
 import { randomUUID } from "node:crypto";
-import { changeOperationSchema, syncItemResultSchema, DomainError, remoteWorkItemIdentity, canonicalWorkItemId, type Card, type ChangeOperation, type IncomingGitHubCommandResponse, type SyncItemResult, type RemoteWorkItemLink, type SyncWorkItemsRequest, type UpdateCardRequest } from "@storymapper/contracts";
+import { changeOperationSchema, syncItemResultSchema, DomainError, remoteWorkItemIdentity, canonicalWorkItemId, parseWorkItemLocator, workItemScopeMatches, type Card, type ChangeOperation, type IncomingGitHubCommandResponse, type SyncItemResult, type RemoteWorkItemLink, type SyncWorkItemsRequest, type UpdateCardRequest } from "@storymapper/contracts";
 import { importReleaseSource } from "@storymapper/db";
 import { createWorkItemProvider, type RemoteWorkItem } from "@storymapper/github";
 import { githubIncomingCommand, revalidateGitHubPreparation, syncRunOperation, type GitHubPreparation } from "@storymapper/server/application/sync/github-command";
 import { asDomainError } from "@storymapper/server/application/errors";
 import { resolveProviderAuth } from "@storymapper/server/services/credentials";
-import { changedFieldsForRemote, conflictFields, remoteBaseline, syncBaseline, managedAnnotationMappings, remoteMilestoneLocator, remoteReleaseMetadata, iterationValue, milestoneTargetMetadata, releaseSyncBaseline, withLiveRelease, type SyncFields } from "@storymapper/server/services/sync-merge";
+import { changedFieldsForRemote, conflictFields, remoteBaseline, syncBaseline, managedAnnotationMappings, remoteMilestoneLocator, remoteReleaseMetadata, iterationValue, milestoneTargetMetadata, releaseSyncBaseline, withLiveRelease, observedParentNumber, type SyncFields } from "@storymapper/server/services/sync-merge";
 
 export interface IncomingReleaseState { releases: Map<string, string>; metadata: Map<string, string>; }
-export interface IncomingItem { card: Card; link: RemoteWorkItemLink; remote: RemoteWorkItem | undefined; fields?: SyncFields; openConflict?: boolean; }
+export interface IncomingItem { card: Card; link: RemoteWorkItemLink; remote: RemoteWorkItem | undefined; fields?: SyncFields; openConflict?: boolean; parentConflict?: { localValue: number | null; remoteValue: number | null }; }
+
+export function incomingParentConflict(context: GitHubPreparation, card: Card, link: RemoteWorkItemLink, remote: RemoteWorkItem): IncomingItem["parentConflict"] {
+  if (context.connection.provider !== "github" || remote.parentEvidence === undefined || !link.baseline?.parentKnown) return undefined;
+  const remoteValue = observedParentNumber(context.connection, remote);
+  if (link.remoteParentNumber === undefined) throw new DomainError("conflict", "Parent baseline is unavailable; review the binding before syncing hierarchy.");
+  if (remoteValue === link.remoteParentNumber) return undefined;
+  let localValue: number | null = null;
+  if (card.parentId) {
+    const repository = context.deps.repository;
+    const parent = repository.listRemoteWorkItemLinksForStoryMap(context.storyMapId).find((row) => row.cardId === card.parentId && row.connectionId === context.connection.id);
+    const ref = parent && repository.listExternalRefsForStoryMap(context.storyMapId).find((row) => row.id === parent.externalRefId);
+    const identity = ref && parseWorkItemLocator(ref.system, ref.externalId);
+    if (!parent?.remoteNumber || !identity || !workItemScopeMatches(identity, context.connection) || identity.number !== parent.remoteNumber) throw new DomainError("conflict", "The local parent has no valid Issue binding; review it before syncing hierarchy.");
+    localValue = parent.remoteNumber;
+  }
+  return localValue === remoteValue ? undefined : { localValue, remoteValue };
+}
 
 export async function prepareIncomingItems(context: GitHubPreparation, input: Omit<SyncWorkItemsRequest, "confirm">): Promise<IncomingItem[]> {
   const { deps, connection, storyMapId } = context;
@@ -37,7 +54,8 @@ export async function prepareIncomingItems(context: GitHubPreparation, input: Om
       }
       const fields = remote ? changedFieldsForRemote(deps.repository, connection, card, link, remote) : undefined;
       for (const field of Object.values(fields ?? {})) if (field.local && field.remote && JSON.stringify(field.localValue) === JSON.stringify(field.remoteValue)) { field.local = false; field.remote = false; }
-      items.push({ card, link, remote, openConflict: deps.repository.listOpenSyncConflicts(storyMapId).some((entry) => entry.cardId === card.id && entry.connectionId === connection.id && entry.remoteId === link.remoteId && entry.field !== "status"), ...(fields ? { fields } : {}) });
+      const parentConflict = remote ? incomingParentConflict(context, card, link, remote) : undefined;
+      items.push({ card, link, remote, openConflict: deps.repository.listOpenSyncConflicts(storyMapId).some((entry) => entry.cardId === card.id && entry.connectionId === connection.id && entry.remoteId === link.remoteId && entry.field !== "status"), ...(fields ? { fields } : {}), ...(parentConflict ? { parentConflict } : {}) });
       index++;
     }
   } catch (error) { throw incomingFailure(error, links, Math.min(index, links.length - 1)); }
@@ -80,11 +98,11 @@ function buildIncomingOperations(context: GitHubPreparation, items: IncomingItem
   seedIterationReleases(context, releases);
   const updatedReleases = pending?.metadata ?? new Map<string, string>();
   const add = (value: object): void => { operations.push(changeOperationSchema.parse({ operationId: randomUUID(), entityId: randomUUID(), ...value, ...("entity" in value && value.entity === "remoteWorkItemLink" && "after" in value ? { after: remoteWorkItemSyncStateSchema.omit({ id: true }).parse(value.after) } : {}) })); };
-  for (const { card, link, remote, fields } of items) {
+  for (const { card, link, remote, fields, parentConflict } of items) {
     const { id, ...baseline } = link;
     if (!remote || !fields) { add({ op: "set", entity: "remoteWorkItemLink", before: link, connectionBefore: context.connection, entityId: id, baseVersion: card.version, after: { ...withLiveRelease(deps.repository, baseline), syncState: "stale" } }); continue; }
     const open = deps.repository.listOpenSyncConflicts(storyMapId).filter((entry) => entry.externalRefId === link.externalRefId && entry.field !== "status");
-    if (!resolvingField) for (const conflict of open) { fields[conflict.field].local = true; fields[conflict.field].remote = false; }
+    if (!resolvingField) for (const conflict of open) { if (conflict.field === "parent") continue; fields[conflict.field].local = true; fields[conflict.field].remote = false; }
     const patch: UpdateCardRequest = {};
     if (fields.title.remote && !fields.title.local) patch.title = fields.title.remoteValue;
     if (fields.description.remote && !fields.description.local) patch.description = stripGitHubIssueFooter(remote.body);
@@ -98,6 +116,7 @@ function buildIncomingOperations(context: GitHubPreparation, items: IncomingItem
     incomingAnnotations(context, card, fields, add);
     const conflicts = resolvingField ? [] : conflictFields(fields);
     for (const field of conflicts.filter((field) => !open.some((entry) => entry.field === field))) add({ op: "create", entity: "syncConflict", after: { externalRefId: link.externalRefId, syncRunId: run.entityId, connectionId: connection.id, cardId: card.id, remoteId: link.remoteId, field, localValue: fields[field].localValue ?? null, remoteValue: fields[field].remoteValue ?? null, status: "open" } });
+    if (!resolvingField && parentConflict && !open.some((entry) => entry.field === "parent")) add({ op: "create", entity: "syncConflict", after: { externalRefId: link.externalRefId, syncRunId: run.entityId, connectionId: connection.id, cardId: card.id, remoteId: link.remoteId, field: "parent", ...parentConflict, status: "open" } });
     const projected = syncBaseline(deps.repository, connection, { ...card, ...changed }, remote);
     if (fields.milestone.remote && !fields.milestone.local) {
       projected.acknowledgedLocal.milestone = connection.releaseSource === "milestone" ? fields.milestone.remoteValue?.assignment ?? null : null;
@@ -107,15 +126,15 @@ function buildIncomingOperations(context: GitHubPreparation, items: IncomingItem
     }
     if (fields.labels.remote && !fields.labels.local) projected.acknowledgedLocal.annotationLabels = fields.labels.remoteValue;
     const { id: _id, ...updatedBaseline } = remoteBaseline(withLiveRelease(deps.repository, link), remote, fields, projected);
-    add({ op: "set", entity: "remoteWorkItemLink", before: link, connectionBefore: context.connection, entityId: id, baseVersion: card.version, statusCatalog: status.statusCatalog, statusCardsBefore: githubStatusCardsBefore(deps.repository, connection, status, context.preparedStatusCatalogs, card), after: { ...updatedBaseline, statusEvidence: status.statusEvidence, parentOverrideLocal: link.parentOverrideLocal, ...(resolvingField ? { remoteParentNumber: link.remoteParentNumber } : {}), syncState: conflicts.length || !resolvingField && open.length ? "conflict" : Object.values(fields).some((field) => field.local) ? "unsynced" : "synced" } });
+    add({ op: "set", entity: "remoteWorkItemLink", before: link, connectionBefore: context.connection, entityId: id, baseVersion: card.version, statusCatalog: status.statusCatalog, statusCardsBefore: githubStatusCardsBefore(deps.repository, connection, status, context.preparedStatusCatalogs, card), after: { ...updatedBaseline, statusEvidence: status.statusEvidence, parentOverrideLocal: link.parentOverrideLocal, syncState: conflicts.length || open.some((entry) => entry.field === "parent") || !resolvingField && (open.length || parentConflict) ? "conflict" : (link.parentOverrideLocal || Object.values(fields).some((field) => field.local)) ? "unsynced" : "synced" } });
   }
   return operations;
 }
 
 export function incomingResults(items: IncomingItem[], outcome: "applied" | "proposed"): SyncItemResult[] {
-  return items.map(({ card, link, remote, fields, openConflict }) => {
+  return items.map(({ card, link, remote, fields, openConflict, parentConflict }) => {
     if (!remote || !fields) return { status: "failed", cardId: card.id, remoteId: link.remoteId, url: link.url, code: "not_found", message: "Remote Issue is unavailable; its identity is retained.", details: { phase: "prepare" } };
-    const conflict = openConflict || conflictFields(fields).length > 0;
+    const conflict = openConflict || parentConflict || conflictFields(fields).length > 0;
     const changed = Object.values(fields).some((field) => field.remote && !field.local) || Boolean(remote.assignee && remote.assignee !== card.assignee);
     return { status: conflict ? "conflict" : changed ? outcome === "applied" ? "succeeded" : "proposed" : "unchanged", cardId: card.id, remoteId: link.remoteId, url: remote.url };
   });

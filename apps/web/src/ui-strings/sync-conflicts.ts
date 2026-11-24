@@ -12,7 +12,7 @@ export const syncConflictStrings = {
   empty: "Empty",
   lock: (field: string) => `${field} is locked by an open GitHub sync conflict. Review both values in GitHub Sync.`,
   releaseFields: { name: "Release name", goal: "Release goal", startDate: "Release start date", releaseDate: "Release date", released: "Released state" },
-  fields: { title: "Title", description: "Description", status: "Status", labels: "Managed Annotations", milestone: "Release" },
+  fields: { title: "Title", description: "Description", status: "Status", labels: "Managed Annotations", milestone: "Release", parent: "Parent" },
   drift: "The values changed after review. Review the current values before choosing again.",
   reviewCurrent: "Review current values",
   readOnly: "This conflict's connection is read-only. Enable writing on that connection to keep the local value.",

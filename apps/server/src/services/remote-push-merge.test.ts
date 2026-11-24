@@ -62,9 +62,10 @@ it("prepares independent local edits after unmapped-status import while refusing
   const data = fixture(0);
   data.unitOfWork.run(actor, ({ repository }) => repository.updateConnectorConnection(data.connection.id, { statusMapping: [{ localStatus: "todo", remoteState: "open", labels: ["todo"] }, { localStatus: "active", remoteState: "open", labels: ["active"] }] }));
   data.inputs.labels.push("todo", "active", "level:story");
-  data.issues.push({ remoteId: "42", remoteNumber: 42, url: "https://github.com/reviewed/fixture/issues/42", title: "Imported", body: "Authored", state: "open", labels: [], issueType: "Task" });
+  data.issues.push({ remoteId: "42", remoteNumber: 42, url: "https://github.com/reviewed/fixture/issues/42", title: "Imported", body: "Authored", parentEvidence: null, state: "open", labels: [], issueType: "Task" });
   await importWorkItems(data.repository, data.unitOfWork, actor, { storyMapId: data.map.id, connectionId: data.connection.id });
   const cardId = data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.cardId!;
+  bindImportedParent(data, cardId);
   const scope = { storyMapId: data.map.id, connectionId: data.connection.id, cardIds: [cardId] };
   for (let repeat = 0; repeat < 2; repeat++) expect((await syncWorkItems(data.repository, data.unitOfWork, actor, scope)).items).toMatchObject([{ status: "unchanged" }]);
   expect(() => data.unitOfWork.run(actor, ({ repository }) => repository.updateCard(cardId, { status: "active" }))).toThrow("GitHub owns this Card status");
@@ -73,7 +74,8 @@ it("prepares independent local edits after unmapped-status import while refusing
   const reviewed = await prepareRemotePush(data.repository, data.unitOfWork, actor, { ...scope, mode: "sync", localOrigin: "http://127.0.0.1:4317" });
   expect(reviewed.plan.blockers).toEqual([]);
   expect(reviewed.plan.items).toMatchObject([{ kind: "issue", payload: { title: "Independent local title", remoteState: "open" } }]);
-  expect(reviewed.plan.items[0]!.payload).not.toMatchObject({ labels: expect.arrayContaining(["active"]) });
+  const issue = reviewed.plan.items.find((item) => item.kind === "issue");
+  expect(issue?.payload).not.toMatchObject({ labels: expect.arrayContaining(["active"]) });
   expect(data.repository.listOpenSyncConflicts(data.map.id)).toEqual([]);
   expect(data.provider.writeRemoteIssue).not.toHaveBeenCalled();
   expect((await data.execute(reviewed.plan.id)).execution.status).toBe("completed");
@@ -87,9 +89,10 @@ it("retains inbound iteration evidence and local metadata divergence when an unr
   data.unitOfWork.run(actor, ({ repository }) => repository.updateConnectorConnection(data.connection.id, { releaseSource: "iteration" }));
   data.inputs.labels.push("level:story");
   const iteration = { title: "Iteration A", startDate: "2026-10-19", duration: 7 };
-  data.issues.push({ remoteId: "43", remoteNumber: 43, url: "https://github.com/reviewed/fixture/issues/43", title: "Imported", body: "Authored", state: "open", labels: [], issueType: "Task", iteration });
+  data.issues.push({ remoteId: "43", remoteNumber: 43, url: "https://github.com/reviewed/fixture/issues/43", title: "Imported", body: "Authored", parentEvidence: null, state: "open", labels: [], issueType: "Task", iteration });
   await importWorkItems(data.repository, data.unitOfWork, actor, { storyMapId: data.map.id, connectionId: data.connection.id });
   const cardId = data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.cardId!;
+  bindImportedParent(data, cardId);
   const scope = { storyMapId: data.map.id, connectionId: data.connection.id, cardIds: [cardId] };
   await syncWorkItems(data.repository, data.unitOfWork, actor, scope);
   const releaseId = data.repository.getCard(cardId)!.releaseId!;
@@ -165,25 +168,50 @@ it("pushes a locally resolved managed-label conflict through the confirmed plan 
   expect((await syncWorkItems(data.repository, data.unitOfWork, actor, scope)).items).toMatchObject([{ status: "unchanged" }]);
 });
 
-it("retains parent evidence through a partial Issue write, reopen and a later full-read removal", async () => {
+it("preserves the acknowledged parent through unrelated pulls", async () => {
   const data = fixture(1);
   await data.execute((await data.prepare()).plan.id);
-  data.issues[0]!.parentNumber = 42;
   const card = data.cards[0]!;
+  data.unitOfWork.run(actor, ({ repository }) => {
+    const link = repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!;
+    repository.upsertRemoteWorkItemLink({ ...link, remoteParentNumber: 42, parentOverrideLocal: true });
+  });
   const scope = { storyMapId: data.map.id, connectionId: data.connection.id, cardIds: [card.id] };
+  data.issues[0]!.parentNumber = 99;
   await syncWorkItems(data.repository, data.unitOfWork, actor, scope);
-  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.remoteParentNumber).toBe(42);
-  data.unitOfWork.run(actor, ({ repository }) => repository.updateCard(card.id, { title: "Title edit" }));
-  const plan = await data.prepare();
-  expect((await data.execute(plan.plan.id)).execution.status).toBe("completed");
-  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.remoteParentNumber).toBe(42);
-  data.handle.current.$client.close();
-  data.handle.current = openStoryMapperDb(data.path);
-  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.remoteParentNumber).toBe(42);
-  data.issues[0]!.parentNumber = 42;
-  await syncWorkItems(data.repository, data.unitOfWork, actor, scope);
-  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.remoteParentNumber).toBe(42);
+  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]).toMatchObject({ remoteParentNumber: 42, parentOverrideLocal: true, syncState: "unsynced" });
   delete data.issues[0]!.parentNumber;
   await syncWorkItems(data.repository, data.unitOfWork, actor, scope);
-  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.remoteParentNumber).toBeNull();
+  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]).toMatchObject({ remoteParentNumber: 42, parentOverrideLocal: true, syncState: "unsynced" });
+  data.handle.current.$client.close();
+  data.handle.current = openStoryMapperDb(data.path);
+  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]).toMatchObject({ remoteParentNumber: 42, parentOverrideLocal: true });
+});
+
+function bindImportedParent(data: ReturnType<typeof fixture>, cardId: string): void {
+  const parentId = data.repository.getCard(cardId)!.parentId!;
+  const url = "https://github.com/reviewed/fixture/issues/99";
+  data.issues.push({ remoteId: "99", remoteNumber: 99, url, title: "Parent", body: "", state: "open", labels: [], parentEvidence: null });
+  Object.assign(data.issues[0]!, { parentNumber: 99, parentEvidence: { number: 99, url, repository: "reviewed/fixture" } });
+  data.unitOfWork.run(actor, ({ repository }) => {
+    repository.bindRemoteWorkItemLink({ connectionId: data.connection.id, provider: "github", cardId: parentId, remoteId: "99", remoteNumber: 99, url, labels: [], remoteParentNumber: null });
+    const link = repository.listRemoteWorkItemLinksForStoryMap(data.map.id).find((row) => row.cardId === cardId)!;
+    repository.upsertRemoteWorkItemLink({ ...link, remoteParentNumber: 99 });
+  });
+}
+
+it("retains an open content conflict when another explicit push succeeds", async () => {
+  const data = fixture(1);
+  await data.execute((await data.prepare()).plan.id);
+  const card = data.cards[0]!;
+  data.unitOfWork.run(actor, ({ repository }) => {
+    const link = repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!;
+    const run = repository.createSyncRun({ storyMapId: data.map.id, connectionId: data.connection.id, mode: "sync", status: "applied" });
+    repository.createSyncConflict({ externalRefId: link.externalRefId, syncRunId: run.id, connectionId: data.connection.id, cardId: card.id, remoteId: link.remoteId, field: "description", localValue: "local", remoteValue: "remote" });
+  });
+  const plan = await data.prepare();
+  expect(plan.plan.blockers).toEqual([]);
+  expect((await data.execute(plan.plan.id)).execution.status).toBe("completed");
+  expect(data.repository.listOpenSyncConflicts(data.map.id)).toHaveLength(1);
+  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.syncState).toBe("conflict");
 });

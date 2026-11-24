@@ -155,7 +155,6 @@ export const workflowStatusSchema = z.object({
   color: z.string().optional()
 });
 export type WorkflowStatus = z.infer<typeof workflowStatusSchema>;
-
 export const cardDependencySchema = z.object({
   id: uuidSchema,
   cardId: uuidSchema,
@@ -641,7 +640,7 @@ export const syncConflictSchema = z.object({
   connectionId: uuidSchema,
   cardId: uuidSchema.optional(),
   remoteId: z.string().optional(),
-  field: z.enum(["title", "description", "status", "labels", "milestone"]),
+  field: z.enum(["title", "description", "status", "labels", "milestone", "parent"]),
   localValue: z.unknown().optional(),
   remoteValue: z.unknown().optional(),
   status: z.enum(["open", "resolved-local", "resolved-remote"]).default("open"),

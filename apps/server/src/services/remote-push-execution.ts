@@ -6,6 +6,7 @@ import { DatabaseHandle, type StoryMapperRepository, UnitOfWork } from "@storyma
 import { createWorkItemProvider, requireRemoteItem } from "@storymapper/github";
 import { prepareConflictResolution, persistConflictResolution } from "@storymapper/server/services/sync-conflict-resolution";
 import { remotePushEvidence, remoteMatchesIntent, type RemotePushResult } from "@storymapper/server/services/remote-push-evidence";
+import { executeRelationship } from "@storymapper/server/services/remote-push-relationship-execution";
 import { releaseSyncBaseline, syncBaseline, withLiveRelease, remoteMilestoneMetadata } from "@storymapper/server/services/sync-merge";
 import { resolveProviderAuth } from "@storymapper/server/services/credentials";
 import { assertReviewedInputs, assertRemotePushTarget, assertRemotePushMilestones, committedWrite, fingerprint, localPushFingerprint, pushContext, type RemotePushContext } from "@storymapper/server/services/remote-push-context";
@@ -69,9 +70,9 @@ async function executeOwnedPlan(repository: StoryMapperRepository, unitOfWork: U
       if (unitOfWork.handle.current !== context.database) throw error;
       const execution = repository.getRemotePushPlan(plan.id)!.execution;
       const evidence = execution.items.find((row) => row.itemId === item.id)!;
-      if (evidence.state === "intent") outcome(context, item.id, { state: "uncertain", error: failureMessage(error) });
+      if (evidence.state === "intent" || evidence.state === "uncertain") outcome(context, item.id, { state: "uncertain", error: failureMessage(error) });
       else if (evidence.state === "remote_succeeded") outcome(context, item.id, { state: "local_failed", error: failureMessage(error) });
-      else if (evidence.state !== "local_failed" && evidence.state !== "uncertain") outcome(context, item.id, { state: "failed", error: failureMessage(error) });
+      else if (evidence.state !== "local_failed") outcome(context, item.id, { state: "failed", error: failureMessage(error) });
       committedWrite(context, ({ repository }) => repository.finishRemotePushPlan(plan.id, "interrupted", context.runToken));
       return readRemotePush(repository, actor, plan.id);
     }
@@ -97,7 +98,8 @@ function failureMessage(error: unknown): string {
   return error instanceof DomainError ? error.message : "Remote effect interrupted. Review the retained evidence and explicitly resume to reconcile it.";
 }
 
-function exactPayload(context: ExecutionContext, item: RemotePushEffect): RemotePushEffect["payload"] {
+type ContentEffect = Exclude<RemotePushEffect, { kind: "relationship" }>;
+function exactPayload(context: ExecutionContext, item: ContentEffect): ContentEffect["payload"] {
   if (item.kind === "milestone") return item.payload;
   const payload = { ...item.payload };
   const execution = context.repository.getRemotePushPlan(context.plan.id)!.execution;
@@ -117,6 +119,7 @@ function exactPayload(context: ExecutionContext, item: RemotePushEffect): Remote
 }
 
 async function executeItem(context: ExecutionContext, item: RemotePushEffect, evidence: RemotePushItemExecution): Promise<void> {
+  if (item.kind === "relationship") return executeRelationship(context, item, evidence, () => assertExecution(context));
   const payload = exactPayload(context, item);
   if (["remote_succeeded", "local_failed"].includes(evidence.state) && evidence.remoteResult) {
     assertExactResult(payload, evidence.remoteResult as RemoteResult);
@@ -155,7 +158,7 @@ async function executeItem(context: ExecutionContext, item: RemotePushEffect, ev
   persistBinding(context, item, result);
 }
 
-function retainOriginalSuccess(context: ExecutionContext, item: RemotePushEffect, result: RemoteResult): void {
+function retainOriginalSuccess(context: ExecutionContext, item: ContentEffect, result: RemoteResult): void {
   if (!context.database.$client.open) return;
   const unitOfWork = new UnitOfWork(new DatabaseHandle(context.database));
   unitOfWork.run(context.actor, ({ repository }) => {
@@ -164,7 +167,7 @@ function retainOriginalSuccess(context: ExecutionContext, item: RemotePushEffect
   });
 }
 
-async function reconcileItem(context: ExecutionContext, item: RemotePushEffect, payload: RemotePushEffect["payload"], evidence: RemotePushItemExecution): Promise<RemoteResult | undefined> {
+async function reconcileItem(context: ExecutionContext, item: ContentEffect, payload: ContentEffect["payload"], evidence: RemotePushItemExecution): Promise<RemoteResult | undefined> {
   const matches = await context.provider.findRemoteItemsByMarker(context.auth.connection, context.auth.auth, item.kind, item.marker);
   assertExecution(context);
   if (!matches.complete || matches.matches.length > 1) throw new DomainError("conflict", "Marker lookup is incomplete or ambiguous; no write was sent.");
@@ -187,7 +190,7 @@ async function reconcileItem(context: ExecutionContext, item: RemotePushEffect, 
   return undefined;
 }
 
-async function detailedTarget(context: ExecutionContext, kind: RemotePushEffect["kind"], remoteId: string, item: RemotePushEffect): Promise<RemoteResult> {
+async function detailedTarget(context: ExecutionContext, kind: ContentEffect["kind"], remoteId: string, item: ContentEffect): Promise<RemoteResult> {
   let remote: RemoteResult | undefined;
   if (kind === "issue") remote = requireRemoteItem(await context.provider.getRemoteItem(context.auth.connection, context.auth.auth, remoteId));
   else {
@@ -212,7 +215,7 @@ function completedMilestones(context: ExecutionContext): RemoteMilestone[] {
   return [...context.plan.remoteEvidence.milestones.filter((row) => !completed.some((own) => own.remoteNumber === row.remoteNumber)), ...completed];
 }
 
-function reviewedBefore(context: ExecutionContext, item: RemotePushEffect): RemoteResult | undefined {
+function reviewedBefore(context: ExecutionContext, item: ContentEffect): RemoteResult | undefined {
   const execution = context.repository.getRemotePushPlan(context.plan.id)!.execution;
   const before = (item.kind === "issue" && item.issueItemId ? execution.items.find((row) => row.itemId === item.issueItemId)?.remoteResult : item.remoteBefore) as RemoteResult | undefined;
   if (!before || !("body" in before)) return before;
@@ -220,11 +223,11 @@ function reviewedBefore(context: ExecutionContext, item: RemotePushEffect): Remo
   return own ? { ...before, milestone: own.title, milestoneDueOn: own.dueOn ?? undefined, milestoneDescription: own.description, milestoneState: own.state } : before;
 }
 
-function assertExactResult(payload: RemotePushEffect["payload"], remote: RemoteResult): void {
+function assertExactResult(payload: ContentEffect["payload"], remote: RemoteResult): void {
   if (!remoteMatchesIntent(payload, remote)) throw new DomainError("conflict", "The remote effect returned different content than the exact reviewed intent. Its actual identity is retained; review a new Dry Run.", { remoteSucceeded: true, remoteId: remote.remoteId, url: remote.url });
 }
 
-function persistBinding(context: ExecutionContext, item: RemotePushEffect, remote: RemoteResult): void {
+function persistBinding(context: ExecutionContext, item: ContentEffect, remote: RemoteResult): void {
   assertExactResult(exactPayload(context, item), remote);
   assertExecution(context);
   const binding = context.repository.listRemoteWorkItemLinksForStoryMap(context.storyMapId).find((row) => row.connectionId === context.connection.id && (item.kind === "issue" ? row.cardId === item.entityId : row.releaseId === item.entityId));
@@ -237,6 +240,8 @@ function persistBinding(context: ExecutionContext, item: RemotePushEffect, remot
       const baseline = syncBaseline(repository, context.connection, card, remote);
       const previousLink = repository.listRemoteWorkItemLinksForStoryMap(card.storyMapId).find((row) => row.cardId === card.id && row.connectionId === context.connection.id);
       const previous = previousLink && withLiveRelease(repository, previousLink).baseline;
+      if (previous?.parentKnown !== undefined) baseline.parentKnown = previous.parentKnown;
+      else if (!previousLink && remote.parentEvidence === null) baseline.parentKnown = true;
       const before = item.remoteBefore as RemoteResult | null;
       const releaseExcluded = context.connection.releaseSource === "iteration" || !item.milestoneItemId && item.kind === "issue" && item.payload.milestoneNumber === (before && "body" in before ? before.milestoneNumber ?? null : null);
       if (releaseExcluded && previous) {
@@ -245,7 +250,8 @@ function persistBinding(context: ExecutionContext, item: RemotePushEffect, remot
         baseline.pendingReleaseAssignment = previous.pendingReleaseAssignment;
       }
       const localReleaseChanged = releaseExcluded && (baseline.acknowledgedLocal.releaseId !== card.releaseId || JSON.stringify(baseline.acknowledgedLocal.releaseMetadata) !== JSON.stringify(syncReleaseMetadata(context.connection, card.releaseId ? repository.getRelease(card.releaseId) : undefined)));
-      repository.bindRemoteWorkItemLink({ connectionId: context.connection.id, provider: context.connection.provider, cardId: item.entityId, remoteId: remote.remoteId, remoteNumber: remote.remoteNumber, url: remote.url, identity: remote.identity, titleHash: fingerprintText(item.payload.title), bodyHash: fingerprintText(stripGitHubIssueFooter(item.payload.body)), remoteState: remote.state, labels: remote.labels, milestone: remote.milestone, issueType: remote.issueType, managedLabels: item.managedLabels, baseline, remoteParentNumber: remote.parentNumber, syncState: localReleaseChanged ? "unsynced" : "synced" });
+      const openConflict = previousLink && repository.listOpenSyncConflicts(card.storyMapId).some((entry) => entry.externalRefId === previousLink.externalRefId);
+      repository.bindRemoteWorkItemLink({ connectionId: context.connection.id, provider: context.connection.provider, cardId: item.entityId, remoteId: remote.remoteId, remoteNumber: remote.remoteNumber, url: remote.url, identity: remote.identity, titleHash: fingerprintText(item.payload.title), bodyHash: fingerprintText(stripGitHubIssueFooter(item.payload.body)), remoteState: remote.state, labels: remote.labels, milestone: remote.milestone, issueType: remote.issueType, managedLabels: item.managedLabels, baseline, remoteParentNumber: previousLink ? previousLink.remoteParentNumber : remote.parentNumber, syncState: openConflict ? "conflict" : localReleaseChanged || previousLink?.parentOverrideLocal ? "unsynced" : "synced" });
     }
     else if (item.kind === "milestone" && "description" in remote) repository.bindRemoteWorkItemLink({ connectionId: context.connection.id, provider: context.connection.provider, releaseId: item.entityId, remoteId: remote.remoteId, remoteNumber: remote.remoteNumber, url: remote.url, identity: remote.identity, remoteState: remote.state, milestone: remote.title, labels: [], baseline: releaseSyncBaseline(item.entityId, syncReleaseMetadata(context.connection, repository.getRelease(item.entityId))!, canonicalWorkItemId(context.connection.provider, remoteWorkItemIdentity(context.connection, remote, "milestone")),  remoteMilestoneMetadata(remote)), syncState: "synced" });
     else throw new DomainError("validation", "Remote outcome does not match the reviewed effect kind.");
@@ -262,7 +268,7 @@ function recordReviewOverride(repository: StoryMapperRepository, unitOfWork: Uni
   if (actor.actorType !== "human" || override.confirmed !== true || !override.reason.trim()) throw new DomainError("protected", "A human must explicitly confirm the DoR override and supply a reason.");
   const { plan } = readRemotePush(repository, actor, planId);
   if (!repository.getCardReviews(plan.projectId, plan.storyMapId).settings.allowHumanPushOverride) throw new DomainError("protected", "Human DoR override is disabled.");
-  const ids = [...new Set(plan.items.flatMap((item) => item.kind === "issue" ? [item.entityId] : []))];
+  const ids = [...new Set(plan.items.flatMap((item) => item.kind !== "milestone" ? [item.entityId] : []))];
   const inputFingerprints = ids.map((id) => reviewFingerprint(reviewInput(repository, id, plan)));
   unitOfWork.run(actor, ({ repository: tx }) => tx.appendReviewRecord(plan.projectId, null, { kind: "override", value: { planId, inputFingerprints, reason: override.reason.trim(), actor } }));
 }

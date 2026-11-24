@@ -125,7 +125,7 @@ async function assertDisabledGitHubTransport(origin: string, surface: string, cl
 async function exerciseImportsAndPullsThroughTheActualStdioBridgeWith2(http: <Result>(path: string, method?: string, body?: unknown) => Promise<Result>, project: Project) {
   await http(`/api/settings/safety?projectId=${project.id}`, "PATCH", { github: true, agentMode: "propose" });
   vi.mocked(resolveProviderAuth).mockImplementation(async (value) => ({ connection: value, auth: {} }));
-  const remote = { remoteId: "7", remoteNumber: 7, url: "https://github.com/owner/repo/issues/7", title: "Imported via stdio", body: "Authored Markdown", state: "open", labels: [], milestoneDescription: "", milestoneState: "open", milestone: "Remote milestone", milestoneNumber: 9 };
+  const remote = { remoteId: "7", remoteNumber: 7, url: "https://github.com/owner/repo/issues/7", title: "Imported via stdio", body: "Authored Markdown", state: "open", labels: [], parentEvidence: null, milestoneDescription: "", milestoneState: "open", milestone: "Remote milestone", milestoneNumber: 9 };
   const provider = { ...reviewedPushProviderFixture(), validateConnection: vi.fn(), listRemoteItems: vi.fn(async () => [remote]), getRemoteItem: vi.fn(async () => ({ status: "found" as const, item: { ...remote, body: "Reviewed incoming Markdown" } })), createOrUpdateRemoteItem: vi.fn() };
   vi.mocked(createWorkItemProvider).mockReturnValue(provider);
   const configs = await http("/api/mcp/host-configs") as McpHostConfigsResponse;

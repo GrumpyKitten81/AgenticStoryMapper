@@ -16,7 +16,7 @@ import { createRoutes } from "@storymapper/server/http/routes";
 import { hashText, importWorkItems, issueLabelsForCard, planWorkItems, pullStoryMapWorkItems, pushWorkItems, syncWorkItems } from "@storymapper/server/services/work-item-sync";
 import { resolveProviderAuth } from "@storymapper/server/services/credentials";
 import { assertReviewedConflict, persistConflictResolution, prepareConflictResolution } from "@storymapper/server/services/sync-conflict-resolution";
-import { changedFieldsForRemote } from "@storymapper/server/services/sync-merge";
+import { changedFieldsForRemote, syncBaseline } from "@storymapper/server/services/sync-merge";
 
 vi.mock("@storymapper/github", async (original) => ({ ...await original<typeof import("@storymapper/github")>(), createWorkItemProvider: vi.fn() }));
 vi.mock("@storymapper/server/services/credentials", () => ({ resolveProviderAuth: vi.fn(async (connection) => ({ connection, auth: {} })), githubCredentialStatuses: vi.fn(async () => []) }));
@@ -78,54 +78,96 @@ async function replaceDatabase(data: Fixture) {
   return original;
 }
 
-describe("field-aware sync review regressions", () => {
-  registerAcceptsEquivalentMixedCaseProviderIdentityAndRefusesAnother();
+function registerProposesParentConflict() {
+  it("proposes a parent conflict without changing its acknowledged baseline", async () => {
+    const data = await fixture();
+    data.unitOfWork.run(ACTOR, ({ repository }) => {
+      const link = repository.listRemoteWorkItemLinksForStoryMap(data.map.id).find((row) => row.cardId === data.card.id)!;
+      repository.upsertRemoteWorkItemLink({ ...link, baseline: { ...syncBaseline(repository, data.connection, data.card, data.remote), parentKnown: true }, remoteParentNumber: null });
+    });
+    data.remote.parentEvidence = { number: 2, url: "https://github.com/owner/repo/issues/2", repository: "owner/repo" };
+    const response = await syncWorkItems(data.repository, data.unitOfWork, ACTOR, { ...input(data), apply: false });
+    expect(response.changeSet.operations).toEqual(expect.arrayContaining([expect.objectContaining({ entity: "syncConflict", op: "create", after: expect.objectContaining({ field: "parent", localValue: null, remoteValue: 2 }) })]));
+    expect(data.repository.listOpenSyncConflicts(data.map.id)).toEqual([]);
+    expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id).find((link) => link.cardId === data.card.id)?.remoteParentNumber).toBeNull();
+  });
+}
 
+function registerPreservesParentConflict() {
+  it("keeps an open parent conflict while resolving another field", async () => {
+    const data = await fixture();
+    const parent = conflict(data, "parent");
+    data.remote.title = "Remote title";
+    const title = conflict(data, "title");
+    const response = await resolve(data, title.id, "remote");
+    expect(response.statusCode, response.body).toBe(200);
+    expect(response.json().changeSet.operations).toEqual(expect.arrayContaining([expect.objectContaining({ entity: "remoteWorkItemLink", after: expect.objectContaining({ syncState: "conflict" }) })]));
+    expect(data.repository.getSyncConflict(parent.id)?.status).toBe("open");
+  });
+}
+
+function registerParentResolution() {
+  it("proposes a parent resolution and refuses incomplete parent observations", async () => {
+    const data = await fixture();
+    const entry = data.unitOfWork.run(ACTOR, ({ repository }) => {
+      const run = repository.createSyncRun({ storyMapId: data.map.id, connectionId: data.connection.id, mode: "sync", status: "applied" });
+      return repository.createSyncConflict({ externalRefId: data.links[0]!.externalRefId, syncRunId: run.id, connectionId: data.connection.id, cardId: data.card.id, remoteId: "1", field: "parent", localValue: null, remoteValue: null });
+    });
+    let response = await resolve(data, entry.id, "remote");
+    expect(response.statusCode).toBe(409);
+    data.remote.parentEvidence = null;
+    response = await resolve(data, entry.id, "remote");
+    expect(response.statusCode, response.body).toBe(200);
+    expect(response.json()).toMatchObject({ outcome: "proposed" });
+    expect(data.repository.getSyncConflict(entry.id)?.status).toBe("open");
+  });
+}
+
+describe("field-aware sync review regressions", () => {
+  registerProposesParentConflict();
+  registerPreservesParentConflict();
+  registerParentResolution();
+  it.each(["local", "remote"] as const)("keeps a pending parent change dirty after a %s content conflict resolution", async (resolution) => {
+    const data = await fixture();
+    data.unitOfWork.run(ACTOR, ({ repository }) => {
+      const link = repository.listRemoteWorkItemLinksForStoryMap(data.map.id).find((row) => row.cardId === data.card.id)!;
+      repository.upsertRemoteWorkItemLink({ ...link, parentOverrideLocal: true });
+    });
+    const entry = conflict(data, "title");
+    if (resolution === "local") {
+      const context = prepareConflictResolution(data.repository, data.unitOfWork, entry.id, { storyMapId: data.map.id, resolution });
+      data.unitOfWork.run(ACTOR, ({ repository }) => persistConflictResolution(repository, context, { storyMapId: data.map.id, resolution }, data.remote));
+    } else {
+      const response = await resolve(data, entry.id, resolution);
+      expect(response.statusCode, response.body).toBe(200);
+    }
+    expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id).find((row) => row.cardId === data.card.id)).toMatchObject({ parentOverrideLocal: true, syncState: "unsynced" });
+  });
+  registerAcceptsEquivalentMixedCaseProviderIdentityAndRefusesAnother();
   registerAcceptsReorderedReviewedSObjectsAndRefusesRealDrift();
   registerRefusesLocalClosureWhenAPersistedProviderResultDoes();
   registerRefusesARetargetedConflictConnectionBeforeCredentialsOrProvider();
-
   it("reports deleted local identities with retained Issue links using local evidence only", testReportsDeletedLocalIdentitiesWithRetainedIssueLinksUsingLocalEvidence);
-
   registerRequiresExplicitRenewedReviewAfterDisplayedSResolutionEvidence();
-
   registerRefusesAConflictDryRunRequestWithoutCapturedReview();
-
   it("preserves original conflict evidence and health through repeated pulls and convergence", testPreservesOriginalConflictEvidenceAndHealthThroughRepeatedPullsAndConvergence);
-
   registerRefusesImportPlanningBeforeCredentialsUnderS();
-
   registerRechecksSImportPlanningAfterSuspendedSWithS();
-
   registerRefusesConflictFetchAfterSRevocationDuringCredentials();
-
   registerRechecksSSDuringPendingSConflictFetch();
-
   registerKeepsOutgoingAgentConflictResolutionAsADryRun();
   registerDoesNotSendALocallyDivergentUpdateThroughIncoming();
-
   registerMergesLocalStatusWithIndependentRemoteLabelsWithoutRemoving();
-
   registerKeepsIdentityAndMarksTheLinkStaleWhenThe();
-
   registerAcceptsEquivalentConcurrentStatusSetsInADifferentOrder();
-
   it("resolves only the chosen remote field while another conflict remains open through refresh", testResolvesOnlyTheChosenRemoteFieldWhileAnotherConflictRemainsOpen);
-
   it("keeps an independent local title pending review after remote body resolution and refresh", testKeepsAnIndependentLocalTitlePendingReviewAfterRemoteBodyResolution);
-
   it("local resolution prepares the chosen field while preserving unrelated remote edits and open conflict", testLocalResolutionPreparesTheChosenFieldWhilePreservingUnrelatedRemoteEdits);
-
   it("returns 409 when the Card endpoint edits a Card during conflict fetch and preserves its newer version", testReturns409WhenTheCardEndpointEditsACardDuringConflict);
-
   registerRejectsSInvalidationDuringConflictFetch();
-
   registerLeavesAllLocalOutboundEditsPendingThroughAnIncoming();
-
   registerReportsSInvalidationOfAPreparedItemDuringThe();
-
   it("normalizes imported remote title prefixes without hiding a legitimate local prefix edit", testNormalizesImportedRemoteTitlePrefixesWithoutHidingALegitimateLocalPrefix);
-
   registerReturnsItemsFromPullWithoutAResultsAlias();
 });
 
@@ -578,7 +620,7 @@ async function testReturns409WhenTheCardEndpointEditsACardDuringConflict() {
 
 async function testNormalizesImportedRemoteTitlePrefixesWithoutHidingALegitimateLocalPrefix() {
   const data = await fixture();
-  const imported = { ...data.remote, remoteId: "99", remoteNumber: 99, title: "EXT-99: Imported title", labels: ["ready", "level:activity"], url: "https://github.com/owner/repo/issues/99" };
+  const imported = { ...data.remote, remoteId: "99", remoteNumber: 99, parentEvidence: null, title: "EXT-99: Imported title", labels: ["ready", "level:activity"], url: "https://github.com/owner/repo/issues/99" };
   data.provider.listRemoteItems.mockResolvedValue([imported]);
   const importedResult = await importWorkItems(data.repository, data.unitOfWork, ACTOR, input(data));
   const card = data.repository.getCardDetails(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id).filter((link) => link.remoteId === "99")[0]!.cardId!)!;

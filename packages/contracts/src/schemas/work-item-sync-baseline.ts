@@ -22,6 +22,7 @@ export const syncFieldValuesSchema = z.object({
 }).strict();
 export const workItemSyncBaselineSchema = z.object({
   pendingReleaseAssignment: z.boolean(),
+  parentKnown: z.boolean().optional(),
   acknowledgedLocal: syncFieldValuesSchema.extend({ releaseId: z.string().min(1).nullable() }),
   observedRemote: syncFieldValuesSchema
 }).strict();

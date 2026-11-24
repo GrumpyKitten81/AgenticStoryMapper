@@ -394,6 +394,7 @@ it.each(["scope", "canonical-url", "requested-id", "marker", "milestone"] as con
 it.each(["scope", "canonical-url", "requested-id", "marker"] as const)("refuses invalid %s identity after human confirmation before any write", async (surface) => {
   const data = fixture();
   const cardId = await importOne(data);
+  bindImportedParent(data, cardId);
   const reviewed = await prepareRemotePush(data.repository, data.unitOfWork, human, { ...request(data), cardIds: [cardId], mode: "push", localOrigin: data.localOrigin() });
   expect(reviewed.plan.blockers).toEqual([]);
   const invalid = structuredClone(data.issues[0]!);
@@ -427,6 +428,7 @@ it("refuses foreign Milestone evidence at confirmation before any dependent effe
 it.each(["preparation", "confirmation"] as const)("refuses a valid Issue with a foreign nested Milestone identity during %s", async (phase) => {
   const data = fixture();
   const cardId = await importOne(data);
+  bindImportedParent(data, cardId);
   const invalid = structuredClone(data.issues[0]!);
   const milestone = extensionMilestone(); milestone.identity!.repository = "foreign";
   Object.assign(invalid, { milestoneDescription: milestone.description, milestoneState: milestone.state, milestone: milestone.title, milestoneNumber: milestone.remoteNumber, milestoneIdentity: milestone.identity });
@@ -596,3 +598,15 @@ it("rejects otherwise valid portable archives containing an alternate canonical 
     expect(() => validateArchiveDatabase(snapshot.snapshotPath, manifest)).toThrow("unredacted GitHub external references");
   } finally { portable.$client.close(); rmSync(snapshot.snapshotPath); }
 });
+
+function bindImportedParent(data: Fixture, cardId: string): void {
+  const parentId = data.repository.getCard(cardId)!.parentId!;
+  const parent = extensionIssue(99);
+  data.issues.push(parent);
+  Object.assign(data.issues[0]!, { parentNumber: 99, parentEvidence: { number: 99, url: parent.url, repository: "extension/fixture" } });
+  data.unitOfWork.run(human, ({ repository }) => {
+    repository.bindRemoteWorkItemLink({ connectionId: data.connection.id, provider: data.connection.provider, cardId: parentId, remoteId: parent.remoteId, remoteNumber: 99, url: parent.url, identity: parent.identity, labels: [], remoteParentNumber: null });
+    const link = repository.listRemoteWorkItemLinksForStoryMap(data.map.id).find((row) => row.cardId === cardId)!;
+    repository.upsertRemoteWorkItemLink({ ...link, remoteParentNumber: 99 });
+  });
+}

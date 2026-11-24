@@ -10,8 +10,17 @@ export function syncResolutionAgrees(snapshot: OperationSnapshot, supply: Operat
   const card = snapshot.cards.find((row) => row.id === conflict.cardId);
   const connection = snapshot.connections.find((row) => row.id === conflict.connectionId);
   const baseline = link.baseline;
-  if (!card || !connection || !baseline) return false;
+  if (!card || !connection) return false;
   const chosen = resolution === "local" ? reviewed.localValue : reviewed.remoteValue;
+  if (conflict.field === "parent") {
+    const parent = card.parentId ? snapshot.remoteWorkItemLinks.find((row) => row.cardId === card.parentId && row.connectionId === connection.id) : undefined;
+    const ref = parent && snapshot.externalRefs.find((row) => row.id === parent.externalRefId);
+    const locator = ref && parseWorkItemLocator(ref.system, ref.externalId);
+    if (card.parentId && (!locator || locator.resource !== "issues" || !workItemScopeMatches(locator, connection))) return false;
+    const actual = locator?.number ?? null;
+    return same(actual, chosen) && same(link.remoteParentNumber, chosen) && !link.parentOverrideLocal;
+  }
+  if (!baseline) return false;
   const acknowledged = baseline.acknowledgedLocal;
   const observed = baseline.observedRemote;
   if (conflict.field === "title" || conflict.field === "description") {

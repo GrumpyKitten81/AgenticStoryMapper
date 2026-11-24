@@ -1,7 +1,7 @@
 import type { RemotePushEffect, RemotePushItemExecution } from "@storymapper/contracts";
 
-const actions = { create: "Create", update: "Update" } satisfies Record<RemotePushEffect["action"], string>;
-const kinds = { issue: "Issue", milestone: "Milestone" } satisfies Record<RemotePushEffect["kind"], string>;
+const actions = { create: "Create", update: "Update", add: "Add", remove: "Remove", acknowledge: "Acknowledge" } satisfies Record<RemotePushEffect["action"], string>;
+const kinds = { issue: "Issue", milestone: "Milestone", relationship: "Parent relationship" } satisfies Record<RemotePushEffect["kind"], string>;
 
 export const remotePushStrings = {
   title: "GitHub Dry Run",
@@ -20,6 +20,16 @@ export const remotePushStrings = {
   outboundMapping: "Outbound native Issue types",
   mappingHint: "Enter repository Issue type names for each explicit Card type. Existing connections require explicit remapping. Dry Run verifies availability and permissions.",
   reviewRequired: "Review every effect before confirming this plan.",
+  noParent: "No parent",
+  createdIssue: "Issue created by this plan",
+  createdIssueReference: (cardKey: string, cardTitle: string): string => `${cardKey} ${cardTitle} (Issue created by this plan)`,
+  existingIssueReference: (remoteNumber: number): string => `#${remoteNumber}`,
+  child: "Child Issue",
+  labelSeparator: ": ",
+  transitionArrow: " → ",
+  parentTransition: "Parent transition",
+  parentChange: "Parent change",
+  acknowledgeParent: "The current GitHub parent already matches. Confirmation updates the local baseline without a GitHub write.",
   open: "Open remote item",
   completed: "All reviewed remote effects completed.",
   interrupted: "Execution stopped. Earlier remote effects remain applied; explicitly resume to reconcile unfinished effects.",

@@ -16,7 +16,7 @@ export function getCardPushReadiness(this: Repository, plan: RemotePushPlan): No
   const execution = this.getRemotePushPlan(plan.id)?.execution;
   const capture = captureReviewContext(this, this.getStoryMapSnapshot(plan.storyMapId)!, plan);
   const mapping = this.getConnectorConnection(plan.connectionId)?.issueTypeMapping;
-  const cardIds = [...new Set(plan.items.flatMap((item) => item.kind === "issue" ? [item.entityId] : []))];
+  const cardIds = [...new Set(plan.items.flatMap((item) => item.kind !== "milestone" ? [item.entityId] : []))];
   const fingerprints = cardIds.map((id) => reviewFingerprint(reviewInput(this, id, plan, capture.snapshot, mapping, capture)));
   const overridden = settings.allowHumanPushOverride && readReviewRecords(this, plan.projectId).some(({ payload }) => payload.kind === "override" && payload.value.actor.actorType === "human" && payload.value.planId === plan.id && JSON.stringify(payload.value.inputFingerprints) === JSON.stringify(fingerprints));
   const cards = cardIds.map((cardId, index) => {
@@ -26,7 +26,7 @@ export function getCardPushReadiness(this: Repository, plan: RemotePushPlan): No
     const request = report ? matching.find((row) => row.id === report.requestId) : matching[0];
     const effective = report ? effectiveReviewFindings(report, decisions) : [];
     const summary: CardReviewSummary = { cardId, state: report ? report.status === "error" ? "error" : "reviewed" : request ? running.has(request.id) ? "running" : "pending" : "missing", unresolvedCount: effective.length, highestSeverity: effective.some((row) => row.severity === "blocker") ? "blocker" : effective.length ? "warning" : null, ignoredFindingIds: report?.results.filter((row) => ["finding", "unknown"].includes(row.outcome) && !effective.includes(row)).map((row) => row.id) ?? [], ...(request ? { requestId: request.id } : {}), ...(report ? { reportId: report.id } : {}) };
-    const completed = plan.items.filter((item) => item.kind === "issue" && item.entityId === cardId).every((item) => execution?.items.some((result) => result.itemId === item.id && result.state === "succeeded"));
+    const completed = plan.items.filter((item) => item.kind !== "milestone" && item.entityId === cardId).every((item) => execution?.items.some((result) => result.itemId === item.id && result.state === "succeeded"));
     return { cardId, key: capture.snapshot.cards.find((card) => card.id === cardId)!.key, ready: completed || report?.status === "success" && !effective.some((result) => result.severity === "blocker" || result.outcome === "unknown"), summary };
   });
   const required = plan.actor.actorType === "agent" && settings.reviewBeforeAgentPush;

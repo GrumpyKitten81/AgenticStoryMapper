@@ -47,10 +47,12 @@ export function localPushFingerprint(repository: StoryMapperRepository<"root" | 
   const cards = snapshot.cards.filter((card) => (!selection.cardIds || selection.cardIds.includes(card.id)) && (selection.releaseId === undefined || card.releaseId === selection.releaseId));
   const releases = snapshot.releases.filter((release) => release.id === selection.releaseId || cards.some((card) => card.releaseId === release.id));
   const ids = new Set(cards.map((card) => card.id));
+  for (const card of cards) if (card.parentId) ids.add(card.parentId);
+  const referencedCards = snapshot.cards.filter((card) => ids.has(card.id));
   const releaseIds = new Set(releases.map((release) => release.id));
   const externalRefs = snapshot.externalRefs.filter((row) => isWorkItemProvider(row.system) && (row.entityType === "card" ? ids.has(row.entityId) : row.entityType === "release" && releaseIds.has(row.entityId)));
   const memberships = snapshot.remoteWorkItemLinks.filter((row) => row.cardId && ids.has(row.cardId) || row.releaseId && releaseIds.has(row.releaseId));
-  return fingerprint({ map: snapshot.storyMap, cards, releases, externalRefs, memberships, annotations: snapshot.annotations, assignments: snapshot.cardAnnotations.filter((row) => ids.has(row.cardId)), conflicts: repository.listOpenSyncConflicts(storyMapId).filter((row) => row.cardId && ids.has(row.cardId)) });
+  return fingerprint({ map: snapshot.storyMap, cards: referencedCards, releases, externalRefs, memberships, annotations: snapshot.annotations, assignments: snapshot.cardAnnotations.filter((row) => ids.has(row.cardId)), conflicts: repository.listOpenSyncConflicts(storyMapId).filter((row) => row.cardId && ids.has(row.cardId)) });
 }
 
 export function assertReviewedInputs(context: RemotePushContext, plan: RemotePushPlan, expectedLocalFingerprint = plan.localFingerprint): void {

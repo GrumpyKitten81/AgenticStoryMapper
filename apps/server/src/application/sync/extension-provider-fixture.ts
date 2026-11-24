@@ -11,7 +11,7 @@ export function extensionIdentity(resource: WorkItemIdentity["resource"], number
 
 export function extensionIssue(number = 1, scope?: Pick<WorkItemIdentity, "owner" | "repository">): RemoteWorkItem {
   const identity = extensionIdentity("issues", number, scope);
-  return { identity, remoteId: identity.remoteId, remoteNumber: number, url: identity.url, title: `Extension item ${number}`, body: `Extension body ${number}`, labels: ["level:activity"], state: "open", issueType: "Task" };
+  return { identity, remoteId: identity.remoteId, remoteNumber: number, url: identity.url, title: `Extension item ${number}`, body: `Extension body ${number}`, parentEvidence: null, labels: ["level:activity"], state: "open", issueType: "Task" };
 }
 
 export function extensionMilestone(number = 1): RemoteMilestone {
@@ -37,7 +37,7 @@ export function extensionProviderFixture() {
       const existing = issues.find((row) => row.remoteId === payload.remoteId);
       const identity = existing?.identity ?? extensionIdentity("issues", issues.length + 1);
       const milestone = milestones.find((row) => row.remoteNumber === payload.milestoneNumber);
-      const item: RemoteWorkItem = { identity, remoteId: identity.remoteId, remoteNumber: identity.number, url: identity.url, title: payload.title, body: payload.body, labels: [...payload.labels], issueType: payload.issueType, state: payload.remoteState, ...(milestone ? { milestoneIdentity: milestone.identity, milestone: milestone.title, milestoneNumber: milestone.remoteNumber, milestoneDueOn: milestone.dueOn ?? undefined, milestoneDescription: milestone.description, milestoneState: milestone.state } : {}) };
+      const item: RemoteWorkItem = { identity, remoteId: identity.remoteId, remoteNumber: identity.number, url: identity.url, title: payload.title, body: payload.body, parentEvidence: null, labels: [...payload.labels], issueType: payload.issueType, state: payload.remoteState, ...(milestone ? { milestoneIdentity: milestone.identity, milestone: milestone.title, milestoneNumber: milestone.remoteNumber, milestoneDueOn: milestone.dueOn ?? undefined, milestoneDescription: milestone.description, milestoneState: milestone.state } : {}) };
       const index = issues.findIndex((row) => row.remoteId === item.remoteId);
       if (index < 0) issues.push(item); else issues[index] = item;
       return structuredClone(item);

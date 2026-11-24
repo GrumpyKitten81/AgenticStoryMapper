@@ -70,7 +70,7 @@ async function exerciseFR15PreservesSavedRichEditorMarkdownThroughStorage(body: 
   });
   expect(planned.statusCode).toBe(200);
   const plan = planned.json<{ plan: RemotePushPlan; }>().plan;
-  expect(plan.blockers).toEqual([]);
+  expect(plan.blockers).toEqual([expect.stringContaining("has no Issue binding or selected creation")]);
   const issues = plan.items.filter((item) => item.kind === "issue");
   expect(issues).toHaveLength(1);
   expect(issues[0]?.entityId).toBe(card.id);

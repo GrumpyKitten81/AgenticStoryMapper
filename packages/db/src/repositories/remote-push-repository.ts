@@ -32,7 +32,7 @@ export function saveRemotePushPlan(this: StoryMapperRepository<"transaction">, i
   this.db.insert(remotePushExecutions).values({ planId: plan.id, status: execution.status, executionSchemaVersion: 1, executionJson: JSON.stringify(execution) }).run();
   this.logActivity(plan.projectId, "remotePushPlan.created", "remotePushPlan", plan.id, undefined, plan);
   if (plan.actor.actorType === "agent" && this.getCardReviewSettings(plan.projectId).reviewBeforeAgentPush) {
-    this.requestCardReviews(plan.projectId, plan.items.flatMap((item) => item.kind === "issue" ? [item.entityId] : []), "push", plan.id);
+    this.requestCardReviews(plan.projectId, plan.items.flatMap((item) => item.kind !== "milestone" ? [item.entityId] : []), "push", plan.id);
   }
   return { plan, execution };
 }
@@ -75,7 +75,7 @@ export function captureRemotePushReconciliation(this: StoryMapperRepository<"tra
   const overlapping = this.db.select().from(remotePushPlans).where(eq(remotePushPlans.projectId, plan.projectId)).all()
     .filter((row) => row.id !== planId).sort((a, b) => a.id.localeCompare(b.id)).flatMap((row) => {
       const other = requiredPlan(this, row.id);
-      const items = other.plan.items.filter((entry) => entry.entityId === effect.entityId && entry.kind === effect.kind)
+      const items = other.plan.items.filter((entry) => overlaps(entry, effect))
         .map((entry) => other.execution.items.find((item) => item.itemId === entry.id)!);
       return items.length ? [{ planId: row.id, epoch: other.plan.epoch, status: other.execution.status, runToken: other.execution.runToken, items }] : [];
     });
@@ -101,11 +101,11 @@ function assertNoOverlappingIntent(repository: StoryMapperRepository<"transactio
   for (const row of repository.db.select().from(remotePushPlans).where(eq(remotePushPlans.projectId, plan.projectId)).all()) {
     if (row.id === planId) continue;
     const other = requiredPlan(repository, row.id);
-    for (const overlapping of other.plan.items.filter((entry) => entry.entityId === effect.entityId && entry.kind === effect.kind)) {
+    for (const overlapping of other.plan.items.filter((entry) => overlaps(entry, effect))) {
       const evidence = other.execution.items.find((item) => item.itemId === overlapping.id)!;
       if (!["intent", "uncertain", "remote_succeeded", "local_failed"].includes(evidence.state)) continue;
       const active = other.plan.epoch === plan.epoch && other.execution.status === "running";
-      if (!active && fresh && reconciliation?.complete) {
+      if (!active && fresh && reconciliation?.complete && effect.kind !== "relationship" && overlapping.kind !== "relationship" && (!payload || !("operation" in payload))) {
         if (reconciliation.remoteId && payload?.remoteId === reconciliation.remoteId && (!evidence.remoteId || evidence.remoteId === reconciliation.remoteId)) continue;
         if (!reconciliation.remoteId && !payload?.remoteId && ["intent", "uncertain"].includes(evidence.state)) {
           const reconciled = { ...evidence, state: "failed" as const, error: `Complete marker lookup in plan ${planId} proved this effect absent.`, completedAt: new Date().toISOString() };
@@ -117,6 +117,10 @@ function assertNoOverlappingIntent(repository: StoryMapperRepository<"transactio
       throw new DomainError("conflict", `Remote entity has unresolved execution evidence in plan ${row.id}; explicitly reconcile that plan before another write.`, { planId: row.id, itemId: overlapping.id });
     }
   }
+}
+
+function overlaps(left: RemotePushPlan["items"][number], right: RemotePushPlan["items"][number]): boolean {
+  return left.entityId === right.entityId && (left.kind === right.kind || left.kind !== "milestone" && right.kind !== "milestone");
 }
 
 export function recordRemotePushOutcome(this: StoryMapperRepository<"transaction">, planId: string, itemId: string, outcome: Partial<Omit<RemotePushItemExecution, "itemId" | "attempt">>, runToken: string): RemotePushItemExecution {

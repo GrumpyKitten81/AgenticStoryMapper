@@ -670,7 +670,9 @@ async function exerciseTestServesConnectorConnectionCRUDAndBlocksPlanningWhenThe
   expect(listResponse.json<{ connections: Array<{ readOnly: boolean; }>; }>().connections[0]).toMatchObject({ readOnly: true });
   expect(updateResponse.json<{ connection: { readOnly: boolean; }; }>().connection).toMatchObject({ readOnly: false });
   expect(planResponse.statusCode).toBe(200);
-  expect(planResponse.json<{ plan: { items: unknown[]; }; }>().plan.items).toHaveLength(3);
+  const items = planResponse.json<{ plan: { items: Array<{ kind: string; action: string }> } }>().plan.items;
+  expect(items.filter((item) => item.kind === "issue")).toHaveLength(3);
+  expect(items.filter((item) => item.kind === "relationship")).toEqual([expect.objectContaining({ action: "add" }), expect.objectContaining({ action: "add" })]);
   expect(planResponse.json().plan.blockers).toEqual([]);
   expect(repository.getRemotePushPlan(planResponse.json().plan.id)?.plan).toEqual(planResponse.json().plan);
   expect(provider.writeRemoteIssue).not.toHaveBeenCalled();

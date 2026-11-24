@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import Database from "better-sqlite3";
 import { afterEach, expect, it } from "vitest";
-import { remotePushPlanSchema, type RemotePushPlan } from "@storymapper/contracts";
+import { remotePushPlanSchema, type RemotePushPlan, type RemotePushEffect } from "@storymapper/contracts";
 import { DatabaseHandle, StoryMapperRepository, UnitOfWork, createRedactedSnapshot, createRestorePoint, restoreProject, openStoryMapperDb } from "@storymapper/db";
 
 const actor = { actorType: "human", actorId: "remote-plan-reviewer" } as const;
@@ -24,7 +24,7 @@ function fixture() {
     const connection = repository.createConnectorConnection({ projectId: project.id, provider: "github", owner: "plan", repository: "fixture", name: "Plan connection", authMode: "token", readOnly: false, issueTypeMapping: [{ cardType: "task", issueType: "Task" }] });
     return { project, map, card, connection, epoch: repository.getSafetySettings(project.id).epoch! };
   });
-  const plan: RemotePushPlan = { id: randomUUID(), actor, projectId: entities.project.id, storyMapId: entities.map.id, connectionId: entities.connection.id,
+  const plan: RemotePushPlan & { items: Array<Extract<RemotePushEffect, { kind: "issue" }>> } = { id: randomUUID(), actor, projectId: entities.project.id, storyMapId: entities.map.id, connectionId: entities.connection.id,
     epoch: entities.epoch, createdAt: new Date().toISOString(), selection: { cardIds: [entities.card.id] },
     localFingerprint: "reviewed-local", connectionFingerprint: "reviewed-connection", safetyFingerprint: "reviewed-safety", remoteFingerprint: "reviewed-remote",
     remoteEvidence: { issueTypes: ["Task"], labels: ["managed"], writable: true, milestones: [] }, exclusions: [], blockers: [],
@@ -33,6 +33,20 @@ function fixture() {
   work.run(actor, ({ repository }) => repository.saveRemotePushPlan(plan));
   return { ...entities, handle, work, plan, databasePath, repository: new StoryMapperRepository(handle) };
 }
+
+it("persists unknown and acknowledged parent baseline evidence across reopening", () => {
+  const data = fixture();
+  const fields = { titleHash: "title", bodyHash: "body", statusLabels: [], annotationLabels: [], milestone: null, releaseMetadata: null };
+  const baseline = { pendingReleaseAssignment: false, acknowledgedLocal: { ...fields, releaseId: null }, observedRemote: fields };
+  const link = data.work.run(actor, ({ repository }) => repository.bindRemoteWorkItemLink({ connectionId: data.connection.id, provider: "github", cardId: data.card.id, remoteId: "7", remoteNumber: 7, url: "https://github.com/plan/fixture/issues/7", labels: [], remoteParentNumber: null, baseline }));
+  data.handle.current.$client.close();
+  data.handle.current = openStoryMapperDb(data.databasePath);
+  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.baseline?.parentKnown).toBeUndefined();
+  data.work.run(actor, ({ repository }) => repository.upsertRemoteWorkItemLink({ ...link, baseline: { ...baseline, parentKnown: true } }));
+  data.handle.current.$client.close();
+  data.handle.current = openStoryMapperDb(data.databasePath);
+  expect(data.repository.listRemoteWorkItemLinksForStoryMap(data.map.id)[0]!.baseline?.parentKnown).toBe(true);
+});
 
 it("retains exact immutable payload and pre-call intent across reopening, with guarded one-time human admission", () => {
   const data = fixture();
@@ -96,7 +110,7 @@ it("retains operational plan and intent through actual Restore while refusing it
   await restoreProject(data.handle, data.project.id, point.fileName, actor);
   expect(data.repository.getRemotePushPlan(data.plan.id)).toMatchObject({ plan: data.plan, execution: { status: "running", items: [{ state: "remote_succeeded", remoteId: "6", intentPayload: data.plan.items[0]!.payload }] } });
   expect(() => data.work.run(actor, ({ repository }) => repository.claimRemotePushPlan(data.plan.id, actor, true))).toThrow("previous database epoch");
-  const next = remotePushPlanSchema.parse({ ...data.plan, id: randomUUID(), epoch: data.repository.getSafetySettings(data.project.id).epoch!, items: [{ ...data.plan.items[0]!, id: randomUUID(), action: "update", payload: { ...data.plan.items[0]!.payload, remoteId: "6" } }] });
+  const next = remotePushPlanSchema.parse({ ...data.plan, id: randomUUID(), epoch: data.repository.getSafetySettings(data.project.id).epoch!, items: [{ ...data.plan.items[0]!, id: randomUUID(), action: "update", payload: { ...data.plan.items[0]!.payload, remoteId: "6" } }] }) as typeof data.plan;
   data.work.run(actor, ({ repository }) => {
     repository.saveRemotePushPlan(next);
     const fresh = repository.claimRemotePushPlan(next.id, actor);
@@ -222,4 +236,13 @@ it.each(["malformed-json", "item-id", "ownership", "status"] as const)("refuses 
   expect(data.handle.current).toBe(database);
   expect(database.$client.serialize()).toEqual(before);
   expect(data.repository.getCard(data.card.id)?.title).toBe("Live edit after snapshot");
+});
+
+it("blocks a relationship write while an Issue write for the same Card has unresolved intent", () => {
+  const data = fixture();
+  const first = data.work.run(actor, ({ repository }) => repository.claimRemotePushPlan(data.plan.id, actor));
+  data.work.run(actor, ({ repository }) => repository.recordRemotePushIntent(data.plan.id, data.plan.items[0]!.id, first.runToken!, data.plan.items[0]!.payload));
+  const relationship = remotePushPlanSchema.parse({ ...data.plan, id: randomUUID(), items: [{ id: randomUUID(), entityId: data.card.id, kind: "relationship", action: "add", marker: "relationship", dependencies: [], labelAdditions: [], labelRemovals: [], managedLabels: [], cardKey: data.card.key, cardTitle: data.card.title, child: { kind: "existing", remoteNumber: 7, url: "https://github.com/plan/fixture/issues/7" }, expectedParent: null, resultingParent: { kind: "existing", remoteNumber: 8, url: "https://github.com/plan/fixture/issues/8" } }] });
+  const claimed = data.work.run(actor, ({ repository }) => { repository.saveRemotePushPlan(relationship); return repository.claimRemotePushPlan(relationship.id, actor); });
+  expect(() => data.work.run(actor, ({ repository }) => repository.recordRemotePushIntent(relationship.id, relationship.items[0]!.id, claimed.runToken!, { operation: "add", childNumber: 7, childDatabaseId: 700, parentNumber: 8, expectedParent: null, resultingParent: 8 }))).toThrow("unresolved execution evidence");
 });

@@ -68,7 +68,9 @@ beforeEach(() => {
         else if (path.endsWith("/apply")) {
           incomingPreview.changeSet.status = "applied"; incomingPreview.presentationStatus = "applied"; incomingPreview.closed = true;
           state.snapshot = { ...state.snapshot, storyMap: { ...state.snapshot.storyMap, version: 2 }, cards: state.snapshot.cards.map((card) => card.id === cardId ? { ...card, version: 2, title: "Incoming remote title" } : card) };
-          plan.items[0]!.payload.title = "Incoming remote title";
+          const effect = plan.items[0]!;
+          if (effect.kind !== "issue") throw new Error("Expected Issue effect");
+          effect.payload.title = "Incoming remote title";
         } else throw new Error(`Unexpected ChangeSet mutation: ${path}`);
       }
       return Promise.resolve(Response.json(incomingPreview));
@@ -150,7 +152,9 @@ it("routes modal preview, exact confirmation, interruption and same-plan resume 
   await act(async () => { button(storyMapStrings.previewGitHubTicket).click(); button(storyMapStrings.previewGitHubTicket).click(); });
   expect(calls).toEqual([{ path: "/api/sync/work-items/plan", input: { storyMapId, connectionId: connections[0]!.id, cardIds: [cardId], mode: "push" } }]);
   await act(async () => finishPreview({ plan }));
-  expect(document.querySelector('[aria-label="GitHub Dry Run"]')?.textContent).toContain(plan.items[0]!.payload.title);
+  const effect = plan.items[0]!;
+  if (effect.kind !== "issue") throw new Error("Expected Issue effect");
+  expect(document.querySelector('[aria-label="GitHub Dry Run"]')?.textContent).toContain(effect.payload.title);
   await act(async () => { button(remotePushStrings.confirm).click(); button(remotePushStrings.confirm).click(); });
   expect(calls.filter((call) => call.path.endsWith("/confirm"))).toEqual([{ path: "/api/sync/work-items/confirm", input: { planId: plan.id } }]);
   await editDraft("Unsaved text during remote call");

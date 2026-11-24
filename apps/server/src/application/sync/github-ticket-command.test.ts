@@ -18,7 +18,7 @@ vi.mock("@storymapper/github", async (original) => ({ ...await original<typeof i
 vi.mock("@storymapper/server/services/credentials", () => ({ resolveProviderAuth: vi.fn(async (connection) => ({ connection, auth: {} })) }));
 const human = { actorType: "human", actorId: "ticket-human" } as const;
 const agent = { actorType: "agent", actorId: "ticket-agent", mcpSessionId: "ticket-session" } as const;
-const remote: RemoteWorkItem = { remoteId: "17", remoteNumber: 17, url: "https://github.com/owner/repo/issues/17", title: "Remote issue", body: "Remote Markdown", state: "open", labels: [], issueType: "Bug" };
+const remote: RemoteWorkItem = { remoteId: "17", remoteNumber: 17, url: "https://github.com/owner/repo/issues/17", title: "Remote issue", body: "Remote Markdown", parentEvidence: null, state: "open", labels: [], issueType: "Bug" };
 const cleanup: Array<() => void> = [];
 afterEach(() => { vi.restoreAllMocks(); vi.clearAllMocks(); for (const close of cleanup.splice(0).reverse()) close(); });
 

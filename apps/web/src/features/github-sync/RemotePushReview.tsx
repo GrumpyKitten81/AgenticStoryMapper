@@ -1,6 +1,6 @@
 import { PushReviewControls } from "@storymapper/web/features/card-review";
 import { useEffect, useRef, useState } from "react";
-import type { RemotePushExecution, RemotePushPlan } from "@storymapper/contracts";
+import type { RemotePushExecution, RemotePushIssueReference, RemotePushPlan } from "@storymapper/contracts";
 import { remotePushStrings as strings } from "@storymapper/web/ui-strings/remote-push";
 
 export function RemotePushReview({ plan, execution: suppliedExecution, pending = false, focusResult = false, onConfirm, onResume, onCancel }: { plan: RemotePushPlan; execution?: RemotePushExecution | undefined; pending?: boolean | undefined; focusResult?: boolean | undefined; onConfirm?: (() => void) | undefined; onResume?: (() => void) | undefined; onCancel?: (() => HTMLElement | undefined) | undefined }) {
@@ -16,8 +16,9 @@ export function RemotePushReview({ plan, execution: suppliedExecution, pending =
     {plan.blockers.length ? <div role="alert"><strong>{strings.blockers}</strong><ul>{plan.blockers.map((message) => <li key={message}>{message}</li>)}</ul></div> : null}
     {plan.items.map((item) => {
       const result = execution?.items.find((row) => row.itemId === item.id);
+      const nextParent = item.kind === "relationship" && item.action === "remove" ? plan.items.find((row) => row.kind === "relationship" && row.action === "add" && row.dependencies.includes(item.id)) : undefined;
       return <article className="github-dry-run" key={item.id}>
-        <strong>{strings.effectTitle(item.action, item.kind, item.payload.title)}</strong>
+        <strong>{strings.effectTitle(item.action, item.kind, item.kind === "relationship" ? `${item.cardKey} ${item.cardTitle}` : item.payload.title)}</strong>
         <code>{item.id}</code>
         {item.kind === "issue" ? <>
           <span>{strings.detail(strings.issueType, item.payload.issueType)}</span>
@@ -25,7 +26,12 @@ export function RemotePushReview({ plan, execution: suppliedExecution, pending =
           <span>{strings.listDetail(strings.addLabels, item.labelAdditions)}</span>
           <span>{strings.listDetail(strings.removeLabels, item.labelRemovals)}</span>
         </> : null}
-        <pre>{JSON.stringify(item.payload, null, 2)}</pre>
+        {item.kind === "relationship" ? <>
+          <span>{strings.child}{strings.labelSeparator}<IssueReference reference={item.child} /></span>
+          {nextParent?.kind === "relationship" ? <span>{strings.parentChange}{strings.labelSeparator}<IssueReference reference={item.expectedParent} />{strings.transitionArrow}<IssueReference reference={nextParent.resultingParent} /></span> : null}
+          <span>{strings.parentTransition}{strings.labelSeparator}<IssueReference reference={item.expectedParent} />{strings.transitionArrow}<IssueReference reference={item.resultingParent} /></span>
+          {item.action === "acknowledge" ? <span>{strings.acknowledgeParent}</span> : null}
+        </> : <pre>{JSON.stringify(item.payload, null, 2)}</pre>}
         {item.dependencies.length ? <span>{strings.listDetail(strings.dependencies, item.dependencies)}</span> : null}
         {result ? <div aria-label={strings.result}><strong>{strings.executionStates[result.state]}</strong>{result.error ? <p role="alert">{result.error}</p> : null}{result.url ? <a href={result.url} target="_blank" rel="noreferrer">{strings.open}</a> : null}</div> : null}
       </article>;
@@ -39,4 +45,10 @@ export function RemotePushReview({ plan, execution: suppliedExecution, pending =
     }}>{strings.cancel}</button> : null}
     {onResume && execution && ["running", "interrupted"].includes(execution.status) ? <button type="button" aria-disabled={pending} onClick={() => { if (!pending) onResume(); }}>{strings.resume}</button> : null}
   </section>;
+}
+
+function IssueReference({ reference }: { reference: RemotePushIssueReference | null }) {
+  if (!reference) return <>{strings.noParent}</>;
+  if (reference.kind === "existing") return <a href={reference.url} target="_blank" rel="noreferrer">{strings.existingIssueReference(reference.remoteNumber)}</a>;
+  return <>{strings.createdIssueReference(reference.cardKey, reference.cardTitle)}</>;
 }

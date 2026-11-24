@@ -10,15 +10,17 @@ export function touchesSyncField(before: OperationSnapshot, after: OperationSnap
     const next = after.cards.find((row) => row.id === card.id);
     if (!next) return true;
     if (conflict.field === "labels") return changed(managedLabels(before, conflict), managedLabels(after, conflict));
-    const field = conflict.field === "milestone" ? "releaseId" : conflict.field;
+    const field = conflict.field === "milestone" ? "releaseId" : conflict.field === "parent" ? "parentId" : conflict.field;
     return changed(card[field], next[field]);
   }
   if (operation.entity !== "remoteWorkItemLink" || operation.after.externalRefId !== conflict.externalRefId) return false;
   const previous = before.remoteWorkItemLinks.find((row) => row.externalRefId === conflict.externalRefId);
   const next = after.remoteWorkItemLinks.find((row) => row.externalRefId === conflict.externalRefId);
+  if (conflict.field === "parent") return changed(previous?.remoteParentNumber, next?.remoteParentNumber) || changed(previous?.parentOverrideLocal, next?.parentOverrideLocal);
+  const field = conflict.field;
   const keys = { title: ["titleHash"], description: ["bodyHash"], status: ["remoteState", "statusLabels"], labels: ["annotationLabels"], milestone: ["releaseId", "milestone", "iteration", "releaseMetadata"] } as const;
   if (previous?.baseline && !next?.baseline) return true;
-  if (previous?.baseline && next?.baseline) return (["acknowledgedLocal", "observedRemote"] as const).some((side) => keys[conflict.field].some((key) => changed((previous.baseline![side] as unknown as Record<string, unknown>)[key], (next.baseline![side] as unknown as Record<string, unknown>)[key])));
+  if (previous?.baseline && next?.baseline) return (["acknowledgedLocal", "observedRemote"] as const).some((side) => keys[field].some((key) => changed((previous.baseline![side] as unknown as Record<string, unknown>)[key], (next.baseline![side] as unknown as Record<string, unknown>)[key])));
   const stateKeys = { title: ["titleHash"], description: ["bodyHash"], status: ["remoteState", "labels"], labels: ["labels"], milestone: ["milestone"] } as const;
   return stateKeys[conflict.field].some((key) => changed(previous?.[key], next?.[key]));
 }
