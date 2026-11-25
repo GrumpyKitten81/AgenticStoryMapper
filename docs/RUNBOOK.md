@@ -37,14 +37,14 @@ The launcher permits only `127.0.0.1`, `localhost` or `::1`, including when dire
 
 ## Configuration
 
-No configuration file is required. For optional local settings, use `.env.example` as a guide. Keep actual `.env` private. Be aware that the example explicitly sets `PORT=4317`; copying that value disables automatic port selection.
+No configuration file is required. For optional local settings, use `.env.example` as a guide. Keep actual `.env` private. The example leaves `PORT` commented out; setting it disables automatic port selection.
 
 Startup/doctor precedence is process environment, root `.env`, then missing values from the nearest `.env` found upward from `apps/server`, then defaults. A process override therefore wins over a changed `.env`.
 
 | Variable | Default | Behavior |
 | --- | --- | --- |
 | `HOST` | `127.0.0.1` | Loopback binding; launcher accepts `127.0.0.1`, `localhost`, `::1`. |
-| `PORT` | Preferred `4317` | Explicit values must be integers 1–65535 and free; unset permits available-port selection. |
+| `PORT` | Preferred `4317` | Explicit values must be integers 1–65535 and free; unset permits available-port selection when 4317 is occupied or reserved (Windows `EACCES`). |
 | `STORYMAPPER_DB_PATH` | `local-projects/default.lsm/storymapper.sqlite` | SQLite file; relative paths resolve from the checkout. Use a writable local directory. |
 | `STORYMAPPER_ALLOW_REMOTE_HOST` | `false` | Exact `true` permits a directly started server to bind elsewhere, with a warning. Explicit security approval is required; launcher and HTTP Host validation remain loopback-only. |
 | `GITHUB_TOKEN` | Unset | Last normal GitHub credential source, after CLI and user file. Never include its value in logs or shared files. |

@@ -51,7 +51,8 @@ export async function listenOnAppPort(server: FastifyInstance, config: { host: s
   try {
     await server.listen({ host: config.host, port: config.port });
   } catch (error) {
-    if (!useAvailablePort || !(error instanceof Error) || !("code" in error) || error.code !== "EADDRINUSE") throw error;
+    // HINT: Windows reports excluded port ranges (Hyper-V/WinNAT) as EACCES instead of EADDRINUSE.
+    if (!useAvailablePort || !(error instanceof Error) || !("code" in error) || !["EADDRINUSE", "EACCES"].includes(String(error.code))) throw error;
     await server.listen({ host: config.host, port: 0 });
   }
 }
