@@ -33,7 +33,15 @@ export function selectedEntityId(context: ResolutionContext, entity: "card" | "r
 export function createMap(context: ResolutionContext): void {
   const { after } = context.operation as OperationFor<"storyMap", "create">;
   projectOwner(context, after.projectId);
+  assertTemplateAssignments(context, after.projectId, "", after.templateAssignments);
   context.state.storyMaps.push({ ...after, id: allocatedId(context), version: 1, estimationUnit: "points", cardKeyPrefix: "LSM", createdAt: context.supply.createdAt, updatedAt: context.supply.createdAt });
+}
+
+// A template assignment must point at a project-wide or this map's own Story Template, never at another map's or project's.
+function assertTemplateAssignments(context: ResolutionContext, projectId: string, storyMapId: string, assignments: { cardType: string; storyTemplateId: string }[] | undefined): void {
+  for (const assignment of assignments ?? []) {
+    if (!context.state.storyTemplates.some((template) => template.id === assignment.storyTemplateId && template.projectId === projectId && (template.storyMapId === null || template.storyMapId === storyMapId))) refuse(context, `Story Template assignment must reference a project-wide or this map's own Story Template.`);
+  }
 }
 
 export function updateMap(context: ResolutionContext): void {
@@ -43,6 +51,7 @@ export function updateMap(context: ResolutionContext): void {
   validateConnection(context, after.defaultConnectionId);
   const map = context.state.storyMaps.find((entry) => entry.id === id)!;
   assertBaseline(context, map.version, map.id);
+  assertTemplateAssignments(context, map.projectId, id, after.templateAssignments);
   Object.assign(map, after, { version: resolvedRootVersion(context, map.id), updatedAt: context.supply.createdAt });
 }
 

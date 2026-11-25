@@ -3,7 +3,7 @@ import { and, asc, eq, isNull } from "drizzle-orm";
 import { DomainError, githubStatusSourceKey } from "@storymapper/contracts";
 import type { ActorContext, CardAttachment, CreateProjectRequest, CreateStoryMapRequest, GettingStartedChecklist, StoryMapTemplate, ProductContext, SafetySettings, Project, StoryMap, StoryMapSnapshot, UpsertProductContextRequest, UpdateSafetySettingsRequest, UpdateStoryMapRequest } from "@storymapper/contracts";
 import { agentAccessEnabled, agentProtected, createStoryMapFromTemplate as planStoryMapTemplate } from "@storymapper/core";
-import { cardAttachments, databaseMetadata, productContexts, projectSettings, projects, storyMaps } from "@storymapper/db/schema";
+import { cardAttachments, databaseMetadata, productContexts, projectSettings, projects, storyMaps, storyTemplates } from "@storymapper/db/schema";
 import type { StoryMapperRepository } from "@storymapper/db/repositories/storymapper-repository";
 import { toProject, toStoryMap, toProductContext, toSafetySettings, toCardAttachment } from "@storymapper/db/repositories/row-mappers";
 
@@ -183,6 +183,10 @@ export function createStoryMap(this: StoryMapperRepository<"transaction">, input
 
       if (input.colorCategoryNames && Object.keys(input.colorCategoryNames).length) storyMap.colorCategoryNames = input.colorCategoryNames;
       if (input.epicContext !== undefined) storyMap.epicContext = input.epicContext;
+      if (input.templateAssignments?.length) for (const assignment of input.templateAssignments) {
+        const template = this.db.select().from(storyTemplates).where(eq(storyTemplates.id, assignment.storyTemplateId)).get();
+        if (!template || template.projectId !== input.projectId || (template.storyMapId !== null && template.storyMapId !== storyMap.id)) throw new DomainError("validation", "Story Template assignment must reference a project-wide or this map's own Story Template.");
+      }
       if (input.templateAssignments?.length) storyMap.templateAssignments = input.templateAssignments;
       this.db.insert(storyMaps).values({ ...storyMap, colorCategoryNamesJson: storyMap.colorCategoryNames ? JSON.stringify(storyMap.colorCategoryNames) : null, colorCategoryNamesSchemaVersion: storyMap.colorCategoryNames ? 1 : null, epicContextJson: storyMap.epicContext ? JSON.stringify(storyMap.epicContext) : null, epicContextSchemaVersion: storyMap.epicContext ? 1 : null, templateAssignmentsJson: storyMap.templateAssignments ? JSON.stringify(storyMap.templateAssignments) : null, templateAssignmentsSchemaVersion: storyMap.templateAssignments ? 1 : null }).run();
       this.createRootVersion("storyMaps", storyMap.id);
@@ -209,6 +213,10 @@ export function updateStoryMap(this: StoryMapperRepository<"transaction">, story
       patch.epicContextSchemaVersion = input.epicContext ? 1 : null;
     }
     if (input.templateAssignments !== undefined) {
+      for (const assignment of input.templateAssignments) {
+        const template = this.db.select().from(storyTemplates).where(eq(storyTemplates.id, assignment.storyTemplateId)).get();
+        if (!template || template.projectId !== existing.projectId || (template.storyMapId !== null && template.storyMapId !== storyMapId)) throw new DomainError("validation", "Story Template assignment must reference a project-wide or this map's own Story Template.");
+      }
       patch.templateAssignmentsJson = input.templateAssignments.length ? JSON.stringify(input.templateAssignments) : null;
       patch.templateAssignmentsSchemaVersion = input.templateAssignments.length ? 1 : null;
     }

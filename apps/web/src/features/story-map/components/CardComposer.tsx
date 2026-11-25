@@ -33,13 +33,17 @@ export function CardComposer({ state, level, initialParentId = null, initialRele
   function admitTicket() { if (isPending()) return false; changeTicketPending(true); return true; }
   const [cardType, setCardType] = useState<CardType | "">("");
   const editedDescription = useRef(false);
-  const applyTemplate = (template: (typeof snapshot.storyTemplates)[number]) => setTemplateDefaults({ description: template.descriptionTemplate, status: template.defaultStatus, ...(template.defaultEstimate === null ? {} : { estimate: template.defaultEstimate }) });
+  const templateTouched = useRef(false);
+  const autoTemplateId = useRef<string | null>(null);
+  const applyTemplate = (template: (typeof snapshot.storyTemplates)[number], auto = false) => { if (auto) autoTemplateId.current = template.id; else templateTouched.current = true; setTemplateDefaults({ description: template.descriptionTemplate, status: template.defaultStatus, ...(template.defaultEstimate === null ? {} : { estimate: template.defaultEstimate }) }); };
   function selectCardType(next: CardType | "") {
     setCardType(next);
-    if (!next || editedDescription.current) return;
+    if (!next || editedDescription.current || templateTouched.current) return;
     const assignment = snapshot.storyMap.templateAssignments?.find((entry) => entry.cardType === next);
     const template = assignment ? snapshot.storyTemplates.find((row) => row.id === assignment.storyTemplateId) : undefined;
-    if (template) applyTemplate(template);
+    // An auto-applied template tracks the Card type: swap to another assigned type or clear it for unassigned ones; a manual pick never does.
+    if (template) applyTemplate(template, true);
+    else if (autoTemplateId.current) { autoTemplateId.current = null; setTemplateDefaults({}); }
   }
   const [title, setTitle] = useState("");
   const [templateDefaults, setTemplateDefaults] = useState<Pick<CreateCardRequest, "description" | "status" | "estimate">>({});

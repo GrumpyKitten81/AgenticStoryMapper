@@ -15,8 +15,13 @@ interface AssignmentDraft {
   baseVersion: number;
 }
 
-function draftAssignments(map: StoryMap): Record<string, string> {
-  return Object.fromEntries(cardTypeSchema.options.map((cardType) => [cardType, map.templateAssignments?.find((entry) => entry.cardType === cardType)?.storyTemplateId ?? ""]));
+function draftAssignments(map: StoryMap, templates: { id: string; storyMapId: string | null }[]): Record<string, string> {
+  // Assignments that point at a template no longer offered (deleted, or belonging to another map) drop out instead of lingering unseen in the draft.
+  return Object.fromEntries(cardTypeSchema.options.map((cardType) => {
+    const storyTemplateId = map.templateAssignments?.find((entry) => entry.cardType === cardType)?.storyTemplateId ?? "";
+    const visible = Boolean(storyTemplateId) && templates.some((template) => template.id === storyTemplateId && (template.storyMapId === null || template.storyMapId === map.id));
+    return [cardType, visible ? storyTemplateId : ""];
+  }));
 }
 
 function assignedEntries(assignments: Record<string, string>) {
@@ -49,7 +54,7 @@ export function TemplateAssignmentsEditor({ storyMap, templates, readOnly = fals
   return <>
     {storyMap ? <button type="button" className="secondary icon-button topbar-title-edit" aria-label={strings.editTemplateAssignments} title={strings.editTemplateAssignments} disabled={readOnly} onClick={() => {
       save.reset();
-      setDraft({ map: storyMap, assignments: draftAssignments(storyMap), baseVersion: storyMap.version });
+      setDraft({ map: storyMap, assignments: draftAssignments(storyMap, templates), baseVersion: storyMap.version });
     }}><LayoutTemplate size={16} /></button> : null}
     {draft ? <Dialog title={strings.editTemplateAssignments} description={strings.templateAssignmentsDescription(draft.map.name)} dismissible={!save.isPending} onClose={() => { if (!pending.current) setDraft(undefined); }}>
       <form aria-busy={save.isPending} onSubmit={(event) => { event.preventDefault(); if (!isConflictError(save.error)) submit(draft); }}>
@@ -57,7 +62,7 @@ export function TemplateAssignmentsEditor({ storyMap, templates, readOnly = fals
         <ConflictAlert error={save.error} entityId={draft.map.id} name={draft.map.name} disabled={readOnly || save.isPending}
           onReload={(conflict) => {
             const current = storyMapSchema.parse(conflict.current);
-            setDraft({ map: current, assignments: draftAssignments(current), baseVersion: conflict.currentVersion });
+            setDraft({ map: current, assignments: draftAssignments(current, templates), baseVersion: conflict.currentVersion });
             save.reset();
           }}
           onKeepMine={(conflict) => {

@@ -38,7 +38,8 @@ it("captures the assigned Story Template in review inputs and stales reports whe
   f.unitOfWork.run(actor, ({ repository }) => repository.updateStoryMap(f.map.id, { templateAssignments: [{ cardType: f.cards[0]!.cardType!, storyTemplateId: other.id }] }));
   expect(f.repository.getCardReviews(f.project.id).summaries[0]?.state).toBe("stale");
   f.unitOfWork.run(actor, ({ repository }) => repository.updateStoryMap(f.map.id, { templateAssignments: [] }));
-  expect(f.repository.getCardReviews(f.project.id).summaries[0]?.state).not.toBe("reviewed");
+  // Clearing the assignment returns the review input to its original fingerprint, which matches the first, never-submitted request — so the Card sits pending again.
+  expect(f.repository.getCardReviews(f.project.id).summaries[0]?.state).toBe("pending");
 });
 it("keeps human-origin pushes review-free and records an explicit enabled exact-plan override", async () => {
   const f = remotePushFixture(1);

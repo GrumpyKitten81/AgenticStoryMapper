@@ -307,5 +307,5 @@ it("preselects the Story Template assigned to the Card type on the Story Map wit
   await field(input("Planning type"), "story");
   expect(dialog().querySelector("textarea")!.value).toBe("## Value\n## Acceptance criteria");
   await field(input("Planning type"), "task");
-  expect(dialog().querySelector("textarea")!.value).toBe("## Value\n## Acceptance criteria");
+  expect(dialog().querySelector("textarea")).toBeNull();
 });

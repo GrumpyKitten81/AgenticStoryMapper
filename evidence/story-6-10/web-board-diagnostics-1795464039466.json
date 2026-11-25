@@ -1,0 +1,188 @@
+{
+  "measuredAt": "2026-11-23T20:00:39.466Z",
+  "fixture": "fixed deterministic IDs/timestamps/values; 1000 Cards:1 Activity+1 Step+998 Stories; real state/BoardToolbar/DiscoveryMatrix/CardTiles/DndContext",
+  "environment": {
+    "node": "v24.17.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "osRelease": "27.2.0",
+    "cpu": "Apple M3 Ultra",
+    "runner": "Vitest source transform / React development / jsdom",
+    "build": "unbundled TypeScript source",
+    "nativePaint": false
+  },
+  "coldWarm": "cold is first action of each kind on fresh mounted fixture; warm is repeated operation; no OS cache eviction",
+  "timingAcceptanceGate": false,
+  "functional": {
+    "completed": true,
+    "success": true
+  },
+  "provenance": {
+    "revision": "53125ed0c7eaf6eee5acce7592e5af7e5e64fc56",
+    "sourceSha256": "6cc45a1cd2f14e4118689ea77b5d4b512e5809859c7a110bf6b28cc539356af1",
+    "sourceFileCount": 1186,
+    "roots": [
+      "apps/server",
+      "apps/web",
+      "packages",
+      "scripts",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "tsconfig.base.json"
+    ],
+    "algorithm": "SHA256 of JSON sorted unique {path,sha256(file bytes)} for git ls-files --cached --others --exclude-standard -z; includes actual staged/unstaged/untracked source bytes"
+  },
+  "samples": [
+    {
+      "action": "toggle selection DIAG-3",
+      "phase": "cold-first-action-on-fresh-mounted-fixture",
+      "boundary": "DOM click through React commit of selected Card and toolbar status",
+      "milliseconds": 833.7382079999998,
+      "referenceMilliseconds": 100,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "Search cards=Fixture 99",
+      "phase": "cold-first-action-on-fresh-mounted-fixture",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 789.7280410000003,
+      "referenceMilliseconds": 300,
+      "matches": 9,
+      "renderedTiles": 1000,
+      "visibleTiles": 11
+    },
+    {
+      "action": "Search cards=",
+      "phase": "cold-first-action-on-fresh-mounted-fixture",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 761.962708,
+      "referenceMilliseconds": 300,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "Color category=value:custom",
+      "phase": "cold-first-action-on-fresh-mounted-fixture",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 759.0223340000002,
+      "referenceMilliseconds": 300,
+      "matches": 500,
+      "renderedTiles": 1000,
+      "visibleTiles": 501
+    },
+    {
+      "action": "Color category=all",
+      "phase": "cold-first-action-on-fresh-mounted-fixture",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 745.1759169999996,
+      "referenceMilliseconds": 300,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "toggle selection DIAG-3",
+      "phase": "warm-1",
+      "boundary": "DOM click through React commit of selected Card and toolbar status",
+      "milliseconds": 545.0299590000013,
+      "referenceMilliseconds": 100,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "Search cards=Fixture 99",
+      "phase": "warm-1",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 609.6433750000015,
+      "referenceMilliseconds": 300,
+      "matches": 9,
+      "renderedTiles": 1000,
+      "visibleTiles": 11
+    },
+    {
+      "action": "Search cards=",
+      "phase": "warm-1",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 553.612459,
+      "referenceMilliseconds": 300,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "Color category=value:custom",
+      "phase": "warm-1",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 577.2510000000002,
+      "referenceMilliseconds": 300,
+      "matches": 500,
+      "renderedTiles": 1000,
+      "visibleTiles": 501
+    },
+    {
+      "action": "Color category=all",
+      "phase": "warm-1",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 527.5000840000012,
+      "referenceMilliseconds": 300,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "toggle selection DIAG-3",
+      "phase": "warm-2",
+      "boundary": "DOM click through React commit of selected Card and toolbar status",
+      "milliseconds": 563.3764999999985,
+      "referenceMilliseconds": 100,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "Search cards=Fixture 99",
+      "phase": "warm-2",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 498.79133300000103,
+      "referenceMilliseconds": 300,
+      "matches": 9,
+      "renderedTiles": 1000,
+      "visibleTiles": 11
+    },
+    {
+      "action": "Search cards=",
+      "phase": "warm-2",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 552.8519159999996,
+      "referenceMilliseconds": 300,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    },
+    {
+      "action": "Color category=value:custom",
+      "phase": "warm-2",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 491.107833,
+      "referenceMilliseconds": 300,
+      "matches": 500,
+      "renderedTiles": 1000,
+      "visibleTiles": 501
+    },
+    {
+      "action": "Color category=all",
+      "phase": "warm-2",
+      "boundary": "DOM input/change through React commit of complete Discovery tiles and match status",
+      "milliseconds": 545.7962499999994,
+      "referenceMilliseconds": 300,
+      "matches": 1000,
+      "renderedTiles": 1000,
+      "visibleTiles": 1000
+    }
+  ]
+}

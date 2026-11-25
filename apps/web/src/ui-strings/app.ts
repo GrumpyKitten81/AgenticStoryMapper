@@ -46,7 +46,6 @@ export const appStrings = {
   saveCardKeyPrefix: "Save prefix",
   cardKeyPrefixDescription: (name: string): string => `Change the prefix for future Cards in ${name}. Existing Card Keys remain unchanged.`,
   editTemplateAssignments: "Edit Story Template assignments",
-  templateAssignments: "Story Template assignments",
   saveTemplateAssignments: "Save assignments",
   templateAssignmentNone: "No template",
   templateAssignmentsDescription: (name: string): string => `Assign a Story Template per Card type in ${name}. New Cards preselect the assigned template; Card types left unset keep the default behavior.`,

@@ -1,13 +1,13 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-10-30T23:57:21.054Z",
-    "fileCount": 1179,
+    "lastScanned": "2026-11-21T21:13:00.520Z",
+    "fileCount": 1184,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "a8f93cc3ebbd3242f55da1df0af06480bff3c62901e64467c6ab7cfd72be35e2",
-    "storeUpdatedAt": "2026-10-30T23:57:21.077Z",
-    "rootHash": "4077d291f8b030c6"
+    "renderedHash": "325330cd351338c2e83839e1cceaa69abfd4ea76171e6cd3c6257a49c706c87b",
+    "storeUpdatedAt": "2026-11-21T21:13:00.528Z",
+    "rootHash": "e70e17c9d73ad872"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -7724,50 +7724,91 @@
     },
     "apps/web/src/features/story-map/components/CardTile.tsx": {
       "description": "CardTile",
-      "tokens": 3173,
-      "hash": "e7f41538eefb71ec",
-      "size": 11104,
-      "mtimeMs": 1791563877597.8386,
-      "updatedAt": "2026-10-10T23:21:37.028Z",
-      "source": "scan",
+      "tokens": 4868,
+      "hash": "777ecd8d363809ac",
+      "size": 17035,
+      "mtimeMs": 1795295570482.3694,
+      "updatedAt": "2026-11-21T21:12:50.541Z",
+      "source": "hook",
       "symbols": [
         {
           "name": "CardTileProps",
           "kind": "section",
-          "startLine": 11,
-          "endLine": 30,
-          "tokens": 206
+          "startLine": 25,
+          "endLine": 54,
+          "tokens": 318
         },
         {
           "name": "SortableCardTileProps",
           "kind": "section",
-          "startLine": 32,
-          "endLine": 34,
-          "tokens": 23
+          "startLine": 55,
+          "endLine": 60,
+          "tokens": 36
         },
         {
           "name": "CardTile",
           "kind": "fn",
-          "startLine": 36,
-          "endLine": 237,
-          "tokens": 2582
+          "startLine": 61,
+          "endLine": 64,
+          "tokens": 29
+        },
+        {
+          "name": "useCardTileState",
+          "kind": "fn",
+          "startLine": 65,
+          "endLine": 69,
+          "tokens": 50
+        },
+        {
+          "name": "renderCardTile",
+          "kind": "fn",
+          "startLine": 70,
+          "endLine": 118,
+          "tokens": 1341
         },
         {
           "name": "SortableCardTile",
           "kind": "fn",
-          "startLine": 239,
-          "endLine": 252,
-          "tokens": 181
+          "startLine": 119,
+          "endLine": 133,
+          "tokens": 206
+        },
+        {
+          "name": "useCardTilePresentation",
+          "kind": "fn",
+          "startLine": 134,
+          "endLine": 184,
+          "tokens": 633
+        },
+        {
+          "name": "renderCardActions",
+          "kind": "fn",
+          "startLine": 185,
+          "endLine": 229,
+          "tokens": 828
+        },
+        {
+          "name": "CardDescriptionButton",
+          "kind": "fn",
+          "startLine": 230,
+          "endLine": 240,
+          "tokens": 173
+        },
+        {
+          "name": "renderCardVisualControls",
+          "kind": "fn",
+          "startLine": 241,
+          "endLine": 259,
+          "tokens": 524
+        },
+        {
+          "name": "describeCardState",
+          "kind": "fn",
+          "startLine": 260,
+          "endLine": 268,
+          "tokens": 179
         }
-      ],
-      "symbolSource": "ts",
-      "skeleton": "interface CardTileProps {\ninterface SortableCardTileProps extends CardTileProps {\nexport function CardTile({\nexport function SortableCardTile({ dragScale = 1, ...props }: SortableCardTileProps) {",
-      "imports": [
-        "apps/web/src/features/story-map/card-taxonomy.ts",
-        "apps/web/src/features/github-sync/sync-status.ts",
-        "apps/web/src/features/story-map/card-visual-options.ts"
-      ],
-      "importance": 0.0762
+      ]
     },
     "apps/web/src/features/story-map/components/DescriptionEditor.tsx": {
       "description": "DescriptionEditor — uses useEffect",
@@ -19040,13 +19081,12 @@
     },
     "apps/web/src/ui-strings/story-map.ts": {
       "description": "Exports storyMapStrings",
-      "tokens": 3875,
-      "hash": "66c4dda984e99e2f",
-      "size": 13577,
-      "mtimeMs": 1791651976851.1345,
-      "updatedAt": "2026-10-10T23:21:37.036Z",
-      "source": "scan",
-      "importance": 0.0423
+      "tokens": 6496,
+      "hash": "960c2941c781850d",
+      "size": 22764,
+      "mtimeMs": 1795295579459.2222,
+      "updatedAt": "2026-11-21T21:12:59.516Z",
+      "source": "hook"
     },
     "docs/adr/0002-bump-card-version-on-coalesced-save.md": {
       "description": "Bump the Card version on every accepted save",
@@ -25779,6 +25819,81 @@
       "mtimeMs": 1793404640933.002,
       "updatedAt": "2026-10-30T23:57:21.054Z",
       "source": "hook"
+    },
+    "AGENTS.local.md": {
+      "description": "Browser verification when Claude in Chrome fails (this Mac)",
+      "tokens": 369,
+      "hash": "1dd78cc8f8147e15",
+      "size": 1473,
+      "mtimeMs": 1795205679622.4194,
+      "updatedAt": "2026-11-20T20:14:39.668Z",
+      "source": "hook"
+    },
+    "CLAUDE.local.md": {
+      "description": "",
+      "tokens": 5,
+      "hash": "b564621ac306bbc1",
+      "size": 17,
+      "mtimeMs": 1795205684741.8254,
+      "updatedAt": "2026-11-20T20:14:44.795Z",
+      "source": "hook"
+    },
+    "apps/web/src/features/story-map/export/story-map-view-export-lanes.test.ts": {
+      "description": "Declares original",
+      "tokens": 695,
+      "hash": "5badc1784f82f041",
+      "size": 2432,
+      "mtimeMs": 1795206496003.614,
+      "updatedAt": "2026-11-20T20:28:16.067Z",
+      "source": "hook"
+    },
+    "apps/web/src/app/stores/map-id-set-store.ts": {
+      "description": "Exports NOT_ASSIGNED_LANE_ID, useTreeCollapseStore, useDiscoveryLaneCollapseStore, useDiscoveryLaneP",
+      "tokens": 348,
+      "hash": "bfe18aa4bf28c5ac",
+      "size": 1215,
+      "mtimeMs": 1795277913105.3198,
+      "updatedAt": "2026-11-21T16:18:33.165Z",
+      "source": "hook"
+    },
+    "apps/web/src/features/story-map/components/card-creation.test.tsx": {
+      "description": "field",
+      "tokens": 6230,
+      "hash": "94db52a73e4842bb",
+      "size": 21807,
+      "mtimeMs": 1795295580475.3257,
+      "updatedAt": "2026-11-21T21:13:00.520Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "field",
+          "kind": "fn",
+          "startLine": 8,
+          "endLine": 11,
+          "tokens": 122
+        },
+        {
+          "name": "dialog",
+          "kind": "fn",
+          "startLine": 12,
+          "endLine": 12,
+          "tokens": 19
+        },
+        {
+          "name": "openComposer",
+          "kind": "fn",
+          "startLine": 13,
+          "endLine": 13,
+          "tokens": 64
+        },
+        {
+          "name": "input",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 299,
+          "tokens": 5917
+        }
+      ]
     }
   },
   "preamble": [
