@@ -17,6 +17,7 @@ if (process.send && ['setup.mjs', 'start.mjs', 'doctor.mjs', 'verify.mjs'].inclu
   process.channel.unref();
 }
 if (config.nodeVersion) Object.defineProperty(process.versions, 'node', { value: config.nodeVersion });
+if (config.arch) Object.defineProperty(process, 'arch', { value: config.arch });
 const load = Module._load;
 Module._load = function (request, ...args) {
   const sqlite = /(?:^|[/\\])better-sqlite3(?:[/\\]|$)/.test(request);

@@ -44,7 +44,7 @@ Your Agent may ask for access to the folder, package downloads or prerequisite i
 
 ### From a terminal
 
-Prerequisites: Git, installed Node 24 (`>=24 <25`), Corepack on `PATH`, and a desktop session with a default browser. Linux also needs `xdg-open`. Use the same Node 24 for installation and execution of native `better-sqlite3`. If Corepack is missing, install it with `npm install --global corepack@0.35.0`; it selects pnpm `9.15.4`. Installing dependencies needs network access.
+Prerequisites: Git, installed Node 24 (`>=24 <25`), Corepack on `PATH`, and a desktop session with a default browser. Linux also needs `xdg-open`. Use the same Node 24 for installation and execution of native `better-sqlite3`; its bundled prebuilds cover Windows, macOS and Linux on x64 and arm64, so no C++ build tools are needed there. If Corepack is missing, install it with `npm install --global corepack@0.35.0`; it selects pnpm `9.15.4`. Installing dependencies needs network access.
 
 1. Clone the repository and enter its folder:
 

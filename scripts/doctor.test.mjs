@@ -50,7 +50,7 @@ test('doctor before setup collects independent failures without writes or Corepa
     assert.match(result.output, /https:\/\/nodejs.org\/en\/download/);
     assert.match(result.output, /FAIL Corepack availability:.*Next action:/);
     assert.match(result.output, /FAIL Installed dependencies:.*node scripts\/setup.mjs/);
-    assert.match(result.output, /FAIL Native module loads:.*rebuild better-sqlite3/);
+    assert.match(result.output, /FAIL Native module loads: better-sqlite3 is not installed.*node scripts\/setup.mjs/);
     assert.match(result.output, /FAIL Web build present:.*node scripts\/setup.mjs/);
     assert.equal(existsSync(f.config.processesFile), false);
     assert.equal(existsSync(f.env.STORYMAPPER_DB_PATH), false);
@@ -138,7 +138,7 @@ test('native binding failures stop start before DB or browser and remain diagnos
       for (const script of ['start.mjs', 'doctor.mjs']) {
         const result = await closedWithin(f.launch(script, debug ? ['--debug'] : [], { env: { PORT: String(await port()) } }));
         assert.equal(result.code, 1, result.output);
-        assert.match(result.output, /better-sqlite3 could not load its native binding.*Next action:.*same installed Node 24.*corepack pnpm --filter @storymapper\/db rebuild better-sqlite3/);
+        assert.match(result.output, /better-sqlite3 could not load its bundled .* prebuild.*Next action:.*same installed Node 24.*no C\+\+ build tools/);
         if (debug) assert.match(result.output, /Fixture native binding failure.*\n\s+at /);
         else assert.doesNotMatch(result.output, /Fixture native binding failure|\n\s+at /);
         if (script === 'doctor.mjs') assertSevenChecks(result.output);
@@ -248,7 +248,7 @@ test('direct server startup catches configuration, binding and native failures i
           assert.match(result.output, /Next action:/);
           if (variant === 'config') assert.match(result.output, /PORT must be a number.*Next action: Set HOST to a loopback address and PORT/);
           if (variant === 'bind') assert.match(result.output, /occupied by unknown process/);
-          if (variant === 'native') assert.match(result.output, /corepack pnpm --filter @storymapper\/db rebuild better-sqlite3/);
+          if (variant === 'native') assert.match(result.output, /native binding.*Next action: Run node scripts\/doctor.mjs/);
           if (debug) assert.match(result.output, /\n\s+at /);
           else assert.doesNotMatch(result.output, /\n\s+at |"stack":/);
           assert.equal(occupied.server.listening, true);
@@ -264,7 +264,7 @@ test('direct server flushes a large startup diagnostic to piped stderr before ex
     f.config.nativeFailure = `better-sqlite3 fixture native binding failure ${'diagnostic-padding '.repeat(16 * 1024)} diagnostic-end-marker`;
     const result = await closedWithin(f.launch('', ['--debug'], { directServer: true, cwd: join(f.root, 'apps/server'), env: { PORT: String(await port()) } }));
     assert.equal(result.code, 1);
-    assert.match(result.output, /corepack pnpm --filter @storymapper\/db rebuild better-sqlite3/);
+    assert.match(result.output, /Run node scripts\/doctor.mjs for the native SQLite diagnosis/);
     assert.match(result.output, /diagnostic-end-marker\n\s+at /);
     assert.equal(result.output.endsWith('\n'), true);
     assert.equal(existsSync(f.env.STORYMAPPER_DB_PATH), false);
@@ -358,6 +358,16 @@ test('normal build failures include one redacted compiler cause without stack li
   });
 });
 
+test('doctor distinguishes a platform without a bundled SQLite prebuild', async () => {
+  await withFixture({}, async (f) => {
+    f.config.nativeFailure = 'Fixture native binding failure';
+    f.config.arch = 'ia32';
+    const result = await closedWithin(f.launch('doctor.mjs', [], { env: { PORT: String(await port()) } }));
+    assert.equal(result.code, 1, result.output);
+    assert.match(result.output, new RegExp(`FAIL Native module loads:.*ships no prebuild for ${process.platform}-ia32.*requires a native build.*node-gyp rebuild`));
+  });
+});
+
 test('doctor loads SQLite JavaScript but fails at the native constructor without Project writes', async () => {
   await withFixture({}, async (f) => {
     f.config.nativeConstructorFailure = true;
@@ -367,7 +377,7 @@ test('doctor loads SQLite JavaScript but fails at the native constructor without
     const result = await closedWithin(f.launch('doctor.mjs', [], { env: { PORT: String(await port()) } }));
     assert.equal(result.code, 1, result.output);
     assertSevenChecks(result.output);
-    assert.match(result.output, /FAIL Native module loads:.*native binding.*corepack pnpm --filter @storymapper\/db rebuild better-sqlite3/);
+    assert.match(result.output, /FAIL Native module loads:.*bundled .* prebuild.*no C\+\+ build tools/);
     assert.equal(existsSync(f.config.nativeLoadedFile), true);
     assert.equal(existsSync(f.config.nativeAddonAttemptFile), true);
     assert.equal(existsSync(f.env.STORYMAPPER_DB_PATH), false);

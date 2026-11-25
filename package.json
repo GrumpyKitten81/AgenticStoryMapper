@@ -36,6 +36,9 @@
   "pnpm": {
     "patchedDependencies": {
       "@tanstack/history@1.162.0": "patches/@tanstack__history@1.162.0.patch"
-    }
+    },
+    "neverBuiltDependencies": [
+      "better-sqlite3"
+    ]
   }
 }

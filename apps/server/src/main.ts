@@ -3,7 +3,7 @@ import type { FastifyInstance } from "fastify";
 import { loadLocalEnv } from "@storymapper/server/config/local-env";
 import { getRuntimeConfig, isLoopbackHost } from "@storymapper/server/config/runtime";
 import { getDatabasePath, installRuntimePort, listenOnAppPort } from "@storymapper/server/config/runtime-port";
-import { failure, nativeFailure, portFailure, redact, renderFailure } from "@storymapper/server/config/failures.mjs";
+import { failure, portFailure, redact, renderFailure } from "@storymapper/server/config/failures.mjs";
 
 let server: FastifyInstance | undefined;
 const debug = process.argv.includes("--debug");
@@ -29,7 +29,7 @@ function startupFailure(error: unknown): Error {
   const code = "code" in cause ? cause.code : undefined;
   if (cause.message.includes(" Next action: ")) return cause;
   if (code === "EADDRINUSE") return portFailure(getRuntimeConfig().port, "unknown process", cause);
-  if (code === "ERR_DLOPEN_FAILED" || /better[-_]sqlite3|bindings file|NODE_MODULE_VERSION/.test(cause.message)) return nativeFailure(cause);
+  if (code === "ERR_DLOPEN_FAILED" || /better[-_]sqlite3|bindings file|NODE_MODULE_VERSION/.test(cause.message)) return failure("better-sqlite3 could not load its native binding.", "Run node scripts/doctor.mjs for the native SQLite diagnosis.", cause);
   if (code === "ERR_MODULE_NOT_FOUND" || code === "MODULE_NOT_FOUND") return failure("Installed server dependencies are missing.", "Run node scripts/setup.mjs.", cause);
   if (code === "EEXIST" && "path" in cause && typeof cause.path === "string" && cause.path.endsWith(".port")) return failure(`A runtime port file already exists: ${cause.path}.`, "If no Agentic Story Mapper server is running, delete this .port file and restart.", cause);
   const databaseMkdirFailure = "syscall" in cause && cause.syscall === "mkdir" && ["ENOTDIR", "EEXIST", "EACCES", "EPERM", "EISDIR"].includes(String(code));
