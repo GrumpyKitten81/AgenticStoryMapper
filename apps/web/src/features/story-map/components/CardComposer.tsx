@@ -32,6 +32,15 @@ export function CardComposer({ state, level, initialParentId = null, initialRele
   const isPending = () => manualLock.current || ticketLock.current || createCard.isPending || client.isMutating({ mutationKey: ["github-incoming-write", snapshot.storyMap.id], exact: true }) > 0;
   function admitTicket() { if (isPending()) return false; changeTicketPending(true); return true; }
   const [cardType, setCardType] = useState<CardType | "">("");
+  const editedDescription = useRef(false);
+  const applyTemplate = (template: (typeof snapshot.storyTemplates)[number]) => setTemplateDefaults({ description: template.descriptionTemplate, status: template.defaultStatus, ...(template.defaultEstimate === null ? {} : { estimate: template.defaultEstimate }) });
+  function selectCardType(next: CardType | "") {
+    setCardType(next);
+    if (!next || editedDescription.current) return;
+    const assignment = snapshot.storyMap.templateAssignments?.find((entry) => entry.cardType === next);
+    const template = assignment ? snapshot.storyTemplates.find((row) => row.id === assignment.storyTemplateId) : undefined;
+    if (template) applyTemplate(template);
+  }
   const [title, setTitle] = useState("");
   const [templateDefaults, setTemplateDefaults] = useState<Pick<CreateCardRequest, "description" | "status" | "estimate">>({});
   const [parentId, setParentId] = useState(initialParentId ?? "");
@@ -49,9 +58,9 @@ export function CardComposer({ state, level, initialParentId = null, initialRele
     <form className="form-stack" onSubmit={(event) => { event.preventDefault(); if (!isPending()) submit(); }}>
       <p>{mapConceptStrings.fieldValue(mapConceptStrings.level, cardLevelMeta[level].label)}</p>
       <label>{strings.title}<input disabled={pending} required autoFocus value={title} onChange={(event) => setTitle(event.target.value)} /></label>
-      {level !== "note" ? <CardTypeField value={cardType} onChange={setCardType} disabled={pending} /> : null}
-      <TemplatePicker level={level} onApplyDescription={(description) => setTemplateDefaults((value) => ({ ...value, description }))} templates={snapshot.storyTemplates} dirty={Boolean(templateDefaults.description)} disabled={pending} onApply={(template) => setTemplateDefaults({ description: template.descriptionTemplate, status: template.defaultStatus, ...(template.defaultEstimate === null ? {} : { estimate: template.defaultEstimate }) })} />
-      {templateDefaults.description !== undefined ? <label>{strings.description}<textarea disabled={pending} value={templateDefaults.description} onChange={(event) => setTemplateDefaults((value) => ({ ...value, description: event.target.value }))} /></label> : null}
+      {level !== "note" ? <CardTypeField value={cardType} onChange={selectCardType} disabled={pending} /> : null}
+      <TemplatePicker level={level} onApplyDescription={(description) => setTemplateDefaults((value) => ({ ...value, description }))} templates={snapshot.storyTemplates} dirty={Boolean(templateDefaults.description)} disabled={pending} onApply={applyTemplate} />
+      {templateDefaults.description !== undefined ? <label>{strings.description}<textarea disabled={pending} value={templateDefaults.description} onChange={(event) => { editedDescription.current = true; setTemplateDefaults((value) => ({ ...value, description: event.target.value })); }} /></label> : null}
       <label>{strings.parent}<select disabled={pending || level === "activity"} value={parentId} onChange={(event) => {
         setParentId(event.target.value);
         setPosition(appendPosition(event.target.value, releaseId));

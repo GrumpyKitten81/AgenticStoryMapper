@@ -43,9 +43,15 @@ export const projectSchema = z.object({
 });
 export type Project = z.infer<typeof projectSchema>;
 export const cardKeyPrefixSchema = z.string().trim().min(1);
+export const templateAssignmentSchema = z.object({
+  cardType: cardTypeSchema,
+  storyTemplateId: uuidSchema
+}).strict();
+export type TemplateAssignment = z.infer<typeof templateAssignmentSchema>;
 export const storyMapSchema = z.object({
   colorCategoryNames: colorCategoryNamesSchema.optional(),
   epicContext: epicContextSchema.nullable().optional(),
+  templateAssignments: z.array(templateAssignmentSchema).refine((assignments) => new Set(assignments.map((assignment) => assignment.cardType)).size === assignments.length, "Each Card type must have at most one assigned Story Template.").optional(),
   version: z.number().refine(Number.isInteger).positive(),
   id: uuidSchema,
   projectId: uuidSchema,
@@ -199,6 +205,7 @@ export const storyTemplateSchema = z.object({
   descriptionTemplate: z.string().default(""),
   defaultStatus: z.string().default("todo"),
   defaultEstimate: z.number().nullable(),
+  requiredLanguage: z.string().trim().min(1).optional(),
   position: z.number().refine(Number.isInteger).nonnegative()
 });
 export type StoryTemplate = z.infer<typeof storyTemplateSchema>;

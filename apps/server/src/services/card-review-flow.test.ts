@@ -24,6 +24,22 @@ it("persists the first agent Dry Run before review, blocks human confirmation an
   expect(result.execution.status).toBe("completed");
   expect(f.provider.writeRemoteIssue).toHaveBeenCalledTimes(2);
 });
+it("captures the assigned Story Template in review inputs and stales reports when the assignment changes", () => {
+  const f = remotePushFixture(1), deps = { repository: f.repository, unitOfWork: f.unitOfWork };
+  const template = f.unitOfWork.run(actor, ({ repository }) => repository.createStoryTemplate({ projectId: f.project.id, storyMapId: f.map.id, name: "Task template", descriptionTemplate: "## Outcome", requiredLanguage: "en" }));
+  const unassigned = commandCardReview(deps, actor, f.project.id, { action: "request", cardIds: [f.cards[0]!.id] }).requests[0]!;
+  expect(unassigned.input.assignedTemplate).toBeNull();
+  f.unitOfWork.run(actor, ({ repository }) => repository.updateStoryMap(f.map.id, { templateAssignments: [{ cardType: f.cards[0]!.cardType!, storyTemplateId: template.id }] }));
+  const assigned = commandCardReview(deps, actor, f.project.id, { action: "request", cardIds: [f.cards[0]!.id] }).requests.at(-1)!;
+  expect(assigned.input.assignedTemplate).toMatchObject({ id: template.id, name: "Task template", descriptionTemplate: "## Outcome", requiredLanguage: "en" });
+  f.unitOfWork.run(agent, ({ repository }) => repository.submitCardReview(f.project.id, output(assigned)));
+  expect(f.repository.getCardReviews(f.project.id).summaries[0]?.state).toBe("reviewed");
+  const other = f.unitOfWork.run(actor, ({ repository }) => repository.createStoryTemplate({ projectId: f.project.id, storyMapId: f.map.id, name: "Other template", descriptionTemplate: "## Other" }));
+  f.unitOfWork.run(actor, ({ repository }) => repository.updateStoryMap(f.map.id, { templateAssignments: [{ cardType: f.cards[0]!.cardType!, storyTemplateId: other.id }] }));
+  expect(f.repository.getCardReviews(f.project.id).summaries[0]?.state).toBe("stale");
+  f.unitOfWork.run(actor, ({ repository }) => repository.updateStoryMap(f.map.id, { templateAssignments: [] }));
+  expect(f.repository.getCardReviews(f.project.id).summaries[0]?.state).not.toBe("reviewed");
+});
 it("keeps human-origin pushes review-free and records an explicit enabled exact-plan override", async () => {
   const f = remotePushFixture(1);
   expect((await f.execute((await f.prepare()).plan.id)).execution.status).toBe("completed");

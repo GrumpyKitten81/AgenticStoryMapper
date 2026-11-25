@@ -52,14 +52,14 @@ it.each(["status", "annotation", "template"] as const)("creates every supported 
   if (kind !== "template") await enter("Color", "#123456");
   if (kind === "status") await enter("Group", "done");
   if (kind === "annotation") await enter("Icon", "flag");
-  if (kind === "template") { await enter("Description skeleton", "## Required"); await enter("Default status", "Doing"); await enter("Default estimate", "0"); }
+  if (kind === "template") { await enter("Description skeleton", "## Required"); await enter("Default status", "Doing"); await enter("Default estimate", "0"); await enter("Required language", "en"); }
   const dialog = getByRole(document.body, "dialog");
   expect(within(dialog).getByRole("textbox", { name: "Name" })).toBe(input("Name"));
   expect(document.activeElement).toBe(within(dialog).getByRole("heading"));
   await auditAccessibility();
   await act(async () => button("Save").click());
   expect(writes[0]?.method).toBe("POST");
-  expect(writes[0]?.body).toMatchObject({ projectId, storyMapId: mapId, name: "Authored", position: 3, ...(kind === "status" ? { color: "#123456", group: "done" } : kind === "annotation" ? { color: "#123456", icon: "flag" } : { descriptionTemplate: "## Required", defaultStatus: "Doing", defaultEstimate: 0 }) });
+  expect(writes[0]?.body).toMatchObject({ projectId, storyMapId: mapId, name: "Authored", position: 3, ...(kind === "status" ? { color: "#123456", group: "done" } : kind === "annotation" ? { color: "#123456", icon: "flag" } : { descriptionTemplate: "## Required", defaultStatus: "Doing", defaultEstimate: 0, requiredLanguage: "en" }) });
   expect(close).toHaveBeenCalledOnce();
 });
 

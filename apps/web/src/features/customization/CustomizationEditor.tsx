@@ -54,6 +54,7 @@ function renderCustomizationEditor({ item, kind, pending, onClose, unavailable, 
           <label>{strings.descriptionTemplate}<textarea value={draft.descriptionTemplate} onChange={(event) => change("descriptionTemplate", event.target.value)} /></label>
           <label>{strings.defaultStatus}<input required value={draft.defaultStatus} onChange={(event) => change("defaultStatus", event.target.value)} /></label>
           <label>{strings.defaultEstimate}<input type="number" step="any" value={draft.defaultEstimate} onChange={(event) => change("defaultEstimate", event.target.value)} /></label>
+          <label>{strings.requiredLanguage}<input value={draft.requiredLanguage} onChange={(event) => change("requiredLanguage", event.target.value)} /></label>
         </> : null}
       </fieldset>
       {item && kind === "status" ? <div className="customization-editor-note"><p>{strings.reviewedStatusName(evidence!.definitionBefore.name)}</p><p>{strings.affectedCards(count)}</p></div> : null}
@@ -78,7 +79,7 @@ function useCustomizationDraft({ projectId, storyMapId, selection, data, onClose
   const { kind, item } = selection;
   const client = useQueryClient();
   const admission = useRef(false);
-  const [draft, setDraft] = useState({ name: item?.name ?? "", position: item ? String(item.position) : "", color: item && "color" in item ? item.color ?? "" : "#eef2ff", group: item && "group" in item ? item.group : "todo", icon: item && "icon" in item ? item.icon : "tag", descriptionTemplate: item && "descriptionTemplate" in item ? item.descriptionTemplate : strings.storyTemplateDraft, defaultStatus: item && "defaultStatus" in item ? item.defaultStatus : "todo", defaultEstimate: item && "defaultEstimate" in item && item.defaultEstimate !== null ? String(item.defaultEstimate) : "" });
+  const [draft, setDraft] = useState({ name: item?.name ?? "", position: item ? String(item.position) : "", color: item && "color" in item ? item.color ?? "" : "#eef2ff", group: item && "group" in item ? item.group : "todo", icon: item && "icon" in item ? item.icon : "tag", descriptionTemplate: item && "descriptionTemplate" in item ? item.descriptionTemplate : strings.storyTemplateDraft, defaultStatus: item && "defaultStatus" in item ? item.defaultStatus : "todo", defaultEstimate: item && "defaultEstimate" in item && item.defaultEstimate !== null ? String(item.defaultEstimate) : "", requiredLanguage: item && "requiredLanguage" in item ? item.requiredLanguage ?? "" : "" });
   const [review, setReview] = useState(false);
   const [confirmUnlink, setConfirmUnlink] = useState(false);
   const [replacementId, setReplacementId] = useState("");
@@ -104,7 +105,9 @@ function useCustomizationDraft({ projectId, storyMapId, selection, data, onClose
         return item ? api.updateAnnotation(item.id, input) : api.createAnnotation({ ...scope, ...input });
       }
       const input = { ...common, descriptionTemplate: draft.descriptionTemplate, defaultStatus: draft.defaultStatus, defaultEstimate: draft.defaultEstimate === "" ? null : Number(draft.defaultEstimate) };
-      return item ? api.updateStoryTemplate(item.id, input) : api.createStoryTemplate({ ...scope, ...input });
+      const requiredLanguage = draft.requiredLanguage.trim();
+      // DESIGN an empty language clears the requirement on update and is omitted on create; null is the update-side clear marker.
+      return item ? api.updateStoryTemplate(item.id, { ...input, requiredLanguage: requiredLanguage || null }) : api.createStoryTemplate({ ...scope, ...input, ...(requiredLanguage ? { requiredLanguage } : {}) });
     }, onSuccess: async () => { await invalidateCustomization(client); onClose(); }, onSettled: () => { admission.current = false; }
   });
   return { projectId, storyMapId, onClose, unavailable, kind, item, admission, draft, setDraft, review, setReview, confirmUnlink, setConfirmUnlink, replacementId, setReplacementId, reviewData, setReviewData, evidence, setEvidence, replacement, setReplacementBefore, write };

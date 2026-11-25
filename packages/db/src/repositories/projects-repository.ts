@@ -183,7 +183,8 @@ export function createStoryMap(this: StoryMapperRepository<"transaction">, input
 
       if (input.colorCategoryNames && Object.keys(input.colorCategoryNames).length) storyMap.colorCategoryNames = input.colorCategoryNames;
       if (input.epicContext !== undefined) storyMap.epicContext = input.epicContext;
-      this.db.insert(storyMaps).values({ ...storyMap, colorCategoryNamesJson: storyMap.colorCategoryNames ? JSON.stringify(storyMap.colorCategoryNames) : null, colorCategoryNamesSchemaVersion: storyMap.colorCategoryNames ? 1 : null, epicContextJson: storyMap.epicContext ? JSON.stringify(storyMap.epicContext) : null, epicContextSchemaVersion: storyMap.epicContext ? 1 : null }).run();
+      if (input.templateAssignments?.length) storyMap.templateAssignments = input.templateAssignments;
+      this.db.insert(storyMaps).values({ ...storyMap, colorCategoryNamesJson: storyMap.colorCategoryNames ? JSON.stringify(storyMap.colorCategoryNames) : null, colorCategoryNamesSchemaVersion: storyMap.colorCategoryNames ? 1 : null, epicContextJson: storyMap.epicContext ? JSON.stringify(storyMap.epicContext) : null, epicContextSchemaVersion: storyMap.epicContext ? 1 : null, templateAssignmentsJson: storyMap.templateAssignments ? JSON.stringify(storyMap.templateAssignments) : null, templateAssignmentsSchemaVersion: storyMap.templateAssignments ? 1 : null }).run();
       this.createRootVersion("storyMaps", storyMap.id);
       if (!isSample) this.gettingStarted.complete(storyMap.projectId, "createStoryMap");
       this.logActivity(storyMap.projectId, "storyMap.created", "storyMap", storyMap.id, undefined, storyMap);
@@ -206,6 +207,10 @@ export function updateStoryMap(this: StoryMapperRepository<"transaction">, story
     if (input.epicContext !== undefined) {
       patch.epicContextJson = input.epicContext ? JSON.stringify(input.epicContext) : null;
       patch.epicContextSchemaVersion = input.epicContext ? 1 : null;
+    }
+    if (input.templateAssignments !== undefined) {
+      patch.templateAssignmentsJson = input.templateAssignments.length ? JSON.stringify(input.templateAssignments) : null;
+      patch.templateAssignmentsSchemaVersion = input.templateAssignments.length ? 1 : null;
     }
     if (input.name !== undefined) patch.name = input.name;
     if (input.cardKeyPrefix !== undefined) patch.cardKeyPrefix = input.cardKeyPrefix;

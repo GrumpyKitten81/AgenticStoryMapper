@@ -367,6 +367,7 @@ export function createStoryTemplate(this: StoryMapperRepository<"transaction">, 
       defaultEstimate: input.defaultEstimate ?? null,
       position: input.position ?? this.nextStoryTemplatePosition(input.projectId, input.storyMapId ?? null)
     };
+    if (input.requiredLanguage !== undefined) template.requiredLanguage = input.requiredLanguage;
     this.db.insert(storyTemplates).values(template).run();
     this.logActivity(template.projectId, "storyTemplate.created", "storyTemplate", template.id, undefined, template);
     return template;

@@ -15,6 +15,7 @@ import { useWorkspaceScope } from "@storymapper/web/app/routes/use-workspace-sco
 import { StoryMapViews } from "@storymapper/web/app/routes/story-map-views";
 import { routeHeading } from "@storymapper/web/app/routes/route-heading";
 import { CardKeyPrefixEditor } from "@storymapper/web/app/routes/CardKeyPrefixEditor";
+import { TemplateAssignmentsEditor } from "@storymapper/web/app/routes/TemplateAssignmentsEditor";
 import { ProductContextPanel } from "@storymapper/web/features/product-context/ProductContextPanel";
 import { RestoreProgressDialog } from "@storymapper/web/features/restore-points/RestoreProgressDialog";
 import { isPersonasEnabled, isReleasesViewEnabled, isRoadmapsViewEnabled, isSourcesViewEnabled } from "@storymapper/web/app/feature-flags";
@@ -204,6 +205,7 @@ function renderWorkspaceHeader(model: ReturnType<typeof useRootLayoutState>) {
             </button>
           </span> : null}
           <CardKeyPrefixEditor storyMap={snapshot?.storyMap} readOnly={Boolean(search.preview)} />
+          <TemplateAssignmentsEditor storyMap={snapshot?.storyMap} templates={snapshot?.storyTemplates ?? []} readOnly={Boolean(search.preview)} />
         </>
       )}
     </div>

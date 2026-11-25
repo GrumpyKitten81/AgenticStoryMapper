@@ -295,3 +295,17 @@ it("submits a neutral description without changing saved defaults or the authore
   await vi.waitFor(() => expect(request).toBeDefined());
   expect(request).toEqual({ storyMapId, level: "story", cardType: "bug", title: "Authored story", parentId, releaseId, position: 7, status: "active", estimate: 3, description: "## User goal\n\n\n## Scope and boundaries\n\n\n## Observable outcome\n\n" });
 });
+
+it("preselects the Story Template assigned to the Card type on the Story Map without touching unassigned types", async () => {
+  const assigned = { id: randomUUID(), projectId, storyMapId: null, name: "Assigned skeleton", descriptionTemplate: "## Value\n## Acceptance criteria", defaultStatus: "todo", defaultEstimate: null, position: 0 };
+  state.snapshot.storyTemplates.push(assigned);
+  state.snapshot.storyMap.templateAssignments = [{ cardType: "story", storyTemplateId: assigned.id }];
+  await mount(viewUrl.replace(/tree$/, "discovery"));
+  await act(async () => openComposer("story"));
+  await field(input("Title"), "Assigned template");
+  expect(dialog().querySelector("textarea")).toBeNull();
+  await field(input("Planning type"), "story");
+  expect(dialog().querySelector("textarea")!.value).toBe("## Value\n## Acceptance criteria");
+  await field(input("Planning type"), "task");
+  expect(dialog().querySelector("textarea")!.value).toBe("## Value\n## Acceptance criteria");
+});
