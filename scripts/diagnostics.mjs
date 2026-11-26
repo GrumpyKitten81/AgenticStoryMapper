@@ -4,7 +4,7 @@ import { createServer } from 'node:net';
 import { dirname, join } from 'node:path';
 import { failure, nativeFailure, portFailure } from '../apps/server/src/config/failures.mjs';
 import { checkHealth, repository } from './runtime.mjs';
-import { probeNativeSqlite } from '../packages/db/src/native-probe.mjs';
+import { probeNativeSqlite, sqlitePrebuild } from '../packages/db/src/native-probe.mjs';
 
 export function commandOptions(name) {
   const args = process.argv.slice(2);
@@ -91,7 +91,8 @@ export function checkNative() {
   try {
     probeNativeSqlite();
   } catch (error) {
-    throw nativeFailure(error);
+    if (error.code === 'MODULE_NOT_FOUND') throw failure('better-sqlite3 is not installed.', 'Run node scripts/setup.mjs.', error);
+    throw nativeFailure(error, sqlitePrebuild());
   }
 }
 

@@ -16,8 +16,9 @@ export function failure(message, fix, cause) {
   return new Error(`${message} Next action: ${fix}`, cause ? { cause } : undefined);
 }
 
-export function nativeFailure(cause) {
-  return failure('better-sqlite3 could not load its native binding.', 'Under the same installed Node 24 runtime, run corepack pnpm --filter @storymapper/db rebuild better-sqlite3.', cause);
+export function nativeFailure(cause, { target, available }) {
+  if (available) return failure(`better-sqlite3 could not load its bundled ${target} prebuild.`, 'Use the same installed Node 24 and CPU architecture for setup and start, rerun node scripts/setup.mjs and inspect node scripts/doctor.mjs --debug. This platform needs no C++ build tools.', cause);
+  return failure(`better-sqlite3 ships no prebuild for ${target}; this platform requires a native build.`, 'Install a node-gyp C++ toolchain, run corepack pnpm dlx node-gyp rebuild inside the installed better-sqlite3 package under the same Node 24, then rerun node scripts/start.mjs. Windows, macOS and Linux on x64 or arm64 need no build tools.', cause);
 }
 
 export function portFailure(port, holder = 'unknown process', cause) {
