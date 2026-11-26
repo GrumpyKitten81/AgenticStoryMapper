@@ -95,5 +95,10 @@ function cloneRow(source: StoredRow, ids: Map<string, string>, now: string): Sto
   if ("syncedVersion" in row) row.syncedVersion = 1;
   if ("createdAt" in row) row.createdAt = now;
   if ("updatedAt" in row) row.updatedAt = now;
+  // Template assignments live inside a JSON column, so the generic Id remap misses them; point them at the copy's own templates.
+  if (typeof row.templateAssignmentsJson === "string") {
+    const parsed = JSON.parse(row.templateAssignmentsJson) as { cardType: string; storyTemplateId: string }[];
+    row.templateAssignmentsJson = JSON.stringify(parsed.map((assignment) => ({ ...assignment, storyTemplateId: ids.get(assignment.storyTemplateId) ?? assignment.storyTemplateId })));
+  }
   return row;
 }

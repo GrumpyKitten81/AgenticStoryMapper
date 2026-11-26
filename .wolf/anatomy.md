@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-10-30T23:57:21.054Z
-> Files: 1179 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-11-21T21:13:00.520Z
+> Files: 1184 tracked | Anatomy hits: 0 | Misses: 0
 
 > Project structure index. Auto-maintained by OpenWolf hooks and daemon.
 > Run `openwolf scan` to generate, or wait for the first Claude Code session.
@@ -12,7 +12,9 @@
 - `.gitattributes` — Git attributes (~6 tok)
 - `.gitignore` — Git ignore rules (~121 tok)
 - `.mcp.json` (~46 tok)
+- `AGENTS.local.md` — Browser verification when Claude in Chrome fails (this Mac) (~369 tok)
 - `AGENTS.md` — Instruction hierarchy (~2170 tok)
+- `CLAUDE.local.md` (~5 tok)
 - `CLAUDE.md` — OpenWolf (~229 tok)
 - `CODE_OF_CONDUCT.md` — Code of conduct (~688 tok)
 - `CONTRIBUTING.md` — Contributing to StoryMapper (~2254 tok)
@@ -1103,6 +1105,7 @@
 - `announcement-store.ts` — Exports useAnnouncementStore (~136 tok)
 - `discovery-lane-collapse-store.ts` — Exports useDiscoveryLaneCollapseStore (~280 tok)
 - `discovery-zoom-store.ts` — Exports DISCOVERY_ZOOM_DEFAULT, DISCOVERY_ZOOM_MIN, DISCOVERY_ZOOM_MAX, DISCOVERY_ZOOM_STEP, useDiscoveryZoomStore (~206 tok)
+- `map-id-set-store.ts` — Exports NOT_ASSIGNED_LANE_ID, useTreeCollapseStore, useDiscoveryLaneCollapseStore, useDiscoveryLaneP (~348 tok)
 - `onboarding-store.ts` — Exports useOnboardingStore (~188 tok)
 - `tree-collapse-store.ts` — Exports useTreeCollapseStore (~270 tok)
 
@@ -1213,12 +1216,13 @@
 
 - `BacklogList.tsx` — BacklogList — uses useMemo (~1854 tok)
 - `BoardToolbar.tsx` — BoardToolbar — uses useState (~2661 tok)
+- `card-creation.test.tsx` — field (~6230 tok)
 - `card-detail.test.ts` — @vitest-environment jsdom // REQ FR-15 (~14187 tok)
 - `CardChoice.tsx` — CardChoice (~812 tok)
 - `CardDetailModal.tsx` — CardDetailModal (~8293 tok)
 - `CardHistoryEntryView.tsx` — HISTORY_PREVIEW_LENGTH — uses useState (~894 tok)
 - `CardHistoryPanel.tsx` — CardHistoryPanel — uses useState, useEffect (~702 tok)
-- `CardTile.tsx` — CardTile (~3173 tok)
+- `CardTile.tsx` — CardTile (~4868 tok)
 - `DescriptionEditor.test.tsx` — change (~909 tok)
 - `DescriptionEditor.tsx` — DescriptionEditor — uses useEffect (~478 tok)
 - `DiscoveryLanes.tsx` — STORY_SORT_MODE — renders form — uses useState (~4506 tok)
@@ -1237,6 +1241,7 @@
 
 - `export-with-progress.test.ts` — Declares options (~520 tok)
 - `export-with-progress.ts` — Exports exportStoryMapViewAndRecord (~103 tok)
+- `story-map-view-export-lanes.test.ts` — Declares original (~695 tok)
 - `story-map-view-export.test.ts` — clone: outerHTML (~602 tok)
 - `story-map-view-export.ts` — Exports StoryMapViewKind, StoryMapExportFormat, exportStoryMapView (~4786 tok)
 
@@ -1259,7 +1264,7 @@
 
 - `app.ts` — Exports appStrings (~1710 tok)
 - `index.ts` — Exports liveUpdateStrings, conflictStrings, auditStrings, restorePointStrings + 2 more (~7019 tok)
-- `story-map.ts` — Exports storyMapStrings (~3875 tok)
+- `story-map.ts` — Exports storyMapStrings (~6496 tok)
 - `ui-strings.test.ts` — sourceRoot: sourceFiles, render, hasLiteralCopy, hasCopyAttribute, visit (~3436 tok)
 
 ## docs/

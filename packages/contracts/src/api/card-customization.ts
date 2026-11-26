@@ -390,6 +390,7 @@ export const createStoryTemplateRequestSchema = storyTemplateSchema
     descriptionTemplate: true,
     defaultStatus: true,
     defaultEstimate: true,
+    requiredLanguage: true,
     position: true
   })
   .extend({
@@ -410,11 +411,14 @@ export const updateStoryTemplateRequestSchema = storyTemplateSchema
     descriptionTemplate: true,
     defaultStatus: true,
     defaultEstimate: true,
+    requiredLanguage: true,
     position: true
   })
   .extend({
     descriptionTemplate: storyTemplateSchema.shape.descriptionTemplate.removeDefault(),
-    defaultStatus: storyTemplateSchema.shape.defaultStatus.removeDefault()
+    defaultStatus: storyTemplateSchema.shape.defaultStatus.removeDefault(),
+    // DESIGN null clears the required language; absent keeps it.
+    requiredLanguage: storyTemplateSchema.shape.requiredLanguage.nullable()
   })
   .partial().extend({ apply: z.boolean().optional() });
 

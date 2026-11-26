@@ -39,6 +39,9 @@ export function reviewInput(repository: Repository, cardId: string, plan?: Remot
   const sourceLinks = data.sourceLinks.filter((link) => ids.has(link.cardId) && !(link.kind === "github" && link.id === link.externalRefId && capture.selfProducedRefs.has(link.externalRefId))).sort((left, right) => left.id.localeCompare(right.id));
   const sourceChunks = data.sourceChunks.filter((chunk) => sourceLinks.some((link) => link.kind === "chunk" && link.chunkId === chunk.id)).sort((left, right) => left.id.localeCompare(right.id));
   const input: CardReviewInput = { card, parents, prerequisites, prerequisiteCompletion: capturePrerequisiteCompletion(prerequisites, capture), githubSources: captureGitHubSources(sourceLinks, capture), sourceLinks, sourceChunks, productContext: data.productContext ?? repository.getProductContext(data.storyMap.projectId, data.storyMap.id) };
+  const assignment = data.storyMap.templateAssignments?.find((entry) => entry.cardType === card.cardType);
+  const assignedTemplate = assignment ? data.storyTemplates.find((row) => row.id === assignment.storyTemplateId) : undefined;
+  input.assignedTemplate = assignedTemplate ? { id: assignedTemplate.id, name: assignedTemplate.name, descriptionTemplate: assignedTemplate.descriptionTemplate, ...(assignedTemplate.requiredLanguage ? { requiredLanguage: assignedTemplate.requiredLanguage } : {}) } : null;
   if (plan) {
     if (plan.projectId !== data.storyMap.projectId || plan.storyMapId !== card.storyMapId) throw new DomainError("validation", "Dry Run belongs to another Card scope.");
     input.outgoing = plan.items.flatMap((item) => item.kind === "issue" && item.entityId === cardId ? [{ title: item.payload.title, body: item.payload.body, issueType: item.payload.issueType }] : []);

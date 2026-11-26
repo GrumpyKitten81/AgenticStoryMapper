@@ -4,7 +4,7 @@ export function canonicalReviewInput(input: CardReviewInput): unknown {
   const content = (card: CardReviewInput["card"]) => ({ id: card.id, level: card.level, cardType: card.cardType ?? null, title: card.title, description: card.description, parentId: card.parentId });
   const { id: _id, updatedAt: _time, ...productContext } = input.productContext;
   return { card: content(input.card), parents: input.parents.map(content), prerequisites: input.prerequisites.map((card) => ({ ...content(card), status: card.status, archived: card.archived ?? false })),
-    prerequisiteCompletion: input.prerequisiteCompletion, githubSources: input.githubSources, productContext, sourceLinks: input.sourceLinks, sourceChunks: input.sourceChunks, outgoing: input.outgoing, exportFingerprint: input.exportFingerprint };
+    prerequisiteCompletion: input.prerequisiteCompletion, githubSources: input.githubSources, productContext, sourceLinks: input.sourceLinks, sourceChunks: input.sourceChunks, outgoing: input.outgoing, exportFingerprint: input.exportFingerprint, assignedTemplate: input.assignedTemplate ?? null };
 }
 
 export function validateReviewResults(input: CardReviewInput, report: Pick<CardReviewReport, "status" | "results" | "error" | "criteriaVersion">): void {

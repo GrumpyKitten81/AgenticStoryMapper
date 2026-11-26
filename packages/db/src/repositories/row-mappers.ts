@@ -33,6 +33,7 @@ export function toStoryMap(row: typeof storyMaps.$inferSelect): StoryMap {
   };
   if (row.colorCategoryNamesJson !== null) storyMap.colorCategoryNames = parseStoredJson("story_maps", "color_category_names_json", row.colorCategoryNamesJson, row.colorCategoryNamesSchemaVersion);
   if (row.epicContextJson !== null) storyMap.epicContext = parseStoredJson("story_maps", "epic_context_json", row.epicContextJson, row.epicContextSchemaVersion);
+  if (row.templateAssignmentsJson !== null) storyMap.templateAssignments = parseStoredJson("story_maps", "template_assignments_json", row.templateAssignmentsJson, row.templateAssignmentsSchemaVersion);
   if (row.description !== null) storyMap.description = row.description;
   if (row.defaultConnectionId !== null) storyMap.defaultConnectionId = row.defaultConnectionId;
   return storyMap;
@@ -150,7 +151,7 @@ export function toCardAnnotationLink(row: typeof cardAnnotations.$inferSelect): 
 }
 
 export function toStoryTemplate(row: typeof storyTemplates.$inferSelect): StoryTemplate {
-  return {
+  return compact({
     id: row.id,
     projectId: row.projectId,
     storyMapId: row.storyMapId,
@@ -158,8 +159,9 @@ export function toStoryTemplate(row: typeof storyTemplates.$inferSelect): StoryT
     descriptionTemplate: row.descriptionTemplate,
     defaultStatus: row.defaultStatus,
     defaultEstimate: row.defaultEstimate,
+    requiredLanguage: row.requiredLanguage ?? undefined,
     position: row.position
-  };
+  }) as StoryTemplate;
 }
 
 export function toProductContext(row: typeof productContexts.$inferSelect): ProductContext {

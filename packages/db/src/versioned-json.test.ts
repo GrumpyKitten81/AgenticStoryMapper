@@ -19,7 +19,7 @@ it("matches every persisted SQLite JSON column and version sibling to the parser
     const payloads = columns.filter((column) => column.name.endsWith("_json"));
     const registered = [...inventory.map(([table, column]) => `${table}.${column}`), "change_sets.operations_json"].sort();
     expect(payloads.map((column) => `${column.table}.${column.name}`).sort()).toEqual(registered);
-    expect(payloads).toHaveLength(34);
+    expect(payloads).toHaveLength(35);
     const pairedVersions = new Set<string>();
     for (const payload of payloads) {
       const versionName = ["source_plan_baselines", "plan_states"].includes(payload.table) ? "schema_version" : payload.name.replace(/_json$/u, "_schema_version");

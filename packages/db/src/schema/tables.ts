@@ -39,6 +39,8 @@ export const storyMaps = sqliteTable("story_maps", {
   colorCategoryNamesSchemaVersion: integer("color_category_names_schema_version"),
   epicContextJson: text("epic_context_json"),
   epicContextSchemaVersion: integer("epic_context_schema_version"),
+  templateAssignmentsJson: text("template_assignments_json"),
+  templateAssignmentsSchemaVersion: integer("template_assignments_schema_version"),
   nextCardNumber: integer("next_card_number").notNull().default(1),
   deleted: integer("deleted", { mode: "boolean" }).notNull().default(false),
   id: text("id").primaryKey(),
@@ -254,6 +256,7 @@ export const storyTemplates = sqliteTable("story_templates", {
   descriptionTemplate: text("description_template").notNull().default(""),
   defaultStatus: text("default_status").notNull().default("todo"),
   defaultEstimate: real("default_estimate"),
+  requiredLanguage: text("required_language"),
   position: integer("position").notNull()
 });
 

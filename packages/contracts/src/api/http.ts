@@ -85,6 +85,7 @@ export const listStoryMapsResponseSchema = z.object({
 export const createStoryMapRequestSchema = z.object({
   colorCategoryNames: storyMapSchema.shape.colorCategoryNames,
   epicContext: storyMapSchema.shape.epicContext,
+  templateAssignments: storyMapSchema.shape.templateAssignments,
   projectId: uuidSchema,
   name: z.string().min(1),
   description: z.string().optional()
@@ -93,6 +94,7 @@ export const createStoryMapRequestSchema = z.object({
 export const updateStoryMapRequestSchema = z.object({
   colorCategoryNames: storyMapSchema.shape.colorCategoryNames,
   epicContext: storyMapSchema.shape.epicContext,
+  templateAssignments: storyMapSchema.shape.templateAssignments,
   cardKeyPrefix: cardKeyPrefixSchema.optional(),
   name: z.string().min(1).optional(),
   description: z.string().optional(),

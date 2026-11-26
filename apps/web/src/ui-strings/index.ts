@@ -307,6 +307,7 @@ export const panelStrings = {
   descriptionTemplate: "Description skeleton",
   defaultStatus: "Default status",
   defaultEstimate: "Default estimate",
+  requiredLanguage: "Required language",
   replacementStatus: "Replacement status",
   reviewDelete: (name: string) => `Delete ${name}?`,
   affectedCards: (count: number) => `${count} Cards will change. Review before confirming.`,

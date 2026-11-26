@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { and, asc, eq } from "drizzle-orm";
+import { and, asc, eq, like } from "drizzle-orm";
 import { DomainError } from "@storymapper/contracts";
 import type { CustomizationResponse, DeleteWorkflowStatusRequest, DeleteAnnotationRequest, DeletePersonaCommand, Annotation, CardAnnotationLink, CardPersonaLink, CreateAnnotationRequest, CreatePersonaRequest, CreateStoryTemplateRequest, CreateWorkflowStatusRequest, Persona, StoryTemplate, UpdateAnnotationRequest, UpdatePersonaRequest, UpdateStoryTemplateRequest, UpdateWorkflowStatusRequest, WorkflowStatus } from "@storymapper/contracts";
 import { annotations, cardAnnotations, cardPersonas, cards, personas, storyMaps, storyTemplates, workflowStatuses } from "@storymapper/db/schema";
@@ -367,6 +367,7 @@ export function createStoryTemplate(this: StoryMapperRepository<"transaction">, 
       defaultEstimate: input.defaultEstimate ?? null,
       position: input.position ?? this.nextStoryTemplatePosition(input.projectId, input.storyMapId ?? null)
     };
+    if (input.requiredLanguage !== undefined) template.requiredLanguage = input.requiredLanguage;
     this.db.insert(storyTemplates).values(template).run();
     this.logActivity(template.projectId, "storyTemplate.created", "storyTemplate", template.id, undefined, template);
     return template;
@@ -388,6 +389,12 @@ export function deleteStoryTemplate(this: StoryMapperRepository<"transaction">, 
     const before = this.getStoryTemplate(templateId);
     if (!before) return false;
     this.db.delete(storyTemplates).where(eq(storyTemplates.id, templateId)).run();
+    // Assignments pointing at a deleted Story Template must not dangle: clear them from the affected Story Maps.
+    const affected = this.db.select({ id: storyMaps.id, json: storyMaps.templateAssignmentsJson }).from(storyMaps).where(and(eq(storyMaps.projectId, before.projectId), like(storyMaps.templateAssignmentsJson, `%${templateId}%`))).all();
+    for (const entry of affected) {
+      const kept = (JSON.parse(entry.json!) as { storyTemplateId: string }[]).filter((assignment) => assignment.storyTemplateId !== templateId);
+      this.db.update(storyMaps).set({ templateAssignmentsJson: kept.length ? JSON.stringify(kept) : null, templateAssignmentsSchemaVersion: kept.length ? 1 : null, updatedAt: new Date().toISOString() }).where(eq(storyMaps.id, entry.id)).run();
+    }
     this.logActivity(before.projectId, "storyTemplate.deleted", "storyTemplate", templateId, before, undefined);
     return true;
   }

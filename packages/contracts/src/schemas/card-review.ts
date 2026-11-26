@@ -1,10 +1,10 @@
 import { z } from "zod";
-import { cardSchema, cardTypeSchema, uuidSchema, actorContextSchema, productContextSchema, cardSourceLinkSchema, sourceChunkSchema } from "@storymapper/contracts/schemas/domain";
+import { cardSchema, cardTypeSchema, uuidSchema, actorContextSchema, productContextSchema, cardSourceLinkSchema, sourceChunkSchema, storyTemplateSchema } from "@storymapper/contracts/schemas/domain";
 
 // DESIGN stored requests and reports keep every released version readable; only the current version is accepted for new reviews (ADR 0011).
-export const CARD_REVIEW_VERSIONS = ["1", "2", "3", "4"] as const;
-export const CARD_REVIEW_CRITERIA_VERSION = "4";
-export const CARD_REVIEW_SKILL_VERSION = "4";
+export const CARD_REVIEW_VERSIONS = ["1", "2", "3", "4", "5"] as const;
+export const CARD_REVIEW_CRITERIA_VERSION = "5";
+export const CARD_REVIEW_SKILL_VERSION = "5";
 const storedReviewVersionSchema = z.enum(CARD_REVIEW_VERSIONS);
 const all = cardTypeSchema.options;
 export const CARD_REVIEW_CRITERIA = [
@@ -22,7 +22,8 @@ export const CARD_REVIEW_CRITERIA = [
   { id: "DOR-12", since: "2", severity: "warning", types: ["story", "bug", "feature", "epic", "task"], instruction: "Every acceptance, success or completion criterion is necessary for the outcome; no busywork or unrequested extras." },
   { id: "DOR-13", since: "2", severity: "warning", types: all, instruction: "Every requirement is traceable to the parent goal, Product Context, a linked source or an explicit reference." },
   { id: "DOR-14", since: "2", severity: "warning", types: ["story"], instruction: "Describes behavior, not implementation steps; implementation work belongs in derived Tasks." },
-  { id: "DOR-15", since: "3", severity: "warning", types: all, instruction: "Understandable without local Story Map context: no internal keys outside references, explained abbreviations, no local paths as references, consistent naming within the Epic and no internal admin or provenance notes." }
+  { id: "DOR-15", since: "3", severity: "warning", types: all, instruction: "Understandable without local Story Map context: no internal keys outside references, explained abbreviations, no local paths as references, consistent naming within the Epic and no internal admin or provenance notes." },
+  { id: "DOR-16", since: "5", severity: "warning", types: all, instruction: "Matches the Story Template assigned to the Card type on the Story Map: the required sections of the template are present and the Card is written in the language the template requires." }
 ] as const;
 export type CardReviewVersion = typeof CARD_REVIEW_VERSIONS[number];
 export function cardReviewCriteriaFor(version: CardReviewVersion) {
@@ -34,8 +35,11 @@ export const cardReviewSettingsSchema = z.object({
   reviewAfterAgentContentChange: z.boolean().default(false), allowHumanPushOverride: z.boolean().default(false)
 }).strict();
 export type CardReviewSettings = z.infer<typeof cardReviewSettingsSchema>;
+export const cardReviewAssignedTemplateSchema = storyTemplateSchema.pick({ id: true, name: true, descriptionTemplate: true, requiredLanguage: true }).strict();
+export type CardReviewAssignedTemplate = z.infer<typeof cardReviewAssignedTemplateSchema>;
 export const cardReviewInputSchema = z.object({
   card: cardSchema, parents: z.array(cardSchema), prerequisites: z.array(cardSchema),
+  assignedTemplate: cardReviewAssignedTemplateSchema.nullable().optional(),
   prerequisiteCompletion: z.array(z.object({ cardId: uuidSchema, completed: z.boolean(), status: z.string(), workflowGroup: z.string().nullable(), github: z.array(z.object({ connectionId: uuidSchema, externalRefId: uuidSchema, remoteState: z.string().nullable(), issueState: z.enum(["open", "closed"]).nullable() }).strict()) }).strict()).default([]),
   githubSources: z.array(z.object({ sourceLinkId: uuidSchema, externalRefId: uuidSchema, projectId: uuidSchema, url: z.string(), titleHash: z.string().nullable(), bodyHash: z.string().nullable(), contentAvailability: z.enum(["exact", "hash_only", "unavailable"]), remoteBefore: z.object({ title: z.string(), body: z.string() }).strict().nullable() }).strict()).default([]),
   productContext: productContextSchema, sourceLinks: z.array(cardSourceLinkSchema), sourceChunks: z.array(sourceChunkSchema),

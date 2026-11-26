@@ -47,6 +47,16 @@ describe("authoritative review criteria", () => {
     expect(() => validateReviewResults(input("spike"), { criteriaVersion: "4", status: "success", results: spike })).not.toThrow();
     expect(() => validateReviewResults(input("spike"), { criteriaVersion: "3", status: "success", results: results("3") })).not.toThrow();
   });
+  it("adds the assigned Story Template warning in version 5 and keeps version 4 reports valid", () => {
+    expect(CARD_REVIEW_CRITERIA.filter((rule) => rule.since === "5").map(({ id, severity, types }) => ({ id, severity, types }))).toEqual([{ id: "DOR-16", severity: "warning", types: cardTypeSchema.options }]);
+    expect(cardReviewCriteriaFor("5").map((rule) => rule.id)).toEqual([...cardReviewCriteriaFor("4").map((rule) => rule.id), "DOR-16"]);
+    const results = (version: "4" | "5") => cardReviewCriteriaFor(version).map((rule) => ({ id, ruleId: rule.id, severity: rule.severity, outcome: (rule.types as readonly string[]).includes("story") ? "pass" as const : "not_applicable" as const, evidence: [], advice: "" }));
+    expect(() => validateReviewResults(input("story"), { criteriaVersion: "4", status: "success", results: results("4") })).not.toThrow();
+    expect(() => validateReviewResults(input("story"), { criteriaVersion: "5", status: "success", results: results("4") })).toThrow("every rule");
+    const story = results("5");
+    Object.assign(story.find((result) => result.ruleId === "DOR-16")!, { outcome: "finding", evidence: ["The assigned template requires a '## Acceptance Criteria' section that is missing."], advice: "Add the required sections of the assigned Story Template." });
+    expect(() => validateReviewResults(input("story"), { criteriaVersion: "5", status: "success", results: story })).not.toThrow();
+  });
   it("never passes a missing explicit type and only escalates DOR-03 when work cannot start", () => {
     const results: CardReviewReport["results"] = CARD_REVIEW_CRITERIA.map((rule) => ({ id, ruleId: rule.id, severity: rule.severity, outcome: "pass", evidence: [], advice: "" }));
     expect(() => validateReviewResults(input(null), { criteriaVersion: CARD_REVIEW_CRITERIA_VERSION, status: "success", results })).toThrow("Missing Card type");
