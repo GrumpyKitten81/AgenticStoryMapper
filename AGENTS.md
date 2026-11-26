@@ -38,7 +38,8 @@ Local-first story mapping and GitHub planning tool. TypeScript pnpm monorepo: `a
 - Before editing a file, read each `.cursor/rules/*.mdc` whose `globs` match it (Cursor does this itself). Read `card-authoring.mdc` when creating or editing story-map cards or GitHub tickets.
 - Architecture spine (invariants, ADs, aggregate register, ERD) `_bmad-output/planning-artifacts/architecture/architecture-StoryMapper-2026-09-29/ARCHITECTURE-SPINE.md`, MCP `docs/mcp-tools.md`, operations `docs/RUNBOOK.md`.
 - Scripts: persistent tooling in `scripts/` (Node) and `tools/` (Python, HTTP-only); one-off scripts only in the ignored `tmp/<topic>/`. Read `scripts.mdc` before creating or moving a script.
-- GitHub access: `gh` CLI; board import and Story Map copy scripts in `tools/` (Python, HTTP-only); skills `github-projects`, `github-issues`, `github-board-import`, `analyze-transcript-scope` exist in `.agents/skills/` and `.claude/skills/` — change both copies.
+- GitHub access: `gh` CLI; board import and Story Map copy scripts in `tools/` (Python, HTTP-only); skills `github-projects`, `github-issues`, `github-board-import` exist in `.agents/skills/` and `.claude/skills/` — change both copies.
+- Transcript analysis: skill `analyze-transcript-scope` exists in `.agents/skills/` and `.claude/skills/` — change both copies.
 
 ## Running and verifying
 
